@@ -29,3 +29,18 @@ preview = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
 (root / 'docs').mkdir(exist_ok=True)
 (root / 'docs' / 'index.html').write_text(preview)
 print('index.html', len(body), 'bytes')
+
+# ---- Dams Academy (academy/ -> docs/academy/): the multi-page teaching site.
+# Static files copied as they are, plus the shared solver and the shared colour tokens.
+import shutil
+css = read('styles.css')
+tokens = css[:css.index('* { box-sizing')].split('*/', 1)[1].strip()  # drop the layout comment
+acad_src, acad_out = root / 'academy', root / 'docs' / 'academy'
+if acad_out.exists():
+    shutil.rmtree(acad_out)
+shutil.copytree(acad_src, acad_out)
+shutil.copy(src / 'seepage-solver.js', acad_out / 'js' / 'seepage-solver.js')
+out_css = acad_out / 'styles.css'
+out_css.write_text(out_css.read_text().replace('/* @tokens */', tokens))
+(root / 'docs' / '.nojekyll').write_text('')  # GitHub Pages: serve docs/ as-is, no Jekyll pass
+print('docs/academy/', sum(p.stat().st_size for p in acad_out.rglob('*') if p.is_file()), 'bytes')
