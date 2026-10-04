@@ -1,0 +1,5 @@
+# build outputs (regenerate with: python3 build.py)
+/index.html
+/app.bundle.js
+/preview.html
+.DS_Store

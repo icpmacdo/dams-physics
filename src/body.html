@@ -1,0 +1,414 @@
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <pattern id="p-bedrock" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" style="fill:var(--m-bedrock)"/>
+      <path class="tx" d="M0,16 L16,0 M-4,4 L4,-4 M12,20 L20,12"/>
+      <path class="tx" d="M4,6 l3,3 M11,13 l2,2"/>
+    </pattern>
+    <pattern id="p-alluv" width="14" height="12" patternUnits="userSpaceOnUse">
+      <rect width="14" height="12" style="fill:var(--m-alluv)"/>
+      <circle class="tx" cx="3.5" cy="3" r="1.6"/><circle class="tx" cx="10" cy="8.5" r="2"/>
+      <circle class="txf" cx="9" cy="2.5" r="0.7"/><circle class="txf" cx="3" cy="9.5" r="0.7"/>
+    </pattern>
+    <pattern id="p-clay" width="14" height="8" patternUnits="userSpaceOnUse">
+      <rect width="14" height="8" style="fill:var(--m-clay)"/>
+      <path class="tx" d="M1,2 h6 M8,6 h5"/>
+    </pattern>
+    <pattern id="p-filter" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" style="fill:var(--m-filter)"/>
+      <circle class="txf" cx="1.5" cy="1.5" r="0.6"/><circle class="txf" cx="4.5" cy="4.5" r="0.6"/>
+    </pattern>
+    <pattern id="p-trans" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" style="fill:var(--m-trans)"/>
+      <circle class="tx" cx="3" cy="3" r="1.5"/><circle class="txf" cx="7.5" cy="7.5" r="0.8"/><circle class="txf" cx="8" cy="2" r="0.5"/>
+    </pattern>
+    <pattern id="p-rock" width="20" height="16" patternUnits="userSpaceOnUse">
+      <rect width="20" height="16" style="fill:var(--m-rock)"/>
+      <path class="tx" d="M2,4 l4,-2 l3,3 l-2,3 l-4,-1 z M11,10 l5,-1 l2,4 l-4,2 l-3,-2 z M12,2 l3,0 l1,3 l-3,1 z"/>
+    </pattern>
+    <pattern id="p-riprap" width="22" height="14" patternUnits="userSpaceOnUse">
+      <rect width="22" height="14" style="fill:var(--m-riprap)"/>
+      <path class="tx" d="M1,2 h8 l2,5 l-3,5 h-6 l-1,-5 z M12,1 h7 l2,6 l-4,5 h-4 l-2,-6 z"/>
+    </pattern>
+    <pattern id="p-conc" width="18" height="18" patternUnits="userSpaceOnUse">
+      <rect width="18" height="18" style="fill:var(--m-conc)"/>
+      <circle class="txf" cx="3" cy="4" r="0.7"/><circle class="txf" cx="12" cy="9" r="0.7"/><circle class="txf" cx="6" cy="14" r="0.6"/>
+      <path class="tx" d="M13,2 l2.5,3.5 h-5 z M3,8 l2,3 h-4 z"/>
+    </pattern>
+    <pattern id="p-tsand" width="12" height="6" patternUnits="userSpaceOnUse">
+      <rect width="12" height="6" style="fill:var(--m-tsand)"/>
+      <path class="tx" d="M0,3 h5 M7,3 h3" style="stroke-dasharray:1 1.5"/>
+    </pattern>
+    <pattern id="p-slime" width="12" height="5" patternUnits="userSpaceOnUse">
+      <rect width="12" height="5" style="fill:var(--m-slime)"/>
+      <path class="tx" d="M0,2.5 h12"/>
+    </pattern>
+    <pattern id="p-fill" width="14" height="10" patternUnits="userSpaceOnUse">
+      <rect width="14" height="10" style="fill:var(--m-fill)"/>
+      <path class="tx" d="M1,3 h4 M8,7 h4"/><circle class="txf" cx="10" cy="2" r="0.6"/><circle class="txf" cx="4" cy="8" r="0.6"/>
+    </pattern>
+    <pattern id="p-drain" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" style="fill:var(--m-drain)"/>
+      <circle class="tx" cx="2.5" cy="2.5" r="1.4"/><circle class="tx" cx="6.5" cy="6.5" r="1.1"/>
+    </pattern>
+    <pattern id="p-cyclone" width="7" height="7" patternUnits="userSpaceOnUse">
+      <rect width="7" height="7" style="fill:var(--m-tsand)"/>
+      <circle class="txf" cx="2" cy="2" r="0.7"/><circle class="txf" cx="5.5" cy="5" r="0.7"/>
+    </pattern>
+    <pattern id="p-grout" width="6" height="10" patternUnits="userSpaceOnUse">
+      <rect width="6" height="10" style="fill:var(--m-bedrock)"/>
+      <path d="M3,0 v6" style="stroke:var(--accent);stroke-width:1.1"/>
+    </pattern>
+    <pattern id="p-liq" width="16" height="8" patternUnits="userSpaceOnUse">
+      <rect width="16" height="8" style="fill:var(--m-liq)"/>
+      <path class="tx" d="M0,4 q4,-3 8,0 t8,0"/>
+    </pattern>
+    <pattern id="p-sat" width="12" height="7" patternUnits="userSpaceOnUse">
+      <rect width="12" height="7" style="fill:var(--water-tint);opacity:.45"/>
+      <path d="M1,3.5 h6" style="stroke:var(--water);stroke-width:1;opacity:.6"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink-2)"/>
+    </marker>
+    <marker id="arr-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/>
+    </marker>
+    <marker id="arr-w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill:var(--water)"/>
+    </marker>
+  </defs>
+</svg>
+
+<div class="page">
+  <div class="indexbar">
+    <div class="wide">
+      <a class="mark" href="#top">Dams in Section</a>
+      <nav aria-label="Sections">
+        <a href="#types">Water vs tailings</a>
+        <a href="#raising">Raising methods</a>
+        <a href="#zones">Dam zones</a>
+        <a href="#seepage">Seepage</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="masthead wide" id="top">
+    <p class="eyebrow">Embankments, concrete and mine waste, cut open and animated</p>
+    <h1>Dams in <span class="cut">Section</span></h1>
+    <p class="lede">Every dam is a fight with two things: water pressure, which grows with depth, and seepage, which finds every weakness. These drawings cut dams open so you can watch both at work. Each one is live: press play, drag the sliders, and change the design.</p>
+    <div class="topics">
+      <a href="#types"><span>Sheet 1</span><strong>Hydroelectric vs tailings dams</strong></a>
+      <a href="#raising"><span>Sheet 2</span><strong>Upstream, downstream, centreline</strong></a>
+      <a href="#zones"><span>Sheet 3</span><strong>Dam zones</strong></a>
+      <a href="#seepage"><span>Sheet 4</span><strong>Seepage paths</strong></a>
+    </div>
+  </header>
+
+  <!-- ================= SHEET 1 ================= -->
+  <section class="chapter" id="types">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Sheet 1</span><h2>Two dams, two jobs</h2></div>
+    </div>
+    <div class="col">
+      <p>A hydroelectric dam holds back water, and the water is the product. Its height above the turbines is stored energy, released on demand. A tailings dam holds back mine waste: rock ground finer than flour, pumped out of the mill as a slurry with process water. Nobody wants it back. The job is to keep it in place permanently.</p>
+      <p>Same physics on both sides of the crest. Water pressure grows linearly with depth, <span class="term">p = ρgh</span>, about 9.8 kPa per metre, so nearly 1 MPa at the foot of a 100 m reservoir. And water seeps through anything that isn't perfectly tight.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-types">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 1</b> · Water dam and tailings dam in section</span>
+        <span class="scale-note">Schematic · not to scale</span>
+      </div>
+      <div class="pair">
+        <div>
+          <p class="panel-title">Concrete gravity dam with powerhouse <small>hydroelectric</small></p>
+          <div class="svgwrap"><svg class="dwg" id="svg-hydro" viewBox="0 0 560 340" role="img" aria-label="A concrete gravity dam holding a reservoir. Water enters an intake, drops through a penstock to a turbine in the powerhouse at the toe, and leaves through the tailrace. Water pressure on the upstream face grows with depth."></svg></div>
+          <div class="controls">
+            <div class="range"><label for="hy-level">Reservoir level</label><input type="range" id="hy-level" min="0" max="100" value="80"><output id="hy-level-o">H = 86 m</output></div>
+            <div class="range"><label for="hy-flow">Turbine flow</label><input type="range" id="hy-flow" min="10" max="300" value="150"><output id="hy-flow-o">150 m³/s</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Power, P = ηρgQH</span><b id="hy-P">114 MW</b><small>η = 0.90 turbine–generator</small></div>
+            <div class="ro"><span>Pressure at the heel</span><b id="hy-p">0.95 MPa</b><small id="hy-F">Water load 46 MN per metre of dam</small></div>
+          </div>
+        </div>
+        <div>
+          <p class="panel-title">Tailings storage facility <small>mine waste</small></p>
+          <div class="svgwrap"><svg class="dwg" id="svg-tail" viewBox="0 0 560 340" role="img" aria-label="A tailings dam. Slurry from the mill is discharged from spigots on the crest. Coarse sand settles first, forming a beach; fine slimes travel on to the pond at the back. A barge reclaims pond water for the mill."></svg></div>
+          <p class="note" style="margin-top:10px">Watch the grains: coarse sand drops out near the spigots and builds the beach; fines ride the water to the pond. That sorting decides how strong and how wet the deposit is near the dam.</p>
+        </div>
+      </div>
+      <figcaption><strong>Left:</strong> head <em>H</em> drives both the turbines and the load on the dam. Drag the sliders to change the power output and the water pressure on the heel. <strong>Right:</strong> the tailings deposit is the dam's main load, and much of the dam is eventually built on top of it or out of it.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>What differs is almost everything else</h3>
+    </div>
+    <div class="col">
+      <div class="tablewrap">
+        <table class="cmp">
+          <thead><tr><th></th><th>Hydroelectric (water) dam</th><th>Tailings dam</th></tr></thead>
+          <tbody>
+            <tr><th>Holds back</th><td>Water, released through turbines on demand</td><td>Ground rock (silt to fine sand size) and process water, settling into a soft deposit</td></tr>
+            <tr><th>Built</th><td>Usually to full height in one campaign, before the reservoir fills</td><td>Raised in stages for the life of the mine, often for decades, while tailings keep arriving</td></tr>
+            <tr><th>Made of</th><td>Concrete, or earth and rockfill from quarries and borrow pits, specified and tested</td><td>Often the tailings themselves (cycloned sand), mine waste rock and local borrow</td></tr>
+            <tr><th>Floods</th><td>A spillway passes the design flood past the dam</td><td>Often stores the flood in the impoundment; pond water is reclaimed to the mill</td></tr>
+            <tr><th>Design life</th><td>Decades to a century of operation; can be decommissioned and removed</td><td>Must stay stable in perpetuity after the mine closes</td></tr>
+            <tr><th>If it fails</th><td>A flood wave of water</td><td>A flow of liquefied tailings: denser than water, sometimes toxic, able to run tens to hundreds of kilometres</td></tr>
+            <tr><th>Rules</th><td>National dam-safety regulators, ICOLD guidance</td><td>Mining regulators and, since 2020, the Global Industry Standard on Tailings Management (GISTM)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Why tailings dams fail differently</h3>
+      <p>A reservoir of water cannot lose strength. A deposit of loose, saturated tailings can. When loose grains are sheared, they try to pack tighter; the water in the pores can't escape fast enough, so pore pressure rises, the grain-to-grain contact force drops toward zero, and the deposit briefly behaves like a heavy fluid. This is <span class="term">liquefaction</span>. It can be triggered by an earthquake, or with no shaking at all (<em>static</em> liquefaction) by a rising water table, creep, or a small slope movement.</p>
+      <ul class="timeline">
+        <li><span class="yr">1985</span>Stava, Italy. Two upstream-raised fluorite tailings dams collapsed one into the other; 268 people killed.</li>
+        <li><span class="yr">1994</span>Merriespruit, South Africa. A gold tailings dam overtopped after heavy rain and flowed into a town; 17 killed.</li>
+        <li><span class="yr">2014</span>Mount Polley, Canada. The embankment slid on a weak glacial-lake clay layer in its foundation, releasing about 25 million m³ of tailings and water. No deaths.</li>
+        <li><span class="yr">2015</span>Fundão, Mariana, Brazil. An upstream-raised dam liquefied; 19 killed. Tailings travelled roughly 650 km down the Rio Doce to the Atlantic.</li>
+        <li><span class="yr">2019</span>Brumadinho, Brazil. Dam I, upstream-raised, failed by static liquefaction in seconds; 270 killed. The disaster led to the GISTM and to Brazil banning upstream dams.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= SHEET 2 ================= -->
+  <section class="chapter" id="raising">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Sheet 2</span><h2>Upstream, downstream, centreline</h2></div>
+    </div>
+    <div class="col">
+      <p>A tailings dam is never finished while the mine runs. The mill produces tailings every day, so the dam has to grow with them. Construction starts with a <strong>starter dam</strong> built from borrow material, and tailings are spigotted from its crest. When the deposit nears the crest, the dam is raised. The direction each raise moves gives the method its name:</p>
+      <ul>
+        <li><strong>Upstream:</strong> the crest steps toward the pond. Each raise is a small dyke built on the tailings beach.</li>
+        <li><strong>Downstream:</strong> the crest steps away from the pond. Each raise is built over the previous downstream slope, on compacted fill and natural ground.</li>
+        <li><strong>Centreline:</strong> the crest rises vertically. Each raise straddles the beach and the downstream slope.</li>
+      </ul>
+    </div>
+
+    <figure class="sheet wide" id="fig-raise">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 2</b> · Staged construction of three tailings dams, same height, same starter dam</span>
+        <span class="scale-note">Vertical scale exaggerated ×1.5</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <button class="btn primary" id="rs-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Play</span></button>
+        <div class="range" style="flex:2 1 280px"><label for="rs-t">Stage</label><input type="range" id="rs-t" min="0" max="10" step="0.01" value="10"><output class="stage-label" id="rs-stage">Raise 4 complete</output></div>
+        <button class="btn alarm" id="rs-shake" type="button">Earthquake</button>
+        <button class="btn" id="rs-reset" type="button" hidden>Reset</button>
+      </div>
+      <div id="rs-panels"></div>
+      <div class="legend">
+        <span><i></i>Fill resting on tailings</span>
+        <span><i class="cp"></i>Path of the crest, stage by stage</span>
+        <span><i class="ph"></i>Phreatic surface; hatched below it is saturated</span>
+        <span><i class="sw" style="background:var(--m-drain)"></i>Drains</span>
+        <span><i class="sw" style="background:var(--m-clay)"></i>Low-permeability zone</span>
+      </div>
+      <figcaption>All three dams end at the same height above the same starter dam. The fill numbers are cross-section areas, the volume per metre of dam length. Press <strong>Earthquake</strong> to shake all three: the loose, saturated tailings that carry the upstream raises can liquefy, and the raises go with them. In the other two, every raise rests on compacted, drained fill.</figcaption>
+    </figure>
+
+    <div class="wide">
+      <div class="three">
+        <div>
+          <h4>Upstream</h4>
+          <p class="pm">For</p>
+          <ul><li>Least fill by far: each raise is a small dyke. Cheapest and fastest.</li><li>Can be built from the tailings themselves.</li></ul>
+          <p class="pm">Against</p>
+          <ul><li>Each raise rests on loose, saturated tailings that can liquefy, statically or in an earthquake.</li><li>Needs a long dry beach and a pond kept far from the crest to hold the phreatic surface down; raising must be slow.</li><li>Drains can't be extended upward; can't store much water.</li><li>New upstream dams are banned in Chile (since 1970) and Brazil (since 2019).</li></ul>
+        </div>
+        <div>
+          <h4>Downstream</h4>
+          <p class="pm">For</p>
+          <ul><li>Every raise is founded on compacted fill or natural ground.</li><li>A core and drains can be extended with each raise, like a water dam.</li><li>Best earthquake performance; can store water.</li></ul>
+          <p class="pm">Against</p>
+          <ul><li>Most fill: the cross-section grows with the square of the height.</li><li>The toe marches outward, so land downstream has to be reserved from the start.</li></ul>
+        </div>
+        <div>
+          <h4>Centreline</h4>
+          <p class="pm">For</p>
+          <ul><li>A middle path on fill volume and footprint.</li><li>The crest stays put, so tailings pipelines and access roads don't move.</li><li>A vertical chimney drain can be raised with every lift.</li></ul>
+          <p class="pm">Against</p>
+          <ul><li>The upstream edge of each raise sits on the beach, so the beach next to the crest must be sandy, drained and compacted.</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SHEET 3 ================= -->
+  <section class="chapter" id="zones">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Sheet 3</span><h2>Dam zones</h2></div>
+    </div>
+    <div class="col">
+      <p>Large embankment dams are rarely one material. They are <strong>zoned</strong>: each zone is a different soil or rock, chosen for one job. A zone either holds water back, lets water out without letting soil out, or supplies weight. Read a section from the middle outward and the pattern repeats: tight in the centre, then progressively coarser and more free-draining toward the faces.</p>
+      <p>Pick a dam type, then click any zone (or its chip) to see what it's made of and what it's for. <strong>Build</strong> replays the construction sequence; <strong>Explode</strong> pulls the zones apart.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-zones">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 3</b> · <span id="zn-title">Zoned earth–rockfill dam with central core</span></span>
+        <span class="scale-note" id="zn-scale">Drawn to scale · 60 m high</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="tabs" role="tablist" id="zn-tabs" aria-label="Dam type"></div>
+      <div class="controls">
+        <button class="btn primary" id="zn-build" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Build</span></button>
+        <button class="btn" id="zn-explode" type="button" aria-pressed="false">Explode</button>
+        <span class="build-step" id="zn-step" aria-live="polite"></span>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-zones" viewBox="0 0 1000 400" role="img" aria-label="Cross-section of the selected dam type with each construction zone drawn and labelled with its zone code."></svg></div>
+      <div class="zone-layout">
+        <div class="chips" id="zn-chips" aria-label="Zones"></div>
+        <div class="zone-info" id="zn-info" aria-live="polite"></div>
+      </div>
+    </figure>
+
+    <div class="col">
+      <h3>Why a filter works</h3>
+      <p>The most important zone in most embankments is a few metres of carefully graded sand. Water leaving the core carries a force on every soil grain it passes. If the next material has big voids, as rockfill does, the grains are carried into them: the start of <strong>internal erosion</strong>. A filter has pores smaller than the larger core grains, so those grains lodge at the interface and form a stable layer that stops the finer grains behind them. Water still passes.</p>
+      <div class="formula">Retention:&nbsp;&nbsp;&nbsp;&nbsp;<b>D15</b>(filter) ≤ 4–5 × <b>D85</b>(soil)<br>Permeability: <b>D15</b>(filter) ≥ 4–5 × <b>D15</b>(soil)<small>Terzaghi's criteria. Dx = the grain size that x% of the material (by weight) is finer than. A filter's pore throats are roughly a fifth of its D15. Sherard &amp; Dunnigan (1989) refined the rules for clay cores.</small></div>
+    </div>
+    <figure class="sheet wide" id="fig-filter">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 4</b> · Core grains meeting rockfill vs a filter</span>
+        <span class="scale-note">Grain scale · schematic</span>
+      </div>
+      <div class="svgwrap"><canvas class="filtercv" id="cv-filter" width="1100" height="300" role="img" aria-label="Left: fine core particles carried by seepage pass straight through the large voids in rockfill. Right: the same particles reach a sand filter, lodge at the interface and stop, while water continues through."></canvas></div>
+      <figcaption><strong>Left:</strong> seepage carries fine core particles through the large voids of rockfill, and the core erodes. <strong>Right:</strong> the same particles reach a sand filter. The pores are too small, the particles jam at the interface, and only water passes.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= SHEET 4 ================= -->
+  <section class="chapter" id="seepage">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Sheet 4</span><h2>Seepage paths</h2></div>
+    </div>
+    <div class="col">
+      <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. Flow through soil follows Darcy's law:</p>
+      <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow rate · k hydraulic conductivity (m/s) · i hydraulic gradient: head lost per metre travelled · A area</small></div>
+      <p>The conductivity <em>k</em> spans ten orders of magnitude: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. That range is the whole reason zoning works. A clay core a few metres thick can carry almost the entire head while the rockfill beside it carries almost none.</p>
+      <p>Water takes several routes past a dam. The five main ones are below.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-paths">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 5</b> · The five main seepage paths</span>
+        <span class="scale-note">Schematic</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="pair" style="grid-template-columns:minmax(0,2.2fr) minmax(0,1fr)">
+        <div><div class="svgwrap"><svg class="dwg" id="svg-paths" viewBox="0 0 720 340" role="img" aria-label="Section through an embankment dam on alluvium over fractured rock, with animated seepage along four paths: through the embankment, under it through the alluvium, deep through rock joints beneath the grout curtain, and along the outside of the outlet conduit."></svg></div></div>
+        <div><div class="svgwrap"><svg class="dwg" id="svg-plan" viewBox="0 0 300 340" role="img" aria-label="Plan view of the dam across a valley. Seepage flows around both ends of the dam through the abutment hillsides."></svg></div></div>
+      </div>
+      <figcaption><strong>1 Through the embankment:</strong> slowed by the core, collected by the chimney drain. <strong>2 Under it:</strong> through pervious alluvium, rising at the toe where it can boil sand. <strong>3 Through rock:</strong> along open joints below the grout curtain. <strong>4 Along the conduit:</strong> the poorly compacted contact around a pipe or culvert is a classic concentrated leak. <strong>5 Around the abutments:</strong> through the valley sides, best seen in plan.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>Seepage lab: a real calculation</h3>
+      <p>The next drawing isn't a cartoon. It solves the steady-state seepage equation, ∇·(k ∇h) = 0, on a 1 m grid under a 24 m embankment, with the phreatic surface found as part of the solution (a saturated–unsaturated model, the way commercial seepage software does it). Lines of equal head are drawn every 10% of the reservoir head. Flow lines are spaced so each pair carries the same flow, as in a hand-drawn flow net.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-lab">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 6</b> · Seepage lab · finite-volume solution</span>
+        <span class="scale-note">Drawn to scale · 24 m embankment, 2H:1V slopes</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <div class="ctl"><span>Dam</span><div class="seg" id="lab-dam"><button type="button" data-v="homogeneous" aria-pressed="true">Homogeneous</button><button type="button" data-v="cored" aria-pressed="false">Clay core + rockfill</button></div></div>
+        <div class="ctl"><span>Drain</span><div class="seg" id="lab-drain"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="toe" aria-pressed="false">Toe drain</button><button type="button" data-v="chimney" aria-pressed="false">Chimney + blanket</button></div></div>
+        <div class="ctl"><span>Cutoff</span><div class="seg" id="lab-cut"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="partial" aria-pressed="false">Half depth</button><button type="button" data-v="full" aria-pressed="false">Full</button></div></div>
+        <div class="ctl"><span>Foundation</span><div class="seg" id="lab-found"><button type="button" data-v="pervious" aria-pressed="true">Sand &amp; gravel</button><button type="button" data-v="tight" aria-pressed="false">Clay</button></div></div>
+      </div>
+      <div class="controls">
+        <div class="range"><label for="lab-res">Reservoir</label><input type="range" id="lab-res" min="40" max="95" step="5" value="85"><output id="lab-res-o">20.4 m</output></div>
+        <span class="solving" id="lab-status" aria-live="polite"></span>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-lab" viewBox="0 0 1000 270" role="img" aria-label="Computed seepage through and under an embankment dam: total head shaded from dark blue at the reservoir to pale at the exit, with equipotential lines, flow lines, animated water particles and the phreatic surface."></svg></div>
+      <div class="readouts">
+        <div class="ro"><span>Seepage</span><b id="lab-q">–</b><small id="lab-q2">per metre of dam</small></div>
+        <div class="ro"><span>Leaves via</span><b id="lab-split">–</b><small id="lab-split2"></small></div>
+        <div class="ro"><span>Max exit gradient</span><b id="lab-i">–</b><small id="lab-i2">unfiltered exits only</small></div>
+        <div class="ro"><span>Safety vs piping</span><b id="lab-fs">–</b><small id="lab-fs2">i<sub>c</sub> ≈ 1.0</small></div>
+        <div class="ro"><span>Phreatic surface</span><b id="lab-ph">–</b><small id="lab-ph2"></small></div>
+      </div>
+      <figcaption>Things to try. <strong>Homogeneous dam, no drain:</strong> the phreatic surface breaks out on the downstream slope (a seepage face, in orange), which softens and sloughs the slope. <strong>Add the chimney and blanket drain:</strong> the phreatic surface dives into it and the downstream half stays dry. <strong>Sand &amp; gravel foundation:</strong> most water goes under the dam and comes up at the toe; watch the exit gradient, then add a cutoff. Particle speeds are compressed so slow paths stay visible. Exit gradients right at the toe depend on grid size, so read them as indicative.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>When seepage carries soil: piping</h3>
+      <p>Water flowing upward out of the ground at the toe pushes on the sand grains it passes. When the upward gradient reaches the <strong>critical gradient</strong>, the water carries the full weight of the soil, effective stress drops to zero, and the sand boils:</p>
+      <div class="formula"><b>i<sub>c</sub></b> = (G<sub>s</sub> − 1) / (1 + e) ≈ (2.65 − 1) / (1 + 0.65) ≈ <b>1.0</b><small>Gs specific gravity of the grains · e void ratio · safety factor against heave = i_c / i_exit; designers want 3 or more at an unfiltered exit</small></div>
+      <p>A boil at the toe is where <strong>backward erosion piping</strong> begins. Grains wash out, a small channel forms, and the channel works its way <em>upstream</em> under the dam, getting shorter and steeper as it goes. Erosion of this kind is one of the two big killers of embankment dams. In Foster, Fell and Spannagle's 2000 study of embankment-dam failures, piping through the embankment, through the foundation, or from one into the other caused roughly half of all failures, about as many as overtopping. Teton Dam in Idaho failed this way on its first filling in 1976.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-pipe">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 7</b> · Backward erosion piping, from boil to breach</span>
+        <span class="scale-note">Schematic · hours to days compressed</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <button class="btn primary" id="pp-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Play</span></button>
+        <div class="range" style="flex:2 1 280px"><label for="pp-t">Progress</label><input type="range" id="pp-t" min="0" max="5" step="0.01" value="0"><output class="stage-label" id="pp-stage">1 · Steady seepage</output></div>
+        <div class="ctl"><span>Toe</span><div class="seg" id="pp-filter"><button type="button" data-v="0" aria-pressed="true">Unprotected</button><button type="button" data-v="1" aria-pressed="false">Filter + weighting berm</button></div></div>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-pipe" viewBox="0 0 1000 330" role="img" aria-label="Animated sequence: seepage under a dam on sand exits at the toe, forms a sand boil, a pipe erodes backward under the dam to the reservoir, enlarges, and the dam breaches. With a filter at the toe, the process stops at the first stage."></svg></div>
+      <figcaption>Each stage feeds the next: a shorter seepage path means a steeper gradient, which means faster erosion. With a <strong>filter and weighting berm</strong> at the toe, the water still comes out, but the sand can't, so the chain never starts. Inspectors watch for boils, cloudy (turbid) seepage and sinkholes for exactly this reason.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>Seepage under a concrete dam: uplift</h3>
+      <p>A concrete dam can't erode, but water seeping under its base still pushes up on it. That <strong>uplift</strong> cancels part of the dam's weight, and weight is what stops it sliding. A curtain of drains, drilled from a gallery just behind the grout curtain, relieves the pressure. A common design assumption, used by the US Bureau of Reclamation among others, is that working drains cut the pressure at the drain line to tailwater plus one-third of the head difference.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-uplift">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 8</b> · Uplift and sliding of a 60 m concrete gravity dam</span>
+        <span class="scale-note">Drawn to scale · per metre of dam</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <div class="ctl"><span>Foundation drains</span><div class="seg" id="up-drains"><button type="button" data-v="1" aria-pressed="true">Working</button><button type="button" data-v="0" aria-pressed="false">Clogged</button></div></div>
+        <div class="range"><label for="up-hw">Reservoir</label><input type="range" id="up-hw" min="30" max="59" step="0.5" value="57"><output id="up-hw-o">57.0 m</output></div>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-uplift" viewBox="0 0 1000 380" role="img" aria-label="A concrete gravity dam with the water pressure on its upstream face and the uplift pressure diagram beneath its base. With working drains, the uplift diagram drops sharply at the drain line."></svg></div>
+      <div class="readouts">
+        <div class="ro"><span>Weight W</span><b id="up-W">–</b><small>concrete at 23.5 kN/m³</small></div>
+        <div class="ro"><span>Water push H</span><b id="up-H">–</b><small>net of tailwater</small></div>
+        <div class="ro"><span>Uplift U</span><b id="up-U">–</b><small id="up-U2"></small></div>
+        <div class="ro"><span>Sliding safety</span><b id="up-FS">–</b><small>(W − U)·tan 45° / H</small></div>
+        <div class="ro"><span>Resultant at base</span><b id="up-R">–</b><small id="up-R2"></small></div>
+      </div>
+      <figcaption>Uplift alone can decide whether a gravity dam is safe. Clog the drains and the uplift force nearly doubles. Many design guides look for a sliding safety factor of about 1.5 under normal operating loads. The resultant should also fall in the middle third of the base, so the heel stays in compression and no crack opens to let full reservoir pressure in underneath.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>Five ways to manage seepage</h3>
+      <div class="defences">
+        <div><b>Cut it off</b><span>Core, cutoff trench, slurry wall, grout curtain, face slab, geomembrane.</span></div>
+        <div><b>Lengthen the path</b><span>An upstream impervious blanket makes the water travel further, lowering the gradient.</span></div>
+        <div><b>Drain it</b><span>Chimney, blanket and toe drains, relief wells, gallery drains: control where the phreatic surface sits and bleed off pressure.</span></div>
+        <div><b>Filter every exit</b><span>Wherever water leaves soil, it passes a filter so it leaves without the soil.</span></div>
+        <div><b>Weigh it down</b><span>A berm at the toe adds weight against uplift and heave.</span></div>
+        <div><b>Watch it</b><span>Piezometers measure pore pressure; weirs measure flow; cloudy water means soil is moving.</span></div>
+      </div>
+    </div>
+
+    <footer class="end col">
+      <p class="eyebrow">Notes and sources</p>
+      <ul class="sources">
+        <li>All drawings are simplified. Figures 3, 6 and 8 are drawn to scale; the others are schematic. Permeabilities and slopes are typical values, not design values.</li>
+        <li>The seepage lab solves steady 2D flow per metre of dam on a 1 m finite-volume grid, using a saturated–unsaturated formulation to locate the phreatic surface. It uses no anisotropy, no transient effects and no filter design.</li>
+        <li>Vick, S.G. (1990). <em>Planning, Design, and Analysis of Tailings Dams.</em> BiTech.</li>
+        <li>Fell, R., MacGregor, P., Stapledon, D., Bell, G., Foster, M. (2015). <em>Geotechnical Engineering of Dams</em>, 2nd ed. CRC Press.</li>
+        <li>Foster, M., Fell, R., Spannagle, M. (2000). The statistics of embankment dam failures and accidents. <em>Canadian Geotechnical Journal</em> 37(5).</li>
+        <li>Cooke, J.B., Sherard, J.L. (1987). Concrete-face rockfill dam: II. Design. <em>Journal of Geotechnical Engineering</em> 113(10).</li>
+        <li>Sherard, J.L., Dunnigan, L.P. (1989). Critical filters for impervious soils. <em>Journal of Geotechnical Engineering</em> 115(7).</li>
+        <li>US Bureau of Reclamation. <em>Design of Small Dams</em>, 3rd ed.; USACE EM 1110-2-2200, <em>Gravity Dam Design</em>.</li>
+        <li>Global Industry Standard on Tailings Management (2020); Robertson et al. (2019), Expert Panel report on the failure of Dam I, Feijão Mine.</li>
+      </ul>
+    </footer>
+  </section>
+</div>
