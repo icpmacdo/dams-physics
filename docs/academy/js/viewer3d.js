@@ -644,7 +644,7 @@ export class DamViewer {
     if (this.showcase && !this.reduceMotion) {
       // slow sway around the iso view
       const v = VIEWS.iso, tgt = new THREE.Vector3(...v[1]);
-      const off = new THREE.Vector3(...v[0]).sub(tgt);
+      const off = new THREE.Vector3(...v[0]).sub(tgt).multiplyScalar(0.8);   // a little closer than the lesson view
       off.applyAxisAngle(new THREE.Vector3(0, 1, 0), 0.22 * Math.sin(this.time * 0.18));
       this.camera.position.copy(tgt).add(off);
       this.camera.lookAt(tgt);

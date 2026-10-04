@@ -49,7 +49,8 @@ const run = p => {
     if (L.check) L.check.forEach((q, k) => check(`${L.id}: check ${k + 1} answer in range`, q.answer >= 0 && q.answer < q.options.length && !!q.explain));
     if (L.kind === 'reading') check(`${L.id}: links to a classic sheet`, /#(types|raising|zones|seepage)$/.test(L.href));
   }
-  for (const m of course.MODULES) for (const id of m.lessons) check(`course lesson ${id} defined`, !!course.LESSONS[id]);
+  for (const id of course.allLessonIds()) check(`course lesson ${id} defined`, !!course.LESSONS[id]);
+  check('every lesson is in the course order', Object.keys(course.LESSONS).every(id => course.allLessonIds().includes(id)));
   for (const [t, , l] of course.GLOSSARY) check(`glossary "${t}" links to a lesson`, !!course.LESSONS[l]);
 
   // ---- tasks pass only after the experiment (scene state must not already satisfy them)
@@ -102,6 +103,22 @@ const run = p => {
   }
   check('default brief is solvable', passing.length > 0, passing.join(', '));
   check('default brief needs a clay core and a full cutoff', passing.every(p => p.startsWith('cored/') && p.endsWith('/full')));
+  // the clay-core reasoning in the challenge explanation only holds on sand and gravel:
+  // on tight rock a homogeneous dam with a toe drain meets the default targets
+  const tightToe = run({ drain: 'toe' });
+  check('tight rock: homogeneous + toe drain meets the default targets', challengeMet(DEFAULT_CHALLENGE, { qTotal: tightToe.q, fs: tightToe.fs, seepageFace: tightToe.sf != null }).ok, `${tightToe.q.toFixed(1)} L/day per m, FS ${tightToe.fs.toFixed(2)}`);
+  const chStep = SEEPAGE_3D.steps.find(s => s.challenge);
+  const exTight = chStep.explain({ challenge: Object.assign({}, DEFAULT_CHALLENGE, { foundation: 'tight' }) });
+  const exPerv = chStep.explain({ challenge: DEFAULT_CHALLENGE });
+  check('challenge explanation: clay-core reasoning only on sand and gravel', /clay core/.test(exPerv) && !/clay core/.test(exTight));
+  // the steepest exit on sand and gravel is the seepage face at the toe, as the text says
+  const pervFull = solveSeepage({ damType: 'homogeneous', drain: 'none', cutoff: 'none', foundation: 'pervious', reservoir: 0.85 });
+  check('foundation: steepest exit is the seepage face at the toe', pervFull.exit.governing === 'face' && pervFull.seepageFace.present && pervFull.seepageFace.bottomZ <= 0.5, `face ${pervFull.exit.faceMax.toFixed(2)} vs ground ${pervFull.exit.groundMax.toFixed(2)}`);
+  check('cutoff: partial cutoff reaches half-way down the 15 m foundation', (() => {
+    const r = solveSeepage({ damType: 'homogeneous', drain: 'none', cutoff: 'partial', foundation: 'pervious', reservoir: 0.85 });
+    let zmin = Infinity; for (let i = 0; i < r.nx; i++) for (let j = 0; j < r.nz; j++) if (r.type[i * r.nz + j] === 4) zmin = Math.min(zmin, r.z0 + j);
+    return Math.abs(zmin - -8) <= 0.51 && r.z0 === -15;
+  })());
   check('challenge scene does not already meet the brief', !challengeMet(DEFAULT_CHALLENGE, (() => { const r = run({ foundation: 'pervious' }); return { qTotal: r.q, fs: r.fs, seepageFace: r.sf != null }; })()).ok);
 
   // ---- assignment links round-trip (including non-ASCII text)

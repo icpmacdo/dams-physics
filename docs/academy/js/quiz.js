@@ -1,9 +1,9 @@
 // One question at a time, with feedback straight after each answer, then a results screen
-// with a review. Used by the checkpoint in interactive lessons and by reading lessons.
+// with a review. Used by the quiz step of the 3D lesson and by reading lessons.
 
 import { h, icon } from './ui.js';
 
-export function mountQuiz(host, questions, { previous = null, onFinish = () => {}, title = 'Check your understanding' } = {}) {
+export function mountQuiz(host, questions, { previous = null, onFinish = () => {} } = {}) {
   let idx = 0, picked = null, checked = false;
   let answers = [];
   const root = h('div', { class: 'quiz' });
@@ -37,7 +37,7 @@ export function mountQuiz(host, questions, { previous = null, onFinish = () => {
           if (j === q.answer) l.classList.add('right');
           else if (j === picked) l.classList.add('wrong');
         });
-        feedback.append(h('p', { class: 'verdict ' + (right ? 'ok' : 'bad') }, icon(right ? 'check' : 'cross'), right ? 'Correct.' : 'Not quite.'), h('p', {}, q.explain));
+        feedback.append(h('p', { class: 'verdict ' + (right ? 'ok' : 'bad') }, right ? 'Correct.' : `Incorrect. The answer is ${String.fromCharCode(65 + q.answer)}.`), h('p', {}, q.explain));
         checkBtn.textContent = idx < questions.length - 1 ? 'Next question' : 'See results';
         root.querySelector('.qdots').replaceWith(dots());
         checkBtn.focus();
@@ -67,7 +67,7 @@ export function mountQuiz(host, questions, { previous = null, onFinish = () => {
   function renderResult(res) {
     root.innerHTML = '';
     const ratio = res.score / res.total;
-    const msg = ratio === 1 ? 'Every answer right.' : ratio >= 0.6 ? 'Good work. Review the ones you missed below.' : 'Worth another look. Review the explanations, then try again.';
+    const msg = ratio === 1 ? 'All correct.' : 'Open a question to see its explanation.';
     root.append(
       h('div', { class: 'qresult' },
         h('div', { class: 'qscore' }, h('b', {}, String(res.score)), h('span', {}, `/ ${res.total}`)),
@@ -76,11 +76,11 @@ export function mountQuiz(host, questions, { previous = null, onFinish = () => {
         const a = res.answers[i], ok = a === q.answer;
         return h('details', { class: 'qrev ' + (ok ? 'ok' : 'bad') },
           h('summary', {}, icon(ok ? 'check' : 'cross'), h('span', {}, q.q)),
-          h('p', {}, h('span', { class: 'muted' }, 'Your answer: '), a != null ? q.options[a] : '—'),
+          h('p', {}, h('span', { class: 'muted' }, 'Your answer: '), a != null ? q.options[a] : '–'),
           ok ? null : h('p', {}, h('span', { class: 'muted' }, 'Correct: '), q.options[q.answer]),
           h('p', { class: 'muted' }, q.explain));
       })),
-      h('div', { class: 'qactions' }, h('button', { type: 'button', class: 'btn ghost', onclick: () => { idx = 0; answers = []; renderQuestion(); } }, 'Retake')));
+      h('div', { class: 'qactions' }, h('button', { type: 'button', class: 'btn', onclick: () => { idx = 0; answers = []; renderQuestion(); } }, 'Retake')));
   }
 
   if (previous) { answers = previous.answers.slice(); renderResult(previous); }

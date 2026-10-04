@@ -97,8 +97,16 @@ export function summarize(r) {
 }
 
 export const LABELS = {
-  damType: { homogeneous: 'Homogeneous fill', cored: 'Clay core + rockfill shells' },
-  drain: { none: 'No drain', toe: 'Toe drain', chimney: 'Chimney + blanket drain' },
+  damType: { homogeneous: 'Homogeneous earthfill', cored: 'Clay core with rockfill shells' },
+  drain: { none: 'No drain', toe: 'Toe drain', chimney: 'Chimney and blanket drain' },
   cutoff: { none: 'No cutoff', partial: 'Partial cutoff', full: 'Full cutoff' },
-  foundation: { pervious: 'Pervious foundation', tight: 'Tight foundation' }
+  foundation: { pervious: 'Sand and gravel', tight: 'Tight rock' }
 };
+
+// One readable description of a design, e.g. "Clay core with rockfill shells, no drain, full cutoff"
+export function designLabel(p, { foundation = false, reservoir = false } = {}) {
+  const parts = [LABELS.damType[p.damType], LABELS.drain[p.drain].toLowerCase(), LABELS.cutoff[p.cutoff].toLowerCase()];
+  if (foundation) parts.push(`on ${LABELS.foundation[p.foundation].toLowerCase()}`);
+  if (reservoir) parts.push(`reservoir ${Math.round(p.reservoir * 100)}%`);
+  return parts.join(', ');
+}

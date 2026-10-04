@@ -7,12 +7,12 @@
 // reveals what happened and why.
 
 import { Stage } from './stage.js';
-import { controlFor, instruments, observed } from './controls.js';
+import { controlFor, instruments } from './controls.js';
 import { mountQuiz } from './quiz.js';
 import { DEFAULT_CHALLENGE } from './lesson-seepage3d.js';
 import * as store from './store.js';
 import { buildReport, download, slug } from './assign.js';
-import { LABELS } from './solver-client.js';
+import { LABELS, designLabel } from './solver-client.js';
 import { h, icon, popover, reveal, Scope, fmtQ, fmtFS } from './ui.js';
 
 const pickSum = s => (s ? { qTotal: s.qTotal, qDrain: s.qDrain, qTail: s.qTail, qFace: s.qFace, fs: s.fs, iExit: s.iExit, seepageFace: s.seepageFace, seepageFaceTop: s.seepageFaceTop } : null);
@@ -34,23 +34,29 @@ export function mountPlayer(main, def, opts = {}) {
 
   // ---- lesson bar
   const segs = def.steps.map((s, i) => h('li', {}, h('button', { type: 'button', title: `${i + 1}. ${s.title}`, 'aria-label': `Step ${i + 1}: ${s.title}`, onclick: () => go(i) })));
-  const count = h('span', { class: 'lbar-count' });
-  const presentInput = h('input', { type: 'checkbox', role: 'switch', onchange: e => document.body.classList.toggle('present', e.target.checked) });
-  const notesInput = h('input', { type: 'checkbox', role: 'switch', onchange: e => { notesOn = e.target.checked; renderCard(); } });
+  const presentBtn = h('button', { type: 'button', class: 'chip', 'aria-pressed': 'false', onclick: () => {
+    const on = presentBtn.getAttribute('aria-pressed') !== 'true';
+    presentBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('present', on);
+  } }, 'Presenter mode');
+  const notesBtn = h('button', { type: 'button', class: 'chip', 'aria-pressed': 'false', onclick: () => {
+    notesOn = !notesOn;
+    notesBtn.setAttribute('aria-pressed', String(notesOn));
+    renderCard();
+  } }, 'Teacher notes');
   const menuPanel = h('div', { class: 'menu-panel' },
-    h('label', { class: 'switch-row' }, h('span', {}, 'Presenter mode'), presentInput, h('i', { class: 'switch', 'aria-hidden': 'true' })),
-    h('label', { class: 'switch-row' }, h('span', {}, 'Teacher notes'), notesInput, h('i', { class: 'switch', 'aria-hidden': 'true' })),
+    h('div', { class: 'chips' }, presentBtn, notesBtn),
     h('hr'),
     h('button', { type: 'button', class: 'menu-item', onclick: () => { if (confirm('Restart this lesson? Your predictions and answers for it will be cleared.')) { store.resetLesson(def.id); store.touchLesson(def.id); menu.close(); go(0, true); } } }, 'Restart lesson'),
-    h('p', { class: 'menu-hint' }, '← → move between steps'));
+    h('p', { class: 'menu-hint' }, 'Arrow keys move between steps.'));
   const menuBtn = h('button', { type: 'button', class: 'tool-btn icon-only', 'aria-label': 'Lesson options', title: 'Lesson options' }, icon('more'));
   const menu = popover(menuBtn, menuPanel);
   life.add(menu.dispose);
   const bar = h('header', { class: 'lbar' },
-    h('a', { class: 'lbar-exit', href: '#/learn', title: 'Back to Learn' }, icon('back'), h('span', {}, 'Learn')),
-    h('div', { class: 'lbar-title' }, h('span', {}, assignment ? `Assignment · ${assignment.title}` : '3D lesson'), h('strong', {}, def.title)),
+    h('a', { class: 'lbar-exit', href: '#/', title: 'All lessons' }, '← ', h('span', {}, 'Lessons')),
+    h('div', { class: 'lbar-title' }, assignment ? h('span', {}, `Assignment · ${assignment.title}`) : null, h('h1', {}, def.title)),
     h('ol', { class: 'lbar-steps', 'aria-label': 'Lesson steps' }, segs),
-    count, menu);
+    menu);
 
   // ---- body: stage + panel
   const stageHost = h('div', { class: 'lstage' });
@@ -58,8 +64,8 @@ export function mountPlayer(main, def, opts = {}) {
   const title = h('h2', { class: 'lp-title', tabindex: '-1' });
   const content = h('div', { class: 'lp-content' });
   const scroll = h('div', { class: 'lp-scroll' }, h('header', { class: 'lp-head' }, kicker, title), content);
-  const backBtn = h('button', { type: 'button', class: 'btn ghost', onclick: () => go(idx - 1) }, icon('back'), 'Back');
-  const nextBtn = h('button', { type: 'button', class: 'btn', onclick: () => (idx === def.steps.length - 1 ? (location.hash = '#/learn') : go(idx + 1)) });
+  const backBtn = h('button', { type: 'button', class: 'btn', onclick: () => go(idx - 1) }, '← Back');
+  const nextBtn = h('button', { type: 'button', class: 'btn', onclick: () => (idx === def.steps.length - 1 ? (location.hash = '#/') : go(idx + 1)) });
   const foot = h('footer', { class: 'lp-foot' }, backBtn, nextBtn);
   const panel = h('section', { class: 'lpanel', 'aria-label': 'Lesson step' }, scroll, foot);
   const lbody = h('div', { class: 'lbody' }, stageHost, panel);
@@ -151,7 +157,6 @@ export function mountPlayer(main, def, opts = {}) {
       li.className = (i === idx ? 'cur ' : '') + (done.has(def.steps[i].id) ? 'done' : '');
       li.firstChild.setAttribute('aria-current', i === idx ? 'step' : 'false');
     });
-    count.textContent = `${idx + 1} / ${def.steps.length}`;
   }
 
   // ---- card
@@ -163,7 +168,7 @@ export function mountPlayer(main, def, opts = {}) {
     const phase = phaseOf(step);
     content.innerHTML = '';
     tryEl = taskEl = explainEl = followEl = briefEl = instEl = null;
-    kicker.textContent = `Step ${idx + 1} of ${def.steps.length}${step.kicker ? ' · ' + step.kicker : ''}`;
+    kicker.textContent = `Step ${idx + 1} of ${def.steps.length}`;
     title.textContent = step.title;
 
     if (assignment && assignment.note && (idx === 0 || step.challenge)) {
@@ -184,7 +189,7 @@ export function mountPlayer(main, def, opts = {}) {
     const P = step.predict, ans = lessonState().predictions[step.id];
     if (phase === 'predict') {
       return h('div', { class: 'blk blk-predict' },
-        h('div', { class: 'blk-tag' }, icon('predict'), 'Predict first'),
+        h('div', { class: 'blk-tag' }, 'Predict'),
         h('p', { class: 'blk-q' }, P.q),
         h('div', { class: 'choices' }, P.options.map((o, i) => h('button', { type: 'button', class: 'choice', onclick: () => {
           const L = lessonState();
@@ -192,17 +197,16 @@ export function mountPlayer(main, def, opts = {}) {
           store.updateLesson(def.id, {});
           renderCard();
           if (tryEl) { reveal(tryEl); tryEl.querySelector('.blk-tag').focus({ preventScroll: true }); }
-        } }, h('span', { class: 'letter' }, String.fromCharCode(65 + i)), h('span', {}, o.t)))),
-        h('p', { class: 'blk-hint' }, 'Pick one, then test it on the model.'));
+        } }, h('span', { class: 'letter' }, String.fromCharCode(65 + i)), h('span', {}, o.t)))));
     }
     const o = P.options[ans.choice];
     return h('div', { class: 'blk blk-predicted' },
-      h('span', { class: 'blk-tag' }, icon('predict'), 'You predicted'),
-      h('p', {}, h('span', { class: 'letter sm' }, String.fromCharCode(65 + ans.choice)), h('span', {}, o ? o.t : '')));
+      h('span', { class: 'blk-tag' }, 'Your prediction'),
+      h('p', {}, h('span', { class: 'letter' }, String.fromCharCode(65 + ans.choice)), h('span', {}, o ? o.t : '')));
   }
 
   function renderTry(step) {
-    const kids = [h('div', { class: 'blk-tag', tabindex: '-1' }, icon(step.challenge ? 'target' : 'flask'), step.challenge ? 'Design brief' : 'Try it')];
+    const kids = [h('div', { class: 'blk-tag', tabindex: '-1' }, step.challenge ? 'Brief' : 'Try it')];
     if (step.challenge) { briefEl = h('div', { class: 'brief' }); kids.push(briefEl); }
     taskEl = h('p', { class: 'task' });
     if (!step.challenge) kids.push(taskEl);
@@ -219,22 +223,19 @@ export function mountPlayer(main, def, opts = {}) {
 
   function renderExplain(step) {
     const ans = step.predict ? lessonState().predictions[step.id] : null;
-    const obs = (lessonState().observed || {})[step.id];
-    const kids = [h('div', { class: 'blk-tag' }, icon('bulb'), step.challenge ? 'Brief met' : 'What happened')];
+    const kids = [h('div', { class: 'blk-tag' }, step.challenge ? 'Brief met' : 'Result')];
     if (ans) {
       const right = step.predict.options.findIndex(o => o.correct);
-      kids.push(h('p', { class: 'verdict ' + (ans.correct ? 'ok' : 'bad') }, icon(ans.correct ? 'check' : 'cross'),
-        h('span', {}, ans.correct ? 'Your prediction was right.' : `Not what you predicted. The answer is ${String.fromCharCode(65 + right)}: ${step.predict.options[right].t.toLowerCase()}.`)));
+      kids.push(h('p', { class: 'verdict ' + (ans.correct ? 'ok' : 'bad') },
+        ans.correct ? `Correct: ${step.predict.options[right].t.toLowerCase()}.` : `Incorrect. The answer is ${String.fromCharCode(65 + right)}: ${step.predict.options[right].t.toLowerCase()}.`));
     }
     if (step.challenge) {
       const ch = lessonState().challenge;
-      if (ch && ch.design) kids.push(h('p', { class: 'muted small' }, `Your design: ${LABELS.damType[ch.design.damType].toLowerCase()}, ${LABELS.drain[ch.design.drain].toLowerCase()}, ${LABELS.cutoff[ch.design.cutoff].toLowerCase()}. ${ch.attempts} design${ch.attempts === 1 ? '' : 's'} tried.`));
-    } else if (obs && step.instruments) {
-      const dl = observed(step.instruments, obs.base, obs.cur);
-      if (dl) kids.push(dl);
+      if (ch && ch.design) kids.push(h('p', { class: 'muted small' }, `Your design: ${designLabel(ch.design).toLowerCase()}.`));
     }
-    if (step.explain) kids.push(h('div', { class: 'prose', html: step.explain }));
-    if (step.followUp) { followEl = h('p', { class: 'task follow' }); kids.push(h('div', { class: 'follow-wrap' }, h('span', { class: 'follow-tag' }, 'Go further'), followEl)); }
+    const explain = typeof step.explain === 'function' ? step.explain({ challenge }) : step.explain;
+    if (explain) kids.push(h('div', { class: 'prose', html: explain }));
+    if (step.followUp) { followEl = h('p', { class: 'task follow' }); kids.push(h('div', { class: 'follow-wrap' }, h('span', { class: 'follow-tag' }, 'Also try'), followEl)); }
     explainEl = h('div', { class: 'blk blk-explain' }, kids);
     return explainEl;
   }
@@ -251,26 +252,28 @@ export function mountPlayer(main, def, opts = {}) {
   function renderSummary() {
     const L = lessonState();
     const preds = Object.values(L.predictions);
+    const facts = [
+      `${preds.filter(p => p.correct).length} of ${preds.length} predictions right`,
+      L.quiz ? `quiz ${L.quiz.score} of ${L.quiz.total}` : 'quiz not taken',
+      L.challenge && L.challenge.met ? `brief met after ${L.challenge.attempts} design${L.challenge.attempts === 1 ? '' : 's'}` : 'brief not met',
+      `${Math.max(1, Math.round(L.timeMs / 60000))} min`
+    ];
     const name = h('input', { type: 'text', placeholder: 'Your name', value: store.getState().learner.name, 'aria-label': 'Your name, for the report', onchange: e => store.setLearnerName(e.target.value) });
     return h('div', { class: 'blk blk-summary' },
-      h('div', { class: 'blk-tag' }, icon('check'), 'Lesson complete'),
-      h('dl', { class: 'stats' },
-        h('div', {}, h('dt', {}, 'Predictions'), h('dd', {}, `${preds.filter(p => p.correct).length}/${preds.length}`)),
-        h('div', {}, h('dt', {}, 'Checkpoint'), h('dd', {}, L.quiz ? `${L.quiz.score}/${L.quiz.total}` : '–')),
-        h('div', {}, h('dt', {}, 'Design brief'), h('dd', {}, L.challenge && L.challenge.met ? 'Met' : '–')),
-        h('div', {}, h('dt', {}, 'Time'), h('dd', {}, `${Math.max(1, Math.round(L.timeMs / 60000))} min`))),
+      h('div', { class: 'blk-tag' }, 'Your record'),
+      h('p', {}, facts.join(' · ') + '.'),
       h('div', { class: 'report' },
-        h('label', { class: 'field' }, h('span', {}, 'Completion report'), name),
+        h('label', { class: 'field' }, h('span', {}, 'Name on report'), name),
         h('div', { class: 'row' },
-          h('button', { type: 'button', class: 'btn', onclick: () => {
+          h('button', { type: 'button', class: 'btn primary', onclick: () => {
             store.setLearnerName(name.value);
             const r = buildReport(def.id, def, assignment);
             download(`dams-academy-${def.id}-${slug(r.learner)}.json`, JSON.stringify(r, null, 2));
           } }, 'Download report'),
-          h('button', { type: 'button', class: 'btn ghost', onclick: () => { const url = stage.snapshot(); if (!url) return; const a = document.createElement('a'); a.href = url; a.download = 'dam-model.png'; a.click(); } }, 'Save image'))),
-      h('div', { class: 'next-links' },
-        h('a', { href: '#/lab', class: 'next-link' }, h('strong', {}, 'Open the lab'), h('span', {}, 'Every control unlocked, plus a sweep of all 36 designs')),
-        h('a', { href: '../index.html#seepage', class: 'next-link' }, h('strong', {}, 'Piping and uplift'), h('span', {}, 'Sheet 4 of the classic explainer'))));
+          h('button', { type: 'button', class: 'btn', onclick: () => { const url = stage.snapshot(); if (!url) return; const a = document.createElement('a'); a.href = url; a.download = 'dam-model.png'; a.click(); } }, 'Save image'))),
+      h('ul', { class: 'next-links' },
+        h('li', {}, h('a', { href: '#/lab' }, 'Seepage lab'), ': all design options, and all 36 combinations solved at once.'),
+        h('li', {}, h('a', { href: '../index.html#seepage' }, 'Sheet 4 of Dams in Section'), ': piping, uplift under a gravity dam, and the full list of defences.')));
   }
 
   function renderFoot() {
@@ -280,8 +283,8 @@ export function mountPlayer(main, def, opts = {}) {
     backBtn.disabled = idx === 0;
     const last = idx === def.steps.length - 1;
     nextBtn.innerHTML = '';
-    nextBtn.append(last ? 'Finish' : ready ? 'Next' : 'Skip', icon('next'));
-    nextBtn.className = 'btn' + (ready ? '' : ' ghost');
+    nextBtn.append(last ? 'Finish' : ready ? 'Next →' : 'Skip →');
+    nextBtn.className = 'btn' + (ready ? ' primary' : '');
   }
 
   function evaluate() {
@@ -329,7 +332,7 @@ export function mountPlayer(main, def, opts = {}) {
       h('p', { class: 'brief-site' }, `${LABELS.foundation[challenge.foundation]} · reservoir at ${Math.round(challenge.reservoir * 100)}% (${(challenge.reservoir * 24).toFixed(1)} m)`),
       h('ul', { class: 'targets' },
         row(`Seepage ≤ ${challenge.maxQ} L/day per m`, s ? s.qTotal <= challenge.maxQ : null, s ? fmtQ(s.qTotal) : '–'),
-        row(`Safety vs heave ≥ ${challenge.minFS}`, s ? s.fs >= challenge.minFS : null, s ? fmtFS(s.fs) : '–'),
+        row(`Exit safety factor ≥ ${challenge.minFS}`, s ? s.fs >= challenge.minFS : null, s ? fmtFS(s.fs) : '–'),
         challenge.noSeepageFace ? row('No seepage face', s ? !s.seepageFace : null, s ? (s.seepageFace ? `${s.seepageFaceTop.toFixed(0)} m` : 'none') : '–') : null),
       h('p', { class: 'muted small' }, `Designs tried: ${attempts.size}`));
   }

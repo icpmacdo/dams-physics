@@ -1,10 +1,10 @@
-// Reading lessons: the sheet from the classic explainer, embedded in the page (only that
+// Reading lessons: the sheet from Dams in Section, embedded in the page (only that
 // sheet is shown), with objectives and a one-question-at-a-time check alongside.
 
 import { LESSONS, CLASSIC, allLessonIds } from './course.js';
 import { mountQuiz } from './quiz.js';
 import * as store from './store.js';
-import { h, icon } from './ui.js';
+import { h } from './ui.js';
 
 export function mountReading(main, L) {
   store.touchLesson(L.id);
@@ -19,17 +19,15 @@ export function mountReading(main, L) {
   const quizHost = h('div');
 
   const bar = h('header', { class: 'lbar' },
-    h('a', { class: 'lbar-exit', href: '#/learn', title: 'Back to Learn' }, icon('back'), h('span', {}, 'Learn')),
-    h('div', { class: 'lbar-title' }, h('span', {}, `Reading · ${L.sheet}`), h('strong', {}, L.title)),
+    h('a', { class: 'lbar-exit', href: '#/', title: 'All lessons' }, '← ', h('span', {}, 'Lessons')),
+    h('div', { class: 'lbar-title' }, h('span', {}, `Reading · ${L.sheet} · ${L.mins} min`), h('h1', {}, L.title)),
     h('span', { class: 'lbar-fill' }),
     h('a', { class: 'tool-btn', href: L.href, target: '_blank', rel: 'noopener' }, h('span', { class: 'tool-txt' }, 'Open full page'), ' ↗'));
 
   const side = h('aside', { class: 'rd-side' },
-    h('p', { class: 'lp-kicker' }, `${L.sheet} · ${L.mins} min`),
-    h('h1', { class: 'rd-title' }, L.title),
     h('p', { class: 'rd-summary' }, L.summary),
-    h('details', { class: 'rd-obj', open: true }, h('summary', {}, 'By the end you can'), h('ul', {}, L.objectives.map(o => h('li', {}, o)))),
-    h('div', { class: 'blk blk-quiz' }, h('div', { class: 'blk-tag' }, icon('check'), 'Check your understanding'), quizHost),
+    h('details', { class: 'rd-obj', open: true }, h('summary', {}, 'Objectives'), h('ul', {}, L.objectives.map(o => h('li', {}, o)))),
+    h('div', { class: 'blk blk-quiz' }, h('div', { class: 'blk-tag' }, 'Quiz'), quizHost),
     after, status);
 
   const root = h('div', { class: 'lesson reading' }, bar, h('div', { class: 'rd-body' }, h('div', { class: 'rd-pane' }, frame), side));
@@ -41,8 +39,8 @@ export function mountReading(main, L) {
     after.innerHTML = '';
     if (st.status !== 'done') return;
     after.append(h('div', { class: 'blk blk-explain' },
-      h('div', { class: 'blk-tag' }, icon('check'), 'Lesson complete'),
-      nextId ? h('a', { class: 'btn', href: '#/lesson/' + nextId }, `Next: ${LESSONS[nextId].title}`, icon('next')) : h('a', { class: 'btn', href: '#/learn' }, 'Back to Learn')));
+      h('div', { class: 'blk-tag' }, 'Done'),
+      nextId ? h('a', { class: 'btn primary', href: '#/lesson/' + nextId }, `Next: ${LESSONS[nextId].title}`) : h('a', { class: 'btn primary', href: '#/' }, 'All lessons')));
   };
   mountQuiz(quizHost, L.check, {
     previous: store.lesson(L.id).quiz,
@@ -82,7 +80,7 @@ html { scroll-padding-top: 0 !important; } .page { padding-bottom: 40px !importa
       const RO = frame.contentWindow.ResizeObserver;
       if (RO) { innerRO = new RO(fitHeight); innerRO.observe(d.body); }
     } catch (e) {
-      status.textContent = 'Showing the full explainer: this browser kept the sheet from being trimmed.';
+      status.textContent = `Showing the whole explainer. Scroll to ${L.sheet}.`;
     }
   });
   const themeObs = new MutationObserver(syncTheme);

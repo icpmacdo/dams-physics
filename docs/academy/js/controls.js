@@ -6,9 +6,9 @@ import { h, fmtQ, fmtFS } from './ui.js';
 
 export const DESIGN = {
   damType: { title: 'Dam section', options: [['homogeneous', 'Homogeneous', 'Earthfill throughout'], ['cored', 'Clay core', 'Clay core with rockfill shells']] },
-  drain: { title: 'Drain', options: [['none', 'None', 'No internal drain'], ['toe', 'Toe drain', 'Gravel drain at the downstream toe'], ['chimney', 'Chimney', 'Chimney drain joined to a blanket drain']] },
-  cutoff: { title: 'Cutoff', options: [['none', 'None', 'No cutoff'], ['partial', 'Partial', 'Wall part-way through the pervious layer'], ['full', 'Full', 'Wall down to tight material']] },
-  foundation: { title: 'Foundation', options: [['tight', 'Tight rock', 'Low-permeability foundation'], ['pervious', 'Sand & gravel', 'Pervious alluvium, about 100× the fill']] }
+  drain: { title: 'Drain', options: [['none', 'None', ''], ['toe', 'Toe drain', 'Gravel drain at the downstream toe'], ['chimney', 'Chimney', 'Chimney drain joined to a blanket drain along the base']] },
+  cutoff: { title: 'Cutoff', options: [['none', 'None', ''], ['partial', 'Partial', 'Wall half-way down the 15 m foundation'], ['full', 'Full', 'Wall through the full 15 m foundation']] },
+  foundation: { title: 'Foundation', options: [['tight', 'Tight rock', 'Low-permeability foundation'], ['pervious', 'Sand and gravel', 'About 100 times more permeable than the fill']] }
 };
 
 // Segmented radio group with arrow-key navigation.
@@ -76,19 +76,19 @@ export function modeControl(stage, scope) {
 }
 
 export function viewControl(stage, scope) {
-  const seg = segmented([['iso', '3D'], ['section', 'Section'], ['aerial', 'Aerial']], stage.view, v => stage.setView(v, { user: true }), 'Camera view', 'seg-fill');
+  const seg = segmented([['iso', 'Oblique'], ['section', 'Section'], ['aerial', 'Aerial']], stage.view, v => stage.setView(v, { user: true }), 'Camera view', 'seg-fill');
   scope.add(stage.on('view', () => seg.setValue(stage.view)));
   return h('div', { class: 'ctl' }, h('div', { class: 'ctl-title' }, 'Camera'), seg);
 }
 
 export function layerControl(stage, keys, scope) {
   const names = { phreatic: 'Phreatic surface', particles: 'Flow particles', labels: 'Labels' };
-  const rows = keys.map(k => {
-    const input = h('input', { type: 'checkbox', role: 'switch', checked: !!stage.layers[k], onchange: e => stage.setLayer(k, e.target.checked, { user: true }) });
-    scope.add(stage.on('layer', ev => { if (ev.key === k) input.checked = ev.on; }));
-    return h('label', { class: 'switch-row big' }, h('span', {}, names[k]), input, h('i', { class: 'switch', 'aria-hidden': 'true' }));
+  const chips = keys.map(k => {
+    const b = h('button', { type: 'button', class: 'chip', 'aria-pressed': String(!!stage.layers[k]), onclick: () => stage.setLayer(k, b.getAttribute('aria-pressed') !== 'true', { user: true }) }, names[k]);
+    scope.add(stage.on('layer', ev => { if (ev.key === k) b.setAttribute('aria-pressed', String(ev.on)); }));
+    return b;
   });
-  return h('div', { class: 'ctl' }, rows);
+  return h('div', { class: 'ctl' }, h('div', { class: 'ctl-title' }, 'Show'), h('div', { class: 'chips' }, chips));
 }
 
 export function controlFor(stage, key, scope) {
@@ -102,8 +102,8 @@ export function controlFor(stage, key, scope) {
 
 // ---- instruments ---------------------------------------------------------------
 export const METRICS = {
-  q: { label: 'Seepage', unit: 'L/day per m of dam', get: s => s.qTotal, fmt: fmtQ, tip: 'Water entering from the reservoir, per metre length of dam.' },
-  fs: { label: 'Safety vs heave', unit: 'aim for 3 or more', get: s => s.fs, fmt: fmtFS, tone: v => (v >= 3 ? 'ok' : v >= 1.5 ? 'warn' : 'bad'), tip: 'Critical gradient (1.0) divided by the steepest exit gradient.' },
+  q: { label: 'Seepage', unit: 'L/day per m', get: s => s.qTotal, fmt: fmtQ, tip: 'Water entering from the reservoir, per metre length of dam.' },
+  fs: { label: 'Exit safety factor', unit: 'target 3 or more', get: s => s.fs, fmt: fmtFS, tone: v => (v >= 3 ? 'ok' : v >= 1.5 ? 'warn' : 'bad'), tip: 'Critical gradient (1.0) divided by the steepest exit gradient.' },
   iExit: { label: 'Exit gradient', unit: 'critical ≈ 1.0', get: s => s.iExit, fmt: v => v.toFixed(2), tone: v => (v < 1 / 3 ? 'ok' : v < 1 / 1.5 ? 'warn' : 'bad'), tip: 'Steepest hydraulic gradient where water leaves the soil.' },
   sf: { label: 'Seepage face', unit: 'on the downstream slope', get: s => (s.seepageFace ? s.seepageFaceTop : 0), fmt: v => (v > 0 ? `${v.toFixed(0)} m high` : 'None'), tone: v => (v > 0 ? 'bad' : 'ok'), tip: 'Height of the wet breakout on the downstream slope.' }
 };
@@ -167,30 +167,4 @@ function renderSplit(c, s) {
     if (f > 0.004) c.bar.append(h('i', { style: { flex: String(f), background: `var(${col})` }, title: `${t}: ${fmtQ(v)} L/day per m` }));
     c.leg.append(h('span', { class: 'sw' + (f <= 0.004 ? ' dim' : '') }, h('i', { style: { background: `var(${col})` } }), `${t} `, h('b', {}, `${Math.round(f * 100)}%`)));
   }
-}
-
-// "What the model shows": before -> after for each metric that changed
-export function observed(keys, base, cur) {
-  if (!base || !cur) return null;
-  const rows = [];
-  for (const k of keys) {
-    if (k === 'split') {
-      const share = s => { const t = s.qDrain + s.qTail + s.qFace || 1; return { drain: s.qDrain / t, tail: s.qTail / t, face: s.qFace / t }; };
-      const a = share(base), b = share(cur);
-      const big = Object.entries(b).sort((x, y) => y[1] - x[1])[0];
-      const names = { drain: 'into the drain', tail: 'through the ground beyond the toe', face: 'out of the seepage face' };
-      if (Math.abs(a[big[0]] - big[1]) > 0.05) rows.push(['Main exit', `${Math.round(big[1] * 100)}% now leaves ${names[big[0]]}`]);
-      continue;
-    }
-    const m = METRICS[k], b = m.get(base), c = m.get(cur);
-    if (Math.abs(c - b) < 1e-9 || (k !== 'q' && m.fmt(b) === m.fmt(c))) continue;
-    let extra = '';
-    if (k === 'q' && b > 0) {
-      const r = c / b;
-      extra = r >= 2 ? `  ×${r < 10 ? r.toFixed(1) : Math.round(r).toLocaleString('en')}` : r <= 0.5 ? `  ÷${1 / r < 10 ? (1 / r).toFixed(1) : Math.round(1 / r).toLocaleString('en')}` : `  ${r > 1 ? '+' : '−'}${Math.round(Math.abs(r - 1) * 100)}%`;
-    }
-    rows.push([m.label, `${m.fmt(b)} → ${m.fmt(c)}${k === 'q' ? ' L/day per m' : ''}${extra}`]);
-  }
-  if (!rows.length) return null;
-  return h('dl', { class: 'observed' }, rows.map(([a, b]) => h('div', {}, h('dt', {}, a), h('dd', {}, b))));
 }

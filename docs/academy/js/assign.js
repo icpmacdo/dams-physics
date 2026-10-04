@@ -1,6 +1,6 @@
-// Assignments and completion reports. There is no server: an assignment is encoded into
-// the lesson link, and a learner's completion report is a JSON file they hand in. The
-// instructor drops a batch of reports onto the Teach page to tabulate them.
+// Assignments and reports. There is no server: an assignment is encoded into the lesson
+// link, and a learner's report is a JSON file they hand in. The teacher drops a batch of
+// reports onto the Teach page to tabulate them.
 
 import { DEFAULT_CHALLENGE } from './lesson-seepage3d.js';
 import { getState, lesson as lessonState } from './store.js';

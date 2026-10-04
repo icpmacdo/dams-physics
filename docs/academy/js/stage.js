@@ -10,8 +10,8 @@ import { solve, summarize, normalize, DEFAULTS } from './solver-client.js';
 import { drawSection } from './section-canvas.js';
 import { h, append, icon, popover, reduceMotion } from './ui.js';
 
-const VIEW_BTNS = [['iso', '3D'], ['section', 'Section'], ['aerial', 'Aerial']];
-const MODES = [['materials', 'Materials'], ['head', 'Total head'], ['pressure', 'Pressure']];
+const VIEW_BTNS = [['iso', 'Oblique'], ['section', 'Section'], ['aerial', 'Aerial']];
+const MODES = [['materials', 'Materials'], ['head', 'Total head'], ['pressure', 'Pressure head']];
 const LAYERS = [['phreatic', 'Phreatic surface'], ['particles', 'Flow particles'], ['labels', 'Labels']];
 
 let viewerModule = null;
@@ -67,19 +67,19 @@ export class Stage {
     const viewSeg = h('div', { class: 'seg seg-glass', role: 'radiogroup', 'aria-label': 'Camera view' }, this.viewBtns);
 
     this.modeBtns = MODES.map(([k, t]) => h('button', { type: 'button', role: 'radio', 'data-mode': k, onclick: () => this.setMode(k, { user: true }) }, t));
-    this.layerInputs = {};
-    const layerRows = LAYERS.map(([k, t]) => {
-      const input = h('input', { type: 'checkbox', role: 'switch', checked: this.layers[k], onchange: e => this.setLayer(k, e.target.checked, { user: true }) });
-      this.layerInputs[k] = input;
-      return h('label', { class: 'switch-row' }, h('span', {}, t), input, h('i', { class: 'switch', 'aria-hidden': 'true' }));
+    this.layerBtns = {};
+    const layerChips = LAYERS.map(([k, t]) => {
+      const b = h('button', { type: 'button', class: 'chip', 'aria-pressed': String(!!this.layers[k]), onclick: () => this.setLayer(k, !this.layers[k], { user: true }) }, t);
+      this.layerBtns[k] = b;
+      return b;
     });
     this.cutInput = h('input', { type: 'range', min: -28, max: 28, step: 1, value: 0, 'aria-label': 'Cut position along the dam', oninput: e => this.setCut(+e.target.value) });
     const panel = h('div', { class: 'layers-panel', role: 'dialog', 'aria-label': 'Display layers' },
       h('div', { class: 'pp-label' }, 'Cut face shows'),
       h('div', { class: 'seg seg-fill', role: 'radiogroup', 'aria-label': 'Cut face shows' }, this.modeBtns),
-      h('div', { class: 'pp-label' }, 'Layers'), layerRows,
+      h('div', { class: 'pp-label' }, 'Show'), h('div', { class: 'chips' }, layerChips),
       h('div', { class: 'pp-label' }, 'Cut position'), h('div', { class: 'cut-row' }, h('span', {}, 'Back'), this.cutInput, h('span', {}, 'Front')));
-    const layersBtn = h('button', { type: 'button', class: 'tool-btn', title: 'Display layers' }, icon('layers'), h('span', { class: 'tool-txt' }, 'Layers'));
+    const layersBtn = h('button', { type: 'button', class: 'tool-btn', title: 'Display options' }, 'Display');
     this.layersPop = popover(layersBtn, panel);
     const fsBtn = h('button', { type: 'button', class: 'tool-btn icon-only', title: 'Full screen', 'aria-label': 'Full screen', onclick: () => this.toggleFullscreen() }, icon('expand'));
     const tools = h('div', { class: 'stage-tools' }, viewSeg, this.layersPop, this.canFullscreen() ? fsBtn : null);
@@ -139,7 +139,7 @@ export class Stage {
     if (this.opts.showcase || !this.modeBtns) return;
     this.modeBtns.forEach(b => b.setAttribute('aria-checked', String(b.dataset.mode === this.mode)));
     this.viewBtns.forEach(b => b.setAttribute('aria-checked', String(b.dataset.view === this.view)));
-    for (const k in this.layerInputs) this.layerInputs[k].checked = !!this.layers[k];
+    for (const k in this.layerBtns) this.layerBtns[k].setAttribute('aria-pressed', String(!!this.layers[k]));
     this.renderLegend();
   }
 
@@ -238,16 +238,16 @@ export class Stage {
         p.damType === 'cored' ? [sw('--m-clay', 'Clay core'), sw('--m-rock', 'Rockfill')] : sw('--m-fill', 'Earthfill'),
         p.drain !== 'none' ? sw('--m-drain', 'Drain') : null,
         p.cutoff !== 'none' ? sw('--m-conc', 'Cutoff') : null,
-        p.foundation === 'pervious' ? sw('--m-alluv', 'Sand & gravel') : sw('--m-bedrock', 'Tight rock'),
+        p.foundation === 'pervious' ? sw('--m-alluv', 'Sand and gravel') : sw('--m-bedrock', 'Tight rock'),
         sw('--water-fill', 'Water'),
-        ln('ln-flow', 'Flow line'), ln('ln-phr', 'Phreatic line')]);
+        ln('ln-flow', 'Flow line'), ln('ln-phr', 'Phreatic surface')]);
     } else {
       const head = this.mode === 'head';
       const ramp = head ? 'linear-gradient(90deg, var(--ramp-lo), var(--ramp-hi))' : 'linear-gradient(90deg, var(--m-tsand), var(--ramp-lo) 30%, var(--ramp-hi))';
       append(this.legend, [
         h('span', { class: 'lg-title' }, head ? 'Total head' : 'Pressure head'),
         h('span', { class: 'lg-ramp' }, h('small', {}, head ? '0' : 'suction'), h('i', { style: { background: ramp } }), h('small', {}, head ? 'reservoir' : '+30 m')),
-        ln('ln-eq', 'Equipotential'), ln('ln-flow', 'Flow line'), ln('ln-phr', 'Phreatic line')]);
+        ln('ln-eq', 'Equipotential'), ln('ln-flow', 'Flow line'), ln('ln-phr', 'Phreatic surface')]);
     }
   }
 

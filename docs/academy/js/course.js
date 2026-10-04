@@ -1,41 +1,18 @@
-// Course catalogue: modules, lessons, the short checks for reading lessons, and the glossary.
-// Reading lessons open a sheet of the classic explainer (../index.html) and end with a check.
+// Course catalogue: the lessons in order, the quizzes for reading lessons, and the glossary.
+// Reading lessons embed a sheet of Dams in Section (../index.html) and end with a short quiz.
 
 export const CLASSIC = '../index.html';
 
-export const MODULES = [
-  {
-    id: 'm1', title: 'How dams hold water',
-    blurb: 'What a dam is for, what it is made of, and why each zone is there.',
-    lessons: ['types', 'zones']
-  },
-  {
-    id: 'm2', title: 'Tailings dams',
-    blurb: 'Dams that grow for decades, built from the waste they hold back.',
-    lessons: ['raising']
-  },
-  {
-    id: 'm3', title: 'Seepage',
-    blurb: 'Every dam leaks. Where the water goes, and what it carries.',
-    lessons: ['seepage-paths', 'seepage-3d']
-  }
-];
-
-export const PLANNED = [
-  { title: 'Piping and internal erosion in 3D', note: 'Grow a pipe from a toe boil back under the dam; filters and berms as the fix.' },
-  { title: 'Uplift under a gravity dam', note: 'Drain curtain, uplift diagram and sliding safety factor on a 3D concrete block.' },
-  { title: 'Tailings beach and pond in 3D', note: 'Beach length, pond position and the phreatic surface in an upstream-raised facility.' },
-  { title: 'Rapid drawdown', note: 'Transient seepage: what happens to the upstream slope when the reservoir drops fast.' }
-];
+const ORDER = ['types', 'zones', 'raising', 'seepage-paths', 'seepage-3d'];
 
 export const LESSONS = {
   types: {
     id: 'types', kind: 'reading', title: 'Two dams, two jobs', mins: 10, sheet: 'Sheet 1', href: CLASSIC + '#types',
-    summary: 'A hydroelectric dam stores water as energy. A tailings dam stores mine waste forever. Same physics, very different design lives.',
+    summary: 'A hydroelectric dam stores water as energy. A tailings dam stores mine waste permanently. Both resist water pressure and seepage; their design lives and failure modes differ.',
     objectives: [
       'Estimate water pressure at depth with p = ρgh.',
       'Contrast how hydro and tailings dams are built, loaded and regulated.',
-      'Explain why loose saturated tailings can liquefy and water cannot.'
+      'Explain why loose, saturated tailings can liquefy.'
     ],
     check: [
       { q: 'Roughly what is the water pressure at the foot of a 100 m deep reservoir?',
@@ -45,13 +22,13 @@ export const LESSONS = {
         options: ['They are built to full height before the impoundment fills', 'They are raised in stages for the life of the mine', 'They can be decommissioned and removed once the mine closes'], answer: 1,
         explain: 'Tailings arrive every day, so the dam grows with them, often for decades, and must stay stable in perpetuity after closure.' },
       { q: 'What makes loose, saturated tailings liquefy?',
-        options: ['Sheared grains try to pack tighter, pore pressure rises and contact forces drop toward zero', 'The water in the pond freezes and expands', 'The grains dissolve in process water'], answer: 0,
+        options: ['Sheared grains try to pack tighter, pore pressure rises and contact forces drop toward zero', 'Seepage washes the fine grains out', 'The grains crush under the weight above'], answer: 0,
         explain: 'Loose grains contract when sheared; the pore water cannot escape fast enough, so effective stress collapses and the deposit flows.' }
     ]
   },
   zones: {
     id: 'zones', kind: 'reading', title: 'Dam zones', mins: 12, sheet: 'Sheet 3', href: CLASSIC + '#zones',
-    summary: 'Large embankments are zoned: tight in the middle, progressively coarser and freer-draining toward the faces. The filter is the zone that matters most.',
+    summary: 'Large embankments are zoned: tight in the middle, progressively coarser and freer-draining toward the faces. In most embankments the filter is the most important zone.',
     objectives: [
       'Name the job of each zone: hold water back, let water out without soil, or supply weight.',
       'Apply Terzaghi’s filter retention and permeability rules.',
@@ -93,7 +70,7 @@ export const LESSONS = {
     id: 'seepage-paths', kind: 'reading', title: 'Seepage paths', mins: 15, sheet: 'Sheet 4', href: CLASSIC + '#seepage',
     summary: 'Darcy’s law, the five routes water takes past a dam, piping from a toe boil, and uplift under a concrete dam.',
     objectives: [
-      'Use Darcy’s law, q = k·i·A, and the ten-decade range of k.',
+      'Use Darcy’s law, q = k·i·A, with k from gravel (10⁻² m/s) to compacted clay (10⁻⁹ m/s).',
       'List the five main seepage paths.',
       'Explain the critical gradient and how backward erosion piping starts.'
     ],
@@ -105,40 +82,35 @@ export const LESSONS = {
         options: ['0.1', '1.0', '10'], answer: 1,
         explain: 'i_c = (Gs − 1)/(1 + e) ≈ (2.65 − 1)/(1 + 0.65) ≈ 1.0.' },
       { q: 'Why do drains under a gravity dam matter?',
-        options: ['They reduce uplift, which otherwise cancels part of the dam’s weight', 'They make the concrete stronger', 'They raise the reservoir level'], answer: 0,
+        options: ['They reduce uplift, which otherwise cancels part of the dam’s weight', 'They stop water reaching the foundation', 'They lower the reservoir in a flood'], answer: 0,
         explain: 'Weight resists sliding; uplift subtracts from it. Clogged drains can nearly double the uplift force.' }
     ]
   },
   'seepage-3d': {
     id: 'seepage-3d', kind: 'interactive', core: true, title: 'Seepage in 3D', mins: 30,
-    summary: 'The core lesson. Cut open a 24 m embankment in 3D, watch the solved flow, predict what each design change does, then design a dam that meets a seepage brief.',
-    objectives: [
-      'Read a flow net: phreatic surface, equipotentials, flow lines, seepage face.',
-      'Predict how reservoir level, drains, foundation and cutoffs change flow and exit gradient.',
-      'Design an embankment section that meets a seepage and exit-gradient brief.'
-    ]
+    summary: 'Five predictions on a 24 m embankment, then a design brief and a five-question quiz.'
   }
 };
 
-export function allLessonIds() { return MODULES.flatMap(m => m.lessons); }
+export function allLessonIds() { return ORDER.slice(); }
 
 export const GLOSSARY = [
-  ['Phreatic surface', 'The top of the saturated zone inside the dam, where pore-water pressure is zero (atmospheric). Below it the soil is saturated; above it, water is held in suction.', 'seepage-3d'],
+  ['Phreatic surface', 'The surface where pore-water pressure is zero. Below it the soil is saturated; above it, pore water is in suction.', 'seepage-3d'],
   ['Seepage face', 'The stretch of a slope where the phreatic surface meets the air and water leaks out. On a downstream slope it softens the soil and can cause sloughing.', 'seepage-3d'],
   ['Total head (h)', 'Elevation plus pressure head, h = z + ψ. Water flows from high total head to low total head.', 'seepage-3d'],
   ['Pressure head (ψ)', 'Pore-water pressure expressed as a height of water, ψ = u / (ρg). Negative above the phreatic surface (suction).', 'seepage-3d'],
   ['Equipotential', 'A line of equal total head. In isotropic soil, flow lines cross equipotentials at right angles.', 'seepage-3d'],
   ['Flow line', 'The path a particle of water follows. Pairs of flow lines bound a flow tube carrying a fixed share of the flow.', 'seepage-3d'],
-  ['Flow net', 'The grid of flow lines and equipotentials for a seepage problem; the classic hand method for estimating seepage and gradients.', 'seepage-paths'],
+  ['Flow net', 'The grid of flow lines and equipotentials for a seepage problem; the traditional hand method for estimating seepage and gradients.', 'seepage-paths'],
   ['Hydraulic conductivity (k, K)', 'How easily water moves through a soil, in m/s. Ranges from about 10⁻² (gravel) to 10⁻⁹ (compacted clay).', 'seepage-paths'],
   ['Hydraulic gradient (i)', 'Head lost per metre of flow path, i = Δh / L. Darcy’s law: q = k · i · A.', 'seepage-paths'],
-  ['Exit gradient', 'The hydraulic gradient where seepage leaves the ground, usually at the toe. The upward exit gradient is what drives heave and piping.', 'seepage-3d'],
+  ['Exit gradient', 'The hydraulic gradient where seepage leaves the soil: on the ground beyond the toe, or on a seepage face. Steep exit gradients drive heave and piping.', 'seepage-3d'],
   ['Critical gradient (i_c)', 'The upward gradient at which water carries the full buoyant weight of the soil: i_c = (Gs − 1)/(1 + e) ≈ 1.0.', 'seepage-paths'],
-  ['Factor of safety against heave', 'i_c / i_exit. Designers look for 3 or more at an unfiltered exit.', 'seepage-3d'],
+  ['Exit safety factor', 'The critical gradient divided by the steepest exit gradient, i_c / i_exit. Designers look for 3 or more at an unfiltered exit.', 'seepage-3d'],
   ['Piping', 'Internal erosion in which a pipe-like channel forms and works backward from the exit toward the reservoir.', 'seepage-paths'],
   ['Chimney drain', 'A vertical or inclined drain of sand and gravel inside the downstream part of the dam, usually joined to a blanket drain along the base. It intercepts seepage and keeps the downstream slope dry.', 'seepage-3d'],
   ['Toe drain', 'A drain at the downstream toe that collects seepage and lowers the exit point of the phreatic surface.', 'seepage-3d'],
-  ['Cutoff', 'A low-permeability barrier (trench, slurry wall, grout curtain) under the dam that blocks flow through a pervious foundation. Only a full cutoff into tight material is very effective.', 'seepage-3d'],
+  ['Cutoff', 'A low-permeability barrier (trench, slurry wall, grout curtain) under the dam that blocks flow through a sand-and-gravel foundation. In the 3D lesson a partial cutoff cuts seepage by less than 10%, a full one by more than 90%.', 'seepage-3d'],
   ['Core', 'The low-permeability central zone of an embankment, usually compacted clay, that carries most of the head loss.', 'zones'],
   ['Filter', 'A graded sand zone that lets water pass but stops soil grains from being carried out.', 'zones'],
   ['Upstream raise', 'A tailings-dam raise that steps toward the pond and is founded on the tailings beach.', 'raising'],
