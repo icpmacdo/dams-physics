@@ -24,67 +24,7 @@
       </div>
     </div>
 
-    <figure class="sheet wide" id="fig-build">
-      <div class="sheet-top">
-        <span class="figno"><b>Fig. 9.1</b> · Your dam, tested by the seepage solver and a slope stability check</span>
-        <span class="scale-note">Drawn to scale · 24 m embankment · 1 m cells</span>
-      </div>
-
-      <div class="tabs bd-tabs" id="bd-tabs" role="tablist" aria-label="Missions">
-        <button type="button" role="tab" aria-selected="true" data-m="free">Free build</button>
-        <button type="button" role="tab" aria-selected="false" data-m="dry">1 · Dry the slope</button>
-        <button type="button" role="tab" aria-selected="false" data-m="hold">2 · Hold the water</button>
-        <button type="button" role="tab" aria-selected="false" data-m="polley">3 · Mount Polley</button>
-        <button type="button" role="tab" aria-selected="false" data-m="tailings">4 · Tailings on a budget</button>
-      </div>
-      <div class="bd-mission" id="bd-mission" aria-live="polite"></div>
-
-      <div class="controls bd-tools">
-        <div class="ctl"><span>Paint with</span><div class="bd-palette" id="bd-palette" role="group" aria-label="Material to paint"></div></div>
-      </div>
-      <p class="bd-matinfo" id="bd-matinfo"></p>
-      <div class="controls bd-tools">
-        <div class="ctl"><span>Brush</span><div class="seg" id="bd-brush"><button type="button" data-v="1" aria-pressed="false">1 m</button><button type="button" data-v="3" aria-pressed="true">3 m</button><button type="button" data-v="5" aria-pressed="false">5 m</button></div></div>
-        <div class="ctl bd-touch"><span>Finger</span><div class="seg" id="bd-touch"><button type="button" data-v="paint" aria-pressed="true">Paints</button><button type="button" data-v="pan" aria-pressed="false">Scrolls</button></div></div>
-        <div class="ctl"><span>Undo</span><button class="btn" type="button" id="bd-undo" disabled>Undo</button></div>
-        <div class="ctl bd-presets-ctl"><span>Start from</span><div class="bd-presets" id="bd-presets"></div></div>
-      </div>
-
-      <p class="swipe-hint">Drawing scrolls sideways → · set Finger to Scrolls to move it</p>
-      <div class="svgwrap bd-wrap" id="bd-wrap"><svg class="dwg" id="svg-build" viewBox="0 0 1000 312" tabindex="0" role="img" aria-label="Your embankment dam drawn to scale on its foundation, with the reservoir on the left. Paint materials into the dam with the pointer, or focus the drawing and use the arrow keys to move the brush and Space to paint. After a test it shows water pressure, the water level inside the dam, flow lines and the critical slip surface."></svg></div>
-
-      <div class="controls">
-        <div class="ctl"><span>Foundation</span><div class="seg" id="bd-found"><button type="button" data-v="gravel" aria-pressed="false">Sand &amp; gravel</button><button type="button" data-v="clay" aria-pressed="true">Clay</button><button type="button" data-v="weak" aria-pressed="false">Clay, weak layer 4 m down</button></div></div>
-        <div class="ctl"><span>Cutoff</span><div class="seg" id="bd-cut"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="partial" aria-pressed="false">Half depth</button><button type="button" data-v="full" aria-pressed="false">Full</button></div></div>
-        <div class="ctl"><span>Downstream slope</span><div class="seg" id="bd-slope"><button type="button" data-v="1.5" aria-pressed="false">1.5:1</button><button type="button" data-v="2" aria-pressed="true">2:1</button><button type="button" data-v="2.5" aria-pressed="false">2.5:1</button><button type="button" data-v="3" aria-pressed="false">3:1</button></div></div>
-      </div>
-      <div class="controls">
-        <div class="range"><label for="bd-res">Reservoir</label><input type="range" id="bd-res" min="40" max="95" step="5" value="85"><output id="bd-res-o">20.4 m</output></div>
-        <button class="btn primary" type="button" id="bd-test"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Test my dam</span></button>
-        <span class="solving" id="bd-status" aria-live="polite"></span>
-      </div>
-
-      <div class="readouts bd-readouts" id="bd-readouts">
-        <div class="ro"><span>Seepage</span><b id="bd-q">–</b><small id="bd-q2">per metre of dam</small></div>
-        <div class="ro"><span>Max exit gradient</span><b id="bd-i">–</b><small id="bd-i2">unfiltered exits only</small></div>
-        <div class="ro"><span>Safety vs piping</span><b id="bd-pipe">–</b><small>i<sub>c</sub> ≈ 1.0 / exit gradient</small></div>
-        <div class="ro"><span>Slope factor of safety</span><b id="bd-fos">–</b><small id="bd-fos2">downstream, full reservoir</small></div>
-        <div class="ro"><span>Water in the slope</span><b id="bd-ph">–</b><small id="bd-ph2"></small></div>
-        <div class="ro"><span>Clay used</span><b id="bd-clay">–</b><small id="bd-clay2">m³ per metre of dam</small></div>
-      </div>
-      <div class="controls bd-view">
-        <div class="ctl"><span>Show the check for</span><div class="seg" id="bd-side"><button type="button" data-v="downstream" aria-pressed="true">Downstream slope, full reservoir</button><button type="button" data-v="upstream" aria-pressed="false">Upstream slope, reservoir emptied fast</button></div></div>
-      </div>
-      <div class="bd-verdict" id="bd-verdict" aria-live="polite"><p class="bd-empty">Paint a design, or start from one of the presets, then press <b>Test my dam</b>.</p></div>
-      <div class="legend" id="bd-legend">
-        <span><i class="sw bd-sw-u"></i>Water pressure in the soil (darker is higher)</span>
-        <span><i class="ph"></i>Water level inside the dam (phreatic surface)</span>
-        <span><i class="bd-sw-slip"></i>Critical slip surface and the soil that would slide</span>
-        <span><i class="bd-sw-bar"></i>Water pressure on the slip surface, as the height it would push water up a tube</span>
-      </div>
-      <figcaption>Things to try. <strong>Homogeneous fill:</strong> test it, then paint a strip of sand filter just downstream of the crest and a layer along the base out to the toe. Watch the water level drop and the factor of safety climb. <strong>Steep and wet:</strong> the classic slide of a steep, saturated slope. <strong>Clay core + rockfill on sand &amp; gravel:</strong> the core stops water through the dam, but not under it; add a cutoff. The reservoir sits at the level you set; the ground beyond the toe is drained at its surface.</figcaption>
-    </figure>
-
+    <!-- @include figs/fig-build.html -->
     <div class="col">
       <h3>What the check does, and what it leaves out</h3>
       <p>For circular slip surfaces the page uses Bishop's simplified method, the standard hand-and-computer method since 1955. It cuts the sliding mass into 40 vertical slices, works out how hard each slice presses on its base after taking away the water pressure there, and balances the turning effect of the whole mass about the circle's centre. On the weak-layer foundation it also tries sliding blocks with a flat base along the layer, using Spencer's method, which balances forces and turning effects together.</p>

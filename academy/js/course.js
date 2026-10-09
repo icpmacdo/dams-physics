@@ -1,7 +1,7 @@
 // Course catalogue: the lessons in order, the quizzes for reading lessons, and the glossary.
-// Reading lessons embed a sheet of Dams in Section (../index.html) and end with a short quiz.
+// Reading lessons embed a sheet of the original long page of Dams in Section (../classic.html) and end with a short quiz.
 
-export const CLASSIC = '../index.html';
+export const CLASSIC = '../classic.html';
 
 const ORDER = ['types', 'zones', 'raising', 'seepage-paths', 'seepage-3d'];
 

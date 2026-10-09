@@ -95,7 +95,8 @@ const GLOSSARY = {
   const list = $('#glossary-list');
   if (list) {
     const first = {};
-    $$('.gl[data-term]').forEach((el, i) => {
+    // the long page marks terms with .gl; the chapter defines them in place with <dfn data-term>
+    $$('.gl[data-term], dfn[data-term]').forEach((el, i) => {
       const k = el.dataset.term;
       if (first[k]) return;
       if (!el.id) el.id = 'gl-' + k;

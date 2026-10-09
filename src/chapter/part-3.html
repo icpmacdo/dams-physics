@@ -1,0 +1,94 @@
+    <div class="part" data-title="Part 3 · Water pressure steals strength">
+
+    <section class="pg" id="friction">
+      <h2>Friction comes from pressing</h2>
+      <p>This part is the centre of the chapter. It explains the three states of sand on the beach, and almost every way a dam can fail. The idea comes from Karl Terzaghi, the engineer who founded soil mechanics in the 1920s. It starts with something simpler than soil.</p>
+      <p>Put a book on a plank and slowly tilt the plank. The book stays put until the slope gets steep, then it slides. Friction holds it, and friction comes from the book pressing on the plank. Press twice as hard and it takes twice the force to slide it. The friction on offer is always a fixed fraction of the press.</p>
+      <p>That fraction sets a steepest angle for each pair of surfaces. Tilt beyond it and the block slides, whatever it weighs. It is called the <dfn data-term="friction-angle">friction angle</dfn>, written φ. For sand sliding on sand it is about 34°, the same as the angle of repose of the dry heap on page <a class="pgref" href="#beach"></a>. That is no accident: a grain on the surface of a heap is a tiny block on a ramp.</p>
+      <div class="figslot" data-fig="fig-block" data-do="#bk-u:=0; #bk-a:=25" data-show="#bk-a, #bk-reset" data-title="A block on a ramp" data-hide=".ro:nth-child(2), .ro:nth-child(3), .ro:nth-child(6)"></div>
+      <p>The block weighs 20 kN and its friction angle is 34°. Tilt the ramp. The bar for the friction needed to hold the block grows with the angle; the friction available shrinks a little. Past 34° the block slides.</p>
+      <div class="question">
+        <p class="q-label">Question</p>
+        <p>The block rests on the ramp at 25°, holding comfortably. A thin water cushion sits under its base. You pump up the water pressure in the cushion. The block's weight, shape and surface stay exactly the same. What happens?</p>
+        <ol class="q-opts"><li>Nothing. It weighs the same, so it holds the same.</li><li>It slides. The water carries part of its weight, so it presses on the ramp less.</li><li>It holds better. The water pushes up, which helps support it.</li></ol>
+        <p class="q-turn">Make your choice, then turn the page for the answer.</p>
+      </div>
+    </section>
+
+    <section class="pg" id="cushion">
+      <h2>Water under the block</h2>
+      <div class="answer">
+        <p class="q-label">Answer: B, it slides</p>
+        <p>The water carries part of the block's weight, so less weight is left pressing the block onto the ramp. Friction comes from that press, so it shrinks with it. Gravity still pulls the block down the slope just as hard. Nothing about the block got weaker. The water took away the press that friction needs.</p>
+      </div>
+      <div class="figslot" data-fig="fig-block" data-do="#bk-a:=25; #bk-u:=0" data-show="#bk-u, #bk-a, #bk-reset"></div>
+      <p>Raise the water pressure and watch the friction bar shrink while the needed bar stays put. Each kilopascal of pressure in the cushion cancels a kilopascal of the block's press. At 25° the block slides once the water carries about a third of its press on the ramp. Then try a gentler ramp: with enough water pressure, even 10° is too steep.</p>
+      <p>Engineers compare the two forces with one number, the <dfn data-term="factor-of-safety">factor of safety</dfn>: friction available divided by friction needed. Above 1 the block holds. Below 1 it slides. Dams are designed to keep it well above 1, often about 1.5, to leave room for everything nobody can measure exactly.</p>
+    </section>
+
+    <section class="pg" id="effective-stress">
+      <h2>Soil is thousands of little blocks</h2>
+      <p>Now shrink the block down to a grain of sand. A handful of soil is a crowd of grains, each resting on its neighbours at a few points of contact. Every contact is a tiny block on a tiny ramp, held by friction, and that friction comes from how hard the grains press on each other. The strength of soil is the friction of all those contacts added up.</p>
+      <p>When the gaps are full of water, the water pushes on every grain from all sides, like the cushion under the block. It carries part of the load, and the grains press on each other less.</p>
+      <p>The weight of everything above a point in the ground (soil, water, and anything built on top), per square metre, is the <dfn data-term="total-stress">total stress</dfn>, written σ. Terzaghi's great insight was that the strength of soil follows only the part left over after the pore pressure takes its share. He called it the <dfn data-term="effective-stress">effective stress</dfn>, written σ′:</p>
+      <div class="formula"><b>σ′</b> = σ − u&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;&nbsp;&nbsp;&nbsp;strength = <b>σ′</b> · tan φ<small>σ total stress (kPa) · u pore pressure (kPa) · σ′ effective stress: how hard the grains press on each other · tan φ the friction fraction from the ramp, about 0.67 for sand (φ = 34°)</small></div>
+      <p>Read it as the block on the cushion: σ is the block's press, <em>u</em> is the water in the cushion, and σ′ is what friction has to work with. Any rise in pore pressure, with nothing else changing, takes strength away from the soil. The next page shows it happening in the ground.</p>
+    </section>
+
+    <section class="pg" id="column">
+      <h2>Stress in the ground as the water table rises</h2>
+      <p>The drawing shows a column of sand 10 m deep. Damp sand weighs about 18 kN per cubic metre. Soaked, it weighs about 20, because water has filled the gaps. The chart beside it plots the three stresses against depth: total stress (black), pore pressure (blue) and effective stress (red), which is the gap between the other two.</p>
+      <div class="figslot" data-fig="fig-column" data-do="#gc-wt:=-10" data-show="#gc-wt"></div>
+      <p>The water table starts at the bottom of the column. Drag it up to the ground, then above it, and watch the readouts for the bottom of the column.</p>
+      <p>Two things to notice. First, flooding the column from dry to soaked cuts the effective stress at 10 m from 180 to about 102 kPa. More than 40% of the soil's strength is gone, though not a single grain moved. The soil gets heavier as it soaks, yet weaker, because the pore pressure rises faster than the weight. Second, once the water rises above the ground, every extra metre adds the same 9.81 kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
+    </section>
+
+    <section class="pg" id="suction">
+      <h2>Damp sand: water that pulls</h2>
+      <p>That explains why soaked sand is weaker than dry sand. The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch. The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it: a negative pore pressure, called <dfn data-term="suction">suction</dfn>.</p>
+      <p>Put a negative <em>u</em> into σ′ = σ − u and the effective stress goes up. The grains press together harder than their own weight could make them, so friction can hold them even on a vertical face. Suction in damp beach sand is only a few kPa, but near the top of a sandcastle the grains carry almost no weight, so those few kPa are most of what holds them in place.</p>
+      <div class="figslot" data-fig="fig-grains" data-do="[data-exp=castle]" data-show="#gr-run" data-hide=".gr-ro .ro:nth-child(4), .gr-ro .ro:nth-child(5)" data-title="Grain sandbox: a damp cut, then a dry one"></div>
+      <p>This is a live simulation in which every grain is a disc pushed around by its neighbours. The lines between grains are <dfn data-term="force-chain">force chains</dfn>: the thicker the line, the harder those two grains press together. The side wall comes away after a moment. The damp cut stands. Then press <strong>Now try it dry</strong>: the same sand without its water rings slumps. The stresses are scaled to read like kPa (marked kPa*); it is a teaching model, so read the trends rather than the numbers.</p>
+    </section>
+
+    <section class="pg" id="dense-loose">
+      <h2>Dense and loose sand</h2>
+      <p>One beach state is left: the sand at the waterline that goes soft when you wiggle your feet. To understand it, you need to watch the grains move.</p>
+      <p>When grains are pushed so they slide past one another, how tightly they are packed decides what happens. Densely packed grains have to ride up over each other to move, so the heap swells. Loosely packed grains drop into the gaps below them, so the heap shrinks. Engineers measure packing with the <dfn data-term="void-ratio">void ratio</dfn>: the space between grains divided by the space the grains take up. Loose sand has a high void ratio, dense sand a low one.</p>
+      <div class="figslot" data-fig="fig-grains" data-do="[data-exp=shear]" data-show="#gr-run" data-title="Grain sandbox: dense sand sheared, then loose"></div>
+      <p>Here a weight presses on dense, dry sand while the top is pushed sideways. The weight rises as the grains climb over each other, and the sand's resistance peaks, then drops. Press <strong>Now loose sand</strong> and the weight sinks instead.</p>
+      <p>When the gaps are full of water, the swelling or shrinking has to pull water in or push it out. If the loading is slow enough for that, it is called <dfn data-term="drained">drained</dfn>. If it is too fast, or the soil is too tight for water to move in time, it is <dfn data-term="undrained">undrained</dfn>, and the pore pressure changes instead.</p>
+      <div class="question">
+        <p class="q-label">Question</p>
+        <p>A house stands on loose sand that is full of water. An earthquake shakes the ground for a few seconds, too fast for the water to drain away. What happens to the house?</p>
+        <ol class="q-opts"><li>Nothing much. Sand under water is still sand.</li><li>It sinks and tilts, as if the ground had turned to liquid.</li><li>It rises, because the water pushes it up.</li></ol>
+        <p class="q-turn">Make your choice, then turn the page for the answer.</p>
+      </div>
+    </section>
+
+    <section class="pg" id="liquefaction">
+      <h2>Liquefaction</h2>
+      <div class="answer">
+        <p class="q-label">Answer: B, it sinks and tilts</p>
+        <p>Shaking makes loose grains try to settle into the gaps between them. The water in those gaps can't escape in time, so its pressure rises until it carries the weight the grains were carrying.</p>
+      </div>
+      <div class="figslot" data-fig="fig-grains" data-do="[data-exp=liq]" data-show="#gr-run" data-title="Grain sandbox: loose saturated sand, shaken"></div>
+      <p>Watch the water pressure (blue in the chart and the readout) climb while the grain stress falls. The force chains fade: the grains still touch, but they hardly press on each other. With the effective stress near zero, the friction goes with it, and the sand flows like a heavy liquid. That is <dfn data-term="liquefaction">liquefaction</dfn>, and it is what your wiggling feet do to the sand at the waterline. Loose soil that packs tighter like this is called <dfn data-term="contractive">contractive</dfn>.</p>
+      <p>Press <strong>Same, dense sand</strong> to compare. Dense grains have no gaps to fall into, so the water pressure can't take over: the grains keep much of their grip, and the house sinks far less. Dense soil that swells as it shears is called <dfn data-term="dilative">dilative</dfn>. When it is saturated and sheared with the water trapped, it pulls the water pressure below zero and gets stronger, the opposite of loose sand. The same grains, packed two ways, behave in opposite ways.</p>
+      <p>This is why mine waste worries engineers so much. The ground-up rock a mine pumps out as a slurry, called tailings, often settles loose and stays saturated for decades. Part 8 shows what happens to a dam built on it.</p>
+    </section>
+
+    <section class="pg" id="one-idea">
+      <h2>The one idea</h2>
+      <p>Soil is strong because its grains press on each other. Water pressure in the gaps pushes them apart and takes that strength away. The rest of the chapter applies that one idea to dams:</p>
+      <div class="ideas">
+        <a href="#zones"><span>Part 4 · Inside an embankment dam</span><b>The core takes the head so the shells keep their strength.</b><em>Low water pressure in the outer zones means a high effective stress and strong slopes.</em></a>
+        <a href="#drains"><span>Part 5 · Seepage</span><b>Drains put strength back.</b><em>Lowering the water level inside a dam lowers the pore pressure, so the grains press harder.</em></a>
+        <a href="#piping"><span>Part 5 · Seepage</span><b>Water flowing up can lift the grains.</b><em>When its push on the grains equals their weight, the effective stress is zero and the sand boils.</em></a>
+        <a href="#slip-surface"><span>Part 6 · Will the slope slide?</span><b>A slope is a block on a ramp.</b><em>A stability check weighs the friction the grains can supply against what is needed, using the water pressures inside the dam.</em></a>
+        <a href="#uplift"><span>Part 7 · Concrete dams</span><b>A concrete dam is the block on the cushion.</b><em>Water under the base carries part of the dam's weight, and the friction that stops it sliding goes with it.</em></a>
+        <a href="#tailings-failures"><span>Part 8 · Tailings dams</span><b>A lake can't lose strength. Tailings can.</b><em>A water dam holds a liquid. A tailings dam holds a loose, saturated deposit that can liquefy.</em></a>
+      </div>
+    </section>
+
+    </div>

@@ -1,0 +1,21 @@
+<figure class="sheet wide g-fig" id="fig-race" hidden>
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 3.1</b> · One metre of each material, the same push</span>
+        <span class="scale-note">Clock speeds up tenfold every second</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-race" viewBox="0 0 480 400" role="img" aria-label="Four columns, one metre tall, of gravel, sand, silt and clay, each with water on top. As the clock runs, a wet front moves down each column. Gravel is soaked through in seconds, sand in about an hour, silt in weeks and clay in about eleven years. A logarithmic time axis below marks when each finishes."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <button class="btn primary" id="rc-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Start the race</span></button>
+            <div class="range"><label for="rc-t">Clock</label><input type="range" id="rc-t" min="0" max="9" step="0.01" value="0"><output id="rc-t-o">0 s</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Time elapsed</span><b id="rc-clock">0 s</b><small id="rc-clock2">press start</small></div>
+            <div class="ro"><span>Through so far</span><b id="rc-done">None</b><small id="rc-done2">of four</small></div>
+          </div>
+          <p class="note">A drop of water moves faster than <em>k</em> alone suggests, because it can only travel through the gaps, which take up about a third of the volume. The times here allow for that: time = gap fraction × length ÷ (<em>k</em> × push).</p>
+        </div>
+      </div>
+      <figcaption>Gravel and compacted clay differ by ten million times in permeability. The scale under the columns is <strong>logarithmic</strong>: each step to the right is ten times longer than the one before. On an ordinary scale where gravel's 30 seconds took one millimetre, clay would need about ten kilometres.</figcaption>
+    </figure>

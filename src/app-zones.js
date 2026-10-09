@@ -198,6 +198,22 @@
     b.addEventListener('click', () => show(i, true));
     tabsEl.appendChild(b);
   });
+  // every zone of one dam type written out, for pages that print them all: <div data-zone-table="er">
+  $$('[data-zone-table]').forEach(host => {
+    const d = LIB.find(x => x.key === host.dataset.zoneTable);
+    if (!d) return;
+    host.classList.add('zone-cards');
+    d.zones.forEach(z => {
+      const c = document.createElement('div'); c.className = 'zone-card';
+      const h = document.createElement('p'); h.className = 'zc-h';
+      const code = document.createElement('b'); code.textContent = z.id;
+      h.append(code, document.createTextNode(' ' + z.name));
+      const k = document.createElement('p'); k.className = 'zc-k'; k.textContent = 'k: ' + z.info.k;
+      const mat = document.createElement('p'); mat.textContent = z.info.mat;
+      const job = document.createElement('p'); job.className = 'zc-job'; job.textContent = z.info.job;
+      c.append(h, mat, job, k); host.appendChild(c);
+    });
+  });
   tabsEl.addEventListener('keydown', e => {
     const bs = $$('button', tabsEl), i = bs.indexOf(document.activeElement);
     if (i < 0) return;
@@ -371,6 +387,8 @@
   }
   function stopBuild() { build = null; buildBtn.querySelector('span').textContent = 'Build'; }
   buildBtn.addEventListener('click', () => { if (build) { stopBuild(); setBuild(null); stepEl.textContent = ''; } else startBuild(); });
+  let finished = false; // a page asked for the finished dam, so don't replay the build on first sight
+  F.el.addEventListener('finish', () => { finished = true; if (build) { stopBuild(); setBuild(null); stepEl.textContent = ''; } }); // jump to the finished dam
   F.ticks.push((t, dt) => {
     if (!build) return;
     build.t += dt / 1.6;
@@ -378,7 +396,7 @@
     setBuild(build.t);
   });
   show(0, false);
-  F.onFirst = () => { if (!RM) startBuild(); };
+  F.onFirst = () => { if (!RM && !finished) startBuild(); };
 })();
 
 /* ===================== Fig 4: filter vs rockfill ===================== */

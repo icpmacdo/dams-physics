@@ -1,0 +1,52 @@
+    <div class="part" data-title="Part 6 · Will the slope slide?">
+
+    <section class="pg" id="slip-surface">
+      <h2>A slope is a block on a ramp</h2>
+      <p>An embankment slope can fail by sliding: a great wedge of soil breaks away along a curved surface and slumps downhill. The surface it would slide on is the <dfn data-term="slip-surface">slip surface</dfn>. Nobody knows in advance where it will be, so a stability check tries more than a thousand curved surfaces through the slope and looks for the weakest.</p>
+      <p>Along each surface it compares two things, just like the block on the ramp in Part 3. One is the grip the soil can offer: friction, which depends on how hard the grains press together, plus a little stickiness that clays have, called <dfn data-term="cohesion">cohesion</dfn>. The other is the pull of the soil's weight trying to slide downhill. Grip divided by pull is the factor of safety for that surface. The lowest value of any surface is the factor of safety of the slope.</p>
+      <div class="figslot" data-fig="fig-build" data-do="#bd-tabs [data-m=free]; #bd-presets [data-p=homogeneous]; #bd-found/clay; #bd-cut/none; #bd-slope/2; #bd-res:=40; #bd-side/downstream; #bd-test" data-hide=".swipe-hint, .bd-verdict, .bd-readouts .ro:nth-child(1), .bd-readouts .ro:nth-child(2), .bd-readouts .ro:nth-child(3), .bd-readouts .ro:nth-child(6)" data-title="A slope stability check on the homogeneous dam"></div>
+      <p>This is the homogeneous dam from page <a class="pgref" href="#phreatic"></a>, with the reservoir only 9.6 m deep. The seepage solver runs first and finds the water pressure everywhere in the dam; then the stability check runs. The heavy curved line is the critical slip surface, the weakest one it found, and the shaded wedge above it is the soil that would slide. Its factor of safety is about 1.48. The check ignores slips less than 2 m deep, which are surface damage that maintenance fixes.</p>
+    </section>
+
+    <section class="pg" id="wet-slope">
+      <h2>Water in the slope takes its strength</h2>
+      <p>Now the reservoir is full, 20.4 m deep, the same as on page <a class="pgref" href="#phreatic"></a>. The phreatic surface rises through the dam and breaks out on the downstream slope.</p>
+      <div class="figslot" data-fig="fig-build" data-do="#bd-tabs [data-m=free]; #bd-presets [data-p=homogeneous]; #bd-found/clay; #bd-cut/none; #bd-slope/2; #bd-res:=85; #bd-side/downstream; #bd-test" data-show="#bd-res" data-hide=".swipe-hint, .bd-verdict, .bd-readouts .ro:nth-child(1), .bd-readouts .ro:nth-child(2), .bd-readouts .ro:nth-child(3), .bd-readouts .ro:nth-child(6), #bd-test" data-title="The same slope with the reservoir full"></div>
+      <p>The factor of safety drops to about 1.12. The soil, the slope and the dam are all unchanged. What changed is the water pressure on the slip surface, drawn as short blue bars: the height each point would push water up a tube. On the critical surface, water pressure now carries about a third of the soil's weight, so the grains press together with only two thirds of it. Move the reservoir slider to see the factor of safety follow the water.</p>
+      <div class="question">
+        <p class="q-label">Question</p>
+        <p>The dam, made all of compacted fill, has a factor of safety of 1.12 with the reservoir full, and water breaking out 8 m up its downstream slope. Which change helps it most?</p>
+        <ol class="q-opts"><li>Flatten the downstream slope from 2:1 to 2.5:1 (11% more fill)</li><li>Put a sand drain inside the downstream half (about 10% of the dam)</li><li>Add a cutoff wall through the foundation under the dam</li></ol>
+        <p class="q-turn">Make your choice, then turn the page for the answer.</p>
+      </div>
+    </section>
+
+    <section class="pg" id="drain-answer">
+      <h2>Drains put strength back</h2>
+      <div class="answer">
+        <p class="q-label">Answer: B, the drain</p>
+        <p>The drain takes the factor of safety from 1.12 to about 1.6. The flatter slope reaches only about 1.27, and the cutoff about 1.14. The fill is strong enough when it is dry. Its trouble is the water in it.</p>
+      </div>
+      <div class="figslot" data-fig="fig-build" data-do="#bd-tabs [data-m=free]; #bd-presets [data-p=drained]; #bd-found/clay; #bd-cut/none; #bd-slope/2; #bd-res:=85; #bd-side/downstream; #bd-test" data-show="#bd-presets, #bd-slope, #bd-cut" data-hide=".swipe-hint, .bd-verdict, .bd-readouts .ro:nth-child(1), .bd-readouts .ro:nth-child(2), .bd-readouts .ro:nth-child(3), .bd-readouts .ro:nth-child(6), #bd-presets [data-p=cored], #bd-presets [data-p=filtered], #bd-presets [data-p=leaky], #bd-presets [data-p=steep], #bd-presets [data-p=tailings]" data-title="The dam with a chimney and blanket drain"></div>
+      <p>This is the same dam with a strip of sand drain just downstream of the crest, joined to a layer along the base out to the toe. The water level inside the dam drops into the drain, and the downstream slope is dry. Use the buttons to switch back to <strong>Homogeneous fill</strong>, and to try the flatter slope or the cutoff instead. Each change is tested again automatically.</p>
+      <p>The cutoff helps least because this dam stands on clay: little water was going under it anyway. The flatter slope helps a little by spreading the same wet soil over a gentler ramp. Only the drain removes the water pressure.</p>
+    </section>
+
+    <section class="pg" id="drawdown">
+      <h2>Emptying the reservoir fast</h2>
+      <p>The upstream slope has a different danger. While the reservoir is full, the water pressing on the slope helps hold it in place. Lower the reservoir quickly and that support goes at once, but the water inside a slow-draining soil can't get out as fast. The slope is left heavy with water and with nothing pressing back. This is called <dfn data-term="rapid-drawdown">rapid drawdown</dfn>.</p>
+      <div class="figslot" data-fig="fig-build" data-do="#bd-tabs [data-m=free]; #bd-presets [data-p=homogeneous]; #bd-found/clay; #bd-cut/none; #bd-slope/2; #bd-res:=85; #bd-side/upstream; #bd-test" data-show="#bd-side, #bd-presets" data-hide=".swipe-hint, .bd-verdict, .bd-readouts .ro:nth-child(1), .bd-readouts .ro:nth-child(2), .bd-readouts .ro:nth-child(3), .bd-readouts .ro:nth-child(6), #bd-presets [data-p=filtered], #bd-presets [data-p=drained], #bd-presets [data-p=leaky], #bd-presets [data-p=steep], #bd-presets [data-p=tailings]" data-title="The upstream slope after the reservoir is emptied fast"></div>
+      <p>For the homogeneous dam, the upstream check gives about 0.94: below 1, so the slope would slide. Switch to <strong>Clay core + rockfill</strong>: the rockfill shell drains as fast as the reservoir falls, and the factor of safety rises to about 1.09.</p>
+      <p>Designers accept a lower factor of safety for this short-lived case, about 1.2, but neither design reaches it. That is partly because this drawing fixes the upstream slope at 2:1, which is steep for an earth dam. Real ones are often flatter on the upstream side for exactly this reason.</p>
+    </section>
+
+    <section class="pg" id="mount-polley">
+      <h2>Mount Polley, 2014</h2>
+      <p class="case-k">Mount Polley tailings dam, British Columbia</p>
+      <p>About 8 m below the dam, a layer of soft clay laid down in an ancient glacial lake had been missed by the site investigations. When the embankment was loaded, the water pressure in that clay couldn't drain away fast enough, so the clay had far less grip than the design assumed. A steep rockfill slope on top, 1.3 horizontal to 1 vertical, supplied the push. In August 2014 the dam slid on the clay and released about 25 million m³ of tailings and water. The investigation panel's summary: poor site characterization loaded the gun, and the steep slope pulled the trigger.</p>
+      <div class="figslot" data-fig="fig-build" data-do="#bd-tabs [data-m=free]; #bd-presets [data-p=cored]; #bd-found/weak; #bd-cut/none; #bd-slope/2; #bd-res:=85; #bd-side/downstream; #bd-test" data-show="#bd-slope" data-hide=".swipe-hint, .bd-verdict, .bd-readouts .ro:nth-child(1), .bd-readouts .ro:nth-child(2), .bd-readouts .ro:nth-child(3), .bd-readouts .ro:nth-child(6)" data-title="A cored dam on a weak clay layer"></div>
+      <p>The drawing puts the same kind of weak layer 4 m under the clay core dam from page <a class="pgref" href="#core"></a>. On ordinary ground this dam has a factor of safety of about 1.55. With the weak layer, the weakest surface is no longer a curve: it is a block sliding flat along the layer, and the factor of safety falls to about 1.21. The check finds such blocks with a second method (Spencer's) that suits slip surfaces of any shape.</p>
+      <p>Change the downstream slope. Flattening it to 3:1 brings the factor of safety back to about 1.56, because a flatter slope pushes less on the layer. At Mount Polley the slope was steeper than any of these.</p>
+    </section>
+
+    </div>
