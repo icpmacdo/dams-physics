@@ -1,0 +1,26 @@
+/* Step 4 grain sandbox (#fig-grains) */
+.gr-exps { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 2px 0 8px; }
+.gr-label { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-right: 2px; }
+.gr-exps .btn { text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+.gr-hint { font-size: 0.95rem; color: var(--ink-2); margin: 0 0 8px; min-height: 1.5em; max-width: 72ch; }
+.gr-hint .btn.gr-next { margin-left: 4px; min-height: 28px; padding: 3px 10px; font-size: 0.72rem; vertical-align: 1px; }
+.gr-stage { position: relative; width: 100%; }
+.gr-stage canvas { display: block; width: 100%; border-radius: 4px; touch-action: pan-y; }
+.gr-result { font-family: var(--f-mono); font-size: 0.78rem; line-height: 1.5; color: var(--ink); background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 6px 10px; margin: 8px 0 0; border-radius: 0 4px 4px 0; }
+#fig-grains .seg button[disabled] { opacity: 0.4; cursor: not-allowed; }
+#fig-grains input[type="range"][disabled] { opacity: 0.4; }
+.gr-chart { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 6px; }
+.gr-chart canvas { display: block; width: 100%; }
+@media (max-width: 560px) {
+  .gr-exps .btn { flex: 1 1 100%; justify-content: flex-start; }
+  #fig-grains .controls .btn { flex: 1 1 auto; justify-content: center; }
+}
+.gr-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px 18px; align-items: start; }
+.gr-side { min-width: 0; }
+@media (min-width: 900px) {
+  .gr-main { grid-template-columns: minmax(0, 1.75fr) minmax(220px, 1fr); }
+  .gr-side .readouts.gr-ro { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
+  .gr-side .readouts.gr-ro .ro { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); }
+  .gr-side .readouts.gr-ro .ro:nth-child(odd) { padding-right: 12px; }
+  .gr-side .readouts.gr-ro .ro:last-child { grid-column: 1 / -1; }
+}

@@ -37,6 +37,8 @@ const GLOSSARY = {
   'rapid-drawdown': ['Rapid drawdown', 'Lowering a reservoir faster than the water can drain out of the dam. Clay and fill keep their high water pressure while the water that pressed on the upstream slope is gone, so that slope can slide.'],
   'cutoff': ['Cutoff', 'A watertight wall or trench under a dam that blocks the path for water through permeable ground beneath it.'],
   'cohesion': ['Cohesion', 'The part of a soil’s strength that doesn’t depend on how hard the grains are pressed together, written c′. Clays have a little; clean sand and rockfill have none.'],
+  'force-chain': ['Force chain', 'A line of grains pressing hard on each other and carrying most of the load. Sand’s strength travels along these chains, not evenly through every grain.'],
+  'void-ratio': ['Void ratio', 'The volume of the gaps between grains divided by the volume of the grains themselves. Loose sand has a high void ratio; dense sand has a low one.'],
   'uplift': ['Uplift', 'Water pressure under a concrete dam pushing it upward, which cancels part of its weight.'],
   'tailings': ['Tailings', 'The waste left after a mill extracts metal from ore: rock ground finer than flour, pumped out as a slurry with water.'],
   'beach': ['Beach', 'The gently sloping deposit of tailings sand between the dam crest and the pond.'],

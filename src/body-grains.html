@@ -1,0 +1,55 @@
+    <div class="col">
+      <div class="predict" data-answer="b" id="pr-grains-house">
+        <p class="predict-q">A house stands on loose sand that is full of water. An earthquake shakes the ground for a few seconds, too fast for the water to drain away. What happens to the house?</p>
+        <div class="predict-opts">
+          <button type="button" data-v="a">Nothing much. Sand under water is still sand.</button>
+          <button type="button" data-v="b">It sinks and tilts, as if the ground had turned to liquid.</button>
+          <button type="button" data-v="c">It rises, because the water pushes it up.</button>
+        </div>
+        <div class="predict-reveal" hidden><p>It sinks and tilts. Shaking makes loose grains try to settle into the gaps between them. The water in those gaps can’t escape in time, so its pressure rises until it carries the weight the grains were carrying. With nothing pressing the grains together, friction between them vanishes and the sand flows like a heavy liquid. That is <span class="gl" data-term="liquefaction">liquefaction</span>. Try it in the sandbox below with the third experiment, then try the same shaking on dense sand.</p></div>
+      </div>
+    </div>
+
+    <figure class="sheet wide" id="fig-grains">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 4.3</b> · Grain sandbox · a live discrete-element model</span>
+        <span class="scale-note">2D teaching model · stresses in scaled model units (kPa*)</span>
+      </div>
+      <div class="gr-exps" role="group" aria-label="Experiments">
+        <span class="gr-label">Experiments</span>
+        <button class="btn" type="button" data-exp="castle">1 · Sandcastle: damp vs dry</button>
+        <button class="btn" type="button" data-exp="shear">2 · Shear it: dense vs loose</button>
+        <button class="btn" type="button" data-exp="liq">3 · Loose and saturated: shake the house</button>
+        <button class="btn" type="button" data-exp="suction">4 · Dense, drain shut: shear it</button>
+      </div>
+      <p class="gr-hint" id="gr-hint" aria-live="polite"></p>
+      <div class="gr-main">
+        <div class="gr-stage"><canvas id="cv-grains" role="img" aria-label="A box of sand grains drawn as discs. Lines between touching grains get thicker the harder the grains press on each other, so the load paths (force chains) show. Water in the pores is tinted blue, darker where its pressure is higher."></canvas></div>
+        <div class="gr-side">
+          <div class="readouts gr-ro">
+            <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gr-sig">–</b><small>everything pressing down</small></div>
+            <div class="ro"><span>Water pressure <i class="g-sym">u</i></span><b id="gr-u">–</b><small>above the still-water level</small></div>
+            <div class="ro"><span>Grain stress <i class="g-sym">σ′ = σ − u</i></span><b id="gr-se">–</b><small id="gr-se2">platen force from grain contacts</small></div>
+            <div class="ro"><span>Void ratio <i class="g-sym">e</i></span><b id="gr-e">–</b><small id="gr-e2">2D discs</small></div>
+            <div class="ro"><span>Shear stress <i class="g-sym">τ</i></span><b id="gr-tau">–</b><small id="gr-tau2">τ/σ′</small></div>
+          </div>
+          <div class="gr-chart"><canvas id="cv-grains-chart" role="img" aria-label="Live chart of the grain stress σ′, the water pressure u and the total stress over time."></canvas></div>
+        </div>
+      </div>
+      <p class="gr-result" id="gr-result" aria-live="polite" hidden></p>
+      <div class="controls">
+        <div class="ctl"><span>Packing</span><div class="seg" id="gr-pack"><button type="button" data-v="loose" aria-pressed="false">Loose</button><button type="button" data-v="dense" aria-pressed="true">Dense</button></div></div>
+        <div class="ctl"><span>Water</span><div class="seg" id="gr-water"><button type="button" data-v="dry" aria-pressed="true">Dry</button><button type="button" data-v="damp" aria-pressed="false">Damp</button><button type="button" data-v="sat" aria-pressed="false">Saturated</button></div></div>
+        <div class="ctl"><span>Drain</span><div class="seg" id="gr-drain"><button type="button" data-v="open" aria-pressed="true">Open</button><button type="button" data-v="shut" aria-pressed="false">Shut</button></div></div>
+        <div class="ctl"><span>On top</span><div class="seg" id="gr-top"><button type="button" data-v="platen" aria-pressed="true">Platen</button><button type="button" data-v="none" aria-pressed="false">Nothing</button><button type="button" data-v="house" aria-pressed="false">House</button></div></div>
+      </div>
+      <div class="controls">
+        <div class="range"><label for="gr-load">Platen load</label><input type="range" id="gr-load" min="10" max="80" step="5" value="40"><output id="gr-load-o" for="gr-load">40 kPa*</output></div>
+        <button class="btn primary" id="gr-shear" type="button"><span>Shear</span></button>
+        <button class="btn" id="gr-shake" type="button"><span>Shake</span></button>
+        <button class="btn" id="gr-wall" type="button"><span>Remove side wall</span></button>
+        <button class="btn" id="gr-run" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 h3 v10 h-3 z M7,1 h3 v10 h-3 z"/></svg><span>Pause</span></button>
+        <button class="btn" id="gr-step" type="button"><span>Step</span></button>
+      </div>
+      <figcaption>The lines between grains are <span class="gl" data-term="force-chain">force chains</span>: the thicker the line, the harder those two grains press together. Things to try. <strong>Experiment 1:</strong> the damp cut stands, the dry one slumps. <strong>2:</strong> dense sand lifts the platen as it shears (it <span class="gl" data-term="dilative">dilates</span>) and its strength peaks then drops; loose sand sinks (it <span class="gl" data-term="contractive">compacts</span>). <strong>3:</strong> with the drain shut, the water pressure climbs until it carries almost all the load, the force chains fade, and the house sinks. <strong>4:</strong> dense sand pulls the water pressure below zero (<span class="gl" data-term="suction">suction</span>) and gets stronger. Every number here is measured from the model as it runs, not set in advance. It is a 2D teaching model: discs pack tighter than real sand, so <span class="gl" data-term="void-ratio">void ratios</span> (space between grains ÷ space taken by grains) are lower than real ones (about 0.5 to 0.9), and pore water is one pressure field on a coarse grid. Read the trends, not the numbers. Stresses are scaled to read like kPa (marked kPa*); they are not lab results.</figcaption>
+    </figure>

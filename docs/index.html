@@ -1084,7 +1084,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-grains">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 4</b> · Grain sandbox · a live discrete-element model</span>
+        <span class="figno"><b>Fig. 4.3</b> · Grain sandbox · a live discrete-element model</span>
         <span class="scale-note">2D teaching model · stresses in scaled model units (kPa*)</span>
       </div>
       <div class="gr-exps" role="group" aria-label="Experiments">
@@ -1099,11 +1099,11 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <div class="gr-stage"><canvas id="cv-grains" role="img" aria-label="A box of sand grains drawn as discs. Lines between touching grains get thicker the harder the grains press on each other, so the load paths (force chains) show. Water in the pores is tinted blue, darker where its pressure is higher."></canvas></div>
         <div class="gr-side">
           <div class="readouts gr-ro">
-            <div class="ro"><span>Total stress σ</span><b id="gr-sig">–</b><small>everything pressing down</small></div>
-            <div class="ro"><span>Water pressure u</span><b id="gr-u">–</b><small>above the still-water level</small></div>
-            <div class="ro"><span>Grain stress σ′ = σ − u</span><b id="gr-se">–</b><small id="gr-se2">platen force from grain contacts</small></div>
-            <div class="ro"><span>Void ratio e</span><b id="gr-e">–</b><small id="gr-e2">2D discs</small></div>
-            <div class="ro"><span>Shear stress τ</span><b id="gr-tau">–</b><small id="gr-tau2">τ/σ′</small></div>
+            <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gr-sig">–</b><small>everything pressing down</small></div>
+            <div class="ro"><span>Water pressure <i class="g-sym">u</i></span><b id="gr-u">–</b><small>above the still-water level</small></div>
+            <div class="ro"><span>Grain stress <i class="g-sym">σ′ = σ − u</i></span><b id="gr-se">–</b><small id="gr-se2">platen force from grain contacts</small></div>
+            <div class="ro"><span>Void ratio <i class="g-sym">e</i></span><b id="gr-e">–</b><small id="gr-e2">2D discs</small></div>
+            <div class="ro"><span>Shear stress <i class="g-sym">τ</i></span><b id="gr-tau">–</b><small id="gr-tau2">τ/σ′</small></div>
           </div>
           <div class="gr-chart"><canvas id="cv-grains-chart" role="img" aria-label="Live chart of the grain stress σ′, the water pressure u and the total stress over time."></canvas></div>
         </div>
@@ -1123,7 +1123,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <button class="btn" id="gr-run" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 h3 v10 h-3 z M7,1 h3 v10 h-3 z"/></svg><span>Pause</span></button>
         <button class="btn" id="gr-step" type="button"><span>Step</span></button>
       </div>
-      <figcaption>Things to try. <strong>Experiment 1:</strong> the damp cut stands, the dry one slumps. <strong>2:</strong> dense sand lifts the platen as it shears (it dilates) and its strength peaks then drops; loose sand sinks (it compacts). <strong>3:</strong> with the drain shut, the water pressure climbs until it carries almost all the load, the force chains fade, and the house sinks. <strong>4:</strong> dense sand pulls the water pressure below zero (suction) and gets stronger. Every number here is measured from the model as it runs, not set in advance. It is a 2D teaching model: discs pack tighter than real sand, so void ratios are lower than real ones (about 0.5 to 0.9), and pore water is one pressure field on a coarse grid. Read the trends, not the numbers. Stresses are scaled to read like kPa (marked kPa*); they are not lab results.</figcaption>
+      <figcaption>The lines between grains are <span class="gl" data-term="force-chain">force chains</span>: the thicker the line, the harder those two grains press together. Things to try. <strong>Experiment 1:</strong> the damp cut stands, the dry one slumps. <strong>2:</strong> dense sand lifts the platen as it shears (it <span class="gl" data-term="dilative">dilates</span>) and its strength peaks then drops; loose sand sinks (it <span class="gl" data-term="contractive">compacts</span>). <strong>3:</strong> with the drain shut, the water pressure climbs until it carries almost all the load, the force chains fade, and the house sinks. <strong>4:</strong> dense sand pulls the water pressure below zero (<span class="gl" data-term="suction">suction</span>) and gets stronger. Every number here is measured from the model as it runs, not set in advance. It is a 2D teaching model: discs pack tighter than real sand, so <span class="gl" data-term="void-ratio">void ratios</span> (space between grains ÷ space taken by grains) are lower than real ones (about 0.5 to 0.9), and pore water is one pressure field on a coarse grid. Read the trends, not the numbers. Stresses are scaled to read like kPa (marked kPa*); they are not lab results.</figcaption>
     </figure>
 
 
@@ -1161,7 +1161,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-types">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 1</b> · Water dam and tailings dam in section</span>
+        <span class="figno"><b>Fig. 5.1</b> · Water dam and tailings dam in section</span>
         <span class="scale-note">Schematic · not to scale</span>
       </div>
       <div class="pair">
@@ -1232,7 +1232,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-raise">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 2</b> · Staged construction of three tailings dams, same height, same starter dam</span>
+        <span class="figno"><b>Fig. 6.1</b> · Staged construction of three tailings dams, same height, same starter dam</span>
         <span class="scale-note">Vertical scale exaggerated ×1.5</span>
       </div>
       <p class="swipe-hint">Drawing scrolls sideways →</p>
@@ -1292,7 +1292,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-zones">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 3</b> · <span id="zn-title">Zoned earth–rockfill dam with central core</span></span>
+        <span class="figno"><b>Fig. 7.1</b> · <span id="zn-title">Zoned earth–rockfill dam with central core</span></span>
         <span class="scale-note" id="zn-scale">Drawn to scale · 60 m high</span>
       </div>
       <p class="swipe-hint">Drawing scrolls sideways →</p>
@@ -1316,7 +1316,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
     </div>
     <figure class="sheet wide" id="fig-filter">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 4</b> · Core grains meeting rockfill vs a filter</span>
+        <span class="figno"><b>Fig. 7.2</b> · Core grains meeting rockfill vs a filter</span>
         <span class="scale-note">Grain scale · schematic</span>
       </div>
       <div class="svgwrap"><canvas class="filtercv" id="cv-filter" width="1100" height="300" role="img" aria-label="Left: fine core particles carried by seepage pass straight through the large voids in rockfill. Right: the same particles reach a sand filter, lodge at the interface and stop, while water continues through."></canvas></div>
@@ -1338,7 +1338,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-paths">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 5</b> · The five main seepage paths</span>
+        <span class="figno"><b>Fig. 8.1</b> · The five main seepage paths</span>
         <span class="scale-note">Schematic</span>
       </div>
       <p class="swipe-hint">Drawing scrolls sideways →</p>
@@ -1356,7 +1356,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-lab">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 6</b> · Seepage lab · finite-volume solution</span>
+        <span class="figno"><b>Fig. 8.2</b> · Seepage lab · finite-volume solution</span>
         <span class="scale-note">Drawn to scale · 24 m embankment, 2H:1V slopes</span>
       </div>
       <p class="swipe-hint">Drawing scrolls sideways →</p>
@@ -1390,7 +1390,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-pipe">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 7</b> · Backward erosion piping, from boil to breach</span>
+        <span class="figno"><b>Fig. 8.3</b> · Backward erosion piping, from boil to breach</span>
         <span class="scale-note">Schematic · hours to days compressed</span>
       </div>
       <p class="swipe-hint">Drawing scrolls sideways →</p>
@@ -1410,7 +1410,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-uplift">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 8</b> · Uplift and sliding of a 60 m concrete gravity dam</span>
+        <span class="figno"><b>Fig. 8.4</b> · Uplift and sliding of a 60 m concrete gravity dam</span>
         <span class="scale-note">Drawn to scale · per metre of dam</span>
       </div>
       <p class="swipe-hint">Drawing scrolls sideways →</p>
@@ -1494,7 +1494,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <figure class="sheet wide" id="fig-build">
       <div class="sheet-top">
-        <span class="figno"><b>Fig. 9</b> · Your dam, tested by the seepage solver and a slope stability check</span>
+        <span class="figno"><b>Fig. 9.1</b> · Your dam, tested by the seepage solver and a slope stability check</span>
         <span class="scale-note">Drawn to scale · 24 m embankment · 1 m cells</span>
       </div>
 
@@ -1573,7 +1573,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
     <footer class="end col">
       <p class="eyebrow">Notes and sources</p>
       <ul class="sources">
-        <li>All drawings are simplified. Figures 3, 6 and 8 are drawn to scale; the others are schematic. Permeabilities and slopes are typical values, not design values.</li>
+        <li>All drawings are simplified. Figures 7.1, 8.2, 8.4 and 9.1 are drawn to scale; the others are schematic. Permeabilities and slopes are typical values, not design values.</li>
         <li>The seepage lab solves steady 2D flow per metre of dam on a 1 m finite-volume grid, using a saturated–unsaturated formulation to locate the phreatic surface. It uses no anisotropy, no transient effects and no filter design.</li>
         <li>Vick, S.G. (1990). <em>Planning, Design, and Analysis of Tailings Dams.</em> BiTech.</li>
         <li>Fell, R., MacGregor, P., Stapledon, D., Bell, G., Foster, M. (2015). <em>Geotechnical Engineering of Dams</em>, 2nd ed. CRC Press.</li>
@@ -4152,6 +4152,8 @@ const GLOSSARY = {
   'rapid-drawdown': ['Rapid drawdown', 'Lowering a reservoir faster than the water can drain out of the dam. Clay and fill keep their high water pressure while the water that pressed on the upstream slope is gone, so that slope can slide.'],
   'cutoff': ['Cutoff', 'A watertight wall or trench under a dam that blocks the path for water through permeable ground beneath it.'],
   'cohesion': ['Cohesion', 'The part of a soil’s strength that doesn’t depend on how hard the grains are pressed together, written c′. Clays have a little; clean sand and rockfill have none.'],
+  'force-chain': ['Force chain', 'A line of grains pressing hard on each other and carrying most of the load. Sand’s strength travels along these chains, not evenly through every grain.'],
+  'void-ratio': ['Void ratio', 'The volume of the gaps between grains divided by the volume of the grains themselves. Loose sand has a high void ratio; dense sand has a low one.'],
   'uplift': ['Uplift', 'Water pressure under a concrete dam pushing it upward, which cancels part of its weight.'],
   'tailings': ['Tailings', 'The waste left after a mill extracts metal from ore: rock ground finer than flour, pumped out as a slurry with water.'],
   'beach': ['Beach', 'The gently sloping deposit of tailings sand between the dam crest and the pond.'],
@@ -5081,16 +5083,16 @@ function grainsSim(o) {
   const W = o.W || Math.round(Math.sqrt(N * 1.16));      // box width (grain diameters)
   const HS = 0.85 * W;                                     // nominal sample height
   const HB = Math.round(HS + 7);                           // drawn box height
-  const FW = Math.round(0.55 * W);                          // bench beyond the right wall
+  const FW = Math.round((o.bench || 0.55) * W);                          // bench beyond the right wall
   const XEND = W + FW;                                     // far end stop
   const RMIN = 0.35, RMAX = 0.65, RG = 0.4, SG = 0.7;      // grain radii; glued-disc radius, spacing
 
   const prm = {
     kn: 12000, kt: 6000, zeta: 0.5, zetaT: 0.3, mu: 0.5, muR: 0.12, krF: 0.25, muW: 0.3, muSide: 0,
     g: 1, buoy: 1 / 2.65, cap: 12, capGap: 0.07,
-    dragDry: 0.3, dragPour: 0.6, dragPourDense: 0.3, dragPrep: 0.6, gPour: 3, capPour: 5, muPour: 0.9, muRPour: 0.4, dragSat: 0.8, rotDrag: 0.5,
+    dragDry: 0.3, dragPour: 0.6, dragPourDense: 0.3, dragPrep: 0.6, gPour: 3, capPour: 15, muPour: 0.9, muRPour: 0.4, dragSat: 0.8, rotDrag: 0.5,
     K: 20000, uCav: 100, h: 3, tauFast: 0.001, tauSlow: 4, tauLeak: 0.001,
-    houseB: 6, houseH: 4, houseQ: 8, platenDamp: 6, houseSolid: false, phiFree: 0.5,
+    houseB: 6, houseH: 4, houseQ: 8, platenDamp: 6, houseSolid: true, houseDrains: true, houseRotDamp: 2, phiFree: 0.5,
   };
   if (o.prm) Object.assign(prm, o.prm);
   const dt = o.dt || 0.0008;
@@ -5156,7 +5158,7 @@ function grainsSim(o) {
   const UN = UNX * UNY;
   const uS = new Float64Array(UN), uAd = new Float64Array(UN), uVp = new Float64Array(UN), uVprev = new Float64Array(UN);
   const uC = new Float64Array(UN), u = new Float64Array(UN), uG = new Float64Array(UN), uTmp = new Float64Array(UN), uB = new Float64Array(UN);
-  const uAct = new Uint8Array(UN), uWas = new Uint8Array(UN), uLeak = new Float64Array(UN), uA = new Float64Array(UN);
+  const uSH = new Float64Array(UN), uAct = new Uint8Array(UN), uWas = new Uint8Array(UN), uLeak = new Float64Array(UN), uA = new Float64Array(UN);
   const C_TYP = 0.18 * h * h / prm.K, C_MIN = 0.08 * h * h / prm.K;
   const NSUB = 12;
   // sample points filling the house, for its share of the pore-volume bookkeeping
@@ -5415,7 +5417,7 @@ function grainsSim(o) {
       if (poreOn()) { Fx += hU[0]; Fy += hU[1]; T += hU[2]; }
       Fy -= S.hmass * prm.g;
       const dmp = 0.3;
-      S.hvx += (Fx / S.hmass - dmp * S.hvx) * dt; S.hvy += (Fy / S.hmass - dmp * S.hvy) * dt; S.hw += (T / S.hI - dmp * S.hw) * dt;
+      S.hvx += (Fx / S.hmass - dmp * S.hvx) * dt; S.hvy += (Fy / S.hmass - dmp * S.hvy) * dt; S.hw += (T / S.hI - prm.houseRotDamp * S.hw) * dt;
       if (S.phase !== 'run') { S.hw = 0; S.hth = 0; S.hvx = 0; }   // set it down level
       S.hx += S.hvx * dt; S.hy += S.hvy * dt; S.hth += S.hw * dt;
     }
@@ -5476,18 +5478,20 @@ function grainsSim(o) {
       uS[n0] += A * (1 - tx) * (1 - ty); uS[n0 + 1] += A * tx * (1 - ty);
       uS[n0 + UNX] += A * (1 - tx) * ty; uS[n0 + UNX + 1] += A * tx * ty;
     }
-    // the house is solid too: scatter its volume from a grid of points that moves and turns with it
-    const house = S.top === 'house' && prm.houseSolid;
+    // the house's volume, from a grid of points that moves and turns with it. It never counts as
+    // pore space that drains to the open water above; prm.houseSolid also puts it in the volume balance.
+    const house = S.top === 'house';
+    uSH.fill(0);
     if (house) {
-      const c = Math.cos(S.hth), sn = Math.sin(S.hth);
+      const c = Math.cos(S.hth), sn = Math.sin(S.hth), tgt = uSH;
       for (let k = 0; k < HPN; k++) {
         const X = S.hx + c * hpx[k] - sn * hpy[k], Y = S.hy + sn * hpx[k] + c * hpy[k];
         hpWX[k] = X; hpWY[k] = Y;
         if (Y < 0 || Y >= ymax || X < UX0 || X >= xmax) continue;
         const fxg = (X - UX0) / h, fyg = Y / h, ix = fxg | 0, iy = fyg | 0, tx = fxg - ix, ty = fyg - iy;
         const n0 = iy * UNX + ix;
-        uS[n0] += HPA * (1 - tx) * (1 - ty); uS[n0 + 1] += HPA * tx * (1 - ty);
-        uS[n0 + UNX] += HPA * (1 - tx) * ty; uS[n0 + UNX + 1] += HPA * tx * ty;
+        tgt[n0] += HPA * (1 - tx) * (1 - ty); tgt[n0 + 1] += HPA * tx * (1 - ty);
+        tgt[n0 + UNX] += HPA * (1 - tx) * ty; tgt[n0 + UNX + 1] += HPA * tx * ty;
       }
     }
     // domain coverage of each node's tent (parallelogram below the top, minus the house)
@@ -5517,7 +5521,7 @@ function grainsSim(o) {
     for (let n = 0; n < UN; n++) {
       const act = uAd[n] > 0.002 * h2;
       uA[n] = Math.min(1, uAd[n] / h2);
-      const vp = uAd[n] - uS[n];
+      const vp = uAd[n] - uS[n] - (prm.houseSolid ? uSH[n] : 0);
       uC[n] = Math.max(vp, C_MIN * K) / K;
       if (!act) { uAct[n] = 0; u[n] = 0; uWas[n] = 0; continue; }
       uAct[n] = 1;
@@ -5551,7 +5555,7 @@ function grainsSim(o) {
       let rate = 0;
       if (S.top === 'platen') { if (!sealed) rate = uB[n] / h / prm.tauLeak; }
       else {
-        const phi = uS[n] / Math.max(uAd[n], 1e-9);
+        const phi = (uS[n] + (prm.houseDrains ? 0 : uSH[n])) / Math.max(uAd[n], 1e-9);
         rate = Math.max(0, Math.min(1, 1 - phi / prm.phiFree)) / prm.tauLeak;
       }
       if (rate > 0) u[n] /= 1 + dt * rate;
@@ -5582,7 +5586,7 @@ function grainsSim(o) {
     }
     // the same pressure-gradient force on the house's volume
     hU[0] = 0; hU[1] = 0; hU[2] = 0;
-    if (house) for (let k = 0; k < HPN; k++) {
+    if (house && prm.houseSolid) for (let k = 0; k < HPN; k++) {
       const X = hpWX[k], Y = hpWY[k];
       if (Y < 0 || Y >= ymax || X < UX0 || X >= xmax) continue;
       const fxg = (X - UX0) / h, fyg = Y / h, ix = fxg | 0, iy = fyg | 0, tx = fxg - ix, ty = fyg - iy;
@@ -5682,7 +5686,7 @@ const F = fig(root);
 const cv = $('#cv-grains'), ctx = cv.getContext('2d');
 const ccv = $('#cv-grains-chart'), cctx = ccv.getContext('2d');
 const small = Math.min(window.innerWidth || 1200, screen.width || 1200) < 640;
-const sim = grainsSim({ N: small ? 250 : 420, seed: 11 });
+const sim = grainsSim({ N: small ? 250 : 420, seed: 11, bench: small ? 0.35 : 0.55 });
 const S = sim.S, W = sim.W, HB = sim.HB;
 const STRESS = 'kPa*';
 const VX0 = -2.4, VX1 = sim.XEND + 0.9, VY0 = -1.6, VY1 = HB + 2.6;
@@ -5746,7 +5750,7 @@ function draw() {
     const d = uimg.data;
     for (let n = 0; n < sim.UNX * sim.UNY; n++) {
       const ix = n % sim.UNX, jy = (n - ix) / sim.UNX, p = ((sim.UNY - 1 - jy) * sim.UNX + ix) * 4;
-      const v = sim.u[n] / ref, a = Math.min(1, Math.abs(v)) * 0.75;
+      const v = sim.u[n] / ref, a = Math.min(1, Math.abs(v)) * (v >= 0 ? 0.7 : 0.45);
       const c = v >= 0 ? C.wRGB : C.aRGB;
       d[p] = c[0]; d[p + 1] = c[1]; d[p + 2] = c[2]; d[p + 3] = Math.round(a * 255);
     }
@@ -5836,10 +5840,10 @@ function draw() {
     const py = S.py, x0 = g * py;
     ctx.fillStyle = C.rock; ctx.strokeStyle = C.ink; ctx.lineWidth = 1.2;
     ctx.fillRect(X(x0), Y(py + 1.1), W * SC, 1.1 * SC); ctx.strokeRect(X(x0), Y(py + 1.1), W * SC, 1.1 * SC);
-    const narr = Math.max(3, Math.round(W / 4));
+    const narr = Math.max(3, Math.round(W / 4)), aw = sat ? W - 2.6 : W;
     ctx.beginPath();
     for (let k = 0; k < narr; k++) {
-      const ax = X(x0 + (k + 0.5) * W / narr), ay0 = Y(py + 3.2), ay1 = Y(py + 1.25);
+      const ax = X(x0 + (k + 0.5) * aw / narr), ay0 = Y(py + 3.2), ay1 = Y(py + 1.25);
       ctx.moveTo(ax, ay0); ctx.lineTo(ax, ay1); ctx.moveTo(ax - 4, ay1 - 6); ctx.lineTo(ax, ay1); ctx.lineTo(ax + 4, ay1 - 6);
     }
     ctx.strokeStyle = C.accent; ctx.lineWidth = 1.5; ctx.stroke();
@@ -5847,7 +5851,7 @@ function draw() {
     ctx.fillText(`Load ${Math.round(S.load)} ${STRESS}`, X(x0), Y(py + 3.4));
     // drainage valve on the platen
     if (sat) {
-      const vx_ = X(x0 + W - 1.4), vy0 = Y(py + 1.1), vy1 = Y(py + 3.0);
+      const vx_ = X(x0 + W - 1.0), vy0 = Y(py + 1.1), vy1 = Y(py + 3.0);
       ctx.strokeStyle = C.water; ctx.lineWidth = Math.max(2, SC * 0.18);
       ctx.beginPath(); ctx.moveTo(vx_, vy0); ctx.lineTo(vx_, vy1); ctx.stroke();
       const vy = (vy0 + vy1) / 2, vs = Math.max(4, SC * 0.35);
@@ -5913,7 +5917,7 @@ function statusText() {
 /* ---------- chart: sigma' and u over time ---------- */
 const hist = []; const HMAX = 400; let histT = 0;
 function pushHist(m) {
-  hist.push({ t: m.t, s: m.sigEff, u: m.u, tot: m.sigma });
+  hist.push({ t: S.t, s: m.sigEff, u: m.u, tot: m.sigma });
   if (hist.length > HMAX) hist.shift();
 }
 function drawChart() {
@@ -5978,6 +5982,8 @@ function syncUI() {
   $$('#gr-drain button').forEach(b => { b.disabled = S.water !== 'sat'; });
   const busy = S.phase !== 'run';
   btnShear.disabled = busy || S.top !== 'platen' || !S.wallR || S.shear === 'cyclic';
+  btnShear.title = S.top !== 'platen' ? 'Shearing needs the platen on top' : '';
+  btnWall.title = S.wallR && S.top !== 'none' ? 'Take the platen or house off first' : '';
   btnShake.disabled = busy || !S.wallR || S.shear === 'mono';
   btnWall.disabled = busy || (S.wallR && S.top !== 'none');
   btnShear.querySelector('span').textContent = S.shear === 'mono' ? 'Stop shearing' : 'Shear';
@@ -5998,17 +6004,13 @@ function setWindow() {
 // prepare a fresh sample: from the cache when we have this packing, otherwise pour it
 function prepare(pack, top) {
   const key = pack + (S.water === 'damp' ? '-damp' : '');
-  S.houseY0 = null; peakMob = 0; act = null;
+  S.houseY0 = null; peakMob = 0; act = null; hist.length = 0; disp = null;
   if (cache[key]) sim.restore(cache[key], top); else sim.pour(pack, top);
   S.pack = pack;
   setWindow(); syncUI();
 }
-segGroup($('#gr-pack'), v => { exp = null; prepare(v, S.top); say(''); });
-segGroup($('#gr-water'), v => {
-  const was = S.water; S.water = v;
-  if (was === 'damp' || v === 'damp') { if (S.phase === 'run' && S.wallR) { /* bridges form or dry out in place */ } }
-  syncUI();
-});
+segGroup($('#gr-pack'), v => { exp = null; prepare(v, S.phase === 'run' ? S.top : (S.pendingTop || S.top)); say(''); });
+segGroup($('#gr-water'), v => { S.water = v; syncUI(); });   // bridges form or dry out in place
 segGroup($('#gr-drain'), v => { S.drain = v; syncUI(); });
 segGroup($('#gr-top'), v => {
   if (S.phase !== 'run') { syncUI(); return; }
@@ -6036,11 +6038,11 @@ btnStep.addEventListener('click', () => { paused = true; advance(1.0, 1e9); fram
 /* ---------- actions and their measured outcome ---------- */
 function snapM() { const m = sim.measure(); return m; }
 function startAct(kind) {
-  const m0 = lastM || snapM();
+  const m0 = disp || lastM || snapM();
   act = { kind, t0: S.t, m0: Object.assign({}, m0), h0: kind === 'wall' ? 0 : (S.top === 'platen' ? S.py : sim.sampleTop()), uMax: m0.u, uMin: m0.u, sMin: m0.sigEff, sMax: m0.sigEff, mobPeak: 0, tail: 0, exp: exp && exp.id };
   peakMob = 0;
   if (S.top === 'house') S.houseY0 = S.hy;
-  if (kind === 'shear') sim.shear('mono', 0.03, 0.3);
+  if (kind === 'shear') sim.shear('mono', 0.025, 0.3);
   else if (kind === 'shake') sim.shear('cyclic', 0.02, 8);
   else if (kind === 'wall') sim.removeWall();
 }
@@ -6052,9 +6054,7 @@ function trackAct(m) {
   const done = act.kind === 'wall' ? S.t - act.t0 > 14 : S.shear === 'none';
   if (done) { act.tail += 1; if (act.tail > (act.kind === 'shake' ? 40 : 2)) finishAct(); }
 }
-function finishAct() {
-  if (!act) return;
-  const m = disp || lastM, a = act; act = null;
+function buildOutcome(a, m) {
   const out = { kind: a.kind, exp: a.exp, pack: S.pack, water: S.water, drain: S.drain, top: S.top, load: S.load };
   out.s0 = a.m0.sigEff; out.s1 = m.sigEff; out.sMin = a.sMin; out.sMax = a.sMax; out.u0 = a.m0.u; out.u1 = m.u; out.uMax = a.uMax; out.uMin = a.uMin;
   out.e0 = a.m0.e; out.e1 = m.e;
@@ -6062,10 +6062,15 @@ function finishAct() {
     out.dV = (S.py - a.h0) / a.h0 * 100; out.mobPeak = a.mobPeak; out.mobEnd = m.mob; out.tauEnd = m.tauCore;
   } else if (a.kind === 'shake') {
     out.dV = S.top === 'platen' ? (S.py - a.h0) / a.h0 * 100 : NaN;
-    if (S.top === 'house') { out.sink = S.houseY0 - S.hy; out.tilt = S.hth * 180 / Math.PI; }
+    if (S.top === 'house' && S.houseY0 != null) { out.sink = S.houseY0 - S.hy; out.tilt = S.hth * 180 / Math.PI; }
   } else if (a.kind === 'wall') { out.spilled = sim.spilled(); out.runout = sim.runout(); }
-  last = out;
-  showResult(out);
+  return out;
+}
+function finishAct() {
+  if (!act) return;
+  const a = act; act = null;
+  last = buildOutcome(a, disp || lastM);
+  showResult(last);
   syncUI();
 }
 const p1 = v => (v > 0 ? '+' : '') + v.toFixed(1);
@@ -6073,10 +6078,10 @@ function outcomeText(o) {
   if (!o) return '';
   const st = `${o.pack} sand, ${o.water === 'sat' ? 'saturated, drain ' + o.drain : o.water}`;
   if (o.kind === 'wall') return o.spilled < 4 ? `Side wall removed (${st}): the cut face stood. ${o.spilled} grains fell.` : `Side wall removed (${st}): the face collapsed. ${o.spilled} grains ran out, up to ${o.runout.toFixed(0)} grain widths from the box.`;
-  if (o.kind === 'shear') return `Sheared ${st} under ${Math.round(o.load)} ${STRESS}: volume ${p1(o.dV)}% (${o.dV > 0.3 ? 'it dilated' : o.dV < -0.3 ? 'it compacted' : 'almost no change'}); peak τ/σ′ ${o.mobPeak.toFixed(2)}, at the end ${o.mobEnd.toFixed(2)}; water pressure ${Math.round(o.u0)} → ${Math.round(o.u1)} ${STRESS}${o.uMin < -3 ? ' (suction)' : ''}; σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS}.`;
+  if (o.kind === 'shear') return `Sheared ${st} under ${Math.round(o.load)} ${STRESS}: volume ${p1(o.dV)}% (${o.dV > 0.3 ? 'it dilated' : o.dV < -0.3 ? 'it compacted' : 'almost no change'}); peak τ/σ′ ${o.mobPeak.toFixed(2)}, at the end ${o.mobEnd.toFixed(2)}; shear stress at the end ${Math.round(o.tauEnd)} ${STRESS}; water pressure ${Math.round(o.u0)} → ${Math.round(o.u1)} ${STRESS}${o.uMin < -3 ? ' (suction)' : ''}${o.uMin <= 2 - sim.prm.uCav ? ', down to the limit where water cavitates, after which a little swelling got through' : ''}; σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS}.`;
   if (o.kind === 'shake') {
-    let t = `Shaken, ${st}: σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS} (lowest ${Math.round(o.sMin)}), water pressure up to ${Math.round(o.uMax)} ${STRESS}`;
-    if (o.s0 > 0.5) t += ` (${Math.round(o.uMax / Math.max(o.s0, 1e-6) * 100)}% of the grain stress before shaking)`;
+    let t = `Shaken, ${st}: grain stress σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS}; water pressure ${Math.round(o.u0)} → ${Math.round(o.u1)} ${STRESS}`;
+    if (o.u1 > 0.5) t += ` (the grain stress before shaking was ${Math.round(o.s0)})`;
     if (isFinite(o.dV)) t += `; volume ${p1(o.dV)}%`;
     if (o.sink != null) t += `; house sank ${o.sink.toFixed(1)} grain widths and tilted ${Math.abs(o.tilt).toFixed(0)}°`;
     return t + '.';
@@ -6098,7 +6103,7 @@ const EXPS = {
 };
 function runExp(id) {
   const e = EXPS[id]; if (!e) return;
-  exp = { id, e, started: false };
+  exp = { id, e, started: false }; last = null;
   sim.shear('none');
   S.water = e.water; if (e.drain) S.drain = e.drain; if (e.load) { S.load = e.load; load.value = e.load; }
   prepare(e.pack, e.top);
@@ -6108,7 +6113,7 @@ function runExp(id) {
   syncUI();
 }
 function say(text, next) {
-  hint.textContent = text || '';
+  hint.textContent = (text || '') + (text && RM && paused ? ' Press Run or Step to start.' : '');
   if (next) {
     const b = document.createElement('button'); b.type = 'button'; b.className = 'btn gr-next'; b.textContent = next[0];
     b.addEventListener('click', () => runExp(next[1])); hint.appendChild(document.createTextNode(' ')); hint.appendChild(b);
@@ -6140,15 +6145,16 @@ function advance(simTime, budgetMs) {
 let chartTick = 0, wasPhase = '';
 function frameUpdate() {
   const m = sim.measure(); lastM = m;
-  updateReadouts(m); trackAct(m); expTick();
-  if (S.t - histT > 0.15) { histT = S.t; pushHist(m); }
+  updateReadouts(m); trackAct(disp); expTick();
+  if (S.phase === 'run' && S.t - histT > 0.15) { histT = S.t; pushHist(disp); }
   if (S.phase !== wasPhase) { wasPhase = S.phase; if (S.phase === 'run') setWindow(); syncUI(); }
   draw();
   if (++chartTick % 3 === 0) drawChart();
 }
 F.ticks.push((t, dt) => {
   if (!paused) {
-    const steps = Math.max(8, Math.min(220, Math.floor(BUDGET / Math.max(0.01, perStep))));
+    // about 100 steps (0.08 model time units) a frame while experiments run; faster while preparing
+    const steps = Math.max(8, Math.min(S.phase === 'run' ? 100 : 240, Math.floor(BUDGET / Math.max(0.01, perStep))));
     advance(steps * sim.dt, BUDGET * 1.5);
     frameUpdate();
   } else if (S.phase !== 'run') {
@@ -6158,6 +6164,13 @@ F.ticks.push((t, dt) => {
   }
 });
 F.onFirst = () => { resize(); };
+// settle the opening sample in idle moments before the reader scrolls here, so the first frame they see is a loaded box
+function idlePrep() {
+  if (F.visible || S.phase === 'run') { if (S.phase === 'run') frameUpdate(); return; }
+  advance(300 * sim.dt, 6);
+  setTimeout(idlePrep, 40);
+}
+setTimeout(idlePrep, 800);
 
 /* ---------- start: dense sand under the platen, force chains showing ---------- */
 S.water = 'dry'; S.load = 40;
@@ -6175,7 +6188,7 @@ if (/grains-debug/.test(location.search)) window.grainsDebug = {
 };
 
 /* ---------- tutor ---------- */
-if (typeof tutorRegister === 'function') tutorRegister('fig-grains', {
+const tutorSpec = {
   title: 'Grain-scale sandbox (effective stress)',
   describe: () => {
     const m = disp || lastM || {};
@@ -6187,11 +6200,13 @@ if (typeof tutorRegister === 'function') tutorRegister('fig-grains', {
       `Now: total stress ${n1(m.sigma || 0)}, water pressure u ${n1(m.u || 0)}, grain (effective) stress σ′ ${n1(m.sigEff || 0)} (measured from contact forces), void ratio ${isFinite(m.e) ? m.e.toFixed(3) : '–'}, shear stress ratio τ/σ′ ${m.mob ? m.mob.toFixed(2) : '–'}.`,
     ];
     if (exp) lines.push(`Last experiment chosen: "${exp.id}". ${exp.e.hint}`);
-    if (last) lines.push('Last measured outcome: ' + outcomeText(last));
-    else if (act) lines.push(`In progress: ${act.kind}.`);
+    if (act) lines.push(`In progress (${(S.t - act.t0).toFixed(1)} model time units so far): ` + outcomeText(buildOutcome(act, m)));
+    else if (last) lines.push('Last measured outcome: ' + outcomeText(last));
     return lines.join('\n');
   }
-});
+};
+if (typeof tutorRegister === 'function') tutorRegister('fig-grains', tutorSpec);
+if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
 })();
 
 /* ===================== Fig 3: dam zones ===================== */
