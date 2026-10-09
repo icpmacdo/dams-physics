@@ -166,7 +166,7 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
 
 /* index bar: highlight the section in view */
 (function indexBar() {
-  const links = $$('.indexbar nav a');
+  const links = $$('.indexbar nav a').filter(a => $(a.getAttribute('href')));
   const secs = links.map(a => $(a.getAttribute('href')));
   const so = new IntersectionObserver(() => {
     let best = -1;

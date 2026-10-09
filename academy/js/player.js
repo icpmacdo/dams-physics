@@ -273,7 +273,7 @@ export function mountPlayer(main, def, opts = {}) {
           h('button', { type: 'button', class: 'btn', onclick: () => { const url = stage.snapshot(); if (!url) return; const a = document.createElement('a'); a.href = url; a.download = 'dam-model.png'; a.click(); } }, 'Save image'))),
       h('ul', { class: 'next-links' },
         h('li', {}, h('a', { href: '#/lab' }, 'Seepage lab'), ': all design options, and all 36 combinations solved at once.'),
-        h('li', {}, h('a', { href: '../index.html#seepage' }, 'Sheet 4 of Dams in Section'), ': piping, uplift under a gravity dam, and the full list of defences.')));
+        h('li', {}, h('a', { href: '../index.html#seepage' }, 'Step 8 of Dams in Section'), ': piping, uplift under a gravity dam, and the full list of defences.')));
   }
 
   function renderFoot() {

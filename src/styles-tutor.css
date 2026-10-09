@@ -1,0 +1,69 @@
+/* ---------- tutor: a docked notebook sheet, bottom right (bottom sheet on phones) ---------- */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.tutor-ask { margin-left: auto; border-color: var(--accent); color: var(--accent); min-height: 28px; padding: 3px 10px; font-size: 0.7rem; }
+.tutor-ask:hover { background: var(--accent-soft); }
+.tutor {
+  position: fixed; z-index: 40; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: min(400px, calc(100vw - 32px)); max-height: min(72vh, 640px);
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--sheet); color: var(--ink); border: 1.5px solid var(--ink); border-radius: 4px;
+  box-shadow: 6px 6px 0 var(--accent-soft); padding: 12px 14px;
+}
+.tutor-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+.tutor-kicker { display: block; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.tutor-fig { display: block; font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1rem; line-height: 1.2; margin-top: 2px; }
+.tutor-x { min-height: 28px; padding: 3px 9px; font-size: 0.68rem; }
+.tutor-log { overflow-y: auto; min-height: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 10px; overscroll-behavior: contain; }
+.tutor-log:empty { display: none; }
+.tutor-msg { font-size: 0.95rem; line-height: 1.5; }
+.tutor-msg p { margin: 0 0 0.6em; }
+.tutor-msg p:last-child { margin-bottom: 0; }
+.tutor-msg.you { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-2); border-left: 2px solid var(--rule); padding-left: 8px; }
+.tutor-msg.claude { border-left: 2px solid var(--accent); padding-left: 10px; }
+.tutor-msg.thinking { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-3); }
+.tutor-msg.note { font-family: var(--f-mono); font-size: 0.74rem; color: var(--warn); }
+.tutor-starters { display: flex; flex-wrap: wrap; gap: 6px; }
+.tutor-starters .chip { font-family: var(--f-mono); font-size: 0.74rem; }
+.tutor-form { display: flex; gap: 6px; }
+.tutor-form input {
+  flex: 1 1 auto; min-width: 0; font: inherit; font-size: 0.95rem; color: var(--ink); background: var(--paper);
+  border: 1.5px solid var(--ink-2); border-radius: 4px; padding: 6px 9px;
+}
+.tutor-form input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.tutor-note { margin: 0; font-family: var(--f-mono); font-size: 0.64rem; line-height: 1.45; color: var(--ink-3); }
+@media (max-width: 560px) {
+  .tutor { right: 0; left: 0; bottom: 0; width: auto; max-height: 70vh; border-radius: 4px 4px 0 0; border-width: 1.5px 0 0; box-shadow: none; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tutor:not([hidden]) { animation: tutor-in 160ms ease-out; }
+  @keyframes tutor-in { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+}
+
+/* ---------- glossary terms and their definitions ---------- */
+.gl { text-decoration: underline dotted var(--ink-3); text-decoration-thickness: 1.5px; text-underline-offset: 3px; cursor: help; }
+.gl:hover, .gl:focus-visible { text-decoration-color: var(--accent); color: var(--accent); outline: none; }
+.gl-tip {
+  position: fixed; z-index: 45; pointer-events: none;
+  background: var(--ink); color: var(--sheet); border-radius: 4px; padding: 9px 12px;
+  font-family: var(--f-body); font-size: 0.9rem; line-height: 1.45;
+}
+.gl-tip b { display: block; font-family: var(--f-mono); font-weight: 500; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-bottom: 3px; }
+.glossary-list { display: grid; grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr); gap: 8px 20px; margin: 12px 0 0; max-width: 58rem; }
+.glossary-list dt { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; }
+.glossary-list dd { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
+.glossary-list dd a { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--accent); white-space: nowrap; }
+@media (max-width: 560px) { .glossary-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .glossary-list dd { margin-bottom: 10px; } }
+
+/* ---------- BC case files ---------- */
+.col > .case-grid { max-width: 58rem; }
+.cases { margin-top: 40px; }
+.case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.case { padding: 12px 18px 6px 0; border-right: 1px solid var(--rule); padding-left: 18px; min-width: 0; }
+.case:first-child { padding-left: 0; }
+.case:last-child { border-right: 0; }
+.case-k { margin: 0; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.case h4 { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.2rem; line-height: 1.15; margin: 4px 0 8px; text-wrap: balance; }
+.case p:not(.case-k) { font-size: 0.95rem; margin: 0 0 10px; }
+.case-src { font-family: var(--f-mono); font-size: 0.68rem; color: var(--ink-3); }
+@media (max-width: 860px) { .case { padding-left: 0; border-right: 0; border-bottom: 1px solid var(--rule); } }
+.glossary { margin-top: 48px; }

@@ -347,6 +347,75 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
 
 
 
+/* ---------- tutor: a docked notebook sheet, bottom right (bottom sheet on phones) ---------- */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.tutor-ask { margin-left: auto; border-color: var(--accent); color: var(--accent); min-height: 28px; padding: 3px 10px; font-size: 0.7rem; }
+.tutor-ask:hover { background: var(--accent-soft); }
+.tutor {
+  position: fixed; z-index: 40; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: min(400px, calc(100vw - 32px)); max-height: min(72vh, 640px);
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--sheet); color: var(--ink); border: 1.5px solid var(--ink); border-radius: 4px;
+  box-shadow: 6px 6px 0 var(--accent-soft); padding: 12px 14px;
+}
+.tutor-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+.tutor-kicker { display: block; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.tutor-fig { display: block; font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1rem; line-height: 1.2; margin-top: 2px; }
+.tutor-x { min-height: 28px; padding: 3px 9px; font-size: 0.68rem; }
+.tutor-log { overflow-y: auto; min-height: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 10px; overscroll-behavior: contain; }
+.tutor-log:empty { display: none; }
+.tutor-msg { font-size: 0.95rem; line-height: 1.5; }
+.tutor-msg p { margin: 0 0 0.6em; }
+.tutor-msg p:last-child { margin-bottom: 0; }
+.tutor-msg.you { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-2); border-left: 2px solid var(--rule); padding-left: 8px; }
+.tutor-msg.claude { border-left: 2px solid var(--accent); padding-left: 10px; }
+.tutor-msg.thinking { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-3); }
+.tutor-msg.note { font-family: var(--f-mono); font-size: 0.74rem; color: var(--warn); }
+.tutor-starters { display: flex; flex-wrap: wrap; gap: 6px; }
+.tutor-starters .chip { font-family: var(--f-mono); font-size: 0.74rem; }
+.tutor-form { display: flex; gap: 6px; }
+.tutor-form input {
+  flex: 1 1 auto; min-width: 0; font: inherit; font-size: 0.95rem; color: var(--ink); background: var(--paper);
+  border: 1.5px solid var(--ink-2); border-radius: 4px; padding: 6px 9px;
+}
+.tutor-form input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.tutor-note { margin: 0; font-family: var(--f-mono); font-size: 0.64rem; line-height: 1.45; color: var(--ink-3); }
+@media (max-width: 560px) {
+  .tutor { right: 0; left: 0; bottom: 0; width: auto; max-height: 70vh; border-radius: 4px 4px 0 0; border-width: 1.5px 0 0; box-shadow: none; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tutor:not([hidden]) { animation: tutor-in 160ms ease-out; }
+  @keyframes tutor-in { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+}
+
+/* ---------- glossary terms and their definitions ---------- */
+.gl { text-decoration: underline dotted var(--ink-3); text-decoration-thickness: 1.5px; text-underline-offset: 3px; cursor: help; }
+.gl:hover, .gl:focus-visible { text-decoration-color: var(--accent); color: var(--accent); outline: none; }
+.gl-tip {
+  position: fixed; z-index: 45; pointer-events: none;
+  background: var(--ink); color: var(--sheet); border-radius: 4px; padding: 9px 12px;
+  font-family: var(--f-body); font-size: 0.9rem; line-height: 1.45;
+}
+.gl-tip b { display: block; font-family: var(--f-mono); font-weight: 500; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-bottom: 3px; }
+.glossary-list { display: grid; grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr); gap: 8px 20px; margin: 12px 0 0; max-width: 58rem; }
+.glossary-list dt { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; }
+.glossary-list dd { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
+.glossary-list dd a { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--accent); white-space: nowrap; }
+@media (max-width: 560px) { .glossary-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .glossary-list dd { margin-bottom: 10px; } }
+
+/* ---------- BC case files ---------- */
+.col > .case-grid { max-width: 58rem; }
+.cases { margin-top: 40px; }
+.case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.case { padding: 12px 18px 6px 0; border-right: 1px solid var(--rule); padding-left: 18px; min-width: 0; }
+.case:first-child { padding-left: 0; }
+.case:last-child { border-right: 0; }
+.case-k { margin: 0; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.case h4 { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.2rem; line-height: 1.15; margin: 4px 0 8px; text-wrap: balance; }
+.case p:not(.case-k) { font-size: 0.95rem; margin: 0 0 10px; }
+.case-src { font-family: var(--f-mono); font-size: 0.68rem; color: var(--ink-3); }
+@media (max-width: 860px) { .case { padding-left: 0; border-right: 0; border-bottom: 1px solid var(--rule); } }
+.glossary { margin-top: 48px; }
 
 </style>
 <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
@@ -435,23 +504,25 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
     <div class="wide">
       <a class="mark" href="#top">Dams in Section</a>
       <nav aria-label="Sections">
+        <a href="#beach">Groundwork</a>
         <a href="#types">Water vs tailings</a>
         <a href="#raising">Raising methods</a>
         <a href="#zones">Dam zones</a>
         <a href="#seepage">Seepage</a>
+        <a href="#build">Build a dam</a>
       </nav>
     </div>
   </div>
 
   <header class="masthead wide" id="top">
-    <p class="eyebrow">Embankments, concrete and mine waste, cut open and animated</p>
+    <p class="eyebrow">A course in nine steps, from a handful of sand to a dam you design</p>
     <h1>Dams in <span class="cut">Section</span></h1>
-    <p class="lede">Every dam is a fight with two things: water pressure, which grows with depth, and seepage, which finds every weakness. These drawings cut dams open so you can watch both at work. Each one is live: press play, drag the sliders, and change the design.</p>
+    <p class="lede">A dam is a pile of soil or a block of concrete holding back water. Whether it stands or fails comes down to one idea you already know from the beach: sand is strong when its grains press together, and water pressure pushes them apart. This course builds that idea step by step, then uses it to cut real dams open. Every drawing is live, so press play, drag the sliders and try to break things.</p>
     <div class="topics">
-      <a href="#types"><span>Sheet 1</span><strong>Hydroelectric vs tailings dams</strong></a>
-      <a href="#raising"><span>Sheet 2</span><strong>Upstream, downstream, centreline</strong></a>
-      <a href="#zones"><span>Sheet 3</span><strong>Dam zones</strong></a>
-      <a href="#seepage"><span>Sheet 4</span><strong>Seepage paths</strong></a>
+      <a href="#beach"><span>Steps 1–4</span><strong>Groundwork: sand, water and strength</strong></a>
+      <a href="#types"><span>Steps 5–6</span><strong>Two kinds of dam, three ways to raise one</strong></a>
+      <a href="#zones"><span>Steps 7–8</span><strong>Inside the dam: zones and seepage</strong></a>
+      <a href="#build"><span>Step 9</span><strong>Build your own dam and test it</strong></a>
     </div>
   </header>
 
@@ -460,7 +531,7 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
   <!-- ================= SHEET 1 ================= -->
   <section class="chapter" id="types">
     <div class="wide">
-      <div class="chapter-head"><span class="sheetno">Sheet 1</span><h2>Two dams, two jobs</h2></div>
+      <div class="chapter-head"><span class="sheetno">Step 5</span><h2>Two dams, two jobs</h2></div>
     </div>
     <div class="col">
       <p>A hydroelectric dam holds back water, and the water is the product. Its height above the turbines is stored energy, released on demand. A tailings dam holds back mine waste: rock ground finer than flour, pumped out of the mill as a slurry with process water. Nobody wants it back. The job is to keep it in place permanently.</p>
@@ -513,7 +584,7 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
         </table>
       </div>
       <h3>Why tailings dams fail differently</h3>
-      <p>A reservoir of water cannot lose strength. A deposit of loose, saturated tailings can. When loose grains are sheared, they try to pack tighter; the water in the pores can't escape fast enough, so pore pressure rises, the grain-to-grain contact force drops toward zero, and the deposit briefly behaves like a heavy fluid. This is <span class="term">liquefaction</span>. It can be triggered by an earthquake, or with no shaking at all (<em>static</em> liquefaction) by a rising water table, creep, or a small slope movement.</p>
+      <p>A reservoir of water cannot lose strength. A deposit of loose, saturated tailings can. This is the shaking sand box from <a href="#strength">Step 4</a> at the scale of a mine. When loose grains are sheared, they try to pack tighter; the water in the pores can't escape fast enough, so the <span class="gl" data-term="pore-pressure">pore water pressure</span> rises, the grain-to-grain contact force drops toward zero, and the deposit briefly behaves like a heavy fluid. This is <span class="gl" data-term="liquefaction">liquefaction</span>. It can be triggered by an earthquake, or with no shaking at all (<em>static</em> liquefaction) by a rising water table, creep, or a small slope movement.</p>
       <ul class="timeline">
         <li><span class="yr">1985</span>Stava, Italy. Two upstream-raised fluorite tailings dams collapsed one into the other; 268 people killed.</li>
         <li><span class="yr">1994</span>Merriespruit, South Africa. A gold tailings dam overtopped after heavy rain and flowed into a town; 17 killed.</li>
@@ -527,7 +598,7 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
   <!-- ================= SHEET 2 ================= -->
   <section class="chapter" id="raising">
     <div class="wide">
-      <div class="chapter-head"><span class="sheetno">Sheet 2</span><h2>Upstream, downstream, centreline</h2></div>
+      <div class="chapter-head"><span class="sheetno">Step 6</span><h2>Upstream, downstream, centreline</h2></div>
     </div>
     <div class="col">
       <p>A tailings dam is never finished while the mine runs. The mill produces tailings every day, so the dam has to grow with them. Construction starts with a <strong>starter dam</strong> built from borrow material, and tailings are spigotted from its crest. When the deposit nears the crest, the dam is raised. The direction each raise moves gives the method its name:</p>
@@ -591,10 +662,10 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
   <!-- ================= SHEET 3 ================= -->
   <section class="chapter" id="zones">
     <div class="wide">
-      <div class="chapter-head"><span class="sheetno">Sheet 3</span><h2>Dam zones</h2></div>
+      <div class="chapter-head"><span class="sheetno">Step 7</span><h2>Dam zones</h2></div>
     </div>
     <div class="col">
-      <p>Large embankment dams are rarely one material. They are <strong>zoned</strong>: each zone is a different soil or rock, chosen for one job. A zone either holds water back, lets water out without letting soil out, or supplies weight. Read a section from the middle outward and the pattern repeats: tight in the centre, then progressively coarser and more free-draining toward the faces.</p>
+      <p>Large embankment dams are rarely one material. They are <strong>zoned</strong>: each zone is a different soil or rock, chosen for one job. A zone either holds water back, lets water out without letting soil out, or supplies weight. In the language of <a href="#strength">Step 4</a>: the <span class="gl" data-term="core">core</span> takes the water's pressure, the <span class="gl" data-term="filter">filters</span> and <span class="gl" data-term="drain">drains</span> keep the water pressure low in the outer zones, and the <span class="gl" data-term="shell">shells</span>, kept dry, have grains pressing hard on each other and plenty of grip. Read a section from the middle outward and the pattern repeats: tight in the centre, then progressively coarser and more free-draining toward the faces.</p>
       <p>Pick a dam type, then click any zone (or its chip) to see what it's made of and what it's for. <strong>Build</strong> replays the construction sequence; <strong>Explode</strong> pulls the zones apart.</p>
     </div>
 
@@ -635,10 +706,10 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
   <!-- ================= SHEET 4 ================= -->
   <section class="chapter" id="seepage">
     <div class="wide">
-      <div class="chapter-head"><span class="sheetno">Sheet 4</span><h2>Seepage paths</h2></div>
+      <div class="chapter-head"><span class="sheetno">Step 8</span><h2>Seepage paths</h2></div>
     </div>
     <div class="col">
-      <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. Flow through soil follows Darcy's law:</p>
+      <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. You met the rule in <a href="#flow">Step 3</a>: water flows from high <span class="gl" data-term="hydraulic-head">head</span> to low, as fast as the soil lets it. That's Darcy's law:</p>
       <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow rate · k hydraulic conductivity (m/s) · i hydraulic gradient: head lost per metre travelled · A area</small></div>
       <p>The conductivity <em>k</em> spans ten orders of magnitude: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. That range is the whole reason zoning works. A clay core a few metres thick can carry almost the entire head while the rockfill beside it carries almost none.</p>
       <p>Water takes several routes past a dam. The five main ones are below.</p>
@@ -691,7 +762,7 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
 
     <div class="col">
       <h3>When seepage carries soil: piping</h3>
-      <p>Water flowing upward out of the ground at the toe pushes on the sand grains it passes. When the upward gradient reaches the <strong>critical gradient</strong>, the water carries the full weight of the soil, effective stress drops to zero, and the sand boils:</p>
+      <p>Water flowing upward out of the ground at the toe pushes on the sand grains it passes. When the upward gradient reaches the <strong>critical gradient</strong>, the water carries the full weight of the soil, <span class="gl" data-term="effective-stress">effective stress</span> drops to zero, and the sand boils. It's the block from <a href="#strength">Step 4</a> with so much water pressure under it that it floats:</p>
       <div class="formula"><b>i<sub>c</sub></b> = (G<sub>s</sub> − 1) / (1 + e) ≈ (2.65 − 1) / (1 + 0.65) ≈ <b>1.0</b><small>Gs specific gravity of the grains · e void ratio · safety factor against heave = i_c / i_exit; designers want 3 or more at an unfiltered exit</small></div>
       <p>A boil at the toe is where <strong>backward erosion piping</strong> begins. Grains wash out, a small channel forms, and the channel works its way <em>upstream</em> under the dam, getting shorter and steeper as it goes. Erosion of this kind is one of the two big killers of embankment dams. In Foster, Fell and Spannagle's 2000 study of embankment-dam failures, piping through the embankment, through the foundation, or from one into the other caused roughly half of all failures, about as many as overtopping. Teton Dam in Idaho failed this way on its first filling in 1976.</p>
     </div>
@@ -749,7 +820,37 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
       </div>
     </div>
 
+    <div class="col cases" id="cases">
+      <h3>Three BC dams, read with Step 4</h3>
+      <p>Each of these happened in British Columbia, and each is the same idea at work: water pressure where the grains needed their grip.</p>
+      <div class="case-grid">
+        <article class="case">
+          <p class="case-k">Mount Polley tailings dam · 2014</p>
+          <h4>The layer nobody found</h4>
+          <p>About 8 m below the dam, a layer of soft clay laid down in a glacial lake had been missed by the site investigations. When the embankment was loaded, water pressure in that clay couldn't drain away fast enough (<span class="gl" data-term="undrained">undrained</span> loading), so the clay had far less grip than the design assumed. A steep 1.3H:1V rockfill slope on top supplied the push. The dam slid on the clay and released about 25 million m³ of tailings and water. The investigation panel's summary: poor site characterization loaded the gun, and the steep slope pulled the trigger.</p>
+        </article>
+        <article class="case">
+          <p class="case-k">W.A.C. Bennett Dam, Peace River · 1996</p>
+          <h4>A sinkhole on the crest</h4>
+          <p>In June 1996, crews checking a small pothole on the crest of BC Hydro's 183 m earthfill dam found a much larger hole beneath it. A second sinkhole turned up during the drilling that followed. Both were in the core. Seepage had been carrying fine grains out of the core: <span class="gl" data-term="piping">internal erosion</span>, the process in the piping figure above. Engineers lowered the reservoir and filled the voids by compaction grouting, carefully, so the injected grout wouldn't crack the core. BC Hydro called it the most serious dam safety event in its history.</p>
+        </article>
+        <article class="case">
+          <p class="case-k">Coquitlam Dam · 1914, backed up in 2007</p>
+          <h4>A water dam built like a tailings dam</h4>
+          <p>Coquitlam Dam was built by hydraulic fill: soil washed into place with water, which leaves it loose and saturated, much like an upstream tailings raise. Modern investigations found a loose zone that could liquefy in a large earthquake. Rather than repair the old fill, BC Hydro built a new compacted earth-core rockfill dam against its downstream toe, on dense glacial soil. Loose and wet versus dense and drained matters more than whether the dam holds water or tailings.</p>
+        </article>
+      </div>
+      <p class="case-src">Sources: Mount Polley Independent Expert Engineering Investigation and Review Panel (2015); R.A. Stewart and BC Hydro on the Bennett Dam sinkholes; BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
+    </div>
+
     
+
+    <section class="col glossary" id="glossary" aria-labelledby="glossary-h">
+      <p class="eyebrow">Reference</p>
+      <h3 id="glossary-h">Glossary</h3>
+      <p>Every dotted term on the page, in plain words. Hover or tap a term anywhere to see its definition.</p>
+      <dl class="glossary-list" id="glossary-list"></dl>
+    </section>
 
     <footer class="end col">
       <p class="eyebrow">Notes and sources</p>
@@ -1959,7 +2060,7 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
 
 /* index bar: highlight the section in view */
 (function indexBar() {
-  const links = $$('.indexbar nav a');
+  const links = $$('.indexbar nav a').filter(a => $(a.getAttribute('href')));
   const secs = links.map(a => $(a.getAttribute('href')));
   const so = new IntersectionObserver(() => {
     let best = -1;
@@ -2448,6 +2549,118 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
    describe() returns a short plain-text summary of the settings and what the figure shows now. */
 const tutorFigs = new Map();
 function tutorRegister(id, o) { tutorFigs.set(id, o); }
+
+/* ===================== Glossary: hover / tap definitions ===================== */
+/* Mark a term in the text with <span class="gl" data-term="key">term</span>. Hovering, focusing or
+   tapping it shows the plain-language definition below. The glossary list at the end of the page
+   (#glossary-list) is generated from the same table, each entry linked to where the term first appears. */
+const GLOSSARY = {
+  'pore-pressure': ['Pore water pressure', 'The pressure of the water in the gaps between soil grains. Written u. Below the water table it is about 9.8 kPa per metre of depth.'],
+  'effective-stress': ['Effective stress', 'The part of the load that the grains carry by pressing on each other: total stress minus pore water pressure (σ′ = σ − u). Soil strength depends on it, so more water pressure means less strength.'],
+  'total-stress': ['Total stress', 'The full weight pressing down at a depth: soil, water and anything on top, per square metre. Written σ.'],
+  'suction': ['Suction', 'Pore water pressure below atmospheric, in soil that is damp but not saturated. Tiny curved water films between grains pull them together. It is why a sandcastle wall stands.'],
+  'permeability': ['Permeability', 'How easily water flows through a soil, measured as hydraulic conductivity k in m/s. It ranges from about 10⁻² m/s for gravel to 10⁻⁹ m/s for compacted clay.'],
+  'hydraulic-head': ['Hydraulic head', 'The height water would rise to in a thin tube pushed into the ground at that point. Water always flows from higher head to lower head.'],
+  'piezometer': ['Piezometer', 'An instrument that measures water pressure at a point in the ground or in a dam. The simplest is an open tube: the water level in it shows the head.'],
+  'phreatic-surface': ['Phreatic surface', 'The water table inside a dam: the surface where the water pressure is zero. Below it the soil is saturated; above it the soil is damp or dry.'],
+  'darcy': ['Darcy’s law', 'Flow through soil is proportional to how easily the soil passes water and how steeply the head drops: q = k · i · A.'],
+  'gradient': ['Hydraulic gradient', 'How much head the water loses per metre it travels: i = Δh / L. Steeper gradients push water, and loose grains, harder.'],
+  'liquefaction': ['Liquefaction', 'When loose, saturated soil is sheared or shaken, the grains try to pack tighter, the water can’t escape fast enough, and the water pressure rises until the grains barely touch. The soil flows like a heavy liquid.'],
+  'static-liquefaction': ['Static liquefaction', 'Liquefaction with no earthquake: triggered by a rising water level, a small slip, creep, or extra load on loose saturated soil.'],
+  'contractive': ['Contractive', 'Describes loose soil that packs tighter when sheared. If the water can’t drain, its pressure rises and the soil weakens.'],
+  'dilative': ['Dilative', 'Describes dense soil that has to spread apart to shear, because the grains must climb over each other. If saturated, its water pressure drops and it gets stronger.'],
+  'drained': ['Drained', 'Loading slow enough, or soil open enough, that water can flow in or out and the water pressure stays at its normal level.'],
+  'undrained': ['Undrained', 'Loading too fast for the water to escape, so the soil can’t change volume and the water pressure changes instead.'],
+  'friction-angle': ['Friction angle', 'A measure of how much grip grains have on each other: strength = effective stress × tan φ. Sands are typically 30–40°.'],
+  'factor-of-safety': ['Factor of safety', 'The strength available divided by the strength needed to stay put. Below 1 the slope or block moves. Dams are typically designed for about 1.5.'],
+  'slip-surface': ['Slip surface', 'The surface along which a slope would slide if it failed. Stability checks search for the one with the lowest factor of safety.'],
+  'core': ['Core', 'The low-permeability heart of an embankment dam, usually compacted clay. It takes most of the water’s head loss.'],
+  'filter': ['Filter', 'A layer of carefully graded sand that lets water out but stops soil grains from being carried with it.'],
+  'shell': ['Shell', 'The outer zones of an embankment, usually rockfill or gravel. They give the dam its weight and stability and drain freely.'],
+  'drain': ['Drain', 'A zone of free-draining sand or gravel that collects seepage and keeps the water pressure low where the dam needs its strength.'],
+  'seepage': ['Seepage', 'Water flowing slowly through or under a dam. Every dam seeps; what matters is where the water goes and what it carries.'],
+  'seepage-face': ['Seepage face', 'The stretch of a slope where water comes out into the open. It softens the soil there.'],
+  'piping': ['Piping', 'Erosion in which seepage carries grains out at an exit, and a pipe-like channel works backward toward the reservoir.'],
+  'exit-gradient': ['Exit gradient', 'The hydraulic gradient where seepage leaves the ground. If it pushes upward hard enough to lift the grains (about 1.0), the sand boils.'],
+  'critical-gradient': ['Critical gradient', 'The upward gradient at which flowing water carries the full weight of the grains, about 1.0 for sand. Effective stress becomes zero and the sand boils.'],
+  'uplift': ['Uplift', 'Water pressure under a concrete dam pushing it upward, which cancels part of its weight.'],
+  'tailings': ['Tailings', 'The waste left after a mill extracts metal from ore: rock ground finer than flour, pumped out as a slurry with water.'],
+  'beach': ['Beach', 'The gently sloping deposit of tailings sand between the dam crest and the pond.'],
+  'upstream-raise': ['Upstream raise', 'Raising a tailings dam by building each new dyke on the tailings beach, so the crest steps toward the pond.'],
+  'hydrostatic': ['Hydrostatic pressure', 'The pressure in still water, p = ρgh: it depends only on depth, about 9.8 kPa per metre.']
+};
+
+(function glossary() {
+  const tip = document.createElement('div');
+  tip.className = 'gl-tip'; tip.id = 'gl-tip'; tip.setAttribute('role', 'tooltip'); tip.hidden = true;
+  document.body.appendChild(tip);
+  let cur = null, hideT = 0;
+  function show(el) {
+    const g = GLOSSARY[el.dataset.term];
+    if (!g) return;
+    clearTimeout(hideT);
+    cur = el;
+    tip.innerHTML = '';
+    const b = document.createElement('b'); b.textContent = g[0];
+    const p = document.createElement('span'); p.textContent = g[1];
+    tip.append(b, p);
+    tip.hidden = false;
+    const r = el.getBoundingClientRect(), tw = Math.min(320, window.innerWidth - 32);
+    tip.style.width = tw + 'px';
+    const left = clamp(r.left + r.width / 2 - tw / 2, 16, window.innerWidth - tw - 16);
+    const th = tip.offsetHeight;
+    const below = r.bottom + 8 + th < window.innerHeight;
+    tip.style.left = left + 'px';
+    tip.style.top = (below ? r.bottom + 8 : r.top - th - 8) + 'px';
+    el.setAttribute('aria-describedby', 'gl-tip');
+  }
+  function hide(now) {
+    clearTimeout(hideT);
+    hideT = setTimeout(() => { tip.hidden = true; if (cur) cur.removeAttribute('aria-describedby'); cur = null; }, now ? 0 : 120);
+  }
+  function wire(root) {
+    $$('.gl[data-term]', root).forEach(el => {
+      if (el.dataset.glWired) return;
+      el.dataset.glWired = '1';
+      if (!GLOSSARY[el.dataset.term]) { el.classList.add('gl-missing'); return; }
+      el.tabIndex = 0;
+      el.addEventListener('mouseenter', () => show(el));
+      el.addEventListener('mouseleave', () => hide());
+      el.addEventListener('focus', () => show(el));
+      el.addEventListener('blur', () => hide());
+      el.addEventListener('click', e => { e.preventDefault(); cur === el && !tip.hidden ? hide(true) : show(el); });
+    });
+  }
+  wire(document);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hide(true); });
+  window.addEventListener('scroll', () => { if (!tip.hidden) hide(true); }, { passive: true });
+
+  // the glossary list: every term, alphabetical, linked to its first appearance
+  const list = $('#glossary-list');
+  if (list) {
+    const first = {};
+    $$('.gl[data-term]').forEach((el, i) => {
+      const k = el.dataset.term;
+      if (first[k]) return;
+      if (!el.id) el.id = 'gl-' + k;
+      const sec = el.closest('section[id]');
+      const no = sec && sec.querySelector('.sheetno');
+      first[k] = { id: el.id, where: no ? no.textContent.trim() : '' };
+    });
+    Object.keys(GLOSSARY).sort((a, b) => GLOSSARY[a][0].localeCompare(GLOSSARY[b][0])).forEach(k => {
+      const g = GLOSSARY[k];
+      const dt = document.createElement('dt'), dd = document.createElement('dd');
+      dt.textContent = g[0];
+      dd.textContent = g[1] + ' ';
+      if (first[k]) {
+        const a = document.createElement('a');
+        a.href = '#' + first[k].id; a.textContent = first[k].where ? 'First met in ' + first[k].where : 'First use';
+        dd.appendChild(a);
+      }
+      list.append(dt, dd);
+    });
+  }
+})();
 /* ===================== Fig 3: dam zones ===================== */
 (function figZones() {
   const F = fig($('#fig-zones'));
@@ -3495,6 +3708,199 @@ function tutorRegister(id, o) { tutorFigs.set(id, o); }
     draw();
     if (anim.t >= 1) anim = null;
   });
+})();
+
+/* ===================== Tutor: "Why did that happen?" ===================== */
+/* Each interactive figure registers a describe() with tutorRegister (app-core). A button on the figure
+   opens a panel that sends Claude the figure's live state and the reader's question, and streams back a
+   plain-language explanation. It uses the artifact's `sample` capability, on the reader's own Claude
+   account, so it only appears where the viewer supports it (not in the standalone docs/ page). */
+(function tutor() {
+  if (!window.claude || typeof window.claude.use !== 'function') return;
+
+  const RULES = [
+    'You are the tutor inside "Dams in Section", an interactive course that teaches how dams stand and fail to a curious adult with no engineering background.',
+    'The course builds everything from one idea: soil is strong because its grains press on each other, and water pressure in the pores pushes them apart and steals that strength (effective stress = total stress − pore water pressure). Its steps, in order: 1 The beach (dry, damp and saturated sand). 2 Pressure grows with depth. 3 Water moves through ground (permeability, head, Darcy). 4 Water pressure steals strength (effective stress, suction, loose vs dense grains, liquefaction). 5 Hydroelectric vs tailings dams. 6 Raising tailings dams: upstream, downstream, centreline. 7 Dam zones (core, filters, shells, drains). 8 Seepage paths, piping and uplift. 9 Build your own dam (seepage solver + slope stability).',
+    'How to answer: explain what the reader is seeing in the figure, using the live state below, the numbers it shows, and the cause-and-effect chain behind them. Connect it back to water pressure and grain contact when it fits. Use plain words, and when you use a technical term, say what it means in a few words. Use an everyday comparison if it helps. Be accurate; if the figure simplifies something, say so briefly. Don\'t invent numbers that aren\'t in the state. Keep it under about 160 words unless the reader asks for more. Write short paragraphs of plain text: no headings, no tables, no bullet lists unless steps are needed, **bold** at most for one or two key words. Canadian spelling. End with one short suggestion of something to try next in the figure when that would help.'
+  ].join('\n\n');
+
+  const STARTERS = ['Why did that happen?', 'What should I try next?', 'Where does this matter in a real dam?'];
+  let sample = null, ctl = null, turns = [], ctx = null, busy = false;
+
+  /* ---------- panel ---------- */
+  const panel = document.createElement('aside');
+  panel.className = 'tutor';
+  panel.id = 'tutor';
+  panel.hidden = true;
+  panel.setAttribute('aria-label', 'Tutor');
+  panel.innerHTML =
+    '<div class="tutor-head"><div><span class="tutor-kicker">Ask the tutor</span><b class="tutor-fig"></b></div>' +
+    '<button class="btn tutor-x" type="button" id="tutor-close" aria-label="Close tutor">Close</button></div>' +
+    '<div class="tutor-log" aria-live="polite"></div>' +
+    '<div class="tutor-starters"></div>' +
+    '<form class="tutor-form" id="tutor-form"><label class="sr" for="tutor-q">Your question</label>' +
+    '<input id="tutor-q" type="text" autocomplete="off" placeholder="Ask about this figure…">' +
+    '<button class="btn primary" type="submit" id="tutor-send">Ask</button>' +
+    '<button class="btn" type="button" id="tutor-stop" hidden>Stop</button></form>' +
+    '<p class="tutor-note">Answers come from Claude on your own account and see only this figure\'s current settings. Check anything important against the text.</p>';
+  document.body.appendChild(panel);
+  const logEl = panel.querySelector('.tutor-log'), figEl = panel.querySelector('.tutor-fig');
+  const startersEl = panel.querySelector('.tutor-starters'), form = panel.querySelector('#tutor-form');
+  const qIn = panel.querySelector('#tutor-q'), sendBtn = panel.querySelector('#tutor-send'), stopBtn = panel.querySelector('#tutor-stop');
+  STARTERS.forEach(s => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.textContent = s;
+    b.addEventListener('click', () => ask(s));
+    startersEl.appendChild(b);
+  });
+  panel.querySelector('#tutor-close').addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) close(); });
+  stopBtn.addEventListener('click', () => ctl && ctl.abort());
+  form.addEventListener('submit', e => { e.preventDefault(); const q = qIn.value.trim(); if (q) { qIn.value = ''; ask(q); } });
+
+  function close() { panel.hidden = true; if (ctl) ctl.abort(); if (ctx && ctx.btn) ctx.btn.focus(); }
+
+  function open(id, btn) {
+    const reg = tutorFigs.get(id);
+    if (!reg) return;
+    if (!ctx || ctx.id !== id) { turns = []; logEl.textContent = ''; }
+    ctx = { id, reg, btn };
+    figEl.textContent = reg.title;
+    panel.hidden = false;
+    startersEl.hidden = turns.length > 0;
+    qIn.focus({ preventScroll: true });
+  }
+
+  /* light formatting: paragraphs and **bold**, built with text nodes only */
+  function render(el, text) {
+    el.textContent = '';
+    text.split(/\n{2,}/).forEach(par => {
+      const p = document.createElement('p');
+      par.split(/(\*\*[^*]+\*\*)/).forEach(bit => {
+        if (/^\*\*[^*]+\*\*$/.test(bit)) { const b = document.createElement('b'); b.textContent = bit.slice(2, -2); p.appendChild(b); }
+        else p.appendChild(document.createTextNode(bit));
+      });
+      el.appendChild(p);
+    });
+  }
+  function bubble(cls, text) {
+    const d = document.createElement('div');
+    d.className = 'tutor-msg ' + cls;
+    if (text != null) render(d, text);
+    logEl.appendChild(d);
+    logEl.scrollTop = logEl.scrollHeight;
+    return d;
+  }
+  function figureText(id) { // the caption and nearby text of the figure, so Claude reads what the reader reads
+    const el = document.getElementById(id);
+    if (!el) return '';
+    const sec = el.closest('section');
+    const head = sec && sec.querySelector('h2');
+    const cap = Array.from(el.querySelectorAll('.caption, figcaption, .things, p')).map(n => n.textContent.replace(/\s+/g, ' ').trim()).join(' ');
+    return ((head ? 'Section: ' + head.textContent.trim() + '\n' : '') + cap).slice(0, 2500);
+  }
+  function errCopy(code) {
+    if (code === 'rate_limited') return 'Too many questions at once. Wait a moment, then ask again.';
+    if (code === 'session_expired') return 'Sign in to Claude again, then ask again.';
+    if (code === 'refused') return 'The tutor couldn\'t answer that one. Try asking it a different way.';
+    if (code === 'empty_completion') return 'No answer came back. Try a simpler question.';
+    return 'The answer was interrupted. Ask again to retry.';
+  }
+
+  async function ask(q) {
+    if (busy || !sample || !ctx) return;
+    let state = '';
+    try { state = String(ctx.reg.describe() || ''); if (!ctx.reg.auto && lastAction.has(ctx.id)) state += '\nLast thing the reader did: ' + lastAction.get(ctx.id); } catch (e) { state = '(state unavailable)'; }
+    bubble('you', q);
+    startersEl.hidden = true;
+    const out = bubble('claude');
+    out.classList.add('thinking'); out.textContent = 'Thinking…';
+    const msg = 'Figure: ' + ctx.reg.title + '\n\nWhat the figure shows right now:\n' + state +
+      '\n\nText around the figure:\n' + figureText(ctx.id) + '\n\nThe reader asks: ' + q;
+    turns.push({ role: 'user', content: msg });
+    if (turns.length > 9) turns = turns.slice(-9);
+    while (turns.length && turns[0].role !== 'user') turns.shift();
+    busy = true; sendBtn.disabled = true; stopBtn.hidden = false;
+    ctl = new AbortController();
+    try {
+      const r = await sample([{ role: 'user', content: RULES }].concat(turns), {
+        cache: false, signal: ctl.signal,
+        onText: ({ text }) => { out.classList.remove('thinking'); render(out, text); logEl.scrollTop = logEl.scrollHeight; }
+      });
+      turns.push({ role: 'assistant', content: r.text });
+      if (r.truncated) bubble('note', 'The answer was cut short. Ask for less at a time.');
+    } catch (e) {
+      out.classList.remove('thinking');
+      const code = e && e.code;
+      if (e && e.text) { render(out, e.text); turns.push({ role: 'assistant', content: e.text }); } else out.remove();
+      if (code === 'not_granted' || code === 'sampling_disabled' || code === 'not_declared' || code === 'capability_disabled' || code === 'capability_removed') {
+        hideAll(); bubble('note', 'The tutor isn\'t available here. Everything else on the page still works.');
+      } else if (code !== 'cancelled') bubble('note', errCopy(code));
+      if (!(e && e.text)) turns.pop(); // drop the unanswered question so the chat stays user/assistant
+    } finally {
+      busy = false; sendBtn.disabled = false; stopBtn.hidden = true; ctl = null;
+    }
+  }
+
+  /* ---------- per-figure buttons ---------- */
+  const buttons = [];
+  function hideAll() { buttons.forEach(b => (b.hidden = true)); }
+  /* Figures without their own describe() get one read from their controls and readouts. */
+  const lastAction = new Map();
+  document.addEventListener('click', e => {
+    const b = e.target.closest && e.target.closest('figure.sheet button');
+    if (b && !b.classList.contains('tutor-ask')) lastAction.set(b.closest('figure.sheet').id, 'pressed "' + b.textContent.trim() + '"');
+  }, true);
+  document.addEventListener('change', e => {
+    const r = e.target.closest && e.target.closest('figure.sheet input[type="range"]');
+    if (r) { const l = r.closest('.range') && r.closest('.range').querySelector('label'); lastAction.set(r.closest('figure.sheet').id, 'moved the ' + (l ? l.textContent.trim() : 'slider') + ' slider'); }
+  }, true);
+  const clean = el => el.textContent.replace(/\s+/g, ' ').trim();
+  function domState(el) {
+    const lines = [];
+    el.querySelectorAll('.seg').forEach(g => {
+      const on = g.querySelector('[aria-pressed="true"]');
+      const lab = g.closest('.ctl') && g.closest('.ctl').querySelector(':scope > span');
+      if (on) lines.push((lab ? clean(lab) : 'Option') + ': ' + clean(on));
+    });
+    el.querySelectorAll('.range').forEach(r => {
+      const l = r.querySelector('label'), o = r.querySelector('output');
+      if (l && o) lines.push(clean(l) + ': ' + clean(o));
+    });
+    el.querySelectorAll('.stage-label').forEach(s => lines.push('Stage: ' + clean(s)));
+    el.querySelectorAll('.ro').forEach(ro => {
+      const k = ro.querySelector('span'), v = ro.querySelector('b'), sm = ro.querySelector('small');
+      if (k && v) lines.push(clean(k) + ': ' + clean(v) + (sm && clean(sm) ? ' (' + clean(sm) + ')' : ''));
+    });
+    const sel = el.querySelector('.chip[aria-pressed="true"], .chip.on');
+    if (sel) lines.push('Selected: ' + clean(sel));
+    if (lastAction.has(el.id)) lines.push('Last thing the reader did: ' + lastAction.get(el.id));
+    return lines.join('\n') || '(no live settings)';
+  }
+  function addButtons() {
+    document.querySelectorAll('figure.sheet[id]').forEach(el => {
+      if (tutorFigs.has(el.id)) return;
+      const no = el.querySelector('.figno');
+      tutorRegister(el.id, { title: no ? clean(no) : el.id, describe: () => domState(el), auto: true });
+    });
+    tutorFigs.forEach((reg, id) => {
+      const el = document.getElementById(id);
+      if (!el || el.querySelector('.tutor-ask')) return;
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'btn tutor-ask'; b.id = 'ask-' + id;
+      b.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6,0.8 a5.2,5.2 0 1 1 -3.9,8.6 L0.6,11.2 L1.3,8.1 A5.2,5.2 0 0 1 6,0.8 z"/></svg><span>Why did that happen?</span>';
+      b.addEventListener('click', () => open(id, b));
+      const top = el.querySelector('.sheet-top');
+      (top || el).appendChild(b);
+      buttons.push(b);
+    });
+  }
+
+  window.claude.use('sample').then(s => {
+    if (!s) return;
+    sample = s;
+    addButtons();
+  }, () => {});
 })();
 
 })();

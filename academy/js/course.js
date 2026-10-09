@@ -7,7 +7,7 @@ const ORDER = ['types', 'zones', 'raising', 'seepage-paths', 'seepage-3d'];
 
 export const LESSONS = {
   types: {
-    id: 'types', kind: 'reading', title: 'Two dams, two jobs', mins: 10, sheet: 'Sheet 1', href: CLASSIC + '#types',
+    id: 'types', kind: 'reading', title: 'Two dams, two jobs', mins: 10, sheet: 'Step 5', href: CLASSIC + '#types',
     summary: 'A hydroelectric dam stores water as energy. A tailings dam stores mine waste permanently. Both resist water pressure and seepage; their design lives and failure modes differ.',
     objectives: [
       'Estimate water pressure at depth with p = ρgh.',
@@ -27,7 +27,7 @@ export const LESSONS = {
     ]
   },
   zones: {
-    id: 'zones', kind: 'reading', title: 'Dam zones', mins: 12, sheet: 'Sheet 3', href: CLASSIC + '#zones',
+    id: 'zones', kind: 'reading', title: 'Dam zones', mins: 12, sheet: 'Step 7', href: CLASSIC + '#zones',
     summary: 'Large embankments are zoned: tight in the middle, progressively coarser and freer-draining toward the faces. In most embankments the filter is the most important zone.',
     objectives: [
       'Name the job of each zone: hold water back, let water out without soil, or supply weight.',
@@ -47,7 +47,7 @@ export const LESSONS = {
     ]
   },
   raising: {
-    id: 'raising', kind: 'reading', title: 'Upstream, downstream, centreline', mins: 12, sheet: 'Sheet 2', href: CLASSIC + '#raising',
+    id: 'raising', kind: 'reading', title: 'Upstream, downstream, centreline', mins: 12, sheet: 'Step 6', href: CLASSIC + '#raising',
     summary: 'The direction each raise moves gives the method its name, and decides what the raise is founded on.',
     objectives: [
       'Sketch the three raising methods from the same starter dam.',
@@ -67,7 +67,7 @@ export const LESSONS = {
     ]
   },
   'seepage-paths': {
-    id: 'seepage-paths', kind: 'reading', title: 'Seepage paths', mins: 15, sheet: 'Sheet 4', href: CLASSIC + '#seepage',
+    id: 'seepage-paths', kind: 'reading', title: 'Seepage paths', mins: 15, sheet: 'Step 8', href: CLASSIC + '#seepage',
     summary: 'Darcy’s law, the five routes water takes past a dam, piping from a toe boil, and uplift under a concrete dam.',
     objectives: [
       'Use Darcy’s law, q = k·i·A, with k from gravel (10⁻² m/s) to compacted clay (10⁻⁹ m/s).',
