@@ -21,7 +21,7 @@ APP = ['app-core.js', 'app-glossary.js', 'app-ground.js', 'app-grains.js', 'app-
 WORKERS = [('seep-src', 'seepage-solver.js'), ('stab-src', 'stability-solver.js')]
 fonts = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800'
+         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400..700;1,400'
          '&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap">')
 app = "(() => {\n'use strict';\n" + ''.join(read(n) for n in APP) + "\n})();\n"
 markup = read('body.html')

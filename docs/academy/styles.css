@@ -3,21 +3,22 @@
    controls, serif for reading. build.py copies the token blocks from src/styles.css in place
    of the marker below. */
 :root {
-  --paper: #f3f6f7;
-  --sheet: #ffffff;
-  --ink: #13212a;
-  --ink-2: #44565f;
-  --ink-3: #65767e;
-  --rule: #d3dcdf;
-  --shadow: 0 1px 2px rgba(19, 33, 42, 0.05), 0 12px 32px -18px rgba(19, 33, 42, 0.22);
-  --water: #1d6ca6;
-  --water-fill: #a8cde8;
-  --water-tint: rgba(46, 128, 196, 0.22);
-  --accent: #c9531a;
-  --accent-soft: rgba(201, 83, 26, 0.13);
-  --bad: #b3261e;
-  --ok: #2a7a4b;
-  --warn: #9a6400;
+  --paper: #f6f1e7;
+  --sheet: #fffcf5;
+  --callout: #efe6d4;
+  --ink: #2a231e;
+  --ink-2: #5a4f46;
+  --ink-3: #7d7064;
+  --rule: #ddd2bf;
+  --shadow: 0 1px 2px rgba(60, 40, 20, 0.06), 0 10px 28px -18px rgba(60, 40, 20, 0.25);
+  --water: #1f5f8b;
+  --water-fill: #b0cfe3;
+  --water-tint: rgba(40, 110, 160, 0.2);
+  --accent: #a33b2b;
+  --accent-soft: rgba(163, 59, 43, 0.11);
+  --bad: #a3241b;
+  --ok: #2f6b3c;
+  --warn: #875800;
   --ramp-lo: #eaf3f9;
   --ramp-hi: #1c5d93;
 
@@ -42,7 +43,7 @@
   --f-label: "Archivo", "Helvetica Neue", Arial, sans-serif;
 
   --step--1: 0.8125rem;
-  --step-0: 1.0625rem;
+  --step-0: 1.125rem;
   --step-1: 1.3rem;
   --step-2: 1.75rem;
   --step-3: clamp(2rem, 4.2vw, 2.75rem);
@@ -50,11 +51,11 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #0d1316; --sheet: #151d22; --ink: #e2eaec; --ink-2: #a3b3b9; --ink-3: #82939a; --rule: #2b393f;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -18px rgba(0, 0, 0, 0.6);
-    --water: #5ba9e2; --water-fill: #1e4a68; --water-tint: rgba(91, 169, 226, 0.2);
-    --accent: #ff8b4d; --accent-soft: rgba(255, 139, 77, 0.15);
-    --bad: #ff6b5d; --ok: #5dcf8d; --warn: #f1b43d;
+    --paper: #1b1714; --sheet: #241f1b; --callout: #2e2721; --ink: #ede4d5; --ink-2: #bcae9c; --ink-3: #928473; --rule: #3a3129;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -18px rgba(0, 0, 0, 0.6);
+    --water: #6eaedb; --water-fill: #22445a; --water-tint: rgba(110, 174, 219, 0.18);
+    --accent: #e27a62; --accent-soft: rgba(226, 122, 98, 0.15);
+    --bad: #f07a68; --ok: #7cc98f; --warn: #e2b04e;
     --ramp-lo: #16303f; --ramp-hi: #58aee8;
     --m-clay: #7c5a3d; --m-filter: #9d8641; --m-trans: #7c6c52; --m-rock: #5a6466; --m-riprap: #434c4e;
     --m-bedrock: #4b473f; --m-alluv: #6c644f; --m-tsand: #6b675b; --m-slime: #4a463e; --m-conc: #5f6567;
@@ -63,16 +64,23 @@
   }
 }
 :root[data-theme="dark"] {
-  --paper: #0d1316; --sheet: #151d22; --ink: #e2eaec; --ink-2: #a3b3b9; --ink-3: #82939a; --rule: #2b393f;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -18px rgba(0, 0, 0, 0.6);
-  --water: #5ba9e2; --water-fill: #1e4a68; --water-tint: rgba(91, 169, 226, 0.2);
-  --accent: #ff8b4d; --accent-soft: rgba(255, 139, 77, 0.15);
-  --bad: #ff6b5d; --ok: #5dcf8d; --warn: #f1b43d;
+  --paper: #1b1714; --sheet: #241f1b; --callout: #2e2721; --ink: #ede4d5; --ink-2: #bcae9c; --ink-3: #928473; --rule: #3a3129;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -18px rgba(0, 0, 0, 0.6);
+    --water: #6eaedb; --water-fill: #22445a; --water-tint: rgba(110, 174, 219, 0.18);
+    --accent: #e27a62; --accent-soft: rgba(226, 122, 98, 0.15);
+    --bad: #f07a68; --ok: #7cc98f; --warn: #e2b04e;
   --ramp-lo: #16303f; --ramp-hi: #58aee8;
   --m-clay: #7c5a3d; --m-filter: #9d8641; --m-trans: #7c6c52; --m-rock: #5a6466; --m-riprap: #434c4e;
   --m-bedrock: #4b473f; --m-alluv: #6c644f; --m-tsand: #6b675b; --m-slime: #4a463e; --m-conc: #5f6567;
   --m-fill: #786549; --m-drain: #a38c3f; --m-liq: #8a7f63; --tex: rgba(228, 238, 240, 0.2);
   color-scheme: dark;
+}
+
+/* Type for this page: textbook serif for reading and headings, a humanist sans for labels and figures.
+   (The block above is shared with academy/, which keeps its own faces.) */
+:root {
+  --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-label: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 /* text-safe variants (WCAG AA on paper, sheet and the tinted blocks); fills keep the brand colours */

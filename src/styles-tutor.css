@@ -69,6 +69,8 @@
 .glossary { margin-top: 48px; }
 
 /* ---------- links in running text ---------- */
-.page p a, .page li a, .case a { color: var(--water); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-.page p a:hover, .page li a:hover { color: var(--accent); }
+.page p a, .page li a, .case a, figcaption a { color: var(--water); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.page p a:hover, .page li a:hover, figcaption a:hover { color: var(--accent); }
 .page p a:focus-visible, .page li a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.page ol.course a { color: var(--ink); text-decoration: none; }
+.page ol.course a:hover strong { color: var(--accent); }

@@ -1,20 +1,21 @@
-/* Layout: a drafting-sheet page — one centred reading column (~66ch) between wide "sheets" for the live drawings, a slim sticky index on top. */
+/* Layout: a warm textbook page — one centred reading column (~66ch) between wide figure plates, callout boxes for the questions, a slim sticky index on top. */
 :root {
-  --paper: #f3f6f7;
-  --sheet: #ffffff;
-  --ink: #13212a;
-  --ink-2: #44565f;
-  --ink-3: #65767e;
-  --rule: #d3dcdf;
-  --shadow: 0 1px 2px rgba(19, 33, 42, 0.05), 0 12px 32px -18px rgba(19, 33, 42, 0.22);
-  --water: #1d6ca6;
-  --water-fill: #a8cde8;
-  --water-tint: rgba(46, 128, 196, 0.22);
-  --accent: #c9531a;
-  --accent-soft: rgba(201, 83, 26, 0.13);
-  --bad: #b3261e;
-  --ok: #2a7a4b;
-  --warn: #9a6400;
+  --paper: #f6f1e7;
+  --sheet: #fffcf5;
+  --callout: #efe6d4;
+  --ink: #2a231e;
+  --ink-2: #5a4f46;
+  --ink-3: #7d7064;
+  --rule: #ddd2bf;
+  --shadow: 0 1px 2px rgba(60, 40, 20, 0.06), 0 10px 28px -18px rgba(60, 40, 20, 0.25);
+  --water: #1f5f8b;
+  --water-fill: #b0cfe3;
+  --water-tint: rgba(40, 110, 160, 0.2);
+  --accent: #a33b2b;
+  --accent-soft: rgba(163, 59, 43, 0.11);
+  --bad: #a3241b;
+  --ok: #2f6b3c;
+  --warn: #875800;
   --ramp-lo: #eaf3f9;
   --ramp-hi: #1c5d93;
 
@@ -39,7 +40,7 @@
   --f-label: "Archivo", "Helvetica Neue", Arial, sans-serif;
 
   --step--1: 0.8125rem;
-  --step-0: 1.0625rem;
+  --step-0: 1.125rem;
   --step-1: 1.3rem;
   --step-2: 1.75rem;
   --step-3: clamp(2rem, 4.2vw, 2.75rem);
@@ -47,11 +48,11 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #0d1316; --sheet: #151d22; --ink: #e2eaec; --ink-2: #a3b3b9; --ink-3: #82939a; --rule: #2b393f;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -18px rgba(0, 0, 0, 0.6);
-    --water: #5ba9e2; --water-fill: #1e4a68; --water-tint: rgba(91, 169, 226, 0.2);
-    --accent: #ff8b4d; --accent-soft: rgba(255, 139, 77, 0.15);
-    --bad: #ff6b5d; --ok: #5dcf8d; --warn: #f1b43d;
+    --paper: #1b1714; --sheet: #241f1b; --callout: #2e2721; --ink: #ede4d5; --ink-2: #bcae9c; --ink-3: #928473; --rule: #3a3129;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -18px rgba(0, 0, 0, 0.6);
+    --water: #6eaedb; --water-fill: #22445a; --water-tint: rgba(110, 174, 219, 0.18);
+    --accent: #e27a62; --accent-soft: rgba(226, 122, 98, 0.15);
+    --bad: #f07a68; --ok: #7cc98f; --warn: #e2b04e;
     --ramp-lo: #16303f; --ramp-hi: #58aee8;
     --m-clay: #7c5a3d; --m-filter: #9d8641; --m-trans: #7c6c52; --m-rock: #5a6466; --m-riprap: #434c4e;
     --m-bedrock: #4b473f; --m-alluv: #6c644f; --m-tsand: #6b675b; --m-slime: #4a463e; --m-conc: #5f6567;
@@ -60,16 +61,23 @@
   }
 }
 :root[data-theme="dark"] {
-  --paper: #0d1316; --sheet: #151d22; --ink: #e2eaec; --ink-2: #a3b3b9; --ink-3: #82939a; --rule: #2b393f;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -18px rgba(0, 0, 0, 0.6);
-  --water: #5ba9e2; --water-fill: #1e4a68; --water-tint: rgba(91, 169, 226, 0.2);
-  --accent: #ff8b4d; --accent-soft: rgba(255, 139, 77, 0.15);
-  --bad: #ff6b5d; --ok: #5dcf8d; --warn: #f1b43d;
+  --paper: #1b1714; --sheet: #241f1b; --callout: #2e2721; --ink: #ede4d5; --ink-2: #bcae9c; --ink-3: #928473; --rule: #3a3129;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -18px rgba(0, 0, 0, 0.6);
+    --water: #6eaedb; --water-fill: #22445a; --water-tint: rgba(110, 174, 219, 0.18);
+    --accent: #e27a62; --accent-soft: rgba(226, 122, 98, 0.15);
+    --bad: #f07a68; --ok: #7cc98f; --warn: #e2b04e;
   --ramp-lo: #16303f; --ramp-hi: #58aee8;
   --m-clay: #7c5a3d; --m-filter: #9d8641; --m-trans: #7c6c52; --m-rock: #5a6466; --m-riprap: #434c4e;
   --m-bedrock: #4b473f; --m-alluv: #6c644f; --m-tsand: #6b675b; --m-slime: #4a463e; --m-conc: #5f6567;
   --m-fill: #786549; --m-drain: #a38c3f; --m-liq: #8a7f63; --tex: rgba(228, 238, 240, 0.2);
   color-scheme: dark;
+}
+
+/* Type for this page: textbook serif for reading and headings, a humanist sans for labels and figures.
+   (The block above is shared with academy/, which keeps its own faces.) */
+:root {
+  --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-label: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -102,7 +110,7 @@ body {
 }
 .indexbar .wide { display: flex; align-items: center; gap: 18px; min-height: 48px; overflow-x: auto; scrollbar-width: none; }
 .indexbar .wide::-webkit-scrollbar { display: none; }
-.indexbar .mark { font-family: var(--f-display); font-weight: 800; font-stretch: 80%; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.95rem; white-space: nowrap; color: var(--ink); text-decoration: none; }
+.indexbar .mark { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; white-space: nowrap; color: var(--ink); text-decoration: none; }
 .indexbar nav { display: flex; gap: 4px; }
 .indexbar nav a {
   font-family: var(--f-label); font-weight: 500; font-size: 0.85rem;
@@ -115,10 +123,10 @@ body {
 .masthead { padding-block: 72px 36px; }
 .eyebrow { font-family: var(--f-label); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 14px; }
 h1 {
-  font-family: var(--f-display); font-weight: 800; font-stretch: 72%; text-transform: uppercase;
-  font-size: var(--step-4); line-height: 0.92; letter-spacing: -0.005em; margin: 0 0 22px; text-wrap: balance;
+  font-family: var(--f-display); font-weight: 700; font-size: var(--step-4); line-height: 1; letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 60; margin-top: 0; margin-bottom: 22px; text-wrap: balance;
 }
-h1 .cut { color: var(--accent); }
+h1 .cut { color: var(--accent); font-style: italic; font-weight: 600; }
 .lede { font-size: 1.25rem; line-height: 1.55; margin-top: 0; margin-bottom: 40px; color: var(--ink-2); }
 .topics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
 .topics a { display: block; padding: 12px 14px 14px 0; text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); padding-left: 14px; }
@@ -136,9 +144,10 @@ h1 .cut { color: var(--accent); }
 /* ---------- sections ---------- */
 section.chapter { padding-block: 72px 8px; border-top: 1px solid var(--rule); margin-top: 56px; }
 .chapter-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-.sheetno { font-family: var(--f-label); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
-h2 { font-family: var(--f-display); font-weight: 750; font-stretch: 88%; font-size: var(--step-3); line-height: 1.05; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
-h3 { font-family: var(--f-display); font-weight: 700; font-stretch: 92%; font-size: var(--step-1); line-height: 1.2; margin: 40px 0 10px; text-wrap: balance; }
+.sheetno { font-family: var(--f-label); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); white-space: nowrap; display: flex; align-items: center; gap: 10px; }
+.sheetno::before { content: ""; width: 28px; border-top: 2px solid var(--accent); }
+h2 { font-family: var(--f-display); font-weight: 700; font-variation-settings: "opsz" 48; font-size: var(--step-3); line-height: 1.1; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+h3 { font-family: var(--f-display); font-weight: 650; font-size: 1.4rem; line-height: 1.2; margin: 40px 0 10px; text-wrap: balance; }
 p { margin: 0 0 1em; }
 .col p, .col li { max-width: 66ch; }
 em { font-style: italic; }
@@ -153,14 +162,14 @@ strong { font-weight: 650; }
 
 /* ---------- figures ("sheets") ---------- */
 figure.sheet {
-  margin: 36px auto 40px; background: var(--sheet); border: 1px solid color-mix(in srgb, var(--rule) 70%, transparent); border-radius: 12px;
+  margin: 36px auto 40px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px;
   box-shadow: var(--shadow); padding: 20px 22px 18px; position: relative;
 }
 .sheet-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
 .figno { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
 .figno b { color: var(--ink); font-weight: 500; }
 .scale-note { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
-figcaption { font-size: 0.95rem; color: var(--ink-2); margin-top: 14px; max-width: 72ch; line-height: 1.55; }
+figcaption { font-family: var(--f-label); font-size: 0.95rem; color: var(--ink-2); margin-top: 14px; max-width: 76ch; line-height: 1.5; }
 figcaption strong { color: var(--ink); }
 svg.dwg { display: block; width: 100%; height: auto; max-width: 100%; overflow: visible; }
 .svgwrap { overflow-x: auto; }
@@ -171,10 +180,10 @@ svg.dwg { display: block; width: 100%; height: auto; max-width: 100%; overflow: 
 @media (max-width: 820px) { .pair { grid-template-columns: minmax(0, 1fr); } }
 
 /* svg text + strokes */
-.dwg text { font-family: var(--f-mono); font-size: 11px; fill: var(--ink); }
+.dwg text { font-family: var(--f-label); font-size: 11.5px; fill: var(--ink); }
 .dwg .lbl { font-size: 11px; fill: var(--ink); }
 .dwg .lbl-s { font-size: 9.5px; fill: var(--ink-2); }
-.dwg .lbl-b { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 13px; fill: var(--ink); }
+.dwg .lbl-b { font-family: var(--f-label); font-weight: 700; font-size: 13px; fill: var(--ink); }
 .dwg .lbl-acc { fill: var(--accent); }
 .dwg .lbl-w { fill: var(--water); }
 .dwg .halo { paint-order: stroke; stroke: var(--sheet); stroke-width: 3px; stroke-linejoin: round; }
@@ -235,7 +244,7 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .ro:first-child { padding-left: 0; }
 .ro:last-child { border-right: 0; }
 .ro span { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
-.ro b { display: block; font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.45rem; line-height: 1.15; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.ro b { display: block; font-family: var(--f-label); font-weight: 600; font-size: 1.45rem; line-height: 1.15; font-variant-numeric: tabular-nums; margin-top: 2px; }
 .ro span.pill { display: inline-block; vertical-align: 4px; margin-left: 6px; font-size: 0.62rem; letter-spacing: 0.05em; padding: 1px 7px; color: inherit; }
 .ro span.pill.ok { color: var(--ok); } .ro span.pill.warn { color: var(--warn); } .ro span.pill.bad { color: var(--bad); }
 .ro small { display: block; font-family: var(--f-label); font-size: 0.8rem; color: var(--ink-2); margin-top: 2px; }
@@ -250,7 +259,7 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .raise-panel { border-top: 1px solid var(--rule); padding-top: 8px; margin-top: 6px; }
 .raise-panel:first-of-type { border-top: 0; margin-top: 0; }
 .raise-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; justify-content: space-between; }
-.raise-head h4 { font-family: var(--f-display); font-weight: 800; font-stretch: 80%; text-transform: uppercase; font-size: 1.15rem; margin: 0; letter-spacing: 0.01em; }
+.raise-head h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; margin: 0; }
 .raise-stats { display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: var(--f-mono); font-size: 0.74rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .raise-stats b { color: var(--ink); font-weight: 500; }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-2); margin-top: 10px; }
@@ -311,7 +320,7 @@ table.cmp td { width: 42%; }
 .three > div { padding: 12px 16px 12px 0; border-right: 1px solid var(--rule); padding-left: 16px; min-width: 0; }
 .three > div:first-child { padding-left: 0; }
 .three > div:last-child { border-right: 0; }
-.three h4 { font-family: var(--f-display); font-weight: 800; font-stretch: 80%; text-transform: uppercase; font-size: 1.1rem; margin: 0 0 6px; }
+.three h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; margin: 0 0 6px; }
 .three ul { margin: 0; padding-left: 1.1em; font-size: 0.95rem; }
 .three li { margin-bottom: 4px; }
 .three .pm { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 10px 0 2px; }

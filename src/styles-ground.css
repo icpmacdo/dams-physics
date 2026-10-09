@@ -79,15 +79,15 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .ideas a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ---------- predict widget (shared) ---------- */
-.predict { margin: 24px 0 28px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 10px 0 12px; }
+.predict { margin: 28px 0 32px; background: var(--callout); border-left: 4px solid var(--accent); border-radius: 4px 8px 8px 4px; padding: 16px 20px 14px; }
 .predict::before { content: "Predict first"; display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
 .predict.is-done::before { content: "Predicted"; color: var(--ink-3); }
-.predict-q { font-family: var(--f-display); font-stretch: 88%; font-weight: 700; font-size: 1.12rem; line-height: 1.32; margin: 0 0 10px; }
-.predict-opts { display: grid; border-top: 1px solid var(--rule); }
+.predict-q { font-family: var(--f-display); font-weight: 650; font-size: 1.15rem; line-height: 1.32; margin: 0 0 10px; }
+.predict-opts { display: grid; border-top: 1px solid color-mix(in srgb, var(--ink-3) 30%, transparent); }
 .predict-opts button {
   display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: baseline; width: 100%; text-align: left;
   font-family: var(--f-body); font-size: 1rem; line-height: 1.4; color: var(--ink); background: transparent;
-  border: 0; border-bottom: 1px solid var(--rule); padding: 9px 6px 9px 0; cursor: pointer;
+  border: 0; border-bottom: 1px solid color-mix(in srgb, var(--ink-3) 30%, transparent); padding: 9px 6px 9px 0; cursor: pointer;
 }
 .predict-opts button:hover:not([aria-disabled]) { background: var(--accent-soft); }
 .predict-opts button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }

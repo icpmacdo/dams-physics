@@ -459,9 +459,9 @@
       ctx.restore();
       // labels
       ctx.save(); ctx.translate(pn.ox, 0);
-      ctx.fillStyle = C.ink; ctx.font = '600 15px "Archivo", "Arial Narrow", sans-serif';
+      ctx.fillStyle = C.ink; ctx.font = '600 15px "Source Sans 3", "Helvetica Neue", sans-serif';
       ctx.fillText(pn.kind === 'rock' ? 'Core against rockfill' : 'Core against a sand filter', 0, 17);
-      ctx.font = '12px "IBM Plex Mono", monospace'; ctx.fillStyle = C.ink2;
+      ctx.font = '12px "Source Sans 3", "Helvetica Neue", sans-serif'; ctx.fillStyle = C.ink2;
       ctx.fillText('Core', 8, H - 6);
       ctx.fillText(pn.kind === 'rock' ? 'Rockfill: voids ≫ core grains' : 'Filter: pores < core grains', IF + 6, H - 6);
       ctx.textAlign = 'right';
