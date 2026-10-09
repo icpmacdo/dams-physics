@@ -1,11 +1,23 @@
 # Dams in Section
 
-An interactive, animated explainer of how dams work, drawn as engineering cross-sections. It runs as a single HTML page with no dependencies.
+An interactive course on how dams stand and fail, in nine steps, written for someone with no engineering background. It runs as a single HTML page with no dependencies. Everything builds from one idea: soil is strong because its grains press on each other, and water pressure in the gaps pushes them apart (effective stress).
 
-- **Hydroelectric vs tailings dams.** A gravity dam with a live power and water-pressure readout, next to a tailings facility where coarse sand settles on the beach and fines drift to the pond.
-- **Upstream, downstream, centreline.** All three raising methods built stage by stage from the same starter dam, with fill volumes, crest drift and an earthquake button.
-- **Dam zones.** Zoned earth–rockfill, concrete-face rockfill, concrete gravity and cycloned-sand tailings dams, drawn to scale. Each has a construction replay, an exploded view and notes on every zone.
-- **Seepage.** The main seepage paths, an animation of piping erosion, uplift under a gravity dam, and a **seepage lab** backed by a real solver.
+**Groundwork**
+1. **The beach.** Dry sand pours, damp sand stands, saturated sand turns to soup.
+2. **Pressure grows with depth.** The hydrostatic paradox, and the push on a dam face.
+3. **Water moves through ground.** A permeability race, and Darcy's experiment with a clay plug.
+4. **Water pressure steals strength.** A block on a water cushion, the stress column, suction, and a **grain sandbox**: a live 2D discrete-element model where force chains, dilation and liquefaction emerge from the physics.
+
+**The dams**
+5. **Hydroelectric vs tailings dams.** A gravity dam with live power and pressure readouts, next to a tailings facility.
+6. **Upstream, downstream, centreline.** All three raising methods built stage by stage, with an earthquake button.
+7. **Dam zones.** Four dam types drawn to scale, with construction replays and notes on every zone.
+8. **Seepage.** Seepage paths, a **seepage lab** backed by a real solver, piping, uplift, and three BC case files (Mount Polley, Bennett, Coquitlam).
+
+**Capstone**
+9. **Build your own dam.** Paint zones, choose the foundation and slope, and test it: the seepage solver feeds a limit-equilibrium **slope stability solver**. Four missions, including a Mount Polley-style weak layer.
+
+Every step asks you to predict before it shows you. Dotted terms have hover definitions, and a glossary is at the end. In the claude.ai artifact, a **Why did that happen?** button on each figure sends the figure's live state to Claude, which explains it in plain words.
 
 ## The seepage solver
 
@@ -19,7 +31,9 @@ An interactive, animated explainer of how dams work, drawn as engineering cross-
 It has no dependencies and runs both in Node and as a Web Worker.
 
 ```sh
-node tests/test-seepage.js   # 38 cases + 7 physical sanity checks
+node tests/test-seepage.js     # solver cases + 12 physical sanity checks (incl. custom painted dams)
+node tests/test-stability.js   # Bishop/Spencer checks against closed-form and benchmark cases
+node tests/test-grains.js      # emergent behaviour of the grain sandbox (about 30 s)
 ```
 
 ## Dams Academy
@@ -40,7 +54,7 @@ node tests/test-academy.js   # lesson structure and the 3D lesson's quantitative
 
 ## Build
 
-The page is assembled from `src/` (styles, markup, three script files and the solver):
+The page is assembled from `src/`: `body.html` pulls in the other markup files with `<!-- @include … -->`, and the `styles-*.css` and `app-*.js` files are concatenated in the order listed in `build.py`. `OUT=dir python3 build.py` builds somewhere else.
 
 ```sh
 python3 build.py             # writes docs/index.html and docs/academy/
