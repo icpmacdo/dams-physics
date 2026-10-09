@@ -1,0 +1,124 @@
+/* ---------- groundwork chapters (Steps 1–4) and the shared predict widget ---------- */
+.g-lede { font-size: 1.22rem; line-height: 1.5; }
+
+/* figure layout: drawing beside its controls, stacked on narrow screens */
+.g-split { display: grid; grid-template-columns: minmax(0, 600px) minmax(0, 1fr); gap: 16px 32px; align-items: start; }
+.g-draw { min-width: 0; }
+.g-side { min-width: 0; }
+.g-side .controls { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 0; }
+.g-side .controls .btn { align-self: flex-start; }
+.g-side .ctl { align-items: flex-start; }
+svg.gd { overflow: hidden; }
+.g-side .range { flex: none; }
+.g-side .range label { min-width: 7.5em; }
+.g-side .range output { min-width: 5.5em; text-align: right; }
+.g-side .readouts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g-side .ro, .g-side .ro:first-child { padding-left: 0; border-right: 0; border-bottom: 1px solid var(--rule); }
+.g-side .ro:nth-child(odd) { padding-right: 12px; }
+.g-side .ro b { font-size: 1.3rem; }
+.g-side .note { margin: 12px 0 0; }
+@media (max-width: 860px) {
+  .g-split { grid-template-columns: minmax(0, 1fr); }
+  .g-draw { max-width: 600px; }
+}
+
+/* drawing text: one size on desktop, larger on phones so labels stay legible */
+svg.gd text, svg.gd .lbl { font-size: 11px; }
+svg.gd .lbl-s { font-size: 10px; }
+svg.gd .lbl-b { font-size: 13px; }
+svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
+@media (max-width: 560px) {
+  svg.gd text, svg.gd .lbl { font-size: 15px; }
+  svg.gd .lbl-s { font-size: 14px; }
+  svg.gd .lbl-b { font-size: 17px; }
+  figure.g-fig { padding-inline: 12px; }
+  .g-side .range label { min-width: 0; }
+}
+
+/* Fig 1.1 close-up */
+.g-zoom { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); gap: 12px; align-items: center; }
+.g-zoom .note { margin: 0; }
+@media (max-width: 560px) { .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); } }
+
+/* Fig 4.1 friction bars */
+.g-bars { margin: 14px 0 2px; display: grid; gap: 6px; }
+.g-bars > div { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); align-items: center; gap: 10px; }
+.g-bars span { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+.g-bars i { display: block; height: 12px; background: var(--accent); border-radius: 2px; width: 0; transition: width 0.15s; }
+.g-bars i.need { background: transparent; border: 1.5px dashed var(--ink-2); }
+@media (prefers-reduced-motion: reduce) { .g-bars i { transition: none; } }
+
+/* Fig 4.2 legend swatches */
+.g-legend { margin-top: 12px; }
+.g-legend i.g-l-tot { border-top: 2px solid var(--ink); }
+.g-legend i.g-l-u { border-top: 2.5px solid var(--water); }
+.g-legend i.g-l-eff { border-top: 4px solid var(--accent); }
+
+/* hydrostatic paradox drawing inside the predict box */
+svg.g-paradox { max-width: 520px; margin: 4px 0 12px; }
+
+/* ---------- course map ---------- */
+ol.course { list-style: none; padding: 0; margin: 12px 0 8px; border-top: 2px solid var(--ink); max-width: 44rem; }
+ol.course li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 2px 18px; padding: 9px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+ol.course a { text-decoration: none; color: var(--ink); display: flex; gap: 10px; align-items: baseline; }
+ol.course a span { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); white-space: nowrap; min-width: 4.6em; }
+ol.course a strong { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
+ol.course a:hover strong, ol.course a:focus-visible strong { color: var(--accent); }
+ol.course a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
+@media (max-width: 620px) { ol.course li { grid-template-columns: minmax(0, 1fr); } ol.course p { padding-left: calc(4.6em + 10px); font-size: 0.92rem; } }
+
+/* ---------- "this one idea" map ---------- */
+.col > .ideas { max-width: 58rem; }
+.ideas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 24px; border-top: 2px solid var(--ink); margin: 6px 0 12px; }
+.ideas a { display: block; text-decoration: none; color: var(--ink); padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
+.ideas span { display: block; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.ideas b { display: block; font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.08rem; line-height: 1.25; margin-bottom: 4px; }
+.ideas em { display: block; font-style: normal; font-size: 0.93rem; line-height: 1.45; color: var(--ink-2); }
+.ideas a:hover b, .ideas a:focus-visible b { color: var(--accent); }
+.ideas a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- predict widget (shared) ---------- */
+.predict { margin: 24px 0 28px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 10px 0 12px; }
+.predict::before { content: "Predict first"; display: block; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.predict.is-done::before { content: "Predicted"; color: var(--ink-3); }
+.predict-q { font-family: var(--f-display); font-stretch: 88%; font-weight: 700; font-size: 1.12rem; line-height: 1.32; margin: 0 0 10px; }
+.predict-opts { display: grid; border-top: 1px solid var(--rule); }
+.predict-opts button {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: baseline; width: 100%; text-align: left;
+  font-family: var(--f-body); font-size: 1rem; line-height: 1.4; color: var(--ink); background: transparent;
+  border: 0; border-bottom: 1px solid var(--rule); padding: 9px 6px 9px 0; cursor: pointer;
+}
+.predict-opts button:hover:not([aria-disabled]) { background: var(--accent-soft); }
+.predict-opts button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.predict-key {
+  font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; color: var(--ink-2); border: 1.5px solid var(--ink-2);
+  border-radius: 3px; min-width: 1.9em; text-align: center; padding: 1px 4px; line-height: 1.3;
+}
+.predict-opts button::after { font-family: var(--f-mono); font-size: 0.64rem; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; content: ""; }
+.predict.is-done .predict-opts button { cursor: default; color: var(--ink-3); }
+.predict.is-done .predict-opts button .predict-key { color: var(--ink-3); border-color: var(--rule); }
+.predict-opts button.is-chosen { color: var(--ink); }
+.predict-opts button.is-chosen .predict-key { background: var(--accent); border-color: var(--accent); color: var(--sheet); }
+.predict-opts button.is-chosen::after { content: "your guess"; color: var(--bad); }
+.predict-opts button.is-answer { color: var(--ink); }
+.predict-opts button.is-answer .predict-key { border-color: var(--ok); color: var(--ok); }
+.predict-opts button.is-answer.is-chosen .predict-key { background: var(--ok); border-color: var(--ok); color: var(--sheet); }
+.predict-opts button.is-answer::after { content: "answer"; color: var(--ok); }
+.predict-opts button.is-answer.is-chosen::after { content: "your guess · right"; color: var(--ok); }
+.predict-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding-top: 8px; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+.predict-skip { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--ink-2); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.predict-skip:hover { color: var(--accent); }
+.predict-skip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.predict-reveal { margin-top: 12px; padding: 2px 0 0 14px; border-left: 3px solid var(--ink-3); }
+.predict.is-right .predict-reveal { border-left-color: var(--ok); }
+.predict.is-wrong .predict-reveal { border-left-color: var(--bad); }
+.predict-reveal p:last-child { margin-bottom: 0; }
+.predict-verdict { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.03em; margin-bottom: 6px !important; color: var(--ink-2); }
+.predict.is-right .predict-verdict { color: var(--ok); }
+.predict.is-wrong .predict-verdict { color: var(--bad); }
+.predict-unlocked { animation: g-unlock 0.5s ease-out; }
+@keyframes g-unlock { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .predict-unlocked { animation: none; } }
+
+.ro span i.g-sym { text-transform: none; font-style: normal; letter-spacing: 0.02em; font-size: 1.1em; }

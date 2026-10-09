@@ -1,0 +1,337 @@
+  <!-- ================= STEP 1 · THE BEACH ================= -->
+  <section class="chapter" id="beach">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Step 1</span><h2>The beach</h2></div>
+    </div>
+    <div class="col">
+      <p class="g-lede">If you have played on a beach, you have felt sand behave in three different ways.</p>
+      <p><strong>Dry sand pours.</strong> It runs through your fingers, and the steepest heap you can make is a low cone.</p>
+      <p><strong>Damp sand stands.</strong> Pack it into a bucket, turn it out, and you get a castle with walls that go straight up.</p>
+      <p><strong>Saturated sand turns to soup.</strong> At the water's edge, where every gap between the grains is full of water, the sand feels firm while you stand still. Wiggle your feet and it goes soft, and you sink to the ankles.</p>
+      <p>It is the same sand every time. The only thing that changes is the water between the grains. Those three states are the whole secret of how earth dams stand, and of how they fail. An earth dam is a huge heap of soil with a lake pressing on one side and water soaking into it. Whether it behaves like the damp castle or like the soup at the waterline depends on what the water inside it is doing.</p>
+      <p>Pick a state, then press <strong>Jiggle</strong> to shake the ground.</p>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-beach">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 1.1</b> · The same sand, three ways</span>
+        <span class="scale-note">Schematic · castle about 30 cm tall</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a cone with 34 degree sides. Damp, it stands as a castle with vertical walls. Saturated, it slumps, and when shaken it flows flat and the flag on top sinks."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="ctl"><span>Sand</span><div class="seg" id="bc-state"><button type="button" data-v="dry" aria-pressed="false">Dry</button><button type="button" data-v="damp" aria-pressed="true">Damp</button><button type="button" data-v="sat" aria-pressed="false">Saturated</button></div></div>
+            <button class="btn primary" id="bc-jiggle" type="button">Jiggle</button>
+          </div>
+          <div class="g-zoom">
+            <svg class="dwg gd" id="svg-beach-zoom" viewBox="0 0 220 150" role="img" aria-label="Close-up of seven sand grains and what fills the gaps between them."></svg>
+            <p class="note" id="bc-zoom-note">Close-up: a little water gathers in rings where grains touch.</p>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Steepest slope it holds</span><b id="bc-slope">90°</b><small id="bc-slope2">a vertical wall</small></div>
+            <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water at the contacts</small></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Dry sand settles at about 34°, however you pour it. Damp sand holds a vertical wall. Saturated sand slumps, and a jiggle turns it to a liquid: the flag sinks. Pick a state again to rebuild the heap. <strong>Why</strong> each one happens is the subject of <a href="#strength">Step 4</a>.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Keep those three pictures in mind. The slope a dry heap settles at (engineers call it the <span class="gl" data-term="angle-of-repose">angle of repose</span>) is about 34° for most sand. Damp sand ignores that limit. Saturated sand that gets shaken loses its strength altogether, and that one is the dangerous state for a dam.</p>
+      <p>To explain all three, you need two facts about water first. Its pressure grows with depth (Step 2). And it moves through the ground, slowly or very slowly, depending on the ground (Step 3). Step 4 puts them together.</p>
+
+      <h3>The course</h3>
+      <ol class="course">
+        <li><a href="#beach"><span>Step 1</span><strong>The beach</strong></a><p>Three states of sand, and the question they raise.</p></li>
+        <li><a href="#pressure"><span>Step 2</span><strong>Pressure grows with depth</strong></a><p>Why the depth of the water matters, and the size of the lake doesn't.</p></li>
+        <li><a href="#flow"><span>Step 3</span><strong>Water moves through ground</strong></a><p>What pushes water through soil, and how fast gravel, sand, silt and clay let it pass.</p></li>
+        <li><a href="#strength"><span>Step 4</span><strong>Water pressure steals strength</strong></a><p>The one idea behind everything that follows.</p></li>
+        <li><a href="#types"><span>Step 5</span><strong>Two dams, two jobs</strong></a><p>Dams that hold water, and dams that hold mine waste.</p></li>
+        <li><a href="#raising"><span>Step 6</span><strong>Upstream, downstream, centreline</strong></a><p>Three ways to make a mine-waste dam taller, and why one of them keeps failing.</p></li>
+        <li><a href="#zones"><span>Step 7</span><strong>Dam zones</strong></a><p>Why a dam is built from several soils, each with one job.</p></li>
+        <li><a href="#seepage"><span>Step 8</span><strong>Seepage paths</strong></a><p>Where water goes through and under a dam, and how it can carry the dam away.</p></li>
+        <li><a href="#build"><span>Step 9</span><strong>Build your own dam</strong></a><p>Design a cross-section and let a real calculation test it.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= STEP 2 · PRESSURE ================= -->
+  <section class="chapter" id="pressure">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Step 2</span><h2>Pressure grows with depth</h2></div>
+    </div>
+    <div class="col">
+      <p>Swim to the bottom of a deep pool and your ears start to hurt. The water above you has weight, and the deeper you go, the more of it there is pressing down. Water passes that press on in every direction, sideways too. So the water behind a dam pushes on the dam the same way it pushes on your eardrums.</p>
+
+      <div class="predict" data-answer="c" id="pr-paradox">
+        <p class="predict-q">Two dams each hold back water 50 m deep. One holds a lake 10 km long. The other holds a slot of water only 2 m wide, with solid rock behind it. Which dam has to be stronger?</p>
+        <svg class="dwg gd g-paradox" viewBox="0 0 480 130" role="img" aria-label="Left: a dam holding a long lake 50 metres deep. Right: a dam holding a narrow slot of water 2 metres wide and 50 metres deep against rock.">
+          <rect x="6" y="34" width="190" height="72" class="water"/>
+          <path d="M6,34 h190" class="water-line"/>
+          <path d="M44,30 l-6,8 M38,30 l-6,8" style="stroke:var(--ink-2);stroke-width:1.2"/>
+          <text x="98" y="27" class="lbl-s" text-anchor="middle">lake, 10 km long</text>
+          <polygon points="196,22 208,22 236,106 196,106" style="fill:var(--m-conc)" class="edge"/>
+          <rect x="0" y="106" width="240" height="16" fill="url(#p-bedrock)" class="edge"/>
+          <text x="186" y="74" class="lbl lbl-w halo" text-anchor="end">50 m deep</text>
+          <rect x="356" y="34" width="10" height="72" class="water"/>
+          <path d="M356,34 h10" class="water-line"/>
+          <polygon points="256,22 356,22 356,106 256,106" fill="url(#p-bedrock)" class="edge"/>
+          <polygon points="366,22 378,22 406,106 366,106" style="fill:var(--m-conc)" class="edge"/>
+          <rect x="250" y="106" width="230" height="16" fill="url(#p-bedrock)" class="edge"/>
+          <text x="361" y="16" class="lbl-s" text-anchor="middle">slot, 2 m wide</text>
+          <text x="412" y="74" class="lbl lbl-w halo">50 m deep</text>
+          <text x="300" y="74" class="lbl-s halo" text-anchor="middle">rock</text>
+        </svg>
+        <div class="predict-opts"><button data-v="a">The dam holding the big lake</button><button data-v="b">The dam holding the narrow slot</button><button data-v="c">Both need to be equally strong</button></div>
+        <div class="predict-reveal" hidden><p>Water pressure depends only on how far below the surface you are. Fifty metres down it is the same in a slot as in an ocean, so the two dams feel exactly the same push. The big lake is far heavier, but its weight rests on the lake bed. The size of a lake decides how much water escapes if the dam breaks. The depth decides the load on the dam.</p></div>
+      </div>
+
+      <p>Each metre of depth adds the weight of one more metre of water standing on every square metre. That is a tonne of water, which presses down with about 9.81 kilonewtons. A kilonewton (kN) is roughly the weight of 100 kg, and a pressure of one kN on every square metre is a kilopascal (kPa). So every metre of depth adds 9.81 kPa. Engineers write it like this:</p>
+      <div class="formula"><b>p</b> = ρ · g · h&nbsp;&nbsp;&nbsp;≈&nbsp;&nbsp;9.81 kPa × depth in metres<small>p pressure (kPa) · ρ density of water, 1,000 kg/m³ · g gravity, 9.81 m/s² · h depth below the water surface (m)</small></div>
+      <p>Ten metres of water adds about 98 kPa, roughly the pressure of the whole atmosphere above us. Divers count their depth in those 10 m steps.</p>
+      <p>Drag the sensor up and down. Then change the depth of the water and watch the total push on the dam.</p>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-depth">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 2.1</b> · Water pressure on a dam face</span>
+        <span class="scale-note">Depths to scale · dam shape schematic</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-depth" viewBox="0 0 480 390" role="img" aria-label="A reservoir held by a concrete dam. A pressure sensor hangs in the water on a cable. Arrows on the dam face show water pressure growing in a straight line from zero at the surface to its largest value at the bottom, forming a triangle."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="range"><label for="dp-H">Water depth</label><input type="range" id="dp-H" min="5" max="100" step="1" value="50"><output id="dp-H-o">50 m</output></div>
+            <div class="range"><label for="dp-h">Sensor depth</label><input type="range" id="dp-h" min="0" max="50" step="0.5" value="30"><output id="dp-h-o">30.0 m</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Pressure at the sensor</span><b id="dp-p">294 kPa</b><small id="dp-p2">9.81 × 30.0 m</small></div>
+            <div class="ro"><span>At the foot of the dam</span><b id="dp-pb">491 kPa</b><small id="dp-pb2">9.81 × 50 m</small></div>
+            <div class="ro"><span>Push on each metre of dam</span><b id="dp-F">12.3 MN</b><small id="dp-F2">as heavy as 1,250 tonnes</small></div>
+          </div>
+          <svg class="dwg gd g-chart" id="svg-depth-chart" viewBox="0 0 300 200" role="img" aria-label="Chart of total push on the dam against water depth. The curve bends upward: half the depth gives a quarter of the push."></svg>
+        </div>
+      </div>
+      <figcaption>The pressure grows in a straight line with depth, so the arrows on the dam face form a triangle, from nothing at the surface to the most at the bottom. The total push is the area of that triangle. The chart shows what that means: <strong>double the depth and the push grows four times</strong>.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>The area of the triangle is ½ × (pressure at the bottom) × (depth). The depth appears twice, once in the pressure and once in the height of the wet face, so the push grows with the depth squared:</p>
+      <div class="formula"><b>F</b> = ½ · ρ · g · H²<small>F push of the water on each metre length of dam (kN per m) · H depth of water at the dam (m)</small></div>
+      <p>A dam holding 100 m of water takes four times the push of one holding 50 m. That is why tall dams are so much thicker at the bottom than at the top. The concrete dam in <a href="#types">Step 5</a> runs this same sum: its readouts show the pressure at the dam's upstream foot and the push per metre.</p>
+
+      <h3>Water in the ground has pressure too</h3>
+      <p>Dig a hole in the sand near the sea and it fills with water from below. The water in the hole settles at a level, and below that level every gap between the grains is full of water. That level is the <span class="gl" data-term="water-table">water table</span>.</p>
+      <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so it obeys the same rule as the water in a lake. A metre below the water table it is at about 10 kPa. Ten metres down it is at about 98 kPa, pushing outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>. It is the hinge of <a href="#strength">Step 4</a>.</p>
+    </div>
+  </section>
+
+  <!-- ================= STEP 3 · FLOW ================= -->
+  <section class="chapter" id="flow">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Step 3</span><h2>Water moves through ground</h2></div>
+    </div>
+    <div class="col">
+      <p>Water in the ground is rarely still. It creeps through the gaps between the grains, from where it is pushed hard to where it is pushed less. You can watch it happen as the tide goes out: for hours afterwards, little streams trickle out of the sand at the bottom of the beach.</p>
+      <p>To tell which way the water will go, engineers use a simple measure. Imagine pushing a clear straw down into wet ground and watching how high the water climbs inside it. The level the water reaches, measured from some fixed height such as sea level, is the <span class="gl" data-term="hydraulic-head">total head</span> at the bottom of the straw. <strong>Water flows from high head to low head.</strong></p>
+      <p>The level in the straw adds two things: how high the bottom of the straw is, and how far the water pressure there can push water up the straw. So groundwater can flow uphill, as long as it is heading toward lower head. That is how a spring bubbles up out of a hillside.</p>
+      <p>The straws are real. Engineers sink thin pipes into dams and the ground beneath them and measure the water level inside. They are called <span class="gl" data-term="piezometer">piezometers</span>, and reading them is the main way anyone knows what the water inside a dam is doing.</p>
+
+      <h3>Some ground is a sieve, some is a wall</h3>
+      <p>How easily water passes depends on the size of the gaps. Gravel has gaps you can see. Clay is made of flat flakes thousands of times smaller than a grain of sand, and the gaps between them are tiny and twisting. Engineers measure how easily water gets through as the <span class="gl" data-term="permeability">permeability</span>, written <em>k</em> and given in metres per second.</p>
+
+      <div class="predict" data-answer="d" id="pr-clay" data-unlocks="#fig-race">
+        <p class="predict-q">A one-metre block of compacted clay has water pressing on one side, with the water level 1 m higher than on the other side. How long does a drop of water take to get through the metre?</p>
+        <div class="predict-opts"><button data-v="a">About a minute</button><button data-v="b">About a day</button><button data-v="c">About a month</button><button data-v="d">About ten years</button></div>
+        <div class="predict-reveal" hidden><p>About eleven years. Through gravel, the same push gets a drop across in about 30 seconds. The race below runs four materials side by side. Its clock has to speed up enormously before the clay moves at all.</p></div>
+      </div>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-race" hidden>
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 3.1</b> · One metre of each material, the same push</span>
+        <span class="scale-note">Clock speeds up tenfold every second</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-race" viewBox="0 0 480 400" role="img" aria-label="Four columns, one metre tall, of gravel, sand, silt and clay, each with water on top. As the clock runs, a wet front moves down each column. Gravel is soaked through in seconds, sand in about an hour, silt in weeks and clay in about eleven years. A logarithmic time axis below marks when each finishes."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <button class="btn primary" id="rc-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Start the race</span></button>
+            <div class="range"><label for="rc-t">Clock</label><input type="range" id="rc-t" min="0" max="9" step="0.01" value="0"><output id="rc-t-o">0 s</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Time elapsed</span><b id="rc-clock">0 s</b><small id="rc-clock2">press start</small></div>
+            <div class="ro"><span>Through so far</span><b id="rc-done">None</b><small id="rc-done2">of four</small></div>
+          </div>
+          <p class="note">A drop of water moves faster than <em>k</em> alone suggests, because it can only travel through the gaps, which take up about a third of the volume. The times here allow for that: time = gap fraction × length ÷ (<em>k</em> × push).</p>
+        </div>
+      </div>
+      <figcaption>Gravel and compacted clay differ by ten million times in permeability. The scale under the columns is <strong>logarithmic</strong>: each step to the right is ten times longer than the one before. On an ordinary scale where gravel's 30 seconds took one millimetre, clay would need about ten kilometres.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>That enormous range is what makes it possible to build a dam out of soil at all. A dam needs a part that water can barely get through, and parts that let water out quickly, side by side. Clay does the first job. Sand and gravel do the second.</p>
+
+      <h3>Darcy's law</h3>
+      <p>In 1856 Henry Darcy, an engineer building the fountains of Dijon in France, ran water through pipes packed with sand and found a simple rule. Double the difference in head between the two ends and the flow doubles. Double the length of the sand and the flow halves. What matters is how steeply the head drops along the way: the head lost for every metre the water travels. That slope is called the <span class="gl" data-term="hydraulic-gradient">hydraulic gradient</span>, written <em>i</em>.</p>
+      <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow (m³/s) · k permeability (m/s) · i gradient · Δh head difference (m) · L length of the path (m) · A area the water flows through (m²)</small></div>
+      <p>Below, a pipe full of sand joins two tanks. Drag the water levels in the tanks, or use the sliders. The thin tubes along the pipe are piezometers. Watch how the water in them lines up in a straight slope from one tank to the other.</p>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-darcy">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 3.2</b> · Darcy's experiment</span>
+        <span class="scale-note">Schematic · flow per square metre of pipe</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-darcy" viewBox="0 0 480 280" role="img" aria-label="Two water tanks joined at the bottom by a horizontal pipe packed with soil. Piezometer tubes rise from the pipe. The water levels in the tubes fall in a straight line from the higher tank to the lower one, and water particles move through the pipe from high head to low head."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="ctl"><span>Material in the pipe</span><div class="seg" id="dc-mat"><button type="button" data-v="gravel" aria-pressed="false">Gravel</button><button type="button" data-v="sand" aria-pressed="true">Sand</button><button type="button" data-v="silt" aria-pressed="false">Silt</button></div></div>
+            <div class="ctl"><span>Clay plug in the middle</span><div class="seg" id="dc-plug"><button type="button" data-v="0" aria-pressed="true">None</button><button type="button" data-v="1" aria-pressed="false">Add a clay plug</button></div></div>
+            <div class="range"><label for="dc-hl">Left tank</label><input type="range" id="dc-hl" min="0.2" max="2.4" step="0.05" value="2"><output id="dc-hl-o">2.00 m</output></div>
+            <div class="range"><label for="dc-hr">Right tank</label><input type="range" id="dc-hr" min="0.2" max="2.4" step="0.05" value="0.6"><output id="dc-hr-o">0.60 m</output></div>
+            <div class="range"><label for="dc-L">Pipe length</label><input type="range" id="dc-L" min="1" max="4" step="0.5" value="2"><output id="dc-L-o">2.0 m</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Head difference <i class="g-sym">Δh</i></span><b id="dc-dh">1.40 m</b><small id="dc-dh2">left is higher</small></div>
+            <div class="ro"><span>Gradient <i class="g-sym">i = Δh / L</i></span><b id="dc-i">0.70</b><small id="dc-i2">head lost per metre</small></div>
+            <div class="ro"><span>Flow <i class="g-sym">q</i></span><b id="dc-q">6.0 L/day</b><small id="dc-q2">through each m² of pipe</small></div>
+            <div class="ro"><span>Head lost in the plug</span><b id="dc-share">–</b><small id="dc-share2">no plug</small></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>The dashed line through the tops of the tubes is the head, falling steadily along the pipe. Water always flows down that line, from high head to low. Swap the tanks over and it flows the other way. Particle speeds are compressed so slow materials still show movement.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Now add the clay plug. The pipe is the same length and the tanks are at the same heights, but nearly all the head is lost across the short piece of clay. The tubes in the sand on either side read almost the same as the tank next to them. The same flow has to pass through every part of the pipe, and the tight clay needs a much steeper gradient to push it through, so the clay takes almost the whole drop.</p>
+      <p>This is how a dam with a clay <span class="gl" data-term="core">core</span> works. A core a few metres thick, in the middle of a dam made of sand and rock, takes up almost the whole height of the reservoir. The sand and rock on either side carry almost none of it, so the water pressure in the downstream half of the dam stays low. <a href="#zones">Step 7</a> shows the zones that make this work.</p>
+    </div>
+  </section>
+
+  <!-- ================= STEP 4 · STRENGTH ================= -->
+  <section class="chapter" id="strength">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Step 4</span><h2>Water pressure steals strength</h2></div>
+    </div>
+    <div class="col">
+      <p>This step is the centre of the course. It explains the three states of sand on the beach, and almost every way a dam can fail. The idea comes from Karl Terzaghi, the engineer who founded soil mechanics in the 1920s. It starts with something simpler than soil.</p>
+
+      <h3>Friction comes from pressing</h3>
+      <p>Put a book on a plank and slowly tilt the plank. The book stays put until the slope gets steep, then it slides. Friction holds it, and friction comes from the book pressing on the plank. Press twice as hard and it takes twice the force to slide it. The friction on offer is always a fixed fraction of the press.</p>
+      <p>That fraction sets a steepest angle for each pair of surfaces. Tilt beyond it and the block slides, whatever it weighs. Engineers call it the <span class="gl" data-term="friction-angle">friction angle</span>, written φ. For sand sliding on sand it is about 34°, the same angle as the dry heap in <a href="#beach">Step 1</a>. The match is no accident: a grain on the surface of a heap is a tiny block on a ramp.</p>
+
+      <div class="predict" data-answer="b" id="pr-cushion" data-unlocks="#fig-block">
+        <p class="predict-q">A block rests on a ramp tilted to 25°, holding comfortably. A thin water cushion sits under its base. You pump up the water pressure in the cushion. The block's weight, shape and surface stay exactly the same. What happens?</p>
+        <div class="predict-opts"><button data-v="a">Nothing. It weighs the same, so it holds the same.</button><button data-v="b">It slides. The water carries part of its weight, so it presses on the ramp less.</button><button data-v="c">It holds better. The water pushes up, which helps support it.</button></div>
+        <div class="predict-reveal" hidden><p>The water carries part of the block's weight, so less weight is left pressing the block onto the ramp. Friction comes from that press, so it shrinks with it. Gravity still pulls the block down the slope just as hard. Nothing about the block got weaker. The water took away the press that friction needs. Try it below.</p></div>
+      </div>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-block" hidden>
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 4.1</b> · A block on a ramp, with a water cushion underneath</span>
+        <span class="scale-note">Block weighs 20 kN · base 1 m²</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-block" viewBox="0 0 480 320" role="img" aria-label="A block on a tilting ramp with a water cushion under its base. Arrows show the block's weight, the pull down the ramp, the water pushing up from the cushion, and the friction available to hold the block. When the friction available is less than the pull, the block slides."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="range"><label for="bk-a">Ramp angle</label><input type="range" id="bk-a" min="0" max="45" step="1" value="25"><output id="bk-a-o">25°</output></div>
+            <div class="range"><label for="bk-u">Water pressure</label><input type="range" id="bk-u" min="0" max="20" step="0.5" value="0"><output id="bk-u-o">0 kPa</output></div>
+            <button class="btn" id="bk-reset" type="button" hidden>Put the block back</button>
+          </div>
+          <div class="g-bars" aria-hidden="true">
+            <div><span>Friction available</span><i id="bk-bar-a"></i></div>
+            <div><span>Needed to hold</span><i id="bk-bar-n" class="need"></i></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Block presses on ramp</span><b id="bk-N">18.1 kN</b><small>weight × cos(angle)</small></div>
+            <div class="ro"><span>Water carries</span><b id="bk-U">0.0 kN</b><small>pressure × 1 m²</small></div>
+            <div class="ro"><span>Press left over</span><b id="bk-Ne">18.1 kN</b><small>what friction works with</small></div>
+            <div class="ro"><span>Friction available</span><b id="bk-Fa">12.2 kN</b><small>press left × tan 34°</small></div>
+            <div class="ro"><span>Needed to hold</span><b id="bk-Fn">8.5 kN</b><small>weight × sin(angle)</small></div>
+            <div class="ro"><span>Factor of safety</span><b id="bk-fs">1.45</b><small id="bk-fs2">available ÷ needed</small></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Raise the water pressure at 25° and watch the friction bar shrink while the needed bar stays put. The block slides when the factor of safety drops below 1. Then try a gentler ramp: with enough water pressure, even 10° is too steep.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Engineers compare the two forces with one number, the <span class="gl" data-term="factor-of-safety">factor of safety</span>: friction available divided by friction needed. Above 1 the block holds. Below 1 it slides. Dams are designed to keep it well above 1, often about 1.5, to leave room for everything nobody can measure exactly.</p>
+      <p>Notice what the water did. Each kilopascal of pressure in the cushion cancels a kilopascal of the block's press. At 25° the block slides once the water carries about a third of its press on the ramp. The block didn't change, and the ramp didn't change. Only the water pressure did.</p>
+
+      <h3>Soil is thousands of little blocks</h3>
+      <p>Now shrink the block down to a grain of sand. A handful of soil is a crowd of grains, each resting on its neighbours at a few points of contact. Every contact is a tiny block on a tiny ramp, held by friction, and that friction comes from how hard the grains press on each other. The strength of soil is the friction of all those contacts added up.</p>
+      <p>When the gaps are full of water, the water pushes on every grain from all sides, like the cushion under the block. It carries part of the load, and the grains press on each other less. Terzaghi's great insight was that the strength of soil follows only the press left over between the grains. He called it the <span class="gl" data-term="effective-stress">effective stress</span>, and it is the press of everything above (the <span class="gl" data-term="total-stress">total stress</span>) minus the pore pressure:</p>
+      <div class="formula"><b>σ′</b> = σ − u&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;&nbsp;&nbsp;&nbsp;strength = <b>σ′</b> · tan φ<small>σ total stress: the weight of everything above, per square metre (kPa) · u pore pressure (kPa) · σ′ effective stress: how hard the grains press on each other · tan φ the friction fraction from the ramp, about 0.67 for sand (φ = 34°)</small></div>
+      <p>The total stress at some depth is the weight of everything above that point: soil, water, and anything built on top. Damp sand weighs about 18 kN per cubic metre. Soaked, it weighs about 20, because water has filled the gaps. Raise the water table in the column below and watch the three lines.</p>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-column">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 4.2</b> · Stresses in 10 m of sand as the water table rises</span>
+        <span class="scale-note">Drawn to scale · 18 kN/m³ damp, 20 kN/m³ soaked</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-column" viewBox="0 0 480 380" role="img" aria-label="A ten metre column of sand with a water table, beside a chart of stress against depth. Total stress increases with depth. Pore pressure is zero above the water table and increases below it. Effective stress, the difference, grows more slowly below the water table."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="range"><label for="gc-wt">Water table</label><input type="range" id="gc-wt" min="-10" max="3" step="0.25" value="-4"><output id="gc-wt-o">4.0 m down</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gc-s">192 kPa</b><small>at 10 m depth</small></div>
+            <div class="ro"><span>Pore pressure <i class="g-sym">u</i></span><b id="gc-u">59 kPa</b><small id="gc-u2">at 10 m depth</small></div>
+            <div class="ro"><span>Effective stress <i class="g-sym">σ′</i></span><b id="gc-e">133 kPa</b><small>σ − u</small></div>
+            <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>compared with dry sand</small></div>
+          </div>
+          <div class="legend g-legend">
+            <span><i class="g-l-tot"></i>Total stress σ</span>
+            <span><i class="g-l-u"></i>Pore pressure u</span>
+            <span><i class="g-l-eff"></i>Effective stress σ′</span>
+          </div>
+        </div>
+      </div>
+      <figcaption>Drag the water table up to the ground, then above it. The space between the black and blue lines is the effective stress, the press the grains still have. The soil gets <strong>heavier</strong> as it soaks, yet <strong>weaker</strong>, because the pore pressure rises faster than the weight.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Two things to notice. First, flooding the column from dry to soaked cuts the effective stress at 10 m from 180 to about 102 kPa. That is more than 40% of the soil's strength gone, though not a single grain moved. Second, once the water rises above the ground, every extra metre adds the same 9.81 kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
+
+      <h3>Damp sand: water that pulls</h3>
+      <p>That explains why soaked sand is weaker than dry sand. The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch (look back at the close-up in <a href="#fig-beach">Fig. 1.1</a>). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it, a negative pore pressure that engineers call <span class="gl" data-term="suction">suction</span>.</p>
+      <p>Put a negative <em>u</em> into σ′ = σ − u and the effective stress goes up. The grains press together harder than their own weight could make them, so friction can hold them even on a vertical face. Suction in damp beach sand is only a few kPa. But near the top of a sandcastle the grains carry almost no weight, so those few kPa are most of what holds them in place.</p>
+      <p>Dry the sand and the rings evaporate, the suction goes, and the castle crumbles. Flood it and the rings merge into one body of water at ordinary positive pressure, the suction goes again, and the wall slumps. Only damp sand has the rings.</p>
+
+      <h3>Loose, dense, and the liquid beach</h3>
+      <p>One beach state is left: the sand at the waterline that goes soft when you wiggle your feet. To understand it, you need to watch the grains themselves move.</p>
+      <p>When grains are pushed so they slide past one another, how tightly they are packed decides what happens to the water in the gaps. Densely packed grains have to ride up over each other to move, so the heap swells and draws water in. Loosely packed grains drop into the gaps below them, so the heap shrinks and squeezes its water.</p>
+      <p>Whether that matters depends on time. Push slowly and the water has time to flow in or out; engineers call that <span class="gl" data-term="drained">drained</span>. Push quickly, or in a soil like silt that water crosses slowly, and the water is trapped. That is <span class="gl" data-term="undrained">undrained</span>, and then the pore pressure changes instead.</p>
+      <p>In the sandbox below, every grain is simulated. Pack the grains loose or dense, add water, then shake them or shear them (push the top sideways so the grains slide past each other), and watch the water pressure and the force between grains.</p>
+    </div>
+
+    <!-- @include body-grains.html -->
+
+    <div class="col">
+      <p>In loose, saturated sand, a shake makes the grains try to settle into the gaps below them. The water can't get out of the way in time, so for a moment it carries the weight instead of the grains. The grains still touch, but they hardly press on each other. The effective stress falls toward zero, and the friction goes with it. The sand flows like a heavy liquid. That is <span class="gl" data-term="liquefaction">liquefaction</span>, and it is what your wiggling feet do to the sand at the waterline.</p>
+      <p>Dense sand does the opposite. Forcing its grains to slide makes it swell, which pulls water in, so the pore pressure drops and the sand gets stronger the harder you push. The same grains, packed two ways, behave in opposite ways.</p>
+      <p>This is why mine waste worries engineers so much. The ground-up rock a mine pumps out as slurry, called tailings, often settles loose and stays saturated for decades. <a href="#raising">Step 6</a> shows what happens to a dam built on top of it.</p>
+
+      <h3>Everything that follows is this one idea</h3>
+      <p>Soil is strong because its grains press on each other. Water pressure in the gaps pushes them apart and steals that strength. Every topic in the rest of the course is a case of it.</p>
+    </div>
+    <div class="col">
+      <div class="ideas">
+        <a href="#types"><span>Step 5 · Two dams, two jobs</span><b>A lake can't lose strength. Tailings can.</b><em>A water dam holds a liquid. A tailings dam holds a loose, saturated deposit that can liquefy.</em></a>
+        <a href="#raising"><span>Step 6 · Raising methods</span><b>An upstream raise stands on tailings.</b><em>If the tailings under it liquefy, the raise has nothing left to stand on.</em></a>
+        <a href="#zones"><span>Step 7 · Dam zones</span><b>The core takes the head so the shells keep their strength.</b><em>Low water pressure in the outer zones means a high effective stress and strong slopes.</em></a>
+        <a href="#seepage"><span>Step 8 · Drains</span><b>Drains put strength back.</b><em>Lowering the water level inside a dam lowers the pore pressure, so the grains press harder.</em></a>
+        <a href="#seepage"><span>Step 8 · Piping</span><b>Water flowing up can lift the grains.</b><em>When its push on the grains equals their weight, the effective stress is zero and the sand boils.</em></a>
+        <a href="#seepage"><span>Step 8 · Uplift</span><b>A concrete dam is the block on the cushion.</b><em>Water under the base carries part of the dam's weight, and the friction that stops it sliding goes with it.</em></a>
+        <a href="#build"><span>Step 9 · Build your own</span><b>Your design is judged on this.</b><em>The stability check weighs the friction the grains can supply against what's needed, using the water pressures from the seepage calculation.</em></a>
+      </div>
+    </div>
+  </section>
