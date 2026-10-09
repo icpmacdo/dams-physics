@@ -1,6 +1,7 @@
 /* Test harness for src/seepage-solver.js
  * Runs all 36 combinations at reservoir 0.85 plus homogeneous/none/none/pervious at
- * 0.5 and 0.95, prints one row per run and checks the physical sanity expectations. */
+ * 0.5 and 0.95, prints one row per run and checks the physical sanity expectations.
+ * Checks 8-12 cover the custom mode (reader-painted zones, downstream slope, layers). */
 'use strict';
 const path = require('path');
 const { solveSeepage, GEOM } = require(path.join(__dirname, '..', 'src', 'seepage-solver.js'));
@@ -165,6 +166,73 @@ function check(name, ok, detail) { results.push({ name, ok, detail }); }
   const ok = a.q.inflowTotal < b.q.inflowTotal && b.q.inflowTotal < c.q.inflowTotal;
   check('7 higher reservoir -> more seepage (homogeneous/none/none/pervious)', ok,
     `Q(0.50)=${fmtE(a.q.inflowTotal)} < Q(0.85)=${fmtE(b.q.inflowTotal)} < Q(0.95)=${fmtE(c.q.inflowTotal)}`);
+}
+
+// ------------------------------------------------------------------ custom mode
+// (params.custom: the reader's own zones, downstream slope and foundation layers)
+const NC = GEOM.nx * GEOM.nz;
+const CMATS = [{ k: 1e-7, alpha: 0.25 }, { k: 1e-9, alpha: 0.25 }, { k: 1e-4, alpha: 0.1 }, { k: 1e-3, alpha: 0.1, drain: true }];
+// custom cells that copy a preset dam: fill 0, core 1, shell 2, drain 3
+function cellsLike(r) {
+  const cells = new Uint8Array(NC);
+  for (let c = 0; c < NC; c++) cells[c] = r.type[c] === 3 ? 3 : r.mat[c] === 3 ? 1 : r.mat[c] === 4 ? 2 : 0;
+  return cells;
+}
+// 8. custom cells that reproduce a preset give the same answer
+{
+  const lines = [];
+  let ok = true;
+  for (const [damType, drain, cutoff, foundation] of [['cored', 'none', 'none', 'tight'], ['cored', 'chimney', 'none', 'pervious'], ['homogeneous', 'toe', 'partial', 'pervious'], ['cored', 'none', 'full', 'pervious']]) {
+    const a = get(damType, drain, cutoff, foundation);
+    const b = solveSeepage({ cutoff, foundation, reservoir: 0.85, custom: { materials: CMATS, cells: cellsLike(a) } });
+    let dh = 0;
+    for (let c = 0; c < NC; c++) if (a.psi[c] >= 0) dh = Math.max(dh, Math.abs(a.h[c] - b.h[c]));
+    const dq = Math.abs(b.q.inflowTotal / a.q.inflowTotal - 1), dfs = Math.abs(b.exit.fs / a.exit.fs - 1);
+    const good = b.stats.converged && dq < 1e-4 && dh < 0.02 && dfs < 1e-3;
+    if (!good) ok = false;
+    lines.push(`${damType}/${drain}/${cutoff}/${foundation}: dQ ${fmtE(dq)}, max dh (saturated) ${fmtE(dh)} m, dFS ${fmtE(dfs)}`);
+  }
+  check('8 custom cells copying a preset reproduce it (Q within 1e-4, saturated heads within 2 cm)', ok, lines.join('; '));
+}
+// 9. mass balance and convergence of custom designs, incl. other slopes and a weak layer
+const customRuns = [];
+{
+  const homog = new Uint8Array(NC), drained = new Uint8Array(NC), blob = new Uint8Array(NC);
+  for (let i = 0; i < GEOM.nx; i++) for (let j = 0; j < GEOM.nz; j++) {
+    const x = GEOM.x0 + i + 0.5, z = GEOM.z0 + j + 0.5, c = i * GEOM.nz + j;
+    drained[c] = (z <= 20 && x >= 4 && x <= 6) || (z <= 2 && x >= 4) ? 3 : 0;
+    blob[c] = Math.hypot(x - 15, z - 10) < 4 ? 3 : 0; // a drain pocket with no outlet
+  }
+  const layer = [{ zTop: -4, zBottom: -6, k: 1e-9 }];
+  for (const [name, cells, s, extra] of [['homogeneous 2:1', homog, 2, {}], ['homogeneous 1.5:1', homog, 1.5, {}], ['homogeneous 3:1', homog, 3, {}],
+    ['drained 2:1', drained, 2, {}], ['drained 3:1', drained, 3, {}], ['homogeneous + weak layer', homog, 2, { layers: layer }], ['isolated drain pocket', blob, 2, {}]]) {
+    const r = solveSeepage({ foundation: 'tight', reservoir: 0.85, custom: Object.assign({ materials: CMATS, cells, downSlope: s }, extra) });
+    customRuns.push({ name, r, s });
+  }
+  const bad = customRuns.filter(x => !x.r.stats.converged || !(x.r.q.balanceError < 0.01));
+  check('9 custom designs converge with balanceError < 1%', bad.length === 0,
+    customRuns.map(x => `${x.name}: ${x.r.stats.converged ? 'conv' : 'NOT conv'} bal ${fmtE(x.r.q.balanceError)} ${x.r.stats.ms.toFixed(0)} ms`).join('; '));
+}
+// 10. a drain lowers the phreatic surface in the downstream half
+{
+  const h = customRuns.find(x => x.name === 'homogeneous 2:1').r, d = customRuns.find(x => x.name === 'drained 2:1').r;
+  const th = satTop(h, 20.5), td = satTop(d, 20.5);
+  check('10 custom: chimney + blanket drain lowers the saturated zone at x = 20.5 and removes the seepage face', td < th - 3 && !d.seepageFace.present && h.seepageFace.present,
+    `saturated to ${fmtF(th, 1)} m without, ${fmtF(td, 1)} m with; seepage face ${h.seepageFace.present} -> ${d.seepageFace.present}`);
+}
+// 11. downstream slope: toe position, and a steeper slope breaks out higher
+{
+  const r15 = customRuns.find(x => x.name === 'homogeneous 1.5:1').r, r3 = customRuns.find(x => x.name === 'homogeneous 3:1').r;
+  const ok = r15.custom.downToeX === 39 && r3.custom.downToeX === 75 && r15.seepageFace.present && r3.seepageFace.present;
+  check('11 custom: downstream toe at 3 + 24 s (s = 1.5 -> 39 m, s = 3 -> 75 m), seepage faces found on both', ok,
+    `toe ${r15.custom.downToeX} / ${r3.custom.downToeX}; face tops ${fmtF(r15.seepageFace.topZ, 1)} / ${fmtF(r3.seepageFace.topZ, 1)} m`);
+}
+// 12. a drain pocket with no outlet is modelled as permeable soil, not as a sink
+{
+  const b = customRuns.find(x => x.name === 'isolated drain pocket').r, h = customRuns.find(x => x.name === 'homogeneous 2:1').r;
+  const ok = b.custom.freeDrainCells === 0 && b.custom.soilDrainCells > 0 && b.q.outDrain === 0 && Math.abs(b.q.inflowTotal / h.q.inflowTotal - 1) < 0.5;
+  check('12 custom: an isolated drain pocket is permeable soil (no drain outflow, seepage changes modestly)', ok,
+    `free ${b.custom.freeDrainCells}, soil ${b.custom.soilDrainCells}, Q ${fmtE(b.q.inflowTotal)} vs ${fmtE(h.q.inflowTotal)}`);
 }
 
 // extra diagnostics: unsaturated share of horizontal dam flow, flow-line exits

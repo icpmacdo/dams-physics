@@ -469,7 +469,107 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
 .ro span i.g-sym { text-transform: none; font-style: normal; letter-spacing: 0.02em; font-size: 1.1em; }
 
+/* Step 4 grain sandbox (#fig-grains) */
+.gr-exps { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 2px 0 8px; }
+.gr-label { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-right: 2px; }
+.gr-exps .btn { text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+.gr-hint { font-size: 0.95rem; color: var(--ink-2); margin: 0 0 8px; min-height: 1.5em; max-width: 72ch; }
+.gr-hint .btn.gr-next { margin-left: 4px; min-height: 28px; padding: 3px 10px; font-size: 0.72rem; vertical-align: 1px; }
+.gr-stage { position: relative; width: 100%; }
+.gr-stage canvas { display: block; width: 100%; border-radius: 4px; touch-action: pan-y; }
+.gr-result { font-family: var(--f-mono); font-size: 0.78rem; line-height: 1.5; color: var(--ink); background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 6px 10px; margin: 8px 0 0; border-radius: 0 4px 4px 0; }
+#fig-grains .seg button[disabled] { opacity: 0.4; cursor: not-allowed; }
+#fig-grains input[type="range"][disabled] { opacity: 0.4; }
+.gr-chart { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 6px; }
+.gr-chart canvas { display: block; width: 100%; }
+@media (max-width: 560px) {
+  .gr-exps .btn { flex: 1 1 100%; justify-content: flex-start; }
+  #fig-grains .controls .btn { flex: 1 1 auto; justify-content: center; }
+}
+.gr-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px 18px; align-items: start; }
+.gr-side { min-width: 0; }
+@media (min-width: 900px) {
+  .gr-main { grid-template-columns: minmax(0, 1.75fr) minmax(220px, 1fr); }
+  .gr-side .readouts.gr-ro { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
+  .gr-side .readouts.gr-ro .ro { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); }
+  .gr-side .readouts.gr-ro .ro:nth-child(odd) { padding-right: 12px; }
+  .gr-side .readouts.gr-ro .ro:last-child { grid-column: 1 / -1; }
+}
 
+/* ---------- Step 9: build your own dam ---------- */
+#fig-build .bd-tabs { margin-bottom: 8px; }
+#fig-build .bd-tabs button.bd-done::after { content: " ✓"; color: var(--ok); }
+.bd-mission { min-height: 2.5em; margin-bottom: 4px; }
+.bd-brief { font-size: 0.98rem; line-height: 1.5; margin: 4px 0 8px; max-width: 72ch; }
+.bd-goals { list-style: none; padding: 0; margin: 0 0 6px; display: flex; flex-wrap: wrap; gap: 6px 10px; }
+.bd-g { font-family: var(--f-mono); font-size: 0.74rem; border: 1px solid var(--rule); border-radius: 4px; padding: 4px 9px 4px 6px; display: inline-flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.bd-g small { color: var(--ink-3); font-size: 0.68rem; }
+.bd-g .bd-mark { font-weight: 500; width: 1em; text-align: center; color: var(--ink-3); }
+.bd-g.ok { border-color: var(--ok); } .bd-g.ok .bd-mark { color: var(--ok); }
+.bd-g.bad { border-color: var(--bad); } .bd-g.bad .bd-mark { color: var(--bad); }
+.bd-locks { margin: 0 0 4px; }
+.bd-hint { font-size: 0.95rem; margin: 6px 0; padding: 6px 10px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 4px 4px 0; max-width: 72ch; }
+.bd-success { font-size: 0.98rem; margin: 6px 0; max-width: 72ch; }
+.bd-palette { display: flex; flex-wrap: wrap; gap: 6px; }
+.bd-palette .chip { padding: 4px 10px 4px 4px; min-height: 32px; }
+.bd-sw { width: 26px; height: 18px; border: 1px solid var(--ink-2); border-radius: 2px; flex: none; display: block; }
+.bd-matinfo { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-2); line-height: 1.5; margin: 2px 0 6px; max-width: 90ch; }
+.bd-matinfo b { color: var(--ink); font-weight: 500; }
+.bd-presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.bd-pre { font-size: 0.72rem; min-height: 30px; padding: 4px 9px; border-width: 1px; }
+.bd-touch { display: none; }
+.bd-coarse .bd-touch { display: flex; }
+@media (max-width: 760px) { .bd-touch { display: flex; } }
+
+#svg-build { cursor: crosshair; touch-action: none; -webkit-user-select: none; user-select: none; }
+#svg-build.bd-pan { touch-action: pan-x pan-y; }
+#svg-build:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dwg .bd-cursor { fill: none; stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 3 2; pointer-events: none; }
+.dwg .bd-slip { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.dwg .bd-slip.ok, .dwg .bd-arrow.ok { stroke: var(--ok); }
+.dwg .bd-slip.warn, .dwg .bd-arrow.warn { stroke: var(--warn); }
+.dwg .bd-slip.bad, .dwg .bd-arrow.bad { stroke: var(--bad); }
+.dwg .bd-arrow { fill: none; stroke-width: 2; }
+.dwg .bd-mass { stroke: none; }
+.dwg .bd-mass.ok { fill: color-mix(in srgb, var(--ok) 16%, transparent); }
+.dwg .bd-mass.warn { fill: color-mix(in srgb, var(--warn) 18%, transparent); }
+.dwg .bd-mass.bad { fill: color-mix(in srgb, var(--bad) 18%, transparent); }
+.dwg .bd-ubar { stroke: var(--water); stroke-width: 1.6; fill: none; opacity: 0.85; }
+.dwg .bd-tag rect { fill: var(--sheet); stroke-width: 1.5; }
+.dwg .bd-tag.ok rect { stroke: var(--ok); } .dwg .bd-tag.warn rect { stroke: var(--warn); } .dwg .bd-tag.bad rect { stroke: var(--bad); }
+.dwg .bd-tag text { font-weight: 500; font-size: 11.5px; }
+.dwg .bd-exit { fill: none; stroke-width: 2; }
+.dwg .bd-exit.ok { stroke: var(--ok); } .dwg .bd-exit.warn { stroke: var(--warn); } .dwg .bd-exit.bad { stroke: var(--bad); }
+.dwg .bd-exit-dot.ok { fill: var(--ok); } .dwg .bd-exit-dot.warn { fill: var(--warn); } .dwg .bd-exit-dot.bad { fill: var(--bad); }
+.dwg .bd-t-ok { fill: var(--ok); } .dwg .bd-t-warn { fill: var(--warn); } .dwg .bd-t-bad { fill: var(--bad); }
+
+.bd-stale { opacity: 0.45; transition: opacity 0.2s; }
+@media (prefers-reduced-motion: reduce) { .bd-stale { transition: none; } }
+.bd-readouts .ro b .pill { font-size: 0.6rem; vertical-align: 5px; margin-left: 4px; }
+.bd-view { margin-top: 10px; }
+.bd-verdict { border-top: 2px solid var(--ink); margin-top: 10px; padding-top: 10px; }
+.bd-empty { color: var(--ink-2); margin: 0; }
+.bd-head { font-family: var(--f-display); font-stretch: 85%; font-weight: 800; font-size: 1.35rem; line-height: 1.2; margin: 0 0 8px; }
+.bd-head.ok { color: var(--ok); } .bd-head.warn { color: var(--warn); } .bd-head.bad { color: var(--bad); }
+.bd-rows { display: grid; gap: 0; }
+.bd-row { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); gap: 4px 16px; padding: 8px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.bd-row:first-child { border-top: 0; }
+.bd-row p { margin: 0; font-size: 0.97rem; line-height: 1.5; max-width: 72ch; }
+.bd-k { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-2); display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.bd-tip { margin: 8px 0 0; padding: 8px 12px; background: var(--accent-soft); border-radius: 4px; font-size: 0.97rem; max-width: 80ch; }
+.bd-tip ul { margin: 4px 0 0; padding-left: 1.2em; }
+.bd-tip li { margin-bottom: 3px; }
+@media (max-width: 560px) { .bd-row { grid-template-columns: minmax(0, 1fr); } }
+.legend i.bd-sw-u { background: color-mix(in srgb, var(--water) 45%, transparent); border-color: var(--water); }
+.legend i.bd-sw-slip { border-top: 3px solid var(--bad); }
+.legend i.bd-sw-bar { width: 0; height: 12px; border-top: 0; border-left: 2px solid var(--water); margin-left: 8px; margin-right: 12px; }
+@media (max-width: 760px) {
+  #fig-build .svgwrap > svg.dwg { min-width: 760px; }
+  .bd-presets-ctl { flex-basis: 100%; }
+}
+#fig-build .seg button:disabled { opacity: 0.4; cursor: not-allowed; }
+#fig-build .seg button[aria-pressed="true"]:disabled { opacity: 0.7; }
+#fig-build input[type="range"]:disabled { opacity: 0.45; }
 
 /* ---------- tutor: a docked notebook sheet, bottom right (bottom sheet on phones) ---------- */
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -970,7 +1070,62 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p>In the sandbox below, every grain is simulated. Pack the grains loose or dense, add water, then shake them or shear them (push the top sideways so the grains slide past each other), and watch the water pressure and the force between grains.</p>
     </div>
 
-    
+        <div class="col">
+      <div class="predict" data-answer="b" id="pr-grains-house">
+        <p class="predict-q">A house stands on loose sand that is full of water. An earthquake shakes the ground for a few seconds, too fast for the water to drain away. What happens to the house?</p>
+        <div class="predict-opts">
+          <button type="button" data-v="a">Nothing much. Sand under water is still sand.</button>
+          <button type="button" data-v="b">It sinks and tilts, as if the ground had turned to liquid.</button>
+          <button type="button" data-v="c">It rises, because the water pushes it up.</button>
+        </div>
+        <div class="predict-reveal" hidden><p>It sinks and tilts. Shaking makes loose grains try to settle into the gaps between them. The water in those gaps can’t escape in time, so its pressure rises until it carries the weight the grains were carrying. With nothing pressing the grains together, friction between them vanishes and the sand flows like a heavy liquid. That is <span class="gl" data-term="liquefaction">liquefaction</span>. Try it in the sandbox below with the third experiment, then try the same shaking on dense sand.</p></div>
+      </div>
+    </div>
+
+    <figure class="sheet wide" id="fig-grains">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 4</b> · Grain sandbox · a live discrete-element model</span>
+        <span class="scale-note">2D teaching model · stresses in scaled model units (kPa*)</span>
+      </div>
+      <div class="gr-exps" role="group" aria-label="Experiments">
+        <span class="gr-label">Experiments</span>
+        <button class="btn" type="button" data-exp="castle">1 · Sandcastle: damp vs dry</button>
+        <button class="btn" type="button" data-exp="shear">2 · Shear it: dense vs loose</button>
+        <button class="btn" type="button" data-exp="liq">3 · Loose and saturated: shake the house</button>
+        <button class="btn" type="button" data-exp="suction">4 · Dense, drain shut: shear it</button>
+      </div>
+      <p class="gr-hint" id="gr-hint" aria-live="polite"></p>
+      <div class="gr-main">
+        <div class="gr-stage"><canvas id="cv-grains" role="img" aria-label="A box of sand grains drawn as discs. Lines between touching grains get thicker the harder the grains press on each other, so the load paths (force chains) show. Water in the pores is tinted blue, darker where its pressure is higher."></canvas></div>
+        <div class="gr-side">
+          <div class="readouts gr-ro">
+            <div class="ro"><span>Total stress σ</span><b id="gr-sig">–</b><small>everything pressing down</small></div>
+            <div class="ro"><span>Water pressure u</span><b id="gr-u">–</b><small>above the still-water level</small></div>
+            <div class="ro"><span>Grain stress σ′ = σ − u</span><b id="gr-se">–</b><small id="gr-se2">platen force from grain contacts</small></div>
+            <div class="ro"><span>Void ratio e</span><b id="gr-e">–</b><small id="gr-e2">2D discs</small></div>
+            <div class="ro"><span>Shear stress τ</span><b id="gr-tau">–</b><small id="gr-tau2">τ/σ′</small></div>
+          </div>
+          <div class="gr-chart"><canvas id="cv-grains-chart" role="img" aria-label="Live chart of the grain stress σ′, the water pressure u and the total stress over time."></canvas></div>
+        </div>
+      </div>
+      <p class="gr-result" id="gr-result" aria-live="polite" hidden></p>
+      <div class="controls">
+        <div class="ctl"><span>Packing</span><div class="seg" id="gr-pack"><button type="button" data-v="loose" aria-pressed="false">Loose</button><button type="button" data-v="dense" aria-pressed="true">Dense</button></div></div>
+        <div class="ctl"><span>Water</span><div class="seg" id="gr-water"><button type="button" data-v="dry" aria-pressed="true">Dry</button><button type="button" data-v="damp" aria-pressed="false">Damp</button><button type="button" data-v="sat" aria-pressed="false">Saturated</button></div></div>
+        <div class="ctl"><span>Drain</span><div class="seg" id="gr-drain"><button type="button" data-v="open" aria-pressed="true">Open</button><button type="button" data-v="shut" aria-pressed="false">Shut</button></div></div>
+        <div class="ctl"><span>On top</span><div class="seg" id="gr-top"><button type="button" data-v="platen" aria-pressed="true">Platen</button><button type="button" data-v="none" aria-pressed="false">Nothing</button><button type="button" data-v="house" aria-pressed="false">House</button></div></div>
+      </div>
+      <div class="controls">
+        <div class="range"><label for="gr-load">Platen load</label><input type="range" id="gr-load" min="10" max="80" step="5" value="40"><output id="gr-load-o" for="gr-load">40 kPa*</output></div>
+        <button class="btn primary" id="gr-shear" type="button"><span>Shear</span></button>
+        <button class="btn" id="gr-shake" type="button"><span>Shake</span></button>
+        <button class="btn" id="gr-wall" type="button"><span>Remove side wall</span></button>
+        <button class="btn" id="gr-run" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 h3 v10 h-3 z M7,1 h3 v10 h-3 z"/></svg><span>Pause</span></button>
+        <button class="btn" id="gr-step" type="button"><span>Step</span></button>
+      </div>
+      <figcaption>Things to try. <strong>Experiment 1:</strong> the damp cut stands, the dry one slumps. <strong>2:</strong> dense sand lifts the platen as it shears (it dilates) and its strength peaks then drops; loose sand sinks (it compacts). <strong>3:</strong> with the drain shut, the water pressure climbs until it carries almost all the load, the force chains fade, and the house sinks. <strong>4:</strong> dense sand pulls the water pressure below zero (suction) and gets stronger. Every number here is measured from the model as it runs, not set in advance. It is a 2D teaching model: discs pack tighter than real sand, so void ratios are lower than real ones (about 0.5 to 0.9), and pore water is one pressure field on a coarse grid. Read the trends, not the numbers. Stresses are scaled to read like kPa (marked kPa*); they are not lab results.</figcaption>
+    </figure>
+
 
     <div class="col">
       <p>In loose, saturated sand, a shake makes the grains try to settle into the gaps below them. The water can't get out of the way in time, so for a moment it carries the weight instead of the grains. The grains still touch, but they hardly press on each other. The effective stress falls toward zero, and the friction goes with it. The sand flows like a heavy liquid. That is <span class="gl" data-term="liquefaction">liquefaction</span>, and it is what your wiggling feet do to the sand at the waterline.</p>
@@ -1309,8 +1464,105 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p class="case-src">Sources: Mount Polley Independent Expert Engineering Investigation and Review Panel (2015); R.A. Stewart and BC Hydro on the Bennett Dam sinkholes; BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
     </div>
 
-    
+  </section>
 
+    <!-- ================= STEP 9: BUILD YOUR OWN DAM ================= -->
+  <section class="chapter" id="build">
+    <div class="wide">
+      <div class="chapter-head"><span class="sheetno">Step 9</span><h2>Build your own dam</h2></div>
+    </div>
+    <div class="col">
+      <p>You now have every idea you need to design an embankment. Water pressure grows with depth. Water seeps through soil at a rate set by its permeability and by how steeply the head drops. The grains hold a dam up by pressing on each other, and water pressure in the pores pushes them apart. Zones put each material where it does its best work.</p>
+      <p>Here you put those ideas to work. You paint the inside of a 24 m embankment with five materials, choose the ground it sits on, and fill the reservoir. Then two real calculations test it.</p>
+      <p>The first is the seepage solver from the seepage lab in Step 8. It finds where the water inside your dam settles, how much leaks through, and how hard it pushes on the soil where it comes out.</p>
+      <p>The second asks whether the downstream slope would slide. It tries more than a thousand curved surfaces through the slope. Each one is a possible <span class="gl" data-term="slip-surface">slip surface</span>. Along each surface it compares two things. One is the grip the soil can offer: friction plus a little stickiness. The other is the pull of the soil's weight trying to slide downhill. Friction depends on how hard the grains press together, so wherever the seepage solution puts water pressure on the surface, the grip drops.</p>
+      <p>Grip divided by pull is the <span class="gl" data-term="factor-of-safety">factor of safety</span>. Below 1 the slope slides. Dam engineers usually want 1.5 or more with the reservoir full, to cover what they can't know about the soil.</p>
+      <div class="three">
+        <div><h4>Leaks</h4><p>Seepage in litres per day for each metre of dam. Some is normal. A lot means lost water, or polluted water for a tailings dam.</p></div>
+        <div><h4>Pipes</h4><p>Where water leaves unprotected soil, it pushes up on the grains. Safety against <span class="gl" data-term="piping">piping</span> is the push that would float sand away divided by the push it gets. Designers want 3 or more.</p></div>
+        <div><h4>Slides</h4><p>The lowest factor of safety of any slip surface at least 2 m deep. Shallower slips are surface damage that maintenance fixes.</p></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="predict" data-answer="b" id="pr-build">
+        <p class="predict-q">A dam made all of compacted fill has a factor of safety of 1.12, with water breaking out 8 m up its downstream slope. Which change helps it most?</p>
+        <div class="predict-opts"><button data-v="a">Flatten the downstream slope from 2:1 to 2.5:1 (11% more fill)</button><button data-v="b">Paint a sand drain inside the downstream half (about 10% of the dam)</button><button data-v="c">Add a cutoff wall through the foundation under the dam</button></div>
+        <div class="predict-reveal" hidden><p>The drain does the most: the factor of safety goes from 1.12 to about 1.6. The flatter slope reaches only about 1.27, and the cutoff about 1.14. The fill is strong enough when it is dry. Its trouble is the water in it: on the critical slip surface, water pressure carries about a third of the soil's weight, so the grains press together with only two-thirds of it. A drain lets that water out before it reaches the downstream slope. Try it below: test <em>Homogeneous fill</em>, then paint the drain.</p></div>
+      </div>
+    </div>
+
+    <figure class="sheet wide" id="fig-build">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 9</b> · Your dam, tested by the seepage solver and a slope stability check</span>
+        <span class="scale-note">Drawn to scale · 24 m embankment · 1 m cells</span>
+      </div>
+
+      <div class="tabs bd-tabs" id="bd-tabs" role="tablist" aria-label="Missions">
+        <button type="button" role="tab" aria-selected="true" data-m="free">Free build</button>
+        <button type="button" role="tab" aria-selected="false" data-m="dry">1 · Dry the slope</button>
+        <button type="button" role="tab" aria-selected="false" data-m="hold">2 · Hold the water</button>
+        <button type="button" role="tab" aria-selected="false" data-m="polley">3 · Mount Polley</button>
+        <button type="button" role="tab" aria-selected="false" data-m="tailings">4 · Tailings on a budget</button>
+      </div>
+      <div class="bd-mission" id="bd-mission" aria-live="polite"></div>
+
+      <div class="controls bd-tools">
+        <div class="ctl"><span>Paint with</span><div class="bd-palette" id="bd-palette" role="group" aria-label="Material to paint"></div></div>
+      </div>
+      <p class="bd-matinfo" id="bd-matinfo"></p>
+      <div class="controls bd-tools">
+        <div class="ctl"><span>Brush</span><div class="seg" id="bd-brush"><button type="button" data-v="1" aria-pressed="false">1 m</button><button type="button" data-v="3" aria-pressed="true">3 m</button><button type="button" data-v="5" aria-pressed="false">5 m</button></div></div>
+        <div class="ctl bd-touch"><span>Finger</span><div class="seg" id="bd-touch"><button type="button" data-v="paint" aria-pressed="true">Paints</button><button type="button" data-v="pan" aria-pressed="false">Scrolls</button></div></div>
+        <div class="ctl"><span>Undo</span><button class="btn" type="button" id="bd-undo" disabled>Undo</button></div>
+        <div class="ctl bd-presets-ctl"><span>Start from</span><div class="bd-presets" id="bd-presets"></div></div>
+      </div>
+
+      <p class="swipe-hint">Drawing scrolls sideways → · set Finger to Scrolls to move it</p>
+      <div class="svgwrap bd-wrap" id="bd-wrap"><svg class="dwg" id="svg-build" viewBox="0 0 1000 312" tabindex="0" role="img" aria-label="Your embankment dam drawn to scale on its foundation, with the reservoir on the left. Paint materials into the dam with the pointer, or focus the drawing and use the arrow keys to move the brush and Space to paint. After a test it shows water pressure, the water level inside the dam, flow lines and the critical slip surface."></svg></div>
+
+      <div class="controls">
+        <div class="ctl"><span>Foundation</span><div class="seg" id="bd-found"><button type="button" data-v="gravel" aria-pressed="false">Sand &amp; gravel</button><button type="button" data-v="clay" aria-pressed="true">Clay</button><button type="button" data-v="weak" aria-pressed="false">Clay, weak layer 4 m down</button></div></div>
+        <div class="ctl"><span>Cutoff</span><div class="seg" id="bd-cut"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="partial" aria-pressed="false">Half depth</button><button type="button" data-v="full" aria-pressed="false">Full</button></div></div>
+        <div class="ctl"><span>Downstream slope</span><div class="seg" id="bd-slope"><button type="button" data-v="1.5" aria-pressed="false">1.5:1</button><button type="button" data-v="2" aria-pressed="true">2:1</button><button type="button" data-v="2.5" aria-pressed="false">2.5:1</button><button type="button" data-v="3" aria-pressed="false">3:1</button></div></div>
+      </div>
+      <div class="controls">
+        <div class="range"><label for="bd-res">Reservoir</label><input type="range" id="bd-res" min="40" max="95" step="5" value="85"><output id="bd-res-o">20.4 m</output></div>
+        <button class="btn primary" type="button" id="bd-test"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Test my dam</span></button>
+        <span class="solving" id="bd-status" aria-live="polite"></span>
+      </div>
+
+      <div class="readouts bd-readouts" id="bd-readouts">
+        <div class="ro"><span>Seepage</span><b id="bd-q">–</b><small id="bd-q2">per metre of dam</small></div>
+        <div class="ro"><span>Max exit gradient</span><b id="bd-i">–</b><small id="bd-i2">unfiltered exits only</small></div>
+        <div class="ro"><span>Safety vs piping</span><b id="bd-pipe">–</b><small>i<sub>c</sub> ≈ 1.0 / exit gradient</small></div>
+        <div class="ro"><span>Slope factor of safety</span><b id="bd-fos">–</b><small id="bd-fos2">downstream, full reservoir</small></div>
+        <div class="ro"><span>Water in the slope</span><b id="bd-ph">–</b><small id="bd-ph2"></small></div>
+        <div class="ro"><span>Clay used</span><b id="bd-clay">–</b><small id="bd-clay2">m³ per metre of dam</small></div>
+      </div>
+      <div class="controls bd-view">
+        <div class="ctl"><span>Show the check for</span><div class="seg" id="bd-side"><button type="button" data-v="downstream" aria-pressed="true">Downstream slope, full reservoir</button><button type="button" data-v="upstream" aria-pressed="false">Upstream slope, reservoir emptied fast</button></div></div>
+      </div>
+      <div class="bd-verdict" id="bd-verdict" aria-live="polite"><p class="bd-empty">Paint a design, or start from one of the presets, then press <b>Test my dam</b>.</p></div>
+      <div class="legend" id="bd-legend">
+        <span><i class="sw bd-sw-u"></i>Water pressure in the soil (darker is higher)</span>
+        <span><i class="ph"></i>Water level inside the dam (phreatic surface)</span>
+        <span><i class="bd-sw-slip"></i>Critical slip surface and the soil that would slide</span>
+        <span><i class="bd-sw-bar"></i>Water pressure on the slip surface, as the height it would push water up a tube</span>
+      </div>
+      <figcaption>Things to try. <strong>Homogeneous fill:</strong> test it, then paint a strip of sand filter just downstream of the crest and a layer along the base out to the toe. Watch the water level drop and the factor of safety climb. <strong>Steep and wet:</strong> the classic slide of a steep, saturated slope. <strong>Clay core + rockfill on sand &amp; gravel:</strong> the core stops water through the dam, but not under it; add a cutoff. The reservoir sits at the level you set; the ground beyond the toe is drained at its surface.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>What the check does, and what it leaves out</h3>
+      <p>For circular slip surfaces the page uses Bishop's simplified method, the standard hand-and-computer method since 1955. It cuts the sliding mass into 40 vertical slices, works out how hard each slice presses on its base after taking away the water pressure there, and balances the turning effect of the whole mass about the circle's centre. On the weak-layer foundation it also tries sliding blocks with a flat base along the layer, using Spencer's method, which balances forces and turning effects together.</p>
+      <p>Water pressure on each slice comes straight from the seepage solution. Suction above the water level is ignored, as is usual practice, because it can vanish in a wet spell. For the upstream check the reservoir is emptied quickly: the free-draining materials drain with it, while clay and fill keep their water pressure for a while (the classic <span class="gl" data-term="rapid-drawdown">rapid drawdown</span> case). Designers accept a lower factor of safety for that short-lived condition, about 1.2. This sandbox fixes the upstream slope at 2:1, which is steep for an earth dam; real ones are often flatter for exactly this reason.</p>
+      <p>Material strengths and permeabilities are typical values, not design values. The sandbox does not check earthquakes, the <span class="gl" data-term="liquefaction">liquefaction</span> of loose saturated sand (Step 4), or whether each zone is a proper filter for the one beside it. In a real dam, clay painted straight against rockfill would wash into it, which is why real cores have filters.</p>
+    </div>
+  </section>
+
+
+  <div class="wide back-matter">
     <section class="col glossary" id="glossary" aria-labelledby="glossary-h">
       <p class="eyebrow">Reference</p>
       <h3 id="glossary-h">Glossary</h3>
@@ -1332,7 +1584,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <li>Global Industry Standard on Tailings Management (2020); Robertson et al. (2019), Expert Panel report on the failure of Dam I, Feijão Mine.</li>
       </ul>
     </footer>
-  </section>
+  </div>
 </div>
 
 <script id="seep-src">
@@ -3052,6 +3304,8 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         tried: r.tried, timedOut: r.timedOut, ms: r.ms,
         drawdown: up
       };
+      // pressure head after the drawdown, for drawing (NaN outside the soil)
+      if (up) sideOut[side].psi = Float32Array.from(psi);
     }
     sideOut.ms = nowMs() - t0;
     sideOut.materials = mats.length;
@@ -3074,11 +3328,72 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       gravel: { k: 1e-5, alpha: 0.25, c: 0, phi: 36, gm: 19, gs: 21 },
       clay: { k: 5e-8, alpha: 0.25, c: 10, phi: 28, gm: 19, gs: 20 },
       weak: { k: 5e-8, alpha: 0.25, c: 10, phi: 28, gm: 19, gs: 20,
-        layer: { zTop: -4, zBottom: -6, k: 1e-9, alpha: 0.25, c: 0, phi: 18, gm: 18, gs: 18.5 } }
+        layer: { zTop: -4, zBottom: -6, k: 1e-9, alpha: 0.25, c: 0, phi: 19, gm: 18, gs: 18.5 } }
     },
     slopes: [1.5, 2, 2.5, 3],
-    minDepth: 2
+    minDepth: 2,
+    // starting zonings: material index for a dam cell centred at (x, z), downstream slope s
+    presets: {
+      homogeneous: () => 0,
+      cored: (x, z) => (inCore(x, z) ? 1 : 2),
+      filtered: (x, z) => (inCore(x, z) ? 1 : x > 0 && ((z <= 20 && x <= coreW(z) + 2) || z <= 2) ? 3 : 2),
+      drained: (x, z) => ((z <= 20 && x >= 4 && x <= 6) || (z <= 2 && x >= 4) ? 3 : 0),
+      leaky: () => 2,
+      tailings: () => 4
+    }
   };
+  // Missions: start design, settings the reader may not change, pass conditions
+  // (maxQ L/day per metre, minPipe = safety against piping, minFoS = downstream slope,
+  //  maxClay m3 per metre, minTsand = share of the dam in tailings sand)
+  BUILD.missions = [
+    { id: 'dry', start: { preset: 'homogeneous', slope: 2, foundation: 'clay', cutoff: 'none', reservoir: 0.85 }, lock: ['slope', 'reservoir'], goals: { minFoS: 1.5, minPipe: 3 } },
+    { id: 'hold', start: { preset: 'leaky', slope: 2, foundation: 'gravel', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { maxQ: 100, minPipe: 3, minFoS: 1.5, maxClay: 350 } },
+    { id: 'polley', start: { preset: 'cored', slope: 2, foundation: 'weak', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { minFoS: 1.5 } },
+    { id: 'tailings', start: { preset: 'tailings', slope: 2, foundation: 'clay', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { minFoS: 1.5, minPipe: 3, minTsand: 0.7 } }
+  ];
+  // the numbers the page shows and the missions check
+  function designMetrics(seep, stab) {
+    const L = v => v * 86400e3;
+    let clay = 0, tsand = 0, dam = 0;
+    for (let c = 0; c < seep.mat.length; c++) {
+      const m = seep.mat[c];
+      if (m < 10) continue;
+      dam++;
+      const key = BUILD.materials[m - 10] && BUILD.materials[m - 10].key;
+      if (key === 'clay') clay++; else if (key === 'tsand') tsand++;
+    }
+    const ex = seep.exit, d = stab.downstream || {}, u = stab.upstream || {};
+    return {
+      qLday: L(seep.q.inflowTotal), qDrainLday: L(seep.q.outDrain), qFaceLday: L(seep.q.outSeepageFace), qGroundLday: L(seep.q.outTailwater),
+      iExit: Math.max(ex.groundMax || 0, ex.faceMax || 0), exitWhere: ex.governing, pipe: ex.fs,
+      seepageFaceTop: seep.seepageFace.present ? seep.seepageFace.topZ : 0,
+      fos: d.fos, fosMethod: d.method, fosUp: u.fos,
+      clay, tsandFrac: dam ? tsand / dam : 0, damCells: dam,
+      converged: !!seep.stats.converged, balance: seep.q.balanceError
+    };
+  }
+  function missionCheck(mission, m) {
+    const g = mission.goals, out = [];
+    if (g.maxQ != null) out.push({ key: 'q', ok: m.qLday <= g.maxQ });
+    if (g.minPipe != null) out.push({ key: 'pipe', ok: m.pipe >= g.minPipe });
+    if (g.minFoS != null) out.push({ key: 'fos', ok: m.fos >= g.minFoS });
+    if (g.maxClay != null) out.push({ key: 'clay', ok: m.clay <= g.maxClay });
+    if (g.minTsand != null) out.push({ key: 'tsand', ok: m.tsandFrac >= g.minTsand });
+    return { ok: out.every(c => c.ok), checks: out };
+  }
+  function coreW(z) { return 1.5 + 0.4 * (23 - z); }
+  function inCore(x, z) { return z <= 23 && Math.abs(x) <= coreW(z); }
+  // full-grid cell array for a preset (grid of the seepage solver: 170 x 39, x0 -80, z0 -15)
+  function presetCells(name, slope, grid) {
+    grid = grid || { nx: 170, nz: 39, x0: -80, z0: -15 };
+    const f = BUILD.presets[name] || BUILD.presets.homogeneous, s = slope || 2;
+    const cells = new Uint8Array(grid.nx * grid.nz);
+    for (let i = 0; i < grid.nx; i++) for (let j = 0; j < grid.nz; j++) {
+      const x = grid.x0 + i + 0.5, z = grid.z0 + j + 0.5;
+      cells[i * grid.nz + j] = z >= 0 ? f(x, z, s) : 0;
+    }
+    return cells;
+  }
   // design = { cells (material index per grid cell), slope, foundation: 'gravel'|'clay'|'weak',
   //            cutoff: 'none'|'partial'|'full', reservoir (0.4 .. 0.95) }
   function buildRequest(d) {
@@ -3104,7 +3419,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
   }
 
   // ------------------------------------------------------------------ exports
-  const api = { analyze, analyzeDam, bishop, spencer, circleSlices, polySlices, surfZ, GAMMA_W, BUILD, buildRequest, runDesign };
+  const api = { analyze, analyzeDam, bishop, spencer, circleSlices, polySlices, surfZ, GAMMA_W, BUILD, buildRequest, runDesign, presetCells, designMetrics, missionCheck };
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = api;
   } else if (typeof self !== 'undefined') {
@@ -3124,7 +3439,9 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
           const stab = analyzeDam(seep, d.stab || {});
           delete seep.equipotentials;
           msg.seep = seep; msg.stab = stab; msg.ms = nowMs() - t0;
-          self.postMessage(msg, [seep.h.buffer, seep.psi.buffer, seep.type.buffer, seep.mat.buffer]);
+          const tr = [seep.h.buffer, seep.psi.buffer, seep.type.buffer, seep.mat.buffer];
+          if (stab.upstream && stab.upstream.psi) tr.push(stab.upstream.psi.buffer);
+          self.postMessage(msg, tr);
           return;
         }
         if (self.SeepageSolver) { msg.result = self.SeepageSolver.solveSeepage(d.params || {}); self.postMessage(msg); return; }
@@ -3832,6 +4149,9 @@ const GLOSSARY = {
   'piping': ['Piping', 'Erosion in which seepage carries grains out at an exit, and a pipe-like channel works backward toward the reservoir.'],
   'exit-gradient': ['Exit gradient', 'The hydraulic gradient where seepage leaves the ground. If it pushes upward hard enough to lift the grains (about 1.0), the sand boils.'],
   'critical-gradient': ['Critical gradient', 'The upward gradient at which flowing water carries the full weight of the grains, about 1.0 for sand. Effective stress becomes zero and the sand boils.'],
+  'rapid-drawdown': ['Rapid drawdown', 'Lowering a reservoir faster than the water can drain out of the dam. Clay and fill keep their high water pressure while the water that pressed on the upstream slope is gone, so that slope can slide.'],
+  'cutoff': ['Cutoff', 'A watertight wall or trench under a dam that blocks the path for water through permeable ground beneath it.'],
+  'cohesion': ['Cohesion', 'The part of a soil’s strength that doesn’t depend on how hard the grains are pressed together, written c′. Clays have a little; clean sand and rockfill have none.'],
   'uplift': ['Uplift', 'Water pressure under a concrete dam pushing it upward, which cancels part of its weight.'],
   'tailings': ['Tailings', 'The waste left after a mill extracts metal from ore: rock ground finer than flour, pumped out as a slurry with water.'],
   'beach': ['Beach', 'The gently sloping deposit of tailings sand between the dam crest and the pond.'],
@@ -4761,16 +5081,16 @@ function grainsSim(o) {
   const W = o.W || Math.round(Math.sqrt(N * 1.16));      // box width (grain diameters)
   const HS = 0.85 * W;                                     // nominal sample height
   const HB = Math.round(HS + 7);                           // drawn box height
-  const FW = Math.round(0.7 * W);                          // bench beyond the right wall
+  const FW = Math.round(0.55 * W);                          // bench beyond the right wall
   const XEND = W + FW;                                     // far end stop
   const RMIN = 0.35, RMAX = 0.65, RG = 0.4, SG = 0.7;      // grain radii; glued-disc radius, spacing
 
   const prm = {
     kn: 12000, kt: 6000, zeta: 0.5, zetaT: 0.3, mu: 0.5, muR: 0.12, krF: 0.25, muW: 0.3, muSide: 0,
-    g: 1, buoy: 1 / 2.65, cap: 6, capGap: 0.07,
-    dragDry: 0.3, dragPour: 3, capPour: 15, muPour: 0.9, muRPour: 0.4, dragSat: 0.8, rotDrag: 0.5,
-    K: 20000, h: 3, tauFast: 0.001, tauSlow: 4, tauLeak: 0.001,
-    houseB: 6, houseH: 4, houseQ: 8, platenDamp: 6,
+    g: 1, buoy: 1 / 2.65, cap: 12, capGap: 0.07,
+    dragDry: 0.3, dragPour: 0.6, dragPourDense: 0.3, dragPrep: 0.6, gPour: 3, capPour: 5, muPour: 0.9, muRPour: 0.4, dragSat: 0.8, rotDrag: 0.5,
+    K: 20000, uCav: 100, h: 3, tauFast: 0.001, tauSlow: 4, tauLeak: 0.001,
+    houseB: 6, houseH: 4, houseQ: 8, platenDamp: 6, houseSolid: false, phiFree: 0.5,
   };
   if (o.prm) Object.assign(prm, o.prm);
   const dt = o.dt || 0.0008;
@@ -4839,6 +5159,10 @@ function grainsSim(o) {
   const uAct = new Uint8Array(UN), uWas = new Uint8Array(UN), uLeak = new Float64Array(UN), uA = new Float64Array(UN);
   const C_TYP = 0.18 * h * h / prm.K, C_MIN = 0.08 * h * h / prm.K;
   const NSUB = 12;
+  // sample points filling the house, for its share of the pore-volume bookkeeping
+  const HPS = 0.5, HPNX = Math.round(prm.houseB / HPS), HPNY = Math.round(prm.houseH / HPS), HPN = HPNX * HPNY, HPA = HPS * HPS;
+  const hpx = new Float64Array(HPN), hpy = new Float64Array(HPN), hpWX = new Float64Array(HPN), hpWY = new Float64Array(HPN), hU = new Float64Array(3);
+  for (let a = 0; a < HPNX; a++) for (let b = 0; b < HPNY; b++) { hpx[a * HPNY + b] = -prm.houseB / 2 + (a + 0.5) * HPS; hpy[a * HPNY + b] = -prm.houseH / 2 + (b + 0.5) * HPS; }
   function Gt(q) { if (q <= -1) return 0; if (q < 0) return 0.5 * (q + 1) * (q + 1); if (q < 1) return 1 - 0.5 * (1 - q) * (1 - q); return 1; }
   const tentInt = (xc, a, b) => (b <= a ? 0 : h * (Gt((b - xc) / h) - Gt((a - xc) / h)));
   const poreOn = () => S.water === 'sat' && S.wallR && S.phase === 'run';
@@ -4850,18 +5174,25 @@ function grainsSim(o) {
 
   /* ===== setup ===== */
   function placeGrains() {
-    let xc = 0, yc = 0.75;
+    let xc = 0, yc = 0.75, row = 0, rowStart = 0;
+    const rows = [];
     for (let i = 0; i < N; i++) {
       const ri = r[i];
-      if (xc + 2 * ri > W - 0.03) { xc = 0; yc += 1.38; }
+      if (xc + 2 * ri > W - 0.03) { rows.push([rowStart, i]); rowStart = i; xc = 0; yc += 1.38; row++; }
       x[i] = xc + ri + 0.03; xc = x[i] + ri + 0.03 + 0.12 * rand();
       y[i] = yc + 0.65 + (rand() - 0.5) * 0.06;
       vx[i] = (rand() - 0.5) * 0.4; vy[i] = -0.3 * rand(); w[i] = 0;
       active[i] = 1;
     }
+    // spread the last, partial row across the box so the poured surface ends up level
+    const n = N - rowStart;
+    if (n > 0) for (let k = 0; k < n; k++) x[rowStart + k] = (k + 0.5) * W / n;
+    // mirror alternate rows so no side of the box is systematically denser
+    for (const [a, b] of rows) if (rand() < 0.5) for (let i = a; i < b; i++) x[i] = W - x[i];
   }
   function resetHistory() { sJ.fill(-1); sStamp.fill(-9); wStamp.fill(-9); }
-  function pour(pack) {
+  function pour(pack, top) {
+    S.pendingTop = top || 'none';
     S.pack = pack; S.phase = 'pour'; S.pourSteps = 0; S.top = 'none'; S.wallR = true;
     S.gamma = 0; S.gdot = 0; S.shear = 'none';
     resetHistory(); placeGrains();
@@ -4871,6 +5202,17 @@ function grainsSim(o) {
   function kinetic() { let s = 0; for (let i = 0; i < N; i++) s += vx[i] * vx[i] + vy[i] * vy[i]; return s / N; }
   function surfaceAt(x0, x1) { let top = 0; for (let i = 0; i < N; i++) if (x[i] > x0 && x[i] < x1 && x[i] < W + 2 && y[i] + r[i] > top) top = y[i] + r[i]; return top; }
   function sampleTop() { return surfaceAt(-1, W + 1); }
+  // level of the sand surface: median of the highest grain top in each 2-grain-wide column
+  function surfaceLevel() {
+    const nb = Math.max(1, Math.floor(W / 2)), tops = new Float64Array(nb);
+    for (let i = 0; i < N; i++) {
+      if (x[i] < 0 || x[i] >= W) continue;
+      const b = Math.min(nb - 1, Math.floor(x[i] / W * nb)), t = y[i] + r[i];
+      if (t > tops[b]) tops[b] = t;
+    }
+    const s = Array.from(tops).sort((a, b) => a - b);
+    return s[nb >> 1];
+  }
   function setTop(top) {
     S.top = top;
     for (let i = P0; i < PT; i++) active[i] = 0;
@@ -4902,7 +5244,7 @@ function grainsSim(o) {
   function step() {
     S.t += dt; S.steps++;
     const stamp = S.steps;
-    const pouring = S.phase === 'pour';
+    const pouring = S.phase === 'pour';     // deposition settings apply only while grains rain in
     const dense = S.pack === 'dense';
     const mu = pouring ? (dense ? 0 : prm.muPour) : prm.mu;
     const muR = pouring ? (dense ? 0 : prm.muRPour) : prm.muR;
@@ -4910,8 +5252,9 @@ function grainsSim(o) {
     const muSide = pouring ? (dense ? 0 : prm.muW) : prm.muSide;   // side walls: smooth, like a lubricated membrane
     const capF = pouring ? (dense ? 0 : prm.capPour) : (S.water === 'damp' ? prm.cap : 0);
     const sat = S.water === 'sat' && !pouring;
-    const gEff = prm.g * (sat ? 1 - prm.buoy : 1);
-    const drag = pouring && !dense ? prm.dragPour : sat ? prm.dragSat : prm.dragDry;
+    const gEff = prm.g * (sat ? 1 - prm.buoy : 1) * (pouring ? prm.gPour : 1);
+    const prepping = S.phase === 'cure' || S.phase === 'place';
+    const drag = pouring ? (dense ? prm.dragPourDense : prm.dragPour) : prepping ? prm.dragPrep : sat ? prm.dragSat : prm.dragDry;
     const rng = capF > 0 ? prm.capGap : 0;
     const kn = prm.kn, kt = prm.kt;
 
@@ -5069,22 +5412,32 @@ function grainsSim(o) {
     } else if (S.top === 'house') {
       let Fx = 0, Fy = 0, T = 0;
       for (let i = H0; i < PT; i++) { Fx += fx[i]; Fy += fy[i]; T += (x[i] - S.hx) * fy[i] - (y[i] - S.hy) * fx[i] + tq[i]; }
-      if (poreOn()) { const hf = houseU(); Fx += hf[0]; Fy += hf[1]; T += hf[2]; }
+      if (poreOn()) { Fx += hU[0]; Fy += hU[1]; T += hU[2]; }
       Fy -= S.hmass * prm.g;
       const dmp = 0.3;
       S.hvx += (Fx / S.hmass - dmp * S.hvx) * dt; S.hvy += (Fy / S.hmass - dmp * S.hvy) * dt; S.hw += (T / S.hI - dmp * S.hw) * dt;
+      if (S.phase !== 'run') { S.hw = 0; S.hth = 0; S.hvx = 0; }   // set it down level
       S.hx += S.hvx * dt; S.hy += S.hvy * dt; S.hth += S.hw * dt;
     }
     acc.syy += syy; acc.sxy += sxy; acc.sxx += sxx; acc.n++;
 
-    if (pouring) {
+    // preparation phases: pour (deposit) -> cure (as-placed, cohesion of the pour released) -> place (top added) -> run
+    if (S.phase !== 'run') {
       S.pourSteps++;
-      if (S.pourSteps > 2500 && (S.pourSteps % 100 === 0) && kinetic() < 2e-4) {
-        S.phase = 'run';
-        resetHistory();
-        for (let i = 0; i < N; i++) { vx[i] = 0; vy[i] = 0; w[i] = 0; }
+      const n = S.pourSteps;
+      if (n % 100 === 0) {
+        const ke = kinetic(), still = ke < 1e-4;
+        if (S.phase === 'pour' && ((n > 2500 && ke < 3e-3) || n > 40000)) {
+          S.phase = 'cure'; S.pourSteps = 0; resetHistory();
+          for (let i = 0; i < N; i++) { vx[i] = 0; vy[i] = 0; w[i] = 0; }
+        } else if (S.phase === 'cure' && ((n > 1500 && still) || n > 30000)) {
+          S.phase = 'place'; S.pourSteps = 0;
+          if (S.onCured) S.onCured(snapshot());
+          setTop(S.pendingTop || 'none');
+        } else if (S.phase === 'place' && n > 1200 && still && Math.abs(S.pvy) < 2e-3 && Math.abs(S.hvy) < 2e-3 || S.phase === 'place' && n > 30000) {
+          S.phase = 'run'; S.pourSteps = 0;
+        }
       }
-      if (S.pourSteps > 40000) S.phase = 'run';
     }
   }
 
@@ -5123,10 +5476,22 @@ function grainsSim(o) {
       uS[n0] += A * (1 - tx) * (1 - ty); uS[n0 + 1] += A * tx * (1 - ty);
       uS[n0 + UNX] += A * (1 - tx) * ty; uS[n0 + UNX + 1] += A * tx * ty;
     }
+    // the house is solid too: scatter its volume from a grid of points that moves and turns with it
+    const house = S.top === 'house' && prm.houseSolid;
+    if (house) {
+      const c = Math.cos(S.hth), sn = Math.sin(S.hth);
+      for (let k = 0; k < HPN; k++) {
+        const X = S.hx + c * hpx[k] - sn * hpy[k], Y = S.hy + sn * hpx[k] + c * hpy[k];
+        hpWX[k] = X; hpWY[k] = Y;
+        if (Y < 0 || Y >= ymax || X < UX0 || X >= xmax) continue;
+        const fxg = (X - UX0) / h, fyg = Y / h, ix = fxg | 0, iy = fyg | 0, tx = fxg - ix, ty = fyg - iy;
+        const n0 = iy * UNX + ix;
+        uS[n0] += HPA * (1 - tx) * (1 - ty); uS[n0 + 1] += HPA * tx * (1 - ty);
+        uS[n0 + UNX] += HPA * (1 - tx) * ty; uS[n0 + UNX + 1] += HPA * tx * ty;
+      }
+    }
     // domain coverage of each node's tent (parallelogram below the top, minus the house)
     uAd.fill(0); uB.fill(0);
-    const house = S.top === 'house';
-    const hx0 = S.hx - prm.houseB / 2, hx1 = S.hx + prm.houseB / 2, hy0 = S.hy - prm.houseH / 2, hy1 = S.hy + prm.houseH / 2;
     const dz = 2 * h / NSUB;
     for (let jy = 0; jy < UNY; jy++) {
       const yj = jy * h, row = jy * UNX;
@@ -5137,12 +5502,9 @@ function grainsSim(o) {
         const ym = 0.5 * (a + b), wy = (1 - Math.abs(ym - yj) / h) * (b - a);
         const xl = gam * ym, xr = W + gam * ym;
         const i0 = Math.max(0, Math.floor((xl - h - UX0) / h)), i1 = Math.min(UNX - 1, Math.ceil((xr + h - UX0) / h));
-        const inH = house && ym > hy0 && ym < hy1;
         for (let ix = i0; ix <= i1; ix++) {
           const xc = UX0 + ix * h;
-          let v = tentInt(xc, xl, xr);
-          if (inH) v -= tentInt(xc, Math.max(hx0, xl), Math.min(hx1, xr));
-          uAd[row + ix] += wy * v;
+          uAd[row + ix] += wy * tentInt(xc, xl, xr);
         }
       }
       if (S.top === 'platen' && Math.abs(ytop - yj) < h) {
@@ -5186,13 +5548,14 @@ function grainsSim(o) {
     // drainage: through a porous platen when the valve is open, or into free water above the sand
     for (let n = 0; n < UN; n++) {
       if (!uAct[n]) continue;
-      let L = 0;
-      if (S.top === 'platen') { if (!sealed) L = C_TYP / prm.tauLeak * uB[n] / h; }
+      let rate = 0;
+      if (S.top === 'platen') { if (!sealed) rate = uB[n] / h / prm.tauLeak; }
       else {
         const phi = uS[n] / Math.max(uAd[n], 1e-9);
-        L = C_TYP / prm.tauLeak * Math.max(0, Math.min(1, 1 - phi / 0.5)) * uA[n];
+        rate = Math.max(0, Math.min(1, 1 - phi / prm.phiFree)) / prm.tauLeak;
       }
-      if (L > 0) u[n] /= 1 + dt * L / uC[n];
+      if (rate > 0) u[n] /= 1 + dt * rate;
+      if (u[n] < -prm.uCav) u[n] = -prm.uCav;     // water can't be pulled harder than this: it cavitates
     }
     // ghost values just outside the wetted region (zero-gradient), so the walls, platen and house
     // don't create a false pressure drop at the boundary
@@ -5217,6 +5580,18 @@ function grainsSim(o) {
       const gyu = ((u01 - u00) * (1 - tx) + (u11 - u10) * tx) / h;
       fx[i] -= area[i] * gxu; fy[i] -= area[i] * gyu;
     }
+    // the same pressure-gradient force on the house's volume
+    hU[0] = 0; hU[1] = 0; hU[2] = 0;
+    if (house) for (let k = 0; k < HPN; k++) {
+      const X = hpWX[k], Y = hpWY[k];
+      if (Y < 0 || Y >= ymax || X < UX0 || X >= xmax) continue;
+      const fxg = (X - UX0) / h, fyg = Y / h, ix = fxg | 0, iy = fyg | 0, tx = fxg - ix, ty = fyg - iy;
+      const n0 = iy * UNX + ix;
+      const u00 = uG[n0], u10 = uG[n0 + 1], u01 = uG[n0 + UNX], u11 = uG[n0 + UNX + 1];
+      const Fx = -HPA * ((u10 - u00) * (1 - ty) + (u11 - u01) * ty) / h;
+      const Fy = -HPA * ((u01 - u00) * (1 - tx) + (u11 - u10) * tx) / h;
+      hU[0] += Fx; hU[1] += Fy; hU[2] += (X - S.hx) * Fy - (Y - S.hy) * Fx;
+    }
     // pressure on the platen
     let F = 0;
     if (S.top === 'platen') for (let n = 0; n < UN; n++) F += u[n] * uB[n];
@@ -5228,21 +5603,6 @@ function grainsSim(o) {
     const ix = fxg | 0, iy = fyg | 0, tx = fxg - ix, ty = fyg - iy, n0 = iy * UNX + ix;
     return uG[n0] * (1 - tx) * (1 - ty) + uG[n0 + 1] * tx * (1 - ty) + uG[n0 + UNX] * (1 - tx) * ty + uG[n0 + UNX + 1] * tx * ty;
   }
-  function houseU() {
-    const B = prm.houseB, Hh = prm.houseH, n = 12;
-    let Fx = 0, Fy = 0, T = 0;
-    for (let k = 0; k < n; k++) {
-      const s = (k + 0.5) / n;
-      const xb = S.hx - B / 2 + s * B;
-      const pb = uAt(xb, S.hy - Hh / 2), pt = uAt(xb, S.hy + Hh / 2);
-      Fy += (pb - pt) * B / n; T += (pb - pt) * (xb - S.hx) * B / n;
-      const yb = S.hy - Hh / 2 + s * Hh;
-      const pl = uAt(S.hx - B / 2, yb), pr = uAt(S.hx + B / 2, yb);
-      Fx += (pl - pr) * Hh / n; T -= (pl - pr) * (yb - S.hy) * Hh / n;
-    }
-    return [Fx, Fy, T];
-  }
-
   /* ===== measurements ===== */
   function measure() {
     const n = Math.max(1, acc.n);
@@ -5256,10 +5616,12 @@ function grainsSim(o) {
       out.e = (W * (S.py - 2 * GLUE_IN) - solidA) / solidA;
       const Aw = (WIN.x1 - WIN.x0) * (WIN.y1 - WIN.y0);
       out.lwYY = acc.syy / n / Aw; out.lwXY = acc.sxy / n / Aw; out.lwXX = acc.sxx / n / Aw;
+      out.tauCore = Math.abs(out.lwXY); out.mob = out.lwYY > 0.05 ? out.tauCore / out.lwYY : 0;
     } else {
       const Aw = (WIN.x1 - WIN.x0) * (WIN.y1 - WIN.y0);
       out.sigEff = acc.syy / n / Aw;
       out.tau = acc.sxy / n / Aw;
+      out.tauCore = Math.abs(out.tau); out.mob = out.sigEff > 0.05 ? out.tauCore / out.sigEff : 0;
       out.u = poreOn() ? uAt((WIN.x0 + WIN.x1) / 2, (WIN.y0 + WIN.y1) / 2) : 0;
       out.sigma = out.sigEff + out.u;
       // void ratio in the window, with a smooth weight so grains crossing its edge don't make it jump
@@ -5280,22 +5642,24 @@ function grainsSim(o) {
 
   /* ===== cache a settled packing so presets can restart instantly ===== */
   function snapshot() {
-    return { x: x.slice(0, N), y: y.slice(0, N), w: w.slice(0, N), pack: S.pack };
+    return { x: x.slice(0, N), y: y.slice(0, N), w: w.slice(0, N), pack: S.pack, damp: S.water === 'damp' };
   }
-  function restore(sn) {
+  function restore(sn, top) {
+    S.pendingTop = top || 'none';
     x.set(sn.x); y.set(sn.y); w.set(sn.w);
     for (let i = 0; i < N; i++) { vx[i] = 0; vy[i] = 0; active[i] = 1; }
-    resetHistory(); S.pack = sn.pack; S.phase = 'run'; S.top = 'none'; S.wallR = true;
+    resetHistory(); S.pack = sn.pack; S.top = 'none'; S.wallR = true;
     S.gamma = 0; S.gdot = 0; S.shear = 'none';
     for (let i = P0; i < PT; i++) active[i] = 0;
     u.fill(0); uG.fill(0); uWas.fill(0);
+    S.phase = 'place'; S.pourSteps = 0; setTop(S.pendingTop);
   }
 
   return {
     N, PT, W, HS, HB, FW, XEND, RG, B0, P0, H0, prm, S, dt,
     x, y, r, w, kind, active, u: uG, uAct, UX0, UNX, UNY, h,
     get NC() { return NC; }, cI, cJ, cF, cB,
-    pour, step, measure, setTop, snapshot, restore, sampleTop, uAt, kinetic,
+    pour, step, measure, setTop, snapshot, restore, sampleTop, surfaceLevel, uAt, kinetic,
     setWindow(o2) { WIN = o2; }, get win() { return WIN; },
     shear(mode, a, b) {
       if (mode === 'mono') { S.shear = 'mono'; S.shearRate = a || 0.03; S.gammaStop = S.gamma + (b || 0.3); }
@@ -5303,12 +5667,533 @@ function grainsSim(o) {
       else { S.shear = 'none'; }
     },
     removeWall() { S.wallR = false; S.gamma = 0; S.shear = 'none'; },
+    place(top) { S.phase = 'place'; S.pourSteps = 0; S.pendingTop = top; S.gamma = 0; S.shear = 'none'; setTop(top); },
+    spilled() { let c = 0; for (let i = 0; i < N; i++) if (x[i] > W + 0.6) c++; return c; },
+    runout() { let mx = W; for (let i = 0; i < N; i++) if (x[i] + r[i] > mx) mx = x[i] + r[i]; return mx - W; },
   };
 }
 /* @grains-sim-end */
 
 if (typeof document === 'undefined' || !document.getElementById('fig-grains')) return;
+
+/* ===================== the figure ===================== */
+const root = $('#fig-grains');
+const F = fig(root);
+const cv = $('#cv-grains'), ctx = cv.getContext('2d');
+const ccv = $('#cv-grains-chart'), cctx = ccv.getContext('2d');
+const small = Math.min(window.innerWidth || 1200, screen.width || 1200) < 640;
+const sim = grainsSim({ N: small ? 250 : 420, seed: 11 });
+const S = sim.S, W = sim.W, HB = sim.HB;
+const STRESS = 'kPa*';
+const VX0 = -2.4, VX1 = sim.XEND + 0.9, VY0 = -1.6, VY1 = HB + 2.6;
+const cache = {};                     // settled packings, so experiments restart instantly
+S.onCured = sn => { cache[sn.pack + (sn.damp ? '-damp' : '')] = sn; };
+
+/* ---------- colours (re-read on theme change) ---------- */
+let C = {};
+function colors() {
+  const g = n => cssVar(n);
+  C = { sheet: g('--sheet'), paper: g('--paper'), ink: g('--ink'), ink2: g('--ink-2'), ink3: g('--ink-3'), rule: g('--rule'),
+    water: g('--water'), tint: g('--water-tint'), wfill: g('--water-fill'), accent: g('--accent'), bad: g('--bad'),
+    s1: g('--m-tsand'), s2: g('--m-filter'), s3: g('--m-trans'), rock: g('--m-rock'), conc: g('--m-conc'), roof: g('--m-clay'),
+    mono: g('--f-mono') || 'monospace' };
+  C.wRGB = rgba(C.water); C.aRGB = rgba(C.accent);
+}
+colors();
+onTheme(() => { colors(); draw(); drawChart(); });
+
+/* ---------- canvas sizing ---------- */
+let SC = 10, CW = 600, CH = 400, DPR = 1;
+function resize() {
+  const wrap = cv.parentElement;
+  CW = Math.max(280, wrap.clientWidth);
+  SC = CW / (VX1 - VX0); CH = Math.round((VY1 - VY0) * SC);
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  cv.width = Math.round(CW * DPR); cv.height = Math.round(CH * DPR);
+  cv.style.height = CH + 'px';
+  const cw = ccv.parentElement.clientWidth;
+  ccv.width = Math.round(cw * DPR); ccv.height = Math.round(120 * DPR); ccv.style.height = '120px';
+  draw(); drawChart();
+}
+const X = v => (v - VX0) * SC, Y = v => (VY1 - v) * SC;
+if (window.ResizeObserver) new ResizeObserver(() => resize()).observe(cv.parentElement);
+else window.addEventListener('resize', resize);
+
+/* ---------- u field as a small image, scaled up smoothly ---------- */
+const ucv = document.createElement('canvas'); ucv.width = sim.UNX; ucv.height = sim.UNY;
+const uctx = ucv.getContext('2d'); const uimg = uctx.createImageData(sim.UNX, sim.UNY);
+
+/* ---------- drawing ---------- */
+function boxPath(top) { // parallelogram interior of the box up to height `top`
+  const g = S.gamma;
+  ctx.beginPath();
+  ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(S.wallR ? W : sim.XEND), Y(0));
+  if (S.wallR) ctx.lineTo(X(W + g * top), Y(top)); else ctx.lineTo(X(sim.XEND), Y(top));
+  ctx.lineTo(X(g * top), Y(top)); ctx.closePath();
+}
+function draw() {
+  if (!CW) return;
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.fillStyle = C.sheet; ctx.fillRect(0, 0, CW, CH);
+  const g = S.gamma, sat = S.water === 'sat';
+  const sandTop = sim.surfaceLevel();
+  // water: standing water fills the box; excess pore pressure tints it darker (suction in orange)
+  if (sat) {
+    const wl = S.top === 'platen' ? S.py : Math.min(HB - 0.3, sandTop + 0.9);
+    ctx.save(); boxPath(wl); ctx.fillStyle = C.tint; ctx.fill();
+    ctx.clip();
+    const ref = Math.max(8, S.top === 'platen' ? S.load : 12);
+    const d = uimg.data;
+    for (let n = 0; n < sim.UNX * sim.UNY; n++) {
+      const ix = n % sim.UNX, jy = (n - ix) / sim.UNX, p = ((sim.UNY - 1 - jy) * sim.UNX + ix) * 4;
+      const v = sim.u[n] / ref, a = Math.min(1, Math.abs(v)) * 0.75;
+      const c = v >= 0 ? C.wRGB : C.aRGB;
+      d[p] = c[0]; d[p + 1] = c[1]; d[p + 2] = c[2]; d[p + 3] = Math.round(a * 255);
+    }
+    uctx.putImageData(uimg, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    const h = sim.h;
+    ctx.drawImage(ucv, X(sim.UX0 - h / 2), Y((sim.UNY - 1) * h + h / 2), sim.UNX * h * SC, sim.UNY * h * SC);
+    ctx.restore();
+    // water surface mark
+    if (S.top !== 'platen') {
+      ctx.strokeStyle = C.water; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(X(g * wl) + 2, Y(wl)); ctx.lineTo(X((S.wallR ? W : sim.XEND) + g * wl) - 2, Y(wl)); ctx.stroke();
+      const sx = X(W * 0.12 + g * wl), sy = Y(wl);
+      ctx.beginPath(); ctx.moveTo(sx - 5, sy - 9); ctx.lineTo(sx + 5, sy - 9); ctx.lineTo(sx, sy - 2); ctx.closePath(); ctx.stroke();
+    }
+  }
+  // grains, three sand tones
+  const N = sim.N, x = sim.x, y = sim.y, r = sim.r;
+  const tones = [C.s1, C.s2, C.s3];
+  for (let t = 0; t < 3; t++) {
+    ctx.beginPath();
+    for (let i = t; i < N; i += 3) { const px = X(x[i]), py = Y(y[i]); ctx.moveTo(px + r[i] * SC, py); ctx.arc(px, py, r[i] * SC, 0, 6.2832); }
+    ctx.fillStyle = tones[t]; ctx.fill();
+    ctx.lineWidth = Math.max(0.5, SC * 0.035); ctx.strokeStyle = C.ink3; ctx.stroke();
+  }
+  // base, platen and house discs
+  ctx.beginPath();
+  for (let i = sim.B0; i < sim.PT; i++) {
+    if (!sim.active[i] || sim.kind[i] === 3) continue;
+    const px = X(x[i]), py = Y(y[i]); if (px < -20 || px > CW + 20) continue;
+    ctx.moveTo(px + r[i] * SC, py); ctx.arc(px, py, r[i] * SC, 0, 6.2832);
+  }
+  ctx.fillStyle = C.rock; ctx.fill(); ctx.lineWidth = Math.max(0.5, SC * 0.04); ctx.strokeStyle = C.ink2; ctx.stroke();
+  // liquid bridges (damp)
+  const NC = sim.NC, cI = sim.cI, cJ = sim.cJ, cF = sim.cF, cB = sim.cB;
+  if (S.water === 'damp') {
+    ctx.beginPath();
+    for (let k = 0; k < NC; k++) {
+      if (!cB[k]) continue;
+      const i = cI[k], j = cJ[k];
+      const dx = x[j] - x[i], dy = y[j] - y[i], d = Math.hypot(dx, dy) || 1, nx = dx / d, ny = dy / d;
+      const cx = x[i] + nx * r[i], cy = y[i] + ny * r[i];
+      const tx = -ny * 0.16, ty = nx * 0.16;
+      ctx.moveTo(X(cx - tx), Y(cy - ty)); ctx.lineTo(X(cx + tx), Y(cy + ty));
+    }
+    ctx.strokeStyle = C.water; ctx.lineWidth = Math.max(1.5, SC * 0.16); ctx.lineCap = 'round'; ctx.stroke(); ctx.lineCap = 'butt';
+  }
+  // force chains: line width and darkness grow with the contact's normal force (fixed scale, so fading shows)
+  const FREF = 90, WMAX = Math.max(2.2, SC * 0.36);
+  const BK = 7, paths = [];
+  for (let b = 0; b < BK; b++) paths.push([]);
+  for (let k = 0; k < NC; k++) {
+    const f = cF[k]; if (f <= 0.6) continue;
+    const q = Math.min(1, f / FREF);
+    paths[Math.min(BK - 1, Math.floor(Math.sqrt(q) * BK))].push(k);
+  }
+  ctx.strokeStyle = C.ink; ctx.lineCap = 'round';
+  for (let b = 0; b < BK; b++) {
+    if (!paths[b].length) continue;
+    ctx.beginPath();
+    for (const k of paths[b]) {
+      const i = cI[k], j = cJ[k];
+      let x1 = x[i], y1 = y[i], x2 = x[j], y2 = y[j];
+      if (sim.kind[i]) { const dx = x2 - x1, dy = y2 - y1, d = Math.hypot(dx, dy) || 1; x1 = x2 - dx / d * r[j] * 1.5; y1 = y2 - dy / d * r[j] * 1.5; }
+      ctx.moveTo(X(x1), Y(y1)); ctx.lineTo(X(x2), Y(y2));
+    }
+    const q = (b + 1) / BK;
+    ctx.lineWidth = Math.max(0.7, WMAX * q * q); ctx.globalAlpha = 0.35 + 0.6 * q; ctx.stroke();
+  }
+  ctx.globalAlpha = 1; ctx.lineCap = 'butt';
+  // box: floor, walls
+  ctx.strokeStyle = C.ink; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(X(-2), Y(-0.42)); ctx.lineTo(X(sim.XEND + 0.4), Y(-0.42)); ctx.stroke();
+  ctx.lineWidth = 0.8; ctx.strokeStyle = C.ink3; ctx.beginPath();
+  for (let xx = -2; xx < sim.XEND + 0.4; xx += 1.2) { ctx.moveTo(X(xx), Y(-0.42)); ctx.lineTo(X(xx - 0.9), Y(-1.3)); }
+  ctx.stroke();
+  ctx.strokeStyle = C.ink; ctx.lineWidth = Math.max(2, SC * 0.22); ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(X(-0.12), Y(-0.4)); ctx.lineTo(X(g * HB - 0.12), Y(HB)); ctx.stroke();
+  if (S.wallR) { ctx.beginPath(); ctx.moveTo(X(W + 0.12), Y(-0.4)); ctx.lineTo(X(W + g * HB + 0.12), Y(HB)); ctx.stroke(); }
+  else { ctx.setLineDash([4, 4]); ctx.lineWidth = 1; ctx.strokeStyle = C.ink3; ctx.beginPath(); ctx.moveTo(X(W + 0.12), Y(0)); ctx.lineTo(X(W + 0.12), Y(HB)); ctx.stroke(); ctx.setLineDash([]); }
+  ctx.strokeStyle = C.ink; ctx.lineWidth = Math.max(2, SC * 0.22);
+  ctx.beginPath(); ctx.moveTo(X(sim.XEND + 0.12), Y(-0.4)); ctx.lineTo(X(sim.XEND + 0.12), Y(3)); ctx.stroke();
+  ctx.lineCap = 'butt';
+  // platen and its load
+  ctx.font = `500 ${Math.max(10, Math.min(13, SC * 0.5))}px ${C.mono}`;
+  if (S.top === 'platen') {
+    const py = S.py, x0 = g * py;
+    ctx.fillStyle = C.rock; ctx.strokeStyle = C.ink; ctx.lineWidth = 1.2;
+    ctx.fillRect(X(x0), Y(py + 1.1), W * SC, 1.1 * SC); ctx.strokeRect(X(x0), Y(py + 1.1), W * SC, 1.1 * SC);
+    const narr = Math.max(3, Math.round(W / 4));
+    ctx.beginPath();
+    for (let k = 0; k < narr; k++) {
+      const ax = X(x0 + (k + 0.5) * W / narr), ay0 = Y(py + 3.2), ay1 = Y(py + 1.25);
+      ctx.moveTo(ax, ay0); ctx.lineTo(ax, ay1); ctx.moveTo(ax - 4, ay1 - 6); ctx.lineTo(ax, ay1); ctx.lineTo(ax + 4, ay1 - 6);
+    }
+    ctx.strokeStyle = C.accent; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.fillStyle = C.accent; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText(`Load ${Math.round(S.load)} ${STRESS}`, X(x0), Y(py + 3.4));
+    // drainage valve on the platen
+    if (sat) {
+      const vx_ = X(x0 + W - 1.4), vy0 = Y(py + 1.1), vy1 = Y(py + 3.0);
+      ctx.strokeStyle = C.water; ctx.lineWidth = Math.max(2, SC * 0.18);
+      ctx.beginPath(); ctx.moveTo(vx_, vy0); ctx.lineTo(vx_, vy1); ctx.stroke();
+      const vy = (vy0 + vy1) / 2, vs = Math.max(4, SC * 0.35);
+      ctx.beginPath(); ctx.moveTo(vx_ - vs, vy - vs); ctx.lineTo(vx_ + vs, vy + vs); ctx.lineTo(vx_ + vs, vy - vs); ctx.lineTo(vx_ - vs, vy + vs); ctx.closePath();
+      ctx.fillStyle = S.drain === 'shut' ? C.ink : C.sheet; ctx.fill(); ctx.strokeStyle = C.ink; ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillStyle = C.ink2; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+      ctx.fillText(S.drain === 'shut' ? 'drain shut' : 'drain open', vx_ - vs - 4, vy);
+    }
+  }
+  // house
+  if (S.top === 'house') {
+    const B = sim.prm.houseB, Hh = sim.prm.houseH;
+    ctx.save(); ctx.translate(X(S.hx), Y(S.hy)); ctx.rotate(-S.hth);
+    ctx.fillStyle = C.conc; ctx.strokeStyle = C.ink; ctx.lineWidth = 1.3;
+    ctx.fillRect(-B / 2 * SC, -Hh / 2 * SC, B * SC, Hh * SC); ctx.strokeRect(-B / 2 * SC, -Hh / 2 * SC, B * SC, Hh * SC);
+    ctx.beginPath(); ctx.moveTo(-B / 2 * SC - 0.4 * SC, -Hh / 2 * SC); ctx.lineTo(0, -Hh / 2 * SC - 2.2 * SC); ctx.lineTo(B / 2 * SC + 0.4 * SC, -Hh / 2 * SC); ctx.closePath();
+    ctx.fillStyle = C.roof; ctx.fill(); ctx.stroke();
+    ctx.fillStyle = C.sheet; ctx.lineWidth = 1;
+    for (const wx of [-0.3, 0.12]) { ctx.fillRect(wx * B * SC, -0.15 * Hh * SC, 0.18 * B * SC, 0.25 * Hh * SC); ctx.strokeRect(wx * B * SC, -0.15 * Hh * SC, 0.18 * B * SC, 0.25 * Hh * SC); }
+    ctx.fillStyle = C.ink2; ctx.fillRect(-0.06 * B * SC, 0.15 * Hh * SC, 0.12 * B * SC, 0.35 * Hh * SC);
+    ctx.restore();
+    // where it started
+    if (S.houseY0 != null) {
+      const yb = S.houseY0 - Hh / 2;
+      ctx.setLineDash([3, 3]); ctx.strokeStyle = C.accent; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(X(S.hx - B / 2 - 1.5), Y(yb)); ctx.lineTo(X(S.hx + B / 2 + 1.5), Y(yb)); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = C.accent; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+      ctx.fillText('start', X(S.hx + B / 2 + 1.6), Y(yb) + 5);
+    }
+  }
+  // measuring window (open top only)
+  if (S.top !== 'platen' && S.wallR) {
+    const wn = sim.win;
+    ctx.setLineDash([4, 3]); ctx.strokeStyle = C.ink2; ctx.lineWidth = 1;
+    ctx.strokeRect(X(wn.x0 + g * (wn.y0 + wn.y1) / 2), Y(wn.y1), (wn.x1 - wn.x0) * SC, (wn.y1 - wn.y0) * SC); ctx.setLineDash([]);
+  }
+  // shaking / shearing marks
+  if (S.shear !== 'none') {
+    const yA = HB + 0.9, xm = g * HB + W / 2;
+    ctx.strokeStyle = C.accent; ctx.fillStyle = C.accent; ctx.lineWidth = 1.6;
+    const L = 2.2, dir = S.shear === 'cyclic' ? Math.sign(S.gdot || 1) : 1;
+    ctx.beginPath(); ctx.moveTo(X(xm - L), Y(yA)); ctx.lineTo(X(xm + L), Y(yA)); ctx.stroke();
+    const tipx = X(xm + dir * L), tipy = Y(yA);
+    ctx.beginPath(); ctx.moveTo(tipx, tipy); ctx.lineTo(tipx - dir * 7, tipy - 4); ctx.lineTo(tipx - dir * 7, tipy + 4); ctx.closePath(); ctx.fill();
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(S.shear === 'cyclic' ? 'shaking' : `shear ${Math.round(g * 100)}%`, X(xm + L) + 8, Y(yA));
+  }
+  // status
+  const st = statusText();
+  if (st) {
+    ctx.fillStyle = C.ink2; ctx.textAlign = 'right'; ctx.textBaseline = 'top';
+    ctx.fillText(st, X(VX1) - 6, 6);
+  }
+}
+function statusText() {
+  if (S.phase === 'pour') return 'Pouring sand…';
+  if (S.phase === 'cure') return 'Settling…';
+  if (S.phase === 'place') return S.top === 'platen' ? 'Applying the load…' : S.top === 'house' ? 'House settling…' : 'Settling…';
+  if (paused) return RM ? 'Paused (reduced motion): press Run or Step' : 'Paused';
+  return '';
+}
+
+/* ---------- chart: sigma' and u over time ---------- */
+const hist = []; const HMAX = 400; let histT = 0;
+function pushHist(m) {
+  hist.push({ t: m.t, s: m.sigEff, u: m.u, tot: m.sigma });
+  if (hist.length > HMAX) hist.shift();
+}
+function drawChart() {
+  const w = ccv.width / DPR, h = ccv.height / DPR;
+  if (!w) return;
+  cctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  cctx.fillStyle = C.sheet; cctx.fillRect(0, 0, w, h);
+  const L = 44, R = 10, T = 14, Bm = 20;
+  let ymax = 10, ymin = 0;
+  for (const p of hist) { ymax = Math.max(ymax, p.s, p.u, p.tot); ymin = Math.min(ymin, p.u); }
+  ymax = Math.ceil(ymax / 10) * 10; ymin = Math.floor(ymin / 10) * 10;
+  const t1 = hist.length ? hist[hist.length - 1].t : 1, t0 = Math.max(0, t1 - 60);
+  const px = t => L + (t - t0) / Math.max(1e-6, t1 - t0 || 60) * (w - L - R);
+  const py = v => T + (ymax - v) / (ymax - ymin) * (h - T - Bm);
+  cctx.font = `10px ${C.mono}`; cctx.fillStyle = C.ink3; cctx.strokeStyle = C.rule; cctx.lineWidth = 1;
+  cctx.textAlign = 'right'; cctx.textBaseline = 'middle';
+  const stepV = (ymax - ymin) > 100 ? 50 : (ymax - ymin) > 40 ? 20 : 10;
+  for (let v = ymin; v <= ymax + 1e-6; v += stepV) { cctx.beginPath(); cctx.moveTo(L, py(v)); cctx.lineTo(w - R, py(v)); cctx.stroke(); cctx.fillText(String(v), L - 6, py(v)); }
+  cctx.textAlign = 'left'; cctx.textBaseline = 'top'; cctx.fillText(STRESS, 2, 0);
+  cctx.textBaseline = 'bottom'; cctx.fillText('time →', L, h);
+  const line = (key, col, wd, dash) => {
+    cctx.beginPath(); let first = true;
+    for (const p of hist) { if (p.t < t0) continue; const X_ = px(p.t), Y_ = py(p[key]); if (first) { cctx.moveTo(X_, Y_); first = false; } else cctx.lineTo(X_, Y_); }
+    cctx.strokeStyle = col; cctx.lineWidth = wd; cctx.setLineDash(dash || []); cctx.stroke(); cctx.setLineDash([]);
+  };
+  line('tot', C.ink3, 1.2, [4, 3]); line('u', C.water, 2); line('s', C.ink, 2);
+  // legend
+  cctx.textBaseline = 'top'; cctx.textAlign = 'right';
+  const lg = [['σ′ grains', C.ink], ['u water', C.water], ['σ total', C.ink3]];
+  let lx = w - R;
+  for (const [t, c] of lg) { const tw = cctx.measureText(t).width; cctx.fillStyle = c; cctx.fillText(t, lx, 0); cctx.fillRect(lx - tw - 14, 6, 10, 2); lx -= tw + 26; }
+}
+
+/* ---------- readouts ---------- */
+const ro = { s: $('#gr-sig'), u: $('#gr-u'), se: $('#gr-se'), e: $('#gr-e'), tau: $('#gr-tau'), tau2: $('#gr-tau2'), sub: $('#gr-se2'), eLab: $('#gr-e2') };
+let disp = null;
+function updateReadouts(m) {
+  const k = disp ? 0.25 : 1;
+  if (!disp) disp = Object.assign({}, m);
+  for (const key of ['sigma', 'u', 'sigEff', 'e', 'tauCore', 'mob']) if (isFinite(m[key])) disp[key] += (m[key] - disp[key]) * k;
+  const f0 = v => (isFinite(v) ? (Math.abs(v) < 0.5 ? '0' : Math.round(v).toString()) : '–');
+  ro.s.textContent = f0(disp.sigma) + ' ' + STRESS;
+  ro.u.textContent = f0(disp.u) + ' ' + STRESS;
+  ro.se.textContent = f0(disp.sigEff) + ' ' + STRESS;
+  ro.e.textContent = isFinite(disp.e) ? disp.e.toFixed(2) : '–';
+  ro.tau.textContent = f0(disp.tauCore) + ' ' + STRESS;
+  ro.tau2.textContent = 'τ/σ′ = ' + (disp.mob ? disp.mob.toFixed(2) : '–') + (peakMob ? ' · peak ' + peakMob.toFixed(2) : '');
+  ro.sub.textContent = S.top === 'platen' ? 'platen force from grain contacts' : 'grain contacts in the dashed box';
+  ro.eLab.textContent = S.top === 'house' && S.houseY0 != null ? `house sank ${Math.max(0, S.houseY0 - S.hy).toFixed(1)} grain widths` : (S.pack === 'dense' ? 'packed dense' : 'packed loose') + ' · 2D discs';
+}
+
+/* ---------- controls ---------- */
+const segs = {};
+function setSeg(id, v) { $$('#' + id + ' button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === v ? 'true' : 'false')); }
+const btnShear = $('#gr-shear'), btnShake = $('#gr-shake'), btnWall = $('#gr-wall'), btnRun = $('#gr-run'), btnStep = $('#gr-step');
+const load = $('#gr-load'), loadO = $('#gr-load-o'), hint = $('#gr-hint'), result = $('#gr-result');
+let paused = RM, exp = null, last = null, peakMob = 0, act = null;
+
+function syncUI() {
+  setSeg('gr-pack', S.pack); setSeg('gr-water', S.water); setSeg('gr-drain', S.drain);
+  setSeg('gr-top', S.top === 'none' ? 'none' : S.top);
+  $$('#gr-drain button').forEach(b => { b.disabled = S.water !== 'sat'; });
+  const busy = S.phase !== 'run';
+  btnShear.disabled = busy || S.top !== 'platen' || !S.wallR || S.shear === 'cyclic';
+  btnShake.disabled = busy || !S.wallR || S.shear === 'mono';
+  btnWall.disabled = busy || (S.wallR && S.top !== 'none');
+  btnShear.querySelector('span').textContent = S.shear === 'mono' ? 'Stop shearing' : 'Shear';
+  btnShake.querySelector('span').textContent = S.shear === 'cyclic' ? 'Stop shaking' : 'Shake';
+  btnWall.querySelector('span').textContent = S.wallR ? 'Remove side wall' : 'Refill the box';
+  btnRun.querySelector('span').textContent = paused ? 'Run' : 'Pause';
+  btnRun.querySelector('path').setAttribute('d', paused ? ICON_PLAY : ICON_PAUSE);
+  load.disabled = S.top !== 'platen';
+  loadO.textContent = Math.round(S.load) + ' ' + STRESS;
+}
+
+function setWindow() {
+  const B = sim.prm.houseB;
+  if (S.top === 'platen') { const H = S.py; sim.setWindow({ x0: 0.18 * W, x1: 0.82 * W, y0: 0.22 * H, y1: 0.72 * H }); }
+  else if (S.top === 'house') sim.setWindow({ x0: W / 2 - B / 2, x1: W / 2 + B / 2, y0: 0.3 * sim.HS, y1: 0.62 * sim.HS });
+  else sim.setWindow({ x0: 0.25 * W, x1: 0.75 * W, y0: 0.3 * sim.HS, y1: 0.62 * sim.HS });
+}
+// prepare a fresh sample: from the cache when we have this packing, otherwise pour it
+function prepare(pack, top) {
+  const key = pack + (S.water === 'damp' ? '-damp' : '');
+  S.houseY0 = null; peakMob = 0; act = null;
+  if (cache[key]) sim.restore(cache[key], top); else sim.pour(pack, top);
+  S.pack = pack;
+  setWindow(); syncUI();
+}
+segGroup($('#gr-pack'), v => { exp = null; prepare(v, S.top); say(''); });
+segGroup($('#gr-water'), v => {
+  const was = S.water; S.water = v;
+  if (was === 'damp' || v === 'damp') { if (S.phase === 'run' && S.wallR) { /* bridges form or dry out in place */ } }
+  syncUI();
+});
+segGroup($('#gr-drain'), v => { S.drain = v; syncUI(); });
+segGroup($('#gr-top'), v => {
+  if (S.phase !== 'run') { syncUI(); return; }
+  if (!S.wallR) { prepare(S.pack, v); return; }
+  S.houseY0 = null; sim.place(v); setWindow(); syncUI();
+});
+load.addEventListener('input', () => { S.load = +load.value; syncUI(); });
+btnShear.addEventListener('click', () => {
+  if (S.shear === 'mono') { sim.shear('none'); finishAct(); }
+  else startAct('shear');
+  syncUI();
+});
+btnShake.addEventListener('click', () => {
+  if (S.shear === 'cyclic') { sim.shear('none'); finishAct(); }
+  else startAct('shake');
+  syncUI();
+});
+btnWall.addEventListener('click', () => {
+  if (S.wallR) startAct('wall'); else { prepare(S.pack, 'none'); }
+  syncUI();
+});
+btnRun.addEventListener('click', () => { paused = !paused; syncUI(); draw(); });
+btnStep.addEventListener('click', () => { paused = true; advance(1.0, 1e9); frameUpdate(); syncUI(); });
+
+/* ---------- actions and their measured outcome ---------- */
+function snapM() { const m = sim.measure(); return m; }
+function startAct(kind) {
+  const m0 = lastM || snapM();
+  act = { kind, t0: S.t, m0: Object.assign({}, m0), h0: kind === 'wall' ? 0 : (S.top === 'platen' ? S.py : sim.sampleTop()), uMax: m0.u, uMin: m0.u, sMin: m0.sigEff, sMax: m0.sigEff, mobPeak: 0, tail: 0, exp: exp && exp.id };
+  peakMob = 0;
+  if (S.top === 'house') S.houseY0 = S.hy;
+  if (kind === 'shear') sim.shear('mono', 0.03, 0.3);
+  else if (kind === 'shake') sim.shear('cyclic', 0.02, 8);
+  else if (kind === 'wall') sim.removeWall();
+}
+function trackAct(m) {
+  if (!act) return;
+  act.uMax = Math.max(act.uMax, m.u); act.uMin = Math.min(act.uMin, m.u);
+  act.sMin = Math.min(act.sMin, m.sigEff); act.sMax = Math.max(act.sMax, m.sigEff);
+  if (act.kind === 'shear' && S.t - act.t0 > 0.4) { act.mobPeak = Math.max(act.mobPeak, m.mob); peakMob = act.mobPeak; }
+  const done = act.kind === 'wall' ? S.t - act.t0 > 14 : S.shear === 'none';
+  if (done) { act.tail += 1; if (act.tail > (act.kind === 'shake' ? 40 : 2)) finishAct(); }
+}
+function finishAct() {
+  if (!act) return;
+  const m = disp || lastM, a = act; act = null;
+  const out = { kind: a.kind, exp: a.exp, pack: S.pack, water: S.water, drain: S.drain, top: S.top, load: S.load };
+  out.s0 = a.m0.sigEff; out.s1 = m.sigEff; out.sMin = a.sMin; out.sMax = a.sMax; out.u0 = a.m0.u; out.u1 = m.u; out.uMax = a.uMax; out.uMin = a.uMin;
+  out.e0 = a.m0.e; out.e1 = m.e;
+  if (a.kind === 'shear') {
+    out.dV = (S.py - a.h0) / a.h0 * 100; out.mobPeak = a.mobPeak; out.mobEnd = m.mob; out.tauEnd = m.tauCore;
+  } else if (a.kind === 'shake') {
+    out.dV = S.top === 'platen' ? (S.py - a.h0) / a.h0 * 100 : NaN;
+    if (S.top === 'house') { out.sink = S.houseY0 - S.hy; out.tilt = S.hth * 180 / Math.PI; }
+  } else if (a.kind === 'wall') { out.spilled = sim.spilled(); out.runout = sim.runout(); }
+  last = out;
+  showResult(out);
+  syncUI();
+}
+const p1 = v => (v > 0 ? '+' : '') + v.toFixed(1);
+function outcomeText(o) {
+  if (!o) return '';
+  const st = `${o.pack} sand, ${o.water === 'sat' ? 'saturated, drain ' + o.drain : o.water}`;
+  if (o.kind === 'wall') return o.spilled < 4 ? `Side wall removed (${st}): the cut face stood. ${o.spilled} grains fell.` : `Side wall removed (${st}): the face collapsed. ${o.spilled} grains ran out, up to ${o.runout.toFixed(0)} grain widths from the box.`;
+  if (o.kind === 'shear') return `Sheared ${st} under ${Math.round(o.load)} ${STRESS}: volume ${p1(o.dV)}% (${o.dV > 0.3 ? 'it dilated' : o.dV < -0.3 ? 'it compacted' : 'almost no change'}); peak τ/σ′ ${o.mobPeak.toFixed(2)}, at the end ${o.mobEnd.toFixed(2)}; water pressure ${Math.round(o.u0)} → ${Math.round(o.u1)} ${STRESS}${o.uMin < -3 ? ' (suction)' : ''}; σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS}.`;
+  if (o.kind === 'shake') {
+    let t = `Shaken, ${st}: σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS} (lowest ${Math.round(o.sMin)}), water pressure up to ${Math.round(o.uMax)} ${STRESS}`;
+    if (o.s0 > 0.5) t += ` (${Math.round(o.uMax / Math.max(o.s0, 1e-6) * 100)}% of the grain stress before shaking)`;
+    if (isFinite(o.dV)) t += `; volume ${p1(o.dV)}%`;
+    if (o.sink != null) t += `; house sank ${o.sink.toFixed(1)} grain widths and tilted ${Math.abs(o.tilt).toFixed(0)}°`;
+    return t + '.';
+  }
+  return '';
+}
+function showResult(o) { result.textContent = o ? 'Measured: ' + outcomeText(o) : ''; result.hidden = !o; }
+
+/* ---------- experiments ---------- */
+const EXPS = {
+  castle: { pack: 'dense', water: 'damp', top: 'none', go: 'wall', hint: 'Damp sand. Tiny bridges of water between grains pull them together. Watch the cut face when the wall comes away.', next: ['Now try it dry', 'castle-dry'] },
+  'castle-dry': { pack: 'dense', water: 'dry', top: 'none', go: 'wall', hint: 'The same sand, dry. Nothing holds the grains together except friction.', next: ['Damp again', 'castle'] },
+  shear: { pack: 'dense', water: 'dry', top: 'platen', load: 40, go: 'shear', hint: 'Dense sand under a fixed load, sheared sideways. Watch the platen: the grains have to climb over each other to move.', next: ['Now loose sand', 'shear-loose'] },
+  'shear-loose': { pack: 'loose', water: 'dry', top: 'platen', load: 40, go: 'shear', hint: 'Loose sand, same load, same shear. The grains fall into the gaps as they move.', next: ['Dense again', 'shear'] },
+  liq: { pack: 'loose', water: 'sat', drain: 'shut', top: 'house', go: 'shake', hint: 'Loose sand full of water, a house on top, and the water can’t get out in time. Watch the water pressure (blue) and the force chains under the house.', next: ['Same, dense sand', 'liq-dense'] },
+  'liq-dense': { pack: 'dense', water: 'sat', drain: 'shut', top: 'house', go: 'shake', hint: 'Dense sand, same water, same shaking.', next: ['Loose again', 'liq'] },
+  suction: { pack: 'dense', water: 'sat', drain: 'shut', top: 'platen', load: 40, go: 'shear', hint: 'Dense sand full of water, drain shut, sheared. Dense sand wants to swell, but the water can’t get in. Watch u go below zero.', next: ['Same with the drain open', 'suction-open'] },
+  'suction-open': { pack: 'dense', water: 'sat', drain: 'open', top: 'platen', load: 40, go: 'shear', hint: 'The same dense sand with the drain open. Water flows in as it swells, so there is no suction.', next: ['Drain shut again', 'suction'] },
+};
+function runExp(id) {
+  const e = EXPS[id]; if (!e) return;
+  exp = { id, e, started: false };
+  sim.shear('none');
+  S.water = e.water; if (e.drain) S.drain = e.drain; if (e.load) { S.load = e.load; load.value = e.load; }
+  prepare(e.pack, e.top);
+  say(e.hint, e.next);
+  showResult(null);
+  if (RM && paused) { /* reduced motion: set up, then wait for Run or Step */ }
+  syncUI();
+}
+function say(text, next) {
+  hint.textContent = text || '';
+  if (next) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'btn gr-next'; b.textContent = next[0];
+    b.addEventListener('click', () => runExp(next[1])); hint.appendChild(document.createTextNode(' ')); hint.appendChild(b);
+  }
+}
+$$('#fig-grains [data-exp]').forEach(b => b.addEventListener('click', () => runExp(b.dataset.exp)));
+function expTick() {
+  if (!exp || exp.started || S.phase !== 'run') return;
+  if (exp.wait == null) exp.wait = S.t + 0.6;
+  if (S.t < exp.wait) return;
+  exp.started = true; startAct(exp.e.go); syncUI();
+}
+
+/* ---------- stepping: as many sim steps as fit in a frame budget ---------- */
+let perStep = 0.08, lastM = null;
+const BUDGET = small ? 6 : 8;
+function advance(simTime, budgetMs) {
+  const n = Math.max(1, Math.round(simTime / sim.dt));
+  const t0 = performance.now();
+  let k = 0;
+  for (; k < n; k++) {
+    sim.step();
+    if ((k & 15) === 15) { if (performance.now() - t0 > budgetMs) { k++; break; } }
+  }
+  const el = performance.now() - t0;
+  perStep = perStep * 0.8 + 0.2 * el / Math.max(1, k);
+  return k;
+}
+let chartTick = 0, wasPhase = '';
+function frameUpdate() {
+  const m = sim.measure(); lastM = m;
+  updateReadouts(m); trackAct(m); expTick();
+  if (S.t - histT > 0.15) { histT = S.t; pushHist(m); }
+  if (S.phase !== wasPhase) { wasPhase = S.phase; if (S.phase === 'run') setWindow(); syncUI(); }
+  draw();
+  if (++chartTick % 3 === 0) drawChart();
+}
+F.ticks.push((t, dt) => {
+  if (!paused) {
+    const steps = Math.max(8, Math.min(220, Math.floor(BUDGET / Math.max(0.01, perStep))));
+    advance(steps * sim.dt, BUDGET * 1.5);
+    frameUpdate();
+  } else if (S.phase !== 'run') {
+    // reduced motion: still finish preparing the sample, without animating it
+    advance(400 * sim.dt, BUDGET * 2);
+    if (S.phase === 'run') frameUpdate(); else if (++chartTick % 10 === 0) { draw(); }
+  }
+});
+F.onFirst = () => { resize(); };
+
+/* ---------- start: dense sand under the platen, force chains showing ---------- */
+S.water = 'dry'; S.load = 40;
+prepare('dense', 'platen');
+resize(); syncUI();
+say('Pick an experiment above, or set things up yourself below.');
+
+/* ---------- test hook (only with ?grains-debug in the URL) ---------- */
+if (/grains-debug/.test(location.search)) window.grainsDebug = {
+  sim, runExp, startAct,
+  ff(simTime) { // fast-forward, measuring as the live page would
+    const n = Math.round(simTime / sim.dt);
+    for (let k = 0; k < n; k += 100) { advance(100 * sim.dt, 1e9); frameUpdate(); }
+  },
+};
+
+/* ---------- tutor ---------- */
+if (typeof tutorRegister === 'function') tutorRegister('fig-grains', {
+  title: 'Grain-scale sandbox (effective stress)',
+  describe: () => {
+    const m = disp || lastM || {};
+    const top = S.top === 'platen' ? `a platen pressing down with ${Math.round(S.load)} ${STRESS}` : S.top === 'house' ? 'a heavy model house on the surface' : 'nothing on top';
+    const water = S.water === 'sat' ? `saturated, drain ${S.drain}` : S.water;
+    const lines = [
+      `2D discrete-element model, ${sim.N} sand discs in a box with ${top}${S.wallR ? '' : ' (right wall removed)'}. Packing: ${S.pack}. Water: ${water}. Stresses are in scaled model units (${STRESS}).`,
+      `Phase: ${S.phase}${S.shear !== 'none' ? ', currently ' + (S.shear === 'cyclic' ? 'shaking' : 'shearing at ' + Math.round(S.gamma * 100) + '% strain') : ''}.`,
+      `Now: total stress ${n1(m.sigma || 0)}, water pressure u ${n1(m.u || 0)}, grain (effective) stress σ′ ${n1(m.sigEff || 0)} (measured from contact forces), void ratio ${isFinite(m.e) ? m.e.toFixed(3) : '–'}, shear stress ratio τ/σ′ ${m.mob ? m.mob.toFixed(2) : '–'}.`,
+    ];
+    if (exp) lines.push(`Last experiment chosen: "${exp.id}". ${exp.e.hint}`);
+    if (last) lines.push('Last measured outcome: ' + outcomeText(last));
+    else if (act) lines.push(`In progress: ${act.kind}.`);
+    return lines.join('\n');
+  }
+});
 })();
+
 /* ===================== Fig 3: dam zones ===================== */
 (function figZones() {
   const F = fig($('#fig-zones'));
@@ -6356,6 +7241,769 @@ if (typeof document === 'undefined' || !document.getElementById('fig-grains')) r
     draw();
     if (anim.t >= 1) anim = null;
   });
+})();
+/* ===================== Step 9: build your own dam ===================== */
+/* The reader paints the dam's zones cell by cell (1 m grid of the seepage solver), picks the
+   foundation, cutoff, downstream slope and reservoir, and presses Test. A worker runs the seepage
+   solver in custom mode and then the slope stability solver (stability-solver.js) on its pore
+   pressures. Missions are defined in StabilitySolver.BUILD.missions (checked in tests). */
+(function figBuild() {
+  const root = $('#fig-build');
+  if (!root) return;
+  const F = fig(root);
+  const API = window.StabilitySolver;
+  const statusEl = $('#bd-status');
+  if (!API || !API.BUILD) { statusEl.textContent = 'The stability solver did not load, so this figure cannot run.'; return; }
+  const B = API.BUILD;
+  const NX = 170, NZ = 39, GX0 = -80, GZ0 = -15, NC = NX * NZ;
+  const CREST = 24, UPTOE = -51;
+  const MAT = [
+    { key: 'fill', name: 'General fill', pat: 'p-fill', note: 'Compacted earth. Passes water slowly and has a little stickiness (cohesion).' },
+    { key: 'clay', name: 'Clay core', pat: 'p-clay', note: 'Almost watertight, so it holds back the head. Weaker than the other materials.' },
+    { key: 'rock', name: 'Rockfill shell', pat: 'p-rock', note: 'Heavy, strong and coarse. Water runs straight through it.' },
+    { key: 'filter', name: 'Sand filter / drain', pat: 'p-drain', note: 'Lets water out but holds soil back. A patch joined to the toe at the base of the dam drains freely.' },
+    { key: 'tsand', name: 'Cycloned tailings sand', pat: 'p-cyclone', note: 'The coarse part of mine waste, so it is free. No cohesion, and it drains only moderately.' }
+  ];
+  MAT.forEach((m, i) => Object.assign(m, B.materials[i]));
+  const FOUND = { gravel: 'Sand & gravel', clay: 'Clay', weak: 'Clay with a weak clay layer 4–6 m down' };
+  const PRESETS = [
+    { id: 'homogeneous', name: 'Homogeneous fill' },
+    { id: 'cored', name: 'Clay core + rockfill' },
+    { id: 'filtered', name: 'Core + chimney filter' },
+    { id: 'drained', name: 'Fill + drain' },
+    { id: 'leaky', name: 'Leaky' },
+    { id: 'steep', name: 'Steep and wet', base: 'homogeneous', set: { slope: 1.5, reservoir: 0.95 } },
+    { id: 'tailings', name: 'Tailings sand' }
+  ];
+  const MISSION_TEXT = {
+    dry: {
+      title: 'Dry the slope',
+      brief: 'This dam is all compacted fill on clay. Water breaks out 8 m up its downstream slope and its factor of safety is 1.12. Keep the 2:1 slope and the reservoir where they are, and get the factor of safety to 1.5 with a piping safety of 3 or more.',
+      hints: ['Test it first and follow the dashed line: the water stays high right through the dam and comes out on the downstream slope.',
+        'The fill is strong enough when it is dry. Give the water a way out before it reaches the downstream half.',
+        'Paint a strip of sand filter about 2 m wide, standing up just downstream of the crest, and join its foot to a 2 m layer of filter along the base out to the toe. A clay core with rockfill shells also works.'],
+      done: 'The drain catches the water before it reaches the downstream slope, so the grains there press on each other with their full weight. Same soil, same slope, much more grip.'
+    },
+    hold: {
+      title: 'Hold the water',
+      brief: 'This rockfill dam on sand and gravel leaks like a sieve. Cut the seepage to 100 L/day per metre or less, keep the piping safety at 3 or more and the factor of safety at 1.5, and use no more than 350 m³ of clay per metre of dam.',
+      hints: ['Follow the flow lines: water goes through the rockfill and also under the dam through the gravel.',
+        'Rockfill needs a watertight heart. Clay passes water about a hundred thousand times more slowly than rockfill.',
+        'Paint a clay core up the middle, wide at the base and narrow at the top, then close the path underneath with a full cutoff.'],
+      done: 'The core takes the head through the dam and the cutoff closes the path through the gravel. The water has no quick way past, so the seepage falls from tens of thousands of litres a day per metre to a few.'
+    },
+    polley: {
+      title: 'Mount Polley',
+      brief: 'In 2014 the Mount Polley tailings dam in British Columbia slid on a weak clay layer in its foundation and released about 25 million m³ of water and tailings. The investigation found the design had not allowed for that layer, and a steep downstream slope made it worse. This dam sits on a similar layer 4 m down. Get the factor of safety to 1.5, checked on blocks sliding along the layer as well as on circles.',
+      hints: ['Test it. The critical surface is not a circle: it is a block sliding along the weak layer.',
+        'Drains barely help here. The layer is weak because of what it is, and it lies sealed in clay below the dam.',
+        'Weight pressing down on the layer beyond the toe holds the block back. Flatten the downstream slope.'],
+      done: 'The flatter slope puts more weight on the layer beyond the old toe, and the block has a longer stretch of layer to slide along. Flatter slopes and toe buttresses of extra fill are the usual fix for a weak foundation.'
+    },
+    tailings: {
+      title: 'Tailings on a budget',
+      brief: 'Mines build tailings dams from their own waste because it costs nothing. Make at least 70% of this dam from cycloned tailings sand, and get the factor of safety to 1.5 with a piping safety of 3 or more.',
+      hints: ['Tailings sand has no cohesion. Even dry, a slope of loose grains stands only up to its friction angle, and wet it stands much less.',
+        'Keep it dry first: a drain inside the sand lowers the water level.',
+        'A chimney and blanket drain plus a 2.5:1 downstream slope does it.'],
+      done: 'Dry, gently sloped sand holds. Downstream-raised tailings dams use drains and flat downstream slopes for this reason. One thing this sandbox cannot show: loose saturated tailings sand can liquefy (Step 4), so real ones are also compacted.'
+    }
+  };
+  const GOAL_TEXT = {
+    q: g => `Seepage ≤ ${g.maxQ} L/day per metre`, pipe: g => `Safety vs piping ≥ ${g.minPipe}`, fos: g => `Factor of safety ≥ ${g.minFoS}`,
+    clay: g => `Clay ≤ ${g.maxClay} m³ per metre`, tsand: g => `Tailings sand ≥ ${Math.round(g.minTsand * 100)}% of the dam`
+  };
+  const LIVE_GOALS = { clay: true, tsand: true }; // checked while painting, before any test
+
+  // ---------------------------------------------------------------- state
+  const st = { cells: new Uint8Array(NC), slope: 2, foundation: 'clay', cutoff: 'none', reservoir: 0.85, mat: 3, brush: 3, side: 'downstream', touch: 'paint', mission: 'free' };
+  let version = 0;            // bumps on every design change
+  let result = null;          // { version, seep, stab, m, design }
+  let tested = false;         // first test done: later changes retest automatically
+  let hintsShown = 0;
+  const undo = [];
+  const toe = s => 3 + s * CREST;
+  const downFace = (z, s) => toe(s) - s * z;
+  const inDam = (x, z, s) => z >= 0 && z <= CREST && x >= UPTOE + 2 * z && x <= downFace(z, s);
+  const cx = i => GX0 + i + 0.5, cz = j => GZ0 + j + 0.5;
+  function applyPreset(id) {
+    const P = PRESETS.find(p => p.id === id) || PRESETS[0];
+    if (P.set) Object.assign(st, P.set);
+    const cells = API.presetCells(P.base || P.id, 3); // fill the widest outline, then use what fits
+    st.cells.set(cells);
+  }
+  // slope change: cells that come inside the new outline copy the nearest painted cell to their left
+  function reslope(oldS, newS) {
+    for (let j = 15; j < NZ; j++) {
+      const z = cz(j);
+      let last = -1;
+      for (let i = 0; i < NX; i++) {
+        const x = cx(i), c = i * NZ + j;
+        if (inDam(x, z, oldS)) last = st.cells[c];
+        else if (last >= 0 && inDam(x, z, newS)) st.cells[c] = last;
+      }
+    }
+  }
+  function damCellCount() { let n = 0; for (let i = 0; i < NX; i++) for (let j = 15; j < NZ; j++) if (inDam(cx(i), cz(j), st.slope)) n++; return n; }
+  function liveCounts() {
+    let clay = 0, tsand = 0, dam = 0, drain = 0;
+    for (let i = 0; i < NX; i++) for (let j = 15; j < NZ; j++) {
+      if (!inDam(cx(i), cz(j), st.slope)) continue;
+      const m = st.cells[i * NZ + j]; dam++;
+      if (m === 1) clay++; else if (m === 4) tsand++; else if (m === 3) drain++;
+    }
+    return { clay, tsand, dam, drain, tsandFrac: dam ? tsand / dam : 0 };
+  }
+
+  // ---------------------------------------------------------------- drawing
+  const svg = $('#svg-build');
+  const G = { x0: -62, x1: 90, z0: -15, z1: 27 };
+  const W = 1000, kx = 980 / (G.x1 - G.x0);
+  const M = mapper({ x0: G.x0, x1: G.x1, z0: G.z0, z1: G.z1, X0: 10, X1: 990, Y0: 22, Y1: 22 + (G.z1 - G.z0) * kx });
+  const defs = E('defs', null, svg);
+  const winClip = E('clipPath', { id: 'bd-win' }, defs);
+  E('rect', { x: M.X(G.x0), y: 0, width: M.X(G.x1) - M.X(G.x0), height: 312 }, winClip);
+  const damClip = E('clipPath', { id: 'bd-damclip' }, defs);
+  const damClipPoly = E('polygon', null, damClip);
+  const soilClip = E('clipPath', { id: 'bd-soilclip' }, defs);
+  const soilClipPoly = E('polygon', null, soilClip);
+  E('rect', { x: M.X(G.x0), y: M.Z(0), width: M.X(G.x1) - M.X(G.x0), height: M.Z(G.z0) - M.Z(0) }, soilClip);
+  const top = E('g', { 'clip-path': 'url(#bd-win)' }, svg);
+  const L = () => E('g', null, top);
+  const gRes = L(), gFdn = L(), gCells = E('g', { 'clip-path': 'url(#bd-damclip)' }, top), gOut = L(), gImg = L(), gFl = L(), gPh = L(), gMass = L(), gSlip = L(), gMark = L(), gPart = L(), gLbl = L(), gCur = L();
+  const fieldImg = E('image', { x: M.X(GX0), y: M.Z(GZ0 + NZ), width: M.X(GX0 + NX) - M.X(GX0), height: M.Z(GZ0) - M.Z(GZ0 + NZ), preserveAspectRatio: 'none', 'clip-path': 'url(#bd-soilclip)' }, gImg);
+  const cursor = E('rect', { class: 'bd-cursor' }, gCur);
+  cursor.style.visibility = 'hidden';
+  const outlineOf = s => [[UPTOE, 0], [-3, CREST], [3, CREST], [toe(s), 0]];
+  function surfW(x, s) { // ground surface (world)
+    if (x <= UPTOE || x >= toe(s)) return 0;
+    if (x < -3) return (x - UPTOE) / 2;
+    if (x <= 3) return CREST;
+    return (toe(s) - x) / s;
+  }
+  function drawStatic() {
+    gRes.textContent = ''; gFdn.textContent = ''; gOut.textContent = ''; gLbl.textContent = '';
+    const s = st.slope, Hw = st.reservoir * CREST;
+    const up = result && st.side === 'upstream' && !stale();
+    damClipPoly.setAttribute('points', M.P(outlineOf(s)));
+    soilClipPoly.setAttribute('points', M.P(outlineOf(s)));
+    // reservoir (emptied in the drawdown view)
+    if (up) {
+      E('path', { class: 'water-line', d: M.D([[G.x0, Hw], [UPTOE + 2 * Hw, Hw]]), style: 'stroke-dasharray:3 4;opacity:.7' }, gRes);
+      T(gLbl, M.X(-60), M.Z(Hw) - 6, 'Level before the drawdown', 'lbl-s lbl-w halo');
+    } else {
+      E('polygon', { class: 'water', points: M.P([[G.x0, Hw], [UPTOE + 2 * Hw, Hw], [UPTOE, 0], [G.x0, 0]]) }, gRes);
+      E('path', { class: 'water-line', d: M.D([[G.x0, Hw], [UPTOE + 2 * Hw, Hw]]) }, gRes);
+      waterSymbol(gRes, M.X(-56), M.Z(Hw));
+      T(gLbl, M.X(-58), M.Z(Hw) + 16, 'Reservoir ' + n1(Hw) + ' m', 'lbl-s lbl-w halo');
+    }
+    E('path', { class: 'water-line', d: M.D([[toe(s), 0], [G.x1, 0]]), style: 'stroke-dasharray:4 3' }, gRes);
+    // foundation
+    const fpat = st.foundation === 'gravel' ? 'url(#p-alluv)' : 'url(#p-clay)';
+    E('rect', { x: M.X(G.x0), y: M.Z(0), width: M.X(G.x1) - M.X(G.x0), height: M.Z(G.z0) - M.Z(0), fill: fpat, class: 'edge' }, gFdn);
+    if (st.foundation === 'weak') {
+      E('rect', { x: M.X(G.x0), y: M.Z(-4), width: M.X(G.x1) - M.X(G.x0), height: M.Z(-6) - M.Z(-4), fill: 'url(#p-slime)', class: 'edge-l' }, gFdn);
+      T(gLbl, M.X(G.x1) - 6, M.Z(-6) + 12, 'Weak clay layer · φ′ 19°', 'lbl-s halo', { 'text-anchor': 'end' });
+    }
+    if (st.cutoff !== 'none') {
+      const zb = st.cutoff === 'full' ? -15 : -8;
+      E('rect', { x: M.X(-1), y: M.Z(0), width: M.X(1) - M.X(-1), height: M.Z(zb) - M.Z(0), class: 'ink' }, gFdn);
+      T(gLbl, M.X(1.5) + 3, M.Z(zb) + (st.cutoff === 'full' ? -5 : 11), 'Cutoff', 'lbl-s halo');
+    }
+    T(gLbl, M.X(G.x0) + 6, M.Z(-13), FOUND[st.foundation] + ' foundation', 'lbl-s halo');
+    E('polygon', { points: M.P(outlineOf(s)), class: 'edge', style: 'fill:none' }, gOut);
+    T(gLbl, M.X(-4), M.Z(CREST) - 6, 'Crest 24 m', 'lbl-s halo', { 'text-anchor': 'end' });
+    T(gLbl, M.X(toe(s)) + 4, M.Z(0) - 14, 'Toe', 'lbl-s halo');
+    T(gLbl, M.X(toe(s) - 0.55 * s * CREST), M.Z(0.55 * CREST) - 6, s + ':1', 'lbl-s halo', { transform: `rotate(${(Math.atan(1 / s) * 180 / Math.PI).toFixed(1)},${M.X(toe(s) - 0.55 * s * CREST).toFixed(1)},${(M.Z(0.55 * CREST) - 6).toFixed(1)})` });
+  }
+  function drawCells() {
+    gCells.textContent = '';
+    const s = st.slope;
+    for (let j = 15; j < NZ; j++) {
+      const z = cz(j);
+      if (z > CREST) break;
+      let i = 0;
+      const runs = [];
+      while (i < NX) {
+        if (!inDam(cx(i), z, s)) { i++; continue; }
+        const m = st.cells[i * NZ + j];
+        let k = i;
+        while (k + 1 < NX && inDam(cx(k + 1), z, s) && st.cells[(k + 1) * NZ + j] === m) k++;
+        runs.push([i, k, m]); i = k + 1;
+      }
+      runs.forEach((r, n) => {
+        const xa = GX0 + r[0] - (n === 0 ? 1.5 : 0), xb = GX0 + r[1] + 1 + (n === runs.length - 1 ? 1.5 : 0);
+        const za = z - 0.5, zb = z + 0.5 + (z + 0.5 >= CREST - 0.01 ? 0.6 : 0);
+        E('rect', { x: M.X(xa).toFixed(1), y: M.Z(zb).toFixed(1), width: (M.X(xb) - M.X(xa)).toFixed(1), height: (M.Z(za) - M.Z(zb) + 0.3).toFixed(1), fill: `url(#${MAT[r[2]].pat})` }, gCells);
+      });
+    }
+  }
+
+  // ---------------------------------------------------------------- palette, presets, controls
+  const palEl = $('#bd-palette');
+  MAT.forEach((m, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.dataset.i = i; b.setAttribute('aria-pressed', i === st.mat ? 'true' : 'false');
+    b.innerHTML = `<svg class="bd-sw" viewBox="0 0 22 16" aria-hidden="true"><rect width="22" height="16" fill="url(#${m.pat})"/></svg><span>${m.name}</span>`;
+    b.addEventListener('click', () => { st.mat = i; $$('button', palEl).forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false')); matInfo(); });
+    palEl.appendChild(b);
+  });
+  const sup = n => String(n).replace(/-/g, '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+  const kTxt = k => { const e = Math.floor(Math.log10(k) + 1e-9), mnt = k / Math.pow(10, e); return (Math.abs(mnt - 1) < 0.01 ? '' : mnt.toFixed(0) + '×') + '10' + sup(e) + ' m/s'; };
+  function matInfo() {
+    const m = MAT[st.mat];
+    $('#bd-matinfo').innerHTML = `<b>${m.name}</b> · k = ${kTxt(m.k)} · φ′ = ${m.phi}° · c′ = ${m.c} kPa · ${m.gs} kN/m³ saturated. ${m.note}`;
+  }
+  const preEl = $('#bd-presets');
+  PRESETS.forEach(p => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'btn bd-pre'; b.textContent = p.name; b.dataset.p = p.id;
+    b.addEventListener('click', () => {
+      pushUndo();
+      const lockS = locked('slope'), lockR = locked('reservoir'), keep = { slope: st.slope, reservoir: st.reservoir };
+      applyPreset(p.id);
+      if (lockS) st.slope = keep.slope;
+      if (lockR) st.reservoir = keep.reservoir;
+      syncControls(); changed();
+    });
+    preEl.appendChild(b);
+  });
+  const segs = {
+    brush: segGroup($('#bd-brush'), v => { st.brush = +v; }),
+    touch: segGroup($('#bd-touch'), v => { st.touch = v; svg.classList.toggle('bd-pan', v === 'pan'); }),
+    foundation: segGroup($('#bd-found'), v => { st.foundation = v; changed(); }),
+    cutoff: segGroup($('#bd-cut'), v => { st.cutoff = v; changed(); }),
+    slope: segGroup($('#bd-slope'), v => { const o = st.slope; st.slope = +v; reslope(o, st.slope); changed(); }),
+    side: segGroup($('#bd-side'), v => { st.side = v; drawStatic(); if (result) render(); })
+  };
+  void segs;
+  const resEl = $('#bd-res');
+  resEl.addEventListener('input', () => { st.reservoir = +resEl.value / 100; $('#bd-res-o').textContent = n1(st.reservoir * CREST) + ' m'; changed(); });
+  function setSeg(id, v) { $$('button', $(id)).forEach(b => b.setAttribute('aria-pressed', b.dataset.v === String(v) ? 'true' : 'false')); }
+  function syncControls() {
+    setSeg('#bd-found', st.foundation); setSeg('#bd-cut', st.cutoff); setSeg('#bd-slope', st.slope);
+    resEl.value = Math.round(st.reservoir * 100); $('#bd-res-o').textContent = n1(st.reservoir * CREST) + ' m';
+    $$('#bd-slope button').forEach(b => { b.disabled = locked('slope'); });
+    $$('#bd-found button').forEach(b => { b.disabled = locked('foundation'); });
+    resEl.disabled = locked('reservoir');
+  }
+  const missionDef = () => (st.mission === 'free' ? null : B.missions.find(m => m.id === st.mission));
+  const locked = k => { const m = missionDef(); return !!(m && m.lock.indexOf(k) >= 0); };
+
+  // ---------------------------------------------------------------- painting
+  let painting = false, lastPt = null;
+  function toWorld(ev) {
+    const p = svg.createSVGPoint(); p.x = ev.clientX; p.y = ev.clientY;
+    const q = p.matrixTransform(svg.getScreenCTM().inverse());
+    return [G.x0 + (q.x - M.X(G.x0)) / M.kx, G.z0 + (M.Z(G.z0) - q.y) / M.kz];
+  }
+  function paintAt(x, z) {
+    const r = (st.brush - 1) / 2, ic = Math.floor(x - GX0), jc = Math.floor(z - GZ0);
+    let n = 0;
+    for (let di = -r; di <= r; di++) for (let dj = -r; dj <= r; dj++) {
+      const i = ic + di, j = jc + dj;
+      if (i < 0 || i >= NX || j < 15 || j >= NZ || !inDam(cx(i), cz(j), st.slope)) continue;
+      const c = i * NZ + j;
+      if (st.cells[c] !== st.mat) { st.cells[c] = st.mat; n++; }
+    }
+    return n;
+  }
+  function showCursor(x, z) {
+    const r = (st.brush - 1) / 2, ic = Math.floor(x - GX0), jc = Math.floor(z - GZ0);
+    const xa = GX0 + ic - r, za = GZ0 + jc - r;
+    cursor.setAttribute('x', M.X(xa)); cursor.setAttribute('y', M.Z(za + st.brush));
+    cursor.setAttribute('width', M.X(xa + st.brush) - M.X(xa)); cursor.setAttribute('height', M.Z(za) - M.Z(za + st.brush));
+    cursor.style.visibility = z > -0.5 && z < CREST + 1 ? 'visible' : 'hidden';
+    cursorPos = [x, z];
+  }
+  let cursorPos = [10, 12], strokeDirty = false;
+  svg.addEventListener('pointerdown', ev => {
+    if (ev.pointerType === 'touch' && st.touch === 'pan') return;
+    if (ev.button !== 0 && ev.pointerType === 'mouse') return;
+    ev.preventDefault();
+    try { svg.setPointerCapture(ev.pointerId); } catch (e) { /* ignore */ }
+    painting = true; pushUndo(); strokeDirty = false;
+    const p = toWorld(ev); lastPt = p; showCursor(p[0], p[1]);
+    if (paintAt(p[0], p[1])) { strokeDirty = true; drawCells(); }
+  });
+  svg.addEventListener('pointermove', ev => {
+    const p = toWorld(ev);
+    if (ev.pointerType !== 'touch' || painting) showCursor(p[0], p[1]);
+    if (!painting) return;
+    const d = Math.hypot(p[0] - lastPt[0], p[1] - lastPt[1]), n = Math.max(1, Math.ceil(d / 0.5));
+    let any = 0;
+    for (let k = 1; k <= n; k++) any += paintAt(lerp(lastPt[0], p[0], k / n), lerp(lastPt[1], p[1], k / n));
+    lastPt = p;
+    if (any) { strokeDirty = true; drawCells(); updateMission(); }
+  });
+  const endStroke = () => {
+    if (!painting) return;
+    painting = false;
+    if (strokeDirty) changed(); else undo.pop();
+    $('#bd-undo').disabled = !undo.length;
+  };
+  svg.addEventListener('pointerup', endStroke);
+  svg.addEventListener('pointercancel', endStroke);
+  svg.addEventListener('pointerleave', ev => { if (!painting && ev.pointerType === 'mouse') cursor.style.visibility = 'hidden'; });
+  svg.addEventListener('keydown', ev => {
+    const step = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] }[ev.key];
+    if (step) {
+      ev.preventDefault();
+      showCursor(clamp(cursorPos[0] + step[0], UPTOE, toe(st.slope)), clamp(cursorPos[1] + step[1], 0.5, CREST - 0.5));
+      if (ev.shiftKey) { if (paintAt(cursorPos[0], cursorPos[1])) { drawCells(); changed(); } }
+    } else if (ev.key === ' ' || ev.key === 'Enter') {
+      ev.preventDefault(); pushUndo();
+      if (paintAt(cursorPos[0], cursorPos[1])) { drawCells(); changed(); } else undo.pop();
+    }
+  });
+  svg.addEventListener('focus', () => showCursor(cursorPos[0], cursorPos[1]));
+  svg.addEventListener('blur', () => { cursor.style.visibility = 'hidden'; });
+  function pushUndo() {
+    undo.push({ cells: st.cells.slice(), slope: st.slope, reservoir: st.reservoir });
+    if (undo.length > 40) undo.shift();
+    $('#bd-undo').disabled = false;
+  }
+  $('#bd-undo').addEventListener('click', () => {
+    const u = undo.pop();
+    if (!u) return;
+    st.cells.set(u.cells);
+    if (!locked('slope')) st.slope = u.slope;
+    if (!locked('reservoir')) st.reservoir = u.reservoir;
+    $('#bd-undo').disabled = !undo.length;
+    syncControls(); changed();
+  });
+
+  // ---------------------------------------------------------------- solving (worker + watchdog)
+  let worker = null, workerFailed = false, inFlight = null, queued = false, reqId = 0, watchdog = 0, retestTimer = 0;
+  function makeWorker() {
+    if (worker || workerFailed) return worker;
+    try {
+      const a = $('#seep-src'), b = $('#stab-src');
+      if (!a || !b) throw new Error('solver sources missing');
+      worker = new Worker(URL.createObjectURL(new Blob([a.textContent + '\n;\n' + b.textContent], { type: 'text/javascript' })));
+      worker.onmessage = e => onMessage(e.data || {});
+      worker.onerror = () => { workerFailed = true; killWorker(); if (inFlight) { const d = inFlight.design; inFlight = null; runInline(d); } };
+    } catch (e) { workerFailed = true; worker = null; }
+    return worker;
+  }
+  function killWorker() { if (worker) { try { worker.terminate(); } catch (e) { /* ignore */ } } worker = null; }
+  function snapshot() { return { cells: st.cells.slice(), slope: st.slope, foundation: st.foundation, cutoff: st.cutoff, reservoir: st.reservoir, version }; }
+  function test() {
+    clearTimeout(retestTimer);
+    if (inFlight) { queued = true; return; }
+    const d = snapshot();
+    statusEl.textContent = tested ? 'Retesting…' : 'Testing: seepage, then stability…';
+    $('#bd-test').disabled = true;
+    const w = makeWorker();
+    if (!w) { runInline(d); return; }
+    const q = API.buildRequest(d);
+    inFlight = { id: ++reqId, design: d, t0: performance.now() };
+    w.postMessage({ id: inFlight.id, kind: 'build', seep: q.seep, stab: q.stab });
+    clearTimeout(watchdog);
+    watchdog = setTimeout(() => {
+      killWorker(); inFlight = null; queued = false; $('#bd-test').disabled = false;
+      statusEl.textContent = 'The solver took too long on this design and was stopped. Try removing very small pockets of material, then test again.';
+    }, 15000);
+  }
+  function runInline(d) {
+    inFlight = { id: ++reqId, design: d, t0: performance.now() };
+    setTimeout(() => {
+      try {
+        const r = API.runDesign(d, window.SeepageSolver);
+        onMessage({ id: inFlight.id, seep: r.seep, stab: r.stab });
+      } catch (err) { onMessage({ id: inFlight.id, error: String(err && err.message || err) }); }
+    }, 30);
+  }
+  function onMessage(msg) {
+    if (!inFlight || msg.id !== inFlight.id) return;
+    clearTimeout(watchdog);
+    const job = inFlight; inFlight = null;
+    $('#bd-test').disabled = false;
+    if (msg.error || !msg.seep) {
+      statusEl.textContent = 'The solver could not handle this design (' + (msg.error || 'no result') + '). Try a simpler zoning.';
+      return;
+    }
+    const m = API.designMetrics(msg.seep, msg.stab);
+    result = { version: job.design.version, design: job.design, seep: msg.seep, stab: msg.stab, m, ms: performance.now() - job.t0 };
+    tested = true;
+    const s = msg.seep.stats;
+    statusEl.textContent = (s.converged ? 'Tested in ' + (result.ms / 1000).toFixed(1) + ' s' : 'The seepage solution did not fully settle; numbers are approximate') +
+      (s.alphaFloor ? ' · smoothed the unsaturated zone to converge' : '') + (msg.stab.downstream && msg.stab.downstream.timedOut ? ' · slip search cut short' : '');
+    drawStatic(); render();
+    if (queued) { queued = false; if (version !== job.design.version) test(); }
+  }
+  $('#bd-test').addEventListener('click', test);
+  const stale = () => !result || result.version !== version;
+  function changed() {
+    version++;
+    drawStatic(); drawCells(); updateMission();
+    root.classList.toggle('bd-is-stale', stale() && !!result);
+    if (result) { clearResultDrawing(); readoutsStale(); }
+    if (tested) { clearTimeout(retestTimer); retestTimer = setTimeout(test, 700); statusEl.textContent = 'Changed. Retesting shortly…'; }
+  }
+
+  // ---------------------------------------------------------------- result drawing
+  const fieldCv = document.createElement('canvas');
+  let flows = [];
+  function clearResultDrawing() {
+    [gFl, gPh, gMass, gSlip, gMark, gPart].forEach(g => (g.textContent = ''));
+    fieldImg.removeAttribute('href'); flows = [];
+  }
+  function paintField(psi, type) {
+    const SC = 4;
+    fieldCv.width = NX * SC; fieldCv.height = NZ * SC;
+    const c2 = fieldCv.getContext('2d'), im = c2.createImageData(fieldCv.width, fieldCv.height);
+    const col = rgba(cssVar('--water'));
+    const val = (i, j) => { i = clamp(i, 0, NX - 1); j = clamp(j, 0, NZ - 1); const c = i * NZ + j, t = type[c]; return t === 1 || t === 3 ? psi[c] : NaN; };
+    for (let py = 0; py < fieldCv.height; py++) {
+      const zc = (NZ - (py + 0.5) / SC) - 0.5;
+      for (let px = 0; px < fieldCv.width; px++) {
+        const xc = (px + 0.5) / SC - 0.5;
+        const i0 = Math.floor(xc), j0 = Math.floor(zc), fx = xc - i0, fz = zc - j0;
+        let s = 0, w = 0;
+        const acc = (i, j, wt) => { const v = val(i, j); if (v === v && wt > 0) { s += v * wt; w += wt; } };
+        acc(i0, j0, (1 - fx) * (1 - fz)); acc(i0 + 1, j0, fx * (1 - fz)); acc(i0, j0 + 1, (1 - fx) * fz); acc(i0 + 1, j0 + 1, fx * fz);
+        const o = (py * fieldCv.width + px) * 4;
+        if (w < 0.2) { im.data[o + 3] = 0; continue; }
+        const p = s / w;
+        if (p < 0) { im.data[o + 3] = 0; continue; }
+        const a = 0.05 + 0.5 * clamp(p / 36, 0, 1);
+        im.data[o] = col[0]; im.data[o + 1] = col[1]; im.data[o + 2] = col[2]; im.data[o + 3] = Math.round(255 * a);
+      }
+    }
+    c2.putImageData(im, 0, 0);
+    fieldImg.setAttribute('href', fieldCv.toDataURL());
+  }
+  const sideRes = () => (result ? result.stab[st.side] : null);
+  function fosClass(f, side) { const ok = side === 'upstream' ? 1.2 : 1.5, warn = side === 'upstream' ? 1.0 : 1.2; return f >= ok ? 'ok' : f >= warn ? 'warn' : 'bad'; }
+  function render() {
+    if (!result) return;
+    clearResultDrawing();
+    const seep = result.seep, d = result.design, s = d.slope, up = st.side === 'upstream';
+    const sr = sideRes();
+    paintField(up && sr && sr.psi ? sr.psi : seep.psi, seep.type);
+    if (!up) {
+      // flow lines + particles
+      const all = (seep.flowlines || []).filter(f => f.pts && f.pts.length > 1);
+      const speeds = []; all.forEach(f => f.pts.forEach(p => { if (p[3] > 0) speeds.push(p[3]); }));
+      speeds.sort((a, b) => a - b);
+      const vref = speeds.length ? speeds[Math.floor(speeds.length / 2)] : 1e-6;
+      for (const f of all) {
+        E('path', { d: D(f.pts.map(M.pt)), class: 'flowline' }, gFl);
+        const tau = [0];
+        for (let i = 1; i < f.pts.length; i++) {
+          const a = f.pts[i - 1], b = f.pts[i];
+          const v = Math.max(1e-12, (a[3] + b[3]) / 2);
+          tau.push(tau[i - 1] + Math.hypot(b[0] - a[0], b[1] - a[1]) / clamp(5 * Math.pow(v / vref, 0.33), 0.9, 30));
+        }
+        flows.push({ pts: f.pts, tau, T: tau[tau.length - 1], parts: [0, 1, 2].map(() => E('circle', { r: 2, class: 'particle' }, gPart)) });
+      }
+      if (seep.phreatic && seep.phreatic.length > 1) E('path', { d: D(seep.phreatic.map(M.pt)), class: 'phreatic', style: 'stroke-width:2.2' }, gPh);
+      const sf = seep.seepageFace;
+      if (sf && sf.present && sf.topZ > 0.3) {
+        const a = [downFace(Math.max(0, sf.bottomZ), s), Math.max(0, sf.bottomZ)], b = [downFace(sf.topZ, s), sf.topZ];
+        E('path', { d: M.D([a, b]), style: 'stroke:var(--accent);stroke-width:5;stroke-linecap:round;fill:none;opacity:.9' }, gMark);
+        const [bx, by] = M.pt(b);
+        leader(gMark, bx + 4, by - 2, bx + 24, by - 18); T(gMark, bx + 26, by - 20, 'Water breaks out: ' + n1(sf.topZ) + ' m up', 'lbl-s lbl-acc halo');
+      }
+      const ex = seep.exit, imax = result.m.iExit;
+      if (ex && isFinite(ex.fs) && imax > 0.02) {
+        const gx = ex.governing === 'face' ? ex.faceX : ex.groundX, gz = ex.governing === 'face' ? ex.faceZ : 0;
+        const [px, py] = M.pt([gx, gz]);
+        const cls = ex.fs >= 3 ? 'ok' : ex.fs >= 1.5 ? 'warn' : 'bad';
+        flows.pulse = E('circle', { cx: px, cy: py, r: 7, class: 'bd-exit ' + cls }, gMark);
+        E('circle', { cx: px, cy: py, r: 2.5, class: 'bd-exit-dot ' + cls }, gMark);
+        T(gMark, px + 10, py + 17, 'exit gradient ' + imax.toFixed(2), 'lbl-s halo bd-t-' + cls);
+      }
+    }
+    // critical slip surface
+    if (sr && sr.critical) {
+      const cr = sr.critical, cls = fosClass(sr.fos, st.side);
+      const pts = cr.pts;
+      const xa = pts[0][0], xb = pts[pts.length - 1][0];
+      const lo = Math.min(xa, xb), hi = Math.max(xa, xb);
+      const surf = [];
+      const corners = [UPTOE, -3, 3, toe(s)].filter(x => x > lo && x < hi);
+      const xs = [hi].concat(corners.sort((p, q) => q - p), [lo]);
+      xs.forEach(x => surf.push([x, surfW(x, s)]));
+      const ring = (xa < xb ? pts : pts.slice().reverse()).concat(surf);
+      E('polygon', { points: M.P(ring), class: 'bd-mass ' + cls }, gMass);
+      E('path', { d: D(pts.map(M.pt)), class: 'bd-slip ' + cls }, gSlip);
+      // pore pressure on the slip surface, as the height it would push water up a tube
+      cr.slices.forEach((sl, k) => {
+        if (k % 2 || sl.u < 1) return;
+        const hgt = sl.u / API.GAMMA_W;
+        E('path', { d: M.D([[sl.x, sl.zb], [sl.x, sl.zb + hgt]]), class: 'bd-ubar' }, gSlip);
+      });
+      // label
+      const mid = pts[Math.floor(pts.length * (up ? 0.6 : 0.4))];
+      const [lx, ly] = M.pt([mid[0], mid[1]]);
+      const txt = 'FoS ' + sr.fos.toFixed(2);
+      const g = E('g', { class: 'bd-tag ' + cls }, gSlip);
+      E('rect', { x: lx - 31, y: ly + 8, width: 62, height: 18, rx: 3 }, g);
+      T(g, lx, ly + 21, txt, 'lbl', { 'text-anchor': 'middle' });
+      // direction of sliding
+      const ent = up ? pts[pts.length - 1] : pts[0];
+      const [ax, ay] = M.pt(ent);
+      E('path', { d: `M${ax},${ay - 10} l${up ? -16 : 16},10`, class: 'bd-arrow ' + cls, 'marker-end': 'url(#arr-acc)' }, gSlip);
+    }
+    readouts();
+    updateMission();
+  }
+  function placeParticles(time) {
+    for (const fl of flows) {
+      if (!fl.T || !fl.parts) continue;
+      fl.parts.forEach((c, k) => {
+        const tt = ((time + k * fl.T / fl.parts.length) % fl.T + fl.T) % fl.T;
+        let i = 1; while (i < fl.tau.length - 1 && fl.tau[i] < tt) i++;
+        const a = fl.pts[i - 1], b = fl.pts[i], u = (tt - fl.tau[i - 1]) / ((fl.tau[i] - fl.tau[i - 1]) || 1);
+        c.setAttribute('cx', M.X(lerp(a[0], b[0], u)).toFixed(1)); c.setAttribute('cy', M.Z(lerp(a[1], b[1], u)).toFixed(1));
+      });
+    }
+  }
+  F.ticks.push(t => {
+    if (RM) return;
+    placeParticles(t);
+    if (flows.pulse) flows.pulse.setAttribute('r', (7 + 3 * Math.sin(t * 4)).toFixed(1));
+  });
+  onTheme(() => { if (result && !stale()) render(); });
+
+  // ---------------------------------------------------------------- readouts and verdict
+  const fmtL = L => (L >= 100 ? fmt(L, 0) : L >= 1 ? L.toFixed(1) : L >= 0.01 ? L.toFixed(2) : '< 0.01');
+  const pill = (cls, txt) => `<span class="pill ${cls}">${txt}</span>`;
+  const leakClass = q => (q <= 1000 ? 'ok' : q <= 10000 ? 'warn' : 'bad');
+  const pipeClass = f => (f >= 3 ? 'ok' : f >= 1.5 ? 'warn' : 'bad');
+  function readoutsStale() {
+    $('#bd-readouts').classList.add('bd-stale');
+    $('#bd-verdict').classList.add('bd-stale');
+  }
+  function readouts() {
+    const m = result.m, seep = result.seep, sr = sideRes();
+    $('#bd-readouts').classList.remove('bd-stale'); $('#bd-verdict').classList.remove('bd-stale');
+    root.classList.remove('bd-is-stale');
+    $('#bd-q').innerHTML = fmtL(m.qLday) + ' L/day ' + pill(leakClass(m.qLday), leakClass(m.qLday) === 'ok' ? 'Low' : leakClass(m.qLday) === 'warn' ? 'High' : 'Very high');
+    const outs = [['drains', m.qDrainLday], ['slope face', m.qFaceLday], ['ground beyond the toe', m.qGroundLday]].sort((a, b) => b[1] - a[1]);
+    const osum = outs.reduce((a, o) => a + o[1], 0) || 1;
+    $('#bd-q2').textContent = 'per metre · ' + Math.round(100 * outs[0][1] / osum) + '% leaves via the ' + outs[0][0];
+    $('#bd-i').textContent = m.iExit > 0.005 ? m.iExit.toFixed(2) : '≈ 0';
+    $('#bd-i2').textContent = m.iExit > 0.005 ? (m.exitWhere === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'every exit is filtered';
+    const pf = m.pipe;
+    $('#bd-pipe').innerHTML = (!isFinite(pf) || pf > 50 ? '> 50' : pf.toFixed(1)) + ' ' + pill(pipeClass(pf), pf >= 3 ? 'Adequate' : pf >= 1.5 ? 'Marginal' : 'Piping risk');
+    if (sr && isFinite(sr.fos)) {
+      const c = fosClass(sr.fos, st.side);
+      $('#bd-fos').innerHTML = sr.fos.toFixed(2) + ' ' + pill(c, c === 'ok' ? 'Stable' : c === 'warn' ? 'Low margin' : sr.fos < 1 ? 'Slides' : 'Likely slides');
+      $('#bd-fos2').textContent = (st.side === 'upstream' ? 'upstream, after a fast drawdown · ' : 'downstream, full reservoir · ') + (sr.critical.kind === 'block' ? 'block along the layer' : 'circle, Bishop');
+    } else { $('#bd-fos').textContent = '–'; $('#bd-fos2').textContent = 'no slip surface found'; }
+    const sf = seep.seepageFace;
+    const midX = (3 + toe(result.design.slope)) / 2;
+    const wl = waterHeightAt(seep, midX);
+    if (sf.present && sf.topZ > 0.3) { $('#bd-ph').textContent = 'Breaks out'; $('#bd-ph2').textContent = n1(sf.topZ) + ' m up the downstream slope'; }
+    else { $('#bd-ph').textContent = n1(Math.max(0, wl)) + ' m'; $('#bd-ph2').textContent = 'water level above the base, under the middle of the downstream slope'; }
+    $('#bd-clay').textContent = fmt(m.clay);
+    $('#bd-clay2').textContent = 'm³ per metre · tailings sand ' + Math.round(m.tsandFrac * 100) + '%';
+    verdict();
+  }
+  // height of the saturated zone above the base of the dam at x (scan the column upward)
+  function waterHeightAt(seep, x) {
+    const i = Math.round(x - GX0 - 0.5);
+    let prevZ = -0.5, prevPsi = seep.psi[i * NZ + 14];
+    if (!(prevPsi >= 0)) return 0;
+    for (let j = 15; j < NZ; j++) {
+      const c = i * NZ + j, t = seep.type[c];
+      if (t !== 1 && t !== 3) break;
+      const z = cz(j), p = seep.psi[c];
+      if (p < 0) return prevZ + prevPsi / (prevPsi - p) * (z - prevZ);
+      prevZ = z; prevPsi = p;
+    }
+    return prevZ;
+  }
+  const matName = k => (k < MAT.length ? MAT[k].name.toLowerCase() : k === MAT.length ? 'the foundation' : 'the weak clay layer');
+  function surfaceMaterials(cr) { return cr.materials.filter(x => x.frac >= 0.12).slice(0, 3).map(x => matName(x.mat)); }
+  const andList = a => (a.length <= 1 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]);
+  function verdict() {
+    const m = result.m, seep = result.seep, sr = sideRes(), up = st.side === 'upstream';
+    const rows = [], tips = [];
+    // leakage
+    const lc = leakClass(m.qLday);
+    const under = seep.q.inflowFloor / Math.max(1e-30, seep.q.inflowTotal);
+    let leakTxt = `${fmtL(m.qLday)} L/day per metre, about ${fmt(m.qLday, m.qLday < 10 ? 1 : 0)} m³ a day for each kilometre of dam. ` +
+      (under > 0.6 ? `Most of it (${Math.round(under * 100)}%) enters through the reservoir floor and passes under the dam.` : `Most of it passes through the dam itself.`);
+    if (lc !== 'ok') tips.push(under > 0.6 ? 'Water is going under the dam: a full cutoff closes that path.' : 'Water is going through the dam: a clay core slows it the most.');
+    rows.push(['Leaks', lc, lc === 'ok' ? 'Low' : lc === 'warn' ? 'High' : 'Very high', leakTxt]);
+    // piping
+    const pc = pipeClass(m.pipe);
+    let pipeTxt;
+    if (m.iExit <= 0.005) pipeTxt = 'All the water leaves through filter or drain material, which lets water out but holds soil back.';
+    else {
+      const where = m.exitWhere === 'face' ? 'out of the downstream slope' : 'up out of the ground beyond the toe';
+      pipeTxt = `Water comes ${where} with a gradient of ${m.iExit.toFixed(2)}: it pushes on the grains there with ${Math.round(m.iExit * 100)}% of the force that would lift them (sand boils at about 1.0). Safety ${!isFinite(m.pipe) || m.pipe > 50 ? 'over 50' : m.pipe.toFixed(1)}.`;
+      if (pc !== 'ok') tips.push(m.exitWhere === 'face' ? 'Cover the exit: paint sand filter on the lower downstream slope, or lower the water with a drain.' : 'The water rises at the toe: a cutoff makes its path longer and gentler, and filter at the toe holds the sand down.');
+    }
+    rows.push(['Pipes', pc, pc === 'ok' ? 'Safe' : pc === 'warn' ? 'Marginal' : 'Risk', pipeTxt]);
+    // sliding
+    let slideTxt = 'No admissible slip surface was found.', sc = 'neutral', sword = '–';
+    if (sr && sr.critical && isFinite(sr.fos)) {
+      const cr = sr.critical, f = sr.fos;
+      sc = fosClass(f, st.side);
+      const target = up ? 1.2 : 1.5;
+      sword = sc === 'ok' ? 'Stable' : sc === 'warn' ? 'Low margin' : f < 1 ? 'Slides' : 'Likely';
+      const where = cr.kind === 'block' ? 'a block that slides along the weak clay layer' : `a curved surface through ${andList(surfaceMaterials(cr))}, ${n1(cr.depth)} m deep at most`;
+      const state = f < 1 ? 'it would slide' : f < (up ? 1.0 : 1.2) ? 'it would likely slide, with almost no margin' : f < target ? `it stands, but below the usual ${target}` : 'it holds with a sensible margin';
+      slideTxt = `The weakest slip surface is ${where}. Its factor of safety is ${f.toFixed(2)}: ${state}.`;
+      if (cr.ru > 0.08) {
+        slideTxt += ` Water pressure on that surface carries ${Math.round(cr.ru * 100)}% of the weight of the soil above it, so the grains press together with only ${Math.round((1 - cr.ru) * 100)}% of their weight and friction drops with it. Without that water pressure the same surface would have a factor of safety of ${cr.fosNoWater.toFixed(2)}.`;
+      } else slideTxt += ' Very little water pressure acts on it, so the grip comes from the full weight of the grains.';
+      if (sc !== 'ok') {
+        if (cr.kind === 'block') tips.push('The slide runs along the weak layer, which painting can\'t strengthen. Flatten the downstream slope so more weight bears on the layer beyond the toe.');
+        else if (up) tips.push('After a fast drawdown the water trapped in clay and fill pushes the upstream slope out. Free-draining rockfill on the upstream face drains as the reservoir falls.');
+        else if (cr.ru > 0.15) tips.push('Try a drain: a strip of sand filter inside the downstream half, joined to a layer along the base out to the toe, lets the water out before it reaches the slope.');
+        else tips.push('The water is not the main problem here: the slope is too steep for this material. Flatten it, or use stronger rockfill in the downstream shell.');
+      }
+    }
+    rows.push([up ? 'Slides (upstream)' : 'Slides', sc, sword, slideTxt]);
+    // headline
+    const worst = rows.map(r => r[1]).includes('bad') ? 'bad' : rows.map(r => r[1]).includes('warn') ? 'warn' : 'ok';
+    const fails = rows.filter(r => r[1] === 'bad').map(r => r[0].toLowerCase().replace(' (upstream)', ''));
+    const head = worst === 'ok' ? 'Your dam holds.' : worst === 'warn' ? 'Your dam stands, with too little margin somewhere.' : 'Your dam fails: it ' + andList(fails.map(x => x === 'leaks' ? 'leaks too much' : x === 'pipes' ? 'risks piping' : 'slides')) + '.';
+    let html = `<p class="bd-head ${worst}">${head}</p><div class="bd-rows">`;
+    rows.forEach(r => { html += `<div class="bd-row"><div class="bd-k">${r[0]} ${pill(r[1], r[2])}</div><p>${r[3]}</p></div>`; });
+    html += '</div>';
+    if (tips.length) html += `<div class="bd-tip"><b>What to try</b><ul>${tips.slice(0, 2).map(t => '<li>' + t + '</li>').join('')}</ul></div>`;
+    if (!result.seep.stats.converged) html += '<p class="note">The seepage iteration stopped before it fully settled, so treat these numbers as approximate.</p>';
+    $('#bd-verdict').innerHTML = html;
+  }
+
+  // ---------------------------------------------------------------- missions
+  const tabs = $$('#bd-tabs button');
+  const missionEl = $('#bd-mission');
+  let done = {};
+  try { done = JSON.parse(localStorage.getItem('dams-build-missions') || '{}') || {}; } catch (e) { done = {}; }
+  tabs.forEach(t => t.addEventListener('click', () => selectMission(t.dataset.m)));
+  function selectMission(id) {
+    st.mission = id; hintsShown = 0;
+    tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.m === id ? 'true' : 'false'));
+    const m = missionDef();
+    if (m) {
+      pushUndo();
+      Object.assign(st, { slope: m.start.slope, foundation: m.start.foundation, cutoff: m.start.cutoff, reservoir: m.start.reservoir });
+      applyPreset(m.start.preset);
+      st.slope = m.start.slope; st.reservoir = m.start.reservoir;
+    }
+    syncControls(); changed();
+  }
+  function updateMission() {
+    const m = missionDef();
+    tabs.forEach(t => t.classList.toggle('bd-done', !!done[t.dataset.m]));
+    if (!m) {
+      missionEl.innerHTML = '<p class="bd-brief">Paint anything you like and test it. Pick a mission above for a brief with targets to hit.</p>';
+      return;
+    }
+    const T = MISSION_TEXT[m.id];
+    const fresh = result && !stale();
+    const live = liveCounts();
+    const mm = fresh ? result.m : null;
+    const check = fresh ? API.missionCheck(m, mm) : null;
+    const items = Object.keys(GOAL_TEXT).filter(k => {
+      const g = m.goals;
+      return (k === 'q' && g.maxQ != null) || (k === 'pipe' && g.minPipe != null) || (k === 'fos' && g.minFoS != null) || (k === 'clay' && g.maxClay != null) || (k === 'tsand' && g.minTsand != null);
+    }).map(k => {
+      let state = 'pending', now = '';
+      if (LIVE_GOALS[k]) {
+        const v = k === 'clay' ? live.clay : live.tsandFrac;
+        const ok = k === 'clay' ? v <= m.goals.maxClay : v >= m.goals.minTsand;
+        state = ok ? 'ok' : 'bad'; now = k === 'clay' ? `now ${fmt(v)}` : `now ${Math.round(v * 100)}%`;
+      } else if (check) {
+        const c = check.checks.find(x => x.key === k);
+        state = c.ok ? 'ok' : 'bad';
+        now = k === 'q' ? `now ${fmtL(mm.qLday)}` : k === 'pipe' ? `now ${!isFinite(mm.pipe) || mm.pipe > 50 ? '> 50' : mm.pipe.toFixed(1)}` : `now ${mm.fos.toFixed(2)}`;
+      } else now = 'test to check';
+      const mark = state === 'ok' ? '✓' : state === 'bad' ? '✗' : '·';
+      return `<li class="bd-g ${state}"><span class="bd-mark" aria-hidden="true">${mark}</span>${GOAL_TEXT[k](m.goals)} <small>${now}</small></li>`;
+    });
+    const passed = check && check.ok;
+    if (passed && !done[m.id]) { done[m.id] = true; try { localStorage.setItem('dams-build-missions', JSON.stringify(done)); } catch (e) { /* private mode */ } }
+    tabs.forEach(t => t.classList.toggle('bd-done', !!done[t.dataset.m]));
+    const lockTxt = m.lock.filter(k => k !== 'reservoir').map(k => k === 'slope' ? 'the slope' : 'the foundation');
+    let html = `<p class="bd-brief"><b>${T.title}.</b> ${T.brief}</p><ul class="bd-goals">${items.join('')}</ul>`;
+    html += `<p class="bd-locks note">Fixed in this mission: ${andList(lockTxt.concat(['the reservoir level']))}.</p>`;
+    if (passed) html += `<p class="bd-success">${pill('ok', 'Mission complete')} ${T.done}</p>`;
+    else {
+      for (let k = 0; k < hintsShown; k++) html += `<p class="bd-hint"><b>Hint ${k + 1}.</b> ${T.hints[k]}</p>`;
+      html += '<div class="controls">' + (hintsShown < T.hints.length ? `<button class="btn" type="button" id="bd-hintbtn">${hintsShown ? 'Another hint' : 'Hint'}</button>` : '') + '<button class="btn" type="button" id="bd-restart">Start the mission again</button></div>';
+    }
+    missionEl.innerHTML = html;
+    const hb = $('#bd-hintbtn'); if (hb) hb.addEventListener('click', () => { hintsShown++; updateMission(); const nb = $('#bd-hintbtn'); (nb || $('#bd-restart')).focus(); });
+    const rb = $('#bd-restart'); if (rb) rb.addEventListener('click', () => selectMission(m.id));
+  }
+
+  // ---------------------------------------------------------------- tutor
+  function zoneSentence() {
+    const regions = [['upstream part', x => x < -8], ['middle (under the crest)', x => x >= -8 && x <= 8], ['downstream part', x => x > 8]];
+    const parts = regions.map(([name, f]) => {
+      const cnt = new Array(MAT.length).fill(0); let n = 0;
+      for (let i = 0; i < NX; i++) for (let j = 15; j < NZ; j++) { const x = cx(i); if (!inDam(x, cz(j), st.slope) || !f(x)) continue; cnt[st.cells[i * NZ + j]]++; n++; }
+      const list = cnt.map((c, k) => [k, c / (n || 1)]).filter(e => e[1] >= 0.1).sort((a, b) => b[1] - a[1]).map(e => `${MAT[e[0]].name.toLowerCase()} ${Math.round(e[1] * 100)}%`);
+      return `${name}: ${list.join(', ') || 'empty'}`;
+    });
+    const lc = liveCounts();
+    let drain = lc.drain ? ` Sand filter/drain cells: ${lc.drain} m².` : ' No drain material.';
+    if (result && !stale() && result.seep.custom) {
+      const c = result.seep.custom;
+      if (lc.drain) drain += ` ${c.freeDrainCells} m² of it is joined to the toe at the base and drains freely; ${c.soilDrainCells} m² has no free outlet and acts as permeable soil.`;
+    }
+    return 'Zones (share of each part of the dam): ' + parts.join('; ') + '.' + drain;
+  }
+  tutorRegister('fig-build', {
+    title: 'Build your own dam',
+    describe: () => {
+      const lines = [];
+      const m = missionDef();
+      lines.push(m ? `Mission: ${MISSION_TEXT[m.id].title}. ${MISSION_TEXT[m.id].brief}` : 'Free build (no mission).');
+      lines.push(zoneSentence());
+      lines.push(`Settings: foundation ${FOUND[st.foundation].toLowerCase()}; cutoff ${st.cutoff === 'none' ? 'none' : st.cutoff === 'partial' ? 'half depth' : 'full depth'}; downstream slope ${st.slope}:1 (upstream fixed at 2:1); reservoir ${n1(st.reservoir * CREST)} m of the 24 m dam height. Clay used ${liveCounts().clay} m³ per metre.`);
+      if (!result) { lines.push('The reader has not tested this design yet.'); return lines.join('\n'); }
+      if (stale()) lines.push('The design has changed since the last test; the results below are for the previous version.');
+      const r = result.m, d = result.stab.downstream, u = result.stab.upstream, seep = result.seep;
+      lines.push(`Seepage ${fmtL(r.qLday)} L/day per metre (drains ${fmtL(r.qDrainLday)}, slope face ${fmtL(r.qFaceLday)}, ground beyond toe ${fmtL(r.qGroundLday)}). Max exit gradient ${r.iExit.toFixed(2)} ${r.iExit > 0.005 ? (r.exitWhere === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : '(all exits filtered)'}; safety against piping ${!isFinite(r.pipe) || r.pipe > 50 ? 'over 50' : r.pipe.toFixed(2)}. ${seep.seepageFace.present ? 'Water breaks out on the downstream slope up to ' + n1(seep.seepageFace.topZ) + ' m.' : 'The water stays inside the dam (no seepage face).'}`);
+      const sl = (x, name) => {
+        if (!x || !x.critical) return `${name}: no slip surface found.`;
+        const c = x.critical;
+        return `${name}: factor of safety ${x.fos.toFixed(2)} (${x.method}), ${c.kind === 'block' ? 'a block sliding along the weak clay layer' : 'circle through ' + andList(surfaceMaterials(c)) + ', up to ' + n1(c.depth) + ' m deep, from x = ' + n1(c.entry[0]) + ' m to ' + n1(c.exit[0]) + ' m'}; water pressure carries ${Math.round(c.ru * 100)}% of the slices' weight on that surface; without water pressure the same surface would have FoS ${c.fosNoWater.toFixed(2)}.`;
+      };
+      lines.push(sl(d, 'Downstream slope, full reservoir, steady seepage') + ' ' + sl(u, 'Upstream slope after a rapid drawdown to empty'));
+      const verdictEl = $('.bd-head', root);
+      if (verdictEl) lines.push('Verdict shown: ' + verdictEl.textContent + (m ? (API.missionCheck(m, r).ok ? ' Mission passed.' : ' Mission not yet passed.') : ''));
+      return lines.join('\n');
+    }
+  });
+
+  // ---------------------------------------------------------------- start
+  applyPreset('homogeneous');
+  matInfo(); syncControls(); drawStatic(); drawCells(); updateMission();
+  if (window.matchMedia && matchMedia('(pointer: coarse)').matches) root.classList.add('bd-coarse');
+  // phones: open with the downstream half of the dam in view
+  let userScrolled = false;
+  const wrap = $('#bd-wrap');
+  const frame = () => { if (!userScrolled && wrap.scrollWidth > wrap.clientWidth + 10) wrap.scrollLeft = (wrap.scrollWidth - wrap.clientWidth) * 0.7; };
+  wrap.addEventListener('scroll', () => { if (wrap.scrollLeft > 0 && Math.abs(wrap.scrollLeft - (wrap.scrollWidth - wrap.clientWidth) * 0.7) > 2) userScrolled = true; });
+  F.onFirst = frame;
+  requestAnimationFrame(frame); setTimeout(frame, 400);
+  window.addEventListener('resize', frame);
+  // test harness: ?bd=preset:drained,mission:dry,side:upstream,test  (with #build to scroll there)
+  const qa = (location.search.match(/[?&]bd=([^&]+)/) || [])[1];
+  if (qa) {
+    const o = {}; decodeURIComponent(qa).split(',').forEach(kv => { const p = kv.split(':'); o[p[0]] = p[1] == null ? true : p[1]; });
+    if (o.mission) selectMission(o.mission);
+    if (o.preset) { applyPreset(o.preset); }
+    if (o.slope) { const old = st.slope; st.slope = +o.slope; reslope(old, st.slope); }
+    if (o.found) st.foundation = o.found;
+    if (o.cutoff) st.cutoff = o.cutoff;
+    if (o.side) { st.side = o.side; setSeg('#bd-side', o.side); }
+    syncControls(); changed();
+    if (o.test) setTimeout(test, 200);
+    const go = () => { document.documentElement.style.scrollBehavior = 'auto'; (o.at === 'fig' ? root : $('#build')).scrollIntoView(); };
+    setTimeout(go, 50); setTimeout(go, 3000);
+  }
 })();
 
 /* ===================== Tutor: "Why did that happen?" ===================== */

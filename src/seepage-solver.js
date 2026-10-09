@@ -27,6 +27,11 @@
  * Result fields: see solveSeepage(). Outflow is reported per boundary type; flow lines
  * are traced with Pollock's semi-analytic method on the face fluxes.
  *
+ * Custom mode (params.custom, used by the "Build your own dam" sandbox): the reader's own
+ * material for every dam cell, an optional steeper or flatter downstream slope, and a
+ * layered foundation. Without params.custom the solver behaves exactly as before.
+ * See normalizeCustom() for the fields.
+ *
  * Works in Node (`require`) and as a Web Worker script (postMessage protocol
  * { id, params } -> { id, result }). No dependencies, no DOM, ES2019.
  */
@@ -41,6 +46,8 @@
 
   const T_AIR = 0, T_SOIL = 1, T_WATER = 2, T_DRAIN = 3, T_CUTOFF = 4, T_TAIL = 5;
   const M_NONE = 0, M_FOUND = 1, M_FILL = 2, M_CORE = 3, M_SHELL = 4;
+  const M_CUSTOM0 = 10; // custom mode: dam cell material code m is stored as M_CUSTOM0 + m
+  const CREST_X1 = 3;   // downstream crest edge; downstream toe = CREST_X1 + slope * CREST_Z
 
   const K_PERVIOUS = 1e-5, K_TIGHT = 5e-8, K_FILL = 1e-7, K_CORE = 1e-9, K_SHELL = 1e-4;
 
@@ -117,12 +124,51 @@
     if (!isFinite(r)) r = 0.85;
     // the specified range is 0.4 - 0.95; above 0.95 the water would overtop the core (z = 23)
     r = Math.min(0.95, Math.max(0.05, r));
-    return {
+    const out = {
       damType: pick(params.damType, ['homogeneous', 'cored'], 'homogeneous'),
       drain: pick(params.drain, ['none', 'toe', 'chimney'], 'none'),
       cutoff: pick(params.cutoff, ['none', 'partial', 'full'], 'none'),
       foundation: pick(params.foundation, ['pervious', 'tight'], 'pervious'),
       reservoir: r
+    };
+    if (params.custom) out.custom = normalizeCustom(params.custom);
+    return out;
+  }
+
+  // params.custom = {
+  //   materials:  [{ k (m/s), alpha (m, Gardner, default 0.25), drain (bool) }, ...]  (1..32)
+  //   cells:      array-like of length nx*nz: material index for every cell; only dam
+  //               cells (inside the outline, z >= 0) are read
+  //   downSlope:  horizontal : vertical of the downstream face, 1.25..3.5 (default 2)
+  //   foundation: { k, alpha }  (default: params.foundation's preset value)
+  //   layers:     [{ zTop, zBottom, k, alpha }]  horizontal foundation layers (z < 0)
+  // }
+  // Drain materials: a connected patch of drain cells that reaches the downstream face at
+  // the base of the dam (z < 1 m) and does not touch the reservoir works like the preset
+  // drains (free outlet, atmospheric pressure inside it). Any other patch of drain material
+  // is modelled as what it is, a very permeable soil, so water can pond in it.
+  function normalizeCustom(c) {
+    const num = (v, lo, hi, def) => { v = Number(v); return isFinite(v) ? Math.min(hi, Math.max(lo, v)) : def; };
+    const mats = Array.isArray(c.materials) ? c.materials.slice(0, 32) : [];
+    if (!mats.length) throw new Error('custom.materials must list at least one material');
+    const materials = mats.map(m => ({
+      k: num(m && m.k, 1e-12, 1e-1, K_FILL),
+      alpha: num(m && m.alpha, 0.02, 2, 0.25),
+      drain: !!(m && m.drain)
+    }));
+    const cells = new Uint8Array(NCELL);
+    const src = c.cells;
+    if (src && src.length === NCELL) for (let q = 0; q < NCELL; q++) { const v = src[q] | 0; cells[q] = v >= 0 && v < materials.length ? v : 0; }
+    const f = c.foundation || {};
+    const layers = (Array.isArray(c.layers) ? c.layers : []).slice(0, 8).map(L => ({
+      zTop: num(L.zTop, Z0, 0, 0), zBottom: num(L.zBottom, Z0, 0, Z0),
+      k: num(L.k, 1e-12, 1e-1, K_TIGHT), alpha: num(L.alpha, 0.02, 2, 0.25)
+    })).filter(L => L.zTop > L.zBottom);
+    return {
+      materials, cells,
+      downSlope: num(c.downSlope, 1.25, 3.5, 2),
+      foundation: { k: f.k == null ? null : num(f.k, 1e-12, 1e-1, K_PERVIOUS), alpha: num(f.alpha, 0.02, 2, 0.25) },
+      layers
     };
   }
 
@@ -144,9 +190,17 @@
   // ------------------------------------------------------------------ model setup
   function buildModel(p) {
     const cored = p.damType === 'cored';
-    const Kfound = p.foundation === 'tight' ? K_TIGHT : K_PERVIOUS;
+    const cu = p.custom || null;
+    const Kfound = cu && cu.foundation.k != null ? cu.foundation.k : p.foundation === 'tight' ? K_TIGHT : K_PERVIOUS;
     const Hw = p.reservoir * CREST_Z;
     const type = new Uint8Array(NCELL), mat = new Uint8Array(NCELL);
+    // downstream face (preset dams: 2H:1V, toe at x = 51, exactly as before)
+    const s = cu ? cu.downSlope : 2;
+    const downToe = cu ? CREST_X1 + s * CREST_Z : DOWN_TOE_X;
+    const downFace = cu ? (z => downToe - s * z) : downFaceX;
+    const inDamC = (x, z) => z >= 0 && z <= CREST_Z && x >= upFaceX(z) && x <= downFace(z);
+    // custom mode: per-cell saturated K and Gardner alpha
+    const cK = cu ? new Float64Array(NCELL) : null, cA = cu ? new Float64Array(NCELL) : null;
 
     for (let i = 0; i < NX; i++) {
       const x = cellX(i);
@@ -155,16 +209,51 @@
         if (z < 0) {
           mat[c] = M_FOUND; type[c] = T_SOIL;
           if (p.cutoff !== 'none' && Math.abs(x) <= 1 + EPS && (p.cutoff === 'full' || z >= -7.5 - EPS)) type[c] = T_CUTOFF;
-        } else if (inDam(x, z)) {
+          if (cu) {
+            cK[c] = Kfound; cA[c] = cu.foundation.alpha;
+            for (const L of cu.layers) if (z < L.zTop && z > L.zBottom) { cK[c] = L.k; cA[c] = L.alpha; }
+          }
+        } else if (cu ? inDamC(x, z) : inDam(x, z)) {
+          if (cu) {
+            const m = cu.cells[c], md = cu.materials[m];
+            mat[c] = M_CUSTOM0 + m; type[c] = T_SOIL; cK[c] = md.k; cA[c] = md.alpha;
+            continue;
+          }
           let m = M_FILL;
           if (cored) m = (z <= CORE_TOP_Z + EPS && Math.abs(x) <= coreHalfWidth(z) + EPS) ? M_CORE : M_SHELL;
           mat[c] = m; type[c] = T_SOIL;
           if (m !== M_CORE && isDrainCell(p, cored, x, z)) type[c] = T_DRAIN;
         } else if (z < Hw && x < upFaceX(z)) {
           type[c] = T_WATER;
-        } else if (Math.abs(z - 0.5) < EPS && x > DOWN_TOE_X) {
+        } else if (Math.abs(z - 0.5) < EPS && x > downToe) {
           type[c] = T_TAIL;
         }
+      }
+    }
+    let freeDrainCells = 0, soilDrainCells = 0;
+    if (cu) {
+      // drain patches: free outlet at the base of the downstream face -> T_DRAIN
+      const seen = new Uint8Array(NCELL);
+      const isDrainMat = c => mat[c] >= M_CUSTOM0 && cu.materials[mat[c] - M_CUSTOM0].drain;
+      for (let c0 = 0; c0 < NCELL; c0++) {
+        if (seen[c0] || !isDrainMat(c0)) continue;
+        const comp = [c0]; seen[c0] = 1;
+        let outlet = false, flooded = false;
+        for (let k = 0; k < comp.length; k++) {
+          const c = comp[k], i = (c / NZ) | 0, j = c - i * NZ, z = cellZ(j);
+          const nbs = [i + 1 < NX ? c + NZ : -1, i > 0 ? c - NZ : -1, j + 1 < NZ ? c + 1 : -1, j > 0 ? c - 1 : -1];
+          for (let q = 0; q < 4; q++) {
+            const nb = nbs[q];
+            if (nb < 0) continue;
+            const t = type[nb], nx = cellX((nb / NZ) | 0);
+            if (t === T_WATER) flooded = true;
+            else if (t === T_AIR && nx < 0 && z < Hw) flooded = true;
+            else if ((t === T_AIR || t === T_TAIL) && nx > 0 && z < 1 && q === 0) outlet = true;
+            if (!seen[nb] && isDrainMat(nb)) { seen[nb] = 1; comp.push(nb); }
+          }
+        }
+        if (outlet && !flooded) { for (const c of comp) type[c] = T_DRAIN; freeDrainCells += comp.length; }
+        else soilDrainCells += comp.length;
       }
     }
 
@@ -179,6 +268,7 @@
       if (a < 0) continue;
       const i = (c / NZ) | 0, j = c - i * NZ;
       ucell[a] = c; ux[a] = cellX(i); uz[a] = cellZ(j); umat[a] = mat[c];
+      if (cu) { uK[a] = cK[c]; uAlpha[a] = cA[c]; continue; }
       uK[a] = mat[c] === M_FOUND ? Kfound : mat[c] === M_CORE ? K_CORE : mat[c] === M_SHELL ? K_SHELL : K_FILL;
       uAlpha[a] = ALPHA_BY_MAT[mat[c]];
     }
@@ -233,6 +323,7 @@
     const nF = fa.length, nB = ba.length;
     const M = {
       p, cored, Hw, type, mat, id, nU, ucell, ux, uz, uK, uAlpha, umat,
+      custom: cu, downSlope: s, downToe, downFace, freeDrainCells, soilDrainCells,
       nF, fa: Int32Array.from(fa), fb: Int32Array.from(fb), fzf: Float64Array.from(fzf),
       fdir: Uint8Array.from(fdir), fgrid: Int32Array.from(fgrid),
       nB, ba: Int32Array.from(ba), bkind: Uint8Array.from(bkind), bh: Float64Array.from(bh),
@@ -449,6 +540,7 @@
 
   function initialGuess(M, warm, h) {
     const Hw = M.Hw;
+    if (M.custom && !warm) return initialGuessCustom(M, h);
     for (let a = 0; a < M.nU; a++) {
       let v = NaN;
       if (warm && warm.length === NCELL) v = Number(warm[M.ucell[a]]);
@@ -463,6 +555,30 @@
         v = Hw * Math.min(1, Math.max(0, f));
       }
       h[a] = Math.min(Math.max(v, -1), Hw);
+    }
+  }
+
+  // Custom mode: in each dam row the head falls in proportion to the flow resistance
+  // (sum of dx / K) crossed so far, so low-permeability zones carry the head drop from the
+  // start; foundation cells get the linear upstream-toe -> downstream-toe guess.
+  function initialGuessCustom(M, h) {
+    const Hw = M.Hw, cum = new Float64Array(NCELL), tot = new Float64Array(NZ);
+    for (let j = 0; j < NZ; j++) {
+      if (cellZ(j) < 0) continue;
+      let s = 0;
+      for (let i = 0; i < NX; i++) {
+        const c = i * NZ + j, a = M.id[c];
+        if (a >= 0 && M.umat[a] !== M_FOUND) { s += 0.5 / M.uK[a]; cum[c] = s; s += 0.5 / M.uK[a]; }
+        else if (M.type[c] === T_DRAIN) { cum[c] = s; }
+      }
+      tot[j] = s;
+    }
+    for (let a = 0; a < M.nU; a++) {
+      const c = M.ucell[a], j = c - ((c / NZ) | 0) * NZ;
+      let f;
+      if (M.umat[a] === M_FOUND || !(tot[j] > 0)) f = (M.downToe - M.ux[a]) / (M.downToe - UP_TOE_X);
+      else f = 1 - cum[c] / tot[j];
+      h[a] = Math.min(Math.max(Hw * Math.min(1, Math.max(0, f)), -1), Hw);
     }
   }
 
@@ -497,9 +613,33 @@
   //   seepageFace       {present, topZ, bottomZ, faces} (downstream face, drains excluded)
   //   stats             {iterations, converged, ms, ...diagnostics} }
   function solveSeepage(params) {
-    const t0 = nowMs();
     params = params || {};
+    const r = solveOnce(params, 0);
+    if (!params.custom || (r.stats.converged && r.q.balanceError < 1e-3)) return r;
+    // Custom mode fallback: painted zones can put coarse, sharply-draining materials next to
+    // each other in ways the nonlinear iteration cannot settle. Retry with a smoother
+    // unsaturated curve (larger Gardner alpha), which changes the flow above the phreatic
+    // surface a little and the saturated flow hardly at all. Reported in stats.alphaFloor.
+    let best = r;
+    for (const floor of [0.3, 0.6]) {
+      const r2 = solveOnce(params, floor);
+      r2.stats.attempts = (best.stats.attempts || 1) + 1;
+      r2.stats.ms += best.stats.ms;
+      if (r2.stats.converged && r2.q.balanceError < 1e-3) return r2;
+      if (r2.q.balanceError < best.q.balanceError) best = r2; else best.stats.ms = r2.stats.ms;
+    }
+    return best;
+  }
+
+  function solveOnce(params, alphaFloor) {
+    const t0 = nowMs();
     const p = normalizeParams(params);
+    if (alphaFloor > 0) {
+      const cu = p.custom, fl = v => Math.max(v, alphaFloor);
+      cu.materials.forEach(m => { m.alpha = fl(m.alpha); });
+      cu.foundation.alpha = fl(cu.foundation.alpha);
+      cu.layers.forEach(L => { L.alpha = fl(L.alpha); });
+    }
     const M = buildModel(p);
     const nU = M.nU;
     const S = {
@@ -626,6 +766,7 @@
       openSeepageFaces: countOpen(M, open, B_SEEP),
       unsatShare: out._unsatShare
     };
+    if (p.custom) { out.stats.alphaFloor = alphaFloor; out.stats.attempts = 1; }
     delete out._unsatShare;
     out.stats.ms = nowMs() - t0;
     return out;
@@ -687,7 +828,7 @@
     for (let g = 0; g < M.nB; g++) {
       if (M.bkind[g] !== B_TAIL) continue;
       const a = M.ba[g];
-      if (M.ux[a] <= DOWN_TOE_X) continue;
+      if (M.ux[a] <= M.downToe) continue;
       const grad = hU[a] / 0.5;
       if (isNaN(groundX) || grad > groundMax) { groundMax = Math.max(0, grad); groundX = M.ux[a]; }
     }
@@ -696,6 +837,8 @@
       if (M.bkind[g] !== B_SEEP || !open[g]) continue;
       const a = M.ba[g];
       if (M.ux[a] <= 0) continue; // downstream face only (drains are separate boundaries)
+      // custom mode: water leaving through drain material leaves through a filter
+      if (M.custom && M.umat[a] >= M_CUSTOM0 && M.custom.materials[M.umat[a] - M_CUSTOM0].drain) continue;
       const side = M.bdir[g] === 0;
       const fx = side ? M.ux[a] + 0.5 * M.bsign[g] : M.ux[a];
       const fz = M.bh[g]; // face elevation (centre elevation for side faces)
@@ -735,7 +878,7 @@
       // finish at the exit point (top of the seepage face) on the downstream face
       const last = phreatic[phreatic.length - 1];
       if (seepageFace.present) {
-        const ex = downFaceX(seepageFace.topZ), ez = seepageFace.topZ;
+        const ex = M.downFace(seepageFace.topZ), ez = seepageFace.topZ;
         if (ex > last[0] && last[1] >= ez - 1 && Math.hypot(ex - last[0], ez - last[1]) < 6) phreatic.push([ex, ez]);
       }
     }
@@ -772,7 +915,7 @@
       unsatShare['x' + xs] = tot > 0 ? uns / tot : 0;
     }
 
-    return {
+    const res = {
       params: p, Hw,
       nx: NX, nz: NZ, x0: X0, z0: Z0, dx: DX,
       h, psi, type: type, mat: mat,
@@ -780,6 +923,11 @@
       q, exit, seepageFace,
       _unsatShare: unsatShare
     };
+    if (M.custom) {
+      delete p.custom.cells; // the reader's own copy; keeps the result small
+      res.custom = { downSlope: M.downSlope, downToeX: M.downToe, freeDrainCells: M.freeDrainCells, soilDrainCells: M.soilDrainCells };
+    }
+    return res;
   }
 
   function polyLength(L) {
