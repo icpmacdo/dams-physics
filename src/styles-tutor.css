@@ -10,7 +10,7 @@
   box-shadow: 6px 6px 0 var(--accent-soft); padding: 12px 14px;
 }
 .tutor-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
-.tutor-kicker { display: block; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.tutor-kicker { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
 .tutor-fig { display: block; font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1rem; line-height: 1.2; margin-top: 2px; }
 .tutor-x { min-height: 28px; padding: 3px 9px; font-size: 0.68rem; }
 .tutor-log { overflow-y: auto; min-height: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 10px; overscroll-behavior: contain; }
@@ -47,7 +47,7 @@
   background: var(--ink); color: var(--sheet); border-radius: 4px; padding: 9px 12px;
   font-family: var(--f-body); font-size: 0.9rem; line-height: 1.45;
 }
-.gl-tip b { display: block; font-family: var(--f-mono); font-weight: 500; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-bottom: 3px; }
+.gl-tip b { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; margin-bottom: 3px; }
 .glossary-list { display: grid; grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr); gap: 8px 20px; margin: 12px 0 0; max-width: 58rem; }
 .glossary-list dt { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; }
 .glossary-list dd { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
@@ -55,13 +55,13 @@
 @media (max-width: 560px) { .glossary-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .glossary-list dd { margin-bottom: 10px; } }
 
 /* ---------- BC case files ---------- */
-.col > .case-grid { max-width: 58rem; }
+.col > .case-grid { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }
 .cases { margin-top: 40px; }
 .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
 .case { padding: 12px 18px 6px 0; border-right: 1px solid var(--rule); padding-left: 18px; min-width: 0; }
 .case:first-child { padding-left: 0; }
 .case:last-child { border-right: 0; }
-.case-k { margin: 0; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.case-k { margin: 0; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
 .case h4 { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.2rem; line-height: 1.15; margin: 4px 0 8px; text-wrap: balance; }
 .case p:not(.case-k) { font-size: 0.95rem; margin: 0 0 10px; }
 .case-src { font-family: var(--f-mono); font-size: 0.68rem; color: var(--ink-3); }

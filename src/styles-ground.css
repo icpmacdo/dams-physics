@@ -43,7 +43,7 @@ svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
 /* Fig 4.1 friction bars */
 .g-bars { margin: 14px 0 2px; display: grid; gap: 6px; }
 .g-bars > div { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); align-items: center; gap: 10px; }
-.g-bars span { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+.g-bars span { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
 .g-bars i { display: block; height: 12px; background: var(--accent); border-radius: 2px; width: 0; transition: width 0.15s; }
 .g-bars i.need { background: transparent; border: 1.5px dashed var(--ink-2); }
 @media (prefers-reduced-motion: reduce) { .g-bars i { transition: none; } }
@@ -61,7 +61,7 @@ svg.g-paradox { max-width: 520px; margin: 4px 0 12px; }
 ol.course { list-style: none; padding: 0; margin: 12px 0 8px; border-top: 2px solid var(--ink); max-width: 44rem; }
 ol.course li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 2px 18px; padding: 9px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
 ol.course a { text-decoration: none; color: var(--ink); display: flex; gap: 10px; align-items: baseline; }
-ol.course a span { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); white-space: nowrap; min-width: 4.6em; }
+ol.course a span { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); white-space: nowrap; min-width: 4.6em; }
 ol.course a strong { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
 ol.course a:hover strong, ol.course a:focus-visible strong { color: var(--accent); }
 ol.course a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -69,10 +69,10 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 @media (max-width: 620px) { ol.course li { grid-template-columns: minmax(0, 1fr); } ol.course p { padding-left: calc(4.6em + 10px); font-size: 0.92rem; } }
 
 /* ---------- "this one idea" map ---------- */
-.col > .ideas { max-width: 58rem; }
+.col > .ideas { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }
 .ideas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 24px; border-top: 2px solid var(--ink); margin: 6px 0 12px; }
 .ideas a { display: block; text-decoration: none; color: var(--ink); padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
-.ideas span { display: block; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.ideas span { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
 .ideas b { display: block; font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.08rem; line-height: 1.25; margin-bottom: 4px; }
 .ideas em { display: block; font-style: normal; font-size: 0.93rem; line-height: 1.45; color: var(--ink-2); }
 .ideas a:hover b, .ideas a:focus-visible b { color: var(--accent); }
@@ -80,7 +80,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
 /* ---------- predict widget (shared) ---------- */
 .predict { margin: 24px 0 28px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 10px 0 12px; }
-.predict::before { content: "Predict first"; display: block; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.predict::before { content: "Predict first"; display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
 .predict.is-done::before { content: "Predicted"; color: var(--ink-3); }
 .predict-q { font-family: var(--f-display); font-stretch: 88%; font-weight: 700; font-size: 1.12rem; line-height: 1.32; margin: 0 0 10px; }
 .predict-opts { display: grid; border-top: 1px solid var(--rule); }
@@ -95,7 +95,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
   font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; color: var(--ink-2); border: 1.5px solid var(--ink-2);
   border-radius: 3px; min-width: 1.9em; text-align: center; padding: 1px 4px; line-height: 1.3;
 }
-.predict-opts button::after { font-family: var(--f-mono); font-size: 0.64rem; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; content: ""; }
+.predict-opts button::after { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; content: ""; }
 .predict.is-done .predict-opts button { cursor: default; color: var(--ink-3); }
 .predict.is-done .predict-opts button .predict-key { color: var(--ink-3); border-color: var(--rule); }
 .predict-opts button.is-chosen { color: var(--ink); }
@@ -106,7 +106,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .predict-opts button.is-answer.is-chosen .predict-key { background: var(--ok); border-color: var(--ok); color: var(--sheet); }
 .predict-opts button.is-answer::after { content: "answer"; color: var(--ok); }
 .predict-opts button.is-answer.is-chosen::after { content: "your guess · right"; color: var(--ok); }
-.predict-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding-top: 8px; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+.predict-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding-top: 8px; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
 .predict-skip { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--ink-2); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .predict-skip:hover { color: var(--accent); }
 .predict-skip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }

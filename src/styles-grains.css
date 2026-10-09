@@ -1,6 +1,6 @@
 /* Step 4 grain sandbox (#fig-grains) */
 .gr-exps { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 2px 0 8px; }
-.gr-label { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-right: 2px; }
+.gr-label { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-right: 2px; }
 .gr-exps .btn { text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
 .gr-hint { font-size: 0.95rem; color: var(--ink-2); margin: 0 0 8px; min-height: 1.5em; max-width: 72ch; }
 .gr-hint .btn.gr-next { margin-left: 4px; min-height: 28px; padding: 3px 10px; font-size: 0.72rem; vertical-align: 1px; }
