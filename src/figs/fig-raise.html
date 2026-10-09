@@ -1,0 +1,22 @@
+<figure class="sheet wide" id="fig-raise">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 6.1</b> · Staged construction of three tailings dams, same height, same starter dam</span>
+        <span class="scale-note">Vertical scale exaggerated ×1.5</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <button class="btn primary" id="rs-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Play</span></button>
+        <div class="range" style="flex:2 1 280px"><label for="rs-t">Stage</label><input type="range" id="rs-t" min="0" max="10" step="0.01" value="10"><output class="stage-label" id="rs-stage">Raise 4 complete</output></div>
+        <button class="btn alarm" id="rs-shake" type="button">Earthquake</button>
+        <button class="btn" id="rs-reset" type="button" hidden>Reset</button>
+      </div>
+      <div id="rs-panels"></div>
+      <div class="legend">
+        <span><i></i>Fill resting on tailings</span>
+        <span><i class="cp"></i>Path of the crest, stage by stage</span>
+        <span><i class="ph"></i>Phreatic surface; hatched below it is saturated</span>
+        <span><i class="sw" style="background:var(--m-drain)"></i>Drains</span>
+        <span><i class="sw" style="background:var(--m-clay)"></i>Low-permeability zone</span>
+      </div>
+      <figcaption>All three dams end at the same height above the same starter dam. The fill numbers are cross-section areas, the volume per metre of dam length. Press <strong>Earthquake</strong> to shake all three: the loose, saturated tailings that carry the upstream raises can liquefy, and the raises go with them. In the other two, every raise rests on compacted, drained fill.</figcaption>
+    </figure>

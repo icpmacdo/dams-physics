@@ -210,6 +210,18 @@
     const m = MAT[st.mat];
     $('#bd-matinfo').innerHTML = `<b>${m.name}</b> · k = ${kTxt(m.k)} · φ′ = ${m.phi}° · c′ = ${m.c} kPa · ${m.gs} kN/m³ saturated. ${m.note}`;
   }
+  // every material with its numbers, for pages that print them all: <div data-material-table>
+  $$('[data-material-table]').forEach(host => {
+    const tb = document.createElement('table'); tb.className = 'cmp mat-table';
+    tb.innerHTML = '<thead><tr><th>Material</th><th>Permeability k</th><th>Friction angle φ′</th><th>Cohesion c′</th><th>Weight, saturated</th><th>What it is for</th></tr></thead>';
+    const body = document.createElement('tbody');
+    MAT.forEach(m => {
+      const tr = document.createElement('tr');
+      [m.name, kTxt(m.k), m.phi + '°', m.c + ' kPa', m.gs + ' kN/m³', m.note].forEach(s => { const td = document.createElement('td'); td.textContent = s; tr.appendChild(td); });
+      body.appendChild(tr);
+    });
+    tb.appendChild(body); host.appendChild(tb);
+  });
   const preEl = $('#bd-presets');
   PRESETS.forEach(p => {
     const b = document.createElement('button');
@@ -548,7 +560,7 @@
     if (sr && isFinite(sr.fos)) {
       const c = fosClass(sr.fos, st.side);
       $('#bd-fos').innerHTML = sr.fos.toFixed(2) + ' ' + pill(c, c === 'ok' ? 'Stable' : c === 'warn' ? 'Low margin' : sr.fos < 1 ? 'Slides' : 'Likely slides');
-      $('#bd-fos2').textContent = (st.side === 'upstream' ? 'upstream, after a fast drawdown · ' : 'downstream, full reservoir · ') + (sr.critical.kind === 'block' ? 'block along the layer' : 'circle, Bishop');
+      $('#bd-fos2').textContent = (st.side === 'upstream' ? 'upstream, after a fast drawdown · ' : 'downstream, reservoir at ' + n1(st.reservoir * CREST) + ' m · ') + (sr.critical.kind === 'block' ? 'block along the layer' : 'circle, Bishop');
     } else { $('#bd-fos').textContent = '–'; $('#bd-fos2').textContent = 'no slip surface found'; }
     const sf = seep.seepageFace;
     const midX = (3 + toe(result.design.slope)) / 2;

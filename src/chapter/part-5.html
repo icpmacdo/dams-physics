@@ -1,0 +1,72 @@
+    <div class="part" data-title="Part 5 · Seepage">
+
+    <section class="pg" id="seepage-paths">
+      <h2>Every dam leaks</h2>
+      <p>Water slowly flowing through or under a dam is called <dfn data-term="seepage">seepage</dfn>. Every dam has it. The questions are where the water goes, how much pressure it carries, and whether it takes soil with it. The drawing shows the five main routes, numbered.</p>
+      <div class="figslot" data-fig="fig-paths" data-caption="keep"></div>
+      <p>The next four pages follow the first two routes, through the dam and under it, with a real calculation.</p>
+    </section>
+
+    <section class="pg" id="phreatic">
+      <h2>Water inside a dam of one soil</h2>
+      <p>The drawing on this page is not a sketch. It is calculated. A seepage solver divides a 24 m embankment and the ground beneath it into 1 m squares and finds the head in every square, so that Darcy's law holds everywhere and the water flowing into each square equals the water flowing out. It also finds where the phreatic surface settles. This is the same kind of calculation engineers run on real dams, simplified.</p>
+      <p>This dam is <strong>homogeneous</strong>: all one material, a compacted fill with a permeability of 10⁻⁷ m/s, the same as silt. It sits on clay, and the reservoir is 20.4 m deep.</p>
+      <div class="figslot" data-fig="fig-lab" data-do="#lab-dam/homogeneous; #lab-drain/none; #lab-cut/none; #lab-found/tight; #lab-res:=85" data-hide=".ro:nth-child(3), .ro:nth-child(4)" data-title="Seepage through a dam of one soil, calculated"></div>
+      <p>The shading is the head, dark near the reservoir and pale where the water leaves. The thin grey lines join points of equal head, every 10% of the reservoir's. The blue lines are the paths the water takes, spaced so that each pair carries the same flow. The moving dots are water, sped up enormously.</p>
+      <p>Look at where the phreatic surface comes out. In a dam of one soil, it slopes down through the whole dam and breaks out on the downstream slope, about 8 m up. That wet stretch of slope is called a <dfn data-term="seepage-face">seepage face</dfn>. About two thirds of the 44 litres a day that pass each metre of dam leave through it. A slope with water running out of it softens and sloughs, and Part 6 shows how much strength it loses.</p>
+    </section>
+
+    <section class="pg" id="drains">
+      <h2>A drain dries the slope</h2>
+      <p>A <dfn data-term="drain">drain</dfn> is a zone of free-draining sand or gravel that collects seepage and leads it away, so that the water never reaches the downstream slope. Try the two kinds.</p>
+      <div class="figslot" data-fig="fig-lab" data-do="#lab-dam/homogeneous; #lab-cut/none; #lab-found/tight; #lab-res:=85; #lab-drain/none" data-show="#lab-drain" data-hide=".ro:nth-child(3), .ro:nth-child(4)" data-title="The same dam with a drain"></div>
+      <p>A <strong>toe drain</strong> at the foot of the slope pulls the phreatic surface down to it, and the seepage face disappears. A <strong>chimney and blanket drain</strong>, a vertical strip of sand just downstream of the crest joined to a layer along the base, does more: the phreatic surface dives into the chimney, and the whole downstream half of the dam stays dry.</p>
+      <p>Notice that the drains let more water through, not less: 50 litres a day with the toe drain and 110 with the chimney, against 44 with none. They give the water a shorter, easier way out. That is a good trade. The water leaves in a controlled place, and the soil it used to soak keeps its strength.</p>
+    </section>
+
+    <section class="pg" id="core">
+      <h2>A clay core</h2>
+      <p>The other way to keep a dam dry is to stop the water early. Switch the dam to a clay core with rockfill shells, the kind of dam from Part 4.</p>
+      <div class="figslot" data-fig="fig-lab" data-do="#lab-drain/none; #lab-cut/none; #lab-found/tight; #lab-res:=85; #lab-dam/cored" data-show="#lab-dam" data-hide=".ro:nth-child(3), .ro:nth-child(4)" data-title="A clay core with rockfill shells"></div>
+      <p>The lines of equal head crowd together inside the core: almost the whole head is lost across a few metres of clay, exactly as in the clay plug on page <a class="pgref" href="#clay-plug"></a>. The phreatic surface drops steeply through the core and leaves at the foot of the downstream slope, and the rockfill shell beyond it stays dry.</p>
+    </section>
+
+    <section class="pg" id="foundation">
+      <h2>Water under the dam</h2>
+      <p>So far the dam has stood on clay. Many valleys are floored with sand and gravel left by the river, which is far more permeable than the dam. Change the foundation and watch where the water goes.</p>
+      <div class="figslot" data-fig="fig-lab" data-do="#lab-dam/homogeneous; #lab-drain/none; #lab-res:=85; #lab-cut/none; #lab-found/pervious" data-show="#lab-found, #lab-cut" data-hide=".ro:nth-child(3), .ro:nth-child(4)" data-title="A dam on sand and gravel"></div>
+      <p>On sand and gravel, the seepage jumps from 44 litres a day to about 2,400, and 99% of it goes under the dam, rising out of the ground beyond the toe. A <dfn data-term="cutoff">cutoff</dfn> is a watertight wall or trench under the dam that blocks that path. A cutoff that goes only half way down barely helps (about 2,200 litres a day), because the water simply goes under it. A full-depth cutoff, down to the clay, brings the flow down to about 170.</p>
+      <p>The water rising out of the ground at the toe is the dangerous part. The next page shows why.</p>
+    </section>
+
+    <section class="pg" id="piping">
+      <h2>When seepage carries soil away</h2>
+      <p>Water flowing upward out of the ground pushes on the sand grains it passes. The steeper the head drops along its way out, the harder it pushes. When the upward gradient reaches the <dfn data-term="critical-gradient">critical gradient</dfn>, about 1 for sand, the push of the water equals the weight of the grains under water. The effective stress is zero and the sand boils. It is the block from page <a class="pgref" href="#cushion"></a> with so much water pressure under it that it floats.</p>
+      <p>The gradient where seepage leaves the ground is the <dfn data-term="exit-gradient">exit gradient</dfn>. Designers want the critical gradient to be at least three times the exit gradient wherever water leaves unprotected soil.</p>
+      <div class="figslot" data-fig="fig-pipe" data-do="#pp-filter/0; #pp-t:=0" data-show="#pp-play, #pp-t, #pp-filter"></div>
+      <p>Press <strong>Play</strong>. A boil at the toe is where <dfn data-term="piping">piping</dfn> begins. Grains wash out, a small channel forms, and the channel works its way upstream under the dam, getting shorter and steeper as it goes, so the erosion speeds up. Then switch the toe to <strong>Filter + weighting berm</strong>: the water still comes out, but the sand can't, so the chain never starts.</p>
+      <p>Erosion of this kind is one of the two big killers of embankment dams. In a 2000 study of embankment dam failures by Foster, Fell and Spannagle, piping through the dam, under it, or from one into the other caused about half of all failures, about as many as water pouring over the top. Teton Dam in Idaho failed this way on its first filling in 1976.</p>
+    </section>
+
+    <section class="pg" id="bennett">
+      <h2>Bennett Dam, 1996</h2>
+      <p class="case-k">W.A.C. Bennett Dam, Peace River, British Columbia</p>
+      <p>In June 1996, crews checking a small pothole on the crest of BC Hydro's 183 m earthfill dam found a much larger hole beneath it. A second sinkhole turned up during the drilling that followed. Both were in the core.</p>
+      <p>Seepage had been carrying fine grains out of the core: internal erosion, the process on the last two pages, happening inside the dam rather than at the toe. Engineers lowered the reservoir and filled the voids by compaction grouting, carefully, so the injected grout wouldn't crack the core. BC Hydro called it the most serious dam safety event in its history.</p>
+      <p>Nobody saw the erosion happen. It was found because someone looked closely at a small hole. That is the reason dams are watched: piezometers measure water pressure, weirs measure the seepage flow, and cloudy seepage water is a sign that soil is moving.</p>
+    </section>
+
+    <section class="pg" id="managing-seepage">
+      <h2>Six ways to manage seepage</h2>
+      <p>Everything in this part comes down to six methods, and most dams use several of them together.</p>
+      <div class="defences">
+        <div><b>Cut it off</b><span>A core, a cutoff trench or wall, a grout curtain, a concrete face or a plastic membrane.</span></div>
+        <div><b>Lengthen the path</b><span>A watertight blanket on the reservoir floor makes the water travel further, lowering the gradient.</span></div>
+        <div><b>Drain it</b><span>Chimney, blanket and toe drains, and relief wells, control where the phreatic surface sits and bleed off pressure.</span></div>
+        <div><b>Filter every exit</b><span>Wherever water leaves soil, it passes through a filter, so it leaves without the soil.</span></div>
+        <div><b>Weigh it down</b><span>A berm of extra fill at the toe adds weight against water pushing up.</span></div>
+        <div><b>Watch it</b><span>Piezometers measure water pressure, weirs measure flow, and cloudy water means soil is moving.</span></div>
+      </div>
+    </section>
+
+    </div>

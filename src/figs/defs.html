@@ -1,0 +1,80 @@
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <pattern id="p-bedrock" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" style="fill:var(--m-bedrock)"/>
+      <path class="tx" d="M0,16 L16,0 M-4,4 L4,-4 M12,20 L20,12"/>
+      <path class="tx" d="M4,6 l3,3 M11,13 l2,2"/>
+    </pattern>
+    <pattern id="p-alluv" width="14" height="12" patternUnits="userSpaceOnUse">
+      <rect width="14" height="12" style="fill:var(--m-alluv)"/>
+      <circle class="tx" cx="3.5" cy="3" r="1.6"/><circle class="tx" cx="10" cy="8.5" r="2"/>
+      <circle class="txf" cx="9" cy="2.5" r="0.7"/><circle class="txf" cx="3" cy="9.5" r="0.7"/>
+    </pattern>
+    <pattern id="p-clay" width="14" height="8" patternUnits="userSpaceOnUse">
+      <rect width="14" height="8" style="fill:var(--m-clay)"/>
+      <path class="tx" d="M1,2 h6 M8,6 h5"/>
+    </pattern>
+    <pattern id="p-filter" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" style="fill:var(--m-filter)"/>
+      <circle class="txf" cx="1.5" cy="1.5" r="0.6"/><circle class="txf" cx="4.5" cy="4.5" r="0.6"/>
+    </pattern>
+    <pattern id="p-trans" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" style="fill:var(--m-trans)"/>
+      <circle class="tx" cx="3" cy="3" r="1.5"/><circle class="txf" cx="7.5" cy="7.5" r="0.8"/><circle class="txf" cx="8" cy="2" r="0.5"/>
+    </pattern>
+    <pattern id="p-rock" width="20" height="16" patternUnits="userSpaceOnUse">
+      <rect width="20" height="16" style="fill:var(--m-rock)"/>
+      <path class="tx" d="M2,4 l4,-2 l3,3 l-2,3 l-4,-1 z M11,10 l5,-1 l2,4 l-4,2 l-3,-2 z M12,2 l3,0 l1,3 l-3,1 z"/>
+    </pattern>
+    <pattern id="p-riprap" width="22" height="14" patternUnits="userSpaceOnUse">
+      <rect width="22" height="14" style="fill:var(--m-riprap)"/>
+      <path class="tx" d="M1,2 h8 l2,5 l-3,5 h-6 l-1,-5 z M12,1 h7 l2,6 l-4,5 h-4 l-2,-6 z"/>
+    </pattern>
+    <pattern id="p-conc" width="18" height="18" patternUnits="userSpaceOnUse">
+      <rect width="18" height="18" style="fill:var(--m-conc)"/>
+      <circle class="txf" cx="3" cy="4" r="0.7"/><circle class="txf" cx="12" cy="9" r="0.7"/><circle class="txf" cx="6" cy="14" r="0.6"/>
+      <path class="tx" d="M13,2 l2.5,3.5 h-5 z M3,8 l2,3 h-4 z"/>
+    </pattern>
+    <pattern id="p-tsand" width="12" height="6" patternUnits="userSpaceOnUse">
+      <rect width="12" height="6" style="fill:var(--m-tsand)"/>
+      <path class="tx" d="M0,3 h5 M7,3 h3" style="stroke-dasharray:1 1.5"/>
+    </pattern>
+    <pattern id="p-slime" width="12" height="5" patternUnits="userSpaceOnUse">
+      <rect width="12" height="5" style="fill:var(--m-slime)"/>
+      <path class="tx" d="M0,2.5 h12"/>
+    </pattern>
+    <pattern id="p-fill" width="14" height="10" patternUnits="userSpaceOnUse">
+      <rect width="14" height="10" style="fill:var(--m-fill)"/>
+      <path class="tx" d="M1,3 h4 M8,7 h4"/><circle class="txf" cx="10" cy="2" r="0.6"/><circle class="txf" cx="4" cy="8" r="0.6"/>
+    </pattern>
+    <pattern id="p-drain" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" style="fill:var(--m-drain)"/>
+      <circle class="tx" cx="2.5" cy="2.5" r="1.4"/><circle class="tx" cx="6.5" cy="6.5" r="1.1"/>
+    </pattern>
+    <pattern id="p-cyclone" width="7" height="7" patternUnits="userSpaceOnUse">
+      <rect width="7" height="7" style="fill:var(--m-tsand)"/>
+      <circle class="txf" cx="2" cy="2" r="0.7"/><circle class="txf" cx="5.5" cy="5" r="0.7"/>
+    </pattern>
+    <pattern id="p-grout" width="6" height="10" patternUnits="userSpaceOnUse">
+      <rect width="6" height="10" style="fill:var(--m-bedrock)"/>
+      <path d="M3,0 v6" style="stroke:var(--accent);stroke-width:1.1"/>
+    </pattern>
+    <pattern id="p-liq" width="16" height="8" patternUnits="userSpaceOnUse">
+      <rect width="16" height="8" style="fill:var(--m-liq)"/>
+      <path class="tx" d="M0,4 q4,-3 8,0 t8,0"/>
+    </pattern>
+    <pattern id="p-sat" width="12" height="7" patternUnits="userSpaceOnUse">
+      <rect width="12" height="7" style="fill:var(--water-tint);opacity:.45"/>
+      <path d="M1,3.5 h6" style="stroke:var(--water);stroke-width:1;opacity:.6"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink-2)"/>
+    </marker>
+    <marker id="arr-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/>
+    </marker>
+    <marker id="arr-w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill:var(--water)"/>
+    </marker>
+  </defs>
+</svg>

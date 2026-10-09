@@ -1,0 +1,32 @@
+    <div class="part" data-title="Part 9 · Design a dam">
+
+    <section class="pg" id="design-lab">
+      <h2>The design lab</h2>
+      <p>Everything in this chapter now comes together in one drawing, with every control open. You paint the inside of a 24 m embankment with five materials, choose the ground it sits on, the cutoff, the downstream slope and the reservoir level, then press <strong>Test my dam</strong>. The seepage solver from Part 5 finds the water in it, and the stability check from Part 6 looks for the weakest slip surface.</p>
+      <p>These are the five materials. The values are typical ones, not design values.</p>
+      <div class="tablewrap" data-material-table></div>
+      <div class="figslot" data-fig="fig-build" data-do="#bd-tabs [data-m=free]" data-show="*" data-caption="keep" data-title="Your dam, tested by the seepage solver and a slope stability check"></div>
+      <p>Start from one of the designs under <strong>Start from</strong>, or paint over them with the pointer. The readouts are the three things that sink dams: how much leaks, whether the water leaving the ground can carry soil with it (designers want a piping safety of 3 or more), and whether a slope slides (designers want a factor of safety of 1.5 or more with the reservoir full).</p>
+    </section>
+
+    <section class="pg" id="missions">
+      <h2>Four design briefs</h2>
+      <p>Each tab above the drawing is a brief with targets to meet, and some settings you may not change. The first is the dam from Part 6. The second is a leaky rockfill dam on sand and gravel. The third is the Mount Polley weak layer. The fourth asks you to build most of a dam from tailings sand, as mines do to save money. A tab is ticked once you meet its targets.</p>
+      <div class="figslot" data-fig="fig-build" data-do="#bd-tabs [data-m=dry]" data-show="*" data-title="Design briefs"></div>
+    </section>
+
+    <section class="pg" id="sandbox">
+      <h2>The grain sandbox</h2>
+      <p>The sandbox from Part 3 with every control open. Choose loose or dense packing, dry, damp or saturated sand, a drain that is open or shut, and what sits on top, then shear it, shake it or take away the side wall. The four buttons along the top repeat the experiments from pages <a class="pgref" href="#suction"></a> to <a class="pgref" href="#liquefaction"></a>, plus a fourth: dense saturated sand sheared with the drain shut, which pulls the water pressure below zero.</p>
+      <div class="figslot" data-fig="fig-grains" data-show="*" data-caption="keep"></div>
+    </section>
+
+    <section class="pg" id="limits">
+      <h2>What the checks leave out</h2>
+      <p>For curved slip surfaces the stability check uses Bishop's simplified method, the standard method since 1955. It cuts the sliding mass into 40 vertical slices, works out how hard each slice presses on its base after taking away the water pressure there, and balances the turning effect of the whole mass about the centre of the circle. On the weak-layer foundation it also tries blocks sliding flat along the layer, using Spencer's method, which balances forces and turning effects together.</p>
+      <p>The water pressure on each slice comes straight from the seepage solution. Suction above the water level is ignored, as is usual practice, because it can vanish in a wet spell. For the upstream check the reservoir is emptied quickly: the free-draining materials drain with it, while clay and fill keep their water pressure.</p>
+      <p>The seepage solver works in two dimensions, on a section one metre thick, on a 1 m grid. It assumes water passes as easily sideways as downward, and it finds the steady state, after the dam has been full for a long time. Exit gradients right at the toe depend on the grid size, so read them as rough.</p>
+      <p>The design lab does not check earthquakes, the liquefaction of loose saturated sand, or whether each zone is a proper filter for the one beside it. In a real dam, clay painted straight against rockfill would wash into it, which is why real cores have filters. All the drawings in this chapter are simplified, and the material values are typical textbook values, not design values.</p>
+    </section>
+
+    </div>

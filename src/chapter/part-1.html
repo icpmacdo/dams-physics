@@ -1,0 +1,87 @@
+    <div class="part" data-title="Part 1 · Water pressure">
+
+    <section class="pg" id="beach">
+      <h2>Three kinds of sand</h2>
+      <p>If you have played on a beach, you have felt sand behave in three different ways.</p>
+      <p><strong>Dry sand pours.</strong> It runs through your fingers, and the steepest heap you can make is a low cone.</p>
+      <p><strong>Damp sand stands.</strong> Pack it into a bucket, turn it out, and you get a castle with walls that go straight up.</p>
+      <p><strong>Saturated sand turns to soup.</strong> At the water's edge, where every gap between the grains is full of water, the sand feels firm while you stand still. Wiggle your feet and it goes soft, and you sink to the ankles.</p>
+      <div class="figslot" data-fig="fig-beach" data-do="#bc-state/damp" data-show="#bc-state, #bc-jiggle"></div>
+      <p>Use the buttons to switch between the three states, and press <strong>Jiggle</strong> to shake the ground. Dry sand settles at about 34°, however you pour it. That slope is called the <dfn data-term="angle-of-repose">angle of repose</dfn>. Damp sand holds a vertical wall. Saturated sand slumps, and a jiggle turns it to a liquid: the flag sinks.</p>
+      <p>It is the same sand every time. The only thing that changes is the water between the grains. An earth dam is a huge heap of soil with a lake pressing on one side and water soaking into it. Whether it behaves like the damp castle or like the soup at the waterline depends on what the water inside it is doing. This chapter explains all three states, starting with two facts about water.</p>
+    </section>
+
+    <section class="pg" id="depth">
+      <h2>Water pressure grows with depth</h2>
+      <p>Swim to the bottom of a deep pool and your ears start to hurt. The water above you has weight, and the deeper you go, the more of it there is pressing down. Water passes that press on in every direction, sideways too. So the water behind a dam pushes on the dam the same way it pushes on your eardrums.</p>
+      <p>Each metre of depth adds the weight of one more metre of water standing on every square metre. That is a tonne of water, which presses down with about 9.81 kilonewtons. A <strong>kilonewton</strong> (kN) is roughly the weight of 100 kg, and a pressure of one kilonewton on every square metre is a <strong>kilopascal</strong> (kPa). So every metre of depth adds 9.81 kPa. The pressure in still water, which depends only on depth, is called <dfn data-term="hydrostatic">hydrostatic pressure</dfn>:</p>
+      <div class="formula"><b>p</b> = ρ · g · h&nbsp;&nbsp;&nbsp;≈&nbsp;&nbsp;9.81 kPa × depth in metres<small>p pressure (kPa) · ρ density of water, 1,000 kg/m³ · g gravity, 9.81 m/s² · h depth below the water surface (m)</small></div>
+      <div class="figslot" data-fig="fig-depth" data-do="#dp-H:=50; #dp-h:=30" data-show="#dp-h" data-hide="#svg-depth-chart, .ro:nth-child(3)"></div>
+      <p>Drag the sensor down the cable. The pressure grows in a straight line with depth: 98 kPa at 10 m, 294 kPa at 30 m, 491 kPa at the bottom. Ten metres of water adds about the pressure of the whole atmosphere above us, which is why divers count their depth in 10 m steps. The arrows on the dam face show the same rule all the way down.</p>
+      <div class="question">
+        <p class="q-label">Question</p>
+        <p>Two dams each hold back water 50 m deep. One holds a lake 10 km long. The other holds a slot of water only 2 m wide, with solid rock behind it. Which dam has to be stronger?</p>
+        <svg class="dwg gd g-paradox" viewBox="0 0 480 130" role="img" aria-label="Left: a dam holding a long lake 50 metres deep. Right: a dam holding a narrow slot of water 2 metres wide and 50 metres deep against rock.">
+          <rect x="6" y="34" width="190" height="72" class="water"/>
+          <path d="M6,34 h190" class="water-line"/>
+          <path d="M44,30 l-6,8 M38,30 l-6,8" style="stroke:var(--ink-2);stroke-width:1.2"/>
+          <text x="98" y="27" class="lbl-s" text-anchor="middle">lake, 10 km long</text>
+          <polygon points="196,22 208,22 236,106 196,106" style="fill:var(--m-conc)" class="edge"/>
+          <rect x="0" y="106" width="240" height="16" fill="url(#p-bedrock)" class="edge"/>
+          <text x="186" y="74" class="lbl lbl-w halo" text-anchor="end">50 m deep</text>
+          <rect x="356" y="34" width="10" height="72" class="water"/>
+          <path d="M356,34 h10" class="water-line"/>
+          <polygon points="256,22 356,22 356,106 256,106" fill="url(#p-bedrock)" class="edge"/>
+          <polygon points="366,22 378,22 406,106 366,106" style="fill:var(--m-conc)" class="edge"/>
+          <rect x="250" y="106" width="230" height="16" fill="url(#p-bedrock)" class="edge"/>
+          <text x="361" y="16" class="lbl-s" text-anchor="middle">slot, 2 m wide</text>
+          <text x="412" y="74" class="lbl lbl-w halo">50 m deep</text>
+          <text x="300" y="74" class="lbl-s halo" text-anchor="middle">rock</text>
+        </svg>
+        <ol class="q-opts"><li>The dam holding the big lake</li><li>The dam holding the narrow slot</li><li>Both need to be equally strong</li></ol>
+        <p class="q-turn">Make your choice, then turn the page for the answer.</p>
+      </div>
+    </section>
+
+    <section class="pg" id="push">
+      <h2>Only the depth matters</h2>
+      <div class="answer">
+        <p class="q-label">Answer: C, both need to be equally strong</p>
+        <p>Water pressure depends only on how far below the surface you are. Fifty metres down it is the same in a slot as in an ocean, so the two dams feel exactly the same push. The big lake is far heavier, but its weight rests on the lake bed. The size of a lake decides how much water escapes if the dam breaks. The depth decides the load on the dam.</p>
+      </div>
+      <p>The total push on the dam adds up the pressure over the whole wet face. Because the pressure grows in a straight line from nothing at the surface to the most at the bottom, the arrows form a triangle, and the push is the area of that triangle: ½ × (pressure at the bottom) × (depth). The depth appears twice, once in the pressure and once in the height of the face, so the push grows with the depth squared:</p>
+      <div class="formula"><b>F</b> = ½ · ρ · g · H²<small>F push of the water on each metre length of dam (kN per m) · H depth of water at the dam (m)</small></div>
+      <div class="figslot" data-fig="fig-depth" data-do="#dp-H:=50; #dp-h:=50" data-show="#dp-H, #dp-h"></div>
+      <p>Now change the water depth and watch the chart. At 50 m the push is 12.3 MN on every metre length of dam, the weight of about 1,250 tonnes. Halve the depth and the push drops to a quarter. Double it to 100 m and the push is four times as large. That is why tall dams are so much thicker at the bottom than at the top.</p>
+    </section>
+
+    <section class="pg" id="pore-pressure">
+      <h2>Water in the ground has pressure too</h2>
+      <p>Dig a hole in the sand near the sea and it fills with water from below. The water in the hole settles at a level, and below that level every gap between the grains is full of water. That level is the <dfn data-term="water-table">water table</dfn>.</p>
+      <figure class="sheet wide">
+        <div class="sheet-top"><span class="figno">A hole dug in beach sand</span><span class="scale-note">Depths to scale below the water table · 1 m = 15 px</span></div>
+        <div class="svgwrap"><svg class="dwg" viewBox="0 0 480 270" role="img" aria-label="Sand with a hole dug in it. Water in the hole stands at the water table, 3 metres below the ground. Below the water table the gaps between grains are full of water. Labels give the water pressure at 1, 5 and 10 metres below the water table: about 10, 49 and 98 kilopascals.">
+          <rect x="0" y="50" width="480" height="210" fill="url(#p-fill)" class="edge"/>
+          <rect x="0" y="95" width="480" height="165" class="sat"/>
+          <path d="M60,50 L60,150 L110,150 L110,50" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1"/>
+          <rect x="60.5" y="95" width="49" height="54.5" class="water"/>
+          <path d="M0,95 H480" class="water-line" style="stroke-dasharray:6 4"/>
+          <path d="M80,86 l5,0 l-2.5,5 z" style="fill:none;stroke:var(--water);stroke-width:1.2"/>
+          <text x="118" y="44" class="lbl-s">ground</text>
+          <text x="118" y="90" class="lbl lbl-w halo">water table</text>
+          <text x="85" y="40" class="lbl-s" text-anchor="middle">hole</text>
+          <path d="M300,95 V245" class="dim"/>
+          <g class="lbl">
+            <circle cx="300" cy="110" r="3" class="ink"/><text x="312" y="114" class="lbl halo">1 m below: about 10 kPa</text>
+            <circle cx="300" cy="170" r="3" class="ink"/><text x="312" y="174" class="lbl halo">5 m below: about 49 kPa</text>
+            <circle cx="300" cy="245" r="3" class="ink"/><text x="312" y="249" class="lbl halo">10 m below: about 98 kPa</text>
+          </g>
+          <text x="24" y="190" class="lbl-s halo">every gap full of water</text>
+          <text x="24" y="74" class="lbl-s halo">damp sand</text>
+        </svg></div>
+      </figure>
+      <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so it obeys the same rule as the water in a lake: about 9.81 kPa more for every metre below the water table. Ten metres down it is at about 98 kPa, pushing outward on every grain around it.</p>
+      <p>The pressure of the water in the gaps between grains is called the <dfn data-term="pore-pressure">pore pressure</dfn>, written <em>u</em>. It is the most important quantity in this chapter. Part 3 shows how it decides whether soil is strong or weak.</p>
+    </section>
+
+    </div>

@@ -1,0 +1,24 @@
+<figure class="sheet wide g-fig" id="fig-beach">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 1.1</b> · The same sand, three ways</span>
+        <span class="scale-note">Schematic · castle about 30 cm tall</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a cone with 34 degree sides. Damp, it stands as a castle with vertical walls. Saturated, it slumps, and when shaken it flows flat and the flag on top sinks."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="ctl"><span>Sand</span><div class="seg" id="bc-state"><button type="button" data-v="dry" aria-pressed="false">Dry</button><button type="button" data-v="damp" aria-pressed="true">Damp</button><button type="button" data-v="sat" aria-pressed="false">Saturated</button></div></div>
+            <button class="btn primary" id="bc-jiggle" type="button">Jiggle</button>
+          </div>
+          <div class="g-zoom">
+            <svg class="dwg gd" id="svg-beach-zoom" viewBox="0 0 220 150" role="img" aria-label="Close-up of seven sand grains and what fills the gaps between them."></svg>
+            <p class="note" id="bc-zoom-note">Close-up: a little water gathers in rings where grains touch.</p>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Steepest slope it holds</span><b id="bc-slope">90°</b><small id="bc-slope2">a vertical wall</small></div>
+            <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water at the contacts</small></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Dry sand settles at about 34°, however you pour it. Damp sand holds a vertical wall. Saturated sand slumps, and a jiggle turns it to a liquid: the flag sinks. Pick a state again to rebuild the heap. <strong>Why</strong> each one happens is the subject of <a href="#strength">Step 4</a>.</figcaption>
+    </figure>

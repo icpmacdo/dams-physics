@@ -1,0 +1,97 @@
+    <div class="part" data-title="Part 2 · Water moving through ground">
+
+    <section class="pg" id="head">
+      <h2>Head: how high water climbs in a tube</h2>
+      <p>Water in the ground is rarely still. It creeps through the gaps between the grains. You can watch it happen as the tide goes out: for hours afterwards, little streams trickle out of the sand at the bottom of the beach. To tell which way it will go, engineers use one measure.</p>
+      <p>Push a thin tube into wet ground and water rises inside it. The height the water reaches, measured from a fixed level such as sea level, is the <dfn data-term="hydraulic-head">head</dfn> at the bottom of the tube. It adds two things: how high the bottom of the tube is (its elevation), and how far the water pressure there can push water up the tube (its pressure head, the pore pressure divided by 9.81).</p>
+      <figure class="sheet wide">
+        <div class="sheet-top"><span class="figno">Two tubes in a hillside</span><span class="scale-note">Schematic · heights to scale</span></div>
+        <div class="svgwrap"><svg class="dwg" viewBox="0 0 520 296" role="img" aria-label="A hillside with two tubes pushed into the ground. Point A is 2 metres above sea level and water rises 10 metres up its tube, so its head is 12 metres. Point B is higher, 6 metres above sea level, but water rises only 3 metres, so its head is 9 metres. Water flows from A up to B, toward the lower head.">
+          <path d="M0,40 L520,110 L520,270 L0,270 Z" fill="url(#p-fill)" class="edge"/>
+          <path d="M0,265 H520" class="dim" style="stroke-dasharray:5 4"/>
+          <text x="8" y="286" class="lbl-s">sea level (0 m), the level heads are measured from</text>
+          <!-- tube A: bottom at 2 m (y=235), water to 12 m (y=85) -->
+          <rect x="136" y="60" width="8" height="175" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1"/>
+          <rect x="137" y="85" width="6" height="150" class="water"/>
+          <circle cx="140" cy="235" r="4" class="ink"/>
+          <text x="128" y="239" class="lbl-b" text-anchor="end">A</text>
+          <path d="M120,85 h40" class="water-line"/>
+          <path d="M104,235 V85" class="dim"/><path d="M100,235 h8 M100,85 h8" class="dim"/>
+          <text x="98" y="164" class="lbl-s halo" text-anchor="end">head 12 m</text>
+          <path d="M164,265 V235" class="dim"/><text x="168" y="254" class="lbl-s halo">2 m up</text>
+          <text x="150" y="80" class="lbl-s halo">water rises 10 m</text>
+          <!-- tube B: bottom at 6 m (y=175), water to 9 m (y=130) -->
+          <rect x="376" y="70" width="8" height="105" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1"/>
+          <rect x="377" y="130" width="6" height="45" class="water"/>
+          <circle cx="380" cy="175" r="4" class="ink"/>
+          <text x="392" y="179" class="lbl-b">B</text>
+          <path d="M360,130 h40" class="water-line"/>
+          <path d="M420,175 V130" class="dim"/><path d="M416,175 h8 M416,130 h8" class="dim"/>
+          <text x="428" y="150" class="lbl-s halo">water rises 3 m</text>
+          <text x="428" y="163" class="lbl-s halo">head 9 m</text>
+          <path d="M404,265 V175" class="dim"/><text x="408" y="226" class="lbl-s halo">6 m up</text>
+          <path d="M85,85 H520" class="water-line" style="stroke-dasharray:2 4;opacity:.6"/>
+          <!-- flow arrow A to B, rising -->
+          <path d="M160,228 C230,215 290,195 360,180" style="stroke:var(--water);stroke-width:2.2;fill:none"/>
+          <path d="M360,180 l-10,-1 l4,8 z" style="fill:var(--water)"/>
+          <text x="262" y="226" class="lbl lbl-w halo" text-anchor="middle">flow, uphill, from 12 m of head to 9 m</text>
+        </svg></div>
+      </figure>
+      <p>Point B is higher than point A, yet the water flows from A to B. It doesn't matter which point is higher. <strong>Water flows from high head to low head.</strong> That is how a spring can bubble up out of a hillside.</p>
+      <p>The tubes are real. Engineers sink thin pipes into dams and the ground beneath them and measure the water level inside. They are called <dfn data-term="piezometer">piezometers</dfn>, and reading them is the main way anyone knows what the water inside a dam is doing.</p>
+    </section>
+
+    <section class="pg" id="permeability">
+      <h2>Some ground is a sieve, some is a wall</h2>
+      <p>How easily water passes through ground depends on the size of the gaps. Gravel has gaps you can see. Clay is made of flat flakes thousands of times smaller than a grain of sand, and the gaps between them are tiny and twisting.</p>
+      <p>Engineers measure how easily water gets through as the <dfn data-term="permeability">permeability</dfn>, written <em>k</em> and given in metres per second. Roughly, it is how fast water would move through a soil if the head dropped by one metre for every metre travelled. Typical values:</p>
+      <div class="tablewrap">
+        <table class="cmp k-table">
+          <thead><tr><th>Soil</th><th>Permeability <em>k</em></th><th>In words</th></tr></thead>
+          <tbody>
+            <tr><th>Gravel</th><td>about 10⁻² m/s (0.01)</td><td>a centimetre a second</td></tr>
+            <tr><th>Clean sand</th><td>about 10⁻⁴ m/s (0.0001)</td><td>about a third of a metre an hour</td></tr>
+            <tr><th>Silt</th><td>about 10⁻⁷ m/s</td><td>about a centimetre a day</td></tr>
+            <tr><th>Compacted clay</th><td>about 10⁻⁹ m/s</td><td>about 3 cm a year</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The small raised number counts the zeros: 10⁻⁹ is a decimal point followed by eight zeros and a one. Each step down the table divides the speed by a hundred or more.</p>
+      <div class="question">
+        <p class="q-label">Question</p>
+        <p>A one-metre block of compacted clay has water pressing on one side, with the water level 1 m higher than on the other side. How long does a drop of water take to get through the metre?</p>
+        <ol class="q-opts"><li>About a minute</li><li>About a day</li><li>About a month</li><li>About ten years</li></ol>
+        <p class="q-turn">Make your choice, then turn the page for the answer.</p>
+      </div>
+    </section>
+
+    <section class="pg" id="race">
+      <h2>The permeability race</h2>
+      <div class="answer">
+        <p class="q-label">Answer: D, about ten years</p>
+        <p>About eleven years. Through gravel, the same push gets a drop across in about 30 seconds.</p>
+      </div>
+      <p>The race below puts one metre of each soil side by side, each with the same push: water 1 m higher on top. Press <strong>Start the race</strong>. The clock has to speed up enormously before the clay moves at all, so it speeds up tenfold every second, and the time scale under the columns is <strong>logarithmic</strong>: each step to the right is ten times longer than the one before. On an ordinary scale where gravel's 30 seconds took one millimetre, clay would need about ten kilometres.</p>
+      <div class="figslot" data-fig="fig-race" data-do="#rc-t:=0" data-show="#rc-play, #rc-t"></div>
+      <p>A drop moves faster than <em>k</em> alone suggests, because it can only travel through the gaps, which take up about a third of the volume. The race allows for that.</p>
+      <p>That enormous range is what makes it possible to build a dam out of soil at all. A dam needs a part that water can barely get through, and parts that let water out quickly, side by side. Clay does the first job. Sand and gravel do the second.</p>
+    </section>
+
+    <section class="pg" id="darcy">
+      <h2>Darcy's law</h2>
+      <p>In 1856 Henry Darcy, an engineer building the fountains of Dijon in France, ran water through pipes packed with sand and found a simple rule, now called <dfn data-term="darcy">Darcy's law</dfn>. Double the difference in head between the two ends and the flow doubles. Double the length of the sand and the flow halves.</p>
+      <p>What matters is how steeply the head drops along the way: the head lost for every metre the water travels. That slope is called the <dfn data-term="hydraulic-gradient">hydraulic gradient</dfn>, written <em>i</em>. The flow is the permeability times the gradient times the area the water flows through:</p>
+      <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow (m³/s) · k permeability (m/s) · i gradient · Δh head difference (m) · L length of the path (m) · A area the water flows through (m²)</small></div>
+      <div class="figslot" data-fig="fig-darcy" data-do="#dc-plug/0; #dc-mat/sand; #dc-hl:=2; #dc-hr:=0.6; #dc-L:=2" data-show="#dc-mat, #dc-hl, #dc-hr, #dc-L" data-hide=".ro:nth-child(4)"></div>
+      <p>A pipe full of sand joins two tanks. The thin tubes along the pipe are piezometers. Their water levels line up in a straight slope from one tank to the other: that dashed line is the head, falling steadily along the pipe, and water flows down it. Raise the left tank and the flow grows in step. Lengthen the pipe and it falls. Swap which tank is higher and the flow reverses. The particles are sped up so that silt still shows movement.</p>
+    </section>
+
+    <section class="pg" id="clay-plug">
+      <h2>A clay plug takes almost the whole drop</h2>
+      <p>Now the same pipe has a short plug of clay in the middle. The tanks are at the same heights as before.</p>
+      <div class="figslot" data-fig="fig-darcy" data-do="#dc-mat/sand; #dc-hl:=2; #dc-hr:=0.6; #dc-L:=2; #dc-plug/1" data-show="#dc-plug, #dc-mat"></div>
+      <p>Nearly all the head is lost across the short piece of clay. The tubes in the sand on either side read almost the same as the tank next to them. The same flow has to pass through every part of the pipe, and the tight clay needs a much steeper gradient to push it through, so the clay takes almost the whole drop. Switch the plug off and on to compare.</p>
+      <p>This is how a dam with a clay <dfn data-term="core">core</dfn> works. A core a few metres thick, in the middle of a dam made of sand and rock, takes almost the whole height of the reservoir. The sand and rock on either side carry almost none of it, so the water pressure in the downstream half of the dam stays low. Part 4 shows how such a dam is built, and Part 3 shows why low water pressure matters so much.</p>
+    </section>
+
+    </div>

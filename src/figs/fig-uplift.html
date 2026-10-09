@@ -1,0 +1,20 @@
+<figure class="sheet wide" id="fig-uplift">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 8.4</b> · Uplift and sliding of a 60 m concrete gravity dam</span>
+        <span class="scale-note">Drawn to scale · per metre of dam</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <div class="ctl"><span>Foundation drains</span><div class="seg" id="up-drains"><button type="button" data-v="1" aria-pressed="true">Working</button><button type="button" data-v="0" aria-pressed="false">Clogged</button></div></div>
+        <div class="range"><label for="up-hw">Reservoir</label><input type="range" id="up-hw" min="30" max="59" step="0.5" value="57"><output id="up-hw-o">57.0 m</output></div>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-uplift" viewBox="0 0 1000 380" role="img" aria-label="A concrete gravity dam with the water pressure on its upstream face and the uplift pressure diagram beneath its base. With working drains, the uplift diagram drops sharply at the drain line."></svg></div>
+      <div class="readouts">
+        <div class="ro"><span>Weight W</span><b id="up-W">–</b><small>concrete at 23.5 kN/m³</small></div>
+        <div class="ro"><span>Water push H</span><b id="up-H">–</b><small>net of tailwater</small></div>
+        <div class="ro"><span>Uplift U</span><b id="up-U">–</b><small id="up-U2"></small></div>
+        <div class="ro"><span>Sliding safety</span><b id="up-FS">–</b><small>(W − U)·tan 45° / H</small></div>
+        <div class="ro"><span>Resultant at base</span><b id="up-R">–</b><small id="up-R2"></small></div>
+      </div>
+      <figcaption>Uplift alone can decide whether a gravity dam is safe. Clog the drains and the uplift force nearly doubles. Many design guides look for a sliding safety factor of about 1.5 under normal operating loads. The resultant should also fall in the middle third of the base, so the heel stays in compression and no crack opens to let full reservoir pressure in underneath.</figcaption>
+    </figure>

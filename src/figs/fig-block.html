@@ -1,0 +1,29 @@
+<figure class="sheet wide g-fig" id="fig-block" hidden>
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 4.1</b> · A block on a ramp, with a water cushion underneath</span>
+        <span class="scale-note">Block weighs 20 kN · base 1 m²</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-block" viewBox="0 0 480 320" role="img" aria-label="A block on a tilting ramp with a water cushion under its base. Arrows show the block's weight, the pull down the ramp, the water pushing up from the cushion, and the friction available to hold the block. When the friction available is less than the pull, the block slides."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="range"><label for="bk-a">Ramp angle</label><input type="range" id="bk-a" min="0" max="45" step="1" value="25"><output id="bk-a-o">25°</output></div>
+            <div class="range"><label for="bk-u">Water pressure</label><input type="range" id="bk-u" min="0" max="20" step="0.5" value="0"><output id="bk-u-o">0 kPa</output></div>
+            <button class="btn" id="bk-reset" type="button" hidden>Put the block back</button>
+          </div>
+          <div class="g-bars" aria-hidden="true">
+            <div><span>Friction available</span><i id="bk-bar-a"></i></div>
+            <div><span>Needed to hold</span><i id="bk-bar-n" class="need"></i></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Block presses on ramp</span><b id="bk-N">18.1 kN</b><small>weight × cos(angle)</small></div>
+            <div class="ro"><span>Water carries</span><b id="bk-U">0.0 kN</b><small>pressure × 1 m²</small></div>
+            <div class="ro"><span>Press left over</span><b id="bk-Ne">18.1 kN</b><small>what friction works with</small></div>
+            <div class="ro"><span>Friction available</span><b id="bk-Fa">12.2 kN</b><small>press left × tan 34°</small></div>
+            <div class="ro"><span>Needed to hold</span><b id="bk-Fn">8.5 kN</b><small>weight × sin(angle)</small></div>
+            <div class="ro"><span>Factor of safety</span><b id="bk-fs">1.45</b><small id="bk-fs2">available ÷ needed</small></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Raise the water pressure at 25° and watch the friction bar shrink while the needed bar stays put. The block slides when the factor of safety drops below 1. Then try a gentler ramp: with enough water pressure, even 10° is too steep.</figcaption>
+    </figure>

@@ -1,0 +1,26 @@
+<figure class="sheet wide" id="fig-lab">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 8.2</b> · Seepage lab · finite-volume solution</span>
+        <span class="scale-note">Drawn to scale · 24 m embankment, 2H:1V slopes</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <div class="ctl"><span>Dam</span><div class="seg" id="lab-dam"><button type="button" data-v="homogeneous" aria-pressed="true">Homogeneous</button><button type="button" data-v="cored" aria-pressed="false">Clay core + rockfill</button></div></div>
+        <div class="ctl"><span>Drain</span><div class="seg" id="lab-drain"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="toe" aria-pressed="false">Toe drain</button><button type="button" data-v="chimney" aria-pressed="false">Chimney + blanket</button></div></div>
+        <div class="ctl"><span>Cutoff</span><div class="seg" id="lab-cut"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="partial" aria-pressed="false">Half depth</button><button type="button" data-v="full" aria-pressed="false">Full</button></div></div>
+        <div class="ctl"><span>Foundation</span><div class="seg" id="lab-found"><button type="button" data-v="pervious" aria-pressed="true">Sand &amp; gravel</button><button type="button" data-v="tight" aria-pressed="false">Clay</button></div></div>
+      </div>
+      <div class="controls">
+        <div class="range"><label for="lab-res">Reservoir</label><input type="range" id="lab-res" min="40" max="95" step="5" value="85"><output id="lab-res-o">20.4 m</output></div>
+        <span class="solving" id="lab-status" aria-live="polite"></span>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-lab" viewBox="0 0 1000 270" role="img" aria-label="Computed seepage through and under an embankment dam: total head shaded from dark blue at the reservoir to pale at the exit, with equipotential lines, flow lines, animated water particles and the phreatic surface."></svg></div>
+      <div class="readouts">
+        <div class="ro"><span>Seepage</span><b id="lab-q">–</b><small id="lab-q2">per metre of dam</small></div>
+        <div class="ro"><span>Leaves via</span><b id="lab-split">–</b><small id="lab-split2"></small></div>
+        <div class="ro"><span>Max exit gradient</span><b id="lab-i">–</b><small id="lab-i2">unfiltered exits only</small></div>
+        <div class="ro"><span>Safety vs piping</span><b id="lab-fs">–</b><small id="lab-fs2">i<sub>c</sub> ≈ 1.0</small></div>
+        <div class="ro"><span>Phreatic surface</span><b id="lab-ph">–</b><small id="lab-ph2"></small></div>
+      </div>
+      <figcaption>Things to try. <strong>Homogeneous dam, no drain:</strong> the phreatic surface breaks out on the downstream slope (a seepage face, in orange), which softens and sloughs the slope. <strong>Add the chimney and blanket drain:</strong> the phreatic surface dives into it and the downstream half stays dry. <strong>Sand &amp; gravel foundation:</strong> most water goes under the dam and comes up at the toe; watch the exit gradient, then add a cutoff. Particle speeds are compressed so slow paths stay visible. Exit gradients right at the toe depend on grid size, so read them as indicative.</figcaption>
+    </figure>

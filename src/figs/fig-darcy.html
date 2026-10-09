@@ -1,0 +1,25 @@
+<figure class="sheet wide g-fig" id="fig-darcy">
+      <div class="sheet-top">
+        <span class="figno"><b>Fig. 3.2</b> · Darcy's experiment</span>
+        <span class="scale-note">Schematic · flow per square metre of pipe</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-darcy" viewBox="0 0 480 280" role="img" aria-label="Two water tanks joined at the bottom by a horizontal pipe packed with soil. Piezometer tubes rise from the pipe. The water levels in the tubes fall in a straight line from the higher tank to the lower one, and water particles move through the pipe from high head to low head."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="ctl"><span>Material in the pipe</span><div class="seg" id="dc-mat"><button type="button" data-v="gravel" aria-pressed="false">Gravel</button><button type="button" data-v="sand" aria-pressed="true">Sand</button><button type="button" data-v="silt" aria-pressed="false">Silt</button></div></div>
+            <div class="ctl"><span>Clay plug in the middle</span><div class="seg" id="dc-plug"><button type="button" data-v="0" aria-pressed="true">None</button><button type="button" data-v="1" aria-pressed="false">Add a clay plug</button></div></div>
+            <div class="range"><label for="dc-hl">Left tank</label><input type="range" id="dc-hl" min="0.2" max="2.4" step="0.05" value="2"><output id="dc-hl-o">2.00 m</output></div>
+            <div class="range"><label for="dc-hr">Right tank</label><input type="range" id="dc-hr" min="0.2" max="2.4" step="0.05" value="0.6"><output id="dc-hr-o">0.60 m</output></div>
+            <div class="range"><label for="dc-L">Pipe length</label><input type="range" id="dc-L" min="1" max="4" step="0.5" value="2"><output id="dc-L-o">2.0 m</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Head difference <i class="g-sym">Δh</i></span><b id="dc-dh">1.40 m</b><small id="dc-dh2">left is higher</small></div>
+            <div class="ro"><span>Gradient <i class="g-sym">i = Δh / L</i></span><b id="dc-i">0.70</b><small id="dc-i2">head lost per metre</small></div>
+            <div class="ro"><span>Flow <i class="g-sym">q</i></span><b id="dc-q">6.0 L/day</b><small id="dc-q2">through each m² of pipe</small></div>
+            <div class="ro"><span>Head lost in the plug</span><b id="dc-share">–</b><small id="dc-share2">no plug</small></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>The dashed line through the tops of the tubes is the head, falling steadily along the pipe. Water always flows down that line, from high head to low. Swap the tanks over and it flows the other way. Particle speeds are compressed so slow materials still show movement.</figcaption>
+    </figure>
