@@ -2442,6 +2442,12 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
     }
   });
 })();
+
+/* tutor registry: each interactive figure describes its current state in plain words,
+   so the "Why did that happen?" tutor (app-tutor.js) can explain what the reader is looking at.
+   describe() returns a short plain-text summary of the settings and what the figure shows now. */
+const tutorFigs = new Map();
+function tutorRegister(id, o) { tutorFigs.set(id, o); }
 /* ===================== Fig 3: dam zones ===================== */
 (function figZones() {
   const F = fig($('#fig-zones'));
