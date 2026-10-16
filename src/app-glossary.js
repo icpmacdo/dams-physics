@@ -21,7 +21,7 @@ const GLOSSARY = {
   'contractive': ['Contractive', 'Describes loose soil that packs tighter when sheared. If the water can’t drain, its pressure rises and the soil weakens.'],
   'dilative': ['Dilative', 'Describes dense soil that has to spread apart to shear, because the grains must climb over each other. If saturated, its water pressure drops and it gets stronger.'],
   'drained': ['Drained', 'Loading slow enough, or soil open enough, that water can flow in or out and the water pressure stays at its normal level.'],
-  'undrained': ['Undrained', 'Loading too fast for the water to escape, so the soil can’t change volume and the water pressure changes instead.'],
+  'undrained': ['Undrained', 'Loading or shearing too fast for the water to escape, so the soil can’t change volume and the water pressure changes instead.'],
   'friction-angle': ['Friction angle', 'The steepest slope at which one surface can rest on another without sliding, written φ. Strength = effective stress × tan φ. About 30–40° for sand.'],
   'factor-of-safety': ['Factor of safety', 'The strength available divided by the strength needed to stay put. Below 1 the slope or block moves. Dams are typically designed for about 1.5.'],
   'slip-surface': ['Slip surface', 'The surface along which a slope would slide if it failed. Stability checks search for the one with the lowest factor of safety.'],

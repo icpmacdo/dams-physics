@@ -167,16 +167,16 @@
           <p class="note">A drop of water moves faster than <em>k</em> alone suggests, because it can only travel through the gaps, which take up about a third of the volume. The times here allow for that: time = gap fraction × length ÷ (<em>k</em> × push).</p>
         </div>
       </div>
-      <figcaption>Gravel and compacted clay differ by ten million times in permeability. The scale under the columns is <strong>logarithmic</strong>: each step to the right is ten times longer than the one before. On an ordinary scale where gravel's 30 seconds took one millimetre, clay would need about ten kilometres.</figcaption>
+      <figcaption>Gravel and compacted clay differ by ten million times in permeability. The scale under the columns is <strong>logarithmic</strong>: each step to the right is ten times longer than the one before. On an ordinary scale where gravel's 30 seconds took one millimetre, clay would need about twelve kilometres.</figcaption>
     </figure>
 
     <div class="col">
       <p>That enormous range is what makes it possible to build a dam out of soil at all. A dam needs a part that water can barely get through, and parts that let water out quickly, side by side. Clay does the first job. Sand and gravel do the second.</p>
 
       <h3>Darcy's law</h3>
-      <p>In 1856 Henry Darcy, an engineer building the fountains of Dijon in France, ran water through pipes packed with sand and found a simple rule. Double the difference in head between the two ends and the flow doubles. Double the length of the sand and the flow halves. What matters is how steeply the head drops along the way: the head lost for every metre the water travels. That slope is called the <span class="gl" data-term="hydraulic-gradient">hydraulic gradient</span>, written <em>i</em>.</p>
+      <p>In 1855 and 1856 Henry Darcy, the engineer who had built the water supply of Dijon in France some fifteen years before, ran water down through sand packed in a single upright column 2.5 m tall, and found a simple rule. Double the difference in head between the two ends and the flow doubles. Double the length of the sand and the flow halves. What matters is how steeply the head drops along the way: the head lost for every metre the water travels. That slope is called the <span class="gl" data-term="hydraulic-gradient">hydraulic gradient</span>, written <em>i</em>.</p>
       <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow (m³/s) · k permeability (m/s) · i gradient · Δh head difference (m) · L length of the path (m) · A area the water flows through (m²)</small></div>
-      <p>Below, a pipe full of sand joins two tanks. Drag the water levels in the tanks, or use the sliders. The thin tubes along the pipe are piezometers. Watch how the water in them lines up in a straight slope from one tank to the other.</p>
+      <p>Below, his test is laid on its side: a pipe full of sand joins two tanks. Drag the water levels in the tanks, or use the sliders. The thin tubes along the pipe are piezometers. Watch how the water in them lines up in a straight slope from one tank to the other.</p>
     </div>
 
     <figure class="sheet wide g-fig" id="fig-darcy">
@@ -221,7 +221,7 @@
 
       <h3>Friction comes from pressing</h3>
       <p>Put a book on a plank and slowly tilt the plank. The book stays put until the slope gets steep, then it slides. Friction holds it, and friction comes from the book pressing on the plank. Press twice as hard and it takes twice the force to slide it. The friction on offer is always a fixed fraction of the press.</p>
-      <p>That fraction sets a steepest angle for each pair of surfaces. Tilt beyond it and the block slides, whatever it weighs. Engineers call it the <span class="gl" data-term="friction-angle">friction angle</span>, written φ. For sand sliding on sand it is about 34°, the same angle as the dry heap in <a href="#beach">Step 1</a>. The match is no accident: a grain on the surface of a heap is a tiny block on a ramp.</p>
+      <p>That fraction sets a steepest angle for each pair of surfaces. Tilt beyond it and the block slides, whatever it weighs. Engineers call it the <span class="gl" data-term="friction-angle">friction angle</span>, written φ. For sand as a whole it is about 34°, the same angle as the dry heap in <a href="#beach">Step 1</a>. The match is no accident: the surface of a heap is a ramp of sand resting on sand. A single grain sliding on another grips far less; sand's 34° comes mostly from the grains interlocking, so they must roll over one another to move.</p>
 
       <div class="predict" data-answer="b" id="pr-cushion" data-unlocks="#fig-block">
         <p class="predict-q">A block rests on a ramp tilted to 25°, holding comfortably. A thin water cushion sits under its base. You pump up the water pressure in the cushion. The block's weight, shape and surface stay exactly the same. What happens?</p>
@@ -262,7 +262,7 @@
 
     <div class="col">
       <p>Engineers compare the two forces with one number, the <span class="gl" data-term="factor-of-safety">factor of safety</span>: friction available divided by friction needed. Above 1 the block holds. Below 1 it slides. Dams are designed to keep it well above 1, often about 1.5, to leave room for everything nobody can measure exactly.</p>
-      <p>Notice what the water did. Each kilopascal of pressure in the cushion cancels a kilopascal of the block's press. At 25° the block slides once the water carries about a third of its press on the ramp. The block didn't change, and the ramp didn't change. Only the water pressure did.</p>
+      <p>Notice what the water did. Each kilopascal of pressure in the cushion cancels a kilopascal of the block's press. At 25° the block slides once the water carries just under a third (31%) of its press on the ramp. The block didn't change, and the ramp didn't change. Only the water pressure did.</p>
 
       <h3>Soil is thousands of little blocks</h3>
       <p>Now shrink the block down to a grain of sand. A handful of soil is a crowd of grains, each resting on its neighbours at a few points of contact. Every contact is a tiny block on a tiny ramp, held by friction, and that friction comes from how hard the grains press on each other. The strength of soil is the friction of all those contacts added up.</p>
@@ -286,7 +286,7 @@
             <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gc-s">192 kPa</b><small>at 10 m depth</small></div>
             <div class="ro"><span>Pore pressure <i class="g-sym">u</i></span><b id="gc-u">59 kPa</b><small id="gc-u2">at 10 m depth</small></div>
             <div class="ro"><span>Effective stress <i class="g-sym">σ′</i></span><b id="gc-e">133 kPa</b><small>σ − u</small></div>
-            <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>compared with dry sand</small></div>
+            <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>compared with damp sand above the water table</small></div>
           </div>
           <div class="legend g-legend">
             <span><i class="g-l-tot"></i>Total stress σ</span>
@@ -299,7 +299,7 @@
     </figure>
 
     <div class="col">
-      <p>Two things to notice. First, flooding the column from dry to soaked cuts the effective stress at 10 m from 180 to about 102 kPa. That is more than 40% of the soil's strength gone, though not a single grain moved. Second, once the water rises above the ground, every extra metre adds the same 9.81 kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
+      <p>Two things to notice. First, flooding the column from damp to soaked cuts the effective stress at 10 m from 180 to about 102 kPa. That is more than 40% of the soil's strength gone, though no grain has to move. Second, once the water rises above the ground, every extra metre adds the same 9.81 kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
 
       <h3>Damp sand: water that pulls</h3>
       <p>That explains why soaked sand is weaker than dry sand. The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch (look back at the close-up in <a href="#fig-beach">Fig. 1.1</a>). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it, a negative pore pressure that engineers call <span class="gl" data-term="suction">suction</span>.</p>

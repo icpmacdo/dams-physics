@@ -825,9 +825,9 @@ function groundPredictInit(root) {
       title: 'Total, pore and effective stress in a 10 m sand column (Fig. 4.2)',
       describe: () => {
         const [sB, uB] = stress(ZB);
-        return ['Water table: ' + (wt >= ZB ? 'below the column (dry)' : wt > 0 ? n1(wt) + ' m below ground' : n1(-wt) + ' m above ground (flooded)') + '. Unit weights 18 kN/m³ above it, 20 below, water 9.81.',
+        return ['Water table: ' + (wt >= ZB ? 'below the column (damp sand, no pore pressure)' : wt > 0 ? n1(wt) + ' m below ground' : n1(-wt) + ' m above ground (flooded)') + '. Unit weights 18 kN/m³ above it, 20 below, water 9.81.',
           'At 10 m depth: total stress ' + fmt(sB) + ' kPa, pore pressure ' + fmt(uB) + ' kPa, effective stress ' + fmt(sB - uB) + ' kPa.',
-          'Strength there is ' + Math.round((sB - uB) / 180 * 100) + '% of the dry value (strength follows effective stress).'].join('\n');
+          'Strength there is ' + Math.round((sB - uB) / 180 * 100) + '% of its value with the water table below the column, in damp sand (strength follows effective stress).'].join('\n');
       }
     });
   })();

@@ -939,16 +939,16 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
           <p class="note">A drop of water moves faster than <em>k</em> alone suggests, because it can only travel through the gaps, which take up about a third of the volume. The times here allow for that: time = gap fraction × length ÷ (<em>k</em> × push).</p>
         </div>
       </div>
-      <figcaption>Gravel and compacted clay differ by ten million times in permeability. The scale under the columns is <strong>logarithmic</strong>: each step to the right is ten times longer than the one before. On an ordinary scale where gravel's 30 seconds took one millimetre, clay would need about ten kilometres.</figcaption>
+      <figcaption>Gravel and compacted clay differ by ten million times in permeability. The scale under the columns is <strong>logarithmic</strong>: each step to the right is ten times longer than the one before. On an ordinary scale where gravel's 30 seconds took one millimetre, clay would need about twelve kilometres.</figcaption>
     </figure>
 
     <div class="col">
       <p>That enormous range is what makes it possible to build a dam out of soil at all. A dam needs a part that water can barely get through, and parts that let water out quickly, side by side. Clay does the first job. Sand and gravel do the second.</p>
 
       <h3>Darcy's law</h3>
-      <p>In 1856 Henry Darcy, an engineer building the fountains of Dijon in France, ran water through pipes packed with sand and found a simple rule. Double the difference in head between the two ends and the flow doubles. Double the length of the sand and the flow halves. What matters is how steeply the head drops along the way: the head lost for every metre the water travels. That slope is called the <span class="gl" data-term="hydraulic-gradient">hydraulic gradient</span>, written <em>i</em>.</p>
+      <p>In 1855 and 1856 Henry Darcy, the engineer who had built the water supply of Dijon in France some fifteen years before, ran water down through sand packed in a single upright column 2.5 m tall, and found a simple rule. Double the difference in head between the two ends and the flow doubles. Double the length of the sand and the flow halves. What matters is how steeply the head drops along the way: the head lost for every metre the water travels. That slope is called the <span class="gl" data-term="hydraulic-gradient">hydraulic gradient</span>, written <em>i</em>.</p>
       <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow (m³/s) · k permeability (m/s) · i gradient · Δh head difference (m) · L length of the path (m) · A area the water flows through (m²)</small></div>
-      <p>Below, a pipe full of sand joins two tanks. Drag the water levels in the tanks, or use the sliders. The thin tubes along the pipe are piezometers. Watch how the water in them lines up in a straight slope from one tank to the other.</p>
+      <p>Below, his test is laid on its side: a pipe full of sand joins two tanks. Drag the water levels in the tanks, or use the sliders. The thin tubes along the pipe are piezometers. Watch how the water in them lines up in a straight slope from one tank to the other.</p>
     </div>
 
     <figure class="sheet wide g-fig" id="fig-darcy">
@@ -993,7 +993,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
       <h3>Friction comes from pressing</h3>
       <p>Put a book on a plank and slowly tilt the plank. The book stays put until the slope gets steep, then it slides. Friction holds it, and friction comes from the book pressing on the plank. Press twice as hard and it takes twice the force to slide it. The friction on offer is always a fixed fraction of the press.</p>
-      <p>That fraction sets a steepest angle for each pair of surfaces. Tilt beyond it and the block slides, whatever it weighs. Engineers call it the <span class="gl" data-term="friction-angle">friction angle</span>, written φ. For sand sliding on sand it is about 34°, the same angle as the dry heap in <a href="#beach">Step 1</a>. The match is no accident: a grain on the surface of a heap is a tiny block on a ramp.</p>
+      <p>That fraction sets a steepest angle for each pair of surfaces. Tilt beyond it and the block slides, whatever it weighs. Engineers call it the <span class="gl" data-term="friction-angle">friction angle</span>, written φ. For sand as a whole it is about 34°, the same angle as the dry heap in <a href="#beach">Step 1</a>. The match is no accident: the surface of a heap is a ramp of sand resting on sand. A single grain sliding on another grips far less; sand's 34° comes mostly from the grains interlocking, so they must roll over one another to move.</p>
 
       <div class="predict" data-answer="b" id="pr-cushion" data-unlocks="#fig-block">
         <p class="predict-q">A block rests on a ramp tilted to 25°, holding comfortably. A thin water cushion sits under its base. You pump up the water pressure in the cushion. The block's weight, shape and surface stay exactly the same. What happens?</p>
@@ -1034,7 +1034,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <div class="col">
       <p>Engineers compare the two forces with one number, the <span class="gl" data-term="factor-of-safety">factor of safety</span>: friction available divided by friction needed. Above 1 the block holds. Below 1 it slides. Dams are designed to keep it well above 1, often about 1.5, to leave room for everything nobody can measure exactly.</p>
-      <p>Notice what the water did. Each kilopascal of pressure in the cushion cancels a kilopascal of the block's press. At 25° the block slides once the water carries about a third of its press on the ramp. The block didn't change, and the ramp didn't change. Only the water pressure did.</p>
+      <p>Notice what the water did. Each kilopascal of pressure in the cushion cancels a kilopascal of the block's press. At 25° the block slides once the water carries just under a third (31%) of its press on the ramp. The block didn't change, and the ramp didn't change. Only the water pressure did.</p>
 
       <h3>Soil is thousands of little blocks</h3>
       <p>Now shrink the block down to a grain of sand. A handful of soil is a crowd of grains, each resting on its neighbours at a few points of contact. Every contact is a tiny block on a tiny ramp, held by friction, and that friction comes from how hard the grains press on each other. The strength of soil is the friction of all those contacts added up.</p>
@@ -1058,7 +1058,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
             <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gc-s">192 kPa</b><small>at 10 m depth</small></div>
             <div class="ro"><span>Pore pressure <i class="g-sym">u</i></span><b id="gc-u">59 kPa</b><small id="gc-u2">at 10 m depth</small></div>
             <div class="ro"><span>Effective stress <i class="g-sym">σ′</i></span><b id="gc-e">133 kPa</b><small>σ − u</small></div>
-            <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>compared with dry sand</small></div>
+            <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>compared with damp sand above the water table</small></div>
           </div>
           <div class="legend g-legend">
             <span><i class="g-l-tot"></i>Total stress σ</span>
@@ -1071,7 +1071,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
     </figure>
 
     <div class="col">
-      <p>Two things to notice. First, flooding the column from dry to soaked cuts the effective stress at 10 m from 180 to about 102 kPa. That is more than 40% of the soil's strength gone, though not a single grain moved. Second, once the water rises above the ground, every extra metre adds the same 9.81 kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
+      <p>Two things to notice. First, flooding the column from damp to soaked cuts the effective stress at 10 m from 180 to about 102 kPa. That is more than 40% of the soil's strength gone, though no grain has to move. Second, once the water rises above the ground, every extra metre adds the same 9.81 kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
 
       <h3>Damp sand: water that pulls</h3>
       <p>That explains why soaked sand is weaker than dry sand. The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch (look back at the close-up in <a href="#fig-beach">Fig. 1.1</a>). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it, a negative pore pressure that engineers call <span class="gl" data-term="suction">suction</span>.</p>
@@ -1184,12 +1184,12 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
           <p class="panel-title">Concrete gravity dam with powerhouse <small>hydroelectric</small></p>
           <div class="svgwrap"><svg class="dwg" id="svg-hydro" viewBox="0 0 560 340" role="img" aria-label="A concrete gravity dam holding a reservoir. Water enters an intake, drops through a penstock to a turbine in the powerhouse at the toe, and leaves through the tailrace. Water pressure on the upstream face grows with depth."></svg></div>
           <div class="controls">
-            <div class="range"><label for="hy-level">Reservoir level</label><input type="range" id="hy-level" min="0" max="100" value="80"><output id="hy-level-o">H = 86 m</output></div>
+            <div class="range"><label for="hy-level">Reservoir level</label><input type="range" id="hy-level" min="0" max="100" value="80"><output id="hy-level-o">H = 85 m</output></div>
             <div class="range"><label for="hy-flow">Turbine flow</label><input type="range" id="hy-flow" min="10" max="300" value="150"><output id="hy-flow-o">150 m³/s</output></div>
           </div>
           <div class="readouts">
-            <div class="ro"><span>Power, P = ηρgQH</span><b id="hy-P">114 MW</b><small>η = 0.90 turbine–generator</small></div>
-            <div class="ro"><span>Pressure at the heel</span><b id="hy-p">0.95 MPa</b><small id="hy-F">Water load 46 MN per metre of dam</small></div>
+            <div class="ro"><span>Power, P = ηρgQH</span><b id="hy-P">112 MW</b><small>η = 0.90 turbine–generator</small></div>
+            <div class="ro"><span>Pressure at the heel</span><b id="hy-p">0.87 MPa</b><small id="hy-F">Water load 39 MN per metre of dam</small></div>
           </div>
         </div>
         <div>
@@ -1225,7 +1225,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <li><span class="yr">1985</span>Stava, Italy. Two upstream-raised fluorite tailings dams collapsed one into the other; 268 people killed.</li>
         <li><span class="yr">1994</span>Merriespruit, South Africa. A gold tailings dam overtopped after heavy rain and flowed into a town; 17 killed.</li>
         <li><span class="yr">2014</span>Mount Polley, Canada. The embankment slid on a weak glacial-lake clay layer in its foundation, releasing about 25 million m³ of tailings and water. No deaths.</li>
-        <li><span class="yr">2015</span>Fundão, Mariana, Brazil. An upstream-raised dam liquefied; 19 killed. Tailings travelled roughly 650 km down the Rio Doce to the Atlantic.</li>
+        <li><span class="yr">2015</span>Fundão, Mariana, Brazil. An upstream-raised dam liquefied; 19 killed. Tailings travelled 663 km down the Gualaxo do Norte, Carmo and Doce rivers to the Atlantic.</li>
         <li><span class="yr">2019</span>Brumadinho, Brazil. Dam I, upstream-raised, failed by static liquefaction in seconds; 270 killed. The disaster led to the GISTM and to Brazil banning upstream dams.</li>
       </ul>
     </div>
@@ -1347,7 +1347,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
     <div class="col">
       <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. You met the rule in <a href="#flow">Step 3</a>: water flows from high <span class="gl" data-term="hydraulic-head">head</span> to low, as fast as the soil lets it. That's Darcy's law:</p>
       <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow rate · k hydraulic conductivity (m/s) · i hydraulic gradient: head lost per metre travelled · A area</small></div>
-      <p>The conductivity <em>k</em> spans ten orders of magnitude: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. That range is the whole reason zoning works. A clay core a few metres thick can carry almost the entire head while the rockfill beside it carries almost none.</p>
+      <p>The conductivity <em>k</em> spans seven orders of magnitude from gravel to compacted clay, a factor of ten million: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. Across all natural soils the range is wider still, more than ten orders. That range is the whole reason zoning works. A clay core a few metres thick can carry almost the entire head while the rockfill beside it carries almost none.</p>
       <p>Water takes several routes past a dam. The five main ones are below.</p>
     </div>
 
@@ -1400,7 +1400,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <h3>When seepage carries soil: piping</h3>
       <p>Water flowing upward out of the ground at the toe pushes on the sand grains it passes. When the upward gradient reaches the <strong>critical gradient</strong>, the water carries the full weight of the soil, <span class="gl" data-term="effective-stress">effective stress</span> drops to zero, and the sand boils. It's the block from <a href="#strength">Step 4</a> with so much water pressure under it that it floats:</p>
       <div class="formula"><b>i<sub>c</sub></b> = (G<sub>s</sub> − 1) / (1 + e) ≈ (2.65 − 1) / (1 + 0.65) ≈ <b>1.0</b><small>Gs specific gravity of the grains · e void ratio · safety factor against heave = i_c / i_exit; designers want 3 or more at an unfiltered exit</small></div>
-      <p>A boil at the toe is where <strong>backward erosion piping</strong> begins. Grains wash out, a small channel forms, and the channel works its way <em>upstream</em> under the dam, getting shorter and steeper as it goes. Erosion of this kind is one of the two big killers of embankment dams. In Foster, Fell and Spannagle's 2000 study of embankment-dam failures, piping through the embankment, through the foundation, or from one into the other caused roughly half of all failures, about as many as overtopping. Teton Dam in Idaho failed this way on its first filling in 1976.</p>
+      <p>A boil at the toe is where <strong>backward erosion piping</strong> begins. Grains wash out, a small channel forms, and the channel works its way <em>upstream</em> under the dam, getting shorter and steeper as it goes. Erosion of this kind is one of the two big killers of embankment dams. In Foster, Fell and Spannagle's 2000 study of embankment-dam failures, piping through the embankment, through the foundation, or from one into the other caused nearly half of the failures whose cause was known (47%), more than overtopping (34%, or 48% if spillway and gate failures are counted with it). Teton Dam in Idaho failed by a different kind of internal erosion on its first filling in 1976: water carried soil from its core into open joints in the rock, deep in a trench cut for the core.</p>
     </div>
 
     <figure class="sheet wide" id="fig-pipe">
@@ -1445,7 +1445,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
     </figure>
 
     <div class="col">
-      <h3>Five ways to manage seepage</h3>
+      <h3>Five ways to manage seepage, and one to watch it</h3>
       <div class="defences">
         <div><b>Cut it off</b><span>Core, cutoff trench, slurry wall, grout curtain, face slab, geomembrane.</span></div>
         <div><b>Lengthen the path</b><span>An upstream impervious blanket makes the water travel further, lowering the gradient.</span></div>
@@ -1463,20 +1463,20 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <article class="case">
           <p class="case-k">Mount Polley tailings dam · 2014</p>
           <h4>The layer nobody found</h4>
-          <p>About 8 m below the dam, a layer of soft clay laid down in a glacial lake had been missed by the site investigations. When the embankment was loaded, water pressure in that clay couldn't drain away fast enough (<span class="gl" data-term="undrained">undrained</span> loading), so the clay had far less grip than the design assumed. A steep 1.3H:1V rockfill slope on top supplied the push. The dam slid on the clay and released about 25 million m³ of tailings and water. The investigation panel's summary: poor site characterization loaded the gun, and the steep slope pulled the trigger.</p>
+          <p>About 8–10 m below the original ground surface, a layer of clay laid down in a glacial lake had been missed by the site investigations. The investigation panel found that the dam's weight went on slowly enough for the water in that clay to drain away, for the most part (<span class="gl" data-term="drained">drained</span> loading). But the dam had pressed the clay harder than ever in its past, and clay in that state tries to pack tighter when it is sheared: once it began to slide, its water couldn't get out of the way, the water pressure rose, and its grip fell well below the slow, drained strength the design relied on (<span class="gl" data-term="undrained">undrained</span> failure). A steep 1.3H:1V rockfill slope on top supplied the push. The dam slid on the clay and released about 25 million m³ of tailings and water. The panel's verdict, in its own image: building on the clay unknowingly, without recognizing that it could fail undrained, loaded the gun, and building a slope that steep on top of it pulled the trigger.</p>
         </article>
         <article class="case">
           <p class="case-k">W.A.C. Bennett Dam, Peace River · 1996</p>
           <h4>A sinkhole on the crest</h4>
-          <p>In June 1996, crews checking a small pothole on the crest of BC Hydro's 183 m earthfill dam found a much larger hole beneath it. A second sinkhole turned up during the drilling that followed. Both were in the core. Seepage had been carrying fine grains out of the core: <span class="gl" data-term="piping">internal erosion</span>, the process in the piping figure above. Engineers lowered the reservoir and filled the voids by compaction grouting, carefully, so the injected grout wouldn't crack the core. BC Hydro called it the most serious dam safety event in its history.</p>
+          <p>In June 1996, crews checking a small pothole on the crest of BC Hydro's 183 m earthfill dam found a much larger hole beneath it. A second sinkhole turned up during the drilling that followed. Both were in the core, each around a survey casing installed during construction. BC Hydro's 2012 expert panel found that loose core soil around the first casing had settled when it got wet, and that seepage had also washed some of the core's fine grains away (internal erosion); the second may have been the settling alone. Engineers lowered the reservoir and filled the voids by compaction grouting, carefully, so the injected grout wouldn't crack the core. R.A. Stewart's 1998 account of the crisis ranks it as the gravest dam safety concern in BC Hydro's history.</p>
         </article>
         <article class="case">
-          <p class="case-k">Coquitlam Dam · 1914, backed up in 2007</p>
+          <p class="case-k">Coquitlam Dam · 1913, backed up in 2007</p>
           <h4>A water dam built like a tailings dam</h4>
           <p>Coquitlam Dam was built by hydraulic fill: soil washed into place with water, which leaves it loose and saturated, much like an upstream tailings raise. Modern investigations found a loose zone that could liquefy in a large earthquake. Rather than repair the old fill, BC Hydro built a new compacted earth-core rockfill dam against its downstream toe, on dense glacial soil. Loose and wet versus dense and drained matters more than whether the dam holds water or tailings.</p>
         </article>
       </div>
-      <p class="case-src">Sources: Mount Polley Independent Expert Engineering Investigation and Review Panel (2015); R.A. Stewart and BC Hydro on the Bennett Dam sinkholes; BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
+      <p class="case-src">Sources: Mount Polley Independent Expert Engineering Investigation and Review Panel (2015); R.A. Stewart (1998) and BC Hydro's expert engineering panel (2012) on the Bennett Dam sinkholes; BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
     </div>
 
   </section>
@@ -4151,7 +4151,7 @@ const GLOSSARY = {
   'contractive': ['Contractive', 'Describes loose soil that packs tighter when sheared. If the water can’t drain, its pressure rises and the soil weakens.'],
   'dilative': ['Dilative', 'Describes dense soil that has to spread apart to shear, because the grains must climb over each other. If saturated, its water pressure drops and it gets stronger.'],
   'drained': ['Drained', 'Loading slow enough, or soil open enough, that water can flow in or out and the water pressure stays at its normal level.'],
-  'undrained': ['Undrained', 'Loading too fast for the water to escape, so the soil can’t change volume and the water pressure changes instead.'],
+  'undrained': ['Undrained', 'Loading or shearing too fast for the water to escape, so the soil can’t change volume and the water pressure changes instead.'],
   'friction-angle': ['Friction angle', 'The steepest slope at which one surface can rest on another without sliding, written φ. Strength = effective stress × tan φ. About 30–40° for sand.'],
   'factor-of-safety': ['Factor of safety', 'The strength available divided by the strength needed to stay put. Below 1 the slope or block moves. Dams are typically designed for about 1.5.'],
   'slip-surface': ['Slip surface', 'The surface along which a slope would slide if it failed. Stability checks search for the one with the lowest factor of safety.'],
@@ -5074,9 +5074,9 @@ function groundPredictInit(root) {
       title: 'Total, pore and effective stress in a 10 m sand column (Fig. 4.2)',
       describe: () => {
         const [sB, uB] = stress(ZB);
-        return ['Water table: ' + (wt >= ZB ? 'below the column (dry)' : wt > 0 ? n1(wt) + ' m below ground' : n1(-wt) + ' m above ground (flooded)') + '. Unit weights 18 kN/m³ above it, 20 below, water 9.81.',
+        return ['Water table: ' + (wt >= ZB ? 'below the column (damp sand, no pore pressure)' : wt > 0 ? n1(wt) + ' m below ground' : n1(-wt) + ' m above ground (flooded)') + '. Unit weights 18 kN/m³ above it, 20 below, water 9.81.',
           'At 10 m depth: total stress ' + fmt(sB) + ' kPa, pore pressure ' + fmt(uB) + ' kPa, effective stress ' + fmt(sB - uB) + ' kPa.',
-          'Strength there is ' + Math.round((sB - uB) / 180 * 100) + '% of the dry value (strength follows effective stress).'].join('\n');
+          'Strength there is ' + Math.round((sB - uB) / 180 * 100) + '% of its value with the water table below the column, in damp sand (strength follows effective stress).'].join('\n');
       }
     });
   })();

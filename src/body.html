@@ -128,12 +128,12 @@
           <p class="panel-title">Concrete gravity dam with powerhouse <small>hydroelectric</small></p>
           <div class="svgwrap"><svg class="dwg" id="svg-hydro" viewBox="0 0 560 340" role="img" aria-label="A concrete gravity dam holding a reservoir. Water enters an intake, drops through a penstock to a turbine in the powerhouse at the toe, and leaves through the tailrace. Water pressure on the upstream face grows with depth."></svg></div>
           <div class="controls">
-            <div class="range"><label for="hy-level">Reservoir level</label><input type="range" id="hy-level" min="0" max="100" value="80"><output id="hy-level-o">H = 86 m</output></div>
+            <div class="range"><label for="hy-level">Reservoir level</label><input type="range" id="hy-level" min="0" max="100" value="80"><output id="hy-level-o">H = 85 m</output></div>
             <div class="range"><label for="hy-flow">Turbine flow</label><input type="range" id="hy-flow" min="10" max="300" value="150"><output id="hy-flow-o">150 m³/s</output></div>
           </div>
           <div class="readouts">
-            <div class="ro"><span>Power, P = ηρgQH</span><b id="hy-P">114 MW</b><small>η = 0.90 turbine–generator</small></div>
-            <div class="ro"><span>Pressure at the heel</span><b id="hy-p">0.95 MPa</b><small id="hy-F">Water load 46 MN per metre of dam</small></div>
+            <div class="ro"><span>Power, P = ηρgQH</span><b id="hy-P">112 MW</b><small>η = 0.90 turbine–generator</small></div>
+            <div class="ro"><span>Pressure at the heel</span><b id="hy-p">0.87 MPa</b><small id="hy-F">Water load 39 MN per metre of dam</small></div>
           </div>
         </div>
         <div>
@@ -169,7 +169,7 @@
         <li><span class="yr">1985</span>Stava, Italy. Two upstream-raised fluorite tailings dams collapsed one into the other; 268 people killed.</li>
         <li><span class="yr">1994</span>Merriespruit, South Africa. A gold tailings dam overtopped after heavy rain and flowed into a town; 17 killed.</li>
         <li><span class="yr">2014</span>Mount Polley, Canada. The embankment slid on a weak glacial-lake clay layer in its foundation, releasing about 25 million m³ of tailings and water. No deaths.</li>
-        <li><span class="yr">2015</span>Fundão, Mariana, Brazil. An upstream-raised dam liquefied; 19 killed. Tailings travelled roughly 650 km down the Rio Doce to the Atlantic.</li>
+        <li><span class="yr">2015</span>Fundão, Mariana, Brazil. An upstream-raised dam liquefied; 19 killed. Tailings travelled 663 km down the Gualaxo do Norte, Carmo and Doce rivers to the Atlantic.</li>
         <li><span class="yr">2019</span>Brumadinho, Brazil. Dam I, upstream-raised, failed by static liquefaction in seconds; 270 killed. The disaster led to the GISTM and to Brazil banning upstream dams.</li>
       </ul>
     </div>
@@ -291,7 +291,7 @@
     <div class="col">
       <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. You met the rule in <a href="#flow">Step 3</a>: water flows from high <span class="gl" data-term="hydraulic-head">head</span> to low, as fast as the soil lets it. That's Darcy's law:</p>
       <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow rate · k hydraulic conductivity (m/s) · i hydraulic gradient: head lost per metre travelled · A area</small></div>
-      <p>The conductivity <em>k</em> spans ten orders of magnitude: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. That range is the whole reason zoning works. A clay core a few metres thick can carry almost the entire head while the rockfill beside it carries almost none.</p>
+      <p>The conductivity <em>k</em> spans seven orders of magnitude from gravel to compacted clay, a factor of ten million: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. Across all natural soils the range is wider still, more than ten orders. That range is the whole reason zoning works. A clay core a few metres thick can carry almost the entire head while the rockfill beside it carries almost none.</p>
       <p>Water takes several routes past a dam. The five main ones are below.</p>
     </div>
 
@@ -344,7 +344,7 @@
       <h3>When seepage carries soil: piping</h3>
       <p>Water flowing upward out of the ground at the toe pushes on the sand grains it passes. When the upward gradient reaches the <strong>critical gradient</strong>, the water carries the full weight of the soil, <span class="gl" data-term="effective-stress">effective stress</span> drops to zero, and the sand boils. It's the block from <a href="#strength">Step 4</a> with so much water pressure under it that it floats:</p>
       <div class="formula"><b>i<sub>c</sub></b> = (G<sub>s</sub> − 1) / (1 + e) ≈ (2.65 − 1) / (1 + 0.65) ≈ <b>1.0</b><small>Gs specific gravity of the grains · e void ratio · safety factor against heave = i_c / i_exit; designers want 3 or more at an unfiltered exit</small></div>
-      <p>A boil at the toe is where <strong>backward erosion piping</strong> begins. Grains wash out, a small channel forms, and the channel works its way <em>upstream</em> under the dam, getting shorter and steeper as it goes. Erosion of this kind is one of the two big killers of embankment dams. In Foster, Fell and Spannagle's 2000 study of embankment-dam failures, piping through the embankment, through the foundation, or from one into the other caused roughly half of all failures, about as many as overtopping. Teton Dam in Idaho failed this way on its first filling in 1976.</p>
+      <p>A boil at the toe is where <strong>backward erosion piping</strong> begins. Grains wash out, a small channel forms, and the channel works its way <em>upstream</em> under the dam, getting shorter and steeper as it goes. Erosion of this kind is one of the two big killers of embankment dams. In Foster, Fell and Spannagle's 2000 study of embankment-dam failures, piping through the embankment, through the foundation, or from one into the other caused nearly half of the failures whose cause was known (47%), more than overtopping (34%, or 48% if spillway and gate failures are counted with it). Teton Dam in Idaho failed by a different kind of internal erosion on its first filling in 1976: water carried soil from its core into open joints in the rock, deep in a trench cut for the core.</p>
     </div>
 
     <figure class="sheet wide" id="fig-pipe">
@@ -389,7 +389,7 @@
     </figure>
 
     <div class="col">
-      <h3>Five ways to manage seepage</h3>
+      <h3>Five ways to manage seepage, and one to watch it</h3>
       <div class="defences">
         <div><b>Cut it off</b><span>Core, cutoff trench, slurry wall, grout curtain, face slab, geomembrane.</span></div>
         <div><b>Lengthen the path</b><span>An upstream impervious blanket makes the water travel further, lowering the gradient.</span></div>
@@ -407,20 +407,20 @@
         <article class="case">
           <p class="case-k">Mount Polley tailings dam · 2014</p>
           <h4>The layer nobody found</h4>
-          <p>About 8 m below the dam, a layer of soft clay laid down in a glacial lake had been missed by the site investigations. When the embankment was loaded, water pressure in that clay couldn't drain away fast enough (<span class="gl" data-term="undrained">undrained</span> loading), so the clay had far less grip than the design assumed. A steep 1.3H:1V rockfill slope on top supplied the push. The dam slid on the clay and released about 25 million m³ of tailings and water. The investigation panel's summary: poor site characterization loaded the gun, and the steep slope pulled the trigger.</p>
+          <p>About 8–10 m below the original ground surface, a layer of clay laid down in a glacial lake had been missed by the site investigations. The investigation panel found that the dam's weight went on slowly enough for the water in that clay to drain away, for the most part (<span class="gl" data-term="drained">drained</span> loading). But the dam had pressed the clay harder than ever in its past, and clay in that state tries to pack tighter when it is sheared: once it began to slide, its water couldn't get out of the way, the water pressure rose, and its grip fell well below the slow, drained strength the design relied on (<span class="gl" data-term="undrained">undrained</span> failure). A steep 1.3H:1V rockfill slope on top supplied the push. The dam slid on the clay and released about 25 million m³ of tailings and water. The panel's verdict, in its own image: building on the clay unknowingly, without recognizing that it could fail undrained, loaded the gun, and building a slope that steep on top of it pulled the trigger.</p>
         </article>
         <article class="case">
           <p class="case-k">W.A.C. Bennett Dam, Peace River · 1996</p>
           <h4>A sinkhole on the crest</h4>
-          <p>In June 1996, crews checking a small pothole on the crest of BC Hydro's 183 m earthfill dam found a much larger hole beneath it. A second sinkhole turned up during the drilling that followed. Both were in the core. Seepage had been carrying fine grains out of the core: <span class="gl" data-term="piping">internal erosion</span>, the process in the piping figure above. Engineers lowered the reservoir and filled the voids by compaction grouting, carefully, so the injected grout wouldn't crack the core. BC Hydro called it the most serious dam safety event in its history.</p>
+          <p>In June 1996, crews checking a small pothole on the crest of BC Hydro's 183 m earthfill dam found a much larger hole beneath it. A second sinkhole turned up during the drilling that followed. Both were in the core, each around a survey casing installed during construction. BC Hydro's 2012 expert panel found that loose core soil around the first casing had settled when it got wet, and that seepage had also washed some of the core's fine grains away (internal erosion); the second may have been the settling alone. Engineers lowered the reservoir and filled the voids by compaction grouting, carefully, so the injected grout wouldn't crack the core. R.A. Stewart's 1998 account of the crisis ranks it as the gravest dam safety concern in BC Hydro's history.</p>
         </article>
         <article class="case">
-          <p class="case-k">Coquitlam Dam · 1914, backed up in 2007</p>
+          <p class="case-k">Coquitlam Dam · 1913, backed up in 2007</p>
           <h4>A water dam built like a tailings dam</h4>
           <p>Coquitlam Dam was built by hydraulic fill: soil washed into place with water, which leaves it loose and saturated, much like an upstream tailings raise. Modern investigations found a loose zone that could liquefy in a large earthquake. Rather than repair the old fill, BC Hydro built a new compacted earth-core rockfill dam against its downstream toe, on dense glacial soil. Loose and wet versus dense and drained matters more than whether the dam holds water or tailings.</p>
         </article>
       </div>
-      <p class="case-src">Sources: Mount Polley Independent Expert Engineering Investigation and Review Panel (2015); R.A. Stewart and BC Hydro on the Bennett Dam sinkholes; BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
+      <p class="case-src">Sources: Mount Polley Independent Expert Engineering Investigation and Review Panel (2015); R.A. Stewart (1998) and BC Hydro's expert engineering panel (2012) on the Bennett Dam sinkholes; BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
     </div>
 
   </section>
