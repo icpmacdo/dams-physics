@@ -352,3 +352,6 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
   .swipe-hint { display: block; }
   .svgwrap { margin-inline: -4px; padding-bottom: 4px; }
 }
+
+/* Films: one per big idea, at the end of the step it retells. Nothing loads until play. */
+figure.film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 4px; background: var(--rule); }

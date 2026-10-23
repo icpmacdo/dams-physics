@@ -1,0 +1,376 @@
+WEBVTT
+
+00:00:04.100 --> 00:00:08.187
+This is a dam made of packed
+dirt, twenty-four metres tall.
+
+00:00:08.537 --> 00:00:12.670
+Water from the lake creeps through
+it, and comes out of its face.
+
+00:00:13.020 --> 00:00:15.900
+Engineers score a slope
+by the grip it has,
+
+00:00:15.900 --> 00:00:18.268
+divided by the grip it needs to stay put.
+
+00:00:18.618 --> 00:00:20.429
+At one, it slides.
+
+00:00:20.779 --> 00:00:24.680
+This dam scores one point one
+two, so it's barely standing.
+
+00:00:25.030 --> 00:00:28.930
+There are three obvious fixes:
+make it fatter, put a wall
+
+00:00:28.930 --> 00:00:32.460
+in the ground under it, or bury
+a strip of sand inside it.
+
+00:00:32.810 --> 00:00:34.110
+Which one saves it?
+
+00:00:36.960 --> 00:00:40.258
+To judge a fix, you need to
+know why the dam is weak.
+
+00:00:40.608 --> 00:00:43.108
+Soil holds together
+because its grains press
+
+00:00:43.108 --> 00:00:45.902
+on each other, and
+friction needs that press.
+
+00:00:46.252 --> 00:00:48.972
+Water in the gaps between
+the grains pushes them
+
+00:00:48.972 --> 00:00:51.499
+apart, and takes away part of the press.
+
+00:00:51.849 --> 00:00:53.336
+You've seen it at the beach.
+
+00:00:53.686 --> 00:00:56.706
+A wall of damp sand
+stands up straight, until
+
+00:00:56.706 --> 00:00:59.723
+a wave soaks its base, and then it slumps.
+
+00:01:00.073 --> 00:01:01.884
+So where is the water in this dam?
+
+00:01:03.134 --> 00:01:04.899
+Every dam leaks.
+
+00:01:05.249 --> 00:01:08.889
+Water finds its way through a
+dam, under it, through the rock
+
+00:01:08.889 --> 00:01:11.797
+around it, and along any
+pipe that passes through it.
+
+00:01:12.147 --> 00:01:15.351
+Here, the path that matters
+is straight through the dam.
+
+00:01:15.701 --> 00:01:19.021
+This is the course's seepage
+solver, working out where the
+
+00:01:19.021 --> 00:01:22.713
+water goes in a dam of one
+ordinary soil, standing on clay.
+
+00:01:23.063 --> 00:01:25.896
+A drop of water takes decades to cross it.
+
+00:01:26.246 --> 00:01:29.218
+This line is the water
+level inside the dam.
+
+00:01:29.568 --> 00:01:32.262
+Engineers call it the phreatic surface.
+
+00:01:32.612 --> 00:01:37.024
+Where it meets the back slope, the
+water comes out, about eight metres up.
+
+00:01:37.374 --> 00:01:40.354
+The Bureau of Reclamation's
+manual says a dam of one
+
+00:01:40.354 --> 00:01:43.411
+soil will always do this,
+however flat its slope.
+
+00:01:43.761 --> 00:01:46.733
+About two thirds of its leak
+comes out of that face.
+
+00:01:47.083 --> 00:01:50.055
+So this dam leaks out of its own face.
+
+00:01:50.405 --> 00:01:52.356
+But why would that make it slide?
+
+00:01:53.606 --> 00:01:57.971
+In nineteen fifty-five, the engineer
+Alan Bishop published a way to check.
+
+00:01:58.321 --> 00:02:01.015
+Draw a curve through the
+slope where it might slip.
+
+00:02:01.365 --> 00:02:04.290
+Then cut the soil above the
+curve into forty slices.
+
+00:02:04.640 --> 00:02:09.331
+Each slice's weight pulls it downhill,
+and the soil underneath grips back.
+
+00:02:09.681 --> 00:02:14.092
+That grip is friction, and it comes
+from how hard the grains press.
+
+00:02:14.442 --> 00:02:17.442
+Below the water level,
+water pressure pushes up on
+
+00:02:17.442 --> 00:02:20.294
+each slice from underneath,
+and the grip shrinks.
+
+00:02:20.644 --> 00:02:24.777
+Add up the grip, divide by the pull,
+and that's the score for this curve.
+
+00:02:25.127 --> 00:02:29.121
+The solver tries more than two
+thousand curves, and keeps the worst.
+
+00:02:29.471 --> 00:02:33.372
+On the worst one, water carries
+about a third of the soil's weight.
+
+00:02:33.722 --> 00:02:36.882
+Take that water pressure
+away, and the same soil on the
+
+00:02:36.882 --> 00:02:39.991
+same curve would grip more
+than half again as hard.
+
+00:02:40.341 --> 00:02:42.570
+That's why this dam scores so low.
+
+00:02:43.820 --> 00:02:47.582
+The first fix most people reach
+for is to make the dam bigger.
+
+00:02:47.932 --> 00:02:50.512
+Flatten the back slope,
+using about a tenth more
+
+00:02:50.512 --> 00:02:53.458
+dirt, and the score rises
+to one point two seven.
+
+00:02:53.808 --> 00:02:56.780
+But the water still breaks
+out at the same height.
+
+00:02:57.130 --> 00:03:00.846
+And all that extra dirt has
+to be dug, hauled and packed.
+
+00:03:01.196 --> 00:03:05.933
+Flatten it further, with a quarter more
+dirt, and it reaches one point four two.
+
+00:03:06.283 --> 00:03:09.063
+That's still short of
+one and a half, the score
+
+00:03:09.063 --> 00:03:11.437
+engineers usually want with the lake full.
+
+00:03:11.787 --> 00:03:14.527
+The manual says it
+plainly: the water comes
+
+00:03:14.527 --> 00:03:16.849
+out of the slope,
+however flat you make it.
+
+00:03:18.099 --> 00:03:20.189
+So try stopping the water instead.
+
+00:03:20.539 --> 00:03:23.743
+Drive a wall down through
+the ground under the dam.
+
+00:03:24.093 --> 00:03:27.762
+The score barely moves,
+to one point one four.
+
+00:03:28.112 --> 00:03:30.792
+On this clay ground, only
+about a quarter of the
+
+00:03:30.792 --> 00:03:33.314
+water was going under the
+dam in the first place.
+
+00:03:33.664 --> 00:03:38.725
+The wall turns that water up into the
+dam, and the leak falls by just a tenth.
+
+00:03:39.075 --> 00:03:40.840
+The back slope still weeps.
+
+00:03:41.190 --> 00:03:43.990
+On sand and gravel, where
+much more of the water goes
+
+00:03:43.990 --> 00:03:47.042
+under, a wall like this
+can be the right fix.
+
+00:03:47.392 --> 00:03:48.599
+Here, it isn't.
+
+00:03:49.849 --> 00:03:52.821
+Every dam leaks, so you
+can't stop the water.
+
+00:03:53.171 --> 00:03:55.122
+Instead, give it a way out.
+
+00:03:55.472 --> 00:03:59.412
+Bury a strip of sand inside
+the dam, standing just behind
+
+00:03:59.412 --> 00:04:03.181
+the crest, and join it to a
+layer of sand along the base.
+
+00:04:03.531 --> 00:04:06.571
+Sand lets water through
+about ten thousand times more
+
+00:04:06.571 --> 00:04:09.289
+easily than this soil,
+so the water takes it.
+
+00:04:09.639 --> 00:04:13.539
+It takes up a tenth of the
+dam, and it adds no soil:
+
+00:04:13.539 --> 00:04:16.141
+the sand simply replaces some of the fill.
+
+00:04:16.491 --> 00:04:18.441
+Engineers call this a drain.
+
+00:04:18.791 --> 00:04:21.253
+Now watch the water level inside the dam.
+
+00:04:21.603 --> 00:04:25.271
+It dives into the sand strip before
+it ever reaches the back slope.
+
+00:04:25.621 --> 00:04:29.987
+The back half of the dam is left
+with almost no water pressure in it.
+
+00:04:30.337 --> 00:04:33.680
+A drop now gets through in
+years, instead of decades.
+
+00:04:34.930 --> 00:04:37.392
+The score jumps to one point six three.
+
+00:04:37.742 --> 00:04:41.142
+The new worst curve runs
+shallow, near the face,
+
+00:04:41.142 --> 00:04:43.686
+and water carries almost
+none of its weight.
+
+00:04:44.036 --> 00:04:49.098
+With no water in it at all, the same
+dam would score one point six seven.
+
+00:04:49.448 --> 00:04:51.770
+The soil was strong enough all along.
+
+00:04:52.120 --> 00:04:56.485
+The water in it was the trouble, and
+the drain takes that trouble away.
+
+00:04:59.335 --> 00:05:04.304
+And here's the twist: the drained dam
+leaks about two and a half times more.
+
+00:05:04.654 --> 00:05:08.091
+But it leaks through a way
+out the engineer chose.
+
+00:05:09.341 --> 00:05:10.827
+That should feel familiar.
+
+00:05:11.177 --> 00:05:15.960
+The back slope of a dirt dam is that
+sandcastle wall, with the tide inside it.
+
+00:05:16.310 --> 00:05:19.510
+The drain keeps the tide
+out of the wall, so the
+
+00:05:19.510 --> 00:05:22.487
+grains in the slope press
+with their full weight.
+
+00:05:23.737 --> 00:05:27.220
+Draining is one of several
+ways engineers manage seepage.
+
+00:05:27.570 --> 00:05:33.070
+They cut it off, make its path longer,
+drain it, filter every exit, weigh
+
+00:05:33.070 --> 00:05:36.440
+down the ground where it comes out,
+and watch it all with instruments.
+
+00:05:36.790 --> 00:05:39.950
+The Bureau of Reclamation
+says dam design has moved
+
+00:05:39.950 --> 00:05:42.781
+from trying to stop
+seepage to controlling it.
+
+00:05:43.131 --> 00:05:48.146
+Today, a strip of sand like this is standard
+practice in dams built of one soil.
+
+00:05:49.396 --> 00:05:51.811
+But all that water comes out somewhere.
+
+00:05:52.161 --> 00:05:55.783
+Where it leaves the ground, it
+pushes on the grains it passes.
+
+00:05:56.133 --> 00:05:58.827
+What if it pushes hard
+enough to carry them away?

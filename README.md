@@ -19,6 +19,14 @@ An interactive course on how dams stand and fail, in nine steps, written for som
 
 Every step asks you to predict before it shows you. Dotted terms have hover definitions, and a glossary is at the end. In the claude.ai artifact, a **Why did that happen?** button on each figure sends the figure's live state to Claude, which explains it in plain words.
 
+## Films
+
+Seven narrated films, 6 to 9 minutes each, sit at the end of the steps they retell: *Depth, not size* (Step 2), *The same sand, three ways* (Step 4), *Dams that are never finished* (Step 6), *A wall made of dirt* (Step 7), *The sand that boils* and *The layer nobody found* (Step 8), and *Every dam leaks* (Step 9). They are made in the vibes repo (`engine/concepts/dams/`) and live in `docs/video/` with WebVTT captions and poster frames. Nothing downloads until play. A copy of the page without `docs/video/`, such as the claude.ai artifact, hides the film blocks.
+
+```sh
+python3 tools/import_videos.py   # re-import after a re-render: Day cuts, captions (+4.1 s title card), posters
+```
+
 ## The seepage solver
 
 `src/seepage-solver.js` solves steady 2D saturated–unsaturated seepage, ∇·(K·kr(ψ)·∇h) = 0, on a 1 m finite-volume grid under a 24 m embankment.

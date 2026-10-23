@@ -17,7 +17,7 @@ def read(n):
     f = src / n
     return f.read_text() if f.exists() else ''
 CSS = ['styles.css', 'styles-ground.css', 'styles-grains.css', 'styles-build.css', 'styles-tutor.css']
-APP = ['app-core.js', 'app-glossary.js', 'app-ground.js', 'app-grains.js', 'app-zones.js', 'app-seep.js', 'app-build.js', 'app-tutor.js']
+APP = ['app-core.js', 'app-glossary.js', 'app-ground.js', 'app-grains.js', 'app-zones.js', 'app-seep.js', 'app-build.js', 'app-tutor.js', 'app-film.js']
 WORKERS = [('seep-src', 'seepage-solver.js'), ('stab-src', 'stability-solver.js')]
 fonts = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'

@@ -357,6 +357,9 @@ canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px;
   .svgwrap { margin-inline: -4px; padding-bottom: 4px; }
 }
 
+/* Films: one per big idea, at the end of the step it retells. Nothing loads until play. */
+figure.film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 4px; background: var(--rule); }
+
 /* ---------- groundwork chapters (Steps 1–4) and the shared predict widget ---------- */
 .g-lede { font-size: 1.22rem; line-height: 1.5; }
 
@@ -761,7 +764,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
   <header class="masthead wide" id="top">
     <p class="eyebrow">A course in nine steps, from a handful of sand to a dam you design</p>
     <h1>Dams in <span class="cut">Section</span></h1>
-    <p class="lede">A dam is a pile of soil or a block of concrete holding back water. Whether it stands or fails comes down to one idea you already know from the beach: sand is strong when its grains press together, and water pressure pushes them apart. This course builds that idea step by step, then uses it to cut real dams open. Every drawing is live, so press play, drag the sliders and try to break things.</p>
+    <p class="lede">A dam is a pile of soil or a block of concrete holding back water. Whether it stands or fails comes down to one idea you already know from the beach: sand is strong when its grains press together, and water pressure pushes them apart. This course builds that idea step by step, then uses it to cut real dams open. Every drawing is live, so press play, drag the sliders and try to break things. Seven short films, each at the end of the step it retells, tell the same story with a narrator.</p>
     <div class="topics">
       <a href="#beach"><span>Steps 1–4</span><strong>Groundwork: sand, water and strength</strong></a>
       <a href="#types"><span>Steps 5–6</span><strong>Two kinds of dam, three ways to raise one</strong></a>
@@ -897,6 +900,12 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p>Dig a hole in the sand near the sea and it fills with water from below. The water in the hole settles at a level, and below that level every gap between the grains is full of water. That level is the <span class="gl" data-term="water-table">water table</span>.</p>
       <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so it obeys the same rule as the water in a lake. A metre below the water table it is at about 10 kPa. Ten metres down it is at about 98 kPa, pushing outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>, and <a href="#strength">Step 4</a> turns on it.</p>
     </div>
+
+    <figure class="sheet wide film" id="film-depth-not-size">
+      <div class="sheet-top"><span class="figno"><b>Film</b> · Depth, not size</span><span class="scale-note">8 min · captions</span></div>
+      <video controls preload="none" playsinline poster="video/depth-not-size.jpg" aria-label="Film: Depth, not size"><source src="video/depth-not-size.mp4" type="video/mp4"><track kind="captions" src="video/depth-not-size.vtt" srclang="en" label="English"></video>
+      <figcaption>The lake-or-slot question, followed to the push that grows with the depth squared, and on to the water under a concrete dam that lifts it from below (Step 8).</figcaption>
+    </figure>
   </section>
 
   <!-- ================= STEP 3 · FLOW ================= -->
@@ -1147,6 +1156,15 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p>Dense sand does the opposite. Forcing its grains to slide makes it swell, which pulls water in, so the pore pressure drops and the sand gets stronger the harder you push.</p>
       <p>This is why mine waste worries engineers so much. The ground-up rock a mine pumps out as slurry, called tailings, often settles loose and stays saturated for decades. <a href="#raising">Step 6</a> shows what happens to a dam built on top of it.</p>
 
+    </div>
+
+    <figure class="sheet wide film" id="film-same-sand">
+      <div class="sheet-top"><span class="figno"><b>Film</b> · The same sand, three ways</span><span class="scale-note">9 min · captions</span></div>
+      <video controls preload="none" playsinline poster="video/same-sand.jpg" aria-label="Film: The same sand, three ways"><source src="video/same-sand.mp4" type="video/mp4"><track kind="captions" src="video/same-sand.vtt" srclang="en" label="English"></video>
+      <figcaption>The beach, the block on the ramp and the grain sandbox, told as one story: why damp sand holds a wall while the sand at the waterline swallows your feet.</figcaption>
+    </figure>
+
+    <div class="col">
       <h3>Where this comes back</h3>
       <p>Soil is strong because its grains press on each other, and water pressure in the gaps pushes them apart. You will meet that pair again in every step that follows.</p>
     </div>
@@ -1293,6 +1311,12 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         </div>
       </div>
     </div>
+
+    <figure class="sheet wide film" id="film-never-finished">
+      <div class="sheet-top"><span class="figno"><b>Film</b> · Dams that are never finished</span><span class="scale-note">9 min · captions</span></div>
+      <video controls preload="none" playsinline poster="video/never-finished.jpg" aria-label="Film: Dams that are never finished"><source src="video/never-finished.mp4" type="video/mp4"><track kind="captions" src="video/never-finished.vtt" srclang="en" label="English"></video>
+      <figcaption>Why a tailings dam keeps growing for as long as the mine runs, the three ways to raise it, and why the upstream method keeps failing, from Stava to Brumadinho.</figcaption>
+    </figure>
   </section>
 
   <!-- ================= SHEET 3 ================= -->
@@ -1336,6 +1360,12 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       </div>
       <div class="svgwrap"><canvas class="filtercv" id="cv-filter" width="1100" height="300" role="img" aria-label="Left: fine core particles carried by seepage pass straight through the large voids in rockfill. Right: the same particles reach a sand filter, lodge at the interface and stop, while water continues through."></canvas></div>
       <figcaption><strong>Left:</strong> seepage carries fine core particles through the large voids of rockfill, and the core erodes. <strong>Right:</strong> the same particles reach a sand filter. The pores are too small, the particles jam at the interface, and only water passes.</figcaption>
+    </figure>
+
+    <figure class="sheet wide film" id="film-wall-of-dirt">
+      <div class="sheet-top"><span class="figno"><b>Film</b> · A wall made of dirt</span><span class="scale-note">7 min · captions</span></div>
+      <video controls preload="none" playsinline poster="video/wall-of-dirt.jpg" aria-label="Film: A wall made of dirt"><source src="video/wall-of-dirt.mp4" type="video/mp4"><track kind="captions" src="video/wall-of-dirt.vtt" srclang="en" label="English"></video>
+      <figcaption>How a heap of soil can hold back a lake when water passes through soil: the permeability race, Darcy's pipe, and a clay core that takes almost the whole head so the shells stay dry and strong.</figcaption>
     </figure>
   </section>
 
@@ -1418,6 +1448,12 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <figcaption>Each stage feeds the next. The longer the pipe grows, the shorter the path left for the water to seep through, so the gradient steepens and erosion speeds up. With a <strong>filter and weighting berm</strong> (a mound of extra fill) at the toe, the water still comes out but the sand can't, and the chain never starts. That is why dam inspectors walk the toe looking for boils, cloudy (turbid) seepage and sinkholes.</figcaption>
     </figure>
 
+    <figure class="sheet wide film" id="film-sand-that-boils">
+      <div class="sheet-top"><span class="figno"><b>Film</b> · The sand that boils</span><span class="scale-note">9 min · captions</span></div>
+      <video controls preload="none" playsinline poster="video/sand-that-boils.jpg" aria-label="Film: The sand that boils"><source src="video/sand-that-boils.mp4" type="video/mp4"><track kind="captions" src="video/sand-that-boils.vtt" srclang="en" label="English"></video>
+      <figcaption>How a cloudy trickle at the toe can bring a dam down: the critical gradient, a pipe working back toward the reservoir, the filter that stops it, and what happened at Teton and Bennett.</figcaption>
+    </figure>
+
     <div class="col">
       <h3>Seepage under a concrete dam: uplift</h3>
       <p>A concrete dam is the block on the water cushion from <a href="#strength">Step 4</a>. Water seeping under its base pushes up on it, and that <span class="gl" data-term="uplift">uplift</span> cancels part of the dam's weight. The weight, through friction on the rock, is what stops the dam sliding. The usual remedy is a row of drain holes bored into the rock from a tunnel inside the dam (the gallery), just downstream of the grout curtain, to let the water out. A common design assumption, used by the US Bureau of Reclamation among others, is that working drains cut the pressure at the drain line to the tailwater (the water level downstream) plus one-third of the difference between reservoir and tailwater.</p>
@@ -1478,6 +1514,12 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       </div>
       <p class="case-src">Sources: Mount Polley Independent Expert Engineering Investigation and Review Panel (2015); R.A. Stewart (1998) and BC Hydro's expert engineering panel (2012) on the Bennett Dam sinkholes; BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
     </div>
+
+    <figure class="sheet wide film" id="film-layer-nobody-found">
+      <div class="sheet-top"><span class="figno"><b>Film</b> · The layer nobody found</span><span class="scale-note">9 min · captions</span></div>
+      <video controls preload="none" playsinline poster="video/layer-nobody-found.jpg" aria-label="Film: The layer nobody found"><source src="video/layer-nobody-found.mp4" type="video/mp4"><track kind="captions" src="video/layer-nobody-found.vtt" srclang="en" label="English"></video>
+      <figcaption>Mount Polley in full: the clay layer the investigations missed, why it failed undrained once it began to slide, and the steep slope on top that pulled the trigger.</figcaption>
+    </figure>
 
   </section>
 
@@ -1573,6 +1615,12 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p>Water pressure on each slice comes straight from the seepage solution. Suction above the water level is ignored, as is usual practice, because it can vanish in a wet spell. For the upstream check the reservoir is emptied quickly: the free-draining materials drain with it, while clay and fill keep their water pressure for a while (the classic <span class="gl" data-term="rapid-drawdown">rapid drawdown</span> case). Designers accept a lower factor of safety for that short-lived condition, about 1.2. This sandbox fixes the upstream slope at 2:1, which is steep for an earth dam; real ones are often flatter for exactly this reason.</p>
       <p>Material strengths and permeabilities are typical values, not design values. The sandbox does not check earthquakes, the <span class="gl" data-term="liquefaction">liquefaction</span> of loose saturated sand (Step 4), or whether each zone is a proper filter for the one beside it. In a real dam, clay painted straight against rockfill would wash into it, which is why real cores have filters.</p>
     </div>
+
+    <figure class="sheet wide film" id="film-every-dam-leaks">
+      <div class="sheet-top"><span class="figno"><b>Film</b> · Every dam leaks</span><span class="scale-note">6 min · captions</span></div>
+      <video controls preload="none" playsinline poster="video/every-dam-leaks.jpg" aria-label="Film: Every dam leaks"><source src="video/every-dam-leaks.mp4" type="video/mp4"><track kind="captions" src="video/every-dam-leaks.vtt" srclang="en" label="English"></video>
+      <figcaption>The question at the top of this step, worked through on film: a fill dam standing at 1.12, three possible fixes, and why the drain does the most, by letting out the water that was taking the soil's grip.</figcaption>
+    </figure>
   </section>
 
 
@@ -8227,6 +8275,22 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
     sample = s;
     addButtons();
   }, () => {});
+})();
+
+/* ===================== Films ===================== */
+/* A film whose files are missing (the claude.ai copy of the page ships without docs/video/) hides
+   itself rather than showing a dead player; the small poster is the probe, since preload="none"
+   fetches nothing from the video until play. Starting one film pauses any other. */
+(function films() {
+  const vids = [...document.querySelectorAll('figure.film video')];
+  vids.forEach(v => {
+    const fig = v.closest('figure');
+    const probe = new Image();
+    probe.onerror = () => { fig.hidden = true; };
+    probe.src = v.getAttribute('poster');
+    v.querySelector('source')?.addEventListener('error', () => { fig.hidden = true; });
+    v.addEventListener('play', () => vids.forEach(o => { if (o !== v && !o.paused) o.pause(); }));
+  });
 })();
 
 })();
