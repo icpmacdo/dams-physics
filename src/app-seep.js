@@ -143,7 +143,7 @@
     T(gLbl, M.X(-77), M.Z(-13), state.foundation === 'pervious' ? 'Sand & gravel · k = 10⁻⁵ m/s' : 'Clay · k = 5×10⁻⁸ m/s', 'lbl-s halo');
     T(gLbl, M.X(G.x1) - 4, M.Z(0) - 6, 'Tailwater at ground', 'lbl-s halo', { 'text-anchor': 'end' });
     T(gLbl, M.X(-62), M.Z(Hw) + 16, 'Reservoir', 'lbl-s halo', { 'text-anchor': 'middle' });
-    const kd = state.damType === 'homogeneous' ? 'Fill · k = 10⁻⁷ m/s' : 'Core 10⁻⁹ · rockfill 10⁻⁴ m/s';
+    const kd = state.damType === 'homogeneous' ? 'Fill · k = 10⁻⁷ m/s' : 'Core 10⁻⁹ · shells 10⁻⁴ m/s';
     T(gLbl, M.X(0), M.Z(24) - 8, kd, 'lbl-s halo', { 'text-anchor': 'middle' });
   }
 

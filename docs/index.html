@@ -908,7 +908,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p>Water in the ground is rarely still. It creeps through the gaps between the grains, from where it is pushed hard to where it is pushed less. You can watch it happen as the tide goes out: for hours afterwards, little streams trickle out of the sand at the bottom of the beach.</p>
       <p>To tell which way the water will go, engineers use a simple measure. Imagine pushing a clear straw down into wet ground and watching how high the water climbs inside it. The level the water reaches, measured from some fixed height such as sea level, is the <span class="gl" data-term="hydraulic-head">total head</span> at the bottom of the straw. <strong>Water flows from high head to low head.</strong></p>
       <p>The level in the straw adds two things: how high the bottom of the straw is, and how far the water pressure there can push water up the straw. So groundwater can flow uphill, as long as it is heading toward lower head. That is how a spring bubbles up out of a hillside.</p>
-      <p>The straws are real. Engineers sink thin pipes into dams and the ground beneath them and measure the water level inside. They are called <span class="gl" data-term="piezometer">piezometers</span>, and reading them is the main way anyone knows what the water inside a dam is doing.</p>
+      <p>The straws are real. Engineers sink thin pipes into dams and the ground beneath them and measure the water level inside. They are called <span class="gl" data-term="piezometer">piezometers</span>, and reading them, along with measuring the water that seeps out, is one of the main ways engineers know what the water inside a dam is doing.</p>
 
       <h3>Some ground is a sieve, some is a wall</h3>
       <p>How easily water passes depends on the size of the gaps. Gravel has gaps you can see. Clay is made of flat flakes thousands of times smaller than a grain of sand, and the gaps between them are tiny and twisting. Engineers measure how easily water gets through as the <span class="gl" data-term="permeability">permeability</span>, written <em>k</em> and given in metres per second.</p>
@@ -969,7 +969,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
           <div class="readouts">
             <div class="ro"><span>Head difference <i class="g-sym">Δh</i></span><b id="dc-dh">1.40 m</b><small id="dc-dh2">left is higher</small></div>
             <div class="ro"><span>Gradient <i class="g-sym">i = Δh / L</i></span><b id="dc-i">0.70</b><small id="dc-i2">head lost per metre</small></div>
-            <div class="ro"><span>Flow <i class="g-sym">q</i></span><b id="dc-q">6.0 L/day</b><small id="dc-q2">through each m² of pipe</small></div>
+            <div class="ro"><span>Flow <i class="g-sym">q</i></span><b id="dc-q">4.2 L/min</b><small id="dc-q2">through each m² of pipe</small></div>
             <div class="ro"><span>Head lost in the plug</span><b id="dc-share">–</b><small id="dc-share2">no plug</small></div>
           </div>
         </div>
@@ -979,7 +979,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <div class="col">
       <p>Now add the clay plug. The pipe is the same length and the tanks are at the same heights, but nearly all the head is lost across the short piece of clay. The tubes in the sand on either side read almost the same as the tank next to them. The same flow has to pass through every part of the pipe, and the tight clay needs a much steeper gradient to push it through, so the clay takes almost the whole drop.</p>
-      <p>This is how a dam with a clay <span class="gl" data-term="core">core</span> works. A core a few metres thick, in the middle of a dam made of sand and rock, takes up almost the whole height of the reservoir. The sand and rock on either side carry almost none of it, so the water pressure in the downstream half of the dam stays low. <a href="#zones">Step 7</a> shows the zones that make this work.</p>
+      <p>This is how a dam with a clay <span class="gl" data-term="core">core</span> works. A core of clay, much narrower than the dam around it, takes up almost the whole height of the reservoir. The sand and rock on either side carry almost none of it, so the water pressure in the downstream half of the dam stays low. <a href="#zones">Step 7</a> shows the zones that make this work.</p>
     </div>
   </section>
 
@@ -1347,7 +1347,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
     <div class="col">
       <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. You met the rule in <a href="#flow">Step 3</a>: water flows from high <span class="gl" data-term="hydraulic-head">head</span> to low, as fast as the soil lets it. That's Darcy's law:</p>
       <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow rate · k permeability (hydraulic conductivity, m/s) · i hydraulic gradient: head lost per metre travelled · A area</small></div>
-      <p>From gravel to compacted clay, <em>k</em> falls by a factor of ten million: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. Across all natural soils the range is wider still, more than ten powers of ten. Zoning depends on that spread. A clay core a few metres thick can carry almost the entire head while the rockfill beside it carries almost none.</p>
+      <p>From gravel to compacted clay, <em>k</em> falls by a factor of ten million: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. Across all natural soils the range is wider still, more than ten powers of ten. Zoning depends on that spread. A clay core much narrower than the dam can carry almost the entire head, while the free-draining shells beside it carry almost none.</p>
       <p>Water has five main ways past a dam, numbered in the drawing below.</p>
     </div>
 
@@ -1376,7 +1376,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       </div>
       <p class="swipe-hint">Drawing scrolls sideways →</p>
       <div class="controls">
-        <div class="ctl"><span>Dam</span><div class="seg" id="lab-dam"><button type="button" data-v="homogeneous" aria-pressed="true">Homogeneous</button><button type="button" data-v="cored" aria-pressed="false">Clay core + rockfill</button></div></div>
+        <div class="ctl"><span>Dam</span><div class="seg" id="lab-dam"><button type="button" data-v="homogeneous" aria-pressed="true">Homogeneous</button><button type="button" data-v="cored" aria-pressed="false">Clay core + shells</button></div></div>
         <div class="ctl"><span>Drain</span><div class="seg" id="lab-drain"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="toe" aria-pressed="false">Toe drain</button><button type="button" data-v="chimney" aria-pressed="false">Chimney + blanket</button></div></div>
         <div class="ctl"><span>Cutoff</span><div class="seg" id="lab-cut"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="partial" aria-pressed="false">Half depth</button><button type="button" data-v="full" aria-pressed="false">Full</button></div></div>
         <div class="ctl"><span>Foundation</span><div class="seg" id="lab-found"><button type="button" data-v="pervious" aria-pressed="true">Sand &amp; gravel</button><button type="button" data-v="tight" aria-pressed="false">Clay</button></div></div>
@@ -6852,7 +6852,7 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
     T(gLbl, M.X(-77), M.Z(-13), state.foundation === 'pervious' ? 'Sand & gravel · k = 10⁻⁵ m/s' : 'Clay · k = 5×10⁻⁸ m/s', 'lbl-s halo');
     T(gLbl, M.X(G.x1) - 4, M.Z(0) - 6, 'Tailwater at ground', 'lbl-s halo', { 'text-anchor': 'end' });
     T(gLbl, M.X(-62), M.Z(Hw) + 16, 'Reservoir', 'lbl-s halo', { 'text-anchor': 'middle' });
-    const kd = state.damType === 'homogeneous' ? 'Fill · k = 10⁻⁷ m/s' : 'Core 10⁻⁹ · rockfill 10⁻⁴ m/s';
+    const kd = state.damType === 'homogeneous' ? 'Fill · k = 10⁻⁷ m/s' : 'Core 10⁻⁹ · shells 10⁻⁴ m/s';
     T(gLbl, M.X(0), M.Z(24) - 8, kd, 'lbl-s halo', { 'text-anchor': 'middle' });
   }
 

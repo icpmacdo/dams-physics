@@ -291,7 +291,7 @@
     <div class="col">
       <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. You met the rule in <a href="#flow">Step 3</a>: water flows from high <span class="gl" data-term="hydraulic-head">head</span> to low, as fast as the soil lets it. That's Darcy's law:</p>
       <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow rate · k permeability (hydraulic conductivity, m/s) · i hydraulic gradient: head lost per metre travelled · A area</small></div>
-      <p>From gravel to compacted clay, <em>k</em> falls by a factor of ten million: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. Across all natural soils the range is wider still, more than ten powers of ten. Zoning depends on that spread. A clay core a few metres thick can carry almost the entire head while the rockfill beside it carries almost none.</p>
+      <p>From gravel to compacted clay, <em>k</em> falls by a factor of ten million: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. Across all natural soils the range is wider still, more than ten powers of ten. Zoning depends on that spread. A clay core much narrower than the dam can carry almost the entire head, while the free-draining shells beside it carry almost none.</p>
       <p>Water has five main ways past a dam, numbered in the drawing below.</p>
     </div>
 
@@ -320,7 +320,7 @@
       </div>
       <p class="swipe-hint">Drawing scrolls sideways →</p>
       <div class="controls">
-        <div class="ctl"><span>Dam</span><div class="seg" id="lab-dam"><button type="button" data-v="homogeneous" aria-pressed="true">Homogeneous</button><button type="button" data-v="cored" aria-pressed="false">Clay core + rockfill</button></div></div>
+        <div class="ctl"><span>Dam</span><div class="seg" id="lab-dam"><button type="button" data-v="homogeneous" aria-pressed="true">Homogeneous</button><button type="button" data-v="cored" aria-pressed="false">Clay core + shells</button></div></div>
         <div class="ctl"><span>Drain</span><div class="seg" id="lab-drain"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="toe" aria-pressed="false">Toe drain</button><button type="button" data-v="chimney" aria-pressed="false">Chimney + blanket</button></div></div>
         <div class="ctl"><span>Cutoff</span><div class="seg" id="lab-cut"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="partial" aria-pressed="false">Half depth</button><button type="button" data-v="full" aria-pressed="false">Full</button></div></div>
         <div class="ctl"><span>Foundation</span><div class="seg" id="lab-found"><button type="button" data-v="pervious" aria-pressed="true">Sand &amp; gravel</button><button type="button" data-v="tight" aria-pressed="false">Clay</button></div></div>
