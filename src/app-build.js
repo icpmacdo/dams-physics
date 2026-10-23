@@ -38,20 +38,20 @@
       hints: ['Test it first and follow the dashed line: the water stays high right through the dam and comes out on the downstream slope.',
         'The fill is strong enough when it is dry. Give the water a way out before it reaches the downstream half.',
         'Paint a strip of sand filter about 2 m wide, standing up just downstream of the crest, and join its foot to a 2 m layer of filter along the base out to the toe. A clay core with rockfill shells also works.'],
-      done: 'The drain catches the water before it reaches the downstream slope, so the grains there press on each other with their full weight. Same soil, same slope, much more grip.'
+      done: 'The drain catches the water before it reaches the downstream slope, so the grains there press on each other with their full weight and friction gets its full grip back.'
     },
     hold: {
       title: 'Hold the water',
       brief: 'This rockfill dam on sand and gravel leaks like a sieve. Cut the seepage to 100 L/day per metre or less, keep the piping safety at 3 or more and the factor of safety at 1.5, and use no more than 350 m³ of clay per metre of dam.',
       hints: ['Follow the flow lines: water goes through the rockfill and also under the dam through the gravel.',
-        'Rockfill needs a watertight heart. Clay passes water about a hundred thousand times more slowly than rockfill.',
+        'Rockfill can\'t hold water back by itself. Clay passes water about a hundred thousand times more slowly.',
         'Paint a clay core up the middle, wide at the base and narrow at the top, then close the path underneath with a full cutoff.'],
       done: 'The core takes the head through the dam and the cutoff closes the path through the gravel. The water has no quick way past, so the seepage falls from tens of thousands of litres a day per metre to a few.'
     },
     polley: {
       title: 'Mount Polley',
       brief: 'In 2014 the Mount Polley tailings dam in British Columbia slid on a weak clay layer in its foundation and released about 25 million m³ of water and tailings. The investigation found the design had not allowed for that layer, and a steep downstream slope made it worse. This dam sits on a similar layer 4 m down. Get the factor of safety to 1.5, checked on blocks sliding along the layer as well as on circles.',
-      hints: ['Test it. The critical surface is not a circle: it is a block sliding along the weak layer.',
+      hints: ['Test it. The weakest surface is a flat-bottomed block sliding along the weak layer.',
         'Drains barely help here. The layer is weak because of what it is, and it lies sealed in clay below the dam.',
         'Weight pressing down on the layer beyond the toe holds the block back. Flatten the downstream slope.'],
       done: 'The flatter slope puts more weight on the layer beyond the old toe, and the block has a longer stretch of layer to slide along. Flatter slopes and toe buttresses of extra fill are the usual fix for a weak foundation.'
@@ -62,7 +62,7 @@
       hints: ['Tailings sand has no cohesion. Even dry, a slope of loose grains stands only up to its friction angle, and wet it stands much less.',
         'Keep it dry first: a drain inside the sand lowers the water level.',
         'A chimney and blanket drain plus a 2.5:1 downstream slope does it.'],
-      done: 'Dry, gently sloped sand holds. Downstream-raised tailings dams use drains and flat downstream slopes for this reason. One thing this sandbox cannot show: loose saturated tailings sand can liquefy (Step 4), so real ones are also compacted.'
+      done: 'Kept dry and laid back at a gentle slope, the sand holds. Downstream-raised tailings dams use drains and flat downstream slopes for this reason. One thing this sandbox cannot show: loose saturated tailings sand can liquefy (Step 4), so real ones are also compacted.'
     }
   };
   const GOAL_TEXT = {

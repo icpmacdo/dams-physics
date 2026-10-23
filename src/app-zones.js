@@ -135,7 +135,7 @@
         { id: 'GC', name: 'Grout curtain', fill: 'p-grout', parts: [{ poly: [[4.6, 3.5], [6.0, 3.5], [-1.6, -36], [-3.2, -36]], mark: [-26, -30], anchor: [-2, -28] }], step: 2, mode: 'drill',
           info: { mat: 'Deep grouted holes drilled from the gallery, angled slightly upstream to cross more joints.', k: 'Rock brought toward 10⁻⁷ m/s', job: 'Reduces the seepage reaching the drains.', risk: 'Curtains degrade with time; they reduce flow but are not relied on to cut uplift.' } },
         { id: 'FD', name: 'Foundation drains', fill: 'water', parts: [{ poly: [[7.0, 3.5], [7.7, 3.5], [7.7, -24], [7.0, -24]], mark: [24, -18], anchor: [7.7, -16] }], step: 2, mode: 'drill',
-          info: { mat: 'Open holes, about 75 mm diameter at 3 m spacing, drilled from the gallery behind the curtain.', k: '–', job: 'Relieve water pressure under the base, cutting uplift sharply. See Fig. 8.', risk: 'They clog with calcite and fines; clogged drains let uplift climb back toward full reservoir pressure.' } }
+          info: { mat: 'Open holes, about 75 mm diameter at 3 m spacing, drilled from the gallery behind the curtain.', k: '–', job: 'Relieve water pressure under the base, cutting uplift sharply. See Fig. 8.4.', risk: 'They clog with calcite and fines; clogged drains let uplift climb back toward full reservoir pressure.' } }
       ],
       steps: [
         { label: 'Excavate to sound rock; consolidation-grout the blasted surface', zones: ['CG'], mode: 'drill' },
