@@ -124,7 +124,7 @@ function pageLessons() {
 
   const notes = h('section', { class: 'side-notes' },
     h('p', {}, 'Teachers can set a design brief as a link and tabulate students’ reports on the ', h('a', { href: '#/teach' }, 'Teach'), ' page.'),
-    h('p', {}, 'The reading lessons embed sheets of ', h('a', { href: CLASSIC }, 'Dams in Section'), ', the explainer this site builds on.'));
+    h('p', {}, 'The reading lessons embed chapters of ', h('a', { href: CLASSIC }, 'Dams in Section'), ', the explainer this site builds on.'));
 
   main.append(h('div', { class: 'page' }, masthead, lessons, notes, footer()));
   (window.requestIdleCallback || setTimeout)(preloadViewer);
