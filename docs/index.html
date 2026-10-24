@@ -1399,7 +1399,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <div class="col">
       <h3>Seepage lab</h3>
-      <p>Everything in the next drawing is calculated. The page divides a 24 m embankment and the ground beneath it into 1 m cells, applies Darcy's law between every pair of neighbours, and solves for the head in all of them at once (the steady seepage equation, ∇·(k ∇h) = 0). Along the way it finds the <span class="gl" data-term="phreatic-surface">phreatic surface</span>, the water table inside the dam, using the same saturated–unsaturated approach as commercial seepage software. Lines of equal head are drawn every 10% of the reservoir head. Flow lines are spaced so that each neighbouring pair carries the same flow, as in a hand-drawn flow net.</p>
+      <p>Everything in the next drawing is calculated. The page divides a 24 m embankment and the ground beneath it into 1 m cells, applies Darcy's law between every pair of neighbours, and solves for the head in all of them at once (the steady seepage equation, ∇·(k ∇h) = 0). Along the way it finds the <span class="gl" data-term="phreatic-surface">phreatic surface</span>, the water table inside the dam, using the same saturated–unsaturated approach as commercial seepage software. Lines of equal head are drawn every 10% of the reservoir head. Flow lines are drawn in two sets: four start on the dam's upstream face and five on the reservoir floor. Within each set, each neighbouring pair carries the same flow, as in a hand-drawn flow net. Between the sets it differs: on the starting settings a gap between two foundation lines carries about eight times the flow of a gap between two dam lines, so compare line spacing only within a set.</p>
     </div>
 
     <figure class="sheet wide" id="fig-lab">
@@ -6994,8 +6994,9 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
   const i2 = ex && imax > 0.005 ? (ex.governing === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'all exits are filtered drains';
   const fs = ex && isFinite(ex.fs) ? ex.fs : Infinity;
   if (!isFinite(fs) || fs > 50) return { imax, i, i2, fs, fsTxt: '> 50', cls: 'ok', word: 'Safe' };
-  const cls = fs >= 3 ? 'ok' : fs >= 1.5 ? 'warn' : 'bad', word = fs >= 3 ? 'Adequate' : fs >= 1.5 ? 'Marginal' : 'Piping risk';
-  return { imax, i, i2, fs, fsTxt: fs.toFixed(1), cls, word };
+  const fsTxt = fs.toFixed(1), shown = +fsTxt; // classify on the value the reader sees, so "1.5" never reads "Piping risk"
+  const cls = shown >= 3 ? 'ok' : shown >= 1.5 ? 'warn' : 'bad', word = shown >= 3 ? 'Adequate' : shown >= 1.5 ? 'Marginal' : 'Piping risk';
+  return { imax, i, i2, fs, fsTxt, cls, word };
 }
 /* @fig-lab-end */
 (function figLab() {

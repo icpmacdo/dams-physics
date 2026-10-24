@@ -104,8 +104,9 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
   const i2 = ex && imax > 0.005 ? (ex.governing === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'all exits are filtered drains';
   const fs = ex && isFinite(ex.fs) ? ex.fs : Infinity;
   if (!isFinite(fs) || fs > 50) return { imax, i, i2, fs, fsTxt: '> 50', cls: 'ok', word: 'Safe' };
-  const cls = fs >= 3 ? 'ok' : fs >= 1.5 ? 'warn' : 'bad', word = fs >= 3 ? 'Adequate' : fs >= 1.5 ? 'Marginal' : 'Piping risk';
-  return { imax, i, i2, fs, fsTxt: fs.toFixed(1), cls, word };
+  const fsTxt = fs.toFixed(1), shown = +fsTxt; // classify on the value the reader sees, so "1.5" never reads "Piping risk"
+  const cls = shown >= 3 ? 'ok' : shown >= 1.5 ? 'warn' : 'bad', word = shown >= 3 ? 'Adequate' : shown >= 1.5 ? 'Marginal' : 'Piping risk';
+  return { imax, i, i2, fs, fsTxt, cls, word };
 }
 /* @fig-lab-end */
 (function figLab() {

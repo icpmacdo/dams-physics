@@ -209,13 +209,21 @@ console.log('\nFig. 8.2 · seepage lab: piping readout');
     return [S.labFmtQ(r.q.inflowTotal) + ' L/day', p.i, p.i2, p.fs.toFixed(2), p.fsTxt, p.word, p.cls].join(' | ');
   };
   same(at({}), '2,366 L/day | 0.79 | on the downstream slope | 1.27 | 1.3 | Piping risk | bad', 'on load');
-  // 1.47 shows as "1.5" next to "Piping risk": flagged in the book plan (pedagogy fix list item 7); update this pin when that is fixed
-  same(at({ cutoff: 'partial' }), '2,160 L/day | 0.68 | on the downstream slope | 1.47 | 1.5 | Piping risk | bad', 'half-depth cutoff');
+  // 1.47 shows as "1.5", so the pill classifies the shown value: Marginal (it said "Piping risk" before the fix)
+  same(at({ cutoff: 'partial' }), '2,160 L/day | 0.68 | on the downstream slope | 1.47 | 1.5 | Marginal | warn', 'half-depth cutoff');
+  same([1.449, 1.46, 1.5, 2.949, 2.96].map(fs => S.labPiping({ fs, groundMax: 1 / fs }).fsTxt + ' ' + S.labPiping({ fs, groundMax: 1 / fs }).word).join(' / '),
+    '1.4 Piping risk / 1.5 Marginal / 1.5 Marginal / 2.9 Marginal / 3.0 Adequate', 'the pill agrees with the number shown at each band edge');
   same(at({ cutoff: 'full' }), '166 L/day | 0.04 | at the ground beyond the toe | 22.47 | 22.5 | Adequate | ok', 'full cutoff');
   same(at({ drain: 'toe' }), '2,647 L/day | 0.08 | at the ground beyond the toe | 12.84 | 12.8 | Adequate | ok', 'toe drain');
   same(at({ drain: 'chimney' }), '4,052 L/day | ≈ 0 | all exits are filtered drains | 342.89 | > 50 | Safe | ok', 'chimney and blanket drain');
   same([S.labPiping(null).fsTxt, S.labPiping({ fs: 2, groundMax: 0.5 }).word, S.labPiping({ fs: 0.9, faceMax: 1.11, governing: 'face' }).i2].join(' / '),
     '> 50 / Marginal / on the downstream slope', 'no exit / marginal band / exit on the slope');
+}
+
+{ // the flow lines: 4 seeds on the dam face (5 equal tubes), 5 on the reservoir floor (6 equal tubes)
+  const r = solveSeepage(S.LAB0), nd = r.flowlines.filter(f => f.group === 'dam').length, nf = r.flowlines.filter(f => f.group === 'foundation').length;
+  same(nd + ' / ' + nf, '4 / 5', 'flow lines seeded on the dam face / the reservoir floor (the text says four and five)');
+  same(Math.round((r.q.inflowFloor / (nf + 1)) / (r.q.inflowDamFace / (nd + 1))), 8, 'flow per foundation tube ÷ flow per dam tube on load (the text says about eight times)');
 }
 
 console.log('\nFig. 8.3 · piping stages');
@@ -265,6 +273,9 @@ console.log('\nFacts the text states (errata fixes)');
   never('Low water pressure in the outer zones', 'Step 4 ideas card');
   says('That leaves the downstream shell fairly dry', 'Step 7');
   says('The upstream shell stays soaked', 'Step 4 ideas card');
+  // Fig 8.2: flow lines are equal-flux only within each set
+  never('Flow lines are spaced so that each neighbouring pair carries the same flow, as in', 'Step 8, seepage lab');
+  says('Within each set, each neighbouring pair carries the same flow', 'Step 8, seepage lab');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');
