@@ -1,0 +1,111 @@
+{
+  "stevin1586": {
+    "group": "books",
+    "short": "Stevin (1586)",
+    "authors": "Stevin, S.",
+    "year": "1586",
+    "title": "De Beghinselen des Waterwichts",
+    "container": "Leiden: printed at the office of Christoffel Plantijn by Françoys van Raphelinghen",
+    "doi": null,
+    "url": null,
+    "note": "The first systematic treatise on hydrostatics since Archimedes; Proposition X states the hydrostatic paradox. An English translation is in volume I of The Principal Works of Simon Stevin, ed. E.J. Dijksterhuis (Amsterdam: Swets & Zeitlinger, 1955)."
+  },
+  "minnaert1976": {
+    "group": "books",
+    "short": "Minnaert (1976)",
+    "authors": "Minnaert, M.G.J.",
+    "year": "1976",
+    "title": "Stevin, Simon",
+    "container": "In C.C. Gillispie (ed.), Dictionary of Scientific Biography, vol. 13. New York: Charles Scribner's Sons. The entry begins on p. 47",
+    "doi": null,
+    "url": "https://www.encyclopedia.com/people/science-and-technology/mathematics-biographies/simon-stevin",
+    "note": "Says Stevin explained the hydrostatic paradox by imagining parts of the water to be solidified."
+  },
+  "usstd1976": {
+    "group": "standards",
+    "short": "U.S. Standard Atmosphere (1976)",
+    "authors": "National Oceanic and Atmospheric Administration, National Aeronautics and Space Administration, United States Air Force",
+    "year": "1976",
+    "title": "U.S. Standard Atmosphere, 1976",
+    "container": "NOAA-S/T 76-1562. Washington, D.C.: U.S. Government Printing Office",
+    "doi": null,
+    "url": "https://ntrs.nasa.gov/citations/19770009539",
+    "note": "Sea level: pressure 101,325 Pa, density 1.225 kg/m³."
+  },
+  "imss-vacuum": {
+    "group": "web",
+    "short": "Museo Galileo, Horror vacui?",
+    "authors": "Institute and Museum of the History of Science, Florence (now Museo Galileo)",
+    "year": null,
+    "title": "Horror vacui? The syphon experiment",
+    "container": "Online exhibition",
+    "doi": null,
+    "url": "https://imss.fi.it/vuoto/eesper1.html",
+    "note": "Galileo's account of the limit of about 18 braccia (around 11 m) to which a pump could raise water."
+  },
+  "museogalileo-torricelli": {
+    "group": "web",
+    "short": "Museo Galileo, Torricellian experiment",
+    "authors": "Museo Galileo, Florence",
+    "year": null,
+    "title": "Torricellian experiment",
+    "container": "Catalogue of the collections, In depth",
+    "doi": null,
+    "url": "https://catalogue.museogalileo.it/indepth/TorricellianExperiment.html",
+    "note": "Torricelli's letter to Michelangelo Ricci of 11 June 1644: the mercury column stood at about 1¼ braccia (c. 70 cm)."
+  },
+  "bchydro-revelstoke2013": {
+    "group": "web",
+    "short": "BC Hydro (2013)",
+    "authors": "BC Hydro",
+    "year": "2013",
+    "title": "Revelstoke Dam tour takes visitors to spectacular heights",
+    "container": "News release, 22 May 2013",
+    "doi": null,
+    "url": "https://www.bchydro.com/news/press_centre/news_releases/2013/revelstoke-visitor-centre-opens.html",
+    "note": "Calls Revelstoke a 175-metre-high dam."
+  },
+  "bchydro-cbrac2016": {
+    "group": "reports",
+    "short": "BC Hydro (2016)",
+    "authors": "BC Hydro",
+    "year": "2016",
+    "title": "Virtual tour of Revelstoke and Mica",
+    "container": "Presentation to the Columbia Basin Regional Advisory Committee, October 2016",
+    "doi": null,
+    "url": "https://engage.gov.bc.ca/app/uploads/sites/6/2017/01/Virtual-tour-of-Revelstoke-and-Mica-CBRAC-presentation-Oct-2016.pdf",
+    "note": "Revelstoke's concrete dam: 470 m long, 126 m thick at the base, 9 m at the crest; it 'relies on its massive weight and resultant friction to hold back the reservoir'."
+  },
+  "feynman1964": {
+    "group": "books",
+    "short": "Feynman, Leighton & Sands (1964)",
+    "authors": "Feynman, R.P., Leighton, R.B., Sands, M.",
+    "year": "1964",
+    "title": "The Feynman Lectures on Physics, Vol. II",
+    "container": "Reading, Mass.: Addison-Wesley",
+    "doi": null,
+    "url": "https://www.feynmanlectures.caltech.edu/II_40.html",
+    "note": "Chapter 40, The Flow of Dry Water; section 40-1 is hydrostatics."
+  },
+  "ciechanowski2021": {
+    "group": "web",
+    "short": "Ciechanowski (2021)",
+    "authors": "Ciechanowski, B.",
+    "year": "2021",
+    "title": "Naval Architecture",
+    "container": "ciechanow.ski, 27 July 2021",
+    "doi": null,
+    "url": "https://ciechanow.ski/naval-architecture/",
+    "note": null
+  },
+  "usbr1987": {
+    "group": "standards",
+    "short": "USBR (1987)",
+    "authors": "U.S. Bureau of Reclamation",
+    "year": "1987",
+    "title": "Design of Small Dams, 3rd ed.",
+    "container": "Denver",
+    "doi": null,
+    "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-pdfs/SmallDams.pdf"
+  }
+}

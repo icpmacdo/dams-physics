@@ -1,13 +1,19 @@
 <section class="chapter" id="ch-depth">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.3): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <p class="so-far"><b>So far.</b> On the beach one sand behaved three ways, and only the water had changed. To say why, we need two facts about water first. This chapter is the first of them: how hard still water presses, and on what. <a data-ref="ch-head"></a> adds the second, what happens when it moves.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>work out the water pressure at any depth, and the push of a reservoir on each metre of a dam;</li>
+        <li>say where that push acts, and why doubling the depth makes it four times bigger and its tipping effect eight times bigger;</li>
+        <li>explain why a concrete dam is a triangle, and why water on an embankment's sloping face presses it down harder than it pushes it sideways.</li>
+      </ul>
     </div>
   </header>
+
     <div class="col">
-      <p>Swim to the bottom of a deep pool and your ears start to hurt. The water above you has weight, and the deeper you go, the more of it there is pressing down. Water passes that press on in every direction, sideways too. So the water behind a dam pushes on the dam the same way it pushes on your eardrums.</p>
+      <p class="cold"><span class="newthought">Stand on the crest of a big dam</span> on a still day and look upstream. The reservoir runs back between the hills further than you can see, millions of tonnes of water, and it is hard not to feel all of it leaning on the wall under your feet. Somebody had to decide how strong to make that wall, so the feeling is worth testing. Make a guess before you read on:</p>
 
       <div class="predict" data-answer="c" id="pr-paradox">
         <p class="predict-q">Two dams each hold back water 50 m deep. One holds a lake 10 km long. The other holds a slot of water only 2 m wide, with solid rock behind it. Which dam has to be stronger?</p>
@@ -32,11 +38,22 @@
         <div class="predict-reveal" hidden><p>Water pressure depends only on how far below the surface you are. Fifty metres down it is the same in a slot as in an ocean, so the two dams feel exactly the same push. The big lake is far heavier, but its weight rests on the lake bed. The size of a lake decides how much water escapes if the dam breaks. The depth decides the load on the dam.</p></div>
       </div>
 
-      <p>Each metre of depth adds the weight of one more metre of water standing on every square metre. That is a tonne of water, which presses down with about 9.81 kilonewtons. A kilonewton (kN) is roughly the weight of 100 kg, and a pressure of one kN on every square metre is a kilopascal (kPa). So every metre of depth adds <span data-n="const.gw">9.81</span> kPa. Engineers write it like this:</p>
+      <p>The lake is the natural guess, and it is wrong. Follow where the lake's weight goes. Cut the lake into upright columns, like slices of a cake still in its tin: each column stands on the lake bed and presses straight down on it. The bed carries the lake. Only the water touching the dam pushes on the dam, so the question becomes what decides how hard that water pushes.</p>
+      <p>You have felt the answer. Swim down to the bottom of a deep pool and, a few metres down, your ears start to hurt. The water above you has weight, and the deeper you go, the more of it there is. That weight is where water pressure comes from. The rest of this chapter turns it into a number, and then into the push on a dam.</p>
+
+      <h3 id="s-depth-tonne">A tonne on every square metre</h3>
+      <p>Picture a column of water one metre tall standing on one square metre of a pool floor. It holds one cubic metre of water, which is a tonne. On Earth a tonne weighs <span data-n="const.gw">9.81</span> kilonewtons (kN),<label for="sn-depth-weight" class="sn-ref"></label><input type="checkbox" id="sn-depth-weight" class="margin-toggle"><span class="sidenote" data-kind="units">Mass and weight are different things. A tonne is 1,000 kg of stuff; gravity pulls on it with <span data-n="const.gw">9.81</span> kN, and that pull is its weight. Turned round, a kilonewton is the weight of about <span data-n="ch02.kn-kg">102</span> kg. This book uses tonnes for how much water there is and kilonewtons for how hard it pushes.</span> so the floor under that column carries <span data-n="const.gw">9.81</span> kN on its square metre. A force of one kilonewton on each square metre is one <span class="gl" data-term="kilopascal">kilopascal</span> (kPa), the unit of pressure in this book. Stack a second metre of water on top and the floor carries two tonnes, <span data-n="depth.p-kpa@h=2">19.62</span> kPa. Every metre of depth adds the weight of one more tonne on every square metre:</p>
       <div class="eq" id="eq-depth-p"><span class="eq-body"><var>p</var> = <var>ρ</var> · <var>g</var> · <var>h</var>&ensp;≈&ensp;<span data-n="const.gw">9.81</span> kPa × depth in metres</span><span class="eq-no" data-num></span></div>
-      <p class="eq-where"><var>p</var> pressure (kPa) · <var>ρ</var> density of water, 1,000 kg/m³ · <var>g</var> gravity, 9.81 m/s² · <var>h</var> depth below the water surface (m)</p>
-      <p>Ten metres of water adds about <span data-n="depth.p-kpa@h=10">98</span> kPa, roughly the pressure of the whole atmosphere above us. Divers count their depth in those 10 m steps.</p>
-      <p>Drag the sensor up and down. Then change the depth of the water and watch the total push on the dam.</p>
+      <p class="eq-where"><var>p</var> pressure (kPa) · <var>ρ</var> density of water, 1,000 kg/m³ · <var>g</var> gravity, <span data-n="const.gw">9.81</span> m/s² · <var>h</var> depth below the water surface (m)</p>
+      <p>Notice what the rule leaves out. It names the depth and nothing else: not the width of the lake, not its length, not how much water lies beyond. Engineers call the pressure of still water <span class="gl" data-term="hydrostatic">hydrostatic</span>, and in a moment we will see that it is also blind to direction.</p>
+      <p>Ten metres of water presses with about <span data-n="depth.p-kpa@h=10">98</span> kPa, roughly the pressure of the whole atmosphere above us.<label for="sn-depth-torricelli" class="sn-ref"></label><input type="checkbox" id="sn-depth-torricelli" class="margin-toggle"><span class="sidenote" data-kind="history">Galileo recorded that a suction pump could lift water no higher than about 18 braccia, around 11 m (<a data-cite="imss-vacuum">Museo Galileo</a>). In a letter of 11 June 1644 to Michelangelo Ricci, Evangelista Torricelli explained why: the air presses on the water outside the pipe, and that press can hold up a column only so tall. He showed it with mercury, which stood at about 70 cm (<a data-cite="museogalileo-torricelli">Museo Galileo</a>). The standard atmosphere, 101.325 kPa, balances <span data-n="ch02.atm-m">10.3</span> m of water.</span> That raises a fair question. The air presses on the lake's surface too, so shouldn't every reading include it? A sensor that counted the air would read <span data-n="ch02.abs-kpa@h=30">396</span> kPa thirty metres down, not <span data-n="depth.p-kpa@h=30">294</span>.<label for="mn-depth-atm" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-depth-atm" class="margin-toggle"><span class="marginnote" data-kind="source">Sea-level air: 101.325 kPa and 1.225 kg/m³, <a data-cite="usstd1976"></a>.</span> But the air presses as hard on the dam's downstream face, on the rock, on everything, and equal pushes from two sides cancel. So engineers leave it out and measure pressure above the air's, as a tyre gauge does. That is <span class="gl" data-term="gauge-pressure">gauge pressure</span>, and this book uses it throughout: the surface of still water is at zero.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A lake high in the mountains has thinner air above it than a lake at sea level. Does a gauge 30 m down read less there?</summary>
+        <p>No. It reads <span data-n="depth.p-kpa@h=30">294.3</span> kPa in both, because a gauge measures the press of the water above the air's. The thinner air lowers the pressure on the surface and on the gauge's back alike.</p>
+      </details>
+
+      <p>Below, a sensor hangs on a cable in front of a concrete dam. Drag it up and down, or use the first slider; the second slider changes the depth of the water itself:</p>
     </div>
 
     <figure class="sheet wide g-fig" id="fig-depth">
@@ -59,24 +76,222 @@
           <svg class="dwg gd g-chart" id="svg-depth-chart" viewBox="0 0 300 200" role="img" aria-label="Chart of total push on the dam against water depth. The curve bends upward: half the depth gives a quarter of the push."></svg>
         </div>
       </div>
-      <figcaption>The pressure grows in a straight line with depth, so the arrows on the dam face form a triangle, from nothing at the surface to the most at the bottom. The total push is the area of that triangle. The chart shows what that means: <strong>double the depth and the push grows four times</strong>.</figcaption>
+      <figcaption>
+        <p class="cap"><b>Water pressure grows in a straight line with depth, so the arrows on the dam's face fill a triangle.</b> The sensor hangs <var>h</var> metres below the surface and reads the gauge pressure there. The <span class="k-acc">brick-red</span> arrows show the pressure every 10 m down the face; the shaded triangle they fill is the whole push. The chart plots that push, per metre length of dam, against the depth of the water: the curve bends upward, and the open dot at half the depth sits at a quarter of the push. <span class="cap-n">The number to remember: <span data-n="const.gw">9.81</span> kPa for every metre of depth, so <span data-n="depth.p-kpa@h=30">294.3</span> kPa at 30 m.</span></p>
+        <ul class="try">
+          <li>Hold the sensor at 30 m and change the water depth. The reading doesn't move.</li>
+          <li>Set the water to 100 m, then to 50 m. The push falls to a quarter.</li>
+          <li>Drag the sensor to the foot of the dam and compare its reading with "At the foot of the dam".</li>
+        </ul>
+      </figcaption>
     </figure>
 
     <div class="col">
-      <p>The area of the triangle is ½ × (pressure at the bottom) × (depth). The depth appears twice, once in the pressure and once in the height of the wet face, so the push grows with the depth squared:</p>
+      <p>Notice that the sensor's reading depends on how far it hangs below the surface and on nothing else. Leave it 30 m down and make the water deeper: the reading stays at <span data-n="depth.p-kpa@h=30">294</span> kPa, though there is now more water beneath it and more water behind it. Notice too that the arrows on the face are the same pressures drawn as arrows, and they grow evenly, from nothing at the surface to the most at the foot.</p>
+
+      <section class="we" id="ex-depth-sensor">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The sensor 30 m down</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>A sensor 30 m below the surface of a reservoir 50 m deep. Water weighs <span data-n="const.gw">9.81</span> kN per cubic metre.</dd>
+          <dt>Find</dt><dd>The pressure on the sensor, in kPa and as tonnes on each square metre.</dd>
+          <dt>The idea</dt><dd>The pressure is the weight of the column of water standing on one square metre at the sensor's depth (<a data-ref="eq-depth-p"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Column above 1 m²: 30 m × 1 m² × 1 t/m³ = <span data-n="ch02.tonnes-m2@h=30">30</span> t</span><span class="why">a tonne for every metre of depth</span></li>
+          <li><span class="we-eq">Its weight: <span data-n="ch02.tonnes-m2@h=30">30</span> × <span data-n="const.gw">9.81</span> = <span data-n="depth.p-kpa@h=30">294.3</span> kN</span><span class="why">each tonne weighs 9.81 kN</span></li>
+          <li><span class="we-eq"><var>p</var> = <span data-n="depth.p-kpa@h=30">294.3</span> kN ÷ 1 m² = <span data-n="depth.p-kpa@h=30">294.3</span> kPa</span><span class="why">a kilonewton on each square metre is a kilopascal</span></li>
+        </ol>
+        <p class="we-ans">The sensor feels <span data-n="depth.p-kpa@h=30">294.3</span> kPa, the weight of <span data-n="ch02.tonnes-m2@h=30">30</span> tonnes on every square metre. The 20 m of water below it play no part.</p>
+        <p class="we-check"><b>Check.</b> Ten metres adds about <span data-n="depth.p-kpa@h=10">98.1</span> kPa, so thirty metres should add three times that: 3 × <span data-n="depth.p-kpa@h=10">98.1</span> = <span data-n="depth.p-kpa@h=30">294.3</span>.</p>
+        <p class="we-means"><b>What it means.</b> A pressure in still water is a property of one number, the depth. A gauge lowered to the foot of the lake dam and one lowered to the foot of the slot dam would read the same.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-depth","set":{"dp-H":50,"dp-h":30}}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-depth-sideways">Sideways too</h3>
+      <p>The column explains why a pool floor feels the water above it. It doesn't yet explain your ears, which face sideways, or a dam, which stands beside the water and not under it. One could assume that water presses mostly downward, the way a stack of bricks does, with a little left over for the walls. Bricks can do that because a brick holds its shape. Water can't. A liquid is a material that flows when anything tries to change its shape, however gently.</p>
+      <p>So suppose that at some point in still water the push from above were harder than the push from the sides. The water there would be squeezed out sideways, the way toothpaste leaves a tube, and it would start to flow. Still water doesn't flow; that is what still means. Therefore at any point in still water the push is the same in every direction: down, up, sideways and slantwise.<label for="sn-depth-wedge" class="sn-ref"></label><input type="checkbox" id="sn-depth-wedge" class="margin-toggle"><span class="sidenote" data-kind="curious">A tighter version of the argument. Take a tiny wedge of still water with one face level, one upright and one sloping. The pushes on its three faces must balance its weight. Now shrink the wedge: the pushes shrink with the faces' areas, the weight much faster, with its volume. In the limit the weight drops out, and the pushes balance only if the pressure on all three faces is the same, whatever the slope.</span> At the foot of a 50 m dam the water presses as hard on the concrete beside it as on the rock beneath it, <span data-n="depth.pb-kpa@H=50">490.5</span> kPa each way.</p>
+      <p>That settles the opening question, and in 1586 the Flemish engineer Simon Stevin found a way to see it without any algebra.<label for="sn-depth-stevin" class="sn-ref"></label><input type="checkbox" id="sn-depth-stevin" class="margin-toggle"><span class="sidenote" data-kind="history">Stevin published it in <i>De Beghinselen des Waterwichts</i> (<a data-cite="stevin1586"></a>), the first systematic treatise on hydrostatics since Archimedes. He explained the paradox, as in the figure, by imagining parts of the water set solid (<a data-cite="minnaert1976"></a>).</span> Take the lake, at rest. Imagine that all of it except a slot 2 m wide against the dam sets solid, like jelly, without changing its weight or its shape. Nothing in the lake was moving before, and setting it solid gives nothing a reason to start, so every pressure stays what it was, including every pressure on the dam. But the dam now holds back a slot of liquid water 2 m wide with a solid block behind it. The slot must push exactly as hard as the lake did. The figure below draws the argument:</p>
+
+      <figure class="fig wide" id="fig-depth-stevin">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · Stevin's argument: set the lake solid</span><span class="scale-note">Depths to scale · lake length not to scale</span></div>
+        <div class="ch02-panels">
+          <svg class="dwg" viewBox="0 0 300 222" role="img" aria-label="Panel A: a lake 50 metres deep against a concrete dam, with a triangle of pressure arrows on the dam face, growing from nothing at the surface to 490.5 kilopascals at the foot.">
+            <text x="6" y="216" class="lbl">A · The lake</text>
+            <rect x="4" y="30" width="228" height="150" class="water"/>
+            <path d="M4,30 H232" class="water-line"/>
+            <text x="100" y="26" class="lbl-s lbl-w" text-anchor="middle">← lake runs back 10 km</text>
+            <polygon points="167,180 232,180 232,30" style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:1"/>
+            <g style="stroke:var(--accent);stroke-width:1.1;fill:none">
+              <path d="M219,60 H230" marker-end="url(#arr-acc)"/><path d="M206,90 H230" marker-end="url(#arr-acc)"/><path d="M193,120 H230" marker-end="url(#arr-acc)"/><path d="M180,150 H230" marker-end="url(#arr-acc)"/>
+            </g>
+            <polygon points="232,22 244,22 292,180 232,180" style="fill:var(--m-conc)" class="edge"/>
+            <rect x="0" y="180" width="300" height="16" fill="url(#p-bedrock)" class="edge"/>
+            <text x="10" y="110" class="lbl lbl-w halo">50 m deep</text>
+            <text x="163" y="174" class="lbl-s lbl-acc halo" text-anchor="end"><tspan data-n="depth.pb-kpa@H=50">490.5</tspan> kPa</text>
+          </svg>
+          <svg class="dwg" viewBox="0 0 300 222" role="img" aria-label="Panel B: the same lake with all but a 2 metre slot against the dam set solid, with the same weight. The triangle of pressure arrows on the dam face is unchanged, 490.5 kilopascals at the foot.">
+            <defs><pattern id="depth-solid" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="water"/><path d="M0,0 V7" style="stroke:var(--water);stroke-width:1.2;opacity:.55"/></pattern></defs>
+            <text x="6" y="216" class="lbl">B · All but a 2 m slot set solid</text>
+            <rect x="4" y="30" width="222" height="150" fill="url(#depth-solid)" style="stroke:var(--water);stroke-width:1;stroke-dasharray:4 3"/>
+            <rect x="226" y="30" width="6" height="150" class="water"/>
+            <path d="M4,30 H232" class="water-line"/>
+            <text x="80" y="26" class="lbl-s lbl-w" text-anchor="middle">solid, same weight</text>
+            <polygon points="167,180 232,180 232,30" style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:1"/>
+            <g style="stroke:var(--accent);stroke-width:1.1;fill:none">
+              <path d="M219,60 H230" marker-end="url(#arr-acc)"/><path d="M206,90 H230" marker-end="url(#arr-acc)"/><path d="M193,120 H230" marker-end="url(#arr-acc)"/><path d="M180,150 H230" marker-end="url(#arr-acc)"/>
+            </g>
+            <polygon points="232,22 244,22 292,180 232,180" style="fill:var(--m-conc)" class="edge"/>
+            <rect x="0" y="180" width="300" height="16" fill="url(#p-bedrock)" class="edge"/>
+            <path d="M229,28 L222,12" class="lead"/>
+            <text x="220" y="11" class="lbl-s halo" text-anchor="end">2 m slot, still liquid</text>
+            <text x="10" y="110" class="lbl lbl-w halo">50 m deep</text>
+            <text x="163" y="174" class="lbl-s lbl-acc halo" text-anchor="end"><tspan data-n="depth.pb-kpa@H=50">490.5</tspan> kPa</text>
+          </svg>
+        </div>
+        <figcaption>
+          <p class="cap"><b>Setting most of the lake solid changes nothing, so a slot of water pushes on a dam exactly as hard as a lake does.</b> In A the dam holds a lake 50 m deep; in B everything but a 2 m slot has been set solid without changing its weight, and the solid block now holds itself up on the lake bed. The <span class="k-acc">brick-red</span> arrows are the water's pressure on the face, the same in both. <span class="cap-n">The number to remember: <span data-n="depth.pb-kpa@H=50">490.5</span> kPa at the foot of either dam, and a push of <span data-n="depth.F-kn@H=50">12,262.5</span> kN on each metre of it.</span></p>
+        </figcaption>
+      </figure>
+
+      <p>Notice that the two triangles of arrows are identical. The ten kilometres of lake behind the slot carry their own weight down into the lake bed and leave the dam alone. The size of a lake decides how much water gets out if the dam fails. The depth decides the load.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> One diver is at the bottom of a flooded mine shaft 1 m across and 10 m deep. Another is at the bottom of a swimming pool 10 m deep. Whose ears hurt more?</summary>
+        <p>They hurt the same. Both are 10 m down and both feel <span data-n="depth.p-kpa@h=10">98.1</span> kPa. The narrow shaft matters as little as the narrow slot.</p>
+      </details>
+
+      <h3 id="s-depth-push">The push on a whole dam</h3>
+      <p>A sensor gives the pressure at one point. A dam has to hold the pressure over its whole face, and that pressure changes all the way down. Draw it as <a data-ref="fig-depth"></a> does, as arrows: at the surface the arrow has no length, and it grows by <span data-n="const.gw">9.81</span> kPa for every metre down to its longest at the foot. Together the arrows fill a triangle, and the push on each metre length of dam is the area of that triangle: half its height times its width at the bottom, ½ × <var>H</var> × (<span data-n="const.gw">9.81</span> × <var>H</var>). The depth appears twice, once as the height of the wet face and once in the pressure at its foot. So the push grows with the square of the depth:</p>
       <div class="eq" id="eq-depth-push"><span class="eq-body"><var>F</var> = ½ · <var>ρ</var> · <var>g</var> · <var>H</var>²</span><span class="eq-no" data-num></span></div>
       <p class="eq-where"><var>F</var> push of the water on each metre length of dam (kN per m) · <var>H</var> depth of water at the dam (m)</p>
-      <p>A dam holding 100 m of water takes four times the push of one holding 50 m. That is why tall dams are so much thicker at the bottom than at the top. The concrete dam in <a data-ref="fig-types"></a> runs this same sum: its readouts show the pressure at the dam's upstream foot and the push per metre.</p>
+      <p>Make the water twice as deep and the triangle is twice as tall and twice as wide at the bottom, so four copies of the first triangle fit inside it. The film later in this chapter draws them tiling, at 2:05. A dam holding 100 m of water takes four times the push of one holding 50 m.</p>
 
-      <h3 id="s-depth-ground">Water in the ground has pressure too</h3>
-      <p>Dig a hole in the sand near the sea and it fills with water from below. The water in the hole settles at a level, and below that level every gap between the grains is full of water. That level is the <span class="gl" data-term="water-table">water table</span>.</p>
-      <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so while it is still it obeys the same rule as the water in a lake. A metre below the water table it is at about <span data-n="depth.p-kpa@h=1">10</span> kPa. Ten metres down it is at about <span data-n="depth.p-kpa@h=10">98</span> kPa, pushing outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>, and <a data-ref="ch-grip"></a> turns on it.</p>
-    </div>
-    <div class="col" data-stub>
-      <!-- New (H.3): the still-cube argument, Stevin, gauge pressure, where the push acts (H/3),
-           the right reason a dam is a triangle (fig-depth-triangle), water on a sloping face;
-           eq-depth-p and eq-depth-push replace the two div.formula boxes; worked examples
-           ex-depth-sensor, ex-depth-push, ex-depth-slot, ex-depth-triangle, ex-depth-sloping. -->
+      <h3 id="s-depth-arm">Where the push acts</h3>
+      <p>A push on a dam does two things. It tries to slide the dam downstream, and it tries to tip it over about its downstream foot, the way you tip a bookcase by pushing near its top. For tipping, where the push acts matters as much as how big it is. Most of the triangle sits low down: the bottom third of the face carries <span data-n="ch02.bottom-pct">56</span>% of the push.<label for="sn-depth-third" class="sn-ref"></label><input type="checkbox" id="sn-depth-third" class="margin-toggle"><span class="sidenote" data-kind="curious">Why <span data-n="ch02.bottom-pct">56</span>%: the push above any level grows with the square of its depth, so the top two thirds of the face carry (⅔)² = 4/9 of the whole, and the bottom third the other 5/9. The same lopsidedness puts a triangle's centre of area a third of the way up from its wide side.</span> Add up all the arrows and the whole push acts as though it were gathered at one point, the centre of the triangle, a third of the way up the face, at <var>H</var>/3. Its tipping effect about the foot, the <i>moment</i>, is the push times that height:</p>
+      <div class="eq" id="eq-depth-moment"><span class="eq-body"><var>M</var> = <var>F</var> · <var>H</var>/3 = <var>ρ</var> · <var>g</var> · <var>H</var>³ / 6</span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>M</var> tipping moment about the foot, per metre length of dam (kN·m per m, or MN·m per m)</p>
+      <p>Double the depth and the push grows four times while the height it acts at doubles, so the tipping effect grows eight times. Here are all three numbers for the dams of the opening question:</p>
+
+      <section class="we" id="ex-depth-push">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The push on a 50 m dam, and where it acts</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Still water <var>H</var> = 50 m deep against an upright face; each metre of depth adds <span data-n="const.gw">9.81</span> kPa.</dd>
+          <dt>Find</dt><dd>The pressure at the foot; the push on each metre of dam, in kilonewtons and as tonnes; the height it acts at; its tipping moment about the foot.</dd>
+          <dt>The idea</dt><dd>The push is the area of the pressure triangle (<a data-ref="eq-depth-push"></a>) and acts at its centre, a third of the way up (<a data-ref="eq-depth-moment"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>p</var> at the foot = <span data-n="const.gw">9.81</span> × 50 = <span data-n="depth.pb-kpa@H=50">490.5</span> kPa</span><span class="why">the width of the triangle at its base</span></li>
+          <li><span class="we-eq"><var>F</var> = ½ × <span data-n="depth.pb-kpa@H=50">490.5</span> × 50 = <span data-n="depth.F-kn@H=50">12,262.5</span> kN per metre</span><span class="why">half the base times the height of the triangle</span></li>
+          <li><span class="we-eq"><span data-n="depth.F-kn@H=50">12,262.5</span> ÷ <span data-n="const.gw">9.81</span> = <span data-n="ch02.tonnes@H=50">1,250</span> t</span><span class="why">the push, as the weight of so many tonnes</span></li>
+          <li><span class="we-eq">Height of the push: 50 ÷ 3 = <span data-n="depth.arm-m@H=50">16.7</span> m above the foot</span><span class="why">the triangle's centre</span></li>
+          <li><span class="we-eq"><var>M</var> = <span data-n="depth.F-kn@H=50">12,262.5</span> × <span data-n="depth.arm-m@H=50">16.67</span> = <span data-n="depth.moment-mnm@H=50">204.4</span> MN·m per metre</span><span class="why">push times its height; 1 MN·m is 1,000 kN·m</span></li>
+          <li><span class="we-eq">At <var>H</var> = 100 m: <var>F</var> = <span data-n="depth.F-kn@H=100">49,050</span> kN, <var>M</var> = <span data-n="depth.moment-mnm@H=100">1,635</span> MN·m</span><span class="why">the same steps with the depth doubled</span></li>
+        </ol>
+        <p class="we-ans">Each metre of a 50 m dam carries a push as heavy as <span data-n="ch02.tonnes@H=50">1,250</span> tonnes, acting <span data-n="depth.arm-m@H=50">16.7</span> m up. At 100 m the push is <span data-n="ch02.F-ratio@a=100,b=50">4</span> times as big and the tipping moment <span data-n="ch02.M-ratio@a=100,b=50">8</span> times.</p>
+        <p class="we-check"><b>Check.</b> Water weighs a tonne per cubic metre, so for water the push in tonnes is ½ × <var>H</var> × <var>H</var>: ½ × 50 × 50 = <span data-n="ch02.tonnes@H=50">1,250</span>, which is what the figure's readout says.</p>
+        <p class="we-means"><b>What it means.</b> The height of the water is what a dam pays for. Each extra metre of depth costs more than the one before.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-depth","set":{"dp-H":50,"dp-h":50}}'>Set the figure</button></p>
+      </section>
+
+      <p>Now the slot, which looked as though it could never push that hard:</p>
+
+      <section class="we" id="ex-depth-slot">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">A hundred tonnes that push like 1,250</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The slot of the opening question: water 2 m wide and 50 m deep, between a dam and solid rock. Water: a tonne per cubic metre.</dd>
+          <dt>Find</dt><dd>The weight of the water in the slot, per metre length of dam, and the push it puts on the dam.</dd>
+          <dt>The idea</dt><dd>The water's weight goes down into the slot's floor; its push on the dam depends only on the depth.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Water per metre of dam: 2 m × 50 m × 1 m = <span data-n="ch02.slot-tonnes">100</span> m³, so <span data-n="ch02.slot-tonnes">100</span> t</span><span class="why">a tonne per cubic metre</span></li>
+          <li><span class="we-eq">Push on the dam: <span data-n="depth.F-kn@H=50">12,262.5</span> kN, as heavy as <span data-n="ch02.tonnes@H=50">1,250</span> t</span><span class="why">the same as the lake's, from <a data-ref="ex-depth-push"></a></span></li>
+          <li><span class="we-eq"><span data-n="ch02.tonnes@H=50">1,250</span> ÷ <span data-n="ch02.slot-tonnes">100</span> = <span data-n="ch02.slot-ratio">12.5</span></span><span class="why">push over the water's own weight</span></li>
+        </ol>
+        <p class="we-ans"><span data-n="ch02.slot-tonnes">100</span> tonnes of water push on the dam with the weight of <span data-n="ch02.tonnes@H=50">1,250</span> tonnes, <span data-n="ch02.slot-ratio">12.5</span> times their own weight.</p>
+        <p class="we-check"><b>Check.</b> Where can a sideways push bigger than the water's weight come from? The water sits between two faces, the dam and the rock, and presses on both equally. The rock pushes back on the water as hard as the dam does, from the other side, so the two pushes balance and nothing moves. The floor carries the <span data-n="ch02.slot-tonnes">100</span> tonnes. Every force on the slot's water balances.</p>
+        <p class="we-means"><b>What it means.</b> Pressure is not weight. A thin layer of water can carry an enormous push as long as it is deep, which is why a narrow crack under a dam, filled from the reservoir, matters so much in <a data-ref="ch-concrete"></a>.</p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A reservoir is raised from 50 m to 60 m deep. Does the tipping moment on the dam grow by more or less than the push?</summary>
+        <p>By more. The push grows by (60/50)² = <span data-n="ch02.F-ratio@a=60,b=50">1.44</span> times, the moment by (60/50)³ = <span data-n="ch02.M-ratio@a=60,b=50">1.73</span> times.</p>
+      </details>
+
+      <h3 id="s-depth-triangle">Why a concrete dam is a triangle</h3>
+      <p>Look at a concrete dam from the side and it is close to a triangle, narrow at the top and wide at the foot. One could assume the reason is that the pressure is greatest at the bottom, so the wall needs to be thickest there. That is part of it, but it would equally justify a wall thick all the way down. The full reason is about every level of the dam at once.</p>
+      <p>Cut the dam in your mind along a level line, <var>z</var> metres below the water's surface. Everything above the cut has to hold against the water above the cut, or it would slide or tip off along that line; so engineers check a concrete dam at levels all the way up, not only at its base. What holds it is its weight, pressing down on the concrete below (<a data-ref="ch-grip"></a> shows how a press becomes a grip). The push of the water above the cut grows with <var>z</var>². For a triangle, the width at depth <var>z</var> is proportional to <var>z</var>, so the area above the cut, half its width times its height, grows with <var>z</var>² as well. Push and weight grow in step. The figure shows three cuts:</p>
+
+      <figure class="fig wide" id="fig-depth-triangle">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · Weight and push above three levels of a triangular dam</span><span class="scale-note">Section to scale · bars to scale with each other</span></div>
+        <p class="ch02-key"><span class="ch02-sw ch02-sw-acc"></span>push of the water above the cut <span class="ch02-sw ch02-sw-ok"></span>weight of concrete above the cut <span class="ch02-unit">kN per metre of dam</span></p>
+        <svg class="dwg" viewBox="0 0 460 240" role="img" aria-label="A triangular concrete dam 50 metres tall holding water to its top, cut by three dashed level lines at 15, 30 and 45 metres below the surface. Beside each cut, a red bar shows the push of the water above the cut and a green bar the weight of concrete above it. Both bars grow ninefold from the top cut to the bottom one, and the green bar is always 1.92 times the red.">
+          <rect x="10" y="20" width="120" height="200" class="water"/>
+          <path d="M10,20 H130" class="water-line"/>
+          <polygon points="130,14 130,220 290,220" style="fill:var(--m-conc)" class="edge"/>
+          <rect x="0" y="220" width="460" height="14" fill="url(#p-bedrock)" class="edge"/>
+          <g style="stroke:var(--ink-2);stroke-width:1;stroke-dasharray:5 4;fill:none">
+            <path d="M10,80 H296"/><path d="M10,140 H296"/><path d="M10,200 H296"/>
+          </g>
+          <text x="16" y="75" class="lbl halo"><tspan font-style="italic">z</tspan> = 15 m</text>
+          <text x="16" y="135" class="lbl halo"><tspan font-style="italic">z</tspan> = 30 m</text>
+          <text x="16" y="195" class="lbl halo"><tspan font-style="italic">z</tspan> = 45 m</text>
+          <text x="16" y="36" class="lbl-s lbl-w halo">water to the top</text>
+          <text x="150" y="178" class="lbl-s halo">concrete</text>
+          <rect x="300" y="70" width="5.2" height="8" style="fill:var(--accent)"/>
+          <rect x="300" y="81" width="10" height="8" style="fill:var(--ok)"/>
+          <text x="316" y="77" class="lbl-s lbl-acc halo"><tspan data-n="ch02.tri-f-kn@z=15">1,104</tspan></text>
+          <text x="316" y="91" class="lbl-s halo" style="fill:var(--ok)"><tspan data-n="ch02.tri-w-kn@z=15">2,115</tspan></text>
+          <rect x="300" y="130" width="20.9" height="8" style="fill:var(--accent)"/>
+          <rect x="300" y="141" width="40" height="8" style="fill:var(--ok)"/>
+          <text x="326" y="137" class="lbl-s lbl-acc halo"><tspan data-n="ch02.tri-f-kn@z=30">4,415</tspan></text>
+          <text x="346" y="151" class="lbl-s halo" style="fill:var(--ok)"><tspan data-n="ch02.tri-w-kn@z=30">8,460</tspan></text>
+          <rect x="300" y="190" width="47" height="8" style="fill:var(--accent)"/>
+          <rect x="300" y="201" width="90" height="8" style="fill:var(--ok)"/>
+          <text x="353" y="197" class="lbl-s lbl-acc halo"><tspan data-n="ch02.tri-f-kn@z=45">9,933</tspan></text>
+          <text x="396" y="211" class="lbl-s halo" style="fill:var(--ok)"><tspan data-n="ch02.tri-w-kn@z=45">19,035</tspan></text>
+        </svg>
+        <figcaption>
+          <p class="cap"><b>In a triangular section the weight above any level grows with the square of the depth, exactly as the push does, so every level is equally safe.</b> The section is 0.8 times as wide as it is deep at every level, the proportions of the concrete dam in <a data-ref="ch-concrete"></a>. Beside each dashed cut, the <span class="k-acc">brick-red</span> bar is the push of the water above that cut and the <span class="k-ok">green</span> bar the weight of the concrete above it, both per metre length of dam. From the top cut to the bottom one the depth triples and both bars grow ninefold. <span class="cap-n">The number to remember: the weight is <span data-n="ch02.tri-ratio">1.92</span> times the push at every level.</span></p>
+        </figcaption>
+      </figure>
+
+      <p>Notice that the green bar stays the same multiple of the red one at all three cuts, though both grow ninefold between the top cut and the bottom. Here is the arithmetic for any level:</p>
+
+      <section class="we" id="ex-depth-triangle">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Why the triangle keeps step</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>A concrete section with an upright upstream face, <span data-n="ch02.tri-k">0.8</span><var>z</var> wide at depth <var>z</var>, water to its top. Concrete weighs <span data-n="const.gconc">23.5</span> kN/m³, water <span data-n="const.gw">9.81</span> kN/m³.</dd>
+          <dt>Find</dt><dd>At any depth <var>z</var>: the weight of concrete above that level, the push of water above it, and how they compare, for sliding and for tipping.</dd>
+          <dt>The idea</dt><dd>Both are areas of triangles whose sides grow with <var>z</var>, so both grow with <var>z</var>². Tipping adds one more factor of <var>z</var> to each, through the lever arms.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Weight above <var>z</var>: ½ × <span data-n="ch02.tri-k">0.8</span><var>z</var> × <var>z</var> × <span data-n="const.gconc">23.5</span> = <span data-n="ch02.tri-w-coef">9.40</span> <var>z</var>² kN</span><span class="why">area of the triangle above the cut, times concrete's unit weight</span></li>
+          <li><span class="we-eq">Push above <var>z</var>: ½ × <span data-n="const.gw">9.81</span> × <var>z</var>² = <span data-n="ch02.tri-f-coef">4.905</span> <var>z</var>² kN</span><span class="why"><a data-ref="eq-depth-push"></a> with the depth to the cut</span></li>
+          <li><span class="we-eq">Weight ÷ push = <span data-n="ch02.tri-w-coef">9.40</span> ÷ <span data-n="ch02.tri-f-coef">4.905</span> = <span data-n="ch02.tri-ratio">1.92</span></span><span class="why"><var>z</var>² cancels: the same at every level</span></li>
+          <li><span class="we-eq">Holding moment: <span data-n="ch02.tri-w-coef">9.40</span><var>z</var>² × ⅔ × <span data-n="ch02.tri-k">0.8</span><var>z</var> = <span data-n="ch02.tri-mw-coef">5.01</span> <var>z</var>³</span><span class="why">the weight acts a third of the width from the upright face, two thirds from the toe</span></li>
+          <li><span class="we-eq">Tipping moment: <span data-n="ch02.tri-f-coef">4.905</span><var>z</var>² × <var>z</var>/3 = <span data-n="ch02.tri-mf-coef">1.635</span> <var>z</var>³</span><span class="why">the push acts a third of the way up, <a data-ref="eq-depth-moment"></a></span></li>
+          <li><span class="we-eq">Holding ÷ tipping = <span data-n="ch02.tri-mw-coef">5.01</span> ÷ <span data-n="ch02.tri-mf-coef">1.635</span> = <span data-n="ch02.tri-tip-ratio">3.07</span></span><span class="why"><var>z</var>³ cancels too</span></li>
+        </ol>
+        <p class="we-ans">Above every level of the triangle the concrete weighs <span data-n="ch02.tri-ratio">1.92</span> times the push, and holds <span data-n="ch02.tri-tip-ratio">3.07</span> times the tipping moment.</p>
+        <p class="we-check"><b>Check.</b> At <var>z</var> = 30 m: weight <span data-n="ch02.tri-w-kn@z=30">8,460</span> kN, push <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> kN, and <span data-n="ch02.tri-w-kn@z=30">8,460</span> ÷ <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> = <span data-n="ch02.tri-ratio">1.92</span>. At <var>z</var> = 45 m: <span data-n="ch02.tri-w-kn@z=45">19,035</span> ÷ <span data-n="ch02.tri-f-kn@z=45">9,932.6</span> = <span data-n="ch02.tri-ratio">1.92</span>.</p>
+        <p class="we-means"><b>What it means.</b> A triangle gives every level the same margin, so no level is weaker than the rest and none carries concrete it does not need. What this leaves out, water seeping under the dam and pushing it up, is the subject of <a data-ref="ch-concrete"></a>.</p>
+      </section>
+
+      <p>To see what the shape buys, compare a wall with straight sides that uses the same concrete. Down to 50 m the triangle holds <span data-n="ch02.tri-area-m2@z=50">1,000</span> m³ of concrete for every metre of dam, so the straight wall is <span data-n="ch02.rect-b-m@z=50">20</span> m thick. Its weight above a cut grows only in proportion to the depth, while the push grows with the depth squared. Ten metres down it weighs <span data-n="ch02.rect-ratio@z=10,b=20">9.6</span> times the push above, far more than it needs. At the foot its weight is the same <span data-n="ch02.rect-ratio@z=50,b=20">1.92</span> times the push as the triangle's, but against tipping it holds only <span data-n="ch02.rect-tip@z=50,b=20">1.15</span> times the moment where the triangle holds <span data-n="ch02.tri-tip-ratio">3.07</span>, because its weight sits closer to the downstream toe. The triangle puts its concrete where the push is.</p>
+      <p>Dams that hold back their water by their own weight in this way are called <span class="gl" data-term="gravity-dam">gravity dams</span>, and real ones are close to this shape. Revelstoke Dam on the Columbia River is 175 m high and 126 m thick at its base,<label for="mn-depth-rev" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-depth-rev" class="margin-toggle"><span class="marginnote" data-kind="source">Height: <a data-cite="bchydro-revelstoke2013"></a>. Base thickness, 126 m, and 9 m at the crest: <a data-cite="bchydro-cbrac2016"></a>.</span> a base <span data-n="ch02.rev-ratio">0.72</span> times its height, a little slimmer than the <span data-n="ch02.tri-k">0.8</span> used here. BC Hydro describes it as relying on its massive weight and the friction that weight produces to hold back the reservoir.</p>
+      <p>The first three minutes of the film <i>Depth, not size</i> retell the chapter up to this point, in pictures:</p>
     </div>
 
     <figure class="film wide" id="film-depth-not-size">
@@ -95,19 +310,150 @@
         <li><button type="button" data-t="51.1">0:51</button> <span class="fm-l">Your ears, then a pressure gauge</span> <a data-ref="eq-depth-p"></a></li>
         <li><button type="button" data-t="100.3">1:40</button> <span class="fm-l">Arrows that fill a triangle</span> <a data-ref="fig-depth"></a></li>
         <li><button type="button" data-t="125.6">2:05</button> <span class="fm-l">Twice as deep, four triangles</span> <a data-ref="eq-depth-push"></a></li>
-        <li><button type="button" data-t="160.8">2:40</button> <span class="fm-l">Why a gravity dam is a triangle</span></li>
+        <li><button type="button" data-t="160.8">2:40</button> <span class="fm-l">Why a gravity dam is a triangle</span> <a data-ref="ex-depth-triangle"></a></li>
       </ol>
       <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
       <figcaption>
         <p class="film-after"><b>After you watch.</b> Four copies, so twice the depth gives four times the push: the square in <a data-ref="eq-depth-push"></a>, drawn instead of written. The film's dam is where <a data-ref="fig-depth"></a> starts, 50 m of water and a push as heavy as <span data-n="depth.tonnes@H=50">1,250</span> tonnes on every metre of dam. Set the water to 100 m and the readout goes to <span data-n="depth.tonnes@H=100">5,000</span>. <button type="button" class="set-fig" data-set='{"fig":"fig-depth","set":{"dp-H":100}}'>Set the figure</button></p>
       </figcaption>
     </figure>
-  <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.3): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+
+    <div class="col">
+      <h3 id="s-depth-slope">Water on a sloping face</h3>
+      <p>Most of the dams in the rest of this book are embankments, heaps of earth and rock whose upstream face leans back at a gentle slope. Engineers write a slope as two numbers, across then up: 2H:1V means two metres across for every metre up. The still-water argument holds on any face, at any angle: the water presses equally in every direction, so on a surface it presses straight at it, at right angles. On a sloping face the arrows tilt. They point down into the slope as well as across it. Here is a 24 m embankment with a 2H:1V upstream face holding water <span data-n="lab.res-m">20.4</span> m deep, the dam of the seepage lab in <a data-ref="fig-lab"></a>:</p>
+
+      <figure class="fig wide" id="fig-depth-sloping">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · Water on a sloping face</span><span class="scale-note">Section to scale · force diagram to scale with itself</span></div>
+        <svg class="dwg" viewBox="0 0 460 280" role="img" aria-label="An earth embankment with an upstream face sloping two across for every one up, holding water 20.4 metres deep. Red arrows press on the face at right angles, longer with depth. The water standing above the face is hatched. Below, a force diagram splits the whole push of 4,564 kilonewtons per metre into 2,041 across and 4,083 down.">
+          <defs>
+            <pattern id="depth-wedge" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="water"/><path d="M0,0 V7" style="stroke:var(--water);stroke-width:1.1;opacity:.5"/></pattern>
+            <marker id="depth-arr-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ok)"/></marker>
+            <marker id="depth-arr-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker>
+          </defs>
+          <polygon points="0,68 224,68 20,170 0,170" class="water"/>
+          <polygon points="20,68 224,68 20,170" fill="url(#depth-wedge)"/>
+          <path d="M20,68 V170" style="stroke:var(--water);stroke-width:1;stroke-dasharray:4 3;fill:none"/>
+          <path d="M0,68 H224" class="water-line"/>
+          <polygon points="20,170 260,50 290,50 460,135 460,170" fill="url(#p-fill)" class="edge"/>
+          <rect x="0" y="170" width="460" height="12" fill="url(#p-bedrock)" class="edge"/>
+          <g style="stroke:var(--accent);stroke-width:1.2;fill:none">
+            <path d="M168.9,82.7 L173.3,91.7" marker-end="url(#arr-acc)"/>
+            <path d="M114.4,98.8 L123.3,116.7" marker-end="url(#arr-acc)"/>
+            <path d="M59.9,114.8 L73.3,141.7" marker-end="url(#arr-acc)"/>
+            <path d="M5.4,130.9 L23.3,166.7" marker-end="url(#arr-acc)"/>
+          </g>
+          <text x="26" y="86" class="lbl-s halo">water on</text>
+          <text x="26" y="100" class="lbl-s halo">the face</text>
+          <text x="205" y="132" class="lbl halo" transform="rotate(-26.57 205 132)" text-anchor="middle">upstream face, 2H:1V</text>
+          <text x="370" y="118" class="lbl-s halo" text-anchor="middle">embankment</text>
+          <text x="4" y="61" class="lbl lbl-w halo"><tspan data-n="lab.res-m">20.4</tspan> m deep</text>
+          <path d="M20,42 H224 M20,38 V46 M224,38 V46" class="dim"/>
+          <text x="122" y="35" class="lbl-s halo" text-anchor="middle">face runs <tspan data-n="ch02.slope-run-m">40.8</tspan> m across</text>
+          <!-- force diagram, to scale with itself: across 32 px, down 64 px; the whole push at right angles to the face -->
+          <text x="10" y="214" class="lbl-s">The whole push on each</text>
+          <text x="10" y="229" class="lbl-s">metre of dam, in kN,</text>
+          <text x="10" y="244" class="lbl-s">split in two:</text>
+          <path d="M230,206 H261" style="stroke:var(--accent);stroke-width:2;fill:none" marker-end="url(#arr-acc)"/>
+          <path d="M262,206 V269" style="stroke:var(--ok);stroke-width:2;fill:none" marker-end="url(#depth-arr-ok)"/>
+          <path d="M230,206 L261.5,269" style="stroke:var(--ink);stroke-width:1.6;fill:none" marker-end="url(#depth-arr-ink)"/>
+          <text x="246" y="200" class="lbl-s lbl-acc halo" text-anchor="middle">across <tspan data-n="ch02.slope-h-kn">2,041</tspan></text>
+          <text x="272" y="234" class="lbl-s halo" style="fill:var(--ok)">down <tspan data-n="ch02.slope-v-kn">4,083</tspan></text>
+          <text x="272" y="262" class="lbl-s halo">whole push <tspan data-n="ch02.slope-r-kn">4,564</tspan>,</text>
+          <text x="272" y="276" class="lbl-s halo">at right angles to the face</text>
+        </svg>
+        <figcaption>
+          <p class="cap"><b>On a sloping face the water presses at right angles to the slope, so it pushes the dam down as well as across.</b> The <span class="k-acc">brick-red</span> arrows are the water's pressure, longer with depth, each at right angles to the face. The hatched wedge is the water standing on the face, which the face holds up like a floor. Below, the whole push on each metre of dam is split in two: <span class="k-acc">across</span>, the same as on an upright wall of the same depth, and <span class="k-ok">down</span>, the weight of the hatched water. <span class="cap-n">The number to remember: on a 2H:1V face the water presses down <span data-n="ch02.slope-ratio">2</span> times as hard as it pushes across.</span></p>
+        </figcaption>
+      </figure>
+
+      <p>Notice that you can split the push in two. Across, it is exactly the push on an upright wall of the same depth, because a sideways push only counts the face's height. Down, it is the weight of the wedge of water standing on the face.</p>
+
+      <section class="we" id="ex-depth-sloping">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Water pressing an embankment down</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>An upstream face at 2H:1V holding still water <var>H</var> = <span data-n="lab.res-m">20.4</span> m deep; water weighs <span data-n="const.gw">9.81</span> kN/m³.</dd>
+          <dt>Find</dt><dd>The push of the water on each metre length of dam, across and down, and the whole push.</dd>
+          <dt>The idea</dt><dd>Across: the pressure triangle on the face's height, <a data-ref="eq-depth-push"></a>. Down: the weight of the water standing on the face.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Run of the wet face: 2 × <span data-n="lab.res-m">20.4</span> = <span data-n="ch02.slope-run-m">40.8</span> m</span><span class="why">two across for every one up</span></li>
+          <li><span class="we-eq">Across: ½ × <span data-n="const.gw">9.81</span> × <span data-n="lab.res-m">20.4</span>² = <span data-n="ch02.slope-h-kn">2,041</span> kN</span><span class="why">as on an upright wall 20.4 m tall</span></li>
+          <li><span class="we-eq">Water on the face: ½ × <span data-n="ch02.slope-run-m">40.8</span> × <span data-n="lab.res-m">20.4</span> = <span data-n="ch02.slope-wedge-m2">416.2</span> m³</span><span class="why">the hatched wedge, per metre of dam</span></li>
+          <li><span class="we-eq">Down: <span data-n="ch02.slope-wedge-m2">416.2</span> × <span data-n="const.gw">9.81</span> = <span data-n="ch02.slope-v-kn">4,083</span> kN</span><span class="why">the wedge's weight, which the face holds up</span></li>
+          <li><span class="we-eq">Whole push: √(<span data-n="ch02.slope-h-kn">2,041</span>² + <span data-n="ch02.slope-v-kn">4,083</span>²) = <span data-n="ch02.slope-r-kn">4,564</span> kN</span><span class="why">the two parts at right angles</span></li>
+        </ol>
+        <p class="we-ans">The water presses each metre of the embankment down with <span data-n="ch02.slope-v-kn">4,083</span> kN and across with <span data-n="ch02.slope-h-kn">2,041</span> kN: twice as hard down as across.</p>
+        <p class="we-check"><b>Check.</b> Every arrow is at right angles to the face, so the whole push must be too. Its angle from the vertical has a tangent of <span data-n="ch02.slope-h-kn">2,041</span> ÷ <span data-n="ch02.slope-v-kn">4,083</span> = <span data-n="ch02.slope-tan">0.50</span>, which is <span data-n="ch02.slope-r-deg">26.6</span>°, the same as the face's angle from the horizontal, <span data-n="ch02.slope-deg">26.6</span>°. At the other extreme, an upright face has no water standing on it and the downward part vanishes, as on the concrete dam.</p>
+        <p class="we-means"><b>What it means.</b> On an embankment the reservoir mostly presses the dam onto its foundation, which helps it grip. The picture is exact for a watertight face, such as a concrete skin on rockfill; in an earth dam the water also soaks into the face, and <a data-ref="ch-seepage"></a> follows it inside. <a data-ref="ch-slope"></a> shows what happens when the reservoir is let down fast: the help on the face goes, while the water inside the dam stays.</p>
+      </section>
+
+      <h3 id="s-depth-ground">Water in the ground has pressure too</h3>
+      <p>Dig a hole in the sand near the sea and it fills with water from below. The water in the hole settles at a level, and below that level every gap between the grains is full of water. That level is the <span class="gl" data-term="water-table">water table</span>.</p>
+      <p>The water in those gaps is joined up from gap to gap, like the water in a soaked sponge, so while it is still it obeys the same rule as the water in a lake. A metre below the water table it presses at <span data-n="depth.p-kpa@h=1">9.81</span> kPa, ten metres down at <span data-n="depth.p-kpa@h=10">98.1</span> kPa, and at every point it presses equally in every direction, outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>, written <var>u</var>. It is the water half of this book's one sentence: <a data-ref="ch-grip"></a> shows how it takes away the press of grain on grain that gives soil its strength.</p>
+      <p>The important word there is <i>still</i>. The water in a lake is still. The water in the ground under a dam almost never is: it creeps through the gaps from the reservoir toward the far side of the dam, and moving water does not keep to the rule of this chapter.</p>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>Still water presses equally in every direction, and how hard depends only on the depth: <span data-n="const.gw">9.81</span> kPa for every metre. The size of the lake does not enter.</li>
+        <li>The push on each metre of dam is the area of the pressure triangle, ½·<var>ρ</var>·<var>g</var>·<var>H</var>², acting a third of the way up. Double the depth and the push grows four times, its tipping effect eight.</li>
+        <li>A gravity dam is a triangle because the weight above any level then grows with the square of the depth, as the push does, so every level is equally safe.</li>
+        <li>On a sloping face the water presses at right angles to the slope; on an embankment it presses the dam down harder than it pushes it across.</li>
+        <li>Water in the gaps of soaked ground follows the same rule while it is still. That pore pressure pushes outward on every grain, which is how water starts to take away the grains' press on one another.</li>
+      </ul>
+    </div>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-depth-rise" data-tag="reckon" data-level="1">
+          <p>A reservoir is raised from 40 m deep to 60 m. By what factor does the push on each metre of its dam grow?</p>
+          <details class="q-hint"><summary>Hint</summary><p>The push grows with the depth squared, so compare 60² with 40².</p></details>
+          <div class="q-answer"><p>From <span data-n="depth.F-mn@H=40">7.85</span> MN to <span data-n="depth.F-mn@H=60">17.66</span> MN per metre, a factor of (60/40)² = <span data-n="ch02.F-ratio@a=60,b=40">2.25</span>. Half as deep again more than doubles the push.</p></div>
+        </li>
+        <li class="q" id="q-depth-seventy" data-tag="explore" data-level="1">
+          <p>Predict the push on each metre of dam when the water is 70 m deep, then set the figure and check. How does it compare with the push at 50 m?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-depth","set":{"dp-H":70}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>70² is close to 2 × 50².</p></details>
+          <div class="q-answer"><p><span data-n="depth.F-mn@H=70">24.0</span> MN per metre, as heavy as <span data-n="depth.tonnes@H=70">2,450</span> tonnes: <span data-n="ch02.F-ratio@a=70,b=50">1.96</span> times the push at 50 m, because 70² = 4,900 is nearly twice 50² = 2,500.</p></div>
+        </li>
+        <li class="q" id="q-depth-ears" data-tag="check" data-level="1">
+          <p>Your ears hurt 3 m down in a pool, but not after a 30 m ride up a lift in a tall building. Why?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Both are the same rule, <a data-ref="eq-depth-p"></a>, with a different fluid. How dense is air compared with water?</p></details>
+          <div class="q-answer"><p>Three metres of water changes the pressure by <span data-n="depth.p-kpa@h=3">29.4</span> kPa. Thirty metres of sea-level air, at 1.225 kg/m³ (<a data-cite="usstd1976"></a>), changes it by only <span data-n="ch02.air-kpa@h=30">0.36</span> kPa, because water is about <span data-n="ch02.air-ratio">816</span> times denser than air. The ears feel the difference.</p></div>
+        </li>
+        <li class="q" id="q-depth-arm" data-tag="reckon" data-level="2">
+          <p>Where does the push on a dam holding 50 m of water act, and by what factor does its tipping moment grow if the water is twice as deep?</p>
+          <details class="q-hint"><summary>Hint</summary><p>The push acts at the centre of the pressure triangle; the moment is push times height.</p></details>
+          <div class="q-answer"><p><span data-n="depth.arm-m@H=50">16.7</span> m above the foot, a third of the way up. Doubling the depth doubles that height and quadruples the push, so the moment grows <span data-n="ch02.M-ratio@a=100,b=50">8</span> times, from <span data-n="depth.moment-mnm@H=50">204</span> to <span data-n="depth.moment-mnm@H=100">1,635</span> MN·m per metre.</p></div>
+        </li>
+        <li class="q" id="q-depth-slope" data-tag="check" data-level="2">
+          <p>Is the water on an embankment's sloping upstream face a danger or a help to the dam's stability?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Split its push into the part across and the part down. What does each do?</p></details>
+          <div class="q-answer"><p>Mostly a help. On a 2H:1V face the water presses down <span data-n="ch02.slope-ratio">2</span> times as hard as it pushes across (<a data-ref="ex-depth-sloping"></a>), and pressing down holds the dam onto its foundation. That is exact for a watertight face; in an earth dam some of the water soaks into the slope (<a data-ref="ch-seepage"></a>). The sideways part still has to be resisted, and the help disappears when the reservoir is let down quickly, the subject of <a data-ref="ch-slope"></a>.</p></div>
+        </li>
+        <li class="q" id="q-depth-revelstoke" data-tag="case" data-level="2">
+          <p>Revelstoke Dam is 175 m high and 126 m thick at its base. Suppose water stood against it right to the top (a real reservoir is kept a little below the crest). What would the pressure be at its foot, and the push on each metre of dam? How does its base compare with the triangle of <a data-ref="ex-depth-triangle"></a>?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Use <a data-ref="eq-depth-p"></a> and <a data-ref="eq-depth-push"></a> with <var>H</var> = 175 m; in tonnes, the push is ½ × <var>H</var>².</p></details>
+          <div class="q-answer"><p>At the foot <span data-n="depth.pb-mpa@H=175">1.72</span> MPa (<span data-n="const.gw">9.81</span> × 175 kPa). The push is <span data-n="depth.F-mn@H=175">150</span> MN per metre, as heavy as about <span data-n="ch02.tonnes@H=175" data-n-sig="3">15,300</span> tonnes. Its base is <span data-n="ch02.rev-ratio">0.72</span> times its height, against <span data-n="ch02.tri-k">0.8</span> in the example: the same family of shape, a little slimmer. Dimensions from <a data-cite="bchydro-revelstoke2013"></a> and <a data-cite="bchydro-cbrac2016"></a>.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="ciechanowski2021"></cite> <span class="level">gentle</span> An interactive essay that measures pressure with gauges you can watch, shows that it depends on height alone (including the arrangement known as Pascal's barrel), and draws pressure as arrows at right angles to a surface, before going on to ships.</li>
+        <li><cite data-cite="feynman1964"></cite> <span class="level">serious</span> Section 40-1, Hydrostatics, makes this chapter's argument in the language of a physics course: why a fluid at rest carries no shear, why its pressure is then the same in every direction, and how it changes with height.</li>
+        <li><cite data-cite="usbr1987"></cite> <span class="level">serious</span> Its chapter on concrete gravity dams shows how engineers turn the water's push into a design: the loads on a gravity section and the checks against sliding and overturning. Free from the Bureau of Reclamation.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">All of this assumed the water was still. In a lake it is. In the ground under a dam it almost never is: it creeps through the gaps between the grains, and as it moves, its pressure stops following this chapter's neat rule. Which way does it go, and what makes it move?</p></nav>
   </section>
 </section>

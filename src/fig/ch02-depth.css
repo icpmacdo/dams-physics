@@ -1,0 +1,23 @@
+/* Chapter 2's static figures (book/SPEC.md F.10). Label sizes go through --fs so the floor in
+   styles-book.css can lift them on a phone. */
+#fig-depth-stevin .ch02-panels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 22px; max-width: 760px; }
+#fig-depth-stevin svg.dwg { display: block; width: 100%; height: auto; }
+#fig-depth-stevin svg.dwg text { --fs: 12px; }
+#fig-depth-stevin svg.dwg .lbl-s { --fs: 11px; }
+#fig-depth-triangle svg.dwg, #fig-depth-sloping svg.dwg { display: block; width: 100%; max-width: 600px; height: auto; }
+#fig-depth-triangle svg.dwg text, #fig-depth-sloping svg.dwg text { --fs: 12.5px; }
+#fig-depth-triangle svg.dwg .lbl-s, #fig-depth-sloping svg.dwg .lbl-s { --fs: 11.5px; }
+@media (max-width: 599px) {
+  #fig-depth-stevin .ch02-panels { grid-template-columns: minmax(0, 1fr); }
+}
+/* the colour key above fig-depth-triangle: HTML, so it reflows on a phone */
+.ch02-key { font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-2); margin: 0 0 8px; line-height: 1.6; }
+.ch02-sw { display: inline-block; width: 12px; height: 8px; margin: 0 5px 0 0; vertical-align: 1px; }
+.ch02-sw + .ch02-sw, .ch02-key .ch02-sw:not(:first-child) { margin-left: 10px; }
+.ch02-sw-acc { background: var(--accent); }
+.ch02-sw-ok { background: var(--ok); }
+.ch02-unit { color: var(--ink-3); margin-left: 10px; white-space: nowrap; }
+/* Workaround, scoped to this chapter: below 1100px styles-book.css gives .we-head a one-track grid
+   without the "text" line names its children are placed on, so a short title lands in an implicit
+   track and is pushed right. The shared fix is reported for styles-book.css. */
+@media (max-width: 1099px) { #ch-depth .we-head > * { grid-column: 1 / -1; } }

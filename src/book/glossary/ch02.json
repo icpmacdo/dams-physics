@@ -1,0 +1,6 @@
+{
+  "gauge-pressure": ["Gauge pressure", "Pressure measured above the pressure of the air around us, as a tyre gauge reads it. This book uses it throughout, so the surface of still water is at zero and each metre below it adds about 9.8 kPa."],
+  "gravity-dam": ["Gravity dam", "A concrete or masonry dam that holds back its water by its own weight, pressing down on the rock beneath it. In section it is close to a triangle: wide at the foot, narrow at the top."],
+  "kilopascal": ["Kilopascal (kPa)", "The unit of pressure in this book: one kilonewton spread over one square metre. Still water adds about 9.8 kPa for every metre of depth; the air around us presses with about 101 kPa."],
+  "hydrostatic": { "replace": true, "entry": ["Hydrostatic pressure", "The pressure in still water. At any point it is the same in every direction, and it depends only on the depth, p = ρgh, about 9.8 kPa per metre. Water in the ground follows the same rule only while it is not flowing."] }
+}
