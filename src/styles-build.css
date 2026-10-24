@@ -39,7 +39,7 @@
 .dwg .bd-ubar { stroke: var(--water); stroke-width: 1.6; fill: none; opacity: 0.85; }
 .dwg .bd-tag rect { fill: var(--sheet); stroke-width: 1.5; }
 .dwg .bd-tag.ok rect { stroke: var(--ok); } .dwg .bd-tag.warn rect { stroke: var(--warn); } .dwg .bd-tag.bad rect { stroke: var(--bad); }
-.dwg .bd-tag text { font-weight: 500; font-size: 11.5px; }
+.dwg .bd-tag text { font-weight: 500; --fs: 11.5px; }
 .dwg .bd-exit { fill: none; stroke-width: 2; }
 .dwg .bd-exit.ok { stroke: var(--ok); } .dwg .bd-exit.warn { stroke: var(--warn); } .dwg .bd-exit.bad { stroke: var(--bad); }
 .dwg .bd-exit-dot.ok { fill: var(--ok); } .dwg .bd-exit-dot.warn { fill: var(--warn); } .dwg .bd-exit-dot.bad { fill: var(--bad); }
@@ -51,7 +51,7 @@
 .bd-view { margin-top: 10px; }
 .bd-verdict { border-top: 2px solid var(--ink); margin-top: 10px; padding-top: 10px; }
 .bd-empty { color: var(--ink-2); margin: 0; }
-.bd-head { font-family: var(--f-display); font-stretch: 85%; font-weight: 800; font-size: 1.35rem; line-height: 1.2; margin: 0 0 8px; }
+.bd-head { font-family: var(--f-display); font-weight: 700; font-size: 1.35rem; line-height: 1.2; margin: 0 0 8px; }
 .bd-head.ok { color: var(--ok); } .bd-head.warn { color: var(--warn); } .bd-head.bad { color: var(--bad); }
 .bd-rows { display: grid; gap: 0; }
 .bd-row { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); gap: 4px 16px; padding: 8px 0; border-top: 1px solid var(--rule); align-items: baseline; }
@@ -66,7 +66,6 @@
 .legend i.bd-sw-slip { border-top: 3px solid var(--bad); }
 .legend i.bd-sw-bar { width: 0; height: 12px; border-top: 0; border-left: 2px solid var(--water); margin-left: 8px; margin-right: 12px; }
 @media (max-width: 760px) {
-  #fig-build .svgwrap > svg.dwg { min-width: 760px; }
   .bd-presets-ctl { flex-basis: 100%; }
 }
 #fig-build .seg button:disabled { opacity: 0.4; cursor: not-allowed; }

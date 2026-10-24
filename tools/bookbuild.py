@@ -23,6 +23,7 @@ import json
 import pathlib
 import re
 
+import bookmini
 import htmltree as H
 
 KINDS = ('front', 'prologue', 'chapter', 'epilogue', 'back')
@@ -249,6 +250,11 @@ class Book:
         mark.remove()
         parent.insert(i, *nodes)
         self.doc = shell
+        defs = shell.find(lambda e: e.tag == 'defs' and e.parent is not None and e.parent.hascls('defs'))
+        if defs is None:
+            self.error('src/body.html: no <svg class="defs"><defs> for the running-section symbols')
+        else:
+            defs.append(*frag('\n    ' + bookmini.symbols() + '\n  '))
 
         # 5. answers (moved before numbering so empty back units can drop out)
         self.collect_answers()
@@ -313,13 +319,24 @@ class Book:
         return ('the %s' % u['title']) if k == 'back' else u['title']
 
     # ------------------------------------------------------------------ part openers
+    def mini(self, n, label=None, cls='mini'):
+        return bookmini.svg(n, label, cls)
+
+    def mini_adds(self, n):
+        for m in self.B.get('mini', []):
+            if m.get('n') == n:
+                return m.get('adds', '')
+        return ''
+
     def part_opener(self, p):
+        first = p['chapters'][0]
         lis = ''.join('<li><a href="#%s"><span>%s %s</span><strong>%s</strong></a><p>%s</p></li>' % (
             c['id'], self.B['unitWord'], c['label'], H.esc(c['title']), H.esc(c['hook'])) for c in p['chapters'])
         m = ('<section class="part-opener" id="%s" data-label="%s">\n'
-             '  <div class="wide"><div class="chapter-head"><span class="sheetno">Part %s</span><h2>%s</h2></div></div>\n'
+             '  <div class="wide part-head"><p class="part-num" aria-hidden="true">%s</p><div class="chapter-head"><span class="sheetno">Part %s</span><h2>%s</h2></div>%s</div>\n'
              '  <div class="col"><p class="prospect">%s</p><ol class="course">%s</ol></div>\n'
-             '</section>') % (p['id'], p['numeral'], p['numeral'], H.esc(p['title']), H.esc(p['prospect']), lis)
+             '</section>') % (p['id'], p['numeral'], p['numeral'], p['numeral'], H.esc(p['title']),
+                              self.mini(first.get('mini', 0), cls='mini part-mini'), H.esc(p['prospect']), lis)
         self.part_refs = getattr(self, 'part_refs', {})
         self.part_refs[p['id']] = p
         return frag(m)[0]
@@ -536,13 +553,28 @@ class Book:
                     meta.append('%s, %s' % (self.refs[f]['label'], fmt_len(s['end'] - s['start'])))
             if u['kind'] == 'chapter':
                 kicker = '%s %s · Part %s · %s' % (self.B['unitWord'], u['label'], u['part']['numeral'], u['part']['title'])
+                num = u['label']
             else:
                 kicker = u['kind'].capitalize()
-            m = ('<div class="wide"><div class="chapter-head">'
-                 '<span class="sheetno ch-kicker">%s</span><h2 class="ch-title">%s</h2>'
-                 '<p class="dek">%s</p><p class="ch-meta">%s</p></div></div>') % (
-                H.esc(kicker), H.esc(u['title']), H.esc(u.get('question', '')), H.esc(' · '.join(meta)))
-            op.insert(0, *frag(m))
+                num = ''
+            head = ('<div class="wide opener-head"><div class="chapter-head">'
+                    '%s<p class="sheetno ch-kicker">%s</p><h2 class="ch-title">%s</h2>'
+                    '<p class="dek">%s</p></div></div>') % (
+                ('<p class="ch-num" aria-hidden="true">%s</p>' % H.esc(num)) if num else '',
+                H.esc(kicker), H.esc(u['title']), H.esc(u.get('question', '')))
+            n_mini = u.get('mini')
+            foot = '<div class="wide opener-foot">'
+            if n_mini is not None:
+                adds = self.mini_adds(n_mini)
+                label = 'The running section%s%s' % (
+                    (' as it stands in %s' % self.unit_label(u)) if u['kind'] != 'prologue' else ', before anything is built',
+                    ('; this chapter adds %s' % adds) if (adds and u['kind'] == 'chapter') else '')
+                cap = ('<span class="mini-k">This chapter adds</span> %s' % H.esc(adds)) if (adds and u['kind'] == 'chapter' and n_mini > 0) else \
+                      ('<span class="mini-k">The running section</span> %s' % ('the site, before anything is built' if n_mini == 0 else 'complete'))
+                foot += '<div class="mini-wrap">%s<p class="mini-cap">%s</p></div>' % (self.mini(n_mini, label), cap)
+            foot += '<p class="ch-meta">%s</p></div>' % H.esc(' · '.join(meta))
+            op.insert(0, *frag(head))
+            op.append(*frag(foot))
 
     def fill_next(self):
         seq = [u for u in self.present if u['kind'] in ('prologue', 'chapter', 'epilogue')]
@@ -583,8 +615,13 @@ class Book:
                 if s:
                     bits.append('film %s' % fmt_len(s['end'] - s['start']))
             meta = (' <small class="toc-meta">%s</small>' % H.esc(' · '.join(bits))) if bits else ''
-            return '<li><a href="#%s"><span>%s</span><strong>%s</strong></a><p>%s%s</p></li>' % (
-                u['id'], H.esc(kick), H.esc(u['title']), H.esc(u.get('hook', '')), meta)
+            mini = self.mini(u['mini'], cls='mini toc-mini') if u.get('mini') is not None else ''
+            if u['kind'] == 'chapter':  # a large numeral; the word is there for a screen reader
+                kick_html = '<span><i class="sr">%s </i>%s</span>' % (H.esc(self.B['unitWord']), H.esc(u['label']))
+            else:
+                kick_html = '<span>%s</span>' % H.esc(kick)
+            return '<li%s><a href="#%s">%s<strong>%s</strong></a><p>%s%s</p>%s</li>' % (
+                ' class="toc-ch"' if u['kind'] == 'chapter' else '', u['id'], kick_html, H.esc(u['title']), H.esc(u.get('hook', '')), meta, mini)
         pro = self.unit_by_id[self.B['prologue']['id']]
         if pro['id'] in present:
             out.append('<ol class="course">%s</ol>' % item(pro, 'Prologue'))

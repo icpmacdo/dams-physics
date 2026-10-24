@@ -173,18 +173,6 @@ function waterSymbol(g, x, y) { // ▽ water-level symbol with two ticks beneath
 }
 function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},${y2}`, class: 'lead' }, g); }
 
-/* index bar: highlight the section in view */
-(function indexBar() {
-  const links = $$('.indexbar nav a').filter(a => $(a.getAttribute('href')));
-  const secs = links.map(a => $(a.getAttribute('href')));
-  const so = new IntersectionObserver(() => {
-    let best = -1;
-    secs.forEach((s, i) => { const r = s.getBoundingClientRect(); if (r.top < window.innerHeight * 0.4) best = i; });
-    links.forEach((a, i) => a.classList.toggle('on', i === best));
-  }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
-  secs.forEach(s => so.observe(s));
-})();
-
 /* ===================== Fig 1: hydro + tailings ===================== */
 (function figTypes() {
   const F = fig($('#fig-types'));

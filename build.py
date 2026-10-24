@@ -36,7 +36,7 @@ WORKERS = [('seep-src', 'seepage-solver.js'), ('stab-src', 'stability-solver.js'
 fonts = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400..700;1,400'
-         '&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap">')
+         '&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">')
 
 res, errors, warnings = bookbuild.assemble(root, draft)
 for w in warnings:
@@ -62,8 +62,12 @@ body = (
 (out / 'build' / 'book-data.json').write_text(json.dumps(data, ensure_ascii=False, indent=1))
 (out / 'index.html').write_text(body)
 (out / 'app.bundle.js').write_text(app)
+data_desc = (json.loads((src / 'book.json').read_text()).get('subtitle', '') + '. An interactive book on how dams stand and fail, with simulations you can run in the page.').replace('"', '&quot;')
 preview = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
            '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
+           '<meta name="description" content="' + data_desc + '">'
+           '<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">'
+           '<meta name="theme-color" content="#1b1714" media="(prefers-color-scheme: dark)">'
            '<style>:root{color-scheme:light}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>'
            '</head><body>\n' + body + '</body></html>')
 (out / 'docs').mkdir(parents=True, exist_ok=True)

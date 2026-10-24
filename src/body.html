@@ -80,19 +80,16 @@
 </svg>
 
 <div class="page">
-  <div class="indexbar">
-    <div class="wide">
-      <a class="mark" href="#top">Dams in Section</a>
-      <nav aria-label="Sections">
-        <a href="#ch-beach">Groundwork</a>
-        <a href="#ch-two-dams">Water vs tailings</a>
-        <a href="#ch-raising">Raising methods</a>
-        <a href="#ch-zones">Dam zones</a>
-        <a href="#ch-seepage">Seepage</a>
-        <a href="#ch-build">Build a dam</a>
-      </nav>
+  <!-- the running head (app-book.js fills it): the book's name, the unit in view, the Contents
+       dialog and a reading-progress hairline. Without JavaScript the Contents link goes to the page. -->
+  <header class="runhead" id="runhead">
+    <div class="rh-in">
+      <a class="rh-mark" href="#cover">Dams in Section</a>
+      <a class="rh-where" id="rh-where" href="#contents" hidden></a>
+      <a class="rh-toc" id="rh-toc" href="#contents">Contents</a>
     </div>
-  </div>
+    <div class="rh-progress" aria-hidden="true"><i id="rh-bar"></i></div>
+  </header>
 
   <!-- @book -->
 </div>

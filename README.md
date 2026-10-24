@@ -44,6 +44,7 @@ node tests/test-book.js        # the book: keyed numbers (tests/numbers/), refer
 node tests/test-seepage.js     # solver cases + 12 physical sanity checks (incl. custom painted dams)
 node tests/test-stability.js   # Bishop/Spencer checks against closed-form and benchmark cases
 node tests/test-grains.js      # emergent behaviour of the grain sandbox (about 30 s)
+node tests/test-setfig.js      # in headless Chrome: "Set the figure" on every control of every figure, the running head, Contents, Expand
 ```
 
 ## Dams Academy

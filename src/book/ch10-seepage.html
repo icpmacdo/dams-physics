@@ -33,11 +33,11 @@
       <!-- New (H.11): how to read a flow net (eq-seepage-net, fig-seepage-net), ex-seepage-net. -->
     </div>
     <div class="col">
-      <h3>Seepage lab</h3>
+      <h3 id="s-seepage-lab">Seepage lab</h3>
       <p>Everything in the next drawing is calculated. The page divides a 24 m embankment and the ground beneath it into 1 m cells, applies Darcy's law between every pair of neighbours, and solves for the head in all of them at once (the steady seepage equation, ∇·(k ∇h) = 0). Along the way it finds the <span class="gl" data-term="phreatic-surface">phreatic surface</span>, the water table inside the dam, using the same saturated–unsaturated approach as commercial seepage software. Lines of equal head are drawn every 10% of the reservoir head. Flow lines are drawn in two sets: four start on the dam's upstream face and five on the reservoir floor. Within each set, each neighbouring pair carries the same flow, as in a hand-drawn flow net. Between the sets it differs: on the starting settings a gap between two foundation lines carries about eight times the flow of a gap between two dam lines, so compare line spacing only within a set.</p>
     </div>
 
-    <figure class="sheet wide" id="fig-lab">
+    <figure class="sheet full" id="fig-lab">
       <div class="sheet-top">
         <span class="figno"><b data-num></b> · Seepage lab · finite-volume solution</span>
         <span class="scale-note">Drawn to scale · 24 m embankment, 2H:1V slopes</span>
@@ -69,7 +69,7 @@
            ex-seepage-dupuit; the Polley clue (G.4). -->
     </div>
     <div class="col">
-      <h3>Five ways to manage seepage, and one to watch it</h3>
+      <h3 id="s-seepage-defences">Five ways to manage seepage, and one to watch it</h3>
       <div class="defences">
         <div><b>Cut it off</b><span>Core, cutoff trench, slurry wall, grout curtain, face slab, geomembrane.</span></div>
         <div><b>Lengthen the path</b><span>An upstream impervious blanket makes the water travel further, lowering the gradient.</span></div>

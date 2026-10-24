@@ -240,10 +240,11 @@ console.log('\nSet the figure');
         if (!(+v >= min && +v <= max) || Math.abs(Math.round((+v - min) / step) * step + min - +v) > 1e-9) problems.push(`#${ctl} = ${v} is off its slider (${min}–${max}, step ${step})`);
       } else if (ctl === 'zn-tabs') { if (!['0', '1', '2', '3'].includes(String(v))) problems.push(`zn-tabs has no tab ${v}`); }
       else if (ctl === 'bd-presets') { if (!ST.BUILD.presets[v]) problems.push(`bd-presets has no preset ${v}`); }
+      else if (ctl === 'bd-palette') { if (!(+v >= 0 && +v < ST.BUILD.materials.length && Number.isInteger(+v))) problems.push(`bd-palette has no material ${v}`); }
       else {
         const box = html.match(new RegExp(`id="${ctl}"[^>]*>([\\s\\S]*?)</div>`));
-        const attr = ctl === 'bd-tabs' ? 'data-m' : 'data-v';
-        if (!box || !new RegExp(`${attr}="${String(v).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`).test(box[1])) problems.push(`#${ctl} has no ${attr}="${v}"`);
+        const esc = String(v).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        if (!box || !new RegExp(`(?:data-v|data-i|data-m|data-p|data-exp)="${esc}"`).test(box[1])) problems.push(`#${ctl} has no button for "${v}"`);
       }
     }
   }
@@ -269,6 +270,50 @@ check(!/data-stub/.test(html), 'no element marked data-stub reaches the page');
 }
 
 // ---------------------------------------------------------------- the build refuses broken books
+console.log('\nLayout and furniture (book/SPEC.md F)');
+{
+  // the running section: one symbol per layer in the page's defs, each opener stacked to its chapter's layer
+  const mini = B.mini.map(m => m.n);
+  check(mini.every(n => new RegExp(`<symbol id="mini-L${n}"`).test(html)), `the running section has a symbol for each of its ${mini.length} layers`);
+  const chapters = B.parts.flatMap(p => p.chapters);
+  const bad = [];
+  for (const c of [B.prologue, ...chapters, B.epilogue]) {
+    const sec = (html.match(new RegExp(`<section class="[^"]*" id="${c.id}"[\\s\\S]*?</header>`)) || [])[0];
+    if (!sec) continue; // a unit still marked data-stub
+    const m = sec.match(/<svg class="mini"[^>]*data-mini="(\d+)">([\s\S]*?)<\/svg>/);
+    if (!m) { bad.push(c.id + ': no miniature'); continue; }
+    const uses = [...m[2].matchAll(/href="#mini-L(\d+)"/g)].map(u => +u[1]).sort((a, b) => a - b);
+    if (+m[1] !== c.mini || uses.join() !== [...Array(c.mini + 1).keys()].join()) bad.push(`${c.id}: miniature shows layers ${uses.join(',')}, book.json says 0–${c.mini}`);
+    if (c.n && !new RegExp(`<p class="ch-num" aria-hidden="true">${c.n}</p>`).test(sec)) bad.push(`${c.id}: no chapter numeral ${c.n}`);
+  }
+  check(!bad.length, 'every opener has its numeral and the running section at its own layer' + (bad.length ? ': ' + bad.join('; ') : ''));
+  check(/<header class="runhead" id="runhead">/.test(html) && /id="rh-toc" href="#contents"/.test(html) && !/class="indexbar"/.test(html), 'the running head replaces the old index bar; its Contents link works without JavaScript');
+  const instruments = ['fig-grains', 'fig-raise', 'fig-zones', 'fig-lab', 'fig-uplift', 'fig-build'];
+  check(instruments.every(id => new RegExp(`<figure class="[^"]*\\bfull\\b[^"]*"[^>]*id="${id}"`).test(html)), 'the six big instruments are full-width plates');
+  // every section heading in a chapter has an id, so it is numbered and can be linked
+  const h3 = [];
+  for (const c of chapters) {
+    const body = (html.match(new RegExp(`<section class="chapter" id="${c.id}"[\\s\\S]*?(?=<section class="(?:chapter|part-opener|epilogue|back)")`)) || [''])[0];
+    for (const m of body.matchAll(/<h3(\s[^>]*)?>/g)) if (!/\bid="s-[a-z0-9-]+"/.test(m[1] || '') && !/<figure/.test(body.slice(Math.max(0, m.index - 4000), m.index).split('</figure>').pop())) h3.push(c.id + ': ' + m[0]);
+  }
+  check(!h3.length, 'every chapter section heading has an id s-<slug>-<word>' + (h3.length ? ': ' + h3.join('; ') : ''));
+  // notes: a label for the checkbox right after it, then the note; kinds as SPEC F.3 defines them
+  const notes = [...html.matchAll(/<label\b([^>]*)><\/label>\s*<input type="checkbox" id="([^"]+)" class="margin-toggle">\s*<span class="(sidenote|marginnote)"([^>]*)>/g)];
+  const marks = (html.match(/class="(?:sn-ref|mn-ref)"/g) || []).length;
+  const nbad = notes.filter(m => {
+    const lab = m[1], kind = (m[4].match(/data-kind="([^"]+)"/) || [])[1];
+    const ok = new RegExp(`for="${m[2]}"`).test(lab) && (m[3] === 'sidenote' ? /\bsn-ref\b/.test(lab) && ['history', 'curious', 'units'].includes(kind) : /\bmn-ref\b/.test(lab) && ['source', 'units'].includes(kind));
+    return !ok;
+  }).map(m => m[2]);
+  check(notes.length === marks && !nbad.length, `all ${marks} note marks are well formed (label, checkbox, note of a known kind)` + (nbad.length || notes.length !== marks ? ': ' + (nbad.join(', ') || (marks - notes.length) + ' unmatched') : ''));
+  const notesOff = [...html.matchAll(/<span class="(?:sidenote|marginnote)"[^>]*>([\s\S]*?)<\/span>(?![^<]*<\/span>)/g)].filter(m => /<(p|div|ul|ol|figure)\b/.test(m[1]));
+  check(!notesOff.length, 'notes hold inline markup only');
+  // italics at every weight, so the title's bold italic is real, not synthesized
+  const page = fs.readFileSync(path.join(book().out, 'docs', 'index.html'), 'utf8');
+  check(/Source\+Serif\+4:ital,opsz,wght@0,8\.\.60,400\.\.700;1,8\.\.60,400\.\.700/.test(page), 'Source Serif 4 italics load at 400–700');
+  check(/<meta name="description"/.test(page) && /<meta name="theme-color"/.test(page), 'the page has a description and a theme colour');
+}
+
 console.log('\nThe build refuses');
 {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'dams-bad-'));

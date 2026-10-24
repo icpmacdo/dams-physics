@@ -23,14 +23,14 @@ svg.gd { overflow: hidden; }
 }
 
 /* drawing text: one size on desktop, larger on phones so labels stay legible */
-svg.gd text, svg.gd .lbl { font-size: 11px; }
-svg.gd .lbl-s { font-size: 10px; }
-svg.gd .lbl-b { font-size: 13px; }
+svg.gd text, svg.gd .lbl { --fs: 11px; }
+svg.gd .lbl-s { --fs: 10px; }
+svg.gd .lbl-b { --fs: 13px; }
 svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
 @media (max-width: 560px) {
-  svg.gd text, svg.gd .lbl { font-size: 15px; }
-  svg.gd .lbl-s { font-size: 14px; }
-  svg.gd .lbl-b { font-size: 17px; }
+  svg.gd text, svg.gd .lbl { --fs: 15px; }
+  svg.gd .lbl-s { --fs: 14px; }
+  svg.gd .lbl-b { --fs: 17px; }
   figure.g-fig { padding-inline: 12px; }
   .g-side .range label { min-width: 0; }
 }
@@ -69,7 +69,7 @@ ol.course { list-style: none; padding: 0; margin: 12px 0 8px; border-top: 2px so
 ol.course li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 2px 18px; padding: 9px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
 ol.course a { text-decoration: none; color: var(--ink); display: flex; gap: 10px; align-items: baseline; }
 ol.course a span { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); white-space: nowrap; min-width: 4.6em; }
-ol.course a strong { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
+ol.course a strong { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
 ol.course a:hover strong, ol.course a:focus-visible strong { color: var(--accent); }
 ol.course a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
@@ -80,7 +80,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .ideas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 24px; border-top: 2px solid var(--ink); margin: 6px 0 12px; }
 .ideas a { display: block; text-decoration: none; color: var(--ink); padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
 .ideas span { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-.ideas b { display: block; font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.08rem; line-height: 1.25; margin-bottom: 4px; }
+.ideas b { display: block; font-family: var(--f-display); font-weight: 700; font-size: 1.08rem; line-height: 1.25; margin-bottom: 4px; }
 .ideas em { display: block; font-style: normal; font-size: 0.93rem; line-height: 1.45; color: var(--ink-2); }
 .ideas a:hover b, .ideas a:focus-visible b { color: var(--accent); }
 .ideas a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
