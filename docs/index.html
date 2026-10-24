@@ -900,7 +900,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
       <h3>Water in the ground has pressure too</h3>
       <p>Dig a hole in the sand near the sea and it fills with water from below. The water in the hole settles at a level, and below that level every gap between the grains is full of water. That level is the <span class="gl" data-term="water-table">water table</span>.</p>
-      <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so it obeys the same rule as the water in a lake. A metre below the water table it is at about 10 kPa. Ten metres down it is at about 98 kPa, pushing outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>, and <a href="#strength">Step 4</a> turns on it.</p>
+      <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so while it is still it obeys the same rule as the water in a lake. A metre below the water table it is at about 10 kPa. Ten metres down it is at about 98 kPa, pushing outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>, and <a href="#strength">Step 4</a> turns on it.</p>
     </div>
 
     <figure class="sheet wide film" id="film-depth-not-size">
@@ -990,7 +990,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 
     <div class="col">
       <p>Now add the clay plug. The pipe is the same length and the tanks are at the same heights, but nearly all the head is lost across the short piece of clay. The tubes in the sand on either side read almost the same as the tank next to them. The same flow has to pass through every part of the pipe, and the tight clay needs a much steeper gradient to push it through, so the clay takes almost the whole drop.</p>
-      <p>This is how a dam with a clay <span class="gl" data-term="core">core</span> works. A core of clay, much narrower than the dam around it, takes up almost the whole height of the reservoir. The sand and rock on either side carry almost none of it, so the water pressure in the downstream half of the dam stays low. <a href="#zones">Step 7</a> shows the zones that make this work.</p>
+      <p>This is how a dam with a clay <span class="gl" data-term="core">core</span> works. A core of clay, much narrower than the dam around it, takes almost the whole drop in head, from the reservoir level down to the downstream side. The sand and rock on either side carry almost none of it, so the water pressure in the downstream half of the dam stays low. <a href="#zones">Step 7</a> shows the zones that make this work.</p>
     </div>
   </section>
 
@@ -1177,7 +1177,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <a href="#raising"><span>Step 6 · Raising methods</span><b>An upstream raise stands on tailings.</b><em>If the tailings under it liquefy, the raise has nothing left to stand on.</em></a>
         <a href="#zones"><span>Step 7 · Dam zones</span><b>The core takes the head so the downstream shell keeps its strength.</b><em>Low water pressure behind the core means a high effective stress and a strong downstream slope. The upstream shell stays soaked, so it relies on draining freely.</em></a>
         <a href="#seepage"><span>Step 8 · Drains</span><b>Drains put strength back.</b><em>Lowering the water level inside a dam lowers the pore pressure, so the grains press harder.</em></a>
-        <a href="#seepage"><span>Step 8 · Piping</span><b>Water flowing up can lift the grains.</b><em>When its push on the grains equals their weight, the effective stress is zero and the sand boils.</em></a>
+        <a href="#seepage"><span>Step 8 · Sand boils</span><b>Water flowing up can lift the grains.</b><em>When its push on the grains equals their weight, the effective stress is zero and the sand boils.</em></a>
         <a href="#seepage"><span>Step 8 · Uplift</span><b>A concrete dam is the block on the cushion.</b><em>Water under the base carries part of the dam's weight, and the friction that stops it sliding goes with it.</em></a>
         <a href="#build"><span>Step 9 · Build your own</span><b>Your design is judged on this.</b><em>The stability check weighs the friction the grains can supply against what's needed, using the water pressures from the seepage calculation.</em></a>
       </div>
@@ -4220,18 +4220,18 @@ function tutorRegister(id, o) { tutorFigs.set(id, o); }
    tapping it shows the plain-language definition below. The glossary list at the end of the page
    (#glossary-list) is generated from the same table, each entry linked to where the term first appears. */
 const GLOSSARY = {
-  'pore-pressure': ['Pore water pressure', 'The pressure of the water in the gaps between soil grains. Written u. Below the water table it is about 9.8 kPa per metre of depth.'],
+  'pore-pressure': ['Pore water pressure', 'The pressure of the water in the gaps between soil grains. Written u. In still groundwater it rises about 9.8 kPa per metre below the water table; where the water flows, as it does through a dam, it can be more or less than that.'],
   'effective-stress': ['Effective stress', 'The part of the load that the grains carry by pressing on each other: total stress minus pore water pressure (σ′ = σ − u). Soil strength depends on it, so more water pressure means less strength.'],
   'total-stress': ['Total stress', 'The full weight pressing down at a depth: soil, water and anything on top, per square metre. Written σ.'],
   'suction': ['Suction', 'Pore water pressure below atmospheric, in soil that is damp but not saturated. Tiny curved water films between grains pull them together. It is why a sandcastle wall stands.'],
   'permeability': ['Permeability', 'How easily water flows through a soil, measured as hydraulic conductivity k in m/s. It ranges from about 10⁻² m/s for gravel to 10⁻⁹ m/s for compacted clay.'],
   'hydraulic-head': ['Hydraulic head', 'The height water would rise to in a thin tube pushed into the ground at that point. Water always flows from higher head to lower head.'],
   'piezometer': ['Piezometer', 'An instrument that measures water pressure at a point in the ground or in a dam. The simplest is an open tube: the water level in it shows the head.'],
-  'phreatic-surface': ['Phreatic surface', 'The water table inside a dam: the surface where the water pressure is zero. Below it the soil is saturated; above it the soil is damp or dry.'],
+  'phreatic-surface': ['Phreatic surface', 'The water table inside a dam: the surface where the water pressure is zero (the pressure of the air). Below it the soil is saturated. Just above it a thin fringe can stay saturated with the water in suction; higher up the soil is damp or dry.'],
   'darcy': ['Darcy’s law', 'Flow through soil is proportional to how easily the soil passes water and how steeply the head drops: q = k · i · A.'],
   'hydraulic-gradient': ['Hydraulic gradient', 'How steeply the head drops along the water’s path: head lost per metre travelled (i = Δh / L). Flow is proportional to it, and steeper gradients push loose grains harder.'],
-  'angle-of-repose': ['Angle of repose', 'The steepest slope a heap of loose, dry grains settles at. About 34° for most sand.'],
-  'water-table': ['Water table', 'The level below which every gap between soil grains is full of water. Dig a hole and water settles at this level.'],
+  'angle-of-repose': ['Angle of repose', 'The steepest slope a heap of loose, dry grains settles at. About 30–35° for most sand, steeper for angular grains.'],
+  'water-table': ['Water table', 'The level where the water in the ground is at the pressure of the air. Below it every gap between grains is full of water, pushing outward; just above it a thin fringe can stay wet, the water pulling (suction). Dig a hole and water settles at this level.'],
   'liquefaction': ['Liquefaction', 'When loose, saturated soil is sheared or shaken, the grains try to pack tighter, the water can’t escape fast enough, and the water pressure rises until the grains barely touch. The soil flows like a heavy liquid.'],
   'static-liquefaction': ['Static liquefaction', 'Liquefaction with no earthquake: triggered by a rising water level, a small slip, creep, or extra load on loose saturated soil.'],
   'contractive': ['Contractive', 'Describes loose soil that packs tighter when sheared. If the water can’t drain, its pressure rises and the soil weakens.'],
@@ -6461,7 +6461,7 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
         { id: '2A', name: 'Fine filter', fill: 'p-filter', parts: [
           { poly: Z(z => -wc(z) - 3, z => -wc(z), 0, 57), mark: [-20, 70], anchor: [-wc(52) - 1.5, 52], dx: -18 },
           { poly: Z(z => wc(z), z => wc(z) + 3, 0, 57), mark: [20, 70], anchor: [wc(52) + 1.5, 52], dx: 18 }], step: 2,
-          info: { mat: 'Processed clean sand, graded to the core: D15 of the filter ≤ 4–5 × D85 of the core.', k: '≈10⁻⁵ m/s, 10 000 × the core', job: 'Lets water out of the core while keeping every core grain in. The downstream filter is also the chimney drain.', risk: 'This is the zone that stops internal erosion. A cracked core with no filter behind it can pipe and fail in hours.' } },
+          info: { mat: 'Processed clean sand, graded to the core. For a clay or till core Sherard and Dunnigan’s no-erosion rules govern (D15 of the filter ≤ 0.7 mm for a core with 40–85% fines); Terzaghi’s D15 ≤ 4–5 × D85 is for sandy cores.', k: '≈10⁻⁵ m/s, 10 000 × the core', job: 'Lets water out of the core while keeping every core grain in. The downstream filter is also the chimney drain.', risk: 'This is the zone that stops internal erosion. A cracked core with no filter behind it can pipe and fail in hours.' } },
         { id: '1', name: 'Core', fill: 'p-clay', parts: [{ poly: Z(z => -wc(z), z => wc(z), 0, 57), mark: [0, 28] }], step: 2,
           info: { mat: 'Clay or glacial till, compacted slightly wet of optimum moisture so it deforms without cracking.', k: '≈10⁻⁹ m/s', job: 'The watertight barrier. Almost all of the reservoir head is lost across it.', risk: 'Hydraulic fracture, settlement cracks or a wet seam open a concentrated leak. The filters decide whether a leak becomes a failure.' } },
         { id: '3D', name: 'Downstream shell', fill: 'p-rock', parts: [{ poly: Z(z => wc(z) + 7, () => FAR, 0, H), mark: [60, 22], dx: 52 }], step: 2,

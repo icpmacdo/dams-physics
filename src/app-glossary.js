@@ -4,18 +4,18 @@
    tapping it shows the plain-language definition below. The glossary list at the end of the page
    (#glossary-list) is generated from the same table, each entry linked to where the term first appears. */
 const GLOSSARY = {
-  'pore-pressure': ['Pore water pressure', 'The pressure of the water in the gaps between soil grains. Written u. Below the water table it is about 9.8 kPa per metre of depth.'],
+  'pore-pressure': ['Pore water pressure', 'The pressure of the water in the gaps between soil grains. Written u. In still groundwater it rises about 9.8 kPa per metre below the water table; where the water flows, as it does through a dam, it can be more or less than that.'],
   'effective-stress': ['Effective stress', 'The part of the load that the grains carry by pressing on each other: total stress minus pore water pressure (σ′ = σ − u). Soil strength depends on it, so more water pressure means less strength.'],
   'total-stress': ['Total stress', 'The full weight pressing down at a depth: soil, water and anything on top, per square metre. Written σ.'],
   'suction': ['Suction', 'Pore water pressure below atmospheric, in soil that is damp but not saturated. Tiny curved water films between grains pull them together. It is why a sandcastle wall stands.'],
   'permeability': ['Permeability', 'How easily water flows through a soil, measured as hydraulic conductivity k in m/s. It ranges from about 10⁻² m/s for gravel to 10⁻⁹ m/s for compacted clay.'],
   'hydraulic-head': ['Hydraulic head', 'The height water would rise to in a thin tube pushed into the ground at that point. Water always flows from higher head to lower head.'],
   'piezometer': ['Piezometer', 'An instrument that measures water pressure at a point in the ground or in a dam. The simplest is an open tube: the water level in it shows the head.'],
-  'phreatic-surface': ['Phreatic surface', 'The water table inside a dam: the surface where the water pressure is zero. Below it the soil is saturated; above it the soil is damp or dry.'],
+  'phreatic-surface': ['Phreatic surface', 'The water table inside a dam: the surface where the water pressure is zero (the pressure of the air). Below it the soil is saturated. Just above it a thin fringe can stay saturated with the water in suction; higher up the soil is damp or dry.'],
   'darcy': ['Darcy’s law', 'Flow through soil is proportional to how easily the soil passes water and how steeply the head drops: q = k · i · A.'],
   'hydraulic-gradient': ['Hydraulic gradient', 'How steeply the head drops along the water’s path: head lost per metre travelled (i = Δh / L). Flow is proportional to it, and steeper gradients push loose grains harder.'],
-  'angle-of-repose': ['Angle of repose', 'The steepest slope a heap of loose, dry grains settles at. About 34° for most sand.'],
-  'water-table': ['Water table', 'The level below which every gap between soil grains is full of water. Dig a hole and water settles at this level.'],
+  'angle-of-repose': ['Angle of repose', 'The steepest slope a heap of loose, dry grains settles at. About 30–35° for most sand, steeper for angular grains.'],
+  'water-table': ['Water table', 'The level where the water in the ground is at the pressure of the air. Below it every gap between grains is full of water, pushing outward; just above it a thin fringe can stay wet, the water pulling (suction). Dig a hole and water settles at this level.'],
   'liquefaction': ['Liquefaction', 'When loose, saturated soil is sheared or shaken, the grains try to pack tighter, the water can’t escape fast enough, and the water pressure rises until the grains barely touch. The soil flows like a heavy liquid.'],
   'static-liquefaction': ['Static liquefaction', 'Liquefaction with no earthquake: triggered by a rising water level, a small slip, creep, or extra load on loose saturated soil.'],
   'contractive': ['Contractive', 'Describes loose soil that packs tighter when sheared. If the water can’t drain, its pressure rises and the soil weakens.'],

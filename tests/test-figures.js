@@ -379,6 +379,15 @@ console.log('\nFacts the text states (errata fixes)');
   says('anything that passes water at 10⁻⁵ m/s or faster', 'Step 9 drawdown paragraph states the threshold');
   check(!/so it is free|costs nothing/.test(read('app-build.js')), 'Step 9: tailings sand is cheap, not free');
   check(/stands in for its weakness\. The real layer failed undrained/.test(read('app-build.js')), 'Step 9 Polley mission: the drained 19° is a stand-in for an undrained failure');
+  // definitions: hydrostatic only when still; water table and phreatic surface at air pressure, with a fringe above
+  check(/In still groundwater/.test(GL['pore-pressure'][1]), 'glossary pore pressure: 9.8 kPa per metre only in still groundwater');
+  says('so while it is still it obeys the same rule as the water in a lake', 'Step 2 pore pressure');
+  check(/pressure of the air/.test(GL['water-table'][1]) && /suction/.test(GL['water-table'][1]), 'glossary water table: air pressure, with a suction fringe above');
+  check(/fringe can stay saturated/.test(GL['phreatic-surface'][1]), 'glossary phreatic surface: a saturated fringe above it');
+  check(/30–35°/.test(GL['angle-of-repose'][1]), 'glossary angle of repose: 30–35°');
+  says('takes almost the whole drop in head, from the reservoir level down to the downstream side', 'Step 3 core');
+  says('Step 8 · Sand boils', 'Step 4 ideas card (heave, not piping)');
+  check(/Sherard and Dunnigan’s no-erosion rules govern/.test(read('app-zones.js')), 'Fig. 7.1 zone 2A: Sherard & Dunnigan govern for a clay core');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');
