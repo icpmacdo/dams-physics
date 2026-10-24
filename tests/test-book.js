@@ -173,6 +173,9 @@ const typed = (plainText(html).match(/\b(?:Fig\.|Film|Table|Example|Eq\.|Chapter
 const labels = new Set(Object.values(data.refs).map(r => r.label));
 const unknownLabels = [...new Set(typed.filter(t => !labels.has(t) && !/^Chapter \d+$/.test(t)))];
 check(!unknownLabels.length, 'every "Fig. n.n" the reader sees is the number of a real figure' + (unknownLabels.length ? ': ' + unknownLabels.join(', ') : ''));
+// a reference that opens a sentence starts with a capital (the build capitalises generated ones)
+const lowStart = [...plainText(html).matchAll(/[.!?]\s+(the (?:Prologue|Epilogue|Glossary|Contents|cover)\b.{0,30})/g)].map(m => m[1]);
+check(!lowStart.length, 'no sentence starts with a lower-case "the Prologue" (or Epilogue, Glossary, Contents, cover)' + (lowStart.length ? ': ' + lowStart.slice(0, 3).join(' | ') : ''));
 
 // ---------------------------------------------------------------- the units, in order
 console.log('\nUnits and anchors');
