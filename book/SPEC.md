@@ -363,7 +363,40 @@ module.exports = {
 who rewrites a pinned sentence keeps its fact, and updates the pin in the same commit to a string
 from the new sentence that still states that fact. A pin is never deleted without an equivalent one.
 Pins that check code (`app-build.js` mission text, `app-zones.js` cards, the glossary) stay in
-`test-figures.js`.
+`test-figures.js`. A pin file may also hold `markup: [[/regex/, 'label']]`, checked against the built
+markup (for facts in an aria-label). In the plain text a keyed number reads as its digits, and a
+generated reference as its label with spaces round it ("subject of Chapter 13 ."), so end a pin
+before the punctuation that follows a reference.
+
+### A.9 What the machinery built (stages C and D, as implemented)
+
+- **`data-stub`.** Any element with `data-stub` is dropped from the page by the build; a unit whose
+  root carries it is left out entirely (no contents entry, no refs). The skeletons use it for every
+  planned but unwritten part (openers' "So far" and "can" lists, chapter ends, briefs' new sections,
+  the Prologue, Epilogue, Preface, Plate 0, the toolkit, symbols, colophon). **To publish a part,
+  remove `data-stub`.** The comments inside each stub point to the brief.
+- **Openers and ends.** The build writes the opener's kicker ("Chapter 4 · Part I · Ground"), title,
+  question and meta line into `header.opener` as `div.wide > div.chapter-head` (the old sheet head),
+  before the writer's content; `p.ch-num` and the miniature are left to the layout stage (there is no
+  `mini.svg` yet). Chapter ends are `<section class="ch-end col">`; the build fills
+  `nav.next-card[data-gen=next]` with Next and Previous links.
+- **References.** Besides `a[data-ref]`, any element may carry `data-ref` (a `span` inside a link,
+  for instance): the build fills its text but adds no href. A list of chapters reads "Chapters 2 and 3".
+- **`book.json` additions.** `glossaryOwners` (Appendix 2 as data; the build enforces it) and an
+  optional `refLabel` on a front or back unit (the cover's is "the cover"). Back units read
+  "the Glossary"; front units read as their title; the Appendix reads "Appendix A".
+- **Empty generated back units** (answers, errata) are left out until they have entries.
+- **Warnings, not errors:** a figure without a `figcaption` (`fig-zones` until Ch 9 writes one) and a
+  bibliography entry still marked `verify`.
+- **Kept for the layout stage:** the old index bar (its links now point at the chapters), sidenote
+  and margin-note CSS, the running head, the Contents dialog and the miniature. `styles-book.css`
+  holds only the spacing the new sections need.
+- **The academy's embedded view.** `../index.html?embed=<old step id>` shows the chapters that now hold
+  that step's material (`app-book.js`, map checked by `test-book.js`).
+- **Tests.** `tests/lib/book.js` builds once per test process. `tests/numbers/figs.js` implements
+  Appendix 4 except `grains.*` (no pure block in `app-grains.js` yet); `test-book.js` also pins
+  Appendix 4's values at the figures' defaults and checks that every id of the nine-step page
+  (`tests/fixtures/ids-before-book.json`) is still on the page.
 
 ---
 
