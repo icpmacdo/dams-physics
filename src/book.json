@@ -59,7 +59,7 @@
           "wordTarget": [3500, 4500],
           "aliases": [{ "id": "pressure" }],
           "films": [{ "id": "film-depth-not-size", "film": "depth-not-size", "start": 0, "end": 191.0, "part": "part one",
-            "question": "Make the water twice as deep: how many tonnes push on each metre of the dam?" }],
+            "question": "Most of the push on a dam is low down: what share does the bottom half of the face carry?" }],
           "newIds": ["fig-depth-triangle", "eq-depth-p", "eq-depth-push", "ex-depth-sensor", "ex-depth-push", "ex-depth-slot", "ex-depth-triangle", "ex-depth-sloping"]
         },
         {

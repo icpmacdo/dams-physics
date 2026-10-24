@@ -35,6 +35,8 @@ module.exports = {
   // ---- the push, and how it grows
   'ch02.tonnes': { args: { H: '50' }, doc: 'push per metre of dam as tonnes of weight, unrounded (½·H² for water)', f: (a, X) => F(num(a.H), X) / gw(X) },
   'ch02.F-ratio': { args: { a: '100', b: '50' }, doc: 'push at depth a ÷ push at depth b', f: (a, X) => F(num(a.a), X) / F(num(a.b), X) },
+  'ch02.bottom-half-pct': { doc: 'share of the push carried by the bottom half of the face, % (1 − (1/2)²)', f: (a, X) => 100 * (1 - F(50, X) / F(100, X)) },
+  'ch02.bottom-half-kn': { args: { H: '50' }, doc: 'push on the bottom half of a face holding H metres of water, kN per metre', f: (a, X) => F(num(a.H), X) - F(num(a.H) / 2, X) },
   'ch02.bottom-pct': { doc: 'share of the push carried by the bottom third of the face, % (1 − (2/3)²)', f: (a, X) => 100 * (1 - F(100 * 2 / 3, X) / F(100, X)) },
   'ch02.M-ratio': { args: { a: '100', b: '50' }, doc: 'tipping moment at depth a ÷ at depth b', f: (a, X) => (F(num(a.a), X) * num(a.a)) / (F(num(a.b), X) * num(a.b)) },
   'ch02.slot-tonnes': { doc: 'the water in the slot, tonnes per metre of dam (2 m × 50 m × 1 t/m³)', f: () => SLOT_W * SLOT_H * 1 },

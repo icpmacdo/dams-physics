@@ -101,6 +101,59 @@ for (const s of spans) {
   check(tried > 2000 && tried < 3000, `bench.tried: the slope check tries more than two thousand surfaces (${tried})`);
 }
 
+// ---------------------------------------------------------------- worked lines reproduce (book/SPEC.md F.6)
+// Every chain of printed numbers and operators that ends "= result" in a worked step, a Check, a What it
+// means, an answer or a Try answer must give that result from the digits printed on the line, rounded to
+// the decimals the result shows (a result in MN or MPa is read as thousands of kN or kPa).
+// ("5.01 ÷ 1.635 = 3.07" failed: it gives 3.064.)
+{
+  const NUM = String.raw`\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?|[½⅓⅔¼¾]`;
+  const TERM = String.raw`(?:${NUM})(?:²|³)?`;
+  const CHAIN = new RegExp(String.raw`(?<![\d.,²³½⅓⅔¼¾A-Za-z/(])(${TERM}(?:\s*[×÷+−]\s*${TERM})+)\s*=\s*(${NUM})(?![\d²³]|[.,]\d|\s*[×÷+−]\s*\d|\s*[zHx][²³]?(?![\w·]))(\s*M(?:N|Pa))?`, 'g');
+  const FR = { '½': 1 / 2, '⅓': 1 / 3, '⅔': 2 / 3, '¼': 1 / 4, '¾': 3 / 4 };
+  const val = t => { const m = /^(.*?)(²|³)?$/.exec(t.trim()); const v = FR[m[1]] !== undefined ? FR[m[1]] : +m[1].replace(/,/g, ''); return m[2] === '²' ? v * v : m[2] === '³' ? v * v * v : v; };
+  function evalChain(expr) {
+    const toks = expr.split(/\s*([×÷+−])\s*/);
+    let terms = [], cur = val(toks[0]);
+    for (let i = 1; i < toks.length; i += 2) {
+      const op = toks[i], v = val(toks[i + 1]);
+      if (op === '×') cur *= v; else if (op === '÷') cur /= v;
+      else { terms.push(cur); terms.push(op); cur = v; }
+    }
+    terms.push(cur);
+    let r = terms[0];
+    for (let i = 1; i < terms.length; i += 2) r = terms[i] === '+' ? r + terms[i + 1] : r - terms[i + 1];
+    return r;
+  }
+  // the inner markup of every element with one of these classes, nested tags and all
+  function inner(cls) {
+    const out = [];
+    for (const m of html.matchAll(new RegExp(String.raw`<(span|p|div|li|details)\b[^>]*class="(?:[^"]* )?(?:${cls})(?: [^"]*)?"[^>]*>`, 'g'))) {
+      const tag = m[1], re = new RegExp(`<(/?)${tag}\\b[^>]*>`, 'g');
+      re.lastIndex = m.index + m[0].length;
+      let depth = 1, k;
+      while (depth && (k = re.exec(html))) depth += k[1] ? -1 : 1;
+      if (k) out.push(html.slice(m.index + m[0].length, k.index));
+    }
+    return out;
+  }
+  const blocks = inner('we-eq|we-check|we-means|we-ans|q-answer|try-ans|film-after|check');
+  const bad = [];
+  let n = 0;
+  for (const b of blocks) {
+    const text = plainText(b).replace(/\s+/g, ' ');
+    for (const m of text.matchAll(CHAIN)) {
+      const ops = m[1].match(/[×÷]/g);
+      if (!ops) continue;   // sums and differences of rounded parts are left to the reader
+      n++;
+      const got = evalChain(m[1]) / (m[3] ? 1000 : 1), shown = +m[2].replace(/,/g, ''), d = (m[2].split('.')[1] || '').length;
+      const tol = 0.5 * 10 ** -d * (1 + 1e-9) + 1e-12;
+      if (Math.abs(got - shown) > tol) bad.push(`"${m[0].trim()}" gives ${+got.toPrecision(7)}`);
+    }
+  }
+  check(n > 20 && !bad.length, `${n} printed products and quotients in worked lines reproduce from their printed digits` + (bad.length ? ': ' + bad.join('; ') : ''));
+}
+
 // ---------------------------------------------------------------- references and ids
 console.log('\nReferences and ids');
 const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => decode(m[1]));

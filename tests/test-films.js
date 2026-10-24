@@ -47,7 +47,7 @@ const PROBE = String(function probe() {
       const poster = fig.querySelector('.film-poster');
       // the question is in the markup for the poster, but the Before you watch box above asks it, so the poster hides it
       const fq = poster && poster.querySelector('.fp-q');
-      say(poster && !poster.hidden && /Film 2\.1/.test(poster.textContent) && /3 min 11 s/.test(poster.textContent) && fq && /how many tonnes push on each metre/.test(fq.textContent) && w.getComputedStyle(fq).display === 'none',
+      say(poster && !poster.hidden && /Film 2\.1/.test(poster.textContent) && /3 min 11 s/.test(poster.textContent) && fq && /what share does the bottom half of the face carry/.test(fq.textContent) && w.getComputedStyle(fq).display === 'none',
         'part one: the poster shows the number and the segment\'s length; its question stays with Before you watch');
       say(poster && poster.querySelector('button.fp-play'), 'part one: the poster has a real Play button');
       poster.querySelector('button.fp-play').click();
