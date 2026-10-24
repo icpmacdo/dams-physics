@@ -318,6 +318,14 @@ console.log('\nFacts the text states (errata fixes)');
   // readout labels are set in capitals, which turns η, ρ, σ into Η, Ρ, Σ: Greek must sit in an <i class="g-sym">
   const capsGreek = [...html.matchAll(/class="ro"><span>([^<]*)</g)].map(m => m[1]).filter(t => /[Ͱ-Ͽ]/.test(t));
   check(!capsGreek.length, 'no readout label puts a Greek letter in capitals' + (capsGreek.length ? ': ' + capsGreek.join(' / ') : ''));
+  // Fig 4.3: σ is the applied load and u the excess over still water; "suction" is kept for damp sand
+  const grains = read('app-grains.js');
+  says('Applied load σ', 'Fig. 4.3 readout label');
+  says('Extra water pressure Δu', 'Fig. 4.3 readout label');
+  never('everything pressing down', 'Fig. 4.3 σ readout');
+  says('which engineers call negative excess pore pressure', 'Fig. 4.3 caption, experiment 4');
+  check(!/\(suction\)|no suction|Watch u go below zero|'u water'|'σ total'/.test(grains), 'Fig. 4.3 scripts: no "suction" for saturated sand, and the chart legend says Δu and σ load');
+  never('Every number here is measured from the model as it runs, not set in advance', 'Fig. 4.3 caption');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');

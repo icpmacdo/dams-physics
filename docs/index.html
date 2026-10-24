@@ -1126,13 +1126,13 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <div class="gr-stage"><canvas id="cv-grains" role="img" aria-label="A box of sand grains drawn as discs. Lines between touching grains get thicker the harder the grains press on each other, so the load paths (force chains) show. Water in the pores is tinted blue, darker where its pressure is higher."></canvas></div>
         <div class="gr-side">
           <div class="readouts gr-ro">
-            <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gr-sig">–</b><small>everything pressing down</small></div>
-            <div class="ro"><span>Water pressure <i class="g-sym">u</i></span><b id="gr-u">–</b><small>above the still-water level</small></div>
-            <div class="ro"><span>Grain stress <i class="g-sym">σ′ = σ − u</i></span><b id="gr-se">–</b><small id="gr-se2">platen force from grain contacts</small></div>
+            <div class="ro"><span>Applied load <i class="g-sym">σ</i></span><b id="gr-sig">–</b><small>the load on top; still water left out</small></div>
+            <div class="ro"><span>Extra water pressure <i class="g-sym">Δu</i></span><b id="gr-u">–</b><small>above the still-water pressure</small></div>
+            <div class="ro"><span>Grain stress <i class="g-sym">σ′ = σ − Δu</i></span><b id="gr-se">–</b><small id="gr-se2">platen force from grain contacts</small></div>
             <div class="ro"><span>Void ratio <i class="g-sym">e</i></span><b id="gr-e">–</b><small id="gr-e2">2D discs</small></div>
             <div class="ro"><span>Shear stress <i class="g-sym">τ</i></span><b id="gr-tau">–</b><small id="gr-tau2">τ/σ′</small></div>
           </div>
-          <div class="gr-chart"><canvas id="cv-grains-chart" role="img" aria-label="Live chart of the grain stress σ′, the water pressure u and the total stress over time."></canvas></div>
+          <div class="gr-chart"><canvas id="cv-grains-chart" role="img" aria-label="Live chart of the grain stress σ′, the extra water pressure Δu and the applied load σ over time."></canvas></div>
         </div>
       </div>
       <p class="gr-result" id="gr-result" aria-live="polite" hidden></p>
@@ -1150,7 +1150,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <button class="btn" id="gr-run" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 h3 v10 h-3 z M7,1 h3 v10 h-3 z"/></svg><span>Pause</span></button>
         <button class="btn" id="gr-step" type="button"><span>Step</span></button>
       </div>
-      <figcaption>The lines between grains are <span class="gl" data-term="force-chain">force chains</span>: the thicker the line, the harder those two grains press together. Things to try. <strong>Experiment 1:</strong> the damp cut stands, the dry one slumps. <strong>2:</strong> dense sand lifts the platen as it shears (it <span class="gl" data-term="dilative">dilates</span>) and its strength peaks then drops; loose sand sinks (it <span class="gl" data-term="contractive">compacts</span>). <strong>3:</strong> with the drain shut, the water pressure climbs until it carries almost all the load, the force chains fade, and the house sinks. <strong>4:</strong> dense sand pulls the water pressure below zero (<span class="gl" data-term="suction">suction</span>) and gets stronger. Every number here is measured from the model as it runs, not set in advance. It is a 2D teaching model: discs pack tighter than real sand, so <span class="gl" data-term="void-ratio">void ratios</span> (space between grains ÷ space taken by grains) are lower than real ones (about 0.5 to 0.9), and pore water is one pressure field on a coarse grid. Read the trends, not the numbers. Stresses are scaled to read like kPa (marked kPa*); they are not lab results.</figcaption>
+      <figcaption>The lines between grains are <span class="gl" data-term="force-chain">force chains</span>: the thicker the line, the harder those two grains press together. Things to try. <strong>Experiment 1:</strong> the damp cut stands, the dry one slumps. <strong>2:</strong> dense sand lifts the platen as it shears (it <span class="gl" data-term="dilative">dilates</span>) and its strength peaks then drops; loose sand sinks (it <span class="gl" data-term="contractive">compacts</span>). <strong>3:</strong> with the drain shut, the water pressure climbs until it carries almost all the load, the force chains fade, and the house sinks. <strong>4:</strong> dense sand pulls the water pressure below its still-water value (a negative Δu, which engineers call negative excess pore pressure) and gets stronger. The readouts leave out the still-water pressure and the buoyancy of the grains: σ is the load on top and Δu is the water pressure above its still-water value, so they are not the σ and u of <a href="#fig-column">Fig. 4.2</a>. Nothing about the outcome is scripted: every reading is measured from the model as it runs. It is a 2D teaching model: discs pack tighter than real sand, so <span class="gl" data-term="void-ratio">void ratios</span> (space between grains ÷ space taken by grains) are lower than real ones (about 0.5 to 0.9), and pore water is one pressure field on a coarse grid. Read the trends, not the numbers. Stresses are scaled to read like kPa (marked kPa*); they are not lab results.</figcaption>
     </figure>
 
 
@@ -5953,7 +5953,7 @@ function draw() {
   ctx.fillStyle = C.sheet; ctx.fillRect(0, 0, CW, CH);
   const g = S.gamma, sat = S.water === 'sat';
   const sandTop = sim.surfaceLevel();
-  // water: standing water fills the box; excess pore pressure tints it darker (suction in orange)
+  // water: standing water fills the box; excess pore pressure tints it darker (below the still-water pressure in orange)
   if (sat) {
     const wl = S.top === 'platen' ? S.py : Math.min(HB - 0.3, sandTop + 0.9);
     ctx.save(); boxPath(wl); ctx.fillStyle = C.tint; ctx.fill();
@@ -6158,7 +6158,7 @@ function drawChart() {
   line('tot', C.ink3, 1.2, [4, 3]); line('u', C.water, 2); line('s', C.ink, 2);
   // legend
   cctx.textBaseline = 'top'; cctx.textAlign = 'right';
-  const lg = [['σ′ grains', C.ink], ['u water', C.water], ['σ total', C.ink3]];
+  const lg = [['σ′ grains', C.ink], ['Δu water', C.water], ['σ load', C.ink3]];
   let lx = w - R;
   for (const [t, c] of lg) { const tw = cctx.measureText(t).width; cctx.fillStyle = c; cctx.fillText(t, lx, 0); cctx.fillRect(lx - tw - 14, 6, 10, 2); lx -= tw + 26; }
 }
@@ -6290,9 +6290,9 @@ function outcomeText(o) {
   if (!o) return '';
   const st = `${o.pack} sand, ${o.water === 'sat' ? 'saturated, drain ' + o.drain : o.water}`;
   if (o.kind === 'wall') return o.spilled < 4 ? `Side wall removed (${st}): the cut face stood. ${o.spilled} grains fell.` : `Side wall removed (${st}): the face collapsed. ${o.spilled} grains ran out, up to ${o.runout.toFixed(0)} grain widths from the box.`;
-  if (o.kind === 'shear') return `Sheared ${st} under ${Math.round(o.load)} ${STRESS}: volume ${p1(o.dV)}% (${o.dV > 0.3 ? 'it dilated' : o.dV < -0.3 ? 'it compacted' : 'almost no change'}); peak τ/σ′ ${o.mobPeak.toFixed(2)}, at the end ${o.mobEnd.toFixed(2)}; shear stress at the end ${Math.round(o.tauEnd)} ${STRESS}; water pressure ${Math.round(o.u0)} → ${Math.round(o.u1)} ${STRESS}${o.uMin < -3 ? ' (suction)' : ''}${o.uMin <= 2 - sim.prm.uCav ? ', down to the limit where water cavitates, after which a little swelling got through' : ''}; σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS}.`;
+  if (o.kind === 'shear') return `Sheared ${st} under ${Math.round(o.load)} ${STRESS}: volume ${p1(o.dV)}% (${o.dV > 0.3 ? 'it dilated' : o.dV < -0.3 ? 'it compacted' : 'almost no change'}); peak τ/σ′ ${o.mobPeak.toFixed(2)}, at the end ${o.mobEnd.toFixed(2)}; shear stress at the end ${Math.round(o.tauEnd)} ${STRESS}; extra water pressure Δu ${Math.round(o.u0)} → ${Math.round(o.u1)} ${STRESS}${o.uMin < -3 ? ' (below the still-water pressure)' : ''}${o.uMin <= 2 - sim.prm.uCav ? ', down to the limit where water cavitates, after which a little swelling got through' : ''}; σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS}.`;
   if (o.kind === 'shake') {
-    let t = `Shaken, ${st}: grain stress σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS}; water pressure ${Math.round(o.u0)} → ${Math.round(o.u1)} ${STRESS}`;
+    let t = `Shaken, ${st}: grain stress σ′ ${Math.round(o.s0)} → ${Math.round(o.s1)} ${STRESS}; extra water pressure Δu ${Math.round(o.u0)} → ${Math.round(o.u1)} ${STRESS}`;
     if (o.u1 > 0.5) t += ` (the grain stress before shaking was ${Math.round(o.s0)})`;
     if (isFinite(o.dV)) t += `; volume ${p1(o.dV)}%`;
     if (o.sink != null) t += `; house sank ${o.sink.toFixed(1)} grain widths and tilted ${Math.abs(o.tilt).toFixed(0)}°`;
@@ -6310,8 +6310,8 @@ const EXPS = {
   'shear-loose': { pack: 'loose', water: 'dry', top: 'platen', load: 40, go: 'shear', hint: 'Loose sand, same load, same shear. The grains fall into the gaps as they move.', next: ['Dense again', 'shear'] },
   liq: { pack: 'loose', water: 'sat', drain: 'shut', top: 'house', go: 'shake', hint: 'Loose sand full of water, a house on top, and the water can’t get out in time. Watch the water pressure (blue) and the force chains under the house.', next: ['Same, dense sand', 'liq-dense'] },
   'liq-dense': { pack: 'dense', water: 'sat', drain: 'shut', top: 'house', go: 'shake', hint: 'Dense sand, same water, same shaking.', next: ['Loose again', 'liq'] },
-  suction: { pack: 'dense', water: 'sat', drain: 'shut', top: 'platen', load: 40, go: 'shear', hint: 'Dense sand full of water, drain shut, sheared. Dense sand wants to swell, but the water can’t get in. Watch u go below zero.', next: ['Same with the drain open', 'suction-open'] },
-  'suction-open': { pack: 'dense', water: 'sat', drain: 'open', top: 'platen', load: 40, go: 'shear', hint: 'The same dense sand with the drain open. Water flows in as it swells, so there is no suction.', next: ['Drain shut again', 'suction'] },
+  suction: { pack: 'dense', water: 'sat', drain: 'shut', top: 'platen', load: 40, go: 'shear', hint: 'Dense sand full of water, drain shut, sheared. Dense sand wants to swell, but the water can’t get in. Watch Δu go below zero: the water pressure falls below its still-water value.', next: ['Same with the drain open', 'suction-open'] },
+  'suction-open': { pack: 'dense', water: 'sat', drain: 'open', top: 'platen', load: 40, go: 'shear', hint: 'The same dense sand with the drain open. Water flows in as it swells, so the water pressure stays at its still-water value.', next: ['Drain shut again', 'suction'] },
 };
 function runExp(id) {
   const e = EXPS[id]; if (!e) return;
@@ -6409,7 +6409,7 @@ const tutorSpec = {
     const lines = [
       `2D discrete-element model, ${sim.N} sand discs in a box with ${top}${S.wallR ? '' : ' (right wall removed)'}. Packing: ${S.pack}. Water: ${water}. Stresses are in scaled model units (${STRESS}).`,
       `Phase: ${S.phase}${S.shear !== 'none' ? ', currently ' + (S.shear === 'cyclic' ? 'shaking' : 'shearing at ' + Math.round(S.gamma * 100) + '% strain') : ''}.`,
-      `Now: total stress ${n1(m.sigma || 0)}, water pressure u ${n1(m.u || 0)}, grain (effective) stress σ′ ${n1(m.sigEff || 0)} (measured from contact forces), void ratio ${isFinite(m.e) ? m.e.toFixed(3) : '–'}, shear stress ratio τ/σ′ ${m.mob ? m.mob.toFixed(2) : '–'}.`,
+      `Now: applied load σ ${n1(m.sigma || 0)}, extra water pressure Δu ${n1(m.u || 0)} (both leave out the still-water pressure; buoyancy is handled by reducing the grains' weight), grain (effective) stress σ′ ${n1(m.sigEff || 0)} (measured from contact forces), void ratio ${isFinite(m.e) ? m.e.toFixed(3) : '–'}, shear stress ratio τ/σ′ ${m.mob ? m.mob.toFixed(2) : '–'}.`,
     ];
     if (exp) lines.push(`Last experiment chosen: "${exp.id}". ${exp.e.hint}`);
     if (act) lines.push(`In progress (${(S.t - act.t0).toFixed(1)} model time units so far): ` + outcomeText(buildOutcome(act, m)));
