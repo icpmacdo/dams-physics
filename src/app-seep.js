@@ -548,7 +548,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
     arrow(xW, 34, xW, 34 - Wl, 'var(--ink)');
     T(forces, M.X(xW) + 8, M.Z(34 - Wl / 2), 'W ' + n1(W / 1000) + ' MN', 'lbl halo');
     arrow(-Hl - 4, HW / 3, -1.2, HW / 3, 'var(--ink)');
-    T(forces, M.X(-Hl - 4), M.Z(HW / 3) - 9, 'H ' + n1(c.H / 1000) + ' MN', 'lbl halo');
+    T(forces, M.X(-Hl - 4), M.Z(HW / 3) - 9, 'F ' + n1(c.H / 1000) + ' MN', 'lbl halo');
     // middle third + resultant
     E('path', { d: M.D([[16, 1.4], [32, 1.4]]), style: 'stroke:var(--ink);stroke-width:1;fill:none', 'marker-start': 'url(#arr)', 'marker-end': 'url(#arr)' }, forces);
     T(forces, M.X(24), M.Z(1.4) - 6, 'middle third', 'lbl-s halo', { 'text-anchor': 'middle' });
