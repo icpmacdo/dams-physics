@@ -85,6 +85,15 @@ const PROBE = String(function probe() {
       res.log.push('elements on the page after load: ' + nodes);
       say(nodes < 25000, 'the page holds ' + nodes + ' elements after load, under the 25,000 ceiling');
     }
+    // fig-grains: a top chosen while a fresh sample is still being poured is kept, not ignored
+    {
+      const on = v => d.querySelector('#gr-top [data-v="' + v + '"]').getAttribute('aria-pressed') === 'true';
+      const was = d.querySelector('#gr-pack [aria-pressed="true"]').dataset.v;
+      d.querySelector('#gr-pack [data-v="' + (was === 'dense' ? 'loose' : 'dense') + '"]').click();
+      const r = w.bookSetFigure({ fig: 'fig-grains', set: { 'gr-top': 'house' } }); await wait(200);
+      say(r.ok && on('house'), 'fig-grains: choosing the house while the sample is being prepared takes (gr-top shows House)');
+      d.querySelector('#gr-pack [data-v="' + was + '"]').click(); await wait(100);
+    }
     // fig-zones opens on its finished section; Build animates it (book/SPEC.md 0.2, H.10)
     {
       const zf = d.getElementById('fig-zones');

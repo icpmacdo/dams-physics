@@ -910,7 +910,7 @@ let paused = RM, exp = null, last = null, peakMob = 0, act = null;
 
 function syncUI() {
   setSeg('gr-pack', S.pack); setSeg('gr-water', S.water); setSeg('gr-drain', S.drain);
-  setSeg('gr-top', S.top === 'none' ? 'none' : S.top);
+  setSeg('gr-top', S.phase === 'pour' || S.phase === 'cure' ? S.pendingTop || 'none' : S.top);
   $$('#gr-drain button').forEach(b => { b.disabled = S.water !== 'sat'; });
   const busy = S.phase !== 'run';
   btnShear.disabled = busy || S.top !== 'platen' || !S.wallR || S.shear === 'cyclic';
@@ -945,7 +945,9 @@ segGroup($('#gr-pack'), v => { exp = null; prepare(v, S.phase === 'run' ? S.top 
 segGroup($('#gr-water'), v => { S.water = v; syncUI(); });   // bridges form or dry out in place
 segGroup($('#gr-drain'), v => { S.drain = v; syncUI(); });
 segGroup($('#gr-top'), v => {
-  if (S.phase !== 'run') { syncUI(); return; }
+  // while the sample is still being prepared, the choice is kept and placed when the sample is ready
+  if (S.phase === 'pour' || S.phase === 'cure') { S.pendingTop = v; syncUI(); return; }
+  if (S.phase === 'place') { S.houseY0 = null; sim.place(v); setWindow(); syncUI(); return; }
   if (!S.wallR) { prepare(S.pack, v); return; }
   S.houseY0 = null; sim.place(v); setWindow(); syncUI();
 });
