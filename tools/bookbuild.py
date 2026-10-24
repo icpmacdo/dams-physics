@@ -378,6 +378,15 @@ class Book:
                     continue
                 link = frag('<p class="q-ans-link"><a href="#ans-%s">Answer</a></p>' % q.id)[0]
                 a.replace_with(link)
+                # the hint and the answer link share one line: wrap them in div.q-foot
+                sib = [c for c in q.children if isinstance(c, H.El)]
+                k = sib.index(link)
+                if k > 0 and sib[k - 1].tag == 'details' and sib[k - 1].hascls('q-hint'):
+                    hint = sib[k - 1]
+                    foot = frag('<div class="q-foot"></div>')[0]
+                    hint.before(foot)
+                    hint.remove(); link.remove()
+                    foot.append(hint, link)
                 self.answers.append((u, q.id, a))
 
     # ------------------------------------------------------------------ glossary, bibliography, errata files

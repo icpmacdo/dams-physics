@@ -47,9 +47,15 @@ var { font-style: italic; font-family: var(--f-body); }
 .predict-verdict { font-size: 0.85rem; letter-spacing: 0; }
 .case-src { font-size: 0.82rem; }
 .predict-key { font-family: var(--f-label); }
-/* links outside p, li and figcaption (epigraph footers, worked-example givens, question summaries) take the book's link colour */
-.page .epigraph a, .page dd a, .page summary a { color: var(--water); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-.page .epigraph a:hover, .page dd a:hover, .page summary a:hover { color: var(--accent); }
+/* links are ink with a quiet underline that warms on hover: blue means water and nothing else (Plate 0's
+   colour key), so neither links nor the book's furniture (Check yourself, Hint, film times) use it */
+.page p a, .page li a, .page dd a, .page summary a, .page .epigraph a, .case a, figcaption a, .sidenote a, .marginnote a {
+  color: var(--ink); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+.page p a:hover, .page li a:hover, .page dd a:hover, .page summary a:hover, .page .epigraph a:hover, .case a:hover, figcaption a:hover,
+.sidenote a:hover, .marginnote a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+/* a link that is itself furniture keeps its own look */
+.page nav#toc a, .page ol.course a, .page .topics a, .page nav.next-card a, .page ol.film-marks a.xref { text-decoration-line: none; }
 .glossary-list dd a { font-family: var(--f-label); font-size: 0.82rem; letter-spacing: 0; color: var(--ink-3); }
 /* colour-key words (Plate 0): the prose names a colour with the drawing's own colour */
 .k-water { color: var(--water); }
@@ -132,7 +138,8 @@ dialog.toc-dialog::backdrop { background: rgba(30, 22, 16, 0.35); }
 .tocd-u span { font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; line-height: 1.25; }
 .tocd-u:hover span { color: var(--accent); }
 .tocd-u:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 4px; }
-.tocd-list > li[aria-current] > .tocd-u { background: var(--callout); border-radius: 4px; }
+.tocd-list > li[aria-current] > .tocd-u { background: var(--callout); border-radius: 0 4px 4px 0; box-shadow: inset 3px 0 0 var(--accent); }
+.tocd-u:focus:not(:focus-visible) { outline: none; }
 .tocd-figs { list-style: none; margin: 0 0 8px; padding: 0 0 0 calc(2.2rem + 12px); font-family: var(--f-label); font-size: 0.84rem; line-height: 1.35; }
 .tocd-figs li { margin: 0 0 4px; }
 .tocd-figs a { color: var(--ink-2); text-decoration: none; }
@@ -147,8 +154,12 @@ dialog.toc-dialog::backdrop { background: rgba(30, 22, 16, 0.35); }
 html.dialog-open { overflow: hidden; }
 
 /* ---------- 5. openers (chapters, Prologue, Epilogue) and part openers ---------- */
-section.chapter, section.prologue, section.epilogue { padding-block: clamp(4rem, 9vw, 8rem) 8px; border-top: 1px solid var(--rule); margin-top: 72px; }
-section.part-opener { padding-block: clamp(4rem, 10vw, 9rem) 24px; margin-top: 72px; border-top: 3px double var(--rule); }
+section.chapter, section.prologue, section.epilogue { padding-block: clamp(4rem, 9vw, 8rem) 8px; margin-top: 72px; border-top: 0; }
+section.part-opener { padding-block: clamp(4rem, 10vw, 9rem) 24px; margin-top: 72px; }
+/* the divider above a chapter or part shares the grid's left and right edges, like every other rule */
+section.chapter::before, section.prologue::before, section.epilogue::before, section.part-opener::before {
+  content: ""; display: block; max-width: var(--wide); margin: calc(-1 * clamp(4rem, 9vw, 8rem)) auto clamp(4rem, 9vw, 8rem); border-top: 1px solid var(--rule); }
+section.part-opener::before { border-top: 3px double var(--rule); margin-top: calc(-1 * clamp(4rem, 10vw, 9rem)); margin-bottom: clamp(4rem, 10vw, 9rem); }
 section.front:not(#cover), section.back { padding-block: 72px 8px; border-top: 1px solid var(--rule); margin-top: 56px; }
 a.alias { display: block; height: 0; overflow: hidden; }
 
@@ -170,7 +181,8 @@ svg.mini { display: block; width: 100%; max-width: 15rem; height: auto; overflow
 svg.mini .mini-new { animation: none; }
 .mini-cap { margin: 6px 0 0; font-family: var(--f-label); font-size: 0.8rem; line-height: 1.35; color: var(--ink-2); }
 .mini-k { display: block; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
-.epigraph { margin: 0 0 22px; padding: 0; font-style: italic; color: var(--ink-2); font-size: 1.05rem; }
+.epigraph { margin: 0 0 22px 2.2rem; padding: 0; font-style: italic; color: var(--ink-2); font-size: 0.98rem; max-width: 30rem; }
+@media (max-width: 519px) { .epigraph { margin-left: 1.2rem; } }
 .epigraph p { margin: 0 0 4px; }
 .epigraph footer { font-style: normal; font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-3); }
 .epigraph footer::before { content: "— "; }
@@ -231,8 +243,8 @@ button.sn-ref, button.mn-ref { font: inherit; background: none; border: 0; paddi
 .marginnote[data-kind="curious"]::before { content: "For the curious"; }
 .marginnote[data-kind="history"]::before { content: "History"; }
 .sidenote::before { color: var(--accent); }
-.sidenote a, .marginnote a { color: var(--water); }
 .mn-ref { display: none; }
+.sn-glue { white-space: nowrap; }
 .sidenote.is-flash, .marginnote.is-flash { background: var(--hl); box-shadow: 0 0 0 4px var(--hl); border-radius: 2px; }
 @media (max-width: 1099px) {
   .sidenote, .marginnote { display: none; float: none; clear: none; width: auto; margin: 0.6rem 0 0.9rem; padding: 0.55rem 0.8rem;
@@ -242,7 +254,7 @@ button.sn-ref, button.mn-ref { font: inherit; background: none; border: 0; paddi
   .mn-ref::after { content: "\2295"; font-family: var(--f-label); font-size: 0.85em; color: var(--accent); padding: 0 2px; vertical-align: 0.05em; }
   .sn-ref, .mn-ref { cursor: pointer; }
   /* tap targets: a 32 px box round a small mark, without moving the text */
-  .sn-ref::after, .mn-ref::after { display: inline-block; min-width: 1.4em; text-align: center; padding: 6px 2px; margin: -6px 0; line-height: 1; }
+  .sn-ref::after, .mn-ref::after { display: inline-block; min-width: 1.1em; text-align: center; padding: 6px 2px; margin: -6px -2px; line-height: 1; }
   button.sn-ref:focus-visible, button.mn-ref:focus-visible, label.sn-ref:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-radius: 3px; }
   button[aria-expanded="true"].sn-ref::after, button[aria-expanded="true"].mn-ref::after { background: var(--accent-soft); border-radius: 3px; }
 }
@@ -295,8 +307,6 @@ svg.dwg .marker text { --cap: 1; }
 .fig-expand svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.6; }
 .fig-expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 899px) { .fig-expand { display: inline-flex; } }
-.svgwrap.has-expand { position: relative; }
-.svgwrap > .fig-expand { position: absolute; right: 6px; bottom: 6px; margin: 0; background: color-mix(in srgb, var(--sheet) 88%, transparent); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15); }
 dialog.plate-dialog { border: 0; padding: 0; margin: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; background: var(--paper); color: var(--ink); overflow: hidden; }
 dialog.plate-dialog::backdrop { background: var(--paper); }
 .plate-frame { position: absolute; inset: 0; display: flex; flex-direction: column; }
@@ -344,9 +354,16 @@ ol.we-steps > li { counter-increment: we; display: grid; grid-template-columns: 
 ol.we-steps > li::before { content: counter(we); grid-column: n; font-family: var(--f-label); font-weight: 600; font-size: 0.78rem; color: var(--ink-3); }
 .we-eq { grid-column: eq; font-family: var(--f-body); font-variant-numeric: lining-nums tabular-nums; overflow-wrap: anywhere; }
 .we-steps .why { grid-column: why; font-family: var(--f-label); font-size: 0.86rem; line-height: 1.4; color: var(--ink-2); }
-.we-ans { font-weight: 600; margin: 4px 0 10px; max-width: var(--measure); }
-.we-check, .we-means { max-width: var(--measure); font-size: 0.98rem; }
-.we-check b, .we-means b { font-family: var(--f-label); font-size: 0.82rem; letter-spacing: 0.02em; }
+.we-ans { font-weight: 600; margin: 4px 0 10px; }
+.we-check, .we-means { font-size: 0.98rem; }
+/* (0,2,2) beats .col p { max-width: none } (0,1,1): these lines stop at the measure like the rest of the text */
+section.we p.we-ans, section.we p.we-check, section.we p.we-means, .col p.toc-films-k { max-width: var(--measure); }
+.we-check > b:first-child, .we-means > b:first-child { font-family: var(--f-body); font-variant-caps: all-small-caps; letter-spacing: 0.04em; font-weight: 600; font-size: 1.04em; }
+/* the reasons sit just after the widest step of their example, not out at the margin: the steps share one grid */
+@media (min-width: 1100px) {
+  ol.we-steps { display: grid; grid-template-columns: [n] 1.6rem [eq] fit-content(calc(var(--measure) - 1.6rem)) [gap] 2rem [why] minmax(0, 1fr); }
+  ol.we-steps > li { grid-column: 1 / -1; grid-template-columns: subgrid; }
+}
 .we-set, .q-set { margin: 8px 0 0; }
 .set-fig { font-family: var(--f-label); font-weight: 600; font-size: 0.85rem; color: var(--accent); background: transparent; border: 1.5px solid var(--accent);
   border-radius: 999px; padding: 0 14px 0 12px; min-height: 36px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
@@ -372,11 +389,11 @@ figure.set-target { box-shadow: 0 0 0 3px var(--hl); transition: box-shadow 0.6s
 details.check { margin: 1.4rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 0; }
 details.check > summary { list-style: none; cursor: pointer; padding: 0.7rem 2rem 0.7rem 0; position: relative; font-size: 1rem; line-height: 1.45; }
 details.check > summary::-webkit-details-marker { display: none; }
-details.check > summary::after { content: "Show"; position: absolute; right: 0; top: 0.85rem; font-family: var(--f-label); font-size: 0.75rem; font-weight: 600; color: var(--water); }
+details.check > summary::after { content: "Show"; position: absolute; right: 0; top: 0.85rem; font-family: var(--f-label); font-size: 0.75rem; font-weight: 600; color: var(--ink-2); }
 details.check[open] > summary::after { content: "Hide"; }
 details.check > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.check-k { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--water); }
-details.check > :not(summary) { margin: 0 0 0.8rem; padding-left: 0.9rem; border-left: 2px solid var(--water); font-size: 0.98rem; }
+.check-k { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+details.check > :not(summary) { margin: 0 0 0.8rem; padding-left: 0.9rem; border-left: 2px solid var(--rule); font-size: 0.98rem; }
 .predict { border-radius: 4px; }
 
 section.ch-end { margin-top: 3.5rem; padding-top: 0; }
@@ -400,7 +417,12 @@ li.q[data-tag] > .q-no { grid-row: 1 / span 7; }
 .q-tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-label); font-weight: 600; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px; }
 .q-tag i { font-style: normal; letter-spacing: 1px; color: var(--accent); }
 details.q-hint { margin: 2px 0 0; }
-details.q-hint > summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--water); width: fit-content; min-height: 32px; display: inline-flex; align-items: center; }
+/* Hint and Answer share a line (the build wraps them in div.q-foot); an open hint's text takes the line below */
+.q-foot { display: flex; flex-wrap: wrap; align-items: flex-start; column-gap: 18px; }
+.q-foot > details.q-hint { margin: 0; }
+.q-foot > details.q-hint[open] { order: 2; flex-basis: 100%; }
+.q-foot > .q-ans-link { margin: 0; min-height: 32px; display: inline-flex; align-items: center; }
+details.q-hint > summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--ink-2); width: fit-content; min-height: 32px; display: inline-flex; align-items: center; }
 details.q-hint > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 details.q-hint > p { font-size: 0.95rem; color: var(--ink-2); margin: 4px 0 4px; }
 .q-ans-link { margin: 2px 0 0; font-family: var(--f-label); font-size: 0.84rem; }
@@ -466,25 +488,40 @@ ol.film-marks li:last-child { border-bottom: 0; }
 ol.film-marks li[aria-current] { border-left-color: var(--accent); color: var(--ink); }
 ol.film-marks .fm-l { flex: 1 1 auto; min-width: 0; }
 ol.film-marks a.xref { flex: none; font-size: 0.82rem; color: var(--ink-3); }
-ol.film-marks button, .film-transcript button.tr-t { font: inherit; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--water); background: none; border: 0; cursor: pointer; }
+ol.film-marks button, .film-transcript button.tr-t { font: inherit; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink-2); background: none; border: 0; cursor: pointer; }
 ol.film-marks button { padding: 4px 4px 4px 0; min-height: 32px; min-width: 3.2em; text-align: left; }
 ol.film-marks button:hover, .film-transcript button.tr-t:hover { color: var(--accent); }
 ol.film-marks button:focus-visible, .film-transcript button.tr-t:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .film-after { margin: 0; }
-.film-after .set-fig { margin-left: 4px; }
+details.film-after { max-width: var(--measure); border-top: 1px dotted var(--rule); padding-top: 4px; }
+details.film-after > summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--ink-2); min-height: 32px; display: inline-flex; align-items: center; }
+details.film-after > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+details.film-after > p { margin: 4px 0 0; }
+.film-after .set-fig { display: flex; width: fit-content; margin: 8px 0 0; }
+figure.film:has(.film-before) .fp-q { display: none; }
 .film-part { text-transform: none; letter-spacing: 0; font-weight: 400; }
 .film-transcript { margin: 10px 0 0; font-size: 0.92rem; color: var(--ink-2); max-width: var(--measure); }
-.film-transcript summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--water); min-height: 32px; display: inline-flex; align-items: center; }
+.film-transcript summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--ink-2); min-height: 32px; display: inline-flex; align-items: center; }
 .film-transcript-text { max-height: 24rem; overflow-y: auto; padding: 4px 12px 4px 0; border-left: 1px solid var(--rule); padding-left: 12px; }
 .film-transcript-text p { margin: 0 0 0.7em; line-height: 1.55; }
 .film-transcript-text p[data-now] { color: var(--ink); }
 .film-transcript button.tr-t { font-family: var(--f-label); font-size: 0.8rem; padding: 2px 6px 2px 0; min-height: 24px; }
 /* the poster: the book's own type over the frame; the Play button is real and hands over to the native player */
 .film-poster { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; padding: clamp(14px, 5vw, 48px);
-  /* the drawing in the top of the frame shows faintly; the film's own title card at the bottom does not */
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 88%, transparent) 0 56%, var(--paper) 72%);
+  /* the frame shows through: the veil sits behind the type on the left, and a band at the foot covers only
+     the film's own title card */
+  justify-content: flex-end; padding-bottom: clamp(14px, 4vw, 36px);
+  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
+              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 35%, transparent) 70%, transparent);
   box-shadow: inset 0 0 0 1px var(--rule); color: var(--ink); cursor: pointer; border-radius: 2px; }
 .film-poster[hidden] { display: none; }
+/* dark paper: the films' frames are light, so the veil stays over the whole frame, lighter on the right */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .film-poster {
+  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
+              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 62%, transparent) 75%); } }
+:root[data-theme="dark"] .film-poster {
+  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
+              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 62%, transparent) 75%); }
 .film-poster .fp-k { font-family: var(--f-label); font-weight: 600; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
 .film-poster .fp-t { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.25rem, 3.4vw, 2rem); line-height: 1.1; }
 .film-poster .fp-m { font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-2); display: flex; align-items: center; gap: 10px; }
@@ -523,13 +560,14 @@ figure.film video:not(.playing) { filter: saturate(0.9); }
 .masthead .eyebrow { margin-left: 0; }
 #contents > .eyebrow { font-size: var(--step-3); font-family: var(--f-display); font-weight: 700; letter-spacing: -0.015em; text-transform: none; color: var(--ink); margin: 0 0 18px; line-height: 1.1; }
 nav#toc ol.course { max-width: none; border-top: 0; margin: 0; }
-nav#toc ol.course li { grid-template-columns: [n] 7.5rem [t] minmax(0, 1fr) [m] 10rem; gap: 2px 18px; padding: 12px 0; align-items: start; }
+nav#toc ol.course li { grid-template-columns: [n] 4.5rem [t] minmax(0, 1fr) [m] 10rem; gap: 2px 18px; padding: 12px 0; align-items: start; }
 nav#toc ol.course li > a { grid-column: n / span 2; gap: 18px; }
 nav#toc ol.course li > p { grid-column: t; }
 nav#toc ol.course li > svg.toc-mini { grid-column: m; grid-row: 1 / span 2; width: 10rem; align-self: center; opacity: 0.95; }
-nav#toc ol.course li a span { min-width: 7.5rem; color: var(--accent); font-size: 0.74rem; }
+nav#toc ol.course li a span { min-width: 4.5rem; color: var(--accent); font-size: 0.74rem; }
 nav#toc ol.course li a strong { font-size: 1.2rem; }
-nav#toc li.toc-ch a span { font-family: var(--f-display); font-size: 2.2rem; font-weight: 300; letter-spacing: 0; text-transform: none; line-height: 0.9; min-width: 0; width: 7.5rem; font-variant-numeric: lining-nums; }
+/* (1,2,5) beats nav#toc ol.course li a span (1,1,5): the numeral really is large and light */
+nav#toc ol.course li.toc-ch a span, .part-opener ol.course li.toc-ch a span { font-family: var(--f-display); font-size: 2.2rem; font-weight: 300; letter-spacing: 0; text-transform: none; line-height: 0.9; min-width: 0; width: 4.5rem; font-variant-numeric: lining-nums; }
 nav#toc li.toc-ch a span i.sr { font-style: normal; }
 .toc-part { margin: 34px 0 0 !important; padding-bottom: 6px; border-bottom: 2px solid var(--ink); font-size: 0.8rem !important; }
 nav#toc .toc-part a { color: inherit; text-decoration: none; }
@@ -547,14 +585,18 @@ ol.toc-film-list .tf-l { grid-column: 3; grid-row: 1; font-variant-numeric: tabu
 .toc-list { font-size: 0.92rem; color: var(--ink-2); columns: 2 18rem; column-gap: var(--gap); }
 .toc-list li { break-inside: avoid; margin-bottom: 4px; }
 @media (max-width: 759px) {
-  nav#toc ol.course li { grid-template-columns: [n] 3rem [t] minmax(0, 1fr); }
-  nav#toc ol.course li > a { grid-column: n / -1; }
-  nav#toc li.toc-ch a span { width: 3rem; font-size: 1.8rem; }
-  nav#toc ol.course li > a { gap: 0; }
+  nav#toc ol.course li { grid-template-columns: [n] 3rem [t] minmax(0, 1fr); column-gap: 0; }
+  nav#toc ol.course li > a { grid-column: n / -1; gap: 0; }
+  nav#toc ol.course li a span, nav#toc ol.course li.toc-ch a span { min-width: 0; width: 3rem; }
+  nav#toc ol.course li.toc-ch a span { font-size: 1.8rem; }
   nav#toc ol.course li > p { grid-column: t; padding-left: 0; }
   nav#toc ol.course li > svg.toc-mini { grid-column: t; grid-row: auto; width: 8.5rem; }
-  ol.course li a span { min-width: 3rem; }
+  /* Prologue, Epilogue and the back: the word goes above the title, and the row uses the full width */
+  nav#toc ol.course li:not(.toc-ch) > a { flex-direction: column; gap: 2px; }
+  nav#toc ol.course li:not(.toc-ch) a span { width: auto; white-space: nowrap; }
+  nav#toc ol.course li:not(.toc-ch) > p, nav#toc ol.course li:not(.toc-ch) > svg.toc-mini { grid-column: n / -1; }
 }
+@media (max-width: 519px) { nav#toc ol.course li > svg.toc-mini { display: none; } }
 .case-index { padding-left: 1.2em; }
 .bib-group { font-family: var(--f-label); font-size: 0.8rem; letter-spacing: 0.04em; margin: 22px 0 6px; }
 .bib li, ul.bib > li { padding-left: 1.5em; text-indent: -1.5em; list-style: none; }
@@ -601,6 +643,7 @@ html.book-embed section.embed-show:first-of-type, html.book-embed .page > sectio
   figure[hidden] { display: block !important; }
   section.chapter, section.prologue, section.epilogue, section.part-opener, section.back, section.front { break-before: page; border-top: 0; margin-top: 0; padding-top: 0; }
   section#cover { break-before: auto; }
+  section.chapter::before, section.prologue::before, section.epilogue::before, section.part-opener::before { display: none; }
   h2, h3, .we-t, .tbl-cap, .sheet-top { break-after: avoid; }
   figure, section.we, details.check, li.q, .remember, table, .eq { break-inside: avoid; }
   p { orphans: 3; widows: 3; }
@@ -608,7 +651,10 @@ html.book-embed section.embed-show:first-of-type, html.book-embed .page > sectio
   .col { padding-right: 44mm; }
   .col > figure.table, .col > .wide, .col > section.we, .col > figure.fig, .col > figure.case-plate { margin-right: -44mm; }
   figure.sheet, figure.fig, figure.film, figure.case-plate { max-width: none; border: 0; border-top: 0.5pt solid #999; border-radius: 0; padding: 6pt 0 0; box-shadow: none; background: #fff; }
-  .sidenote, .marginnote { display: block !important; width: 38mm; margin-right: -44mm; font-size: 8pt; }
+  /* notes in the outer margin beside their line (the narrow-screen ruled block does not apply on paper) */
+  .sidenote, .marginnote { display: block !important; float: right !important; clear: right; width: 38mm; margin: 0.2em -44mm 0.6em 0 !important;
+    padding: 0 !important; background: none !important; border: 0 !important; border-radius: 0 !important; font-size: 8pt; line-height: 1.3; }
+  .sn-ref::after { padding: 0 !important; margin: 0 !important; min-width: 0 !important; }
   details { display: block; }
   details > summary { list-style: none; }
   details:not([open]) > :not(summary) { display: block; }
@@ -633,3 +679,41 @@ input[type="range"] { min-height: 24px; }
 @media (pointer: coarse) { .predict-skip { min-height: 36px; } }
 .eq-no { margin-left: auto; }
 div.eq + div.eq { margin-top: 0.1rem; }
+
+/* ---------- 17. figures with the drawing beside its controls (review round 1) ---------- */
+/* .g-split.g-reflow (Figs. 1.1 and 2.1): from 861px the side column's parts become the grid's own items, so
+   the drawing and the controls end near each other and the readouts run in one row under both, their
+   values level. A chart or close-up sits under the controls. */
+@media (min-width: 861px) {
+  .g-split.g-reflow { grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 1fr); grid-template-areas: "dwg ctl" "dwg aux" "ro ro";
+    grid-template-rows: auto 1fr auto; align-items: start; }
+  .g-split.g-reflow > .g-side { display: contents; }
+  .g-split.g-reflow > .g-draw { grid-area: dwg; align-self: center; }
+  .g-split.g-reflow .g-side > .controls { grid-area: ctl; }
+  .g-split.g-reflow .g-side > .g-zoom, .g-split.g-reflow .g-side > svg.g-chart { grid-area: aux; margin-top: 0; align-self: end; }
+  .g-split.g-reflow .g-side > .readouts { grid-area: ro; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); margin-top: 0; }
+  .g-split.g-reflow .g-side > .readouts > .ro { padding-right: 16px; }
+}
+/* readouts: the labels may wrap, the values stay level across a row; a lone last readout takes the row */
+.g-side .readouts { align-items: start; }
+.g-side .readouts > .ro { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; }
+.g-side .readouts > .ro > span:first-child { align-self: end; }
+.g-side .readouts > .ro:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (min-width: 861px) { .g-split.g-reflow .g-side .readouts > .ro:last-child:nth-child(odd) { grid-column: auto; } }
+/* a group of four or more choices is a 2 × 2 grid at every width, as on a phone */
+.g-side .seg:has(> :nth-child(4)) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g-side .seg:has(> :nth-child(4)) > button { text-align: center; }
+/* chart labels follow the drawing's sizes: never under the floor, never more than a tenth over it on screen
+   (a small chart drawn wide would otherwise set its labels larger than the drawing's) */
+svg.dwg.g-chart text { font-size: max(calc(var(--floor) / var(--s)), min(var(--fs, 11.5px), calc(var(--floor) * 1.1 / var(--s)))); }
+
+/* ---------- 18. small furniture (review round 1) ---------- */
+#top { scroll-margin-top: 100vh; }            /* #top is the top of the page, not a place under the running head */
+details.try-ans { margin: 6px 0 0; font-family: var(--f-label); font-size: 0.88rem; color: var(--ink-2); }
+details.try-ans > summary { cursor: pointer; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center; }
+details.try-ans > p { margin: 2px 0 0; }
+/* part openers list their chapters by a light numeral, every title on one left edge */
+.part-opener ol.course li { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); column-gap: 16px; align-items: baseline; }
+.part-opener ol.course li > a { gap: 0; }
+.part-opener ol.course li.toc-ch a span { flex: 0 0 2.4rem; width: 2.4rem; font-size: 1.4rem; color: var(--accent); }
+@media (max-width: 620px) { .part-opener ol.course p { padding-left: 2.4rem; } }

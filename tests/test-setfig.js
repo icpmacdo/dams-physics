@@ -70,6 +70,21 @@ const PROBE = String(function probe() {
       // a mission tab locks other controls, so the tab rows go last
       return list.sort((a, b) => (d.getElementById(a[0]).getAttribute('role') === 'tablist') - (d.getElementById(b[0]).getAttribute('role') === 'tablist'));
     }
+    // a cross-reference in the prose to a figure still behind its predict box goes to the box
+    {
+      const xr = [...d.querySelectorAll('a[href="#fig-block"]')].find(a => !a.closest('dialog, nav#toc') && a.closest('#ch-concrete, #ch-trapped, #ch-erosion'));
+      const pr = d.getElementById('pr-cushion');
+      if (xr) { w.scrollTo(0, 0); xr.click(); await wait(300); }
+      say(xr && d.getElementById('fig-block').hidden && inView(pr) && pr.querySelector('.set-fig-first') && d.activeElement === pr.querySelector('.predict-opts button'),
+        'a prose link to fig-block, still hidden, brings its predict box pr-cushion into view and focuses its first answer');
+      // the page has no figure links into the void: every in-page link to a hidden element names one a predict box unlocks
+      const dead = [...d.querySelectorAll('a[href^="#"]')].map(a => d.getElementById(a.getAttribute('href').slice(1))).filter(t => t && t.closest('[hidden]') && !t.closest('[hidden]').matches('figure[id]'));
+      say(!dead.length, 'no in-page link points into a hidden block other than a figure (predict-locked, or a film without its video)' + (dead.length ? ': ' + dead.slice(0, 5).map(t => t.id).join(', ') : ''));
+      // the page in numbers: elements after the scripts ran (a ceiling, so later chapters can't grow it silently)
+      const nodes = d.getElementsByTagName('*').length;
+      res.log.push('elements on the page after load: ' + nodes);
+      say(nodes < 25000, 'the page holds ' + nodes + ' elements after load, under the 25,000 ceiling');
+    }
     const figs = [...d.querySelectorAll('figure.sheet[id]')].filter(x => !x.classList.contains('film'));
     res.figs = figs.map(x => x.id);
     for (const fig of figs) {

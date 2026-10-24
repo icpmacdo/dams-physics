@@ -23,8 +23,6 @@ svg.cover-dwg text { --fs: 11px; }
 
 /* ---------- the title page ---------- */
 .title-page { margin-top: clamp(3.5rem, 9vw, 6rem); padding-top: clamp(2rem, 5vw, 3rem); border-top: 3px double var(--rule); }
-.tp-name { font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; line-height: 1.1; margin: 0 0 4px; }
-.tp-sub { font-family: var(--f-body); font-style: italic; color: var(--ink-2); margin: 0 0 2rem; }
 .tp-spine { font-family: var(--f-body); font-style: italic; font-size: clamp(1.4rem, 3.2vw, 1.85rem); line-height: 1.32; color: var(--ink);
   margin: 0 0 2rem; padding-left: 18px; border-left: 3px solid var(--accent); text-wrap: balance; }
 .tp-lede { font-size: 1.12rem; line-height: 1.55; color: var(--ink-2); }

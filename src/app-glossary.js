@@ -100,7 +100,10 @@ const GLOSSARY = {
   const list = $('#glossary-list');
   if (list) {
     const first = {};
-    $$('.gl[data-term]').forEach((el, i) => {
+    // a use inside a hidden block (a predict box's answer, a locked figure) can't be scrolled to, so the
+    // first visible use wins; a term met only in hidden text links there anyway (the book routes the link)
+    const spans = $$('.gl[data-term]'), shown = spans.filter(el => !el.closest('[hidden]'));
+    [...shown, ...spans.filter(el => !shown.includes(el))].forEach((el, i) => {
       const k = el.dataset.term;
       if (first[k]) return;
       if (!el.id) el.id = 'gl-' + k;

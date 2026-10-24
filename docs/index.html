@@ -608,8 +608,12 @@ var { font-style: italic; font-family: var(--f-body); }
 .predict-verdict { font-size: 0.85rem; letter-spacing: 0; }
 .case-src { font-size: 0.82rem; }
 .predict-key { font-family: var(--f-label); }
-.page .epigraph a, .page dd a, .page summary a { color: var(--water); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-.page .epigraph a:hover, .page dd a:hover, .page summary a:hover { color: var(--accent); }
+.page p a, .page li a, .page dd a, .page summary a, .page .epigraph a, .case a, figcaption a, .sidenote a, .marginnote a {
+  color: var(--ink); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+.page p a:hover, .page li a:hover, .page dd a:hover, .page summary a:hover, .page .epigraph a:hover, .case a:hover, figcaption a:hover,
+.sidenote a:hover, .marginnote a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.page nav#toc a, .page ol.course a, .page .topics a, .page nav.next-card a, .page ol.film-marks a.xref { text-decoration-line: none; }
 .glossary-list dd a { font-family: var(--f-label); font-size: 0.82rem; letter-spacing: 0; color: var(--ink-3); }
 .k-water { color: var(--water); }
 .k-acc { color: var(--accent); }
@@ -682,7 +686,8 @@ dialog.toc-dialog::backdrop { background: rgba(30, 22, 16, 0.35); }
 .tocd-u span { font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; line-height: 1.25; }
 .tocd-u:hover span { color: var(--accent); }
 .tocd-u:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 4px; }
-.tocd-list > li[aria-current] > .tocd-u { background: var(--callout); border-radius: 4px; }
+.tocd-list > li[aria-current] > .tocd-u { background: var(--callout); border-radius: 0 4px 4px 0; box-shadow: inset 3px 0 0 var(--accent); }
+.tocd-u:focus:not(:focus-visible) { outline: none; }
 .tocd-figs { list-style: none; margin: 0 0 8px; padding: 0 0 0 calc(2.2rem + 12px); font-family: var(--f-label); font-size: 0.84rem; line-height: 1.35; }
 .tocd-figs li { margin: 0 0 4px; }
 .tocd-figs a { color: var(--ink-2); text-decoration: none; }
@@ -695,8 +700,11 @@ dialog.toc-dialog::backdrop { background: rgba(30, 22, 16, 0.35); }
   @keyframes tocd-in { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
 }
 html.dialog-open { overflow: hidden; }
-section.chapter, section.prologue, section.epilogue { padding-block: clamp(4rem, 9vw, 8rem) 8px; border-top: 1px solid var(--rule); margin-top: 72px; }
-section.part-opener { padding-block: clamp(4rem, 10vw, 9rem) 24px; margin-top: 72px; border-top: 3px double var(--rule); }
+section.chapter, section.prologue, section.epilogue { padding-block: clamp(4rem, 9vw, 8rem) 8px; margin-top: 72px; border-top: 0; }
+section.part-opener { padding-block: clamp(4rem, 10vw, 9rem) 24px; margin-top: 72px; }
+section.chapter::before, section.prologue::before, section.epilogue::before, section.part-opener::before {
+  content: ""; display: block; max-width: var(--wide); margin: calc(-1 * clamp(4rem, 9vw, 8rem)) auto clamp(4rem, 9vw, 8rem); border-top: 1px solid var(--rule); }
+section.part-opener::before { border-top: 3px double var(--rule); margin-top: calc(-1 * clamp(4rem, 10vw, 9rem)); margin-bottom: clamp(4rem, 10vw, 9rem); }
 section.front:not(#cover), section.back { padding-block: 72px 8px; border-top: 1px solid var(--rule); margin-top: 56px; }
 a.alias { display: block; height: 0; overflow: hidden; }
 header.opener { max-width: var(--wide); margin: 0 auto 2.5rem; display: grid;
@@ -717,7 +725,8 @@ svg.mini { display: block; width: 100%; max-width: 15rem; height: auto; overflow
 svg.mini .mini-new { animation: none; }
 .mini-cap { margin: 6px 0 0; font-family: var(--f-label); font-size: 0.8rem; line-height: 1.35; color: var(--ink-2); }
 .mini-k { display: block; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
-.epigraph { margin: 0 0 22px; padding: 0; font-style: italic; color: var(--ink-2); font-size: 1.05rem; }
+.epigraph { margin: 0 0 22px 2.2rem; padding: 0; font-style: italic; color: var(--ink-2); font-size: 0.98rem; max-width: 30rem; }
+@media (max-width: 519px) { .epigraph { margin-left: 1.2rem; } }
 .epigraph p { margin: 0 0 4px; }
 .epigraph footer { font-style: normal; font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-3); }
 .epigraph footer::before { content: "— "; }
@@ -772,8 +781,8 @@ button.sn-ref, button.mn-ref { font: inherit; background: none; border: 0; paddi
 .marginnote[data-kind="curious"]::before { content: "For the curious"; }
 .marginnote[data-kind="history"]::before { content: "History"; }
 .sidenote::before { color: var(--accent); }
-.sidenote a, .marginnote a { color: var(--water); }
 .mn-ref { display: none; }
+.sn-glue { white-space: nowrap; }
 .sidenote.is-flash, .marginnote.is-flash { background: var(--hl); box-shadow: 0 0 0 4px var(--hl); border-radius: 2px; }
 @media (max-width: 1099px) {
   .sidenote, .marginnote { display: none; float: none; clear: none; width: auto; margin: 0.6rem 0 0.9rem; padding: 0.55rem 0.8rem;
@@ -782,7 +791,7 @@ button.sn-ref, button.mn-ref { font: inherit; background: none; border: 0; paddi
   .mn-ref { display: inline; cursor: pointer; }
   .mn-ref::after { content: "\2295"; font-family: var(--f-label); font-size: 0.85em; color: var(--accent); padding: 0 2px; vertical-align: 0.05em; }
   .sn-ref, .mn-ref { cursor: pointer; }
-  .sn-ref::after, .mn-ref::after { display: inline-block; min-width: 1.4em; text-align: center; padding: 6px 2px; margin: -6px 0; line-height: 1; }
+  .sn-ref::after, .mn-ref::after { display: inline-block; min-width: 1.1em; text-align: center; padding: 6px 2px; margin: -6px -2px; line-height: 1; }
   button.sn-ref:focus-visible, button.mn-ref:focus-visible, label.sn-ref:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-radius: 3px; }
   button[aria-expanded="true"].sn-ref::after, button[aria-expanded="true"].mn-ref::after { background: var(--accent-soft); border-radius: 3px; }
 }
@@ -825,8 +834,6 @@ svg.dwg .marker text { --cap: 1; }
 .fig-expand svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.6; }
 .fig-expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 899px) { .fig-expand { display: inline-flex; } }
-.svgwrap.has-expand { position: relative; }
-.svgwrap > .fig-expand { position: absolute; right: 6px; bottom: 6px; margin: 0; background: color-mix(in srgb, var(--sheet) 88%, transparent); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15); }
 dialog.plate-dialog { border: 0; padding: 0; margin: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; background: var(--paper); color: var(--ink); overflow: hidden; }
 dialog.plate-dialog::backdrop { background: var(--paper); }
 .plate-frame { position: absolute; inset: 0; display: flex; flex-direction: column; }
@@ -869,9 +876,14 @@ ol.we-steps > li { counter-increment: we; display: grid; grid-template-columns: 
 ol.we-steps > li::before { content: counter(we); grid-column: n; font-family: var(--f-label); font-weight: 600; font-size: 0.78rem; color: var(--ink-3); }
 .we-eq { grid-column: eq; font-family: var(--f-body); font-variant-numeric: lining-nums tabular-nums; overflow-wrap: anywhere; }
 .we-steps .why { grid-column: why; font-family: var(--f-label); font-size: 0.86rem; line-height: 1.4; color: var(--ink-2); }
-.we-ans { font-weight: 600; margin: 4px 0 10px; max-width: var(--measure); }
-.we-check, .we-means { max-width: var(--measure); font-size: 0.98rem; }
-.we-check b, .we-means b { font-family: var(--f-label); font-size: 0.82rem; letter-spacing: 0.02em; }
+.we-ans { font-weight: 600; margin: 4px 0 10px; }
+.we-check, .we-means { font-size: 0.98rem; }
+section.we p.we-ans, section.we p.we-check, section.we p.we-means, .col p.toc-films-k { max-width: var(--measure); }
+.we-check > b:first-child, .we-means > b:first-child { font-family: var(--f-body); font-variant-caps: all-small-caps; letter-spacing: 0.04em; font-weight: 600; font-size: 1.04em; }
+@media (min-width: 1100px) {
+  ol.we-steps { display: grid; grid-template-columns: [n] 1.6rem [eq] fit-content(calc(var(--measure) - 1.6rem)) [gap] 2rem [why] minmax(0, 1fr); }
+  ol.we-steps > li { grid-column: 1 / -1; grid-template-columns: subgrid; }
+}
 .we-set, .q-set { margin: 8px 0 0; }
 .set-fig { font-family: var(--f-label); font-weight: 600; font-size: 0.85rem; color: var(--accent); background: transparent; border: 1.5px solid var(--accent);
   border-radius: 999px; padding: 0 14px 0 12px; min-height: 36px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
@@ -894,11 +906,11 @@ figure.set-target { box-shadow: 0 0 0 3px var(--hl); transition: box-shadow 0.6s
 details.check { margin: 1.4rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 0; }
 details.check > summary { list-style: none; cursor: pointer; padding: 0.7rem 2rem 0.7rem 0; position: relative; font-size: 1rem; line-height: 1.45; }
 details.check > summary::-webkit-details-marker { display: none; }
-details.check > summary::after { content: "Show"; position: absolute; right: 0; top: 0.85rem; font-family: var(--f-label); font-size: 0.75rem; font-weight: 600; color: var(--water); }
+details.check > summary::after { content: "Show"; position: absolute; right: 0; top: 0.85rem; font-family: var(--f-label); font-size: 0.75rem; font-weight: 600; color: var(--ink-2); }
 details.check[open] > summary::after { content: "Hide"; }
 details.check > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.check-k { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--water); }
-details.check > :not(summary) { margin: 0 0 0.8rem; padding-left: 0.9rem; border-left: 2px solid var(--water); font-size: 0.98rem; }
+.check-k { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+details.check > :not(summary) { margin: 0 0 0.8rem; padding-left: 0.9rem; border-left: 2px solid var(--rule); font-size: 0.98rem; }
 .predict { border-radius: 4px; }
 section.ch-end { margin-top: 3.5rem; padding-top: 0; }
 .remember { background: var(--callout); border-radius: 4px; padding: 16px 20px 12px; margin: 0 0 2.5rem; }
@@ -920,7 +932,11 @@ li.q[data-tag] > .q-no { grid-row: 1 / span 7; }
 .q-tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-label); font-weight: 600; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px; }
 .q-tag i { font-style: normal; letter-spacing: 1px; color: var(--accent); }
 details.q-hint { margin: 2px 0 0; }
-details.q-hint > summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--water); width: fit-content; min-height: 32px; display: inline-flex; align-items: center; }
+.q-foot { display: flex; flex-wrap: wrap; align-items: flex-start; column-gap: 18px; }
+.q-foot > details.q-hint { margin: 0; }
+.q-foot > details.q-hint[open] { order: 2; flex-basis: 100%; }
+.q-foot > .q-ans-link { margin: 0; min-height: 32px; display: inline-flex; align-items: center; }
+details.q-hint > summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--ink-2); width: fit-content; min-height: 32px; display: inline-flex; align-items: center; }
 details.q-hint > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 details.q-hint > p { font-size: 0.95rem; color: var(--ink-2); margin: 4px 0 4px; }
 .q-ans-link { margin: 2px 0 0; font-family: var(--f-label); font-size: 0.84rem; }
@@ -981,23 +997,36 @@ ol.film-marks li:last-child { border-bottom: 0; }
 ol.film-marks li[aria-current] { border-left-color: var(--accent); color: var(--ink); }
 ol.film-marks .fm-l { flex: 1 1 auto; min-width: 0; }
 ol.film-marks a.xref { flex: none; font-size: 0.82rem; color: var(--ink-3); }
-ol.film-marks button, .film-transcript button.tr-t { font: inherit; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--water); background: none; border: 0; cursor: pointer; }
+ol.film-marks button, .film-transcript button.tr-t { font: inherit; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink-2); background: none; border: 0; cursor: pointer; }
 ol.film-marks button { padding: 4px 4px 4px 0; min-height: 32px; min-width: 3.2em; text-align: left; }
 ol.film-marks button:hover, .film-transcript button.tr-t:hover { color: var(--accent); }
 ol.film-marks button:focus-visible, .film-transcript button.tr-t:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .film-after { margin: 0; }
-.film-after .set-fig { margin-left: 4px; }
+details.film-after { max-width: var(--measure); border-top: 1px dotted var(--rule); padding-top: 4px; }
+details.film-after > summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--ink-2); min-height: 32px; display: inline-flex; align-items: center; }
+details.film-after > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+details.film-after > p { margin: 4px 0 0; }
+.film-after .set-fig { display: flex; width: fit-content; margin: 8px 0 0; }
+figure.film:has(.film-before) .fp-q { display: none; }
 .film-part { text-transform: none; letter-spacing: 0; font-weight: 400; }
 .film-transcript { margin: 10px 0 0; font-size: 0.92rem; color: var(--ink-2); max-width: var(--measure); }
-.film-transcript summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--water); min-height: 32px; display: inline-flex; align-items: center; }
+.film-transcript summary { cursor: pointer; font-family: var(--f-label); font-size: 0.84rem; font-weight: 600; color: var(--ink-2); min-height: 32px; display: inline-flex; align-items: center; }
 .film-transcript-text { max-height: 24rem; overflow-y: auto; padding: 4px 12px 4px 0; border-left: 1px solid var(--rule); padding-left: 12px; }
 .film-transcript-text p { margin: 0 0 0.7em; line-height: 1.55; }
 .film-transcript-text p[data-now] { color: var(--ink); }
 .film-transcript button.tr-t { font-family: var(--f-label); font-size: 0.8rem; padding: 2px 6px 2px 0; min-height: 24px; }
 .film-poster { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; padding: clamp(14px, 5vw, 48px);
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 88%, transparent) 0 56%, var(--paper) 72%);
+  justify-content: flex-end; padding-bottom: clamp(14px, 4vw, 36px);
+  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
+              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 35%, transparent) 70%, transparent);
   box-shadow: inset 0 0 0 1px var(--rule); color: var(--ink); cursor: pointer; border-radius: 2px; }
 .film-poster[hidden] { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .film-poster {
+  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
+              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 62%, transparent) 75%); } }
+:root[data-theme="dark"] .film-poster {
+  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
+              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 62%, transparent) 75%); }
 .film-poster .fp-k { font-family: var(--f-label); font-weight: 600; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
 .film-poster .fp-t { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.25rem, 3.4vw, 2rem); line-height: 1.1; }
 .film-poster .fp-m { font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-2); display: flex; align-items: center; gap: 10px; }
@@ -1033,13 +1062,13 @@ figure.film video:not(.playing) { filter: saturate(0.9); }
 .masthead .eyebrow { margin-left: 0; }
 #contents > .eyebrow { font-size: var(--step-3); font-family: var(--f-display); font-weight: 700; letter-spacing: -0.015em; text-transform: none; color: var(--ink); margin: 0 0 18px; line-height: 1.1; }
 nav#toc ol.course { max-width: none; border-top: 0; margin: 0; }
-nav#toc ol.course li { grid-template-columns: [n] 7.5rem [t] minmax(0, 1fr) [m] 10rem; gap: 2px 18px; padding: 12px 0; align-items: start; }
+nav#toc ol.course li { grid-template-columns: [n] 4.5rem [t] minmax(0, 1fr) [m] 10rem; gap: 2px 18px; padding: 12px 0; align-items: start; }
 nav#toc ol.course li > a { grid-column: n / span 2; gap: 18px; }
 nav#toc ol.course li > p { grid-column: t; }
 nav#toc ol.course li > svg.toc-mini { grid-column: m; grid-row: 1 / span 2; width: 10rem; align-self: center; opacity: 0.95; }
-nav#toc ol.course li a span { min-width: 7.5rem; color: var(--accent); font-size: 0.74rem; }
+nav#toc ol.course li a span { min-width: 4.5rem; color: var(--accent); font-size: 0.74rem; }
 nav#toc ol.course li a strong { font-size: 1.2rem; }
-nav#toc li.toc-ch a span { font-family: var(--f-display); font-size: 2.2rem; font-weight: 300; letter-spacing: 0; text-transform: none; line-height: 0.9; min-width: 0; width: 7.5rem; font-variant-numeric: lining-nums; }
+nav#toc ol.course li.toc-ch a span, .part-opener ol.course li.toc-ch a span { font-family: var(--f-display); font-size: 2.2rem; font-weight: 300; letter-spacing: 0; text-transform: none; line-height: 0.9; min-width: 0; width: 4.5rem; font-variant-numeric: lining-nums; }
 nav#toc li.toc-ch a span i.sr { font-style: normal; }
 .toc-part { margin: 34px 0 0 !important; padding-bottom: 6px; border-bottom: 2px solid var(--ink); font-size: 0.8rem !important; }
 nav#toc .toc-part a { color: inherit; text-decoration: none; }
@@ -1057,14 +1086,17 @@ ol.toc-film-list .tf-l { grid-column: 3; grid-row: 1; font-variant-numeric: tabu
 .toc-list { font-size: 0.92rem; color: var(--ink-2); columns: 2 18rem; column-gap: var(--gap); }
 .toc-list li { break-inside: avoid; margin-bottom: 4px; }
 @media (max-width: 759px) {
-  nav#toc ol.course li { grid-template-columns: [n] 3rem [t] minmax(0, 1fr); }
-  nav#toc ol.course li > a { grid-column: n / -1; }
-  nav#toc li.toc-ch a span { width: 3rem; font-size: 1.8rem; }
-  nav#toc ol.course li > a { gap: 0; }
+  nav#toc ol.course li { grid-template-columns: [n] 3rem [t] minmax(0, 1fr); column-gap: 0; }
+  nav#toc ol.course li > a { grid-column: n / -1; gap: 0; }
+  nav#toc ol.course li a span, nav#toc ol.course li.toc-ch a span { min-width: 0; width: 3rem; }
+  nav#toc ol.course li.toc-ch a span { font-size: 1.8rem; }
   nav#toc ol.course li > p { grid-column: t; padding-left: 0; }
   nav#toc ol.course li > svg.toc-mini { grid-column: t; grid-row: auto; width: 8.5rem; }
-  ol.course li a span { min-width: 3rem; }
+  nav#toc ol.course li:not(.toc-ch) > a { flex-direction: column; gap: 2px; }
+  nav#toc ol.course li:not(.toc-ch) a span { width: auto; white-space: nowrap; }
+  nav#toc ol.course li:not(.toc-ch) > p, nav#toc ol.course li:not(.toc-ch) > svg.toc-mini { grid-column: n / -1; }
 }
+@media (max-width: 519px) { nav#toc ol.course li > svg.toc-mini { display: none; } }
 .case-index { padding-left: 1.2em; }
 .bib-group { font-family: var(--f-label); font-size: 0.8rem; letter-spacing: 0.04em; margin: 22px 0 6px; }
 .bib li, ul.bib > li { padding-left: 1.5em; text-indent: -1.5em; list-style: none; }
@@ -1105,6 +1137,7 @@ html.book-embed section.embed-show:first-of-type, html.book-embed .page > sectio
   figure[hidden] { display: block !important; }
   section.chapter, section.prologue, section.epilogue, section.part-opener, section.back, section.front { break-before: page; border-top: 0; margin-top: 0; padding-top: 0; }
   section#cover { break-before: auto; }
+  section.chapter::before, section.prologue::before, section.epilogue::before, section.part-opener::before { display: none; }
   h2, h3, .we-t, .tbl-cap, .sheet-top { break-after: avoid; }
   figure, section.we, details.check, li.q, .remember, table, .eq { break-inside: avoid; }
   p { orphans: 3; widows: 3; }
@@ -1112,7 +1145,9 @@ html.book-embed section.embed-show:first-of-type, html.book-embed .page > sectio
   .col { padding-right: 44mm; }
   .col > figure.table, .col > .wide, .col > section.we, .col > figure.fig, .col > figure.case-plate { margin-right: -44mm; }
   figure.sheet, figure.fig, figure.film, figure.case-plate { max-width: none; border: 0; border-top: 0.5pt solid #999; border-radius: 0; padding: 6pt 0 0; box-shadow: none; background: #fff; }
-  .sidenote, .marginnote { display: block !important; width: 38mm; margin-right: -44mm; font-size: 8pt; }
+  .sidenote, .marginnote { display: block !important; float: right !important; clear: right; width: 38mm; margin: 0.2em -44mm 0.6em 0 !important;
+    padding: 0 !important; background: none !important; border: 0 !important; border-radius: 0 !important; font-size: 8pt; line-height: 1.3; }
+  .sn-ref::after { padding: 0 !important; margin: 0 !important; min-width: 0 !important; }
   details { display: block; }
   details > summary { list-style: none; }
   details:not([open]) > :not(summary) { display: block; }
@@ -1133,6 +1168,32 @@ input[type="range"] { min-height: 24px; }
 @media (pointer: coarse) { .predict-skip { min-height: 36px; } }
 .eq-no { margin-left: auto; }
 div.eq + div.eq { margin-top: 0.1rem; }
+@media (min-width: 861px) {
+  .g-split.g-reflow { grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 1fr); grid-template-areas: "dwg ctl" "dwg aux" "ro ro";
+    grid-template-rows: auto 1fr auto; align-items: start; }
+  .g-split.g-reflow > .g-side { display: contents; }
+  .g-split.g-reflow > .g-draw { grid-area: dwg; align-self: center; }
+  .g-split.g-reflow .g-side > .controls { grid-area: ctl; }
+  .g-split.g-reflow .g-side > .g-zoom, .g-split.g-reflow .g-side > svg.g-chart { grid-area: aux; margin-top: 0; align-self: end; }
+  .g-split.g-reflow .g-side > .readouts { grid-area: ro; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); margin-top: 0; }
+  .g-split.g-reflow .g-side > .readouts > .ro { padding-right: 16px; }
+}
+.g-side .readouts { align-items: start; }
+.g-side .readouts > .ro { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; }
+.g-side .readouts > .ro > span:first-child { align-self: end; }
+.g-side .readouts > .ro:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (min-width: 861px) { .g-split.g-reflow .g-side .readouts > .ro:last-child:nth-child(odd) { grid-column: auto; } }
+.g-side .seg:has(> :nth-child(4)) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g-side .seg:has(> :nth-child(4)) > button { text-align: center; }
+svg.dwg.g-chart text { font-size: max(calc(var(--floor) / var(--s)), min(var(--fs, 11.5px), calc(var(--floor) * 1.1 / var(--s)))); }
+#top { scroll-margin-top: 100vh; }            
+details.try-ans { margin: 6px 0 0; font-family: var(--f-label); font-size: 0.88rem; color: var(--ink-2); }
+details.try-ans > summary { cursor: pointer; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center; }
+details.try-ans > p { margin: 2px 0 0; }
+.part-opener ol.course li { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); column-gap: 16px; align-items: baseline; }
+.part-opener ol.course li > a { gap: 0; }
+.part-opener ol.course li.toc-ch a span { flex: 0 0 2.4rem; width: 2.4rem; font-size: 1.4rem; color: var(--accent); }
+@media (max-width: 620px) { .part-opener ol.course p { padding-left: 2.4rem; } }
 #fig-beach-dam svg.dwg { max-width: 640px; }
 #ch-beach p.spine { font-family: var(--f-body); font-size: 1.12em; line-height: 1.45; margin: 1.1em 0 1.2em; padding-left: 1em; border-left: 2px solid var(--rule); color: var(--ink); }
 #fig-depth-stevin .ch02-panels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 22px; max-width: 760px; }
@@ -1168,8 +1229,6 @@ svg.cover-dwg text { --fs: 11px; }
   .cover-plate figcaption { margin-inline: 16px; }
 }
 .title-page { margin-top: clamp(3.5rem, 9vw, 6rem); padding-top: clamp(2rem, 5vw, 3rem); border-top: 3px double var(--rule); }
-.tp-name { font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; line-height: 1.1; margin: 0 0 4px; }
-.tp-sub { font-family: var(--f-body); font-style: italic; color: var(--ink-2); margin: 0 0 2rem; }
 .tp-spine { font-family: var(--f-body); font-style: italic; font-size: clamp(1.4rem, 3.2vw, 1.85rem); line-height: 1.32; color: var(--ink);
   margin: 0 0 2rem; padding-left: 18px; border-left: 3px solid var(--accent); text-wrap: balance; }
 .tp-lede { font-size: 1.12rem; line-height: 1.55; color: var(--ink-2); }
@@ -1391,14 +1450,12 @@ svg.pro-ph { display: none; }
       <polygon class="water" points="914,206.7 1000,206.7 1000,213.3 926.7,213.3"/>
       <polygon points="66.7,213.3 926.7,213.3 546.7,13.3 506.7,13.3" fill="none" class="edge"/>
       <path class="phreatic" d="M470,30 L518,30 L528.3,46.7 L538.3,73.3 L548.3,103.3 L558.3,133.3 L568.3,163.3 L578.3,186.7 L588.3,200 L596.7,206 L616.7,208.7 L726.7,209.7 L860,210.3 L920,211.3"/>
-      <g class="cv-scale"><path class="ink-s" d="M833.3,296.7 h166.7 M833.3,292.7 v8 M916.7,293.7 v6 M1000,292.7 v8"/><text class="lbl-s halo" x="833.3" y="288.7">0</text><text class="lbl-s halo" x="1000" y="288.7" text-anchor="end">50 m</text></g>
+      <g class="cv-scale" transform="translate(-24 0)"><path class="ink-s" d="M833.3,296.7 h166.7 M833.3,292.7 v8 M916.7,293.7 v6 M1000,292.7 v8"/><text class="lbl-s halo" x="833.3" y="288.7">0</text><text class="lbl-s halo" x="1000" y="288.7" text-anchor="end">50 m</text></g>
     </svg>
     <figcaption>Most of what decides whether this stands is two numbers: how hard its grains press together, and how hard the water between them pushes back.</figcaption>
   </figure>
 
   <div class="col title-page">
-    <p class="tp-name">Dams in Section</p>
-    <p class="tp-sub">From a handful of sand to a dam you design</p>
     <p class="tp-spine">Soil holds only as well as its grains press on one another, and the water between them can take that press away.</p>
     <p class="tp-lede">A dam is a heap of earth and rock, or a block of concrete, that holds back water or mine waste. This book cuts dams open the way engineers draw them, in section, and asks of each one the same two questions: how hard do its grains press together, and how hard does the water between them push back? It starts with a handful of sand on a beach and ends with a dam you design and test yourself. Most of the drawings are live. Drag them, play them, and try to break them.</p>
     <nav class="topics" aria-label="The four parts of the book">
@@ -1892,7 +1949,7 @@ svg.pro-ph { display: none; }
         <span class="figno"><b data-num>Fig. 1.1</b> · The same sand, different water</span>
         <span class="scale-note">Schematic · castle about 30 cm tall</span>
       </div>
-      <div class="g-split">
+      <div class="g-split g-reflow">
         <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a heap with 34 degree sides. Damp, it stands as a castle with vertical walls. Under still water it still stands at about 34 degrees. With water draining out through its face, it slumps to about 19 degrees. Shaken, loose wet sand flows flat and the flag on top sinks, while dense wet sand holds its shape. Every shape holds the same amount of sand."></svg></div>
         <div class="g-side">
           <div class="controls">
@@ -2070,34 +2127,34 @@ svg.pro-ph { display: none; }
       <ol class="q-list">
         <li class="q" id="q-beach-kept" data-tag="check" data-level="1"><span class="q-no">1.1</span> 
           <p>As the heap in <a data-ref="fig-beach" href="#fig-beach" class="xref">Fig. 1.1</a> changes shape, one thing stays fixed. What is it, and how could you check it with the numbers in <a data-ref="ex-beach-castle" href="#ex-beach-castle" class="xref">Example 1.1</a>?</p>
-          <details class="q-hint"><summary>Hint</summary><p>Work out the area of the dry heap's triangle and compare it with the castle's.</p></details>
-          <p class="q-ans-link"><a href="#ans-q-beach-kept">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>Work out the area of the dry heap's triangle and compare it with the castle's.</p></details><p class="q-ans-link"><a href="#ans-q-beach-kept">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-beach-packing" data-tag="explore" data-level="1"><span class="q-no">1.2</span> 
           <p>Set the heap under still water, packed densely, and jiggle it. Then switch to loosely packed and jiggle again. What differs, and what does that tell you about the soup at the water's edge?</p>
           <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-beach","set":{"bc-state":"under","bc-pack":"dense"},"click":["#bc-jiggle"]}'>Set the figure</button></p>
-          <details class="q-hint"><summary>Hint</summary><p>Read the "After a jiggle" readout each time.</p></details>
-          <p class="q-ans-link"><a href="#ans-q-beach-packing">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>Read the "After a jiggle" readout each time.</p></details><p class="q-ans-link"><a href="#ans-q-beach-packing">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-beach-tower" data-tag="reckon" data-level="2"><span class="q-no">1.3</span> 
           <p>Take damp sand to weigh about <span data-n="ch01.gamma-damp">18</span> kN per cubic metre (an illustrative round number). How hard does the sand press on each square metre at the foot of a damp wall 30 cm tall, and at the foot of one 30 m tall?</p>
-          <details class="q-hint"><summary>Hint</summary><p>A kilonewton (kN) is a unit of force: 18 kN is the weight of about <span data-n="ch01.gamma-damp-t">1.8</span> tonnes. A column of sand one metre square and <var>h</var> metres tall holds <var>h</var> cubic metres of sand, all resting on its square-metre base.</p></details>
-          <p class="q-ans-link"><a href="#ans-q-beach-tower">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>A kilonewton (kN) is a unit of force: 18 kN is the weight of about <span data-n="ch01.gamma-damp-t">1.8</span> tonnes. A column of sand one metre square and <var>h</var> metres tall holds <var>h</var> cubic metres of sand, all resting on its square-metre base.</p></details><p class="q-ans-link"><a href="#ans-q-beach-tower">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-beach-funnel" data-tag="explore" data-level="1"><span class="q-no">1.4</span> 
           <p>At home, pour dry sand, sugar or rice through a funnel onto a flat plate until the heap stops growing taller, and measure its height and the width of its base. What is its angle of repose? Is it steeper or shallower than the figure's 34°?</p>
-          <details class="q-hint"><summary>Hint</summary><p>tan <var>β</var> = height ÷ half the base = 2<var>h</var> ÷ <var>d</var>. Measure across the middle of the base, and pour slowly.</p></details>
-          <p class="q-ans-link"><a href="#ans-q-beach-funnel">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>tan <var>β</var> = height ÷ half the base = 2<var>h</var> ÷ <var>d</var>. Measure across the middle of the base, and pour slowly.</p></details><p class="q-ans-link"><a href="#ans-q-beach-funnel">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-beach-angles" data-tag="check" data-level="1"><span class="q-no">1.5</span> 
           <p>Write the slopes 1.5:1, 2:1 and 3:1 as angles. Which of them could a heap of the figure's dry sand stand at?</p>
-          <details class="q-hint"><summary>Hint</summary><p>tan <var>β</var> = 1 ÷ <var>n</var>, then take the arctangent.</p></details>
-          <p class="q-ans-link"><a href="#ans-q-beach-angles">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>tan <var>β</var> = 1 ÷ <var>n</var>, then take the arctangent.</p></details><p class="q-ans-link"><a href="#ans-q-beach-angles">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-beach-design" data-tag="design" data-level="2"><span class="q-no">1.6</span> 
           <p>You must build a sand embankment of the figure's sand, and water will seep out of the lower part of its downstream face. The workbench in <a data-ref="ch-build" href="#ch-build" class="xref">Chapter 13</a> offers faces of 1.5:1, 2:1, 2.5:1 and 3:1. By the rule of <a data-ref="fig-beach" href="#fig-beach" class="xref">Fig. 1.1</a>, which of these faces could the wet part stand at?</p>
-          <details class="q-hint"><summary>Hint</summary><p>Compare each angle with the draining face's <span data-n="beach.drain-deg">19.0</span>°.</p></details>
-          <p class="q-ans-link"><a href="#ans-q-beach-design">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>Compare each angle with the draining face's <span data-n="beach.drain-deg">19.0</span>°.</p></details><p class="q-ans-link"><a href="#ans-q-beach-design">Answer</a></p></div>
+          
         </li>
       </ol>
     </div>
@@ -2178,7 +2235,7 @@ svg.pro-ph { display: none; }
         <span class="figno"><b data-num>Fig. 2.1</b> · Water pressure on a dam face</span>
         <span class="scale-note">Depths to scale · dam shape schematic</span>
       </div>
-      <div class="g-split">
+      <div class="g-split g-reflow">
         <div class="g-draw"><svg class="dwg gd" id="svg-depth" viewBox="0 0 480 390" role="img" aria-label="A reservoir held by a concrete dam. A pressure sensor hangs in the water on a cable. Arrows on the dam face show water pressure growing in a straight line from zero at the surface to its largest value at the bottom, forming a triangle."></svg></div>
         <div class="g-side">
           <div class="controls">
@@ -2530,34 +2587,34 @@ svg.pro-ph { display: none; }
       <ol class="q-list">
         <li class="q" id="q-depth-rise" data-tag="reckon" data-level="1"><span class="q-no">2.1</span> 
           <p>A reservoir is raised from 40 m deep to 60 m. By what factor does the push on each metre of its dam grow?</p>
-          <details class="q-hint"><summary>Hint</summary><p>The push grows with the depth squared, so compare 60² with 40².</p></details>
-          <p class="q-ans-link"><a href="#ans-q-depth-rise">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>The push grows with the depth squared, so compare 60² with 40².</p></details><p class="q-ans-link"><a href="#ans-q-depth-rise">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-depth-seventy" data-tag="explore" data-level="1"><span class="q-no">2.2</span> 
           <p>Predict the push on each metre of dam when the water is 70 m deep, then set the figure and check. How does it compare with the push at 50 m?</p>
           <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-depth","set":{"dp-H":70}}'>Set the figure</button></p>
-          <details class="q-hint"><summary>Hint</summary><p>70² is close to 2 × 50².</p></details>
-          <p class="q-ans-link"><a href="#ans-q-depth-seventy">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>70² is close to 2 × 50².</p></details><p class="q-ans-link"><a href="#ans-q-depth-seventy">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-depth-ears" data-tag="check" data-level="1"><span class="q-no">2.3</span> 
           <p>Your ears hurt 3 m down in a pool, but not after a 30 m ride up a lift in a tall building. Why?</p>
-          <details class="q-hint"><summary>Hint</summary><p>Both are the same rule, <a data-ref="eq-depth-p" href="#eq-depth-p" class="xref">Eq. 2.1</a>, with a different fluid. Air at sea level weighs about 1.2 kg per cubic metre, water 1,000.</p></details>
-          <p class="q-ans-link"><a href="#ans-q-depth-ears">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>Both are the same rule, <a data-ref="eq-depth-p" href="#eq-depth-p" class="xref">Eq. 2.1</a>, with a different fluid. Air at sea level weighs about 1.2 kg per cubic metre, water 1,000.</p></details><p class="q-ans-link"><a href="#ans-q-depth-ears">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-depth-arm" data-tag="reckon" data-level="2"><span class="q-no">2.4</span> 
           <p>Where does the push on a dam holding 50 m of water act, and by what factor does its tipping moment grow if the water is twice as deep?</p>
-          <details class="q-hint"><summary>Hint</summary><p>The push acts at the centre of the pressure triangle; the moment is push times height.</p></details>
-          <p class="q-ans-link"><a href="#ans-q-depth-arm">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>The push acts at the centre of the pressure triangle; the moment is push times height.</p></details><p class="q-ans-link"><a href="#ans-q-depth-arm">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-depth-slope" data-tag="check" data-level="2"><span class="q-no">2.5</span> 
           <p>Is the water on an embankment's sloping upstream face a danger or a help to the dam's stability?</p>
-          <details class="q-hint"><summary>Hint</summary><p>Split its push into the part across and the part down. What does each do?</p></details>
-          <p class="q-ans-link"><a href="#ans-q-depth-slope">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>Split its push into the part across and the part down. What does each do?</p></details><p class="q-ans-link"><a href="#ans-q-depth-slope">Answer</a></p></div>
+          
         </li>
         <li class="q" id="q-depth-revelstoke" data-tag="case" data-level="2"><span class="q-no">2.6</span> 
           <p>Revelstoke Dam is 175 m high and 126 m thick at its base. Suppose water stood against it right to the top (a real reservoir is kept a little below the crest). What would the pressure be at its foot, and the push on each metre of dam? How does its base compare with the triangle of <a data-ref="ex-depth-triangle" href="#ex-depth-triangle" class="xref">Example 2.4</a>?</p>
-          <details class="q-hint"><summary>Hint</summary><p>Use <a data-ref="eq-depth-p" href="#eq-depth-p" class="xref">Eq. 2.1</a> and <a data-ref="eq-depth-push" href="#eq-depth-push" class="xref">Eq. 2.2</a> with <var>H</var> = 175 m; in tonnes, the push is ½ × <var>H</var>².</p></details>
-          <p class="q-ans-link"><a href="#ans-q-depth-revelstoke">Answer</a></p>
+          <div class="q-foot"><details class="q-hint"><summary>Hint</summary><p>Use <a data-ref="eq-depth-p" href="#eq-depth-p" class="xref">Eq. 2.1</a> and <a data-ref="eq-depth-push" href="#eq-depth-push" class="xref">Eq. 2.2</a> with <var>H</var> = 175 m; in tonnes, the push is ½ × <var>H</var>².</p></details><p class="q-ans-link"><a href="#ans-q-depth-revelstoke">Answer</a></p></div>
+          
         </li>
       </ol>
     </div>
@@ -6282,7 +6339,10 @@ const GLOSSARY = {
   const list = $('#glossary-list');
   if (list) {
     const first = {};
-    $$('.gl[data-term]').forEach((el, i) => {
+    // a use inside a hidden block (a predict box's answer, a locked figure) can't be scrolled to, so the
+    // first visible use wins; a term met only in hidden text links there anyway (the book routes the link)
+    const spans = $$('.gl[data-term]'), shown = spans.filter(el => !el.closest('[hidden]'));
+    [...shown, ...spans.filter(el => !shown.includes(el))].forEach((el, i) => {
       const k = el.dataset.term;
       if (first[k]) return;
       if (!el.id) el.id = 'gl-' + k;
@@ -6501,7 +6561,8 @@ function groundPredictInit(root) {
     const sub = T(gRoot, 16, 44, '', 'lbl-s');
     // scale bar: 5 px per cm
     E('path', { d: `M452,${GY - 150} v150 M447,${GY - 150} h10 M447,${GY} h10`, class: 'dim' }, gRoot);
-    T(gRoot, 446, GY - 72, '30 cm', 'lbl-s halo', { 'text-anchor': 'end' });
+    T(gRoot, 446, GY - 80, 'scale', 'lbl-s halo', { 'text-anchor': 'end' });
+    T(gRoot, 446, GY - 66, '30 cm', 'lbl-s halo', { 'text-anchor': 'end' });
 
     const { xs, tanDrain, PROF, TAN, ANG, SLOPE, GAP, CAP, ZN } = beachShapes(CX, NC, DX), damp = PROF.damp;
     const NAME = { dry: 'dry sand', damp: 'damp sand', under: 'sand under still water', drain: 'sand with water draining out of it' };
@@ -6578,13 +6639,14 @@ function groundPredictInit(root) {
     const zbg = E('rect', { x: 0, y: 0, width: 220, height: 150, style: 'fill:var(--sheet)' }, zg);
     const zwater = E('rect', { x: 0, y: 0, width: 220, height: 150, class: 'water', opacity: 0 }, zg);
     const zbr = E('g', null, zg);
-    const R = 24, S = 48.4;
+    const R = 21, S = 48.4;   // grains a little apart, so the gaps read clearly at this size
     const C = [];
-    for (let r = -1; r <= 2; r++) for (let c = -1; c <= 4; c++) C.push([12 + c * S + (r % 2 ? S / 2 : 0), 28 + r * S * 0.866]);
+    for (let r = -1; r <= 3; r++) for (let c = -1; c <= 4; c++) C.push([12 + c * S + (r % 2 ? S / 2 : 0), 28 + r * S * 0.866]);
     for (let i = 0; i < C.length; i++) for (let j = i + 1; j < C.length; j++) {
       const d = Math.hypot(C[i][0] - C[j][0], C[i][1] - C[j][1]);
       if (d < S + 1) { // a water ring (meniscus) where two grains touch
-        const ux = (C[j][0] - C[i][0]) / d, uy = (C[j][1] - C[i][1]) / d, al = 38 * deg;
+        // thin bridges at the contacts, so each gap stays mostly air: damp sand holds only a little water
+        const ux = (C[j][0] - C[i][0]) / d, uy = (C[j][1] - C[i][1]) / d, al = 18 * deg;
         const L = (x, y) => [C[i][0] + ux * x - uy * y, C[i][1] + uy * x + ux * y];
         const a = R * Math.cos(al), b = R * Math.sin(al), m = d / 2;
         const p = [L(a, b), L(m, b * 0.42), L(d - a, b), L(d - a, -b), L(m, -b * 0.42), L(a, -b)];
@@ -6725,7 +6787,12 @@ function groundPredictInit(root) {
     const guide = E('path', { style: 'stroke:var(--ink-3);stroke-width:0.9;stroke-dasharray:3 3;fill:none' }, cg);
     const halfDot = E('circle', { r: 3.5, style: 'fill:var(--sheet);stroke:var(--ink-2);stroke-width:1.4' }, cg);
     const dot = E('circle', { r: 4.5, style: 'fill:var(--accent)' }, cg);
-    const cLbl = T(cg, 0, 0, '', 'lbl lbl-acc halo'), hLbl = T(cg, 0, 0, '', 'lbl-s halo');
+    const cLbl = T(cg, 0, 0, '', 'lbl lbl-acc halo');
+    // the open dot is explained by a small key in the chart's empty top-left corner, clear of the axis
+    // and of the curve at every depth (a label beside the dot ran into the axis's tick labels)
+    const hKey = E('g', null, cg);
+    E('circle', { cx: cx0 + 12, cy: cy1 + 12, r: 3.5, style: 'fill:var(--sheet);stroke:var(--ink-2);stroke-width:1.4' }, hKey);
+    const hLbl = T(hKey, cx0 + 21, cy1 + 15.5, 'half the depth: ¼ the push', 'lbl-s halo');
     function chart(c) {
       const f = c.F / 1000, fh = f / 4;
       dot.setAttribute('cx', X(H)); dot.setAttribute('cy', Y(f));
@@ -6734,9 +6801,8 @@ function groundPredictInit(root) {
       const left = X(H) > 150; // label above-left of the dot, where the curve leaves room
       cLbl.setAttribute('x', X(H) + (left ? -9 : 9)); cLbl.setAttribute('y', Y(f) - (left ? 4 : 10)); cLbl.setAttribute('text-anchor', left ? 'end' : 'start');
       cLbl.textContent = c.txt.chart;
-      hLbl.setAttribute('x', X(H / 2) + 8); hLbl.setAttribute('y', Y(fh) + 14);
-      hLbl.textContent = 'half the depth: ¼ the push';
-      hLbl.style.display = H >= 30 ? '' : 'none';
+      hKey.style.display = H >= 30 ? '' : 'none';
+      void hLbl;
     }
     render();
     tutorRegister('fig-depth', {
@@ -10264,6 +10330,51 @@ function pipeText(iExit, where, pipe) {
      embedView     the academy's framed view of the old steps */
 
 const BOOK_UNITS = 'section.chapter, section.prologue, section.epilogue, section.part-opener, section.front, section.back';
+
+/* ---------------------------------------------------------------- links to figures behind a predict box */
+/* A figure named in a predict box's data-unlocks stays hidden until the reader answers. A link to it (a
+   cross-reference in the prose, the Contents, a #hash on load) would otherwise go nowhere, so it goes to
+   the question instead, with a note saying why. The Contents dialog and "Set the figure" use the same
+   route. */
+function hiddenHost(t) { for (let e = t; e && e !== document.body; e = e.parentElement) if (e.hidden) return e; return null; }
+function unlockerOf(host) {
+  return $$('.predict[data-unlocks]').find(p => p.dataset.unlocks.split(',').map(s => s.trim()).filter(Boolean)
+    .some(sel => { try { return host.matches(sel); } catch (e) { return false; } })) || null;
+}
+function sendToPredict(pr, behavior) {
+  pr.scrollIntoView({ behavior: behavior || 'auto', block: 'center' });
+  let n = pr.querySelector('.set-fig-first');
+  if (!n) { n = document.createElement('p'); n.className = 'set-fig-first'; n.setAttribute('role', 'status'); n.textContent = 'Answer this first: the figure opens when you do.'; pr.appendChild(n); }
+  const first = pr.querySelector('.predict-opts button'); if (first) first.focus({ preventScroll: true });
+}
+/* go to an element, by way of its predict box when it is still hidden; returns false if nothing was done */
+function goToTarget(t) {
+  const host = hiddenHost(t);
+  if (!host) return false;
+  const pr = unlockerOf(host);
+  if (pr && !pr.classList.contains('is-done')) { sendToPredict(pr); return true; }
+  // no box to answer (a film without its video, an answered reveal): where the block would have been, that
+  // is the visible element after it, or failing that before it, or its nearest visible ancestor
+  let v = null;
+  for (let s = host.nextElementSibling; s && !v; s = s.nextElementSibling) if (!hiddenHost(s)) v = s;
+  for (let s = host.previousElementSibling; s && !v; s = s.previousElementSibling) if (!hiddenHost(s)) v = s;
+  if (!v) { v = host.parentElement; while (v && hiddenHost(v)) v = v.parentElement; }
+  if (v) v.scrollIntoView({ behavior: 'auto', block: v === host.previousElementSibling ? 'end' : 'start' });
+  return !!v;
+}
+(function hiddenLinks() {
+  document.addEventListener('click', e => {
+    if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.closest('dialog')) return;
+    const t = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+    if (!t || !hiddenHost(t)) return;   // a visible target: the browser's own jump
+    e.preventDefault();
+    if (goToTarget(t)) history.replaceState(null, '', a.getAttribute('href'));
+  });
+  const atLoad = () => { const id = decodeURIComponent(location.hash.slice(1)); const t = id && document.getElementById(id); if (t && hiddenHost(t)) goToTarget(t); };
+  if (document.readyState === 'complete') atLoad(); else window.addEventListener('load', atLoad);
+})();
 const NARROW = window.matchMedia ? matchMedia('(max-width: 1099px)') : { matches: false, addEventListener() {} };
 
 /* the short name of a unit for the running head: "4 · Grip", "Prologue · 4 August 2014", "Part II · Two kinds of dam" */
@@ -10400,9 +10511,9 @@ function unitShort(sec) {
     dlg.close();
     const t = document.getElementById(a.getAttribute('href').slice(1));
     if (t) {
-      if (t.hidden) { const pr = document.querySelector('.predict[data-unlocks="#' + t.id + '"]'); (pr || t.parentElement).scrollIntoView({ behavior: 'auto', block: 'center' }); }
-      else t.scrollIntoView({ behavior: 'auto', block: 'start' });
       history.replaceState(null, '', a.getAttribute('href'));
+      if (goToTarget(t)) return;   // still behind its predict box: the box, with focus on its first answer
+      t.scrollIntoView({ behavior: 'auto', block: 'start' });
       if (!t.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SECTION)$/.test(t.tagName)) t.setAttribute('tabindex', '-1');
       t.focus({ preventScroll: true });
     }
@@ -10438,6 +10549,13 @@ function unitShort(sec) {
     const kind = { history: 'History', curious: 'For the curious', units: 'Units', source: 'Source' }[note.dataset.kind] || 'Note';
     b.dataset.kind = kind;
     lab.replaceWith(b);
+    // keep the mark on the line of the word it belongs to: wrap that word and the mark in a no-wrap span
+    const prev = b.previousSibling, w = prev && prev.nodeType === 3 && prev.data.match(/\S+$/);
+    if (w) {
+      prev.data = prev.data.slice(0, prev.data.length - w[0].length);
+      const glue = document.createElement('span'); glue.className = 'sn-glue';
+      b.before(glue); glue.append(document.createTextNode(w[0]), b);
+    }
     b.addEventListener('click', () => {
       if (NARROW.matches) { box.checked = !box.checked; b.setAttribute('aria-expanded', box.checked ? 'true' : 'false'); }
       else { note.classList.add('is-flash'); setTimeout(() => note.classList.remove('is-flash'), 1200); }
@@ -10544,8 +10662,7 @@ function unitShort(sec) {
     b.type = 'button'; b.className = 'fig-expand'; b.innerHTML = ICON + '<span>Expand</span>';
     b.setAttribute('aria-label', 'Expand ' + (bookData().refs[fig.id] ? ref(fig.id) : 'this figure') + ' to full screen');
     b.addEventListener('click', () => show(fig, b));
-    const wrap = $('.svgwrap', fig);  // over the drawing's corner when there is one, else in the title strip
-    if (wrap) { wrap.classList.add('has-expand'); wrap.appendChild(b); } else top.appendChild(b);
+    top.appendChild(b);   // in the title strip, on every figure: over the drawing it hid the toe and the seepage face
   });
   window.bookExpand = { show: id => { const f = document.getElementById(id); const b = f && $('.fig-expand', f); if (b) show(f, b); }, hide };
 })();
@@ -10642,14 +10759,8 @@ function setFigure(spec) {
     const fig = document.getElementById(spec.fig);
     if (!fig) { console.error('set-fig: no figure #' + spec.fig); return; }
     if (fig.hidden) {
-      const pr = document.querySelector('.predict[data-unlocks="#' + spec.fig + '"]');
-      if (pr) {
-        pr.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' });
-        let n = pr.querySelector('.set-fig-first');
-        if (!n) { n = document.createElement('p'); n.className = 'set-fig-first'; n.setAttribute('role', 'status'); n.textContent = 'Answer this first: the figure opens when you do.'; pr.appendChild(n); }
-        const first = pr.querySelector('.predict-opts button'); if (first) first.focus({ preventScroll: true });
-        return;
-      }
+      const pr = unlockerOf(fig);
+      if (pr) { sendToPredict(pr, RM ? 'auto' : 'smooth'); return; }
     }
     const r = setFigure(spec);
     r.errors.forEach(m => console.error('set-fig: ' + m));

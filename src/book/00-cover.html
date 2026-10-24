@@ -1,7 +1,8 @@
 <section class="front" id="cover">
   <!-- The cover plate and the title page (book/SPEC.md H.0). The drawing is fig-zones' earth–rockfill
        section (src/app-zones.js, the first tab), drawn to scale in the book's hatches. The title,
-       subtitle, edition and spine sentence repeat src/book.json; tests/pins/front.js holds them equal. -->
+       subtitle, edition and spine sentence repeat src/book.json; tests/pins/front.js holds them equal.
+       The title page opens on the spine: the cover above already carries the title and subtitle. -->
   <header class="cover">
     <p class="cover-k">A book in thirteen chapters · First edition · 2026</p>
     <h1>Dams in <span class="cut">Section</span></h1>
@@ -29,14 +30,12 @@
       <polygon class="water" points="914,206.7 1000,206.7 1000,213.3 926.7,213.3"/>
       <polygon points="66.7,213.3 926.7,213.3 546.7,13.3 506.7,13.3" fill="none" class="edge"/>
       <path class="phreatic" d="M470,30 L518,30 L528.3,46.7 L538.3,73.3 L548.3,103.3 L558.3,133.3 L568.3,163.3 L578.3,186.7 L588.3,200 L596.7,206 L616.7,208.7 L726.7,209.7 L860,210.3 L920,211.3"/>
-      <g class="cv-scale"><path class="ink-s" d="M833.3,296.7 h166.7 M833.3,292.7 v8 M916.7,293.7 v6 M1000,292.7 v8"/><text class="lbl-s halo" x="833.3" y="288.7">0</text><text class="lbl-s halo" x="1000" y="288.7" text-anchor="end">50 m</text></g>
+      <g class="cv-scale" transform="translate(-24 0)"><path class="ink-s" d="M833.3,296.7 h166.7 M833.3,292.7 v8 M916.7,293.7 v6 M1000,292.7 v8"/><text class="lbl-s halo" x="833.3" y="288.7">0</text><text class="lbl-s halo" x="1000" y="288.7" text-anchor="end">50 m</text></g>
     </svg>
     <figcaption>Most of what decides whether this stands is two numbers: how hard its grains press together, and how hard the water between them pushes back.</figcaption>
   </figure>
 
   <div class="col title-page">
-    <p class="tp-name">Dams in Section</p>
-    <p class="tp-sub">From a handful of sand to a dam you design</p>
     <p class="tp-spine">Soil holds only as well as its grains press on one another, and the water between them can take that press away.</p>
     <p class="tp-lede">A dam is a heap of earth and rock, or a block of concrete, that holds back water or mine waste. This book cuts dams open the way engineers draw them, in section, and asks of each one the same two questions: how hard do its grains press together, and how hard does the water between them push back? It starts with a handful of sand on a beach and ends with a dam you design and test yourself. Most of the drawings are live. Drag them, play them, and try to break them.</p>
     <nav class="topics" aria-label="The four parts of the book">

@@ -11,6 +11,51 @@
      embedView     the academy's framed view of the old steps */
 
 const BOOK_UNITS = 'section.chapter, section.prologue, section.epilogue, section.part-opener, section.front, section.back';
+
+/* ---------------------------------------------------------------- links to figures behind a predict box */
+/* A figure named in a predict box's data-unlocks stays hidden until the reader answers. A link to it (a
+   cross-reference in the prose, the Contents, a #hash on load) would otherwise go nowhere, so it goes to
+   the question instead, with a note saying why. The Contents dialog and "Set the figure" use the same
+   route. */
+function hiddenHost(t) { for (let e = t; e && e !== document.body; e = e.parentElement) if (e.hidden) return e; return null; }
+function unlockerOf(host) {
+  return $$('.predict[data-unlocks]').find(p => p.dataset.unlocks.split(',').map(s => s.trim()).filter(Boolean)
+    .some(sel => { try { return host.matches(sel); } catch (e) { return false; } })) || null;
+}
+function sendToPredict(pr, behavior) {
+  pr.scrollIntoView({ behavior: behavior || 'auto', block: 'center' });
+  let n = pr.querySelector('.set-fig-first');
+  if (!n) { n = document.createElement('p'); n.className = 'set-fig-first'; n.setAttribute('role', 'status'); n.textContent = 'Answer this first: the figure opens when you do.'; pr.appendChild(n); }
+  const first = pr.querySelector('.predict-opts button'); if (first) first.focus({ preventScroll: true });
+}
+/* go to an element, by way of its predict box when it is still hidden; returns false if nothing was done */
+function goToTarget(t) {
+  const host = hiddenHost(t);
+  if (!host) return false;
+  const pr = unlockerOf(host);
+  if (pr && !pr.classList.contains('is-done')) { sendToPredict(pr); return true; }
+  // no box to answer (a film without its video, an answered reveal): where the block would have been, that
+  // is the visible element after it, or failing that before it, or its nearest visible ancestor
+  let v = null;
+  for (let s = host.nextElementSibling; s && !v; s = s.nextElementSibling) if (!hiddenHost(s)) v = s;
+  for (let s = host.previousElementSibling; s && !v; s = s.previousElementSibling) if (!hiddenHost(s)) v = s;
+  if (!v) { v = host.parentElement; while (v && hiddenHost(v)) v = v.parentElement; }
+  if (v) v.scrollIntoView({ behavior: 'auto', block: v === host.previousElementSibling ? 'end' : 'start' });
+  return !!v;
+}
+(function hiddenLinks() {
+  document.addEventListener('click', e => {
+    if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.closest('dialog')) return;
+    const t = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+    if (!t || !hiddenHost(t)) return;   // a visible target: the browser's own jump
+    e.preventDefault();
+    if (goToTarget(t)) history.replaceState(null, '', a.getAttribute('href'));
+  });
+  const atLoad = () => { const id = decodeURIComponent(location.hash.slice(1)); const t = id && document.getElementById(id); if (t && hiddenHost(t)) goToTarget(t); };
+  if (document.readyState === 'complete') atLoad(); else window.addEventListener('load', atLoad);
+})();
 const NARROW = window.matchMedia ? matchMedia('(max-width: 1099px)') : { matches: false, addEventListener() {} };
 
 /* the short name of a unit for the running head: "4 · Grip", "Prologue · 4 August 2014", "Part II · Two kinds of dam" */
@@ -147,9 +192,9 @@ function unitShort(sec) {
     dlg.close();
     const t = document.getElementById(a.getAttribute('href').slice(1));
     if (t) {
-      if (t.hidden) { const pr = document.querySelector('.predict[data-unlocks="#' + t.id + '"]'); (pr || t.parentElement).scrollIntoView({ behavior: 'auto', block: 'center' }); }
-      else t.scrollIntoView({ behavior: 'auto', block: 'start' });
       history.replaceState(null, '', a.getAttribute('href'));
+      if (goToTarget(t)) return;   // still behind its predict box: the box, with focus on its first answer
+      t.scrollIntoView({ behavior: 'auto', block: 'start' });
       if (!t.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SECTION)$/.test(t.tagName)) t.setAttribute('tabindex', '-1');
       t.focus({ preventScroll: true });
     }
@@ -185,6 +230,13 @@ function unitShort(sec) {
     const kind = { history: 'History', curious: 'For the curious', units: 'Units', source: 'Source' }[note.dataset.kind] || 'Note';
     b.dataset.kind = kind;
     lab.replaceWith(b);
+    // keep the mark on the line of the word it belongs to: wrap that word and the mark in a no-wrap span
+    const prev = b.previousSibling, w = prev && prev.nodeType === 3 && prev.data.match(/\S+$/);
+    if (w) {
+      prev.data = prev.data.slice(0, prev.data.length - w[0].length);
+      const glue = document.createElement('span'); glue.className = 'sn-glue';
+      b.before(glue); glue.append(document.createTextNode(w[0]), b);
+    }
     b.addEventListener('click', () => {
       if (NARROW.matches) { box.checked = !box.checked; b.setAttribute('aria-expanded', box.checked ? 'true' : 'false'); }
       else { note.classList.add('is-flash'); setTimeout(() => note.classList.remove('is-flash'), 1200); }
@@ -291,8 +343,7 @@ function unitShort(sec) {
     b.type = 'button'; b.className = 'fig-expand'; b.innerHTML = ICON + '<span>Expand</span>';
     b.setAttribute('aria-label', 'Expand ' + (bookData().refs[fig.id] ? ref(fig.id) : 'this figure') + ' to full screen');
     b.addEventListener('click', () => show(fig, b));
-    const wrap = $('.svgwrap', fig);  // over the drawing's corner when there is one, else in the title strip
-    if (wrap) { wrap.classList.add('has-expand'); wrap.appendChild(b); } else top.appendChild(b);
+    top.appendChild(b);   // in the title strip, on every figure: over the drawing it hid the toe and the seepage face
   });
   window.bookExpand = { show: id => { const f = document.getElementById(id); const b = f && $('.fig-expand', f); if (b) show(f, b); }, hide };
 })();
@@ -389,14 +440,8 @@ function setFigure(spec) {
     const fig = document.getElementById(spec.fig);
     if (!fig) { console.error('set-fig: no figure #' + spec.fig); return; }
     if (fig.hidden) {
-      const pr = document.querySelector('.predict[data-unlocks="#' + spec.fig + '"]');
-      if (pr) {
-        pr.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' });
-        let n = pr.querySelector('.set-fig-first');
-        if (!n) { n = document.createElement('p'); n.className = 'set-fig-first'; n.setAttribute('role', 'status'); n.textContent = 'Answer this first: the figure opens when you do.'; pr.appendChild(n); }
-        const first = pr.querySelector('.predict-opts button'); if (first) first.focus({ preventScroll: true });
-        return;
-      }
+      const pr = unlockerOf(fig);
+      if (pr) { sendToPredict(pr, RM ? 'auto' : 'smooth'); return; }
     }
     const r = setFigure(spec);
     r.errors.forEach(m => console.error('set-fig: ' + m));

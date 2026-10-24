@@ -195,7 +195,8 @@ function groundPredictInit(root) {
     const sub = T(gRoot, 16, 44, '', 'lbl-s');
     // scale bar: 5 px per cm
     E('path', { d: `M452,${GY - 150} v150 M447,${GY - 150} h10 M447,${GY} h10`, class: 'dim' }, gRoot);
-    T(gRoot, 446, GY - 72, '30 cm', 'lbl-s halo', { 'text-anchor': 'end' });
+    T(gRoot, 446, GY - 80, 'scale', 'lbl-s halo', { 'text-anchor': 'end' });
+    T(gRoot, 446, GY - 66, '30 cm', 'lbl-s halo', { 'text-anchor': 'end' });
 
     const { xs, tanDrain, PROF, TAN, ANG, SLOPE, GAP, CAP, ZN } = beachShapes(CX, NC, DX), damp = PROF.damp;
     const NAME = { dry: 'dry sand', damp: 'damp sand', under: 'sand under still water', drain: 'sand with water draining out of it' };
@@ -272,13 +273,14 @@ function groundPredictInit(root) {
     const zbg = E('rect', { x: 0, y: 0, width: 220, height: 150, style: 'fill:var(--sheet)' }, zg);
     const zwater = E('rect', { x: 0, y: 0, width: 220, height: 150, class: 'water', opacity: 0 }, zg);
     const zbr = E('g', null, zg);
-    const R = 24, S = 48.4;
+    const R = 21, S = 48.4;   // grains a little apart, so the gaps read clearly at this size
     const C = [];
-    for (let r = -1; r <= 2; r++) for (let c = -1; c <= 4; c++) C.push([12 + c * S + (r % 2 ? S / 2 : 0), 28 + r * S * 0.866]);
+    for (let r = -1; r <= 3; r++) for (let c = -1; c <= 4; c++) C.push([12 + c * S + (r % 2 ? S / 2 : 0), 28 + r * S * 0.866]);
     for (let i = 0; i < C.length; i++) for (let j = i + 1; j < C.length; j++) {
       const d = Math.hypot(C[i][0] - C[j][0], C[i][1] - C[j][1]);
       if (d < S + 1) { // a water ring (meniscus) where two grains touch
-        const ux = (C[j][0] - C[i][0]) / d, uy = (C[j][1] - C[i][1]) / d, al = 38 * deg;
+        // thin bridges at the contacts, so each gap stays mostly air: damp sand holds only a little water
+        const ux = (C[j][0] - C[i][0]) / d, uy = (C[j][1] - C[i][1]) / d, al = 18 * deg;
         const L = (x, y) => [C[i][0] + ux * x - uy * y, C[i][1] + uy * x + ux * y];
         const a = R * Math.cos(al), b = R * Math.sin(al), m = d / 2;
         const p = [L(a, b), L(m, b * 0.42), L(d - a, b), L(d - a, -b), L(m, -b * 0.42), L(a, -b)];
@@ -419,7 +421,12 @@ function groundPredictInit(root) {
     const guide = E('path', { style: 'stroke:var(--ink-3);stroke-width:0.9;stroke-dasharray:3 3;fill:none' }, cg);
     const halfDot = E('circle', { r: 3.5, style: 'fill:var(--sheet);stroke:var(--ink-2);stroke-width:1.4' }, cg);
     const dot = E('circle', { r: 4.5, style: 'fill:var(--accent)' }, cg);
-    const cLbl = T(cg, 0, 0, '', 'lbl lbl-acc halo'), hLbl = T(cg, 0, 0, '', 'lbl-s halo');
+    const cLbl = T(cg, 0, 0, '', 'lbl lbl-acc halo');
+    // the open dot is explained by a small key in the chart's empty top-left corner, clear of the axis
+    // and of the curve at every depth (a label beside the dot ran into the axis's tick labels)
+    const hKey = E('g', null, cg);
+    E('circle', { cx: cx0 + 12, cy: cy1 + 12, r: 3.5, style: 'fill:var(--sheet);stroke:var(--ink-2);stroke-width:1.4' }, hKey);
+    const hLbl = T(hKey, cx0 + 21, cy1 + 15.5, 'half the depth: ¼ the push', 'lbl-s halo');
     function chart(c) {
       const f = c.F / 1000, fh = f / 4;
       dot.setAttribute('cx', X(H)); dot.setAttribute('cy', Y(f));
@@ -428,9 +435,8 @@ function groundPredictInit(root) {
       const left = X(H) > 150; // label above-left of the dot, where the curve leaves room
       cLbl.setAttribute('x', X(H) + (left ? -9 : 9)); cLbl.setAttribute('y', Y(f) - (left ? 4 : 10)); cLbl.setAttribute('text-anchor', left ? 'end' : 'start');
       cLbl.textContent = c.txt.chart;
-      hLbl.setAttribute('x', X(H / 2) + 8); hLbl.setAttribute('y', Y(fh) + 14);
-      hLbl.textContent = 'half the depth: ¼ the push';
-      hLbl.style.display = H >= 30 ? '' : 'none';
+      hKey.style.display = H >= 30 ? '' : 'none';
+      void hLbl;
     }
     render();
     tutorRegister('fig-depth', {
