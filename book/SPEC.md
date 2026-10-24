@@ -398,6 +398,43 @@ before the punctuation that follows a reference.
   Appendix 4's values at the figures' defaults and checks that every id of the nine-step page
   (`tests/fixtures/ids-before-book.json`) is still on the page.
 
+### A.10 What the layout stage built (the design system, as implemented)
+
+- **Grid.** `.col` is a plain block whose right padding is the margin column (38rem text, 2.5rem gap,
+  15rem margin at ≥1100px), so sidenotes float out of their paragraphs as in Tufte CSS. Inside a
+  `.col`, `figure.table`, `section.we`, `figure.fig`, `figure.case-plate` and anything `.wide` reach
+  into the margin. Figures outside a `.col` are `.wide` (text plus margin) or `.full` (the six
+  instruments, now marked so). Below 760px plates go full-bleed.
+- **No sideways scrolling.** Every drawing fits its plate. `app-book.js` sets `--s` (rendered width ÷
+  viewBox width) on each `svg.dwg`, and `styles-book.css` lifts small labels toward a floor (11px on a
+  phone, 10.5px on a laptop) within a cap, so dense drawings don't collide. Every plate with a
+  scrolling-era drawing (`.full`, or a `.svgwrap`/canvas) gets an **Expand** button below 900px: the
+  figure itself moves into a full-screen dialog (drawing first and pinned, controls under it), turned a
+  quarter turn on an upright phone, where labels reach 11px. SVG label sizes are set with `--fs` (not
+  `font-size`) so the floor can work; new figure CSS must do the same.
+- **The running section** is drawn once in `tools/bookmini.py` (one `<symbol>` per layer, stacked by
+  depth) and placed in each opener (with "This chapter adds …" from `book.json`), each part opener,
+  each Contents row and the running head. The Ch 7 concrete block sits right of the toe, not left.
+- **Openers.** The build adds `p.ch-num` and the miniature (`div.opener-foot`); writers' epigraph,
+  So far and "can" list sit between the generated head and foot.
+- **Questions.** The tag and difficulty dots are drawn from `li.q[data-tag][data-level]` by CSS; do not
+  type them. **Notes:** the markup of F.3 is unchanged; `app-book.js` turns each mark into a
+  `<button aria-expanded>` on narrow screens. A Source note may name the source's own tables and
+  figures ("Table 3"): the typed-number check skips `.marginnote[data-kind="source"]` and `<cite>`.
+- **Running head and Contents dialog** (`#runhead`, `#toc-dialog`, generated from `#book-data`); the
+  old index bar and `indexBar()` are gone. **Film posters** are HTML overlays (`app-film.js`), and
+  `.film-marks button[data-t]` seeks.
+- **Set the figure** accepts any control id: a range, a checkbox or select, or a group whose buttons
+  carry `data-v`, `data-i`, `data-m`, `data-p` or `data-exp`. It clamps and reports an illegal value,
+  glows the controls it changed and offers "↑ Back to Example n.m". `tests/test-setfig.js` presses it
+  for every control of every figure in headless Chrome, and checks the running head, the Contents
+  dialog and Expand.
+- **Equations.** `eq-depth-p`, `eq-depth-push`, `eq-head-darcy`, `eq-grip-sigma` and
+  `eq-grip-strength` are now `div.eq` (same text). The other `div.formula`s are restyled in the serif
+  until the writers replace them.
+- **Print.** One chapter per page, controls hidden, predict answers shown, notes in a 38mm margin.
+- Not built: a "plain page" mode (SPEC does not ask for one) and a theme toggle.
+
 ---
 
 ## B. `src/book.json`

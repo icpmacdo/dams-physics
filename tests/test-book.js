@@ -341,6 +341,8 @@ console.log('\nThe build refuses');
     check(/chapters, not steps/.test(d), 'a "Step" in a chapter file');
     const e = tryBuild('ch06-two-dams.html', 'It was not a liquefaction of the tailings.', 'It slid on a clay layer in its foundation.');
     check(/Polley guard/.test(e), 'Mount Polley\'s cause before Chapter 13');
+    const f = tryBuild('ch04-grip.html', 'Friction comes from pressing</h3>', 'Friction comes from pressing</h3><p>Grains grip.<label for="mn-grip-t" class="mn-ref"></label><input type="checkbox" id="mn-grip-t" class="margin-toggle"><span class="marginnote" data-kind="source">Horn and Deere (1962), Table 2.</span> Wet or dry, Table 2 says.</p>');
+    check(/typed number "Table 2" in "Wet or dry/.test(f) && !/Horn and Deere/.test(f), 'a typed number in the prose, but not a source\'s own table cited in a Source note');
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 }
 

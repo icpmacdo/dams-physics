@@ -195,7 +195,10 @@ class Book:
                         v = c.get(a)
                         if v and TYPED.search(v):
                             self.error('%s: typed number in %s="%s"' % (rel, a, v[:60]))
-                    walk(c, inref or c.has('data-ref') or c.tag == 'code')
+                    # a Source note names the source's own tables and figures ("Foster et al., Table 3"),
+                    # and so does a <cite>: those numbers belong to the source, not to this book
+                    walk(c, inref or c.has('data-ref') or c.tag in ('code', 'cite')
+                         or (c.hascls('marginnote') and c.get('data-kind') == 'source'))
         walk(sec, False)
 
     # ------------------------------------------------------------------ the whole thing
