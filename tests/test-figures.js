@@ -35,7 +35,7 @@ const load = (code, names) => new Function(UTIL + '\nconst deg = Math.PI / 180;\
 const G = load(['beach', 'depth', 'race', 'darcy', 'block', 'column'].map(n => block(ground, 'app-ground.js', n)).join('\n'),
   ['BEACH0', 'PACK0', 'JIG0', 'beachShapes', 'beachJiggle', 'depthCalc', 'MATS', 'fmtDur', 'raceTime', 'raceReadouts', 'DARCY0', 'DARCY_PLUG', 'darcyKEff', 'darcyHeadAt', 'flowRate', 'darcyReadouts',
     'BLOCK', 'blockForces', 'blockReadouts', 'COL', 'columnStress', 'columnReadouts']);
-const C = load(block(core, 'app-core.js', 'hydro') + block(core, 'app-core.js', 'raise'), ['hydroCalc', 'R', 'stateAt', 'stageText', 'raiseDam']);
+const C = load(block(core, 'app-core.js', 'hydro') + block(core, 'app-core.js', 'raise'), ['hydroCalc', 'runnerTurn', 'R', 'stateAt', 'stageText', 'raiseDam']);
 const S = load(block(seep, 'app-seep.js', 'lab') + block(seep, 'app-seep.js', 'pipe') + block(seep, 'app-seep.js', 'uplift'),
   ['LAB0', 'labFmtQ', 'labPiping', 'names', 'B', 'TW', 'W', 'HW0', 'upliftDrainHead', 'upliftCalc', 'upliftReadouts']);
 
@@ -179,9 +179,13 @@ console.log('\nFig. 5.1 · hydro dam readouts');
   same(lv + ' / ' + Q, '80 / 150', 'sliders on load: level / turbine flow');
   staticMatches([['hy-level-o', c.txt.level], ['hy-flow-o', c.txt.flow], ['hy-P', c.txt.P], ['hy-p', c.txt.p], ['hy-F', c.txt.F]], 'Fig. 5.1');
   const at = (lv, Q) => { const c = C.hydroCalc(lv, Q); return [c.txt.level, c.txt.P, c.txt.p, c.txt.F].join(' | '); };
-  same(at(80, 150), 'H = 85 m | 112 MW | 0.87 MPa | Water load 39 MN per metre of dam', 'on load');
-  same(at(100, 300), 'H = 92 m | 244 MW | 0.94 MPa | Water load 45 MN per metre of dam', 'full reservoir, full flow');
-  same(at(0, 10), 'H = 56 m | 5 MW | 0.59 MPa | Water load 18 MN per metre of dam', 'lowest level, least flow');
+  // the load readout now names the heel depth it uses (it said only "Water load 39 MN per metre of dam")
+  same(at(80, 150), 'H = 85 m | 112 MW | 0.87 MPa | 89 m deep at the heel · water load 39 MN per metre of dam', 'on load');
+  same(at(100, 300), 'H = 92 m | 244 MW | 0.94 MPa | 96 m deep at the heel · water load 45 MN per metre of dam', 'full reservoir, full flow');
+  same(at(0, 10), 'H = 56 m | 5 MW | 0.59 MPa | 60 m deep at the heel · water load 18 MN per metre of dam', 'lowest level, least flow');
+  const c80 = C.hydroCalc(80, 150);
+  same((9.81 * Math.round(c80.depth) / 1000).toFixed(2) + ' MPa / ' + Math.round(0.5 * 9.81 * Math.round(c80.depth) ** 2 / 1000) + ' MN', '0.87 MPa / 39 MN', 'a reader checking ρgh and ½ρgh² with the shown heel depth gets the shown numbers');
+  same(C.runnerTurn(1, 10) + ' / ' + C.runnerTurn(1, 300), '260 / 260', 'the runner turns at the same speed at any flow (degrees per second)');
 }
 
 console.log('\nFig. 6.1 · raising methods');
@@ -306,6 +310,9 @@ console.log('\nFacts the text states (errata fixes)');
   says('Each sits in one of the steps it retells, and several range over other steps as well', 'masthead');
   says('Then it runs ahead: the block on the ramp and the factor of safety (Step 4)', 'Depth, not size caption');
   never('so the shells stay dry and strong', 'A wall made of dirt caption (the film says the back half stays dry)');
+  // readout labels are set in capitals, which turns η, ρ, σ into Η, Ρ, Σ: Greek must sit in an <i class="g-sym">
+  const capsGreek = [...html.matchAll(/class="ro"><span>([^<]*)</g)].map(m => m[1]).filter(t => /[Ͱ-Ͽ]/.test(t));
+  check(!capsGreek.length, 'no readout label puts a Greek letter in capitals' + (capsGreek.length ? ': ' + capsGreek.join(' / ') : ''));
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');

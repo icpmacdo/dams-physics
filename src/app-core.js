@@ -187,15 +187,19 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
   const g = E('g', null, svg);
   /* @fig-hydro-begin */
   const BASE = 270, TWY = 262;
-  // the readouts for the level slider (0–100) and the turbine flow Q (m³/s); svg y is 2 px per metre
+  // the readouts for the level slider (0–100) and the turbine flow Q (m³/s); svg y is 2 px per metre.
+  // H is the head to the tailwater (it drives the turbines); the load comes from the deeper water at the heel.
   function hydroCalc(level, Q) {
     const wl = lerp(150, 78, level / 100);
     const H = (TWY - wl) * 0.5, depth = (BASE - wl) * 0.5;
     const pMPa = 9.81 * depth / 1000, Fmn = 0.5 * 9.81 * depth * depth / 1000;
     const Pmw = 0.9 * 9.81 * Q * H / 1000;
     return { wl, H, depth, pMPa, Fmn, Pmw,
-      txt: { level: 'H = ' + Math.round(H) + ' m', flow: Q + ' m³/s', P: fmt(Pmw) + ' MW', p: pMPa.toFixed(2) + ' MPa', F: 'Water load ' + Math.round(Fmn) + ' MN per metre of dam' } };
+      txt: { level: 'H = ' + Math.round(H) + ' m', flow: Q + ' m³/s', P: fmt(Pmw) + ' MW', p: pMPa.toFixed(2) + ' MPa', F: Math.round(depth) + ' m deep at the heel · water load ' + Math.round(Fmn) + ' MN per metre of dam' } };
   }
+  // the runner's turn in dt seconds: a grid-connected unit turns at a fixed (synchronous) speed,
+  // so more flow means more torque and power, not a faster spin
+  function runnerTurn(dt, Q) { void Q; return dt * 260; }
   /* @fig-hydro-end */
   const water = E('path', { class: 'water' }, g);
   const surf = E('path', { class: 'water-line' }, g);
@@ -281,7 +285,7 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
       E('path', { d: `M${200 - len},${y} L198,${y}`, style: 'stroke:var(--accent);stroke-width:1;fill:none', 'marker-end': 'url(#arr-acc)' }, presArrows);
     }
     presLbl.setAttribute('x', 200 - w - 6); presLbl.setAttribute('y', 252);
-    presLbl2.setAttribute('x', 200 - w - 6); presLbl2.setAttribute('y', 265); presLbl2.textContent = pMPa.toFixed(2) + ' MPa at heel';
+    presLbl2.setAttribute('x', 200 - w - 6); presLbl2.setAttribute('y', 265); presLbl2.textContent = pMPa.toFixed(2) + ' MPa at heel, ' + Math.round(c.depth) + ' m deep';
     dimLine.setAttribute('d', `M462,${wl + 1} L462,${TWY - 1}`);
     extUp.setAttribute('d', `M226,${wl} L470,${wl}`);
     dimLbl.setAttribute('y', (wl + TWY) / 2 + 4); dimLbl.setAttribute('x', 468);
@@ -307,7 +311,7 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
     const sp = Q / 150;
     off1 -= dt * 40 * sp; off2 -= dt * 30 * sp; off3 -= dt * 30 * (Q * (TWY - wl)) / (150 * 170);
     penFlow.style.strokeDashoffset = off1; dtFlow.style.strokeDashoffset = off2; wireFlow.style.strokeDashoffset = off3;
-    runAng = (runAng + dt * 260 * sp) % 360;
+    runAng = (runAng + runnerTurn(dt, Q)) % 360;
     runner.setAttribute('transform', `rotate(${runAng.toFixed(1)},384,253)`);
     for (const p of parts) {
       const dx = 196 - p.x, dy = 205 - p.y, d = Math.hypot(dx, dy);
