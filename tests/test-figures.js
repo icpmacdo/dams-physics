@@ -39,6 +39,13 @@ const C = load(block(core, 'app-core.js', 'hydro') + block(core, 'app-core.js', 
 const S = load(block(seep, 'app-seep.js', 'lab') + block(seep, 'app-seep.js', 'pipe') + block(seep, 'app-seep.js', 'uplift'),
   ['LAB0', 'labFmtQ', 'labPiping', 'names', 'B', 'TW', 'W', 'HW0', 'upliftDrainHead', 'upliftCalc', 'upliftReadouts']);
 
+// ---- every page script parses (the tutor texts and drawing code live outside the pure blocks loaded above)
+for (const n of fs.readdirSync(SRC).filter(f => /^app-.*\.js$/.test(f)).sort()) {
+  let err = null;
+  try { new (require('vm').Script)(read(n), { filename: n }); } catch (e) { err = e; }
+  check(!err, `${n} parses` + (err ? ': ' + err.message : ''));
+}
+
 // ---- the page markup, assembled as build.py does
 let html = read('body.html');
 for (let k = 0; k < 4; k++) html = html.replace(/<!-- @include ([\w.-]+) -->/g, (_, n) => (fs.existsSync(path.join(SRC, n)) ? read(n) : ''));
