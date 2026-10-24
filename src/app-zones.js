@@ -195,13 +195,13 @@
   LIB.forEach((d, i) => {
     const b = document.createElement('button');
     b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = d.tab; b.dataset.i = i;
-    b.addEventListener('click', () => show(i, true));
+    b.addEventListener('click', () => show(i));
     tabsEl.appendChild(b);
   });
   tabsEl.addEventListener('keydown', e => {
     const bs = $$('button', tabsEl), i = bs.indexOf(document.activeElement);
     if (i < 0) return;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const j = (i + (e.key === 'ArrowRight' ? 1 : bs.length - 1)) % bs.length; bs[j].focus(); show(j, true); e.preventDefault(); }
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const j = (i + (e.key === 'ArrowRight' ? 1 : bs.length - 1)) % bs.length; bs[j].focus(); show(j); e.preventDefault(); }
   });
 
   function fillOf(f) { return f === 'void' ? 'var(--sheet)' : f === 'water' ? 'var(--water-fill)' : `url(#${f})`; }
@@ -214,7 +214,7 @@
     return [lo, hi];
   }
   let els = {};
-  function show(i, user) {
+  function show(i) {
     cur = LIB[i];
     $$('button', tabsEl).forEach((b, j) => { b.setAttribute('aria-selected', j === i ? 'true' : 'false'); b.tabIndex = j === i ? 0 : -1; });
     $('#zn-title').textContent = cur.title; $('#zn-scale').textContent = cur.scale;
@@ -296,10 +296,10 @@
     const first = cur.zones.find(z => z.step === 2 || z.step === 1) || cur.zones[0];
     const preferred = { er: '1', cf: 'F', gr: 'FD', tl: 'CD' }[cur.key];
     select(cur.zones.some(z => z.id === preferred) ? preferred : first.id);
-    stopBuild(); setBuild(null);
-    stepEl.textContent = '';
-    if (user && !RM) startBuild();
+    // every tab opens on its finished section; Build shows the order it goes up in
+    stopBuild(); setBuild(null); idle();
   }
+  function idle() { stepEl.innerHTML = '<b>Finished section</b> · press Build to watch it go up in order'; }
   function select(id) {
     sel = id;
     for (const k in els.zones) {
@@ -370,15 +370,14 @@
     setBuild(0);
   }
   function stopBuild() { build = null; buildBtn.querySelector('span').textContent = 'Build'; }
-  buildBtn.addEventListener('click', () => { if (build) { stopBuild(); setBuild(null); stepEl.textContent = ''; } else startBuild(); });
+  buildBtn.addEventListener('click', () => { if (build) { stopBuild(); setBuild(null); idle(); } else startBuild(); });
   F.ticks.push((t, dt) => {
     if (!build) return;
     build.t += dt / 1.6;
     if (build.t >= cur.steps.length) { const last = cur.steps[cur.steps.length - 1].label; stopBuild(); setBuild(null); stepEl.innerHTML = `<b>Complete</b> · ${last}`; return; }
     setBuild(build.t);
   });
-  show(0, false);
-  F.onFirst = () => { if (!RM) startBuild(); };
+  show(0);
 })();
 
 /* ===================== Fig 4: filter vs rockfill ===================== */

@@ -85,6 +85,16 @@ const PROBE = String(function probe() {
       res.log.push('elements on the page after load: ' + nodes);
       say(nodes < 25000, 'the page holds ' + nodes + ' elements after load, under the 25,000 ceiling');
     }
+    // fig-zones opens on its finished section; Build animates it (book/SPEC.md 0.2, H.10)
+    {
+      const zf = d.getElementById('fig-zones');
+      zf.scrollIntoView(); w.dispatchEvent(new Event('scroll')); await wait(1200);
+      const stepTxt = () => d.getElementById('zn-step').textContent, btnTxt = () => d.getElementById('zn-build').textContent.trim();
+      say(/^Finished section/.test(stepTxt()) && btnTxt() === 'Build', 'fig-zones opens on its finished section, Build not running: ' + JSON.stringify(stepTxt()));
+      d.querySelector('#zn-tabs [data-i="2"]').click(); await wait(300);
+      say(/^Finished section/.test(stepTxt()) && btnTxt() === 'Build', 'fig-zones: another tab also opens finished');
+      d.querySelector('#zn-tabs [data-i="0"]').click(); await wait(100);
+    }
     const figs = [...d.querySelectorAll('figure.sheet[id]')].filter(x => !x.classList.contains('film'));
     res.figs = figs.map(x => x.id);
     for (const fig of figs) {
@@ -112,6 +122,22 @@ const PROBE = String(function probe() {
           fig.classList.contains('set-target') ? '' : 'figure not marked', hl ? '' : 'nothing highlighted', pill && /^↑ Back to /.test(pill.textContent) ? '' : 'no back pill'].filter(Boolean);
         say(!why.length, fig.id + ' · ' + id + ' = ' + JSON.stringify(v) + (why.length ? ' (' + why.join(', ') + ')' : ''));
       }
+    }
+    // every Set the figure on the page (writers' buttons), then every one the chapter briefs ask for
+    // (book/SPEC.md H.4-H.15), all figures now open: each sets its controls with no error
+    {
+      const real = [...d.querySelectorAll('button.set-fig')].filter(b => !b.closest('#setfig-probe')).map(b => b.dataset.set);
+      const bad = [];
+      for (const raw of real.concat(BRIEF_SETS)) {
+        let spec; try { spec = JSON.parse(raw); } catch (err) { bad.push('bad JSON ' + raw); continue; }
+        errors.length = 0;
+        const r = w.bookSetFigure(spec); await wait(150);
+        if (!r.ok || errors.length) bad.push(raw + ': ' + r.errors.concat(errors).join('; '));
+      }
+      say(!bad.length, `all ${real.length} Set-the-figure buttons on the page and ${BRIEF_SETS.length} the briefs ask for set their figures without an error` + (bad.length ? ': ' + bad.slice(0, 4).join(' | ') : ''));
+      w.bookSetFigure({ fig: 'fig-zones', set: { 'zn-tabs': '0' } }); await wait(100);
+      w.bookSetFigure({ fig: 'fig-zones', set: { 'zn-tabs': '1' }, click: ['#zn-build'] }); await wait(100);
+      say(d.getElementById('zn-build').textContent.trim() === 'Building…', 'fig-zones: a tab then Build (the Chapter 9 question) starts the build rather than stopping one');
     }
     // buttons pressed afterwards, and an illegal value reported rather than set silently
     let e = await press({ fig: 'fig-beach', set: { 'bc-state': 'dry' }, click: ['#bc-jiggle'] });
@@ -186,8 +212,13 @@ const PROBE = String(function probe() {
     document.getElementById('out').textContent = JSON.stringify(res);
   });
 });
+// the Set-the-figure specs the chapter briefs name, so writers can rely on them
+const SPEC = fs.readFileSync(path.join(ROOT, 'book', 'SPEC.md'), 'utf8');
+const BRIEFS = SPEC.slice(SPEC.indexOf('### H.4'), SPEC.indexOf('### H.16'));
+const BRIEF_SETS = [...BRIEFS.matchAll(/`(\{"fig":[^`]*\})`/g)].map(m => m[1]);
 fs.writeFileSync(path.join(docs, 'setfig-probe.html'),
-  '<!doctype html><html><head><meta charset="utf-8"></head><body><pre id="out">not run</pre><iframe id="f" src="index.html" style="width:1280px;height:900px;border:0"></iframe><script>(' + PROBE + ')();</script></body></html>');
+  '<!doctype html><html><head><meta charset="utf-8"></head><body><pre id="out">not run</pre><iframe id="f" src="index.html" style="width:1280px;height:900px;border:0"></iframe><script>const BRIEF_SETS = ' +
+  JSON.stringify(BRIEF_SETS).replace(/</g, '\\u003c') + ';(' + PROBE + ')();</script></body></html>');
 
 const server = http.createServer((req, res) => {
   const p = path.join(docs, decodeURIComponent(req.url.split('?')[0]).replace(/^\/+/, '') || 'index.html');
