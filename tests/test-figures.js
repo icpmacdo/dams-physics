@@ -218,10 +218,12 @@ console.log('\nFig. 8.2 · seepage lab: piping readout');
     return [S.labFmtQ(r.q.inflowTotal) + ' L/day', p.i, p.i2, p.fs.toFixed(2), p.fsTxt, p.word, p.cls].join(' | ');
   };
   same(at({}), '2,366 L/day | 0.79 | on the downstream slope | 1.27 | 1.3 | Piping risk | bad', 'on load');
-  // 1.47 shows as "1.5", so the pill classifies the shown value: Marginal (it said "Piping risk" before the fix)
-  same(at({ cutoff: 'partial' }), '2,160 L/day | 0.68 | on the downstream slope | 1.47 | 1.5 | Marginal | warn', 'half-depth cutoff');
-  same([1.449, 1.46, 1.5, 2.949, 2.96].map(fs => S.labPiping({ fs, groundMax: 1 / fs }).fsTxt + ' ' + S.labPiping({ fs, groundMax: 1 / fs }).word).join(' / '),
-    '1.4 Piping risk / 1.5 Marginal / 1.5 Marginal / 2.9 Marginal / 3.0 Adequate', 'the pill agrees with the number shown at each band edge');
+  // 1.467 is below 1.5: it shows as "1.47", not "1.5", so the number, the pill and the exit marker all say Piping risk
+  same(at({ cutoff: 'partial' }), '2,160 L/day | 0.68 | on the downstream slope | 1.47 | 1.47 | Piping risk | bad', 'half-depth cutoff');
+  same([1.449, 1.46, 1.5, 2.949, 2.96, 2.99999, 3.04].map(fs => S.labPiping({ fs, groundMax: 1 / fs }).fsTxt + ' ' + S.labPiping({ fs, groundMax: 1 / fs }).word).join(' / '),
+    '1.4 Piping risk / 1.46 Piping risk / 1.5 Marginal / 2.9 Marginal / 2.96 Marginal / 2.999 Marginal / 3.0 Adequate', 'the pill agrees with the number shown at each band edge');
+  // source check (the drawing code is not in a pure block): the exit marker takes its colour from the same band as the pill
+  check(/const col = 'var\(--' \+ labPiping\(ex\)\.cls \+ '\)'/.test(seep), 'the exit marker is coloured by labPiping, so it matches the pill');
   same(at({ cutoff: 'full' }), '166 L/day | 0.04 | at the ground beyond the toe | 22.47 | 22.5 | Adequate | ok', 'full cutoff');
   same(at({ drain: 'toe' }), '2,647 L/day | 0.08 | at the ground beyond the toe | 12.84 | 12.8 | Adequate | ok', 'toe drain');
   same(at({ drain: 'chimney' }), '4,052 L/day | ≈ 0 | all exits are filtered drains | 342.89 | > 50 | Safe | ok', 'chimney and blanket drain');
@@ -272,7 +274,7 @@ console.log('\nFig. 8.4 · uplift and sliding');
 console.log('\nFig. 9.1 · workbench leak verdict');
 {
   const ST = require(path.join(SRC, 'stability-solver.js'));
-  const BLD = load(block(read('app-build.js'), 'app-build.js', 'verdict'), ['leakWhere', 'pipeText']);
+  const BLD = load(block(read('app-build.js'), 'app-build.js', 'verdict'), ['leakWhere', 'pipeText', 'pipeNum', 'fosNum']);
   const run = (preset, foundation, cutoff) => {
     const d = { cells: ST.presetCells(preset, 2), slope: 2, foundation, cutoff, reservoir: 0.85 };
     const r = solveSeepage(ST.buildRequest(d).seep), lw = BLD.leakWhere(r.q);
@@ -298,6 +300,11 @@ console.log('\nFig. 9.1 · workbench leak verdict');
   check([pf, pg].every(t => /depend on the 1 m grid, so read them as indicative/.test(t)), 'piping row: both cases carry the grid caveat');
   same(BLD.pipeText(0, 'ground', Infinity), 'All the water leaves through filter or drain material, which lets water out but holds soil back.', 'piping row: every exit filtered');
   same(BLD.leakWhere({ passThroughDam: 1, passUnderDam: 1 }).txt, 'It splits between the dam itself (50%) and the ground beneath it (50%).', 'an even split');
+  // the numbers never round across a band edge or a mission goal (piping 1.5 and 3; slopes 1.0, 1.2 and 1.5),
+  // because the pills, the exit marker and the mission checks all judge the unrounded value
+  same([1.46, 1.5, 2.96, 3, 3.04, 12.84, 60, Infinity].map(f => BLD.pipeNum(f)).join(' / '), '1.46 / 1.5 / 2.96 / 3.0 / 3.0 / 12.8 / > 50 / > 50', 'piping safety at the band edges and the mission goal of 3');
+  same([0.997, 1.197, 1.497, 1.5, 1.734].map(BLD.fosNum).join(' / '), '0.997 / 1.197 / 1.497 / 1.50 / 1.73', 'slope factor of safety at the band edges and the mission goal of 1.5');
+  check(/Safety 2\.96\./.test(BLD.pipeText(0.34, 'ground', 2.96)) && /Safety over 50\./.test(BLD.pipeText(0.01, 'ground', 80)), 'piping row: "Safety 2.96." below the goal of 3, "Safety over 50." far above it');
 }
 
 console.log('\nFig. 9.1 · slip-surface search count');

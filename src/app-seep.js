@@ -104,8 +104,8 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
   const i2 = ex && imax > 0.005 ? (ex.governing === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'all exits are filtered drains';
   const fs = ex && isFinite(ex.fs) ? ex.fs : Infinity;
   if (!isFinite(fs) || fs > 50) return { imax, i, i2, fs, fsTxt: '> 50', cls: 'ok', word: 'Safe' };
-  const fsTxt = fs.toFixed(1), shown = +fsTxt; // classify on the value the reader sees, so "1.5" never reads "Piping risk"
-  const cls = shown >= 3 ? 'ok' : shown >= 1.5 ? 'warn' : 'bad', word = shown >= 3 ? 'Adequate' : shown >= 1.5 ? 'Marginal' : 'Piping risk';
+  const fsTxt = sfTxt(fs, 1, [1.5, 3]); // 1.467 shows as "1.47", so the number and the pill agree
+  const cls = fs >= 3 ? 'ok' : fs >= 1.5 ? 'warn' : 'bad', word = fs >= 3 ? 'Adequate' : fs >= 1.5 ? 'Marginal' : 'Piping risk';
   return { imax, i, i2, fs, fsTxt, cls, word };
 }
 /* @fig-lab-end */
@@ -289,7 +289,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
       const gx = ex.governing === 'face' ? ex.faceX : ex.groundX, gz = ex.governing === 'face' ? ex.faceZ : 0;
       const [px, py] = M.pt([gx, gz]);
       const imax = Math.max(ex.groundMax || 0, ex.faceMax || 0);
-      const col = ex.fs >= 3 ? 'var(--ok)' : ex.fs >= 1.5 ? 'var(--warn)' : 'var(--bad)';
+      const col = 'var(--' + labPiping(ex).cls + ')'; // the same band as the readout pill
       flows.pulse = E('circle', { cx: px, cy: py, r: 7, style: `fill:none;stroke:${col};stroke-width:2` }, gMark);
       E('circle', { cx: px, cy: py, r: 2.5, style: `fill:${col}` }, gMark);
       T(gMark, px + 10, py + 16, 'max exit i = ' + imax.toFixed(2), 'lbl-s halo', { style: `fill:${col}` });
@@ -485,7 +485,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
   function upliftReadouts(c) { // the readout texts for a result of upliftCalc
     const inMid = c.xR >= 16 && c.xR <= 32;
     return { inMid, W: n1(W / 1000) + ' MN/m', H: n1(c.H / 1000) + ' MN/m', U: n1(c.U / 1000) + ' MN/m', U2: Math.round(100 * c.U / W) + '% of the weight',
-      FS: c.FS.toFixed(2), fsCls: c.FS >= 1.5 ? 'ok' : c.FS >= 1 ? 'warn' : 'bad', fsW: c.FS >= 1.5 ? 'Meets 1.5' : c.FS >= 1 ? 'Below 1.5' : 'Slides',
+      FS: sfTxt(c.FS, 2, [1, 1.5]), fsCls: c.FS >= 1.5 ? 'ok' : c.FS >= 1 ? 'warn' : 'bad', fsW: c.FS >= 1.5 ? 'Meets 1.5' : c.FS >= 1 ? 'Below 1.5' : 'Slides',
       R: (c.xR / B).toFixed(2) + ' B', rCls: inMid ? 'ok' : 'bad', rW: inMid ? 'Middle third' : 'Heel in tension', R2: 'from the heel; middle third is 0.33–0.67 B' };
   }
   /* @fig-uplift-end */

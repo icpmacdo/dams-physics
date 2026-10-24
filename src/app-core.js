@@ -22,6 +22,13 @@ const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const ease = t => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 const fmt = (v, d) => v.toLocaleString('en-US', { maximumFractionDigits: d || 0, minimumFractionDigits: d || 0 });
+// a safety factor to d decimals, with more digits only where rounding would carry it across a band edge,
+// so the number never contradicts its pill or a mission goal: 1.467 shows as "1.47", not "1.5" beside a 1.5 target
+function sfTxt(v, d, edges) {
+  for (let k = d; k <= d + 2; k++) { const t = v.toFixed(k); if (edges.every(e => (+t >= e) === (v >= e))) return t; }
+  const p = Math.pow(10, d + 2);
+  return (Math.floor(v * p) / p).toFixed(d + 2); // 2.99999 → "2.999"
+}
 
 function mapper(o) {
   const kx = (o.X1 - o.X0) / (o.x1 - o.x0), kz = (o.Y1 - o.Y0) / (o.z1 - o.z0);

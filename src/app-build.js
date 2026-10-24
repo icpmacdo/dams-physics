@@ -18,11 +18,15 @@ function leakWhere(q) {
     : 'Water is going both through the dam and under it: a clay core with a full cutoff beneath it closes both paths.';
   return { under, path, txt, tip };
 }
+// Fig 9.1's numbers for safety against piping and for slope stability, on the same band edges as their pills
+// and the missions' goals (piping 1.5 and 3; slopes 1.0, 1.2 and 1.5)
+const pipeNum = (f, big) => (!isFinite(f) || f > 50 ? big || '> 50' : sfTxt(f, 1, [1.5, 3]));
+const fosNum = f => sfTxt(f, 2, [1, 1.2, 1.5]);
 // Fig 9.1's piping row. i_c ≈ 1 is the heave criterion for water rising out of level ground; out of a
 // sloping face the water drags grains out along the slope, so there the number is only a measure of the drag.
 function pipeText(iExit, where, pipe) {
   if (iExit <= 0.005) return 'All the water leaves through filter or drain material, which lets water out but holds soil back.';
-  const fs = 'Safety ' + (!isFinite(pipe) || pipe > 50 ? 'over 50' : pipe.toFixed(1)) + '.';
+  const fs = 'Safety ' + pipeNum(pipe, 'over 50') + '.';
   const grid = ' Gradients right where the water comes out depend on the 1 m grid, so read them as indicative.';
   if (where === 'face') return `Water comes out of the downstream slope with a gradient of ${iExit.toFixed(2)}. Out of a slope it drags grains down and out of the face rather than lifting them, so the failure is the face sloughing or eroding, not a boil; read the number as how hard the water drags, against about 1.0 that would float sand out of level ground. ${fs}${grid}`;
   return `Water comes up out of the ground beyond the toe with a gradient of ${iExit.toFixed(2)}: it pushes up on the grains there with ${Math.round(iExit * 100)}% of the force that would lift them (sand boils at about 1.0). ${fs}${grid}`;
@@ -519,9 +523,9 @@ function pipeText(iExit, where, pipe) {
       // label
       const mid = pts[Math.floor(pts.length * (up ? 0.6 : 0.4))];
       const [lx, ly] = M.pt([mid[0], mid[1]]);
-      const txt = 'FoS ' + sr.fos.toFixed(2);
+      const txt = 'FoS ' + fosNum(sr.fos), tw = 62 + 7 * (txt.length - 8);
       const g = E('g', { class: 'bd-tag ' + cls }, gSlip);
-      E('rect', { x: lx - 31, y: ly + 8, width: 62, height: 18, rx: 3 }, g);
+      E('rect', { x: lx - tw / 2, y: ly + 8, width: tw, height: 18, rx: 3 }, g);
       T(g, lx, ly + 21, txt, 'lbl', { 'text-anchor': 'middle' });
       // direction of sliding
       const ent = up ? pts[pts.length - 1] : pts[0];
@@ -569,10 +573,10 @@ function pipeText(iExit, where, pipe) {
     $('#bd-i').textContent = m.iExit > 0.005 ? m.iExit.toFixed(2) : '≈ 0';
     $('#bd-i2').textContent = m.iExit > 0.005 ? (m.exitWhere === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'every exit is filtered';
     const pf = m.pipe;
-    $('#bd-pipe').innerHTML = (!isFinite(pf) || pf > 50 ? '> 50' : pf.toFixed(1)) + ' ' + pill(pipeClass(pf), pf >= 3 ? 'Adequate' : pf >= 1.5 ? 'Marginal' : 'Piping risk');
+    $('#bd-pipe').innerHTML = pipeNum(pf) + ' ' + pill(pipeClass(pf), pf >= 3 ? 'Adequate' : pf >= 1.5 ? 'Marginal' : 'Piping risk');
     if (sr && isFinite(sr.fos)) {
       const c = fosClass(sr.fos, st.side);
-      $('#bd-fos').innerHTML = sr.fos.toFixed(2) + ' ' + pill(c, c === 'ok' ? 'Stable' : c === 'warn' ? 'Low margin' : sr.fos < 1 ? 'Slides' : 'Likely slides');
+      $('#bd-fos').innerHTML = fosNum(sr.fos) + ' ' + pill(c, c === 'ok' ? 'Stable' : c === 'warn' ? 'Low margin' : sr.fos < 1 ? 'Slides' : 'Likely slides');
       $('#bd-fos2').textContent = (st.side === 'upstream' ? 'upstream, after a fast drawdown · ' : 'downstream, full reservoir · ') + (sr.critical.kind === 'block' ? 'block along the layer' : 'circle, Bishop');
     } else { $('#bd-fos').textContent = '–'; $('#bd-fos2').textContent = 'no slip surface found'; }
     const sf = seep.seepageFace;
@@ -626,7 +630,7 @@ function pipeText(iExit, where, pipe) {
       sword = sc === 'ok' ? 'Stable' : sc === 'warn' ? 'Low margin' : f < 1 ? 'Slides' : 'Likely';
       const where = cr.kind === 'block' ? 'a block that slides along the weak clay layer' : `a curved surface through ${andList(surfaceMaterials(cr))}, ${n1(cr.depth)} m deep at most`;
       const state = f < 1 ? 'it would slide' : f < (up ? 1.0 : 1.2) ? 'it would likely slide, with almost no margin' : f < target ? `it stands, but below the usual ${target}` : 'it holds with a sensible margin';
-      slideTxt = `The weakest slip surface is ${where}. Its factor of safety is ${f.toFixed(2)}: ${state}.`;
+      slideTxt = `The weakest slip surface is ${where}. Its factor of safety is ${fosNum(f)}: ${state}.`;
       if (cr.ru > 0.08) {
         slideTxt += ` Water pressure on that surface carries ${Math.round(cr.ru * 100)}% of the weight of the soil above it, so the grains press together with only ${Math.round((1 - cr.ru) * 100)}% of their weight and friction drops with it. Without that water pressure the same surface would have a factor of safety of ${cr.fosNoWater.toFixed(2)}.`;
       } else slideTxt += ' Very little water pressure acts on it, so the grip comes from the full weight of the grains.';
@@ -692,7 +696,7 @@ function pipeText(iExit, where, pipe) {
       } else if (check) {
         const c = check.checks.find(x => x.key === k);
         state = c.ok ? 'ok' : 'bad';
-        now = k === 'q' ? `now ${fmtL(mm.qLday)}` : k === 'pipe' ? `now ${!isFinite(mm.pipe) || mm.pipe > 50 ? '> 50' : mm.pipe.toFixed(1)}` : `now ${mm.fos.toFixed(2)}`;
+        now = k === 'q' ? `now ${fmtL(mm.qLday)}` : k === 'pipe' ? `now ${pipeNum(mm.pipe)}` : `now ${fosNum(mm.fos)}`;
       } else now = 'test to check';
       const mark = state === 'ok' ? '✓' : state === 'bad' ? '✗' : '·';
       return `<li class="bd-g ${state}"><span class="bd-mark" aria-hidden="true">${mark}</span>${GOAL_TEXT[k](m.goals)} <small>${now}</small></li>`;
