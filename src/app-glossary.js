@@ -24,7 +24,7 @@ const GLOSSARY = {
   'drained': ['Drained', 'Loading slow enough, or soil open enough, that water can flow in or out and the water pressure stays at its normal level.'],
   'undrained': ['Undrained', 'Loading or shearing too fast for the water to escape, so the soil can’t change volume and the water pressure changes instead.'],
   'friction-angle': ['Friction angle', 'The steepest slope at which one surface can rest on another without sliding, written φ. Strength = effective stress × tan φ. About 30–40° for sand.'],
-  'factor-of-safety': ['Factor of safety', 'The strength available divided by the strength needed to stay put. Below 1 the slope or block moves. Dams are typically designed for about 1.5.'],
+  'factor-of-safety': ['Factor of safety', 'The strength available divided by the strength needed to stay put. Below 1 the slope or block moves. Long-term design values are usually about 1.5; lower values, such as 1.3, are sometimes accepted for temporary or operating conditions.'],
   'slip-surface': ['Slip surface', 'The surface along which a slope would slide if it failed. Stability checks search for the one with the lowest factor of safety.'],
   'core': ['Core', 'The low-permeability heart of an embankment dam, usually compacted clay. It takes most of the water’s head loss.'],
   'filter': ['Filter', 'A layer of carefully graded sand that lets water out but stops soil grains from being carried with it.'],
@@ -42,7 +42,7 @@ const GLOSSARY = {
   'force-chain': ['Force chain', 'A line of grains pressing hard on each other and carrying most of the load. Most of the load in sand travels along these chains; the grains between them carry little.'],
   'void-ratio': ['Void ratio', 'The volume of the gaps between grains divided by the volume of the grains themselves. Loose sand has a high void ratio; dense sand has a low one.'],
   'uplift': ['Uplift', 'Water pressure under a concrete dam pushing it upward, which cancels part of its weight.'],
-  'tailings': ['Tailings', 'The waste left after a mill extracts metal from ore: rock ground finer than flour, pumped out as a slurry with water.'],
+  'tailings': ['Tailings', 'The waste left after a mill extracts metal from ore: rock ground to sand, silt and finer, pumped out as a slurry with water.'],
   'beach': ['Beach', 'The gently sloping deposit of tailings sand between the dam crest and the pond.'],
   'upstream-raise': ['Upstream raise', 'Raising a tailings dam by building each new dyke on the tailings beach, so the crest steps toward the pond.'],
   'hydrostatic': ['Hydrostatic pressure', 'The pressure in still water, p = ρgh: it depends only on depth, about 9.8 kPa per metre.']

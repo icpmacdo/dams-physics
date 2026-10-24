@@ -13,6 +13,8 @@ figure.cover-plate { max-width: var(--wide); margin: 0 auto; padding: 0; }
 svg.cover-dwg { display: block; width: 100%; height: auto; overflow: visible; }
 svg.cover-dwg .edge-l { stroke-width: 0.5; }
 svg.cover-dwg text { --fs: 11px; }
+svg.cover-dwg .cv-scale text { fill: var(--ink-2); }
+svg.cover-dwg .cv-scale .ink-s { stroke: var(--ink-2); }
 .cover-plate figcaption { font-family: var(--f-body); font-style: italic; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.45; color: var(--ink-2);
   max-width: var(--measure); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--rule); }
 @media (max-width: 759px) {

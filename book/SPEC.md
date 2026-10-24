@@ -1692,7 +1692,7 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
   Home experiment: pour dry sugar, rice or sand through a funnel and measure the cone. Steeper or
   shallower than 34°? (It depends on grain shape and friction; report what you measured.) [check, 1]
   Write 1.5:1, 2:1 and 3:1 as angles. (33.7°, 26.6°, 18.4°, keyed `ch01.*`.)
-- **Margin notes:** History: Coulomb 1773 and the angle of repose (`coulomb1773`, **verify**).
+- **Margin notes:** History: Coulomb's memoir, read in 1773 and printed in 1776, and the angle of repose (`coulomb1773`, label "Coulomb (1776)").
   Source: real sands 30–35°, steeper for angular grains (`terzaghi-peck-mesri1996` or `holtz2011`;
   **verify** page). For the curious: sandcastles are strongest at about 1% water, and their safe
   height grows as the base to the ⅔ power (`hornbaker1997`, `pakpour2012`). History: Reynolds 1885
@@ -2569,7 +2569,6 @@ DOIs are given only where the planning dossier recorded them.
 
 | Key | short | Entry |
 |---|---|---|
-| `coulomb1773` | Coulomb (1773) | Coulomb, C.-A. (1776). Essai sur une application des règles de maximis et minimis à quelques problèmes de statique, relatifs à l'architecture. Mémoires de mathématique et de physique, Académie Royale des Sciences 7: 343–382 (read 1773). **verify** |
 | `darcy1856` | Darcy (1856) | Darcy, H. (1856). Les fontaines publiques de la ville de Dijon. Paris: Victor Dalmont. |
 | `terzaghi1925` | Terzaghi (1925) | Terzaghi, K. (1925). Erdbaumechanik auf bodenphysikalischer Grundlage. Leipzig and Vienna: Franz Deuticke. |
 | `terzaghi-peck-mesri1996` | Terzaghi, Peck & Mesri (1996) | Terzaghi, K., Peck, R.B., Mesri, G. (1996). Soil Mechanics in Engineering Practice, 3rd ed. New York: Wiley. |
@@ -2586,6 +2585,7 @@ DOIs are given only where the planning dossier recorded them.
 
 | Key | short | Entry |
 |---|---|---|
+| `coulomb1773` | Coulomb (1776) | Coulomb, C.-A. (1776). Essai sur une application des règles de maximis et minimis à quelques problèmes de statique, relatifs à l'architecture. Mémoires de mathématique et de physique, Académie Royale des Sciences 7: 343–382 (read 1773). **verify** |
 | `foster2000` | Foster, Fell & Spannagle (2000) | Foster, M., Fell, R., Spannagle, M. (2000). The statistics of embankment dam failures and accidents. Canadian Geotechnical Journal 37(5): 1000–1024. doi:10.1139/t00-030 |
 | `terzaghi1922` | Terzaghi (1922) | Terzaghi, K. (1922). Der Grundbruch an Stauwerken und seine Verhütung. Die Wasserkraft 17: 445–449. **verify** |
 | `terzaghi1929` | Terzaghi (1929) | Terzaghi, K. (1929). Effect of minor geologic details on the safety of dams. American Institute of Mining and Metallurgical Engineers, Technical Publication 215: 31–44. |

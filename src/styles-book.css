@@ -216,7 +216,7 @@ svg.mini .mini-new { animation: none; }
 h3:hover .h-anchor, .h-anchor:focus-visible { opacity: 1; }
 .h-anchor:focus-visible { outline: 2px solid var(--accent); border-radius: 3px; }
 @media (max-width: 759px) { .h-anchor { display: none; } }
-section.back > h3:first-of-type, section.back > h2, section.front > h2 { font-size: var(--step-3); line-height: 1.1; margin: 0 0 16px; }
+section.back > h3:first-of-type, section.back > h2, section.front > h2, section.front > .col:first-child > h2, section.front > .alias + .col > h2 { font-size: var(--step-3); line-height: 1.1; margin: 0 0 16px; }
 
 /* ---------- 7. sidenotes and margin notes (Tufte; pure CSS, enhanced by app-book.js) ---------- */
 /* Markup (SPEC F.3): <label class="sn-ref" for=…></label><input type="checkbox" class="margin-toggle"><span class="sidenote" data-kind=…>.
