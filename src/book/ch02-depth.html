@@ -32,9 +32,9 @@
         <div class="predict-reveal" hidden><p>Water pressure depends only on how far below the surface you are. Fifty metres down it is the same in a slot as in an ocean, so the two dams feel exactly the same push. The big lake is far heavier, but its weight rests on the lake bed. The size of a lake decides how much water escapes if the dam breaks. The depth decides the load on the dam.</p></div>
       </div>
 
-      <p>Each metre of depth adds the weight of one more metre of water standing on every square metre. That is a tonne of water, which presses down with about 9.81 kilonewtons. A kilonewton (kN) is roughly the weight of 100 kg, and a pressure of one kN on every square metre is a kilopascal (kPa). So every metre of depth adds 9.81 kPa. Engineers write it like this:</p>
-      <div class="formula"><b>p</b> = ρ · g · h&nbsp;&nbsp;&nbsp;≈&nbsp;&nbsp;9.81 kPa × depth in metres<small>p pressure (kPa) · ρ density of water, 1,000 kg/m³ · g gravity, 9.81 m/s² · h depth below the water surface (m)</small></div>
-      <p>Ten metres of water adds about 98 kPa, roughly the pressure of the whole atmosphere above us. Divers count their depth in those 10 m steps.</p>
+      <p>Each metre of depth adds the weight of one more metre of water standing on every square metre. That is a tonne of water, which presses down with about 9.81 kilonewtons. A kilonewton (kN) is roughly the weight of 100 kg, and a pressure of one kN on every square metre is a kilopascal (kPa). So every metre of depth adds <span data-n="const.gw">9.81</span> kPa. Engineers write it like this:</p>
+      <div class="formula"><b>p</b> = ρ · g · h&nbsp;&nbsp;&nbsp;≈&nbsp;&nbsp;<span data-n="const.gw">9.81</span> kPa × depth in metres<small>p pressure (kPa) · ρ density of water, 1,000 kg/m³ · g gravity, 9.81 m/s² · h depth below the water surface (m)</small></div>
+      <p>Ten metres of water adds about <span data-n="depth.p-kpa@h=10">98</span> kPa, roughly the pressure of the whole atmosphere above us. Divers count their depth in those 10 m steps.</p>
       <p>Drag the sensor up and down. Then change the depth of the water and watch the total push on the dam.</p>
     </div>
 
@@ -68,7 +68,7 @@
 
       <h3>Water in the ground has pressure too</h3>
       <p>Dig a hole in the sand near the sea and it fills with water from below. The water in the hole settles at a level, and below that level every gap between the grains is full of water. That level is the <span class="gl" data-term="water-table">water table</span>.</p>
-      <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so while it is still it obeys the same rule as the water in a lake. A metre below the water table it is at about 10 kPa. Ten metres down it is at about 98 kPa, pushing outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>, and <a data-ref="ch-grip"></a> turns on it.</p>
+      <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so while it is still it obeys the same rule as the water in a lake. A metre below the water table it is at about <span data-n="depth.p-kpa@h=1">10</span> kPa. Ten metres down it is at about <span data-n="depth.p-kpa@h=10">98</span> kPa, pushing outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>, and <a data-ref="ch-grip"></a> turns on it.</p>
     </div>
     <div class="col" data-stub>
       <!-- New (H.3): the still-cube argument, Stevin, gauge pressure, where the push acts (H/3),

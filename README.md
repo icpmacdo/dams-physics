@@ -39,6 +39,8 @@ python3 tools/import_videos.py   # re-import after a re-render: Day cuts, captio
 It has no dependencies and runs both in Node and as a Web Worker.
 
 ```sh
+node tests/test-figures.js     # every number the figures compute, the markup's defaults, the text pins (tests/pins/)
+node tests/test-book.js        # the book: keyed numbers (tests/numbers/), references, anchors, films, the Polley guard
 node tests/test-seepage.js     # solver cases + 12 physical sanity checks (incl. custom painted dams)
 node tests/test-stability.js   # Bishop/Spencer checks against closed-form and benchmark cases
 node tests/test-grains.js      # emergent behaviour of the grain sandbox (about 30 s)
@@ -62,10 +64,10 @@ node tests/test-academy.js   # lesson structure and the 3D lesson's quantitative
 
 ## Build
 
-The page is assembled from `src/`: `body.html` pulls in the other markup files with `<!-- @include … -->`, and the `styles-*.css` and `app-*.js` files are concatenated in the order listed in `build.py`. `OUT=dir python3 build.py` builds somewhere else.
+The page is assembled from `src/` as a book: `src/book.json` lists the front matter, the Prologue, four parts of thirteen chapters, the Epilogue and the back matter, each in its own file under `src/book/`. `build.py` (with `tools/bookbuild.py`) puts them into the shell `src/body.html`, numbers the figures, tables, films, examples, equations and questions, resolves `data-ref` cross-references, writes the contents, the chapter openers and the back matter, and refuses to build on a dangling reference, a duplicate id, a typed figure number or a Mount Polley spoiler before Chapter 13. Parts marked `data-stub` are planned but unwritten and never reach the page. The `styles-*.css` and `app-*.js` files are concatenated in the order listed in `build.py`. `book/SPEC.md` is the authoring spec. `OUT=dir python3 build.py` builds somewhere else; `DRAFT=1` lets references to planned ids build as "?".
 
 ```sh
-python3 build.py             # writes docs/index.html and docs/academy/
+python3 build.py             # writes docs/index.html and docs/academy/ (and build/ for the tests)
 ```
 
 Open `docs/index.html` in a browser. Serve `docs/` over HTTP for the academy (`python3 -m http.server -d docs`, then `/academy/`). three.js r170 is bundled in `academy/vendor/` (MIT), so the site has no CDN dependency; without WebGL the lessons fall back to the 2D section.
