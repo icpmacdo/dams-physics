@@ -1,0 +1,68 @@
+{
+  "coulomb1773": {
+    "group": "books",
+    "short": "Coulomb (1773)",
+    "authors": "Coulomb, C.-A.",
+    "year": "1776",
+    "title": "Essai sur une application des règles de maximis et minimis à quelques problèmes de statique, relatifs à l'architecture",
+    "container": "Mémoires de mathématique et de physique, présentés à l'Académie Royale des Sciences par divers savans 7: 343–382 (read 1773)",
+    "doi": null,
+    "url": "https://archive.org/details/mmoiresdemath07acad",
+    "note": "pp. 361–362: earth that, left to itself, takes a natural slope of 45° is taken to have friction equal to the pressure on it."
+  },
+  "heyman1972": {
+    "group": "books",
+    "short": "Heyman (1972)",
+    "authors": "Heyman, J.",
+    "year": "1972",
+    "title": "Coulomb's Memoir on Statics: An Essay in the History of Civil Engineering",
+    "container": "Cambridge: Cambridge University Press",
+    "doi": null,
+    "url": null,
+    "note": "Coulomb's memoir is reprinted on pp. 1–40, with an English translation and commentary."
+  },
+  "reynolds1885": {
+    "group": "papers",
+    "short": "Reynolds (1885)",
+    "authors": "Reynolds, O.",
+    "year": "1885",
+    "title": "On the dilatancy of media composed of rigid particles in contact. With experimental illustrations",
+    "container": "Philosophical Magazine, Series 5, 20(127): 469–481",
+    "doi": "10.1080/14786448508627791",
+    "url": "https://archive.org/details/papersonmechanic02reynrich",
+    "note": "The footprint on the beach is on p. 475. Reprinted in Reynolds, Papers on Mechanical and Physical Subjects, vol. 2 (Cambridge University Press, 1901); the link is to that reprint."
+  },
+  "hornbaker1997": {
+    "group": "papers",
+    "short": "Hornbaker et al. (1997)",
+    "authors": "Hornbaker, D.J., Albert, R., Albert, I., Barabási, A.-L., Schiffer, P.",
+    "year": "1997",
+    "title": "What keeps sandcastles standing?",
+    "container": "Nature 387: 765",
+    "doi": "10.1038/42831",
+    "url": null,
+    "note": "Oil films under 50 nm thick on polystyrene beads about 0.8 mm across raise the angle of repose sharply; in dry grains the angle is set by grain shape and friction."
+  },
+  "pakpour2012": {
+    "group": "papers",
+    "short": "Pakpour et al. (2012)",
+    "authors": "Pakpour, M., Habibi, M., Møller, P., Bonn, D.",
+    "year": "2012",
+    "title": "How to construct the perfect sandcastle",
+    "container": "Scientific Reports 2: 549",
+    "doi": "10.1038/srep00549",
+    "url": null,
+    "note": "Open access. The tallest stable column grows as the base radius to the power 2/3; wet sand is strongest at about 1% liquid by volume."
+  },
+  "pelletier2015": {
+    "group": "papers",
+    "short": "Pelletier et al. (2015)",
+    "authors": "Pelletier, J.D., Sherman, D.J., Ellis, J.T., Farrell, E.J., Jackson, N.L., Li, B.Y., Nordstrom, K.F., Maia, L.P., Omidyeganeh, M.",
+    "year": "2015",
+    "title": "Dynamics of sediment storage and release on aeolian dune slip faces: A field study in Jericoacoara, Brazil",
+    "container": "Journal of Geophysical Research: Earth Surface 120(9): 1911–1934",
+    "doi": "10.1002/2015JF003636",
+    "url": null,
+    "note": "Laser-scanned dune slip faces: mean critical angles of about 32.2–33°; quotes earlier surveys (Sutton et al. 2013) at 34° critical and 32° at rest."
+  }
+}

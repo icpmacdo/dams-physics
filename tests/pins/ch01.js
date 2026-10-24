@@ -1,5 +1,5 @@
 module.exports = {
   says: [
-    ['is 30–35° for most sand', 'angle of repose']
+    ['Dry sands settle in the low-to-mid thirties of degrees', 'angle of repose']
   ]
 };

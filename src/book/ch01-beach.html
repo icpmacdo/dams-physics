@@ -1,21 +1,35 @@
 <section class="chapter" id="ch-beach">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.2): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <blockquote class="epigraph">
+      <p>When the falling tide leaves the sand firm, as the foot falls on it the sand whitens, or appears momentarily to dry round the foot.</p>
+      <footer>Osborne Reynolds, <a data-cite="reynolds1885">On the dilatancy of media composed of rigid particles in contact</a>, 1885</footer>
+    </blockquote>
+    <p class="so-far"><b>So far.</b> The Prologue left a dam that had passed its calculations and failed in a night. Following the engineers who worked out why takes a handful of ideas about soil and water, and the cheapest place to collect them is a beach.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>describe the three ways one sand behaves, and name the one thing that changed between them;</li>
+        <li>measure an angle of repose, and write any slope both as an angle and as a ratio, across to up;</li>
+        <li>say why a damp sand wall stands 30 cm tall and never 30 m.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.2): a walk down a beach at low tide; three steps, one sand. -->
-    </div>
+
     <div class="col">
-      <p class="g-lede">If you have played on a beach, you have felt sand behave in three different ways.</p>
-      <p><strong>Dry sand pours.</strong> It runs through your fingers, and the steepest heap you can make is a low cone.</p>
-      <p><strong>Damp sand stands.</strong> Pack it into a bucket, turn it out, and you get a castle with walls that go straight up.</p>
-      <p><strong>Loose wet sand turns to soup.</strong> At the water's edge, where every gap between the grains is full of water, the sand feels firm while you stand still. Wiggle your feet and it goes soft, and you sink to the ankles.</p>
-      <p>It is the same sand every time. Only the water between the grains has changed. Now picture an earth dam: a heap of soil the size of a hill, with a lake pressing on one side and water soaking into it. Whether it behaves like the damp castle or like the soup at the waterline depends on what that water is doing.</p>
-      <p>Pick a state, then press <strong>Jiggle</strong> to shake the ground.</p>
+      <p class="cold"><span class="newthought">Walk down a beach at low tide,</span> from the dunes to the sea, and the sand changes under you three times. Up by the dunes it is dry. Your foot sinks in, the sand pours back round your ankle, and when you kick it, it runs.</p>
+      <p>Halfway down, where the sea was an hour ago, the sand is dark and firm. It takes a crisp footprint, and as your weight comes down a pale ring spreads round your foot for a moment, as if the sand had dried where you stood. Then the colour comes back.</p>
+      <p>At the edge, where every wave lays down a fresh sheet of sand and soaks it, you can stand quite happily as long as you keep still. Wiggle your feet and the sand goes soft. You sink to the ankles, and it takes a tug to get out.</p>
+      <p>Three steps, one sand. The grains are near enough the same all the way down the beach. What changes is the water in the gaps between them: almost none at the top, a little in the middle, and at the edge water and nothing else.</p>
+
+      <h3 id="s-beach-three">Three sands</h3>
+      <p>Take those three sands home in buckets and they keep their characters.</p>
+      <p><strong>Dry sand pours.</strong> Tip it out and it spreads into a low heap whose sides settle at one slope, however carefully you pour.</p>
+      <p><strong>Damp sand stands.</strong> Pack it into the bucket, turn it out, and you get a castle with walls that go straight up.</p>
+      <p><strong>Loose wet sand flows.</strong> Where every gap is full of water and the grains were laid down loosely, the sand bears you while you keep still and turns to something like soup when you shake it.</p>
+      <p>Ask people what water does to sand and most of them say it makes it slippery, the way water makes a tiled floor slippery. Keep that answer in mind, because the castle is already evidence against it. Damp sand has water in it, and it stands steeper than either of the others. Whatever the water is doing in the castle, it is not greasing the grains. <a data-ref="ch-grip"></a> settles the question with a block on a ramp. For now, notice only that more water does not mean weaker sand, or stronger: the soup holds the most water and the castle the next most, and they are the weakest and the strongest of the three.</p>
+      <p>The three sands also differ in a second way, which the beach hides. Sand that a wave has just dropped lies <span class="gl" data-term="packing">loosely packed</span>, with wide gaps. Sand that has been walked on, rained on and settled for a tide lies densely packed, each grain nestled into the hollows of its neighbours. Wet sand that is <span class="gl" data-term="saturated">saturated</span> (every gap full of water, no air at all) can be either.</p>
+      <p>Below, one heap of sand is drawn four ways: dry, damp, sitting under still water, and with water draining out through its faces. A switch sets how tightly it was packed. Pick a state, then press <strong>Jiggle</strong> to shake the ground:</p>
     </div>
 
     <figure class="sheet wide g-fig" id="fig-beach">
@@ -24,7 +38,7 @@
         <span class="scale-note">Schematic · castle about 30 cm tall</span>
       </div>
       <div class="g-split">
-        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a cone with 34 degree sides. Damp, it stands as a castle with vertical walls. Under still water it still stands at about 34 degrees. With water draining out through its face, it slumps to about 19 degrees. Shaken, loose wet sand flows flat and the flag on top sinks, while dense wet sand holds its shape."></svg></div>
+        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a heap with 34 degree sides. Damp, it stands as a castle with vertical walls. Under still water it still stands at about 34 degrees. With water draining out through its face, it slumps to about 19 degrees. Shaken, loose wet sand flows flat and the flag on top sinks, while dense wet sand holds its shape. Every shape holds the same amount of sand."></svg></div>
         <div class="g-side">
           <div class="controls">
             <div class="ctl"><span>Sand</span><div class="seg" id="bc-state"><button type="button" data-v="dry" aria-pressed="false">Dry</button><button type="button" data-v="damp" aria-pressed="true">Damp</button><button type="button" data-v="under" aria-pressed="false">Under still water</button><button type="button" data-v="drain" aria-pressed="false">Water draining out</button></div></div>
@@ -32,7 +46,7 @@
             <button class="btn primary" id="bc-jiggle" type="button">Jiggle</button>
           </div>
           <div class="g-zoom">
-            <svg class="dwg gd" id="svg-beach-zoom" viewBox="0 0 220 150" role="img" aria-label="Close-up of seven sand grains and what fills the gaps between them."></svg>
+            <svg class="dwg gd" id="svg-beach-zoom" viewBox="0 0 220 150" role="img" aria-label="Close-up of a few sand grains in a regular pack, and what fills the gaps between them: air, rings of water where the grains touch, or water everywhere."></svg>
             <p class="note" id="bc-zoom-note">Close-up: a little water gathers in rings where the grains touch.</p>
           </div>
           <div class="readouts">
@@ -42,22 +56,206 @@
           </div>
         </div>
       </div>
-      <figcaption>Dry sand settles at about <span data-n="beach.repose-deg">34</span>°, however you pour it. Damp sand holds a vertical wall. Under still water the heap stands about as steep as dry sand, but with water draining out through its face it slumps to about <span data-n="beach.drain-deg">19</span>°. Jiggle the wet heap: packed loose, it turns to a liquid and the flag sinks; packed dense, it holds. Pick a state or a packing again to rebuild the heap. <strong>Why</strong> each one happens is the subject of <a data-ref="ch-grip,ch-trapped"></a>.</figcaption>
+      <figcaption>
+        <p class="cap"><b>One heap of sand behaves four ways, and only the water in its gaps has changed.</b> The heap is a slice across a long ridge of sand, and every shape it takes holds the same amount of sand: the area of the slice stays fixed. The close-up shows what fills the gaps: air, small rings of <span class="k-water">water</span> where grains touch, or water everywhere. The <span class="k-acc">red</span> arc marks the steepest slope each heap holds. <span class="cap-n">The numbers to remember: dry sand stands at <span data-n="beach.repose-deg">34</span>°, damp sand holds a vertical wall, sand under still water stands about as steep as dry, and with water draining out of its faces it slumps to about <span data-n="beach.drain-deg">19</span>°.</span> Why each happens is the business of <a data-ref="ch-grip,ch-trapped"></a>.</p>
+        <ul class="try">
+          <li>Switch from Damp to Dry and watch the castle spread into a heap two-thirds as tall.</li>
+          <li>Pick Under still water, then Water draining out. Which one flattens the heap?</li>
+          <li>Under still water, press Jiggle with Loose packing, then with Dense. Picking a state or a packing again rebuilds the heap.</li>
+        </ul>
+      </figcaption>
     </figure>
 
     <div class="col">
-      <p>The slope a dry heap settles at (engineers call it the <span class="gl" data-term="angle-of-repose">angle of repose</span>) is 30–35° for most sand, steeper for angular grains than for rounded ones; the sand drawn here settles at <span data-n="beach.repose-deg">34</span>°. Damp sand ignores that limit. Wet sand is subtler: under still water a heap stands about as steep as a dry one, where water drains out through its face it slumps to about <span data-n="beach.drain-deg">19</span>°, and loose wet sand that gets shaken loses nearly all its strength. For a dam, that last one is the dangerous one.</p>
-      <p>To explain all of this, you need two facts about water first. Its pressure grows with depth (<a data-ref="ch-depth"></a>). And it moves through the ground, slowly or very slowly, depending on the ground (<a data-ref="ch-head"></a>). <a data-ref="ch-grip"></a> puts them together.</p>
+      <p>Notice first that the heap never gains or loses a grain. When the castle goes dry it spreads out, and the drawing keeps the area of its slice exactly the same, so a lower heap must be a wider one.</p>
+      <p>Then notice the two wet states, because they overturn a guess most people make. One could assume that a heap under water slumps flatter than a dry one: it is wet, after all, and wet sand is supposed to be slippery. Pick Under still water and the heap stands about as steep as dry sand, at about <span data-n="beach.repose-deg">34</span>°. Still water hardly changes its slope. Now pick Water draining out. This is the state of a beach face at low tide, where the water that soaked in at high tide seeps back out through the sand, and the heap slumps to about <span data-n="beach.drain-deg">19</span>°. The water is the same water in both. In one it sits still; in the other it moves, and the moving water drags the grains downhill as it leaves. Why that drag costs about fifteen degrees is a sum <a data-ref="ch-grip"></a> does in a few lines.</p>
+      <p>Last, notice the jiggle. Dry sand and damp sand barely change. Wet sand packed loosely flows flat and swallows the flag, which is the soup at the water's edge. The same wet sand packed densely holds. So saturation alone does not turn sand to soup; it takes loose sand as well. That is the water's edge and the firm middle of the beach in one experiment, and it is also the first hint about the pale ring round your foot, which <a data-ref="ch-trapped"></a> explains.<label for="sn-beach-reynolds" class="sn-ref"></label><input type="checkbox" id="sn-beach-reynolds" class="margin-toggle"><span class="sidenote" data-kind="history">The pale ring was described in 1885 by Osborne Reynolds, the Manchester engineer whose name is on the Reynolds number of fluid flow, in the paper that coined the word <i>dilatancy</i>. The epigraph to this chapter is his description of it.</span></p>
+
+      <h3 id="s-beach-repose">The angle of repose</h3>
+      <p>The slope a dry heap settles at has a name, the <span class="gl" data-term="angle-of-repose">angle of repose</span>, and you can watch it form. Pour dry sand from a funnel onto a table. Grains land on the top and roll down the sides until the sides reach the steepest slope on which a grain can rest without rolling. Pour more and the heap grows, but its sides keep that one slope, because any extra steepness slides off in small avalanches. The slope of its sides is set by how hard the grains grip one another, not by how much sand you pour.<label for="sn-beach-coulomb" class="sn-ref"></label><input type="checkbox" id="sn-beach-coulomb" class="margin-toggle"><span class="sidenote" data-kind="history">Charles-Augustin Coulomb spent 1764 to 1772 building a fort on Martinique for the French army. In 1773 he read the Paris Academy a memoir on walls, arches and the earth behind them. In its worked examples, earth that, left to itself, settles at a slope of 45° is taken to have friction equal to the press on it: the slope of a loose heap measures the friction of its grains (<a data-cite="coulomb1773"></a>, pp. 361–362).</span></p>
+      <p>Dry sands settle in the low-to-mid thirties of degrees. Angular, rough grains stand a little steeper than round, polished ones, and the lee faces of dunes, where wind-blown sand piles up until it avalanches, stand at about 32–34°.<label for="mn-beach-dunes" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-beach-dunes" class="margin-toggle"><span class="marginnote" data-kind="source">Dune faces, measured by laser scanning: <a data-cite="pelletier2015"></a>, who give 32–33° for the faces they surveyed in Brazil and quote earlier surveys at 32° settled and 34° just before an avalanche. Grain shape and friction set the dry angle: <a data-cite="hornbaker1997"></a>.</span> The sand drawn in <a data-ref="fig-beach"></a> settles at <span data-n="beach.repose-deg">34</span>°, near the top of that range. Every slope in the figure follows from that one angle and the weights of sand and water.</p>
+      <p>The figure draws its heap as a slice. Picture the castle as a long wall of sand running away from you, like a sea wall, and the drawing as one slice cut straight across it. When the wall slumps, each slice keeps its own sand, so what stays the same is the area of the slice, which engineers call the section. Every drawing in this book is a section of something long, and every force and every flow is counted per metre of its length. A dam is drawn the same way.</p>
+      <p>That gives a sum you can do. The castle in the figure is a slice of known area. Poured dry, the same sand makes a triangular heap with 34° sides. How tall?</p>
     </div>
-    <div class="col" data-stub>
-      <!-- New (H.2): fig-beach-dam, ex-beach-castle, ex-beach-slope, the spine stated as a promise. -->
+
+    <div class="col">
+      <section class="we" id="ex-beach-castle">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Same sand, new shape</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The damp castle's section: <span data-n="ch01.castle-w-cm">20</span> cm wide and <span data-n="ch01.castle-h-cm">29.2</span> cm tall with battlements on top, an area <var>A</var> = <span data-n="beach.area-cm2">572.6</span> cm² (read from the figure's drawing). Dry, the sand stands at <var>β</var> = <span data-n="beach.repose-deg">34</span>°.</dd>
+          <dt>Find</dt><dd>The height and width of a dry heap holding the same sand.</dd>
+          <dt>The idea</dt><dd>The dry heap's section is a triangle with 34° sides. Write its area in terms of its height, set it equal to the castle's, and solve for the height (<a data-ref="fig-beach"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">half-base = <var>H</var> ÷ tan <var>β</var></span><span class="why">each side climbs <var>H</var> over a run of <var>H</var>/tan <var>β</var>, the definition of the slope's tangent</span></li>
+          <li><span class="we-eq"><var>A</var> = ½ × (2<var>H</var> ÷ tan <var>β</var>) × <var>H</var> = <var>H</var>² ÷ tan <var>β</var></span><span class="why">a triangle's area is half its base times its height</span></li>
+          <li><span class="we-eq"><var>H</var> = √(<var>A</var> · tan <var>β</var>)</span><span class="why">rearranged for the height</span></li>
+          <li><span class="we-eq">tan 34° = <span data-n="ch01.tan-repose">0.6745</span></span><span class="why">from a calculator</span></li>
+          <li><span class="we-eq"><var>A</var> · tan <var>β</var> = 572.6 × 0.6745 = <span data-n="ch01.a-tan-cm2">386.3</span> cm²</span><span class="why">the same sand, now on a 34° slope</span></li>
+          <li><span class="we-eq"><var>H</var> = √386.3 = <span data-n="beach.cone-h-cm">19.65</span> cm</span><span class="why">the height of the dry heap</span></li>
+          <li><span class="we-eq">half-base = 19.65 ÷ 0.6745 = <span data-n="ch01.cone-half-cm">29.14</span> cm, so the base is <span data-n="beach.cone-base-cm">58.27</span> cm</span><span class="why">back to step 1 with the height known</span></li>
+        </ol>
+        <p class="we-ans">The dry heap stands <span data-n="beach.cone-h-cm">19.7</span> cm tall on a base <span data-n="beach.cone-base-cm">58.3</span> cm wide: <span data-n="ch01.cone-h-ratio">0.67</span> times the castle's height and <span data-n="ch01.cone-w-ratio">2.9</span> times its width.</p>
+        <p class="we-check"><b>Check.</b> Put the area back together: ½ × 58.27 × 19.65 = <span data-n="ch01.cone-area-cm2">572.6</span> cm², the castle's area. And the limits behave: a gentler slope (smaller tan <var>β</var>) gives a lower, wider heap, and a slope near vertical gives a tall thin one, more like the castle.</p>
+        <p class="we-means"><b>What it means.</b> The castle lost no sand when it dried; it lost the grip that held its walls up, and the same sand then needed about three times the ground. Soil that cannot hold a steep face has to be laid out wide. Most of the width of an earth dam is the price of its slopes.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-beach","set":{"bc-state":"dry"}}'>Set the figure</button></p>
+      </section>
+
+      <p>You can measure an angle of repose at home with a funnel, a ruler and a cup of dry sand, sugar or rice. Pour a heap, measure its height and the width of its base, and the tangent of the angle is the height divided by half the base. The questions at the end of the chapter ask you to try.</p>
+
+      <h3 id="s-beach-slope">A slope is a number</h3>
+      <p>Angles are awkward on a building site. Nobody holds a protractor against a hillside of fill. Engineers write a slope as a ratio instead, how far across for each unit up, and they put the across first: a slope of 2H:1V (two across for every one up) climbs one metre for every two metres of ground it covers. From here on this book writes it 2:1. The bigger the first number, the flatter the slope.<label for="mn-beach-grade" class="mn-ref" aria-label="Units"></label><input type="checkbox" id="mn-beach-grade" class="margin-toggle"><span class="marginnote" data-kind="units">Road signs turn the same ratio upside down and give it as a percentage, rise over run: a 10% hill climbs 1 m for every 10 m across, which this book would write 10:1.</span></p>
+      <p>The ratio and the angle are tied by one piece of trigonometry. The tangent of a slope's angle <var>β</var> is the rise over the run, so for a slope written <var>n</var>:1, tan <var>β</var> = 1 ÷ <var>n</var>. A dam drawn at 2:1 and a heap at 34° can then be compared on the same footing:</p>
+
+      <section class="we" id="ex-beach-slope">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">A slope as a number</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>A dam face at 2:1. The dry heap's <span data-n="beach.repose-deg">34</span>° and the draining face's <span data-n="beach.drain-deg">19.0</span>° from <a data-ref="fig-beach"></a>.</dd>
+          <dt>Find</dt><dd>The angle of the 2:1 face, and the two heap slopes written as ratios.</dd>
+          <dt>The idea</dt><dd>tan <var>β</var> = rise ÷ run = 1 ÷ <var>n</var>, which works in both directions.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">tan <var>β</var> = 1 ÷ 2 = <span data-n="ch01.tan-slope@h=2">0.5</span></span><span class="why">one up for every two across</span></li>
+          <li><span class="we-eq"><var>β</var> = arctan 0.5 = <span data-n="ch01.slope-deg@h=2">26.6</span>°</span><span class="why">the angle whose tangent is 0.5</span></li>
+          <li><span class="we-eq"><var>n</var> = 1 ÷ tan 34° = 1 ÷ <span data-n="ch01.tan-repose">0.6745</span> = <span data-n="ch01.repose-ratio">1.48</span></span><span class="why">across for one up, for the dry heap</span></li>
+          <li><span class="we-eq"><var>n</var> = 1 ÷ tan 19.0° = 1 ÷ <span data-n="beach.tan-drain">0.344</span> = <span data-n="ch01.drain-ratio">2.9</span></span><span class="why">the same for the face with water seeping out</span></li>
+        </ol>
+        <p class="we-ans">A 2:1 face slopes at <span data-n="ch01.slope-deg@h=2">26.6</span>°. The dry heap stands at <span data-n="ch01.repose-ratio">1.48</span>:1, and the draining face at <span data-n="ch01.drain-ratio">2.9</span>:1.</p>
+        <p class="we-check"><b>Check.</b> A 1:1 slope is <span data-n="ch01.slope-deg@h=1">45</span>°, Coulomb's earth, and a 3:1 slope is arctan ⅓ = <span data-n="ch01.slope-deg@h=3">18.4</span>°. A 2:1 slope must lie between them, and 26.6° does.</p>
+        <p class="we-means"><b>What it means.</b> A 2:1 face built of this beach's sand would stand dry, with room to spare, and would slump wherever water seeped out of it. Keeping water from coming out of the face of a dam, or catching it safely where it does, is much of Part III of this book.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-beach","set":{"bc-state":"drain"}}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A road sign warns of a 10% hill. Write the slope as a ratio, and as an angle.</summary>
+        <p>10:1, ten across for each one up. tan <var>β</var> = 0.1, so <var>β</var> = <span data-n="ch01.grade-deg@pct=10">5.7</span>°: a hill that feels steep in a car is far flatter than any heap of sand.</p>
+      </details>
+
+      <h3 id="s-beach-castle">Why a castle stays small</h3>
+      <p>Look again at the close-up in <a data-ref="fig-beach"></a> with the sand set to Damp. The water does not fill the gaps. It gathers in small rings where one grain touches the next, and the surface of each ring is curved and pulled tight, like the skin on a drop hanging from a tap. That skin pulls the two grains together. Every grain has several, and a handful of sand holds a great many grains, so together the rings give damp sand a grip that dry sand lacks, and that grip holds a wall up where dry grains would roll away.<label for="sn-beach-castles" class="sn-ref"></label><input type="checkbox" id="sn-beach-castles" class="margin-toggle"><span class="sidenote" data-kind="curious">It takes remarkably little liquid. Films of oil less than 50 nanometres thick on plastic beads about 0.8 mm across raised the steepest slope a heap would hold sharply (<a data-cite="hornbaker1997"></a>). Columns of beach sand were strongest with about 1% water by volume, and the tallest column that would stand grew as its base radius to the power ⅔ (<a data-cite="pakpour2012"></a>).</span></p>
+      <p>But the grip is small, and it does not grow as the castle does. Each ring pulls with the same tiny force however much sand sits above it. The weight that the bottom of a wall must carry grows with every centimetre of height. A wall 30 cm tall puts a hundred times less weight on each square metre of its base than a wall 30 m tall of the same sand, and somewhere between the two the weight wins. Sand sculptors do build castles several metres high, but they build them on broad bases that lean on their own width.<label for="mn-beach-sculpt" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-beach-sculpt" class="margin-toggle"><span class="marginnote" data-kind="source">Sandcastles "of several meters high", and the rule that the safe height depends on the width of the base: <a data-cite="pakpour2012"></a>.</span> <a data-ref="ch-trapped"></a> puts a number on the grip.</p>
+      <p>There is a second reason a dam engineer never counts on it. The rings exist only while the sand is damp. A week of rain fills the gaps, the rings vanish, and the grip goes with them; a drought dries them out and does the same. A castle slumps as the rising tide soaks it for the same reason, before the waves reach it. Dams are designed as if the grip were not there.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Of the three beach sands, which holds the most water, and which stands steepest?</summary>
+        <p>The soup at the water's edge holds the most, and it stands at nothing at all once shaken. The damp castle holds a little and stands vertical. Water can make sand stronger or weaker; what matters is where the water sits and what it is doing.</p>
+      </details>
+
+      <h3 id="s-beach-dam">The beach inside a dam</h3>
+      <p>Now scale the heap up to a hill, and lean a lake against one side of it. That is an earth dam. The water in the reservoir soaks into the soil and creeps slowly through it, so inside the dam there is a boundary between soil that is full of water and soil above it that is not. Engineers call that boundary the <span class="gl" data-term="phreatic-surface">phreatic surface</span>: the water line inside the dam. It starts at the reservoir level on the <i>upstream</i> face, the side the water comes from, and falls as it crosses toward the <i>downstream</i> face, the side the water is trying to reach. (Every section in this book is drawn with the water on the left, so it flows left to right.) Here is a dam with the three beach sands mapped onto it:</p>
     </div>
+
+    <figure class="fig wide" id="fig-beach-dam">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · The beach inside an earth dam</span><span class="scale-note">Schematic · faces at 2:1</span></div>
+      <svg class="dwg" viewBox="0 44 560 200" role="img" aria-label="Section through an earth dam with faces at two across to one up, a reservoir against the left face and dry ground on the right. A dashed blue line, the water line inside the dam, starts at the reservoir level on the left face and falls to meet the right face just above its foot. Below the line the soil is soaked, with water creeping from left to right; above it the soil is damp; the surface of the crest is dry. Where the water line meets the right-hand face, water seeps out over the last stretch of the slope to the foot.">
+        <rect x="0" y="200" width="560" height="38" fill="url(#p-bedrock)"/>
+        <path d="M0,200 H560" class="edge"/>
+        <path d="M0,104 L222,104 L30,200 L0,200 Z" class="water"/>
+        <path d="M0,104 H222" class="water-line"/>
+        <path d="M30,200 L250,90 L290,90 L510,200 Z" fill="url(#p-fill)" class="edge"/>
+        <path d="M222,104 C300,108 390,145 462,176 L510,200 L30,200 Z" class="sat"/>
+        <path d="M222,104 C300,108 390,145 462,176 L510,200 L30,200 Z" fill="url(#p-sat)"/>
+        <path d="M30,200 L250,90 L290,90 L510,200" class="edge" style="fill:none"/>
+        <path d="M222,104 C300,108 390,145 462,176" class="phreatic"/>
+        <path d="M462,176 L510,200" class="acc-line"/>
+        <path d="M150,188 H300" class="water-line" marker-end="url(#arr-w)"/>
+        <path d="M400,145 H440 V165" class="dim"/>
+        <text x="420" y="140" class="lbl-s halo" text-anchor="middle">2</text>
+        <text x="446" y="159" class="lbl-s halo">1</text>
+        <text x="12" y="130" class="lbl lbl-w halo">reservoir</text>
+        <text x="236" y="178" class="lbl halo">soaked</text>
+        <path d="M270,66 V88" class="lead"/>
+        <text x="270" y="60" class="lbl halo" text-anchor="middle">dry at the surface</text>
+        <path d="M388,82 L326,114" class="lead"/>
+        <text x="392" y="84" class="lbl halo">damp</text>
+        <path d="M452,114 L371,137" class="lead"/>
+        <text x="456" y="116" class="lbl lbl-w halo">water line</text>
+        <path d="M532,219 L488,190" class="lead"/>
+        <text x="552" y="232" class="lbl lbl-acc halo" text-anchor="end">seeps out</text>
+      </svg>
+      <figcaption>
+        <p class="cap"><b>An earth dam holds all three beach sands at once.</b> The dashed <span class="k-water">blue</span> line is the water line inside the dam, the phreatic surface. Below it the soil is soaked, every gap full of water creeping from the reservoir toward the far side, like the wet sand at the water's edge. Above it the soil is damp, like the castle, and the surface of the crest dries out like the top of the beach. Where the water line meets the downstream face, the water seeps out over the last stretch of slope to the foot (<span class="k-acc">red</span>). <span class="cap-n">That stretch is the state <a data-ref="fig-beach"></a> calls Water draining out, where its heap stood at only <span data-n="beach.drain-deg">19</span>° against <span data-n="beach.repose-deg">34</span>° dry.</span></p>
+        <ul class="try">
+          <li>Set <a data-ref="fig-beach"></a> to Water draining out and compare its face with the foot of this dam.</li>
+        </ul>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice where the water comes out. At the foot of the downstream face, the soil is in the state that slumped the heap in <a data-ref="fig-beach"></a> from 34° to 19°, and the face there is 2:1, <span data-n="ch01.slope-deg@h=2">26.6</span>°. A dam of beach sand would crumble at its foot, grain by grain, and the slope above would follow. Real dams are built of better-chosen soils, and a well-designed one catches the water in drains and filters inside the dam before it can reach the face, and how they do it is the work of <a data-ref="ch-zones,ch-erosion"></a>. But the danger is the beach's, at the scale of a hill.</p>
+      <p>Notice too that the upstream face, under the reservoir, is the heap under still water: soaked, and standing about as steep as it would dry. The water there is not quite still, since it is soaking slowly into the dam, and <a data-ref="ch-head"></a> follows where it goes. The damp soil above the water line has the castle's grip, and it is the grip a designer leaves out. Everything below the line is held up by grains pressing on grains, with water filling every gap between them.</p>
+
+      <h3 id="s-beach-sentence">One sentence for the whole book</h3>
+      <p>All of this can be said in one sentence. It is printed on the title page, and every chapter after this one comes back to it:</p>
+      <p class="spine"><i>Soil holds only as well as its grains press on one another, and the water between them can take that press away.</i></p>
+      <p>You can't prove it yet, and you shouldn't believe it yet. The castle seems to contradict it: there the water makes the grains press harder. By the end of <a data-ref="ch-grip"></a> you will be able to prove it, castle included, with a block on a ramp and a column of soil. The sentence does not explain every way a dam can fail. Floods that pour over the top are a different story, told in <a data-ref="ch-two-dams"></a>. But it explains most of what this book asks of soil.</p>
+      <p>To get there you need two facts about water first. Its pressure grows with depth, which is <a data-ref="ch-depth"></a>. And it moves through the ground, slowly or very slowly depending on the ground, which is <a data-ref="ch-head"></a>. <a data-ref="ch-grip"></a> puts them together, and <a data-ref="ch-trapped"></a> comes back to this beach for the soup and the pale ring round your foot.</p>
+    </div>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.2): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>One sand pours, stands or flows, and only the water between its grains changed.</li>
+        <li>Dry sand stands at its angle of repose, <span data-n="beach.repose-deg">34</span>° here. Still water barely changes that; water seeping out of a face drags the grains downhill and the face slumps to about <span data-n="beach.drain-deg">19</span>°.</li>
+        <li>Saturated sand turns to soup when shaken only if it is loosely packed.</li>
+        <li>A slope is written across to up, <var>n</var>:1, with tan <var>β</var> = 1 ÷ <var>n</var>; 2:1 is <span data-n="ch01.slope-deg@h=2">26.6</span>°.</li>
+        <li>Damp sand's grip is small and does not grow with height, so castles stay small and dams are designed without it.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-beach-kept" data-tag="check" data-level="1">
+          <p>As the heap in <a data-ref="fig-beach"></a> changes shape, one thing stays fixed. What is it, and how could you check it with the numbers in <a data-ref="ex-beach-castle"></a>?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Work out the area of the dry heap's triangle and compare it with the castle's.</p></details>
+          <div class="q-answer"><p>The amount of sand, which in a section is its area. The dry heap's triangle has area ½ × <span data-n="beach.cone-base-cm">58.27</span> × <span data-n="beach.cone-h-cm">19.65</span> = <span data-n="ch01.cone-area-cm2">572.6</span> cm², the same as the castle's <span data-n="beach.area-cm2">572.6</span> cm². The draining heap is lower again, <span data-n="ch01.drain-h-cm">14.0</span> cm tall, and wider in proportion.</p></div>
+        </li>
+        <li class="q" id="q-beach-packing" data-tag="explore" data-level="1">
+          <p>Set the heap under still water, packed densely, and jiggle it. Then switch to loosely packed and jiggle again. What differs, and what does that tell you about the soup at the water's edge?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-beach","set":{"bc-state":"under","bc-pack":"dense"},"click":["#bc-jiggle"]}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Read the "After a jiggle" readout each time.</p></details>
+          <div class="q-answer"><p>Packed densely, the heap holds. Packed loosely, it flows flat and the flag sinks; the readout says the grains packed tighter and the trapped water took their weight. Both heaps were saturated, so saturation alone does not make soup: the sand must also be loose. <a data-ref="ch-trapped"></a> explains why the dense heap holds, and with it the pale ring round your foot.</p></div>
+        </li>
+        <li class="q" id="q-beach-tower" data-tag="reckon" data-level="2">
+          <p>Take damp sand to weigh about <span data-n="ch01.gamma-damp">18</span> kN per cubic metre (an illustrative round number). How hard does the sand press on each square metre at the foot of a damp wall 30 cm tall, and at the foot of one 30 m tall?</p>
+          <details class="q-hint"><summary>Hint</summary><p>A kilonewton (kN) is a unit of force: 18 kN is the weight of about <span data-n="ch01.gamma-damp-t">1.8</span> tonnes. A column of sand one metre square and <var>h</var> metres tall holds <var>h</var> cubic metres of sand, all resting on its square-metre base.</p></details>
+          <div class="q-answer"><p>30 cm: 18 × 0.3 = <span data-n="ch01.base-kpa@h=0.3">5.4</span> kN on each square metre. 30 m: 18 × 30 = <span data-n="ch01.base-kpa@h=30">540</span> kN on each square metre, a hundred times more. The water rings grip the grains with the same small force in both, so the short wall can stand and the tall one cannot. A kilonewton on a square metre has a name, the kilopascal, which <a data-ref="ch-depth"></a> uses throughout; <a data-ref="ch-trapped"></a> compares these numbers with the grip.</p></div>
+        </li>
+        <li class="q" id="q-beach-funnel" data-tag="explore" data-level="1">
+          <p>At home, pour dry sand, sugar or rice through a funnel onto a flat plate until the heap stops growing taller, and measure its height and the width of its base. What is its angle of repose? Is it steeper or shallower than the figure's 34°?</p>
+          <details class="q-hint"><summary>Hint</summary><p>tan <var>β</var> = height ÷ half the base = 2<var>h</var> ÷ <var>d</var>. Measure across the middle of the base, and pour slowly.</p></details>
+          <div class="q-answer"><p>It depends on what you pour, which is the point: the angle is set by the shape and friction of the grains. For example, a heap 6 cm high on a base 18 cm across gives tan <var>β</var> = 12 ÷ 18 = <span data-n="ch01.funnel-tan">0.667</span> and <var>β</var> = <span data-n="ch01.funnel-deg">33.7</span>°. Rounder, smoother grains give lower angles. Dry sands usually come out in the low-to-mid thirties of degrees; report what you measured.</p></div>
+        </li>
+        <li class="q" id="q-beach-angles" data-tag="check" data-level="1">
+          <p>Write the slopes 1.5:1, 2:1 and 3:1 as angles. Which of them could a heap of the figure's dry sand stand at?</p>
+          <details class="q-hint"><summary>Hint</summary><p>tan <var>β</var> = 1 ÷ <var>n</var>, then take the arctangent.</p></details>
+          <div class="q-answer"><p>1.5:1 is arctan <span data-n="ch01.tan-slope@h=1.5">0.667</span> = <span data-n="ch01.slope-deg@h=1.5">33.7</span>°; 2:1 is <span data-n="ch01.slope-deg@h=2">26.6</span>°; 3:1 is arctan <span data-n="ch01.tan-slope@h=3">0.333</span> = <span data-n="ch01.slope-deg@h=3">18.4</span>°. All three are flatter than <span data-n="beach.repose-deg">34</span>°, so dry sand stands at each, though at 1.5:1 it has almost nothing to spare.</p></div>
+        </li>
+        <li class="q" id="q-beach-design" data-tag="design" data-level="2">
+          <p>You must build a sand embankment of the figure's sand, and water will seep out of the lower part of its downstream face. The workbench in <a data-ref="ch-build"></a> offers faces of 1.5:1, 2:1, 2.5:1 and 3:1. By the rule of <a data-ref="fig-beach"></a>, which would the wet part of the face stand at?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Compare each angle with the draining face's <span data-n="beach.drain-deg">19.0</span>°.</p></details>
+          <div class="q-answer"><p>Only 3:1, at <span data-n="ch01.slope-deg@h=3">18.4</span>°, is flatter than <span data-n="beach.drain-deg">19.0</span>°, and barely. 2.5:1 is <span data-n="ch01.slope-deg@h=2.5">21.8</span>°, too steep where water comes out. The other choice is to stop the water reaching the face, with a drain, and keep the steeper, cheaper slope. Real fill is not clean beach sand and designers want a margin as well; <a data-ref="ch-slope"></a> and <a data-ref="ch-build"></a> do the full check.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="pakpour2012"></cite> <span class="level">gentle</span> Short and free to read: why a sandcastle can be taller when its base is wider, and why a splash of water does more than a bucketful.</li>
+        <li><cite data-cite="heyman1972"></cite> <span class="level">serious</span> Coulomb's 1773 memoir in English, with a commentary that walks through its sums on walls, arches and the friction of earth.</li>
+        <li><cite data-cite="reynolds1885"></cite> <span class="level">primary source</span> The paper that named dilatancy; the footprint is on p. 475. It is also reprinted in the second volume of Reynolds's collected <i>Papers on Mechanical and Physical Subjects</i> (1901), free online.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">A damp wall of sand stands 30 cm, and nothing you do makes it stand 30 m. A dam is not a castle with the tide out: it has a lake leaning on it. How hard does a lake lean? Most people think it depends on the size of the lake.</p></nav>
   </section>
 </section>
