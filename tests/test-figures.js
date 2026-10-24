@@ -388,6 +388,7 @@ console.log('\nFacts the text states (errata fixes)');
   says('takes almost the whole drop in head, from the reservoir level down to the downstream side', 'Step 3 core');
   says('Step 8 · Sand boils', 'Step 4 ideas card (heave, not piping)');
   check(/Sherard and Dunnigan’s no-erosion rules govern/.test(read('app-zones.js')), 'Fig. 7.1 zone 2A: Sherard & Dunnigan govern for a clay core');
+  says('Flow per m² q/A', 'Fig. 3.2 readout: the flow through each m² is q/A, not the q of the formula');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');
