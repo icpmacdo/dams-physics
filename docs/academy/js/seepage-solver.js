@@ -608,7 +608,9 @@
   //   equipotentials    [{frac, level, lines: [[[x,z],...],...]}], frac = 0.1..0.9
   //   flowlines         [{group, seedFrac, pts: [[x,z,tSeconds,speed],...], exit}]
   //   q                 m^3/s per metre: inflowTotal, inflowDamFace, inflowFloor,
-  //                     outDrain, outTailwater, outSeepageFace, balanceError
+  //                     outDrain, outTailwater, outSeepageFace, balanceError,
+  //                     passThroughDam, passUnderDam (net flow downstream across the vertical
+  //                     line under the crest, x = 0, above and below the original ground z = 0)
   //   exit              {groundMax, groundX, faceMax, faceX, faceZ, governing, fs}
   //   seepageFace       {present, topZ, bottomZ, faces} (downstream face, drains excluded)
   //   stats             {iterations, converged, ms, ...diagnostics} }
@@ -821,6 +823,13 @@
       outDrain, outTailwater: outTail, outSeepageFace: outFace,
       balanceError: inflowTotal > 0 ? Math.abs(inflowTotal - outflowTotal) / inflowTotal : 0
     };
+    // where the water passes the dam, as opposed to where it enters: the face fluxes across x = 0
+    {
+      const i = Math.round(0 - X0); // face between columns i-1 and i
+      let thr = 0, und = 0;
+      for (let j = 0; j < NZ; j++) { if (cellZ(j) > 0) thr += FX[i * NZ + j]; else und += FX[i * NZ + j]; }
+      q.passThroughDam = thr; q.passUnderDam = und;
+    }
 
     // ---- exit gradients: head drop over the half cell to the outflow boundary
     //      (tailwater ground surface at z = 0, or the exposed face of a seepage face)

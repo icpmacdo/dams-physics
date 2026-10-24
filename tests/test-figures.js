@@ -249,6 +249,31 @@ console.log('\nFig. 8.4 · uplift and sliding');
   near(k.c.U / d.c.U, 1.83, 0.005, 'clogging the drains nearly doubles the uplift (ratio)');
 }
 
+console.log('\nFig. 9.1 · workbench leak verdict');
+{
+  const ST = require(path.join(SRC, 'stability-solver.js'));
+  const BLD = load(block(read('app-build.js'), 'app-build.js', 'leak'), ['leakWhere']);
+  const run = (preset, foundation, cutoff) => {
+    const d = { cells: ST.presetCells(preset, 2), slope: 2, foundation, cutoff, reservoir: 0.85 };
+    const r = solveSeepage(ST.buildRequest(d).seep), lw = BLD.leakWhere(r.q);
+    return { r, lw, Lday: r.q.inflowTotal * 86400000 };
+  };
+  // the caption's suggested experiment: a clay core on sand & gravel, no cutoff
+  const c = run('cored', 'gravel', 'none');
+  check(c.r.q.inflowFloor / c.r.q.inflowTotal < 0.05, `clay core + rockfill on sand & gravel: only ${(100 * c.r.q.inflowFloor / c.r.q.inflowTotal).toFixed(1)}% enters through the reservoir floor (what the old verdict measured)`);
+  same(c.lw.path + ' | ' + c.lw.txt, 'under | Almost all of it passes under the dam, through the ground beneath it.', 'clay core + rockfill on sand & gravel: the verdict says the water passes under');
+  same(c.lw.tip, 'Water is going under the dam: a full cutoff closes that path.', 'and advises a cutoff, not a clay core');
+  near(c.r.q.passThroughDam + c.r.q.passUnderDam, c.r.q.inflowTotal, 1e-3 * c.r.q.inflowTotal, 'the flow across the crest line adds up to the inflow (within 0.1%)');
+  const cf = run('cored', 'gravel', 'full');
+  check(cf.Lday < c.Lday / 1000, `a full cutoff under the core cuts the leak from ${c.Lday.toFixed(0)} to ${cf.Lday.toFixed(2)} L/day per metre, so the water was passing under`);
+  same(cf.lw.path, 'through', 'with a full cutoff, what is left passes through the dam');
+  const h = run('homogeneous', 'clay', 'none');
+  same(h.lw.path + ' | ' + Math.round(100 * h.lw.under) + '%', 'through | 28%', 'homogeneous fill on clay: most passes through the dam, 28% under it (the film says 27%)');
+  const lk = run('leaky', 'gravel', 'none'); // rockfill (10⁻⁴ m/s) is ten times as open as the ground (10⁻⁵ m/s)
+  same(lk.lw.path + ' | ' + Math.round(100 * (1 - lk.lw.under)) + '%', 'through | 93%', 'the Hold mission start (all rockfill on sand & gravel): most passes through the dam');
+  same(BLD.leakWhere({ passThroughDam: 1, passUnderDam: 1 }).txt, 'It splits between the dam itself (50%) and the ground beneath it (50%).', 'an even split');
+}
+
 console.log('\nFacts the text states (errata fixes)');
 {
   const plain = decode(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');

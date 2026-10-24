@@ -3,6 +3,22 @@
    foundation, cutoff, downstream slope and reservoir, and presses Test. A worker runs the seepage
    solver in custom mode and then the slope stability solver (stability-solver.js) on its pore
    pressures. Missions are defined in StabilitySolver.BUILD.missions (checked in tests). */
+/* @fig-leak-begin */
+// Fig 9.1's leak verdict: where the water passes the dam, not where it enters. It reads the solver's
+// net flow across the vertical line under the crest (x = 0), above and below the original ground.
+function leakWhere(q) {
+  const thr = Math.max(0, q.passThroughDam || 0), und = Math.max(0, q.passUnderDam || 0), tot = thr + und;
+  const under = tot > 0 ? und / tot : 0, path = under > 0.6 ? 'under' : under < 0.4 ? 'through' : 'both';
+  const most = v => (v >= 0.995 ? 'Almost all of it' : 'Most of it (' + Math.round(v * 100) + '%)');
+  const txt = path === 'under' ? most(under) + ' passes under the dam, through the ground beneath it.'
+    : path === 'through' ? most(1 - under) + ' passes through the dam itself.'
+    : 'It splits between the dam itself (' + Math.round((1 - under) * 100) + '%) and the ground beneath it (' + Math.round(under * 100) + '%).';
+  const tip = path === 'under' ? 'Water is going under the dam: a full cutoff closes that path.'
+    : path === 'through' ? 'Water is going through the dam: a clay core slows it the most.'
+    : 'Water is going both through the dam and under it: a clay core with a full cutoff beneath it closes both paths.';
+  return { under, path, txt, tip };
+}
+/* @fig-leak-end */
 (function figBuild() {
   const root = $('#fig-build');
   if (!root) return;
@@ -581,10 +597,9 @@
     const rows = [], tips = [];
     // leakage
     const lc = leakClass(m.qLday);
-    const under = seep.q.inflowFloor / Math.max(1e-30, seep.q.inflowTotal);
-    let leakTxt = `${fmtL(m.qLday)} L/day per metre, about ${fmt(m.qLday, m.qLday < 10 ? 1 : 0)} m³ a day for each kilometre of dam. ` +
-      (under > 0.6 ? `Most of it (${Math.round(under * 100)}%) enters through the reservoir floor and passes under the dam.` : `Most of it passes through the dam itself.`);
-    if (lc !== 'ok') tips.push(under > 0.6 ? 'Water is going under the dam: a full cutoff closes that path.' : 'Water is going through the dam: a clay core slows it the most.');
+    const lw = leakWhere(seep.q);
+    const leakTxt = `${fmtL(m.qLday)} L/day per metre, about ${fmt(m.qLday, m.qLday < 10 ? 1 : 0)} m³ a day for each kilometre of dam. ` + lw.txt;
+    if (lc !== 'ok') tips.push(lw.tip);
     rows.push(['Leaks', lc, lc === 'ok' ? 'Low' : lc === 'warn' ? 'High' : 'Very high', leakTxt]);
     // piping
     const pc = pipeClass(m.pipe);
