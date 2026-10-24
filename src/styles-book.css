@@ -47,6 +47,9 @@ var { font-style: italic; font-family: var(--f-body); }
 .predict-verdict { font-size: 0.85rem; letter-spacing: 0; }
 .case-src { font-size: 0.82rem; }
 .predict-key { font-family: var(--f-label); }
+/* links outside p, li and figcaption (epigraph footers, worked-example givens, question summaries) take the book's link colour */
+.page .epigraph a, .page dd a, .page summary a { color: var(--water); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.page .epigraph a:hover, .page dd a:hover, .page summary a:hover { color: var(--accent); }
 .glossary-list dd a { font-family: var(--f-label); font-size: 0.82rem; letter-spacing: 0; color: var(--ink-3); }
 /* colour-key words (Plate 0): the prose names a colour with the drawing's own colour */
 .k-water { color: var(--water); }
@@ -201,7 +204,7 @@ svg.mini .mini-new { animation: none; }
 h3:hover .h-anchor, .h-anchor:focus-visible { opacity: 1; }
 .h-anchor:focus-visible { outline: 2px solid var(--accent); border-radius: 3px; }
 @media (max-width: 759px) { .h-anchor { display: none; } }
-section.back > h3:first-of-type, section.front > h3:first-of-type, section.back > h2, section.front > h2 { font-size: var(--step-3); line-height: 1.1; margin: 0 0 16px; }
+section.back > h3:first-of-type, section.back > h2, section.front > h2 { font-size: var(--step-3); line-height: 1.1; margin: 0 0 16px; }
 
 /* ---------- 7. sidenotes and margin notes (Tufte; pure CSS, enhanced by app-book.js) ---------- */
 /* Markup (SPEC F.3): <label class="sn-ref" for=…></label><input type="checkbox" class="margin-toggle"><span class="sidenote" data-kind=…>.
@@ -352,6 +355,7 @@ ol.we-steps > li::before { content: counter(we); grid-column: n; font-family: va
 .set-fig:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 1099px) {
   .we-head { grid-template-columns: minmax(0, 1fr); }
+  .we-head > * { grid-column: 1 / -1; }
   .we-gf { grid-template-columns: 5.4rem minmax(0, 1fr); }
   ol.we-steps > li { grid-template-columns: [n] 1.6rem [eq] minmax(0, 1fr); }
   .we-steps .why { grid-column: eq; margin-top: 2px; }
@@ -555,7 +559,7 @@ ol.toc-film-list .tf-l { grid-column: 3; grid-row: 1; font-variant-numeric: tabu
 .bib-group { font-family: var(--f-label); font-size: 0.8rem; letter-spacing: 0.04em; margin: 22px 0 6px; }
 .bib li, ul.bib > li { padding-left: 1.5em; text-indent: -1.5em; list-style: none; }
 .bib-cited { color: var(--ink-3); font-size: 0.85em; }
-.bib a { overflow-wrap: anywhere; }
+.bib a, .page cite a { overflow-wrap: anywhere; }   /* long URLs in the bibliography and in further reading wrap on a phone */
 .glossary-list { max-width: none; }
 @media (min-width: 1100px) { .glossary-list { grid-template-columns: minmax(9rem, 12rem) minmax(0, 1fr); } }
 

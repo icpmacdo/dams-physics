@@ -709,10 +709,11 @@ class Book:
         title = H.esc(v.get('title') or '')
         cont = H.esc(v.get('container') or '')
         who = H.esc(v.get('authors') or '') + ((' (%s)' % H.esc(v['year'])) if v.get('year') else '') + '.'
+        stop = lambda t: '' if t.rstrip().endswith(('.', '?', '!')) else '.'  # 'Design of Small Dams, 3rd ed.' keeps one full stop
         if g == 'papers':
-            s = '%s %s.%s' % (who, title, (' <em>%s</em>.' % cont) if cont else '')
+            s = '%s %s%s%s' % (who, title, stop(title), (' <em>%s</em>%s' % (cont, stop(cont))) if cont else '')
         else:
-            s = '%s <em>%s</em>.%s' % (who, title, (' ' + cont + '.') if cont else '')
+            s = '%s <em>%s</em>%s%s' % (who, title, stop(title), (' ' + cont + stop(cont)) if cont else '')
         if v.get('doi'):
             s += ' doi:%s' % H.esc(v['doi'])
         elif v.get('url'):
@@ -829,7 +830,7 @@ class Book:
         words_n = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine'}
         head = '%s films, %d minutes in all' % (words_n.get(len(order), str(len(order))), round(total / 60))
         return ('<section class="toc-films" aria-labelledby="toc-films-h"><p class="eyebrow toc-part" id="toc-films-h">The films</p>'
-                '<p class="toc-films-k">%s. Each one closes the chapter it retells, with a question before it, chapter marks and a transcript. '
+                '<p class="toc-films-k">%s. Each sits in the chapter it retells most closely, with a question before it, chapter marks and a transcript. '
                 'The book plays some of them in part, and says where.</p><ol class="toc-film-list">%s</ol></section>') % (H.esc(head), ''.join(rows))
 
     # ------------------------------------------------------------------ films

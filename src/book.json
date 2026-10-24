@@ -12,7 +12,7 @@
     { "id": "cover", "file": "src/book/00-cover.html", "title": "Dams in Section", "refLabel": "the cover", "inContents": false,
       "aliases": [{ "id": "top" }] },
     { "id": "contents", "file": "src/book/01-contents.html", "title": "Contents", "inContents": false, "generated": "toc" },
-    { "id": "preface", "file": "src/book/02-preface.html", "title": "Preface", "key": "front", "wordTarget": [500, 700] },
+    { "id": "preface", "file": "src/book/02-preface.html", "title": "Preface", "refLabel": "the Preface", "key": "front", "wordTarget": [500, 700] },
     { "id": "how-to-read", "file": "src/book/03-how-to-read.html", "title": "How to read this book", "key": "front", "wordTarget": [600, 900] },
     { "id": "plate-0", "file": "src/book/04-plate-0.html", "title": "Plate 0 · How to read a section", "key": "front",
       "newIds": ["fig-plate-0"] },

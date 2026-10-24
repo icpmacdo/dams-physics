@@ -35,8 +35,6 @@ svg.cover-dwg text { --fs: 11px; }
 .preface-sign { font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-3); margin-top: 1.6rem; }
 
 /* ---------- How to read this book ---------- */
-/* the shared rule enlarges a front section's first h3 (an old title slot); here the title is the h2 */
-section#how-to-read > h3:first-of-type { font-size: 1.4rem; line-height: 1.2; margin: 2.6rem 0 0.6rem; }
 .htr-tags { list-style: none; margin: 0.4rem 0 1.2rem; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
 .htr-tags li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 12px; align-items: baseline; padding: 4px 0; border-bottom: 1px dotted var(--rule); }
 .htr-tags .q-tag { margin: 0; }

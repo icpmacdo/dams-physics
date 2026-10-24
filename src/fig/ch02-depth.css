@@ -17,7 +17,3 @@
 .ch02-sw-acc { background: var(--accent); }
 .ch02-sw-ok { background: var(--ok); }
 .ch02-unit { color: var(--ink-3); margin-left: 10px; white-space: nowrap; }
-/* Workaround, scoped to this chapter: below 1100px styles-book.css gives .we-head a one-track grid
-   without the "text" line names its children are placed on, so a short title lands in an implicit
-   track and is pushed right. The shared fix is reported for styles-book.css. */
-@media (max-width: 1099px) { #ch-depth .we-head > * { grid-column: 1 / -1; } }
