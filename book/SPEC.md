@@ -45,8 +45,8 @@ Contents
    (about 30 s), and, once it exists, `node tests/test-book.js`. Read each exit code.
 5. No ML or AI models run locally. ffmpeg, ImageMagick and headless Chrome are fine.
 6. git: stage only the files you changed (`git add <paths>`, never `-A`). Do not push. Never force.
-   Short, specific commit messages that end with a blank line and
-   `Claude-Session: https://claude.ai/code/session_016BdwbXb5oLmAi8i3y5e21h`.
+   Short, specific commit messages with **no attribution line**: no `Claude-Session:`, no
+   `Co-Authored-By:`, no other trailer (the user's instruction, 2026-10-24).
 7. Build in parallel without collisions: `OUT=/private/tmp/claude-501/-Users-ianmacdonald-code-dams-physics/0958b9ad-36ad-42e5-abb6-32d34a812ceb/scratchpad/<you> python3 build.py`.
    Scratch files go under the session scratchpad, never in the repo.
 8. `docs/academy/` is a separate site. Leave it alone; it only shares `seepage-solver.js`.
@@ -150,19 +150,41 @@ chapter needs a string changed there, list it in your return under `deferred` as
     2,366 → 166; Bishop's worked slice is the **13th of 40** counting from the top of the slip (index
     12 in the solver's array; the report called it "slice 12").
 18. **Notation:** F is the horizontal push of water; FS is a factor of safety everywhere (Appendix 3).
-    Ch 7 relabels the uplift readout "Water push H" as "Water push F" (display text only).
+    Ch 7 relabels the uplift readout "Water push H" as "Water push F" (display text only). **Done by
+    the machinery pass (2026-10-24):** the readout, its small text and the arrow label in the drawing
+    (`app-seep.js`) now read F.
 19. **Plate 0 shows 16 hatches**, the 14 materials plus the two state hatches (saturated,
     liquefied) that `body.html` defines.
 20. **The "Empty it fast" mission** is a code task for the machinery stage (a new goal type,
     `minFoSUp`, with a test in `test-stability.js` that the start fails and the intended fix
     passes). No physics changes. If it is not built, Ch 13 writes it as a guided "Try" using the
-    existing upstream toggle and says so in concerns. **Status (review round 1): not built.**
-    The solver already reports the upstream slope after a drawdown (`designMetrics().fosUp`); at
-    the defaults it gives homogeneous 0.940, cored 1.094, drained 1.045, filtered 1.093, leaky
-    1.410 (downstream 1.000), homogeneous at 3:1 0.924. The upstream face is fixed at 2:1 in
-    `buildRequest`, so any fix is a material one (a free-draining upstream shell), and the goal
-    value is a design convention to choose and source. Unless a machinery pass builds and tests
-    it before Ch 13 is written, Ch 13 uses the fallback.
+    existing upstream toggle and says so in concerns. **Status: built (machinery pass, 2026-10-24).**
+    `BUILD.missions` has `{ id: 'drawdown', start: homogeneous, 2:1, clay, no cutoff, 0.85; lock:
+    foundation, reservoir; goals: { minFoSUp: 1.2, maxQ: 1000 } }`, in book order (dry, hold,
+    tailings, drawdown, polley); `missionCheck` reports it as the key `fosUp`. No physics changed.
+    - **The goal, 1.2, is a design convention.** USACE EM 1110-2-1902 (31 Oct 2003), Table 3-1
+      (p. 3-2), requires 1.1–1.3 for rapid drawdown of a new earth or rockfill dam: 1.1 from maximum
+      surcharge pool, 1.3 from maximum storage pool, both with the manual's improved (Appendix G)
+      method, and 1.4–1.5 where drawdown is routine (pumped storage). The workbench's drawdown is
+      harsher than that method (B = 1, all the way to empty), and 1.2 is the line its upstream verdict
+      already calls "Stable", so the mission and the pill agree. Cite the table, not a single number,
+      when the prose explains it (`usace-em1902`).
+    - **The leak cap** (1,000 L/day per metre, the readout's "Low") keeps an all-rockfill dam from
+      passing: on the mission's clay foundation it reaches 1.410 upstream but leaks 29,621.
+    - **What passes and what fails** (all on clay, `tests/test-stability.js`): start 0.940; rockfill over
+      every dam cell upstream of x = −3 (the crest's upstream edge) 1.324 and of x = −6 1.244, both
+      pass (leak 62 and 57); stopping at x = −10 gives 1.143, a 5 m skin of rockfill on the face 0.893
+      (the slip runs deeper, through the wet fill behind it), the downstream drain 1.045, all fail; all
+      rockfill fails the leak cap. The clay core + rockfill preset gives 1.094 (its wide core is cut by
+      the upstream circle). Keys: `bench.fos-up@uprock=-6` (Appendix 4). The 1.814 for all rockfill is
+      on gravel (`bench.fos-up@preset=leaky,found=gravel`), a foundation this mission locks out.
+    - **Text and UI.** `MISSION_TEXT.drawdown` (title, brief, three hints, done) is in the book's
+      voice; the Ch 13 writer may polish it (0.2.1). Its brief quotes 0.94, 1.2 and 1,000, and
+      `test-stability.js` checks those against the code, so keep them or change both. Choosing the
+      mission switches the view to the upstream check (any other mission, to downstream). The goal
+      list reads "Downstream slope: factor of safety ≥ 1.5" and "Upstream slope after a fast drawdown:
+      factor of safety ≥ 1.2". The tab `data-m="drawdown"` "4 · Empty it fast" is in
+      `ch13-build.html`, with the tabs in book order.
 21. **Errata** are a page in the back built from per-unit JSON, starting with the fixes already in
     git history (the back-matter agent seeds them from `git log`).
 
@@ -401,7 +423,7 @@ before the punctuation that follows a reference.
 - **The academy's embedded view.** `../index.html?embed=<old step id>` shows the chapters that now hold
   that step's material (`app-book.js`, map checked by `test-book.js`).
 - **Tests.** `tests/lib/book.js` builds once per test process. `tests/numbers/figs.js` implements
-  Appendix 4 except `grains.*` (no pure block in `app-grains.js` yet); `test-book.js` also pins
+  Appendix 4 (`grains.*` since the machinery pass of 2026-10-24); `test-book.js` also pins
   Appendix 4's values at the figures' defaults and checks that every id of the nine-step page
   (`tests/fixtures/ids-before-book.json`) is still on the page.
 - **Added in review round 1.** `build.py` writes `<!doctype html>` at the top of the root
@@ -420,6 +442,27 @@ before the punctuation that follows a reference.
   its first *visible* use. The running miniature at stage 0 (the Prologue) shows the dam to come as
   a faint dashed outline. `#ground` is an alias of Chapter 1. `fig-zones` still has no figcaption
   (a warning); once Ch 9 adds it, make the warning an error in `tools/bookbuild.py`.
+- **Machinery pass before parallel writing (2026-10-24).** Built so no writer needs a shared-file change:
+  - *Empty it fast* (0.3.20): the `drawdown` mission, its `minFoSUp` goal, its text, its tab, its tests.
+  - `fig-zones` opens on the finished section, on load and on every tab; **Build** animates it, and the
+    step line reads "Finished section · press Build to watch it go up in order" until then. So the
+    Ch 9 Set `{"fig":"fig-zones","set":{"zn-tabs":"1"},"click":["#zn-build"]}` starts a build (before,
+    a tab started one and the click stopped it). The Ch 9 caption need not tell the reader to press
+    Build to see the section.
+  - Number keys (Appendix 4): `grains.cav-kpa`, `grains.mu` (read from the `@grains-sim` block as the
+    page builds it, `X.grains()` in `_lib.js`); `bench.*@uprock=x` (rockfill painted over every dam
+    cell upstream of x, the drawdown mission's fix); `bench.goal@mission=…,goal=…` (a mission's target);
+    the critical circle for the Ch 12 slice figure (`bench.crit-xc`, `-zc`, `-r-m`, `-entry-x`,
+    `-exit-x`, `-depth-m`, `bench.slices-n`, `bench.slice-x`, `-zb`, `-zt`). `test-book.js` pins all of
+    them at their defaults. Every figure-namespace key the briefs H.4–H.15 name now evaluates.
+  - `test-setfig.js` presses every Set-the-figure button on the page **and every Set spec written in
+    briefs H.4–H.15** (read from this file) in headless Chrome, and fails on any error. A writer can
+    rely on those specs; a new spec in a chapter is pressed the same way.
+  - Display wording: the uplift water push is F (0.3.18), and `fig-filter`'s canvas label reads
+    "Filter: the coarser core grains bridge its pores" (H.12; the caption is still Ch 11's to fix).
+    The workbench's upstream tip now says the free-draining shell must be thick and reach toward the
+    crest (a thin skin on the face makes the drawdown check worse).
+  - `fig-grains`: a top chosen while a sample is still settling is kept (A.10).
 
 ### A.10 What the layout stage built (the design system, as implemented)
 
@@ -502,9 +545,11 @@ before the punctuation that follows a reference.
 - **Page weight** (round 2): 276 kB gzip and about 17,000 DOM nodes with three chapters written; the
   grain sandbox prepares its opening sample in idle time at load (about 0.5 s of main-thread work at
   4× throttle). Gating that on the figure nearing the viewport was tried and reverted: a Set the figure
-  for `gr-top` pressed before the sample has settled does not take (`segGroup('#gr-top')` ignores a
-  change while `S.phase !== 'run'`). Fix that first if the load needs trimming; the 450 kB gzip budget
-  in `test-book.js` stays the hard gate.
+  for `gr-top` pressed before the sample has settled did not take. **Fixed in the machinery pass
+  (2026-10-24):** a top chosen while the sample is poured or cured is kept (`S.pendingTop`) and placed
+  when it is ready, and one chosen while it is being placed re-places it (`test-setfig.js` checks it).
+  Gating the idle preparation is now possible if the load needs trimming; the 450 kB gzip budget in
+  `test-book.js` stays the hard gate.
 
 ### A.11 What the film stage built (F.13, as implemented)
 
@@ -841,8 +886,8 @@ To Ch 13 `ch13-build.html`:
    `bd-wrap`, `svg-build`, `bd-found`, `bd-cut`, `bd-slope`, `bd-res`, `bd-res-o`, `bd-test`,
    `bd-status`, readouts `bd-q`, `bd-q2`, `bd-i`, `bd-i2`, `bd-pipe`, `bd-fos`, `bd-fos2`, `bd-ph`,
    `bd-ph2`, `bd-clay`, `bd-clay2`, `bd-readouts`, `bd-side`, `bd-verdict`, `bd-legend`, plus the
-   generated `bd-hintbtn`, `bd-restart`. (Stage E reorders the mission tabs to dry, hold, tailings,
-   [empty], polley by moving the buttons; `data-m` values do not change.)
+   generated `bd-hintbtn`, `bd-restart`. (The machinery pass put the tabs in book order: free, dry,
+   hold, tailings, drawdown, polley; the existing `data-m` values did not change.)
 4. P "Material strengths and permeabilities are typical values…" (limits).
 5. From `#cases`: `article.case` Mount Polley and `p.case-src` (Polley sources).
 6. film `film-layer-nobody-found`.
@@ -1939,9 +1984,9 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
   - `ex-grip-column` Ten metres of sand: water table 4 m down: σ `column.s-kpa@wt=4` 192, u
     `column.u-kpa@wt=4` 58.9, σ′ `column.e-kpa@wt=4` 133.1 kPa; flooded to the surface: 200 / 98.1 /
     101.9 (`@wt=0`), `ch04.flood-loss-pct` 43% of the press gone; with 3 m of lake on top, σ′ still
-    `column.e-kpa@wt=-3` 101.9. Set: `{"fig":"fig-column","set":{"gc-wt":0}}` (**check** the slider's
-    sign convention: the markup's value −4 means "4.0 m down"; read app-ground.js before writing the
-    data-set and use the slider's own value).
+    `column.e-kpa@wt=-3` 101.9. Set: `{"fig":"fig-column","set":{"gc-wt":0}}` (checked by the machinery
+    pass: the slider holds the water level's height above ground, so its value is minus the keys' `wt`:
+    `gc-wt` −4 is `wt=4`, "4.0 m down"; 0 is flooded to the surface; +3 is 3 m of lake, `wt=-3`).
   - `ex-grip-ic` The critical gradient: i_c = (γsat − γw)/γw = (20 − 9.81)/9.81 = `ch04.ic` 1.04.
     Equivalently (Gs − 1)/(1 + e) = 1.65/1.65 = 1.00 for typical sand (the value Ch 11 uses; the two
     agree because those grains and gaps make γsat ≈ 19.6).
@@ -2242,7 +2287,7 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
   `app-zones.js`'s `info` objects); **compaction** ("How a heap becomes fill"): Proctor 1933, optimum
   water content, relative compaction, linking Ch 5's loose and dense to construction; "**our dam**"
   named (G.3); `fig-zones` gets its first `figcaption` and defaults to the finished section (a
-  behaviour change requested from the machinery stage as a JS STRING/behaviour item: "open built";
+  behaviour change requested from the machinery stage as a JS STRING/behaviour item: "open built" (**done**, A.9);
   if not done, the caption tells the reader to press Build). The filter's job is named and deferred:
   "the thinnest zone has the subtlest job; Chapter 11 is about it". The tailings tab cross-refers to
   Ch 8.
@@ -2540,6 +2585,12 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
   1.3H:1V for the unbuttressed downstream face itself (`polley2015`, p. 75). When Ch 13 quotes the
   panel's figure, reconcile the two in one clause ("you measured about 1.4:1 from the crest's edge in
   Fig. P.1; the face itself stood at 1.3H:1V"). Neither number may appear before Ch 13 next to a cause.
+- **Empty it fast (built, 0.3.20).** Use its real numbers: on the mission's clay foundation the
+  homogeneous start is `bench.fos-up` 0.94 and the fix (rockfill over the upstream part to 3 m short of
+  the crest) `bench.fos-up@uprock=-6` 1.24; all rockfill on clay reaches 1.41 but fails the leak cap.
+  The question "homogeneous 0.94 against rockfill 1.81" compares across foundations (1.81 is on gravel,
+  `bench.fos-up@preset=leaky,found=gravel`); say so or use the clay numbers. Set:
+  `{"fig":"fig-build","set":{"bd-tabs":"drawdown"}}`.
 - **Glossary owned:** glaciolacustrine, strain-softening, peak-strength, site-investigation, borehole.
 
 ### H.15 Epilogue · The dam after the drawings (`90-epilogue.html`, 1,500–2,500 words, miniature 14)
@@ -2888,7 +2939,11 @@ defaults shown (the figures' states on load). Values are what the code gives tod
 | `bench.q-lday`, `bench.pipe`, `bench.fos`, `bench.fos-up`, `bench.clay-m3`, `bench.cells`, `bench.face-m`, `bench.ru`, `bench.fos-nowater`, `bench.tried` (preset=homogeneous, slope=2, found=clay, cut=none, res=0.85) | `runDesign` + `designMetrics` | 44.37, 1.368, 1.116, 0.940, 0, 1,296, 8, 0.353, 1.741, 2,000–3,000 |
 | `bench.slice-b`, `bench.slice-w-kn`, `bench.slice-u-kpa`, `bench.slice-alpha-deg` (i=12) | the critical circle's slice i | 1.359, 319.0, 76.4, 31.9 |
 | `bench.mat-phi`, `bench.mat-c`, `bench.mat-gs`, `bench.mat-gm`, `bench.mat-k` (mat) | `BUILD.materials` | fill 32/10/20.5/19; clay 26/8; rock 42/0/22; filter 36/0; tsand 33/0/19.5 |
-| `grains.cav-kpa`, `grains.mu` | sandbox parameters | −100, 0.5 |
+| `grains.cav-kpa`, `grains.mu` | sandbox parameters (`X.grains()`) | −100, 0.5 |
+| `bench.*@uprock=x` (any bench key; default `none`) | rockfill over every dam cell upstream of x m | `bench.fos-up@uprock=-6` 1.244, `@uprock=-3` 1.324; `bench.q-lday@uprock=-6` 57.3 |
+| `bench.goal` (mission=dry, goal=minFoS) | a mission's target from `BUILD.missions` | drawdown: minFoSUp 1.2, maxQ 1,000 |
+| `bench.crit-xc`, `bench.crit-zc`, `bench.crit-r-m`, `bench.crit-entry-x`, `bench.crit-exit-x`, `bench.crit-depth-m`, `bench.slices-n` (bench defaults) | the critical downstream circle | 42.45, 40.30, 42.89, 2.78, 57.12, 11.92, 40 |
+| `bench.slice-x`, `bench.slice-zb`, `bench.slice-zt` (i=12) | slice i's centre x, base height, top height | 19.76, 3.90, 15.62 |
 
 Other workbench values checked for this spec: homogeneous 2.5:1 1.273, 3:1 1.418; drained 1.628 (leak
 109.7), cutoff 1.142; leaky on gravel 32,490 L/day; cored on gravel 5,434 (FS 1.593), with full
