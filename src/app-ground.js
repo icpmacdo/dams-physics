@@ -333,12 +333,12 @@ function groundPredictInit(root) {
   // pressure at the sensor (depth h) and at the foot (depth H), push per metre of dam, and the readout texts
   function depthCalc(H, h) {
     const p = 9.81 * h, pb = 9.81 * H, F = 0.5 * 9.81 * H * H; // kPa, kPa, kN per m
-    const f = F / 1000; // MN per m, for the chart
+    const Ft = (F >= 1000 ? (F / 1000).toFixed(F >= 10000 ? 1 : 2) + ' MN' : fmt(F) + ' kN'); // the chart's point says what the readout says
     return { p, pb, F, txt: {
       H: H + ' m', h: n1(h) + ' m', p: fmt(p) + ' kPa', p2: '9.81 × ' + n1(h) + ' m', pb: fmt(pb) + ' kPa', pb2: '9.81 × ' + H + ' m',
-      F: (F >= 1000 ? (F / 1000).toFixed(F >= 10000 ? 1 : 2) + ' MN' : fmt(F) + ' kN'),
+      F: Ft,
       F2: 'as heavy as ' + fmt(Math.round(F / 9.81 / (F > 2000 ? 10 : 1)) * (F > 2000 ? 10 : 1)) + ' tonnes',
-      chart: (f < 10 ? f.toFixed(1) : Math.round(f)) + ' MN at ' + H + ' m', tri: H >= 25 ? fmt(pb) + ' kPa' : '' } };
+      chart: Ft + ' at ' + H + ' m', tri: H >= 25 ? fmt(pb) + ' kPa' : '' } };
   }
   /* @fig-depth-end */
   (function figDepth() {
@@ -351,7 +351,7 @@ function groundPredictInit(root) {
     const surf = E('path', { class: 'water-line' }, g);
     const wsym = E('g', null, g);
     E('polygon', { points: P([[FX, B - 106 * K], [FX + 22, B - 106 * K], [FX + 22, B - 86 * K], [470, B], [FX, B]]), style: 'fill:var(--m-conc)', class: 'edge' }, g);
-    T(g, FX + 40, B - 150, 'Dam', 'lbl-b halo');
+    T(g, FX + 14, B - 70, 'Dam', 'lbl-b halo');   // low in the section, where it is widest, clear of the sloping face
     E('rect', { x: 0, y: B, width: 480, height: 40, fill: 'url(#p-bedrock)', class: 'edge' }, g);
     // depth ruler
     const ruler = E('g', null, g);
@@ -367,7 +367,7 @@ function groundPredictInit(root) {
     E('rect', { x: -7, y: -9, width: 14, height: 18, rx: 3, style: 'fill:var(--sheet);stroke:var(--ink);stroke-width:1.4' }, sensor);
     E('circle', { cx: 0, cy: 3, r: 2.4, style: 'fill:var(--accent)' }, sensor);
     const hit = E('circle', { r: 22, style: 'fill:transparent' }, sensor);
-    const sL1 = T(g, 0, 0, '', 'lbl halo'), sL2 = T(g, 0, 0, '', 'lbl lbl-acc halo');
+    const sL1 = T(g, 0, 0, '', 'lbl halo on-water'), sL2 = T(g, 0, 0, '', 'lbl lbl-acc halo on-water');
     const HEl = $('#dp-H'), hEl = $('#dp-h');
     let H = +HEl.value, h = +hEl.value;
     function render() {
@@ -395,8 +395,9 @@ function groundPredictInit(root) {
       setArrow(hot, FX - kp * h, y, FX - 2, y);
       cable.setAttribute('d', `M${SX},${ys - 10} V${y - 9}`);
       sensor.setAttribute('transform', `translate(${SX},${y})`);
-      sL1.setAttribute('x', SX + 14); sL1.setAttribute('y', y - 2); sL1.textContent = 'h = ' + c.txt.h;
-      sL2.setAttribute('x', SX + 14); sL2.setAttribute('y', y + 12); sL2.textContent = 'p = ' + c.txt.p;
+      const ly = Math.min(y, B - 20);   // in shallow water the label stays above the bed (display only)
+      sL1.setAttribute('x', SX + 14); sL1.setAttribute('y', ly - 2); sL1.textContent = 'h = ' + c.txt.h;
+      sL2.setAttribute('x', SX + 14); sL2.setAttribute('y', ly + 12); sL2.textContent = 'p = ' + c.txt.p;
       setTxt('dp-H-o', c.txt.H); setTxt('dp-h-o', c.txt.h);
       setTxt('dp-p', c.txt.p); setTxt('dp-p2', c.txt.p2);
       setTxt('dp-pb', c.txt.pb); setTxt('dp-pb2', c.txt.pb2);

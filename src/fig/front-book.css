@@ -17,7 +17,7 @@ svg.cover-dwg .cv-scale text { fill: var(--ink-2); }
 svg.cover-dwg .cv-scale .ink-s { stroke: var(--ink-2); }
 .cover-plate figcaption { font-family: var(--f-body); font-style: italic; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.45; color: var(--ink-2);
   max-width: var(--measure); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--rule); }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   figure.cover-plate { margin-inline: -16px; }
   svg.cover-dwg .cv-scale { display: none; }
   .cover-plate figcaption { margin-inline: 16px; }
@@ -38,7 +38,7 @@ svg.cover-dwg .cv-scale .ink-s { stroke: var(--ink-2); }
 .htr-tags { list-style: none; margin: 0.4rem 0 1.2rem; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
 .htr-tags li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 12px; align-items: baseline; padding: 4px 0; border-bottom: 1px dotted var(--rule); }
 .htr-tags .q-tag { margin: 0; }
-@media (max-width: 519px) { .htr-tags li { grid-template-columns: minmax(0, 1fr); } }
+@media screen and (max-width: 519px) { .htr-tags li { grid-template-columns: minmax(0, 1fr); } }
 .htr-conv { margin: 0.4rem 0 1.2rem; padding-left: 1.1em; }
 .htr-conv li { margin-bottom: 4px; }
 
@@ -73,8 +73,8 @@ ul.p0-colours { list-style: none; margin: 6px 0 4px; padding: 0; display: grid; 
 ul.p0-colours li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 10px; align-items: center; }
 ul.p0-colours svg { width: 46px; height: 22px; }
 .p0-block { margin-top: 16px; padding-top: 12px; border-top: 1px dotted var(--rule); }
-@media (max-width: 899px) { ul.p0-hatches { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 759px) {
+@media screen and (max-width: 899px) { ul.p0-hatches { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media screen and (max-width: 759px) {
   #fig-plate-0 svg.p0-dwg text { --fs: 15px; }
   #fig-plate-0 svg.p0-dwg .p0-dim { --fs: 14px; }
   #fig-plate-0 svg.p0-dwg .p0-flow { --fs: 15px; }

@@ -13,7 +13,7 @@
 .pro-under { display: grid; grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); gap: 0 28px; align-items: start; margin-top: 10px; }
 .pro-under svg.pro-plan { display: block; width: 100%; height: auto; margin-top: 14px; overflow: visible; }
 svg.pro-ph { display: none; }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   svg.pro-wide { display: none; }
   svg.pro-ph { display: block; }
   .pro-under { grid-template-columns: minmax(0, 1fr); }

@@ -31,7 +31,7 @@
 }
 .tutor-form input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .tutor-note { margin: 0; font-family: var(--f-mono); font-size: 0.64rem; line-height: 1.45; color: var(--ink-3); }
-@media (max-width: 560px) {
+@media screen and (max-width: 560px) {
   .tutor { right: 0; left: 0; bottom: 0; width: auto; max-height: 70vh; border-radius: 4px 4px 0 0; border-width: 1.5px 0 0; box-shadow: none; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -52,7 +52,7 @@
 .glossary-list dt { font-family: var(--f-display); font-weight: 700; }
 .glossary-list dd { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
 .glossary-list dd a { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--accent); white-space: nowrap; }
-@media (max-width: 560px) { .glossary-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .glossary-list dd { margin-bottom: 10px; } }
+@media screen and (max-width: 560px) { .glossary-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .glossary-list dd { margin-bottom: 10px; } }
 
 /* ---------- BC case files ---------- */
 .col > .case-grid { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }
@@ -65,7 +65,7 @@
 .case h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; line-height: 1.15; margin: 4px 0 8px; text-wrap: balance; }
 .case p:not(.case-k) { font-size: 0.95rem; margin: 0 0 10px; }
 .case-src { font-family: var(--f-mono); font-size: 0.68rem; color: var(--ink-3); }
-@media (max-width: 860px) { .case { padding-left: 0; border-right: 0; border-bottom: 1px solid var(--rule); } }
+@media screen and (max-width: 860px) { .case { padding-left: 0; border-right: 0; border-bottom: 1px solid var(--rule); } }
 .glossary { margin-top: 48px; }
 
 /* ---------- links in running text ---------- */

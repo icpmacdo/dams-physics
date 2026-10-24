@@ -17,22 +17,25 @@
 
       <div class="predict" data-answer="c" id="pr-paradox">
         <p class="predict-q">Two dams each hold back water 50&nbsp;m deep. One holds a lake 10&nbsp;km long. The other holds a slot of water only 2&nbsp;m wide, with solid rock behind it. Which dam has to be stronger?</p>
-        <svg class="dwg gd g-paradox" viewBox="0 0 480 130" role="img" aria-label="Left: a dam holding a long lake 50 metres deep. Right: a dam holding a narrow slot of water 2 metres wide and 50 metres deep against rock.">
+        <svg class="dwg gd g-paradox" viewBox="0 -6 480 136" role="img" aria-label="Left: a dam holding a long lake 50 metres deep. Right: a dam holding a narrow slot of water 2 metres wide and 50 metres deep against rock.">
           <rect x="6" y="34" width="190" height="72" class="water"/>
           <path d="M6,34 h190" class="water-line"/>
           <path d="M44,30 l-6,8 M38,30 l-6,8" style="stroke:var(--ink-2);stroke-width:1.2"/>
           <text x="98" y="27" class="lbl-s" text-anchor="middle">lake, 10 km long</text>
           <polygon points="196,22 208,22 236,106 196,106" style="fill:var(--m-conc)" class="edge"/>
           <rect x="0" y="106" width="240" height="16" fill="url(#p-bedrock)" class="edge"/>
-          <text x="186" y="74" class="lbl lbl-w halo" text-anchor="end">50 m deep</text>
+          <text x="186" y="74" class="lbl lbl-w halo on-water" text-anchor="end">50 m deep</text>
           <rect x="356" y="34" width="10" height="72" class="water"/>
           <path d="M356,34 h10" class="water-line"/>
           <polygon points="256,22 356,22 356,106 256,106" fill="url(#p-bedrock)" class="edge"/>
           <polygon points="366,22 378,22 406,106 366,106" style="fill:var(--m-conc)" class="edge"/>
           <rect x="250" y="106" width="230" height="16" fill="url(#p-bedrock)" class="edge"/>
-          <text x="361" y="16" class="lbl-s" text-anchor="middle">slot, 2 m wide</text>
-          <text x="350" y="62" class="lbl lbl-w halo" text-anchor="end">50 m deep</text>
-          <text x="300" y="94" class="lbl-s halo" text-anchor="middle">rock</text>
+          <text x="361" y="5" class="lbl-s" text-anchor="middle">slot, 2 m wide</text>
+          <path d="M361,9 V46" class="lead"/>
+          <path d="M416,34 V106 M412,34 H420 M412,106 H420" class="dim"/>
+          <text x="424" y="68" class="lbl">50 m</text>
+          <text x="424" y="83" class="lbl">deep</text>
+          <text x="300" y="94" class="lbl-s halo on-rock" text-anchor="middle">rock</text>
         </svg>
         <div class="predict-opts"><button data-v="a">The dam holding the big lake</button><button data-v="b">The dam holding the narrow slot</button><button data-v="c">Both need to be equally strong</button></div>
         <div class="predict-reveal" hidden><p>The lake is the natural guess, and it is wrong. Water pressure depends only on how far below the surface you are. Fifty metres down it is the same in a slot as in an ocean, so the two dams feel exactly the same push. The big lake is far heavier, but its weight rests on the lake bed: cut the lake into upright columns, like slices of a cake still in its tin, and each column stands on the bed and presses straight down on it. Only the water touching the dam pushes on the dam. The size of a lake decides how much water escapes if the dam breaks. The depth decides the load on the dam.</p></div>
@@ -76,7 +79,7 @@
         </div>
       </div>
       <figcaption>
-        <p class="cap"><b>Water pressure grows in a straight line with depth, so the arrows on the dam's face fill a triangle.</b> The sensor hangs <var>h</var> metres below the surface and reads the gauge pressure there. The <span class="k-acc">brick-red</span> arrows show the pressure every 10 m down the face; the shaded triangle they fill is the whole push. The chart plots that push, per metre length of dam, against the depth of the water: the curve bends upward, and the open dot at half the depth sits at a quarter of the push. The push is in MN, meganewtons: 1 MN = 1,000 kN. <span class="cap-n">The number to remember: <span data-n="const.gw">9.81</span> kPa for every metre of depth, so <span data-n="depth.p-kpa@h=30">294.3</span> kPa at 30 m.</span></p>
+        <p class="cap"><b>Water pressure grows in a straight line with depth, so the arrows on the dam's face fill a triangle.</b> The sensor hangs <var>h</var> metres below the surface and reads the gauge pressure there. The <span class="k-acc">brick-red</span> arrows show the pressure every 10 m down the face, and the heavy one the pressure at the sensor's depth; the shaded triangle they fill is the whole push. The chart plots that push, per metre length of dam, against the depth of the water: the curve bends upward, and the open dot at half the depth sits at a quarter of the push. The push is in MN, meganewtons: 1 MN = 1,000 kN. <span class="cap-n">The number to remember: <span data-n="const.gw">9.81</span> kPa for every metre of depth, so <span data-n="depth.p-kpa@h=30">294.3</span> kPa at 30 m.</span></p>
         <ul class="try">
           <li>Hold the sensor at 30 m and change the water depth. The reading doesn't move.</li>
           <li>Set the water to 100 m, then to 50 m. The push falls to a quarter.</li>
@@ -128,7 +131,7 @@
             </g>
             <polygon points="232,22 244,22 292,180 232,180" style="fill:var(--m-conc)" class="edge"/>
             <rect x="0" y="180" width="300" height="16" fill="url(#p-bedrock)" class="edge"/>
-            <text x="10" y="110" class="lbl lbl-w halo">50 m deep</text>
+            <text x="10" y="110" class="lbl lbl-w halo on-water">50 m deep</text>
             <text x="163" y="174" class="lbl-s lbl-acc halo" text-anchor="end"><tspan data-n="depth.pb-kpa@H=50">490.5</tspan> kPa</text>
           </svg>
           <svg class="dwg" viewBox="0 0 300 222" role="img" aria-label="Panel B: the same lake with all but a 2 metre slot against the dam set solid, with the same weight. The triangle of pressure arrows on the dam face is unchanged, 490.5 kilopascals at the foot.">
@@ -146,7 +149,7 @@
             <rect x="0" y="180" width="300" height="16" fill="url(#p-bedrock)" class="edge"/>
             <path d="M229,28 L222,12" class="lead"/>
             <text x="220" y="11" class="lbl-s halo" text-anchor="end">2 m slot, still liquid</text>
-            <text x="10" y="110" class="lbl lbl-w halo">50 m deep</text>
+            <text x="10" y="110" class="lbl lbl-w halo on-water">50 m deep</text>
             <text x="163" y="174" class="lbl-s lbl-acc halo" text-anchor="end"><tspan data-n="depth.pb-kpa@H=50">490.5</tspan> kPa</text>
           </svg>
         </div>
@@ -243,11 +246,11 @@
           <g style="stroke:var(--ink-2);stroke-width:1;stroke-dasharray:5 4;fill:none">
             <path d="M10,80 H296"/><path d="M10,140 H296"/><path d="M10,200 H296"/>
           </g>
-          <text x="16" y="75" class="lbl halo"><tspan font-style="italic">z</tspan> = 15 m</text>
-          <text x="16" y="135" class="lbl halo"><tspan font-style="italic">z</tspan> = 30 m</text>
-          <text x="16" y="195" class="lbl halo"><tspan font-style="italic">z</tspan> = 45 m</text>
-          <text x="16" y="36" class="lbl-s lbl-w halo">water to the top</text>
-          <text x="150" y="178" class="lbl-s halo">concrete</text>
+          <text x="16" y="75" class="lbl halo on-water"><tspan font-style="italic">z</tspan> = 15 m</text>
+          <text x="16" y="135" class="lbl halo on-water"><tspan font-style="italic">z</tspan> = 30 m</text>
+          <text x="16" y="195" class="lbl halo on-water"><tspan font-style="italic">z</tspan> = 45 m</text>
+          <text x="16" y="36" class="lbl-s lbl-w halo on-water">water to the top</text>
+          <text x="150" y="178" class="lbl-s halo on-conc">concrete</text>
           <rect x="300" y="70" width="5.2" height="8" style="fill:var(--accent)"/>
           <rect x="300" y="81" width="10" height="8" style="fill:var(--ok)"/>
           <text x="316" y="77" class="lbl-s lbl-acc halo"><tspan data-n="ch02.tri-f-kn@z=15">1,104</tspan></text>
@@ -291,7 +294,7 @@
           <li><span class="we-eq">Holding ÷ tipping = <span data-n="ch02.tri-mw-coef">5.013</span> ÷ <span data-n="ch02.tri-mf-coef">1.635</span> = <span data-n="ch02.tri-tip-ratio">3.07</span></span><span class="why"><var>z</var>³ cancels too</span></li>
         </ol>
         <p class="we-ans">Above every level of the triangle the concrete weighs <span data-n="ch02.tri-ratio">1.92</span> times the push, and holds <span data-n="ch02.tri-tip-ratio">3.07</span> times the tipping moment.</p>
-        <p class="we-check"><b>Check.</b> At <var>z</var> = 30 m: weight <span data-n="ch02.tri-w-kn@z=30">8,460</span> kN, push <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> kN, and <span data-n="ch02.tri-w-kn@z=30">8,460</span> ÷ <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> = <span data-n="ch02.tri-ratio">1.92</span>. At <var>z</var> = 45 m: <span data-n="ch02.tri-w-kn@z=45">19,035</span> ÷ <span data-n="ch02.tri-f-kn@z=45">9,932.6</span> = <span data-n="ch02.tri-ratio">1.92</span>.</p>
+        <p class="we-check"><b>Check.</b> At <span class="m"><var>z</var> = 30 m</span>: weight <span data-n="ch02.tri-w-kn@z=30">8,460</span> kN, push <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> kN, and <span data-n="ch02.tri-w-kn@z=30">8,460</span> ÷ <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> = <span data-n="ch02.tri-ratio">1.92</span>. At <span class="m"><var>z</var> = 45 m</span>: <span data-n="ch02.tri-w-kn@z=45">19,035</span> ÷ <span data-n="ch02.tri-f-kn@z=45">9,932.6</span> = <span data-n="ch02.tri-ratio">1.92</span>.</p>
         <p class="we-means"><b>What it means.</b> A triangle gives every level the same margin, so no level is weaker than the rest and none carries concrete it does not need. What this leaves out, water seeping under the dam and pushing it up, is the subject of <a data-ref="ch-concrete"></a>.</p>
       </section>
 
@@ -330,7 +333,7 @@
 
       <figure class="fig wide" id="fig-depth-sloping">
         <div class="sheet-top"><span class="figno"><b data-num></b> · Water on a sloping face</span><span class="scale-note">Section to scale · force diagram to scale with itself</span></div>
-        <svg class="dwg" viewBox="0 0 460 280" role="img" aria-label="An earth embankment with an upstream face sloping two across for every one up, holding water 20.4 metres deep. Red arrows press on the face at right angles, longer with depth. The water standing above the face is hatched. Below, a force diagram splits the whole push of 4,564 kilonewtons per metre into 2,041 across and 4,083 down.">
+        <svg class="dwg" viewBox="0 0 540 280" role="img" aria-label="An earth embankment with an upstream face sloping two across for every one up, holding water 20.4 metres deep. Red arrows press on the face at right angles, longer with depth. The water standing above the face is hatched. Below, a force diagram splits the whole push of 4,564 kilonewtons per metre into 2,041 across and 4,083 down.">
           <defs>
             <pattern id="depth-wedge" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="water"/><path d="M0,0 V7" style="stroke:var(--water);stroke-width:1.1;opacity:.5"/></pattern>
             <marker id="depth-arr-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ok)"/></marker>
@@ -340,18 +343,18 @@
           <polygon points="20,68 224,68 20,170" fill="url(#depth-wedge)"/>
           <path d="M20,68 V170" style="stroke:var(--water);stroke-width:1;stroke-dasharray:4 3;fill:none"/>
           <path d="M0,68 H224" class="water-line"/>
-          <polygon points="20,170 260,50 290,50 460,135 460,170" fill="url(#p-fill)" class="edge"/>
-          <rect x="0" y="170" width="460" height="12" fill="url(#p-bedrock)" class="edge"/>
+          <polygon points="20,170 260,50 290,50 530,170" fill="url(#p-fill)" class="edge"/>
+          <rect x="0" y="170" width="540" height="12" fill="url(#p-bedrock)" class="edge"/>
           <g style="stroke:var(--accent);stroke-width:1.2;fill:none">
             <path d="M168.9,82.7 L173.3,91.7" marker-end="url(#arr-acc)"/>
             <path d="M114.4,98.8 L123.3,116.7" marker-end="url(#arr-acc)"/>
             <path d="M59.9,114.8 L73.3,141.7" marker-end="url(#arr-acc)"/>
             <path d="M5.4,130.9 L23.3,166.7" marker-end="url(#arr-acc)"/>
           </g>
-          <text x="26" y="86" class="lbl-s halo">water on</text>
-          <text x="26" y="100" class="lbl-s halo">the face</text>
+          <text x="26" y="86" class="lbl-s halo on-water">water on</text>
+          <text x="26" y="100" class="lbl-s halo on-water">the face</text>
           <text x="205" y="132" class="lbl halo" transform="rotate(-26.57 205 132)" text-anchor="middle">upstream face, 2H:1V</text>
-          <text x="370" y="118" class="lbl-s halo" text-anchor="middle">embankment</text>
+          <text x="300" y="140" class="lbl-s halo on-fill" text-anchor="middle">embankment</text>
           <text x="4" y="61" class="lbl lbl-w halo"><tspan data-n="lab.res-m">20.4</tspan> m deep</text>
           <path d="M20,42 H224 M20,38 V46 M224,38 V46" class="dim"/>
           <text x="122" y="35" class="lbl-s halo" text-anchor="middle">face runs <tspan data-n="ch02.slope-run-m">40.8</tspan> m across</text>
@@ -362,7 +365,7 @@
           <path d="M230,206 H261" style="stroke:var(--accent);stroke-width:2;fill:none" marker-end="url(#arr-acc)"/>
           <path d="M262,206 V269" style="stroke:var(--ok);stroke-width:2;fill:none" marker-end="url(#depth-arr-ok)"/>
           <path d="M230,206 L261.5,269" style="stroke:var(--ink);stroke-width:1.6;fill:none" marker-end="url(#depth-arr-ink)"/>
-          <text x="246" y="200" class="lbl-s lbl-acc halo" text-anchor="middle">across <tspan data-n="ch02.slope-h-kn">2,041</tspan></text>
+          <text x="246" y="192" class="lbl-s lbl-acc halo" text-anchor="middle">across <tspan data-n="ch02.slope-h-kn">2,041</tspan></text>
           <text x="272" y="234" class="lbl-s halo" style="fill:var(--ok)">down <tspan data-n="ch02.slope-v-kn">4,083</tspan></text>
           <text x="272" y="262" class="lbl-s halo">whole push <tspan data-n="ch02.slope-r-kn">4,564</tspan>,</text>
           <text x="272" y="276" class="lbl-s halo">at right angles to the face</text>

@@ -111,7 +111,7 @@ h1 .cut { color: var(--accent); font-style: italic; font-weight: 600; }
 .topics a strong { display: block; font-family: var(--f-display); font-weight: 700; font-size: 1.15rem; line-height: 1.15; margin-top: 4px; }
 .topics a:hover strong, .topics a:focus-visible strong { color: var(--accent); }
 .topics a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-@media (max-width: 720px) {
+@media screen and (max-width: 720px) {
   .topics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .topics a { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); }
 }
@@ -148,7 +148,7 @@ svg.dwg { display: block; width: 100%; height: auto; max-width: 100%; overflow: 
 .pair > div { min-width: 0; }
 .panel-title { font-family: var(--f-display); font-weight: 700; font-size: 1.1rem; margin: 0 0 4px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .panel-title small { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
-@media (max-width: 820px) { .pair { grid-template-columns: minmax(0, 1fr); } }
+@media screen and (max-width: 820px) { .pair { grid-template-columns: minmax(0, 1fr); } }
 .dwg text { font-family: var(--f-label); --fs: 11.5px; font-size: var(--fs); fill: var(--ink); }
 .dwg .lbl { --fs: 11px; fill: var(--ink); }
 .dwg .lbl-s { --fs: 9.5px; fill: var(--ink-2); }
@@ -156,6 +156,10 @@ svg.dwg { display: block; width: 100%; height: auto; max-width: 100%; overflow: 
 .dwg .lbl-acc { fill: var(--accent); }
 .dwg .lbl-w { fill: var(--water); }
 .dwg .halo { paint-order: stroke; stroke: var(--sheet); stroke-width: 3px; stroke-linejoin: round; }
+.dwg .halo.on-water { stroke: var(--water-fill); }
+.dwg .halo.on-fill { stroke: var(--m-fill); }
+.dwg .halo.on-rock { stroke: var(--m-bedrock); }
+.dwg .halo.on-conc { stroke: var(--m-conc); }
 .dwg .edge { stroke: var(--ink); stroke-width: 1; stroke-linejoin: round; }
 .dwg .edge-l { stroke: var(--ink-2); stroke-width: 0.6; stroke-linejoin: round; }
 .dwg .lead { stroke: var(--ink-2); stroke-width: 0.8; fill: none; }
@@ -213,7 +217,7 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .ro span.pill { display: inline-block; vertical-align: 4px; margin-left: 6px; font-size: 0.62rem; letter-spacing: 0.05em; padding: 1px 7px; color: inherit; }
 .ro span.pill.ok { color: var(--ok); } .ro span.pill.warn { color: var(--warn); } .ro span.pill.bad { color: var(--bad); }
 .ro small { display: block; font-family: var(--f-label); font-size: 0.8rem; color: var(--ink-2); margin-top: 2px; }
-@media (max-width: 560px) { .ro { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); } }
+@media screen and (max-width: 560px) { .ro { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); } }
 .pill { display: inline-block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1.5px solid currentColor; white-space: nowrap; }
 .pill.ok { color: var(--ok); }
 .pill.warn { color: var(--warn); }
@@ -239,7 +243,7 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .tabs button:hover { color: var(--ink); }
 .tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .zone-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; margin-top: 12px; }
-@media (max-width: 820px) { .zone-layout { grid-template-columns: minmax(0, 1fr); } }
+@media screen and (max-width: 820px) { .zone-layout { grid-template-columns: minmax(0, 1fr); } }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
 .chip {
   display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-label); font-size: 0.85rem; color: var(--ink);
@@ -279,7 +283,7 @@ table.cmp td { width: 42%; }
 .three ul { margin: 0; padding-left: 1.1em; font-size: 0.95rem; }
 .three li { margin-bottom: 4px; }
 .three .pm { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 10px 0 2px; }
-@media (max-width: 760px) { .three { grid-template-columns: minmax(0, 1fr); } .three > div { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); } }
+@media screen and (max-width: 760px) { .three { grid-template-columns: minmax(0, 1fr); } .three > div { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); } }
 .timeline { list-style: none; padding: 0; margin: 14px 0 10px; border-left: 2px solid var(--rule); }
 .timeline li { position: relative; padding: 0 0 12px 18px; }
 .timeline li::before { content: ""; position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--sheet); border: 2px solid var(--bad); }
@@ -287,15 +291,15 @@ table.cmp td { width: 42%; }
 .defences { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border-top: 2px solid var(--ink); margin: 14px 0; }
 .defences > div { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule); min-width: 0; }
 .defences b { font-family: var(--f-display); font-size: 1.1rem; display: block; }
-.defences span { font-size: 0.93rem; color: var(--ink-2); }
-.solving { font-family: var(--f-mono); font-size: 0.72rem; color: var(--accent); min-height: 1.2em; }
+.defences span { font-size: 0.95rem; line-height: 1.45; color: var(--ink-2); display: block; }
+.solving { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-3); min-height: 1.2em; }   
 .note { font-family: var(--f-body); font-size: 0.88rem; color: var(--ink-2); line-height: 1.5; }
 .sources { font-size: 0.9rem; color: var(--ink-2); }
 .sources li { margin-bottom: 6px; }
 footer.end { border-top: 1px solid var(--rule); margin-top: 48px; padding-top: 22px; }
 canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px; }
 .swipe-hint { display: none; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 2px 0 6px; }
-@media (max-width: 760px) {
+@media screen and (max-width: 760px) {
   #svg-plan { max-width: 340px; }
 }
 figure.film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 4px; background: var(--rule); }
@@ -315,7 +319,7 @@ svg.gd { overflow: hidden; }
 .g-side .ro:nth-child(odd) { padding-right: 12px; }
 .g-side .ro b { font-size: 1.3rem; }
 .g-side .note { margin: 12px 0 0; }
-@media (max-width: 860px) {
+@media screen and (max-width: 860px) {
   .g-split { grid-template-columns: minmax(0, 1fr); }
   .g-draw { max-width: 600px; }
 }
@@ -323,7 +327,7 @@ svg.gd text, svg.gd .lbl { --fs: 11px; }
 svg.gd .lbl-s { --fs: 10px; }
 svg.gd .lbl-b { --fs: 13px; }
 svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
-@media (max-width: 560px) {
+@media screen and (max-width: 560px) {
   svg.gd text, svg.gd .lbl { --fs: 15px; }
   svg.gd .lbl-s { --fs: 14px; }
   svg.gd .lbl-b { --fs: 17px; }
@@ -332,8 +336,8 @@ svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
 }
 .g-zoom { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); gap: 12px; align-items: center; }
 .g-zoom .note { margin: 0; }
-@media (max-width: 560px) { .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); } }
-@media (max-width: 560px) {
+@media screen and (max-width: 560px) { .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); } }
+@media screen and (max-width: 560px) {
   #bc-state { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
   #bc-state button { border-bottom: 1px solid var(--rule); }
   #bc-state button:nth-child(2n) { border-right: 0; }
@@ -358,7 +362,7 @@ ol.course a strong { font-family: var(--f-display); font-weight: 700; font-size:
 ol.course a:hover strong, ol.course a:focus-visible strong { color: var(--accent); }
 ol.course a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
-@media (max-width: 620px) { ol.course li { grid-template-columns: minmax(0, 1fr); } ol.course p { padding-left: calc(4.6em + 10px); font-size: 0.92rem; } }
+@media screen and (max-width: 620px) { ol.course li { grid-template-columns: minmax(0, 1fr); } ol.course p { padding-left: calc(4.6em + 10px); font-size: 0.92rem; } }
 .col > .ideas { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }
 .ideas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 24px; border-top: 2px solid var(--ink); margin: 6px 0 12px; }
 .ideas a { display: block; text-decoration: none; color: var(--ink); padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
@@ -421,13 +425,13 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 #fig-grains input[type="range"][disabled] { opacity: 0.4; }
 .gr-chart { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 6px; }
 .gr-chart canvas { display: block; width: 100%; }
-@media (max-width: 560px) {
+@media screen and (max-width: 560px) {
   .gr-exps .btn { flex: 1 1 100%; justify-content: flex-start; }
   #fig-grains .controls .btn { flex: 1 1 auto; justify-content: center; }
 }
 .gr-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px 18px; align-items: start; }
 .gr-side { min-width: 0; }
-@media (min-width: 900px) {
+@media print, (min-width: 900px) {
   .gr-main { grid-template-columns: minmax(0, 1.75fr) minmax(220px, 1fr); }
   .gr-side .readouts.gr-ro { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
   .gr-side .readouts.gr-ro .ro { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); }
@@ -456,7 +460,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .bd-pre { font-size: 0.72rem; min-height: 30px; padding: 4px 9px; border-width: 1px; }
 .bd-touch { display: none; }
 .bd-coarse .bd-touch { display: flex; }
-@media (max-width: 760px) { .bd-touch { display: flex; } }
+@media screen and (max-width: 760px) { .bd-touch { display: flex; } }
 #svg-build { cursor: crosshair; touch-action: none; -webkit-user-select: none; user-select: none; }
 #svg-build.bd-pan { touch-action: pan-x pan-y; }
 #svg-build:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -494,11 +498,11 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .bd-tip { margin: 8px 0 0; padding: 8px 12px; background: var(--accent-soft); border-radius: 4px; font-size: 0.97rem; max-width: 80ch; }
 .bd-tip ul { margin: 4px 0 0; padding-left: 1.2em; }
 .bd-tip li { margin-bottom: 3px; }
-@media (max-width: 560px) { .bd-row { grid-template-columns: minmax(0, 1fr); } }
+@media screen and (max-width: 560px) { .bd-row { grid-template-columns: minmax(0, 1fr); } }
 .legend i.bd-sw-u { background: color-mix(in srgb, var(--water) 45%, transparent); border-color: var(--water); }
 .legend i.bd-sw-slip { border-top: 3px solid var(--bad); }
 .legend i.bd-sw-bar { width: 0; height: 12px; border-top: 0; border-left: 2px solid var(--water); margin-left: 8px; margin-right: 12px; }
-@media (max-width: 760px) {
+@media screen and (max-width: 760px) {
   .bd-presets-ctl { flex-basis: 100%; }
 }
 #fig-build .seg button:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -536,7 +540,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 }
 .tutor-form input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .tutor-note { margin: 0; font-family: var(--f-mono); font-size: 0.64rem; line-height: 1.45; color: var(--ink-3); }
-@media (max-width: 560px) {
+@media screen and (max-width: 560px) {
   .tutor { right: 0; left: 0; bottom: 0; width: auto; max-height: 70vh; border-radius: 4px 4px 0 0; border-width: 1.5px 0 0; box-shadow: none; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -555,7 +559,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .glossary-list dt { font-family: var(--f-display); font-weight: 700; }
 .glossary-list dd { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
 .glossary-list dd a { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--accent); white-space: nowrap; }
-@media (max-width: 560px) { .glossary-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .glossary-list dd { margin-bottom: 10px; } }
+@media screen and (max-width: 560px) { .glossary-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .glossary-list dd { margin-bottom: 10px; } }
 .col > .case-grid { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }
 .cases { margin-top: 40px; }
 .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
@@ -566,7 +570,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .case h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; line-height: 1.15; margin: 4px 0 8px; text-wrap: balance; }
 .case p:not(.case-k) { font-size: 0.95rem; margin: 0 0 10px; }
 .case-src { font-family: var(--f-mono); font-size: 0.68rem; color: var(--ink-3); }
-@media (max-width: 860px) { .case { padding-left: 0; border-right: 0; border-bottom: 1px solid var(--rule); } }
+@media screen and (max-width: 860px) { .case { padding-left: 0; border-right: 0; border-bottom: 1px solid var(--rule); } }
 .glossary { margin-top: 48px; }
 .page p a, .page li a, .case a, figcaption a { color: var(--water); text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .page p a:hover, .page li a:hover, figcaption a:hover { color: var(--accent); }
@@ -592,7 +596,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 html { scroll-padding-top: calc(var(--head-h) + 16px); }
 body { line-height: 1.56; font-kerning: normal; font-variant-numeric: proportional-nums; }
 p, li, dd, figcaption { text-wrap: pretty; }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   body { font-size: 1.0625rem; line-height: 1.6; }
   .col p, .col li, figcaption, .we, .sidenote, .marginnote { hyphens: auto; -webkit-hyphens: auto; }
 }
@@ -662,7 +666,7 @@ figure.sheet.full { max-width: var(--full); }
 .rh-mark:focus-visible, .rh-where:focus-visible, .rh-toc:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 .rh-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; pointer-events: none; }
 .rh-progress i { display: block; height: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   .runhead.in-unit .rh-mark { display: none; }
   .rh-where::before { display: none; }
   .rh-where svg.mini { display: none; }
@@ -694,7 +698,7 @@ dialog.toc-dialog::backdrop { background: rgba(30, 22, 16, 0.35); }
 .tocd-figs a b { font-weight: 600; color: var(--ink); white-space: nowrap; }
 .tocd-figs a:hover { color: var(--accent); }
 .tocd-figs a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-@media (max-width: 759px) { dialog.toc-dialog { width: 100vw; border-left: 0; } }
+@media screen and (max-width: 759px) { dialog.toc-dialog { width: 100vw; border-left: 0; } }
 @media (prefers-reduced-motion: no-preference) {
   dialog.toc-dialog[open] { animation: tocd-in 180ms ease-out; }
   @keyframes tocd-in { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
@@ -726,7 +730,7 @@ svg.mini .mini-new { animation: none; }
 .mini-cap { margin: 6px 0 0; font-family: var(--f-label); font-size: 0.8rem; line-height: 1.35; color: var(--ink-2); }
 .mini-k { display: block; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
 .epigraph { margin: 0 0 22px 2.2rem; padding: 0; font-style: italic; color: var(--ink-2); font-size: 0.98rem; max-width: 30rem; }
-@media (max-width: 519px) { .epigraph { margin-left: 1.2rem; } }
+@media screen and (max-width: 519px) { .epigraph { margin-left: 1.2rem; } }
 .epigraph p { margin: 0 0 4px; }
 .epigraph footer { font-style: normal; font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-3); }
 .epigraph footer::before { content: "— "; }
@@ -746,18 +750,21 @@ svg.mini .mini-new { animation: none; }
 .part-head .part-num { font-family: var(--f-display); font-weight: 300; font-size: clamp(3.5rem, 9vw, 6rem); line-height: 0.9; color: var(--accent); margin: 0 0 12px; font-variation-settings: "opsz" 60; }
 .part-head .chapter-head { margin: 0; max-width: none; }
 .part-head .chapter-head h2 { font-size: clamp(2rem, 4.5vw, 2.8rem); }
-.part-head svg.part-mini { grid-column: margin; grid-row: 1 / span 2; align-self: end; }
+.part-head .part-mini { grid-column: margin; grid-row: 1 / span 2; align-self: end; margin: 0; }
+.part-head .part-mini svg { display: block; width: 100%; height: auto; }
+.part-head .part-mini .mini-cap { margin: 4px 0 0; }
 .part-opener .prospect { font-size: 1.15rem; line-height: 1.55; color: var(--ink-2); margin-top: 18px; }
 @media (max-width: 1099px) {
   .part-head { max-width: var(--measure); grid-template-columns: minmax(0, 1fr); }
-  .part-head svg.part-mini { grid-column: 1; grid-row: auto; max-width: 13rem; margin-top: 14px; }
+  .part-head > * { grid-column: 1; }   
+  .part-head .part-mini { grid-column: 1; grid-row: auto; max-width: 13rem; margin-top: 14px; }
 }
 .col h3 { margin: 2.6rem 0 0.6rem; position: relative; }
 .secno { font-family: var(--f-label); font-weight: 600; font-size: 0.72em; color: var(--accent); margin-right: 0.45em; font-variant-numeric: lining-nums tabular-nums; vertical-align: 0.06em; }
 .h-anchor { position: absolute; left: -1.3em; top: 0; padding: 0 0.3em; color: var(--ink-3); text-decoration: none; font-weight: 400; opacity: 0; transition: opacity 0.15s; }
 h3:hover .h-anchor, .h-anchor:focus-visible { opacity: 1; }
 .h-anchor:focus-visible { outline: 2px solid var(--accent); border-radius: 3px; }
-@media (max-width: 759px) { .h-anchor { display: none; } }
+@media screen and (max-width: 759px) { .h-anchor { display: none; } }
 section.back > h3:first-of-type, section.back > h2, section.front > h2, section.front > .col:first-child > h2, section.front > .alias + .col > h2 { font-size: var(--step-3); line-height: 1.1; margin: 0 0 16px; }
 section.chapter, section.prologue, section.epilogue, section.front, section.back { counter-reset: sn; }
 .sn-ref { counter-increment: sn; }
@@ -791,7 +798,9 @@ button.sn-ref, button.mn-ref { font: inherit; background: none; border: 0; paddi
   .mn-ref { display: inline; cursor: pointer; }
   .mn-ref::after { content: "\2295"; font-family: var(--f-label); font-size: 0.85em; color: var(--accent); padding: 0 2px; vertical-align: 0.05em; }
   .sn-ref, .mn-ref { cursor: pointer; }
-  .sn-ref::after, .mn-ref::after { display: inline-block; min-width: 1.1em; text-align: center; padding: 6px 2px; margin: -6px -2px; line-height: 1; }
+  .sn-ref::after, .mn-ref::after { display: inline-block; text-align: center; padding: 0 1px; margin: 0; line-height: 1; }
+  button.sn-ref, button.mn-ref { position: relative; }
+  button.sn-ref::before, button.mn-ref::before { content: ""; position: absolute; inset: -14px -14px -10px; }
   button.sn-ref:focus-visible, button.mn-ref:focus-visible, label.sn-ref:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-radius: 3px; }
   button[aria-expanded="true"].sn-ref::after, button[aria-expanded="true"].mn-ref::after { background: var(--accent-soft); border-radius: 3px; }
 }
@@ -806,7 +815,7 @@ div.eq { display: flex; align-items: baseline; justify-content: space-between; g
   border-radius: 0; overflow-x: visible; font-variant-numeric: lining-nums; line-height: 1.5; }
 .formula b { color: var(--ink); font-weight: 400; font-style: italic; }
 .formula small { font-family: var(--f-label); font-size: 0.86rem; color: var(--ink-2); margin-top: 6px; }
-@media (max-width: 759px) { div.eq, .formula { padding-left: 0.8rem; } .eq-where { margin-left: 0.8rem !important; } div.eq { flex-wrap: wrap; } }
+@media screen and (max-width: 759px) { div.eq, .formula { padding-left: 0.8rem; } .eq-where { margin-left: 0.8rem !important; } div.eq { flex-wrap: wrap; } }
 figure.sheet { box-shadow: none; border-radius: 4px; border: 1px solid var(--rule); padding: 18px 22px 16px; margin: 2.5rem auto 2.75rem; }
 figure.film { position: relative; margin: 2.5rem auto 2.75rem; border-top: 1px solid var(--rule); padding: 14px 0 0; }
 figure.fig { margin-block: 2.25rem 2.5rem; padding-top: 12px; border-top: 1px solid var(--rule); }
@@ -820,7 +829,7 @@ figcaption .cap > b:first-child { color: var(--ink); font-weight: 600; }
 .cap-n { color: var(--ink); }
 ul.try { list-style: none; margin: 8px 0 0; padding: 8px 0 0; border-top: 1px dotted var(--rule); font-family: var(--f-label); font-size: 0.9rem; color: var(--ink-2); }
 ul.try::before { content: "Try"; display: block; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-ul.try li { position: relative; padding-left: 1.1em; margin-bottom: 3px; }
+ul.try li { position: relative; padding-left: 1.5em; margin-bottom: 3px; }
 ul.try li::before { content: "→"; position: absolute; left: 0; color: var(--ink-3); }
 .swipe-hint { display: none !important; }
 .svgwrap { overflow: visible; }
@@ -830,12 +839,12 @@ figure.fig, figure.sheet, figure.case-plate { overflow-x: clip; overflow-clip-ma
 svg.dwg { --s: 1; --floor: 10.5px; --cap: 1.4; }
 svg.dwg text { font-size: max(var(--fs, 11.5px), min(calc(var(--floor) / var(--s)), calc(var(--fs, 11.5px) * var(--cap)))); }
 svg.dwg .marker text { --cap: 1; }
-@media (max-width: 759px) { svg.dwg { --floor: 11px; --cap: 1.5; } }
+@media screen and (max-width: 759px) { svg.dwg { --floor: 11px; --cap: 1.5; } }
 .fig-expand { display: none; margin-left: auto; position: relative; z-index: 2; font-family: var(--f-label); font-weight: 600; font-size: 0.78rem; color: var(--ink);
   background: var(--sheet); border: 1px solid var(--ink-2); border-radius: 6px; min-height: 36px; padding: 0 12px; cursor: pointer; align-items: center; gap: 6px; }
 .fig-expand svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.6; }
 .fig-expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-@media (max-width: 899px) { .fig-expand { display: inline-flex; } }
+@media screen and (max-width: 899px) { .fig-expand { display: inline-flex; } }
 dialog.plate-dialog { border: 0; padding: 0; margin: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; background: var(--paper); color: var(--ink); overflow: hidden; }
 dialog.plate-dialog::backdrop { background: var(--paper); }
 .plate-frame { position: absolute; inset: 0; display: flex; flex-direction: column; }
@@ -857,7 +866,7 @@ dialog.plate-dialog::backdrop { background: var(--paper); }
 @media (orientation: landscape) { .plate-hint { display: none; } }
 .plate-slot { display: block; border: 1px dashed var(--rule); border-radius: 4px; padding: 18px; margin: 2rem auto; max-width: var(--wide);
   font-family: var(--f-label); font-size: 0.9rem; color: var(--ink-3); text-align: center; }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   .page > section > figure.sheet, .page > section > figure.fig, .page > section > figure.film, .page > section > figure.case-plate,
   .page > section > .col > figure.table {
     margin-inline: -16px; border-radius: 0; border-left: 0; border-right: 0; padding-inline: 14px;
@@ -883,10 +892,8 @@ ol.we-steps > li::before { content: counter(we); grid-column: n; font-family: va
 .we-check, .we-means { font-size: 0.98rem; }
 section.we p.we-ans, section.we p.we-check, section.we p.we-means, .col p.toc-films-k { max-width: var(--measure); }
 .we-check > b:first-child, .we-means > b:first-child { font-family: var(--f-body); font-variant-caps: all-small-caps; letter-spacing: 0.04em; font-weight: 600; font-size: 1.04em; }
-@media (min-width: 1100px) {
-  ol.we-steps { display: grid; grid-template-columns: [n] 1.6rem [eq] fit-content(calc(var(--measure) - 1.6rem)) [gap] 2rem [why] minmax(0, 1fr); }
-  ol.we-steps > li { grid-column: 1 / -1; grid-template-columns: subgrid; }
-}
+.m { white-space: nowrap; }
+figure.fig.wide > svg.dwg, figure.fig.wide > .ch02-panels { margin-inline: auto; }
 .we-set, .q-set { margin: 8px 0 0; }
 .set-fig { font-family: var(--f-label); font-weight: 600; font-size: 0.85rem; color: var(--accent); background: transparent; border: 1.5px solid var(--accent);
   border-radius: 999px; padding: 0 14px 0 12px; min-height: 36px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
@@ -900,7 +907,7 @@ section.we p.we-ans, section.we p.we-check, section.we p.we-means, .col p.toc-fi
   ol.we-steps > li { grid-template-columns: [n] 1.6rem [eq] minmax(0, 1fr); }
   .we-steps .why { grid-column: eq; margin-top: 2px; }
 }
-@media (max-width: 519px) { .we-gf { grid-template-columns: minmax(0, 1fr); gap: 0; } .we-gf dd { margin-bottom: 8px; } }
+@media screen and (max-width: 519px) { .we-gf { grid-template-columns: minmax(0, 1fr); gap: 0; } .we-gf dd { margin-bottom: 8px; } }
 .set-hl { outline: 2px solid var(--grain) !important; outline-offset: 3px; border-radius: 6px; background-color: var(--hl) !important; transition: background-color 0.4s, outline-color 0.4s; }
 .btn.primary.set-hl { background-color: var(--ink) !important; }
 figure.set-target { box-shadow: 0 0 0 3px var(--hl); transition: box-shadow 0.6s; }
@@ -969,7 +976,7 @@ table.cmp { font-variant-numeric: tabular-nums lining-nums; }
 table.cmp thead th { border-bottom: 1px solid var(--ink); }
 table.cmp tbody tr:last-child > * { border-bottom: 0; }
 .tbl-note { font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-3); margin: 6px 0 0; }
-@media (max-width: 759px) { table.cmp { min-width: 0; } table.cmp td, table.cmp th { padding-right: 8px; } table.cmp tbody th { width: 6.5em; } }
+@media screen and (max-width: 759px) { table.cmp { min-width: 0; } table.cmp td, table.cmp th { padding-right: 8px; } table.cmp tbody th { width: 6.5em; } }
 figure.case-plate { margin-block: 2.5rem; border-top: 2px solid var(--ink); padding-top: 10px; }
 figure.case-plate .sheet-top { border-bottom: 0; padding-bottom: 0; }
 .case-body { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); gap: 0 var(--gap); align-items: start; }
@@ -1021,16 +1028,13 @@ figure.film:has(.film-before) .fp-q { display: none; }
 .film-transcript button.tr-t { font-family: var(--f-label); font-size: 0.8rem; padding: 2px 6px 2px 0; min-height: 24px; }
 .film-poster { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; padding: clamp(14px, 5vw, 48px);
   justify-content: flex-end; padding-bottom: clamp(14px, 4vw, 36px);
-  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
-              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 35%, transparent) 70%, transparent);
+  background: linear-gradient(to top, var(--paper) 0 26%, color-mix(in srgb, var(--paper) 70%, transparent) 34%, transparent 46%);
   box-shadow: inset 0 0 0 1px var(--rule); color: var(--ink); cursor: pointer; border-radius: 2px; }
 .film-poster[hidden] { display: none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .film-poster {
-  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
-              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 62%, transparent) 75%); } }
+  background: linear-gradient(to top, var(--paper) 0 26%, transparent 46%), color-mix(in srgb, var(--paper) 55%, transparent); } }
 :root[data-theme="dark"] .film-poster {
-  background: linear-gradient(to top, var(--paper) 0 27%, transparent 40%),
-              linear-gradient(90deg, color-mix(in srgb, var(--paper) 92%, transparent) 0 46%, color-mix(in srgb, var(--paper) 62%, transparent) 75%); }
+  background: linear-gradient(to top, var(--paper) 0 26%, transparent 46%), color-mix(in srgb, var(--paper) 55%, transparent); }
 .film-poster .fp-k { font-family: var(--f-label); font-weight: 600; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
 .film-poster .fp-t { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.25rem, 3.4vw, 2rem); line-height: 1.1; }
 .film-poster .fp-m { font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-2); display: flex; align-items: center; gap: 10px; }
@@ -1048,7 +1052,7 @@ figure.film:has(.film-before) .fp-q { display: none; }
 .film-endcard .fe-row { margin: 8px 0 0; display: flex; gap: 8px; flex-wrap: wrap; font-family: var(--f-label); }
 .film-endcard .fe-more { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
 .film-endcard .fe-more:hover { background: var(--accent); border-color: var(--accent); }
-@media (max-width: 519px) {
+@media screen and (max-width: 519px) {
   .film-poster { gap: 2px; padding: 12px 14px; }
   .film-poster .fp-m span + span { display: none; }
   .film-poster .fp-q { font-size: 0.9rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -1085,11 +1089,11 @@ ol.toc-film-list .tf-n { font-variant-numeric: tabular-nums; color: var(--ink-2)
 ol.toc-film-list .tf-t { font-family: var(--f-body); font-size: 1.02rem; color: var(--ink); }
 ol.toc-film-list .tf-w { grid-column: 2; grid-row: 2; color: var(--ink-3); font-size: 0.84rem; }
 ol.toc-film-list .tf-l { grid-column: 3; grid-row: 1; font-variant-numeric: tabular-nums; color: var(--ink-2); white-space: nowrap; }
-@media (max-width: 519px) { ol.toc-film-list li { grid-template-columns: 4.6rem minmax(0, 1fr) auto; gap: 0 10px; } }
+@media screen and (max-width: 519px) { ol.toc-film-list li { grid-template-columns: 4.6rem minmax(0, 1fr) auto; gap: 0 10px; } }
 .toc-figs summary { cursor: pointer; font-family: var(--f-label); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.02em; color: var(--ink-2); min-height: 32px; }
 .toc-list { font-size: 0.92rem; color: var(--ink-2); columns: 2 18rem; column-gap: var(--gap); }
 .toc-list li { break-inside: avoid; margin-bottom: 4px; }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   nav#toc ol.course li { grid-template-columns: [n] 3rem [t] minmax(0, 1fr); column-gap: 0; }
   nav#toc ol.course li > a { grid-column: n / -1; gap: 0; }
   nav#toc ol.course li a span, nav#toc ol.course li.toc-ch a span { min-width: 0; width: 3rem; }
@@ -1100,7 +1104,7 @@ ol.toc-film-list .tf-l { grid-column: 3; grid-row: 1; font-variant-numeric: tabu
   nav#toc ol.course li:not(.toc-ch) a span { width: auto; white-space: nowrap; }
   nav#toc ol.course li:not(.toc-ch) > p, nav#toc ol.course li:not(.toc-ch) > svg.toc-mini { grid-column: n / -1; }
 }
-@media (max-width: 519px) { nav#toc ol.course li > svg.toc-mini { display: none; } }
+@media screen and (max-width: 519px) { nav#toc ol.course li > svg.toc-mini { display: none; } }
 .case-index { padding-left: 1.2em; }
 .bib-group { font-family: var(--f-label); font-size: 0.8rem; letter-spacing: 0.04em; margin: 22px 0 6px; }
 .bib li, ul.bib > li { padding-left: 1.5em; text-indent: -1.5em; list-style: none; }
@@ -1116,7 +1120,7 @@ ol.toc-film-list .tf-l { grid-column: 3; grid-row: 1; font-variant-numeric: tabu
   .seg button, .btn, .chip, .tabs button, .predict-opts button, .gr-exps .btn { min-height: 44px; }
   input[type="range"] { min-height: 32px; }
 }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   .seg button { min-height: 40px; padding-inline: 12px; }
   .btn { min-height: 40px; }
   .controls { gap: 10px; }
@@ -1156,23 +1160,26 @@ html.book-embed section.embed-show:first-of-type, html.book-embed .page > sectio
   details > summary { list-style: none; }
   details:not([open]) > :not(summary) { display: block; }
   details.film-transcript { display: none !important; }
+  details::details-content { content-visibility: visible !important; }   
   .page p a[href^="http"]::after, .bib a[href^="http"]::after { content: " <" attr(href) ">"; font-size: 0.85em; color: #555; overflow-wrap: anywhere; }
   a { color: inherit !important; text-decoration: none; }
   a.xref { text-decoration: underline; text-decoration-thickness: 0.5pt; }
-  svg.dwg { --floor: 0px !important; }
+  svg.dwg text, svg.dwg.g-chart text { font-size: var(--fs, 11.5px) !important; }
+  figure.sheet svg.dwg, figure.fig svg.dwg, figure.case-plate svg.dwg { max-height: 95mm; margin-inline: auto; }
+  figure.fig, figure.sheet, figure.case-plate { overflow: visible; }
   .ro b { font-size: 1.1rem; }
   .readouts { break-inside: avoid; }
   video { display: none; }
   .ch-num { font-size: 60pt; }
 }
-@media (min-width: 861px) { .g-split { grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 1fr); gap: 16px 28px; } }
+@media print, (min-width: 861px) { .g-split { grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 1fr); gap: 16px 28px; } }
 .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); }
 input[type="range"] { min-height: 24px; }
 .predict-skip { min-height: 24px; padding: 3px 0; }
 @media (pointer: coarse) { .predict-skip { min-height: 36px; } }
 .eq-no { margin-left: auto; }
 div.eq + div.eq { margin-top: 0.1rem; }
-@media (min-width: 861px) {
+@media print, (min-width: 861px) {
   .g-split.g-reflow { grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 1fr); grid-template-areas: "dwg ctl" "dwg aux" "ro ro";
     grid-template-rows: auto 1fr auto; align-items: start; }
   .g-split.g-reflow > .g-side { display: contents; }
@@ -1186,7 +1193,12 @@ div.eq + div.eq { margin-top: 0.1rem; }
 .g-side .readouts > .ro { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; }
 .g-side .readouts > .ro > span:first-child { align-self: end; }
 .g-side .readouts > .ro:last-child:nth-child(odd) { grid-column: 1 / -1; }
-@media (min-width: 861px) { .g-split.g-reflow .g-side .readouts > .ro:last-child:nth-child(odd) { grid-column: auto; } }
+@media print, (min-width: 861px) { .g-split.g-reflow .g-side .readouts > .ro:last-child:nth-child(odd) { grid-column: auto; } }
+@media screen and (min-width: 600px) and (max-width: 860px) {
+  .g-split > .g-draw { margin-inline: auto; width: 100%; }
+  .g-side .readouts { grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
+  .g-side .readouts > .ro:last-child:nth-child(odd) { grid-column: auto; }
+}
 .g-side .seg:has(> :nth-child(4)) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .g-side .seg:has(> :nth-child(4)) > button { text-align: center; }
 svg.dwg.g-chart text { font-size: max(calc(var(--floor) / var(--s)), min(var(--fs, 11.5px), calc(var(--floor) * 1.1 / var(--s)))); }
@@ -1194,10 +1206,18 @@ svg.dwg.g-chart text { font-size: max(calc(var(--floor) / var(--s)), min(var(--f
 details.try-ans { margin: 6px 0 0; font-family: var(--f-label); font-size: 0.88rem; color: var(--ink-2); }
 details.try-ans > summary { cursor: pointer; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center; }
 details.try-ans > p { margin: 2px 0 0; }
+details.try-ans > summary, details.q-hint > summary, details.film-transcript > summary, details.film-after > summary, .toc-figs > summary { list-style: none; gap: 0.45em; }
+details.try-ans > summary::-webkit-details-marker, details.q-hint > summary::-webkit-details-marker, details.film-transcript > summary::-webkit-details-marker,
+details.film-after > summary::-webkit-details-marker, .toc-figs > summary::-webkit-details-marker { display: none; }
+details.try-ans > summary::before, details.q-hint > summary::before, details.film-transcript > summary::before, details.film-after > summary::before, .toc-figs > summary::before {
+  content: ""; display: inline-block; flex: none; width: 0; height: 0; border-style: solid; border-width: 4px 0 4px 6px; border-color: transparent transparent transparent currentColor;
+  margin-right: 0.45em; transition: transform 0.15s; vertical-align: 0.08em; }
+details[open] > summary::before { transform: rotate(90deg); }
+@media (prefers-reduced-motion: reduce) { details > summary::before { transition: none; } }
 .part-opener ol.course li { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); column-gap: 16px; align-items: baseline; }
 .part-opener ol.course li > a { gap: 0; }
 .part-opener ol.course li.toc-ch a span { flex: 0 0 2.4rem; width: 2.4rem; font-size: 1.4rem; color: var(--accent); }
-@media (max-width: 620px) {
+@media screen and (max-width: 620px) {
   .part-opener ol.course li { grid-template-columns: minmax(0, 1fr); }
   .part-opener ol.course li > * { grid-column: 1 / -1; }
   .part-opener ol.course p { padding-left: 2.4rem; }
@@ -1209,9 +1229,10 @@ details.try-ans > p { margin: 2px 0 0; }
 #fig-depth-stevin svg.dwg text { --fs: 12px; }
 #fig-depth-stevin svg.dwg .lbl-s { --fs: 11px; }
 #fig-depth-triangle svg.dwg, #fig-depth-sloping svg.dwg { display: block; width: 100%; max-width: 600px; height: auto; }
+#fig-depth-sloping svg.dwg { max-width: 700px; }
 #fig-depth-triangle svg.dwg text, #fig-depth-sloping svg.dwg text { --fs: 12.5px; }
 #fig-depth-triangle svg.dwg .lbl-s, #fig-depth-sloping svg.dwg .lbl-s { --fs: 11.5px; }
-@media (max-width: 599px) {
+@media screen and (max-width: 599px) {
   #fig-depth-stevin .ch02-panels { grid-template-columns: minmax(0, 1fr); }
 }
 .ch02-key { font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-2); margin: 0 0 8px; line-height: 1.6; }
@@ -1233,7 +1254,7 @@ svg.cover-dwg .cv-scale text { fill: var(--ink-2); }
 svg.cover-dwg .cv-scale .ink-s { stroke: var(--ink-2); }
 .cover-plate figcaption { font-family: var(--f-body); font-style: italic; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.45; color: var(--ink-2);
   max-width: var(--measure); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--rule); }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   figure.cover-plate { margin-inline: -16px; }
   svg.cover-dwg .cv-scale { display: none; }
   .cover-plate figcaption { margin-inline: 16px; }
@@ -1248,7 +1269,7 @@ svg.cover-dwg .cv-scale .ink-s { stroke: var(--ink-2); }
 .htr-tags { list-style: none; margin: 0.4rem 0 1.2rem; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
 .htr-tags li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 12px; align-items: baseline; padding: 4px 0; border-bottom: 1px dotted var(--rule); }
 .htr-tags .q-tag { margin: 0; }
-@media (max-width: 519px) { .htr-tags li { grid-template-columns: minmax(0, 1fr); } }
+@media screen and (max-width: 519px) { .htr-tags li { grid-template-columns: minmax(0, 1fr); } }
 .htr-conv { margin: 0.4rem 0 1.2rem; padding-left: 1.1em; }
 .htr-conv li { margin-bottom: 4px; }
 figure#fig-plate-0 { margin-top: 1.25rem; }
@@ -1281,8 +1302,8 @@ ul.p0-colours { list-style: none; margin: 6px 0 4px; padding: 0; display: grid; 
 ul.p0-colours li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 10px; align-items: center; }
 ul.p0-colours svg { width: 46px; height: 22px; }
 .p0-block { margin-top: 16px; padding-top: 12px; border-top: 1px dotted var(--rule); }
-@media (max-width: 899px) { ul.p0-hatches { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 759px) {
+@media screen and (max-width: 899px) { ul.p0-hatches { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media screen and (max-width: 759px) {
   #fig-plate-0 svg.p0-dwg text { --fs: 15px; }
   #fig-plate-0 svg.p0-dwg .p0-dim { --fs: 14px; }
   #fig-plate-0 svg.p0-dwg .p0-flow { --fs: 15px; }
@@ -1311,7 +1332,7 @@ ul.p0-colours svg { width: 46px; height: 22px; }
 .pro-under { display: grid; grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); gap: 0 28px; align-items: start; margin-top: 10px; }
 .pro-under svg.pro-plan { display: block; width: 100%; height: auto; margin-top: 14px; overflow: visible; }
 svg.pro-ph { display: none; }
-@media (max-width: 759px) {
+@media screen and (max-width: 759px) {
   svg.pro-wide { display: none; }
   svg.pro-ph { display: block; }
   .pro-under { grid-template-columns: minmax(0, 1fr); }
@@ -1916,7 +1937,7 @@ svg.pro-ph { display: none; }
 </section>
 
 <section class="part-opener" id="part-1" data-label="I">
-  <div class="wide part-head"><p class="part-num" aria-hidden="true">I</p><div class="chapter-head"><span class="sheetno">Part I</span><h2>Ground</h2></div><svg class="mini part-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="1"><use href="#mini-L1" class="mini-l1 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></div>
+  <div class="wide part-head"><p class="part-num" aria-hidden="true">I</p><div class="chapter-head"><span class="sheetno">Part I</span><h2>Ground</h2></div><div class="part-mini"><span class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="5"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L0" class="mini-l0"/></svg></span><p class="mini-cap">By the end of Part I</p></div></div>
   <div class="col"><p class="prospect">Before there is a dam there is ground: grains of sand and the water between them. These five chapters start on a beach and end in a box of simulated grains. Along the way they build the one idea the rest of the book stands on.</p><ol class="course"><li class="toc-ch"><a href="#ch-beach"><span><i class="sr">Chapter </i>1</span><strong>The beach</strong></a><p>Three kinds of sand, and the water that makes the difference.</p></li><li class="toc-ch"><a href="#ch-depth"><span><i class="sr">Chapter </i>2</span><strong>Depth, not size</strong></a><p>Why the depth of the water matters and the size of the lake doesn't.</p></li><li class="toc-ch"><a href="#ch-head"><span><i class="sr">Chapter </i>3</span><strong>Which way the water goes</strong></a><p>Head, Darcy's law, and the clay that takes almost the whole drop.</p></li><li class="toc-ch"><a href="#ch-grip"><span><i class="sr">Chapter </i>4</span><strong>Grip</strong></a><p>Friction, a block on a water cushion, and Terzaghi's effective stress.</p></li><li class="toc-ch"><a href="#ch-trapped"><span><i class="sr">Chapter </i>5</span><strong>When the water can't get out</strong></a><p>Loose and dense, drained and undrained, and liquefaction.</p></li></ol></div>
 </section>
 
@@ -2007,7 +2028,7 @@ svg.pro-ph { display: none; }
           <p class="we-t">Same sand, new shape</p>
         </header>
         <dl class="we-gf">
-          <dt>Given</dt><dd>The damp castle's section, as the figure draws it: <span data-n="ch01.castle-w-cm">20.4</span> cm across and <span data-n="ch01.castle-h-cm">29.2</span> cm tall, less two notches between the battlements, each <span data-n="ch01.notch-w-cm">3.2</span> cm wide and <span data-n="ch01.notch-d-cm">3.6</span> cm deep. Its area is <var>A</var> = <span data-n="ch01.castle-w-cm">20.4</span> × <span data-n="ch01.castle-h-cm">29.2</span> − 2 × <span data-n="ch01.notch-w-cm">3.2</span> × <span data-n="ch01.notch-d-cm">3.6</span> = <span data-n="beach.area-cm2">572.64</span> cm². Dry, the sand stands at <var>β</var> = <span data-n="beach.repose-deg">34</span>°.</dd>
+          <dt>Given</dt><dd>The damp castle's section, as the figure draws it: <span data-n="ch01.castle-w-cm">20.4</span> cm across and <span data-n="ch01.castle-h-cm">29.2</span> cm tall, less two notches between the battlements, each <span data-n="ch01.notch-w-cm">3.2</span> cm wide and <span data-n="ch01.notch-d-cm">3.6</span> cm deep. Its area is <span class="m"><var>A</var> = <span data-n="ch01.castle-w-cm">20.4</span> × <span data-n="ch01.castle-h-cm">29.2</span> − 2 × <span data-n="ch01.notch-w-cm">3.2</span> × <span data-n="ch01.notch-d-cm">3.6</span> = <span data-n="beach.area-cm2">572.64</span> cm²</span>. Dry, the sand stands at <var>β</var> = <span data-n="beach.repose-deg">34</span>°.</dd>
           <dt>Find</dt><dd>The height and width of a dry heap holding the same sand.</dd>
           <dt>The idea</dt><dd>The dry heap's section is a triangle with 34° sides. Write its area in terms of its height, set it equal to the castle's, and solve for the height (<a data-ref="fig-beach" href="#fig-beach" class="xref">Fig. 1.1</a>).</dd>
         </dl>
@@ -2090,8 +2111,8 @@ svg.pro-ph { display: none; }
         <path d="M400,145 H440 V165" class="dim"/>
         <text x="420" y="140" class="lbl-s halo" text-anchor="middle">2</text>
         <text x="446" y="159" class="lbl-s halo">1</text>
-        <text x="12" y="130" class="lbl lbl-w halo">reservoir</text>
-        <text x="236" y="178" class="lbl halo">soaked</text>
+        <text x="12" y="130" class="lbl lbl-w halo on-water">reservoir</text>
+        <text x="236" y="178" class="lbl halo on-fill">soaked</text>
         <path d="M270,66 V88" class="lead"/>
         <text x="270" y="60" class="lbl halo" text-anchor="middle">dry at the surface</text>
         <path d="M388,82 L326,114" class="lead"/>
@@ -2201,22 +2222,25 @@ svg.pro-ph { display: none; }
 
       <div class="predict" data-answer="c" id="pr-paradox">
         <p class="predict-q">Two dams each hold back water 50&nbsp;m deep. One holds a lake 10&nbsp;km long. The other holds a slot of water only 2&nbsp;m wide, with solid rock behind it. Which dam has to be stronger?</p>
-        <svg class="dwg gd g-paradox" viewBox="0 0 480 130" role="img" aria-label="Left: a dam holding a long lake 50 metres deep. Right: a dam holding a narrow slot of water 2 metres wide and 50 metres deep against rock.">
+        <svg class="dwg gd g-paradox" viewBox="0 -6 480 136" role="img" aria-label="Left: a dam holding a long lake 50 metres deep. Right: a dam holding a narrow slot of water 2 metres wide and 50 metres deep against rock.">
           <rect x="6" y="34" width="190" height="72" class="water"/>
           <path d="M6,34 h190" class="water-line"/>
           <path d="M44,30 l-6,8 M38,30 l-6,8" style="stroke:var(--ink-2);stroke-width:1.2"/>
           <text x="98" y="27" class="lbl-s" text-anchor="middle">lake, 10 km long</text>
           <polygon points="196,22 208,22 236,106 196,106" style="fill:var(--m-conc)" class="edge"/>
           <rect x="0" y="106" width="240" height="16" fill="url(#p-bedrock)" class="edge"/>
-          <text x="186" y="74" class="lbl lbl-w halo" text-anchor="end">50 m deep</text>
+          <text x="186" y="74" class="lbl lbl-w halo on-water" text-anchor="end">50 m deep</text>
           <rect x="356" y="34" width="10" height="72" class="water"/>
           <path d="M356,34 h10" class="water-line"/>
           <polygon points="256,22 356,22 356,106 256,106" fill="url(#p-bedrock)" class="edge"/>
           <polygon points="366,22 378,22 406,106 366,106" style="fill:var(--m-conc)" class="edge"/>
           <rect x="250" y="106" width="230" height="16" fill="url(#p-bedrock)" class="edge"/>
-          <text x="361" y="16" class="lbl-s" text-anchor="middle">slot, 2 m wide</text>
-          <text x="350" y="62" class="lbl lbl-w halo" text-anchor="end">50 m deep</text>
-          <text x="300" y="94" class="lbl-s halo" text-anchor="middle">rock</text>
+          <text x="361" y="5" class="lbl-s" text-anchor="middle">slot, 2 m wide</text>
+          <path d="M361,9 V46" class="lead"/>
+          <path d="M416,34 V106 M412,34 H420 M412,106 H420" class="dim"/>
+          <text x="424" y="68" class="lbl">50 m</text>
+          <text x="424" y="83" class="lbl">deep</text>
+          <text x="300" y="94" class="lbl-s halo on-rock" text-anchor="middle">rock</text>
         </svg>
         <div class="predict-opts"><button data-v="a">The dam holding the big lake</button><button data-v="b">The dam holding the narrow slot</button><button data-v="c">Both need to be equally strong</button></div>
         <div class="predict-reveal" hidden><p>The lake is the natural guess, and it is wrong. Water pressure depends only on how far below the surface you are. Fifty metres down it is the same in a slot as in an ocean, so the two dams feel exactly the same push. The big lake is far heavier, but its weight rests on the lake bed: cut the lake into upright columns, like slices of a cake still in its tin, and each column stands on the bed and presses straight down on it. Only the water touching the dam pushes on the dam. The size of a lake decides how much water escapes if the dam breaks. The depth decides the load on the dam.</p></div>
@@ -2260,7 +2284,7 @@ svg.pro-ph { display: none; }
         </div>
       </div>
       <figcaption>
-        <p class="cap"><b>Water pressure grows in a straight line with depth, so the arrows on the dam's face fill a triangle.</b> The sensor hangs <var>h</var> metres below the surface and reads the gauge pressure there. The <span class="k-acc">brick-red</span> arrows show the pressure every 10 m down the face; the shaded triangle they fill is the whole push. The chart plots that push, per metre length of dam, against the depth of the water: the curve bends upward, and the open dot at half the depth sits at a quarter of the push. The push is in MN, meganewtons: 1 MN = 1,000 kN. <span class="cap-n">The number to remember: <span data-n="const.gw">9.81</span> kPa for every metre of depth, so <span data-n="depth.p-kpa@h=30">294.3</span> kPa at 30 m.</span></p>
+        <p class="cap"><b>Water pressure grows in a straight line with depth, so the arrows on the dam's face fill a triangle.</b> The sensor hangs <var>h</var> metres below the surface and reads the gauge pressure there. The <span class="k-acc">brick-red</span> arrows show the pressure every 10 m down the face, and the heavy one the pressure at the sensor's depth; the shaded triangle they fill is the whole push. The chart plots that push, per metre length of dam, against the depth of the water: the curve bends upward, and the open dot at half the depth sits at a quarter of the push. The push is in MN, meganewtons: 1 MN = 1,000 kN. <span class="cap-n">The number to remember: <span data-n="const.gw">9.81</span> kPa for every metre of depth, so <span data-n="depth.p-kpa@h=30">294.3</span> kPa at 30 m.</span></p>
         <ul class="try">
           <li>Hold the sensor at 30 m and change the water depth. The reading doesn't move.</li>
           <li>Set the water to 100 m, then to 50 m. The push falls to a quarter.</li>
@@ -2312,7 +2336,7 @@ svg.pro-ph { display: none; }
             </g>
             <polygon points="232,22 244,22 292,180 232,180" style="fill:var(--m-conc)" class="edge"/>
             <rect x="0" y="180" width="300" height="16" fill="url(#p-bedrock)" class="edge"/>
-            <text x="10" y="110" class="lbl lbl-w halo">50 m deep</text>
+            <text x="10" y="110" class="lbl lbl-w halo on-water">50 m deep</text>
             <text x="163" y="174" class="lbl-s lbl-acc halo" text-anchor="end"><tspan data-n="depth.pb-kpa@H=50">490.5</tspan> kPa</text>
           </svg>
           <svg class="dwg" viewBox="0 0 300 222" role="img" aria-label="Panel B: the same lake with all but a 2 metre slot against the dam set solid, with the same weight. The triangle of pressure arrows on the dam face is unchanged, 490.5 kilopascals at the foot.">
@@ -2330,7 +2354,7 @@ svg.pro-ph { display: none; }
             <rect x="0" y="180" width="300" height="16" fill="url(#p-bedrock)" class="edge"/>
             <path d="M229,28 L222,12" class="lead"/>
             <text x="220" y="11" class="lbl-s halo" text-anchor="end">2 m slot, still liquid</text>
-            <text x="10" y="110" class="lbl lbl-w halo">50 m deep</text>
+            <text x="10" y="110" class="lbl lbl-w halo on-water">50 m deep</text>
             <text x="163" y="174" class="lbl-s lbl-acc halo" text-anchor="end"><tspan data-n="depth.pb-kpa@H=50">490.5</tspan> kPa</text>
           </svg>
         </div>
@@ -2427,11 +2451,11 @@ svg.pro-ph { display: none; }
           <g style="stroke:var(--ink-2);stroke-width:1;stroke-dasharray:5 4;fill:none">
             <path d="M10,80 H296"/><path d="M10,140 H296"/><path d="M10,200 H296"/>
           </g>
-          <text x="16" y="75" class="lbl halo"><tspan font-style="italic">z</tspan> = 15 m</text>
-          <text x="16" y="135" class="lbl halo"><tspan font-style="italic">z</tspan> = 30 m</text>
-          <text x="16" y="195" class="lbl halo"><tspan font-style="italic">z</tspan> = 45 m</text>
-          <text x="16" y="36" class="lbl-s lbl-w halo">water to the top</text>
-          <text x="150" y="178" class="lbl-s halo">concrete</text>
+          <text x="16" y="75" class="lbl halo on-water"><tspan font-style="italic">z</tspan> = 15 m</text>
+          <text x="16" y="135" class="lbl halo on-water"><tspan font-style="italic">z</tspan> = 30 m</text>
+          <text x="16" y="195" class="lbl halo on-water"><tspan font-style="italic">z</tspan> = 45 m</text>
+          <text x="16" y="36" class="lbl-s lbl-w halo on-water">water to the top</text>
+          <text x="150" y="178" class="lbl-s halo on-conc">concrete</text>
           <rect x="300" y="70" width="5.2" height="8" style="fill:var(--accent)"/>
           <rect x="300" y="81" width="10" height="8" style="fill:var(--ok)"/>
           <text x="316" y="77" class="lbl-s lbl-acc halo"><tspan data-n="ch02.tri-f-kn@z=15">1,104</tspan></text>
@@ -2475,7 +2499,7 @@ svg.pro-ph { display: none; }
           <li><span class="we-eq">Holding ÷ tipping = <span data-n="ch02.tri-mw-coef">5.013</span> ÷ <span data-n="ch02.tri-mf-coef">1.635</span> = <span data-n="ch02.tri-tip-ratio">3.07</span></span><span class="why"><var>z</var>³ cancels too</span></li>
         </ol>
         <p class="we-ans">Above every level of the triangle the concrete weighs <span data-n="ch02.tri-ratio">1.92</span> times the push, and holds <span data-n="ch02.tri-tip-ratio">3.07</span> times the tipping moment.</p>
-        <p class="we-check"><b>Check.</b> At <var>z</var> = 30 m: weight <span data-n="ch02.tri-w-kn@z=30">8,460</span> kN, push <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> kN, and <span data-n="ch02.tri-w-kn@z=30">8,460</span> ÷ <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> = <span data-n="ch02.tri-ratio">1.92</span>. At <var>z</var> = 45 m: <span data-n="ch02.tri-w-kn@z=45">19,035</span> ÷ <span data-n="ch02.tri-f-kn@z=45">9,932.6</span> = <span data-n="ch02.tri-ratio">1.92</span>.</p>
+        <p class="we-check"><b>Check.</b> At <span class="m"><var>z</var> = 30 m</span>: weight <span data-n="ch02.tri-w-kn@z=30">8,460</span> kN, push <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> kN, and <span data-n="ch02.tri-w-kn@z=30">8,460</span> ÷ <span data-n="ch02.tri-f-kn@z=30">4,414.5</span> = <span data-n="ch02.tri-ratio">1.92</span>. At <span class="m"><var>z</var> = 45 m</span>: <span data-n="ch02.tri-w-kn@z=45">19,035</span> ÷ <span data-n="ch02.tri-f-kn@z=45">9,932.6</span> = <span data-n="ch02.tri-ratio">1.92</span>.</p>
         <p class="we-means"><b>What it means.</b> A triangle gives every level the same margin, so no level is weaker than the rest and none carries concrete it does not need. What this leaves out, water seeping under the dam and pushing it up, is the subject of <a data-ref="ch-concrete" href="#ch-concrete" class="xref">Chapter 7</a>.</p>
       </section>
 
@@ -2514,7 +2538,7 @@ svg.pro-ph { display: none; }
 
       <figure class="fig wide" id="fig-depth-sloping">
         <div class="sheet-top"><span class="figno"><b data-num>Fig. 2.4</b> · Water on a sloping face</span><span class="scale-note">Section to scale · force diagram to scale with itself</span></div>
-        <svg class="dwg" viewBox="0 0 460 280" role="img" aria-label="An earth embankment with an upstream face sloping two across for every one up, holding water 20.4 metres deep. Red arrows press on the face at right angles, longer with depth. The water standing above the face is hatched. Below, a force diagram splits the whole push of 4,564 kilonewtons per metre into 2,041 across and 4,083 down.">
+        <svg class="dwg" viewBox="0 0 540 280" role="img" aria-label="An earth embankment with an upstream face sloping two across for every one up, holding water 20.4 metres deep. Red arrows press on the face at right angles, longer with depth. The water standing above the face is hatched. Below, a force diagram splits the whole push of 4,564 kilonewtons per metre into 2,041 across and 4,083 down.">
           <defs>
             <pattern id="depth-wedge" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="water"/><path d="M0,0 V7" style="stroke:var(--water);stroke-width:1.1;opacity:.5"/></pattern>
             <marker id="depth-arr-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ok)"/></marker>
@@ -2524,18 +2548,18 @@ svg.pro-ph { display: none; }
           <polygon points="20,68 224,68 20,170" fill="url(#depth-wedge)"/>
           <path d="M20,68 V170" style="stroke:var(--water);stroke-width:1;stroke-dasharray:4 3;fill:none"/>
           <path d="M0,68 H224" class="water-line"/>
-          <polygon points="20,170 260,50 290,50 460,135 460,170" fill="url(#p-fill)" class="edge"/>
-          <rect x="0" y="170" width="460" height="12" fill="url(#p-bedrock)" class="edge"/>
+          <polygon points="20,170 260,50 290,50 530,170" fill="url(#p-fill)" class="edge"/>
+          <rect x="0" y="170" width="540" height="12" fill="url(#p-bedrock)" class="edge"/>
           <g style="stroke:var(--accent);stroke-width:1.2;fill:none">
             <path d="M168.9,82.7 L173.3,91.7" marker-end="url(#arr-acc)"/>
             <path d="M114.4,98.8 L123.3,116.7" marker-end="url(#arr-acc)"/>
             <path d="M59.9,114.8 L73.3,141.7" marker-end="url(#arr-acc)"/>
             <path d="M5.4,130.9 L23.3,166.7" marker-end="url(#arr-acc)"/>
           </g>
-          <text x="26" y="86" class="lbl-s halo">water on</text>
-          <text x="26" y="100" class="lbl-s halo">the face</text>
+          <text x="26" y="86" class="lbl-s halo on-water">water on</text>
+          <text x="26" y="100" class="lbl-s halo on-water">the face</text>
           <text x="205" y="132" class="lbl halo" transform="rotate(-26.57 205 132)" text-anchor="middle">upstream face, 2H:1V</text>
-          <text x="370" y="118" class="lbl-s halo" text-anchor="middle">embankment</text>
+          <text x="300" y="140" class="lbl-s halo on-fill" text-anchor="middle">embankment</text>
           <text x="4" y="61" class="lbl lbl-w halo"><tspan data-n="lab.res-m">20.4</tspan> m deep</text>
           <path d="M20,42 H224 M20,38 V46 M224,38 V46" class="dim"/>
           <text x="122" y="35" class="lbl-s halo" text-anchor="middle">face runs <tspan data-n="ch02.slope-run-m">40.8</tspan> m across</text>
@@ -2546,7 +2570,7 @@ svg.pro-ph { display: none; }
           <path d="M230,206 H261" style="stroke:var(--accent);stroke-width:2;fill:none" marker-end="url(#arr-acc)"/>
           <path d="M262,206 V269" style="stroke:var(--ok);stroke-width:2;fill:none" marker-end="url(#depth-arr-ok)"/>
           <path d="M230,206 L261.5,269" style="stroke:var(--ink);stroke-width:1.6;fill:none" marker-end="url(#depth-arr-ink)"/>
-          <text x="246" y="200" class="lbl-s lbl-acc halo" text-anchor="middle">across <tspan data-n="ch02.slope-h-kn">2,041</tspan></text>
+          <text x="246" y="192" class="lbl-s lbl-acc halo" text-anchor="middle">across <tspan data-n="ch02.slope-h-kn">2,041</tspan></text>
           <text x="272" y="234" class="lbl-s halo" style="fill:var(--ok)">down <tspan data-n="ch02.slope-v-kn">4,083</tspan></text>
           <text x="272" y="262" class="lbl-s halo">whole push <tspan data-n="ch02.slope-r-kn">4,564</tspan>,</text>
           <text x="272" y="276" class="lbl-s halo">at right angles to the face</text>
@@ -2829,7 +2853,7 @@ svg.pro-ph { display: none; }
           </div>
         </div>
       </div>
-      <figcaption>Drag the water table up to the ground, then above it. The space between the black and blue lines is the effective stress, the press the grains still have. The soil gets <strong>heavier</strong> as it soaks, yet <strong>weaker</strong>, because the pore pressure rises faster than the weight.</figcaption>
+      <figcaption>Drag the water table up to the ground, then above it. The space between the total-stress line (σ) and the pore-pressure line (u) is the effective stress, the press the grains still have. The soil gets <strong>heavier</strong> as it soaks, yet <strong>weaker</strong>, because the pore pressure rises faster than the weight.</figcaption>
     </figure>
 
     <div class="col">
@@ -2976,7 +3000,7 @@ svg.pro-ph { display: none; }
 </section>
 
 <section class="part-opener" id="part-2" data-label="II">
-  <div class="wide part-head"><p class="part-num" aria-hidden="true">II</p><div class="chapter-head"><span class="sheetno">Part II</span><h2>Two kinds of dam</h2></div><svg class="mini part-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="6"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></div>
+  <div class="wide part-head"><p class="part-num" aria-hidden="true">II</p><div class="chapter-head"><span class="sheetno">Part II</span><h2>Two kinds of dam</h2></div><div class="part-mini"><span class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="8"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></span><p class="mini-cap">By the end of Part II</p></div></div>
   <div class="col"><p class="prospect">Some dams hold water that is worth money. Others hold mine waste that nobody wants back and that has to stay put long after the mine has closed. Part II looks at both: at the flood every dam must pass, at a block of concrete that stands by its weight alone, and at dams that keep growing for as long as a mine runs.</p><ol class="course"><li class="toc-ch"><a href="#ch-two-dams"><span><i class="sr">Chapter </i>6</span><strong>Two dams, two jobs</strong></a><p>A dam whose water is the product, a dam whose waste must stay put, and the flood both must pass.</p></li><li class="toc-ch"><a href="#ch-concrete"><span><i class="sr">Chapter </i>7</span><strong>A block on a cushion of water</strong></a><p>The concrete gravity dam, and the water that lifts it from below.</p></li><li class="toc-ch"><a href="#ch-raising"><span><i class="sr">Chapter </i>8</span><strong>Never finished</strong></a><p>Upstream, downstream and centreline: three ways to raise a tailings dam, and a water dam built like one.</p></li></ol></div>
 </section>
 
@@ -3230,7 +3254,7 @@ svg.pro-ph { display: none; }
 </section>
 
 <section class="part-opener" id="part-3" data-label="III">
-  <div class="wide part-head"><p class="part-num" aria-hidden="true">III</p><div class="chapter-head"><span class="sheetno">Part III</span><h2>Inside the embankment</h2></div><svg class="mini part-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="9"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></div>
+  <div class="wide part-head"><p class="part-num" aria-hidden="true">III</p><div class="chapter-head"><span class="sheetno">Part III</span><h2>Inside the embankment</h2></div><div class="part-mini"><span class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="11"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></span><p class="mini-cap">By the end of Part III</p></div></div>
   <div class="col"><p class="prospect">Most of the world's large dams are heaps of earth and rock. Part III opens one up: why it is built from several soils, where the water inside it goes, and what happens when that water starts to carry the soil away.</p><ol class="course"><li class="toc-ch"><a href="#ch-zones"><span><i class="sr">Chapter </i>9</span><strong>Every zone has one job</strong></a><p>Core, filters, transitions and shells, and how loose earth is made into dense fill.</p></li><li class="toc-ch"><a href="#ch-seepage"><span><i class="sr">Chapter </i>10</span><strong>Where the water goes</strong></a><p>Seepage paths, flow nets drawn by hand, and a seepage lab you can run.</p></li><li class="toc-ch"><a href="#ch-erosion"><span><i class="sr">Chapter </i>11</span><strong>When water carries soil</strong></a><p>Boils, pipes, the four kinds of internal erosion, and the filter that stops them.</p></li></ol></div>
 </section>
 
@@ -3460,7 +3484,7 @@ svg.pro-ph { display: none; }
 </section>
 
 <section class="part-opener" id="part-4" data-label="IV">
-  <div class="wide part-head"><p class="part-num" aria-hidden="true">IV</p><div class="chapter-head"><span class="sheetno">Part IV</span><h2>Will it stand?</h2></div><svg class="mini part-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="12"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12 mini-new"/></svg></div>
+  <div class="wide part-head"><p class="part-num" aria-hidden="true">IV</p><div class="chapter-head"><span class="sheetno">Part IV</span><h2>Will it stand?</h2></div><div class="part-mini"><span class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="13"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L13" class="mini-l13 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12"/></svg></span><p class="mini-cap">By the end of Part IV</p></div></div>
   <div class="col"><p class="prospect">An engineer judges a slope by one number: the grip the soil can offer, divided by the grip it needs. Part IV shows how that number is worked out, by hand and by computer, and then hands you a dam to design. The last chapter tests the number against a dam that passed it.</p><ol class="course"><li class="toc-ch"><a href="#ch-slope"><span><i class="sr">Chapter </i>12</span><strong>Will the slope stand?</strong></a><p>The factor of safety on a curved surface, worked by hand and by computer.</p></li><li class="toc-ch"><a href="#ch-build"><span><i class="sr">Chapter </i>13</span><strong>Build your own dam</strong></a><p>A workbench, five missions, and Mount Polley's answer.</p></li></ol></div>
 </section>
 
@@ -6718,12 +6742,12 @@ function groundPredictInit(root) {
   // pressure at the sensor (depth h) and at the foot (depth H), push per metre of dam, and the readout texts
   function depthCalc(H, h) {
     const p = 9.81 * h, pb = 9.81 * H, F = 0.5 * 9.81 * H * H; // kPa, kPa, kN per m
-    const f = F / 1000; // MN per m, for the chart
+    const Ft = (F >= 1000 ? (F / 1000).toFixed(F >= 10000 ? 1 : 2) + ' MN' : fmt(F) + ' kN'); // the chart's point says what the readout says
     return { p, pb, F, txt: {
       H: H + ' m', h: n1(h) + ' m', p: fmt(p) + ' kPa', p2: '9.81 × ' + n1(h) + ' m', pb: fmt(pb) + ' kPa', pb2: '9.81 × ' + H + ' m',
-      F: (F >= 1000 ? (F / 1000).toFixed(F >= 10000 ? 1 : 2) + ' MN' : fmt(F) + ' kN'),
+      F: Ft,
       F2: 'as heavy as ' + fmt(Math.round(F / 9.81 / (F > 2000 ? 10 : 1)) * (F > 2000 ? 10 : 1)) + ' tonnes',
-      chart: (f < 10 ? f.toFixed(1) : Math.round(f)) + ' MN at ' + H + ' m', tri: H >= 25 ? fmt(pb) + ' kPa' : '' } };
+      chart: Ft + ' at ' + H + ' m', tri: H >= 25 ? fmt(pb) + ' kPa' : '' } };
   }
   /* @fig-depth-end */
   (function figDepth() {
@@ -6736,7 +6760,7 @@ function groundPredictInit(root) {
     const surf = E('path', { class: 'water-line' }, g);
     const wsym = E('g', null, g);
     E('polygon', { points: P([[FX, B - 106 * K], [FX + 22, B - 106 * K], [FX + 22, B - 86 * K], [470, B], [FX, B]]), style: 'fill:var(--m-conc)', class: 'edge' }, g);
-    T(g, FX + 40, B - 150, 'Dam', 'lbl-b halo');
+    T(g, FX + 14, B - 70, 'Dam', 'lbl-b halo');   // low in the section, where it is widest, clear of the sloping face
     E('rect', { x: 0, y: B, width: 480, height: 40, fill: 'url(#p-bedrock)', class: 'edge' }, g);
     // depth ruler
     const ruler = E('g', null, g);
@@ -6752,7 +6776,7 @@ function groundPredictInit(root) {
     E('rect', { x: -7, y: -9, width: 14, height: 18, rx: 3, style: 'fill:var(--sheet);stroke:var(--ink);stroke-width:1.4' }, sensor);
     E('circle', { cx: 0, cy: 3, r: 2.4, style: 'fill:var(--accent)' }, sensor);
     const hit = E('circle', { r: 22, style: 'fill:transparent' }, sensor);
-    const sL1 = T(g, 0, 0, '', 'lbl halo'), sL2 = T(g, 0, 0, '', 'lbl lbl-acc halo');
+    const sL1 = T(g, 0, 0, '', 'lbl halo on-water'), sL2 = T(g, 0, 0, '', 'lbl lbl-acc halo on-water');
     const HEl = $('#dp-H'), hEl = $('#dp-h');
     let H = +HEl.value, h = +hEl.value;
     function render() {
@@ -6780,8 +6804,9 @@ function groundPredictInit(root) {
       setArrow(hot, FX - kp * h, y, FX - 2, y);
       cable.setAttribute('d', `M${SX},${ys - 10} V${y - 9}`);
       sensor.setAttribute('transform', `translate(${SX},${y})`);
-      sL1.setAttribute('x', SX + 14); sL1.setAttribute('y', y - 2); sL1.textContent = 'h = ' + c.txt.h;
-      sL2.setAttribute('x', SX + 14); sL2.setAttribute('y', y + 12); sL2.textContent = 'p = ' + c.txt.p;
+      const ly = Math.min(y, B - 20);   // in shallow water the label stays above the bed (display only)
+      sL1.setAttribute('x', SX + 14); sL1.setAttribute('y', ly - 2); sL1.textContent = 'h = ' + c.txt.h;
+      sL2.setAttribute('x', SX + 14); sL2.setAttribute('y', ly + 12); sL2.textContent = 'p = ' + c.txt.p;
       setTxt('dp-H-o', c.txt.H); setTxt('dp-h-o', c.txt.h);
       setTxt('dp-p', c.txt.p); setTxt('dp-p2', c.txt.p2);
       setTxt('dp-pb', c.txt.pb); setTxt('dp-pb2', c.txt.pb2);

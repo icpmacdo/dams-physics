@@ -17,7 +17,7 @@ svg.gd { overflow: hidden; }
 .g-side .ro:nth-child(odd) { padding-right: 12px; }
 .g-side .ro b { font-size: 1.3rem; }
 .g-side .note { margin: 12px 0 0; }
-@media (max-width: 860px) {
+@media screen and (max-width: 860px) {
   .g-split { grid-template-columns: minmax(0, 1fr); }
   .g-draw { max-width: 600px; }
 }
@@ -27,7 +27,7 @@ svg.gd text, svg.gd .lbl { --fs: 11px; }
 svg.gd .lbl-s { --fs: 10px; }
 svg.gd .lbl-b { --fs: 13px; }
 svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
-@media (max-width: 560px) {
+@media screen and (max-width: 560px) {
   svg.gd text, svg.gd .lbl { --fs: 15px; }
   svg.gd .lbl-s { --fs: 14px; }
   svg.gd .lbl-b { --fs: 17px; }
@@ -38,9 +38,9 @@ svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
 /* Fig 1.1 close-up */
 .g-zoom { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); gap: 12px; align-items: center; }
 .g-zoom .note { margin: 0; }
-@media (max-width: 560px) { .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); } }
+@media screen and (max-width: 560px) { .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); } }
 /* four sand states: on a phone, two rows of two rather than three and a straggler */
-@media (max-width: 560px) {
+@media screen and (max-width: 560px) {
   #bc-state { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
   #bc-state button { border-bottom: 1px solid var(--rule); }
   #bc-state button:nth-child(2n) { border-right: 0; }
@@ -73,7 +73,7 @@ ol.course a strong { font-family: var(--f-display); font-weight: 700; font-size:
 ol.course a:hover strong, ol.course a:focus-visible strong { color: var(--accent); }
 ol.course a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
-@media (max-width: 620px) { ol.course li { grid-template-columns: minmax(0, 1fr); } ol.course p { padding-left: calc(4.6em + 10px); font-size: 0.92rem; } }
+@media screen and (max-width: 620px) { ol.course li { grid-template-columns: minmax(0, 1fr); } ol.course p { padding-left: calc(4.6em + 10px); font-size: 0.92rem; } }
 
 /* ---------- "this one idea" map ---------- */
 .col > .ideas { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }

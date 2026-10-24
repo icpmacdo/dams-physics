@@ -21,7 +21,7 @@
 .bd-pre { font-size: 0.72rem; min-height: 30px; padding: 4px 9px; border-width: 1px; }
 .bd-touch { display: none; }
 .bd-coarse .bd-touch { display: flex; }
-@media (max-width: 760px) { .bd-touch { display: flex; } }
+@media screen and (max-width: 760px) { .bd-touch { display: flex; } }
 
 #svg-build { cursor: crosshair; touch-action: none; -webkit-user-select: none; user-select: none; }
 #svg-build.bd-pan { touch-action: pan-x pan-y; }
@@ -61,11 +61,11 @@
 .bd-tip { margin: 8px 0 0; padding: 8px 12px; background: var(--accent-soft); border-radius: 4px; font-size: 0.97rem; max-width: 80ch; }
 .bd-tip ul { margin: 4px 0 0; padding-left: 1.2em; }
 .bd-tip li { margin-bottom: 3px; }
-@media (max-width: 560px) { .bd-row { grid-template-columns: minmax(0, 1fr); } }
+@media screen and (max-width: 560px) { .bd-row { grid-template-columns: minmax(0, 1fr); } }
 .legend i.bd-sw-u { background: color-mix(in srgb, var(--water) 45%, transparent); border-color: var(--water); }
 .legend i.bd-sw-slip { border-top: 3px solid var(--bad); }
 .legend i.bd-sw-bar { width: 0; height: 12px; border-top: 0; border-left: 2px solid var(--water); margin-left: 8px; margin-right: 12px; }
-@media (max-width: 760px) {
+@media screen and (max-width: 760px) {
   .bd-presets-ctl { flex-basis: 100%; }
 }
 #fig-build .seg button:disabled { opacity: 0.4; cursor: not-allowed; }

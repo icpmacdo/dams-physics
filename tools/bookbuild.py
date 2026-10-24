@@ -373,7 +373,6 @@ class Book:
         return ''
 
     def part_opener(self, p):
-        first = p['chapters'][0]
         # the bare numeral, as in the Contents; the word is there for a screen reader
         lis = ''.join('<li class="toc-ch"><a href="#%s"><span><i class="sr">%s </i>%s</span><strong>%s</strong></a><p>%s</p></li>' % (
             c['id'], self.B['unitWord'], c['label'], H.esc(c['title']), H.esc(c['hook'])) for c in p['chapters'])
@@ -381,7 +380,10 @@ class Book:
              '  <div class="wide part-head"><p class="part-num" aria-hidden="true">%s</p><div class="chapter-head"><span class="sheetno">Part %s</span><h2>%s</h2></div>%s</div>\n'
              '  <div class="col"><p class="prospect">%s</p><ol class="course">%s</ol></div>\n'
              '</section>') % (p['id'], p['numeral'], p['numeral'], p['numeral'], H.esc(p['title']),
-                              self.mini(first.get('mini', 0), cls='mini part-mini'), H.esc(p['prospect']), lis)
+                              # the stage the part ends on (its first chapter's opener shows where it starts)
+                              '<div class="part-mini"><span class="mini-wrap">%s</span><p class="mini-cap">By the end of Part %s</p></div>' % (
+                                  self.mini(p['chapters'][-1].get('mini', 0), cls='mini'), p['numeral']),
+                              H.esc(p['prospect']), lis)
         self.part_refs = getattr(self, 'part_refs', {})
         self.part_refs[p['id']] = p
         return frag(m)[0]

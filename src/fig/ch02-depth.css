@@ -5,9 +5,10 @@
 #fig-depth-stevin svg.dwg text { --fs: 12px; }
 #fig-depth-stevin svg.dwg .lbl-s { --fs: 11px; }
 #fig-depth-triangle svg.dwg, #fig-depth-sloping svg.dwg { display: block; width: 100%; max-width: 600px; height: auto; }
+#fig-depth-sloping svg.dwg { max-width: 700px; }
 #fig-depth-triangle svg.dwg text, #fig-depth-sloping svg.dwg text { --fs: 12.5px; }
 #fig-depth-triangle svg.dwg .lbl-s, #fig-depth-sloping svg.dwg .lbl-s { --fs: 11.5px; }
-@media (max-width: 599px) {
+@media screen and (max-width: 599px) {
   #fig-depth-stevin .ch02-panels { grid-template-columns: minmax(0, 1fr); }
 }
 /* the colour key above fig-depth-triangle: HTML, so it reflows on a phone */

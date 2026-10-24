@@ -111,11 +111,11 @@ console.log('\nfig-depth · pressure with depth');
   const H = inputValue('dp-H'), h = inputValue('dp-h'), c = G.depthCalc(H, h);
   same(H + ' / ' + h, '50 / 30', 'sliders on load: depth / sensor depth (m)');
   staticMatches([['dp-H-o', c.txt.H], ['dp-h-o', c.txt.h], ['dp-p', c.txt.p], ['dp-p2', c.txt.p2], ['dp-pb', c.txt.pb], ['dp-pb2', c.txt.pb2], ['dp-F', c.txt.F], ['dp-F2', c.txt.F2]], 'fig-depth');
-  same([c.txt.p, c.txt.pb, c.txt.F, c.txt.F2, c.txt.chart].join(' | '), '294 kPa | 491 kPa | 12.3 MN | as heavy as 1,250 tonnes | 12 MN at 50 m', 'on load (H 50 m, sensor 30 m)');
+  same([c.txt.p, c.txt.pb, c.txt.F, c.txt.F2, c.txt.chart].join(' | '), '294 kPa | 491 kPa | 12.3 MN | as heavy as 1,250 tonnes | 12.3 MN at 50 m', 'on load (H 50 m, sensor 30 m)');
   const at = (H, h) => { const c = G.depthCalc(H, h); return [c.txt.p, c.txt.pb, c.txt.F, c.txt.F2, c.txt.chart, c.txt.tri].join(' | '); };
-  same(at(100, 50), '491 kPa | 981 kPa | 49.0 MN | as heavy as 5,000 tonnes | 49 MN at 100 m | 981 kPa', 'H 100 m, sensor 50 m');
-  same(at(20, 10), '98 kPa | 196 kPa | 1.96 MN | as heavy as 200 tonnes | 2.0 MN at 20 m | ', 'H 20 m, sensor 10 m');
-  same(at(5, 0), '0 kPa | 49 kPa | 123 kN | as heavy as 13 tonnes | 0.1 MN at 5 m | ', 'H 5 m, sensor at the surface');
+  same(at(100, 50), '491 kPa | 981 kPa | 49.0 MN | as heavy as 5,000 tonnes | 49.0 MN at 100 m | 981 kPa', 'H 100 m, sensor 50 m');
+  same(at(20, 10), '98 kPa | 196 kPa | 1.96 MN | as heavy as 200 tonnes | 1.96 MN at 20 m | ', 'H 20 m, sensor 10 m');
+  same(at(5, 0), '0 kPa | 49 kPa | 123 kN | as heavy as 13 tonnes | 123 kN at 5 m | ', 'H 5 m, sensor at the surface');
   near(G.depthCalc(100, 0).F / G.depthCalc(50, 0).F, 4, 1e-12, 'double the depth, four times the push');
 }
 
