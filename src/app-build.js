@@ -3,7 +3,7 @@
    foundation, cutoff, downstream slope and reservoir, and presses Test. A worker runs the seepage
    solver in custom mode and then the slope stability solver (stability-solver.js) on its pore
    pressures. Missions are defined in StabilitySolver.BUILD.missions (checked in tests). */
-/* @fig-leak-begin */
+/* @fig-verdict-begin */
 // Fig 9.1's leak verdict: where the water passes the dam, not where it enters. It reads the solver's
 // net flow across the vertical line under the crest (x = 0), above and below the original ground.
 function leakWhere(q) {
@@ -18,7 +18,16 @@ function leakWhere(q) {
     : 'Water is going both through the dam and under it: a clay core with a full cutoff beneath it closes both paths.';
   return { under, path, txt, tip };
 }
-/* @fig-leak-end */
+// Fig 9.1's piping row. i_c ≈ 1 is the heave criterion for water rising out of level ground; out of a
+// sloping face the water drags grains out along the slope, so there the number is only a measure of the drag.
+function pipeText(iExit, where, pipe) {
+  if (iExit <= 0.005) return 'All the water leaves through filter or drain material, which lets water out but holds soil back.';
+  const fs = 'Safety ' + (!isFinite(pipe) || pipe > 50 ? 'over 50' : pipe.toFixed(1)) + '.';
+  const grid = ' Gradients right where the water comes out depend on the 1 m grid, so read them as indicative.';
+  if (where === 'face') return `Water comes out of the downstream slope with a gradient of ${iExit.toFixed(2)}. Out of a slope it drags grains down and out of the face rather than lifting them, so the failure is the face sloughing or eroding, not a boil; read the number as how hard the water drags, against about 1.0 that would float sand out of level ground. ${fs}${grid}`;
+  return `Water comes up out of the ground beyond the toe with a gradient of ${iExit.toFixed(2)}: it pushes up on the grains there with ${Math.round(iExit * 100)}% of the force that would lift them (sand boils at about 1.0). ${fs}${grid}`;
+}
+/* @fig-verdict-end */
 (function figBuild() {
   const root = $('#fig-build');
   if (!root) return;
@@ -603,11 +612,8 @@ function leakWhere(q) {
     rows.push(['Leaks', lc, lc === 'ok' ? 'Low' : lc === 'warn' ? 'High' : 'Very high', leakTxt]);
     // piping
     const pc = pipeClass(m.pipe);
-    let pipeTxt;
-    if (m.iExit <= 0.005) pipeTxt = 'All the water leaves through filter or drain material, which lets water out but holds soil back.';
-    else {
-      const where = m.exitWhere === 'face' ? 'out of the downstream slope' : 'up out of the ground beyond the toe';
-      pipeTxt = `Water comes ${where} with a gradient of ${m.iExit.toFixed(2)}: it pushes on the grains there with ${Math.round(m.iExit * 100)}% of the force that would lift them (sand boils at about 1.0). Safety ${!isFinite(m.pipe) || m.pipe > 50 ? 'over 50' : m.pipe.toFixed(1)}.`;
+    const pipeTxt = pipeText(m.iExit, m.exitWhere, m.pipe);
+    if (m.iExit > 0.005) {
       if (pc !== 'ok') tips.push(m.exitWhere === 'face' ? 'Cover the exit: paint sand filter on the lower downstream slope, or lower the water with a drain.' : 'The water rises at the toe: a cutoff makes its path longer and gentler, and filter at the toe holds the sand down.');
     }
     rows.push(['Pipes', pc, pc === 'ok' ? 'Safe' : pc === 'warn' ? 'Marginal' : 'Risk', pipeTxt]);

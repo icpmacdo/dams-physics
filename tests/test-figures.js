@@ -272,7 +272,7 @@ console.log('\nFig. 8.4 · uplift and sliding');
 console.log('\nFig. 9.1 · workbench leak verdict');
 {
   const ST = require(path.join(SRC, 'stability-solver.js'));
-  const BLD = load(block(read('app-build.js'), 'app-build.js', 'leak'), ['leakWhere']);
+  const BLD = load(block(read('app-build.js'), 'app-build.js', 'verdict'), ['leakWhere', 'pipeText']);
   const run = (preset, foundation, cutoff) => {
     const d = { cells: ST.presetCells(preset, 2), slope: 2, foundation, cutoff, reservoir: 0.85 };
     const r = solveSeepage(ST.buildRequest(d).seep), lw = BLD.leakWhere(r.q);
@@ -291,6 +291,12 @@ console.log('\nFig. 9.1 · workbench leak verdict');
   same(h.lw.path + ' | ' + Math.round(100 * h.lw.under) + '%', 'through | 28%', 'homogeneous fill on clay: most passes through the dam, 28% under it (the film says 27%)');
   const lk = run('leaky', 'gravel', 'none'); // rockfill (10⁻⁴ m/s) is ten times as open as the ground (10⁻⁵ m/s)
   same(lk.lw.path + ' | ' + Math.round(100 * (1 - lk.lw.under)) + '%', 'through | 93%', 'the Hold mission start (all rockfill on sand & gravel): most passes through the dam');
+  // the piping row: on a sloping face the gradient is a drag, not a lift; at the toe it depends on the grid
+  const pf = BLD.pipeText(0.79, 'face', 1.27), pg = BLD.pipeText(0.47, 'ground', 2.13);
+  check(/drags grains down and out of the face rather than lifting them/.test(pf) && !/% of the force that would lift them/.test(pf), 'piping row, exit on the slope: says the water drags the grains, not that it lifts them');
+  check(/pushes up on the grains there with 47% of the force that would lift them/.test(pg), 'piping row, exit beyond the toe: the heave wording stays');
+  check([pf, pg].every(t => /depend on the 1 m grid, so read them as indicative/.test(t)), 'piping row: both cases carry the grid caveat');
+  same(BLD.pipeText(0, 'ground', Infinity), 'All the water leaves through filter or drain material, which lets water out but holds soil back.', 'piping row: every exit filtered');
   same(BLD.leakWhere({ passThroughDam: 1, passUnderDam: 1 }).txt, 'It splits between the dam itself (50%) and the ground beneath it (50%).', 'an even split');
 }
 
@@ -344,7 +350,8 @@ console.log('\nFacts the text states (errata fixes)');
   says('switch the foundation to Clay to see a face about 8 m high', 'Fig. 8.2 caption');
   says('Schematic · hours to decades compressed', 'Fig. 8.3 scale note');
   says('at least 3 at an unfiltered exit of an existing dam, and 4 for a new dam or a repair', 'Step 8 heave formula (USBR DS-13 ch. 8)');
-  says('Designers want at least 3 for an existing dam and 4 for a new one.', 'Step 9 Pipes card');
+  says('Designers want at least 3 for an existing dam and 4 for a new one; the missions here ask for 3.', 'Step 9 Pipes card');
+  check(require(path.join(SRC, 'stability-solver.js')).BUILD.missions.filter(m => m.goals.minPipe != null).every(m => m.goals.minPipe === 3), 'Step 9 Pipes card: every mission with a piping goal asks for 3');
   never('3 or more', 'Step 8 and Step 9');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
