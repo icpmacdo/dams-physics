@@ -132,9 +132,12 @@ const design = (preset, o) => {
   const M = id => ST.BUILD.missions.find(m => m.id === id);
   const run = (id, o) => { const m = M(id); const r = design(o.preset || m.start.preset, Object.assign({}, m.start, o)); return { r, c: ST.missionCheck(m, r.m) }; };
   const td = s => { const c = ST.presetCells('drained', s); for (let q = 0; q < c.length; q++) if (c[q] === 0) c[q] = 4; return c; };
+  // "Empty it fast": rockfill (material 2) painted over the dam's cells upstream of a boundary
+  const rockUp = (base, inShell) => { const c = ST.presetCells(base, 2); for (let i = 0; i < 170; i++) for (let j = 15; j < 39; j++) { const x = -80 + i + 0.5, z = -15 + j + 0.5; if (inShell(x, z)) c[i * 39 + j] = 2; } return c; };
+  const upFace = z => -3 - 2 * (24 - z);
   for (const m of ST.BUILD.missions) {
     const st = run(m.id, {});
-    check(`mission ${m.id}: start design does not pass`, !st.c.ok, `FoS ${f3(st.r.m.fos)}, pipe ${f3(st.r.m.pipe)}, Q ${st.r.m.qLday.toFixed(0)} L/day/m`);
+    check(`mission ${m.id}: start design does not pass`, !st.c.ok, `FoS ${f3(st.r.m.fos)}, upstream ${f3(st.r.m.fosUp)}, pipe ${f3(st.r.m.pipe)}, Q ${st.r.m.qLday.toFixed(0)} L/day/m`);
   }
   const t = [
     ['dry', { preset: 'drained' }, true, 'chimney + blanket drain'],
@@ -148,11 +151,25 @@ const design = (preset, o) => {
     ['polley', { preset: 'filtered' }, false, 'drains alone do not fix the weak layer'],
     ['tailings', { slope: 2.5, cells: td(2.5) }, true, 'tailings sand + drain + 2.5:1'],
     ['tailings', { slope: 3 }, false, 'flatter but still saturated'],
-    ['tailings', { cells: td(2) }, false, 'drain at 2:1 (sand too steep)']
+    ['tailings', { cells: td(2) }, false, 'drain at 2:1 (sand too steep)'],
+    ['drawdown', { cells: rockUp('homogeneous', x => x < -3) }, true, 'rockfill upstream shell reaching the crest'],
+    ['drawdown', { cells: rockUp('homogeneous', x => x < -6) }, true, 'rockfill upstream shell to 3 m short of the crest'],
+    ['drawdown', { cells: rockUp('homogeneous', x => x < -10) }, false, 'an upstream shell stopping 7 m short of the crest'],
+    ['drawdown', { cells: rockUp('homogeneous', (x, z) => x < upFace(z) + 5) }, false, 'a 5 m skin of rockfill on the face (the slip goes deeper)'],
+    ['drawdown', { preset: 'drained' }, false, 'a downstream drain (it does nothing for the upstream slope)'],
+    ['drawdown', { preset: 'leaky' }, false, 'all rockfill (passes the slope, leaks far too much)']
   ];
+  // the drawdown brief quotes the start design's upstream factor of safety and the mission's goals
+  {
+    const src = require('fs').readFileSync(path.join(__dirname, '..', 'src', 'app-build.js'), 'utf8');
+    const brief = ((src.match(/drawdown: \{[\s\S]*?brief: '((?:[^'\\]|\\.)*)'/) || [])[1]) || '';
+    const st = run('drawdown', {}), g = M('drawdown').goals;
+    const want = [st.r.m.fosUp.toFixed(2), String(g.minFoSUp), g.maxQ.toLocaleString('en-US') + ' L/day'];
+    check('mission drawdown: its brief quotes the start (upstream FoS) and the goals the code checks', want.every(w => brief.includes(w)), want.join(', '));
+  }
   for (const [id, o, want, why] of t) {
     const x = run(id, o);
-    check(`mission ${id}: ${why} ${want ? 'passes' : 'fails'}`, x.c.ok === want, `FoS ${f3(x.r.m.fos)}, pipe ${f3(x.r.m.pipe)}, Q ${x.r.m.qLday.toFixed(0)}, clay ${x.r.m.clay} m3/m, tailings ${(x.r.m.tsandFrac * 100).toFixed(0)}%`);
+    check(`mission ${id}: ${why} ${want ? 'passes' : 'fails'}`, x.c.ok === want, `FoS ${f3(x.r.m.fos)}, upstream ${f3(x.r.m.fosUp)}, pipe ${f3(x.r.m.pipe)}, Q ${x.r.m.qLday.toFixed(0)}, clay ${x.r.m.clay} m3/m, tailings ${(x.r.m.tsandFrac * 100).toFixed(0)}%`);
   }
 }
 

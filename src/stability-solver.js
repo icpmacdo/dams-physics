@@ -584,13 +584,20 @@
     }
   };
   // Missions: start design, settings the reader may not change, pass conditions
-  // (maxQ L/day per metre, minPipe = safety against piping, minFoS = downstream slope,
-  //  maxClay m3 per metre, minTsand = share of the dam in tailings sand)
+  // (maxQ L/day per metre, minPipe = safety against piping, minFoS = downstream slope at full
+  //  reservoir, minFoSUp = upstream slope after a rapid drawdown to empty, maxClay m3 per metre,
+  //  minTsand = share of the dam in tailings sand). In the book's order (Chapter 13).
+  // drawdown: 1.2 is a design convention, the middle of the 1.1-1.3 that USACE EM 1110-2-1902
+  // (2003), Table 3-1, requires for rapid drawdown of a new embankment (1.1 from maximum
+  // surcharge pool, 1.3 from maximum storage pool), and the upstream verdict's own "Stable" line;
+  // the workbench's drawdown (B = 1, all the way to empty) is harsher than the manual's method.
+  // Its leak cap (1,000 L/day per metre, the readout's "Low") stops all-rockfill passing.
   BUILD.missions = [
     { id: 'dry', start: { preset: 'homogeneous', slope: 2, foundation: 'clay', cutoff: 'none', reservoir: 0.85 }, lock: ['slope', 'reservoir'], goals: { minFoS: 1.5, minPipe: 3 } },
     { id: 'hold', start: { preset: 'leaky', slope: 2, foundation: 'gravel', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { maxQ: 100, minPipe: 3, minFoS: 1.5, maxClay: 350 } },
-    { id: 'polley', start: { preset: 'cored', slope: 2, foundation: 'weak', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { minFoS: 1.5 } },
-    { id: 'tailings', start: { preset: 'tailings', slope: 2, foundation: 'clay', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { minFoS: 1.5, minPipe: 3, minTsand: 0.7 } }
+    { id: 'tailings', start: { preset: 'tailings', slope: 2, foundation: 'clay', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { minFoS: 1.5, minPipe: 3, minTsand: 0.7 } },
+    { id: 'drawdown', start: { preset: 'homogeneous', slope: 2, foundation: 'clay', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { minFoSUp: 1.2, maxQ: 1000 } },
+    { id: 'polley', start: { preset: 'cored', slope: 2, foundation: 'weak', cutoff: 'none', reservoir: 0.85 }, lock: ['foundation', 'reservoir'], goals: { minFoS: 1.5 } }
   ];
   // the numbers the page shows and the missions check
   function designMetrics(seep, stab) {
@@ -618,6 +625,7 @@
     if (g.maxQ != null) out.push({ key: 'q', ok: m.qLday <= g.maxQ });
     if (g.minPipe != null) out.push({ key: 'pipe', ok: m.pipe >= g.minPipe });
     if (g.minFoS != null) out.push({ key: 'fos', ok: m.fos >= g.minFoS });
+    if (g.minFoSUp != null) out.push({ key: 'fosUp', ok: m.fosUp >= g.minFoSUp });
     if (g.maxClay != null) out.push({ key: 'clay', ok: m.clay <= g.maxClay });
     if (g.minTsand != null) out.push({ key: 'tsand', ok: m.tsandFrac >= g.minTsand });
     return { ok: out.every(c => c.ok), checks: out };

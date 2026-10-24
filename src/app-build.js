@@ -92,10 +92,19 @@ function pipeText(iExit, where, pipe) {
         'Keep it dry first: a drain inside the sand lowers the water level.',
         'A chimney and blanket drain plus a 2.5:1 downstream slope does it.'],
       done: 'Kept dry and laid back at a gentle slope, the sand holds. Downstream-raised tailings dams use drains and flat downstream slopes for this reason. One thing this sandbox cannot show: loose saturated tailings sand can liquefy (' + ref('ch-trapped') + '), so real ones are also compacted.'
+    },
+    drawdown: {
+      title: 'Empty it fast',
+      brief: 'Sometimes a reservoir has to be emptied in a hurry, to reach a damaged outlet or to take the load off a dam in trouble. Rockfill lets its water go as fast as the level falls. Fill and clay drain far more slowly, so their water stays in, and the reservoir that pressed back on the upstream slope is gone. This dam is all compacted fill on clay. Empty its reservoir in one go and the upstream slope has a factor of safety of 0.94. Get it to 1.2, the margin engineers accept for a rare, short-lived event like this, and keep the seepage to 1,000 L/day per metre or less. This mission checks the upstream slope only.',
+      hints: ['Test it. The tint shows the water still held in the fill after the reservoir has gone, pushing the upstream slope out with nothing pushing back.',
+        'A thin skin of rockfill on the face makes it worse: the weakest slip simply runs deeper, through the wet fill behind the skin. The free-draining zone has to be thick.',
+        'Paint rockfill over the whole upstream part of the dam, from the face in to just short of the crest and from top to bottom. Leave the fill in the downstream part to hold the water back.'],
+      done: 'Rockfill drains as fast as the reservoir falls, so the water pressure inside it falls too and its grains keep their grip. That is why embankment dams put free-draining shells upstream and the fill or clay that holds the water in the middle. The downstream slope and the toe still need the drain of the first mission.'
     }
   };
   const GOAL_TEXT = {
-    q: g => `Seepage ≤ ${g.maxQ} L/day per metre`, pipe: g => `Safety vs piping ≥ ${g.minPipe}`, fos: g => `Factor of safety ≥ ${g.minFoS}`,
+    q: g => `Seepage ≤ ${fmt(g.maxQ)} L/day per metre`, pipe: g => `Safety vs piping ≥ ${g.minPipe}`, fos: g => `Downstream slope: factor of safety ≥ ${g.minFoS}`,
+    fosUp: g => `Upstream slope after a fast drawdown: factor of safety ≥ ${g.minFoSUp}`,
     clay: g => `Clay ≤ ${g.maxClay} m³ per metre`, tsand: g => `Tailings sand ≥ ${Math.round(g.minTsand * 100)}% of the dam`
   };
   const LIVE_GOALS = { clay: true, tsand: true }; // checked while painting, before any test
@@ -636,7 +645,7 @@ function pipeText(iExit, where, pipe) {
       } else slideTxt += ' Very little water pressure acts on it, so the grip comes from the full weight of the grains.';
       if (sc !== 'ok') {
         if (cr.kind === 'block') tips.push('The slide runs along the weak layer, which painting can\'t strengthen. Flatten the downstream slope so more weight bears on the layer beyond the toe.');
-        else if (up) tips.push('After a fast drawdown the water trapped in clay and fill pushes the upstream slope out. Free-draining rockfill on the upstream face drains as the reservoir falls.');
+        else if (up) tips.push('After a fast drawdown the water trapped in clay and fill pushes the upstream slope out. A thick upstream shell of free-draining rockfill, reaching in toward the crest, drains as the reservoir falls; a thin skin on the face only sends the slip deeper.');
         else if (cr.ru > 0.15) tips.push('Try a drain: a strip of sand filter inside the downstream half, joined to a layer along the base out to the toe, lets the water out before it reaches the slope.');
         else tips.push('The water is not the main problem here: the slope is too steep for this material. Flatten it, or use stronger rockfill in the downstream shell.');
       }
@@ -669,6 +678,8 @@ function pipeText(iExit, where, pipe) {
       Object.assign(st, { slope: m.start.slope, foundation: m.start.foundation, cutoff: m.start.cutoff, reservoir: m.start.reservoir });
       applyPreset(m.start.preset);
       st.slope = m.start.slope; st.reservoir = m.start.reservoir;
+      // show the slope the mission checks: upstream after a drawdown, or downstream at full reservoir
+      st.side = m.goals.minFoSUp != null ? 'upstream' : 'downstream'; setSeg('#bd-side', st.side);
     }
     syncControls(); changed();
   }
@@ -686,7 +697,7 @@ function pipeText(iExit, where, pipe) {
     const check = fresh ? API.missionCheck(m, mm) : null;
     const items = Object.keys(GOAL_TEXT).filter(k => {
       const g = m.goals;
-      return (k === 'q' && g.maxQ != null) || (k === 'pipe' && g.minPipe != null) || (k === 'fos' && g.minFoS != null) || (k === 'clay' && g.maxClay != null) || (k === 'tsand' && g.minTsand != null);
+      return (k === 'q' && g.maxQ != null) || (k === 'pipe' && g.minPipe != null) || (k === 'fos' && g.minFoS != null) || (k === 'fosUp' && g.minFoSUp != null) || (k === 'clay' && g.maxClay != null) || (k === 'tsand' && g.minTsand != null);
     }).map(k => {
       let state = 'pending', now = '';
       if (LIVE_GOALS[k]) {
@@ -696,7 +707,7 @@ function pipeText(iExit, where, pipe) {
       } else if (check) {
         const c = check.checks.find(x => x.key === k);
         state = c.ok ? 'ok' : 'bad';
-        now = k === 'q' ? `now ${fmtL(mm.qLday)}` : k === 'pipe' ? `now ${pipeNum(mm.pipe)}` : `now ${fosNum(mm.fos)}`;
+        now = k === 'q' ? `now ${fmtL(mm.qLday)}` : k === 'pipe' ? `now ${pipeNum(mm.pipe)}` : k === 'fosUp' ? `now ${fosNum(mm.fosUp)}` : `now ${fosNum(mm.fos)}`;
       } else now = 'test to check';
       const mark = state === 'ok' ? '✓' : state === 'bad' ? '✗' : '·';
       return `<li class="bd-g ${state}"><span class="bd-mark" aria-hidden="true">${mark}</span>${GOAL_TEXT[k](m.goals)} <small>${now}</small></li>`;
