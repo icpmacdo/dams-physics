@@ -156,7 +156,13 @@ chapter needs a string changed there, list it in your return under `deferred` as
 20. **The "Empty it fast" mission** is a code task for the machinery stage (a new goal type,
     `minFoSUp`, with a test in `test-stability.js` that the start fails and the intended fix
     passes). No physics changes. If it is not built, Ch 13 writes it as a guided "Try" using the
-    existing upstream toggle and says so in concerns.
+    existing upstream toggle and says so in concerns. **Status (review round 1): not built.**
+    The solver already reports the upstream slope after a drawdown (`designMetrics().fosUp`); at
+    the defaults it gives homogeneous 0.940, cored 1.094, drained 1.045, filtered 1.093, leaky
+    1.410 (downstream 1.000), homogeneous at 3:1 0.924. The upstream face is fixed at 2:1 in
+    `buildRequest`, so any fix is a material one (a free-draining upstream shell), and the goal
+    value is a design convention to choose and source. Unless a machinery pass builds and tests
+    it before Ch 13 is written, Ch 13 uses the fallback.
 21. **Errata** are a page in the back built from per-unit JSON, starting with the fixes already in
     git history (the back-matter agent seeds them from `git log`).
 
@@ -398,6 +404,22 @@ before the punctuation that follows a reference.
   Appendix 4 except `grains.*` (no pure block in `app-grains.js` yet); `test-book.js` also pins
   Appendix 4's values at the figures' defaults and checks that every id of the nine-step page
   (`tests/fixtures/ids-before-book.json`) is still on the page.
+- **Added in review round 1.** `build.py` writes `<!doctype html>` at the top of the root
+  `index.html` too (in quirks mode ids match case-insensitively: `#dp-h` found `#dp-H`) and strips
+  HTML and CSS comments from the shipped page (`build/book.html` keeps them). `test-book.js` checks
+  both pages start with a doctype, that no comment ships, a 450 kB gzip budget for
+  `docs/index.html`, and a path grammar on every static `<path d>` (each command a whole number of
+  argument sets; Chrome stops drawing at the first bad number). `test-setfig.js` checks that a prose
+  link to a predict-locked figure reaches its predict box, that no in-page link points into a hidden
+  block other than a figure, and an element ceiling of 25,000 after load. **Links to hidden
+  targets:** `app-book.js` routes any in-page link (prose, Contents, Contents dialog, a `#hash` on
+  load) whose target sits in a hidden block: to the predict box that unlocks it, with "Answer this
+  first" and focus on its first answer; otherwise to where the block would sit. The build wraps a
+  question's Hint and its Answer link in `div.q-foot`, so they share a line. A figure hidden at load
+  behind a predict box draws on unlock (`fig-block`), not at load. The glossary links each term to
+  its first *visible* use. The running miniature at stage 0 (the Prologue) shows the dam to come as
+  a faint dashed outline. `#ground` is an alias of Chapter 1. `fig-zones` still has no figcaption
+  (a warning); once Ch 9 adds it, make the warning an error in `tools/bookbuild.py`.
 
 ### A.10 What the layout stage built (the design system, as implemented)
 
@@ -430,6 +452,19 @@ before the punctuation that follows a reference.
   glows the controls it changed and offers "↑ Back to Example n.m". `tests/test-setfig.js` presses it
   for every control of every figure in headless Chrome, and checks the running head, the Contents
   dialog and Expand.
+- **Colour roles (review round 1).** Blue is water and nothing else: links are ink with a quiet
+  underline that turns brick on hover; Check yourself, Show/Hide, Hint, film times and the
+  transcript are ink-2. Use `k-water` only for the word that names water in a drawing.
+- **Figures beside their controls.** `div.g-split.g-reflow` (Figs. 1.1 and 2.1) makes the side
+  column's parts the figure's own grid items from 861px: drawing left, controls right, a chart or
+  close-up under the controls, the readouts in one row under both with their values level. Use it
+  for a `.g-split` figure whose side column has controls, one `.g-zoom` or `svg.g-chart`, and
+  readouts; keep readout labels short (two to four words). Four or more choices in a `.seg` are a
+  2 × 2 grid at every width.
+- **Expand** sits in the figure's title strip on every figure (over the drawing it hid the toe).
+- **Static figures.** Static plates keep their drawing at the width their own CSS gives it
+  (`src/fig/<key>-*.css`), left-aligned with the caption. A caption in the margin column was
+  considered and rejected while captions run to 80–130 words.
 - **Equations.** `eq-depth-p`, `eq-depth-push`, `eq-head-darcy`, `eq-grip-sigma` and
   `eq-grip-strength` are now `div.eq` (same text). The other `div.formula`s are restyled in the serif
   until the writers replace them.
@@ -450,7 +485,7 @@ before the punctuation that follows a reference.
   `.film-before` with the question in a plain `<p>` and an optional `p.film-bridge`;
   `.film-stage > video`; `p.film-k.film-marks-k` "In this film" and `ol.film-marks` of
   `<li><button data-t="…">m:ss</button> <span class="fm-l">label</span> <a data-ref="…"></a></li>`;
-  the transcript placeholder; `figcaption > p.film-after`. 4–8 marks; each at a spoken line (within
+  the transcript placeholder; `figcaption > details.film-after` (since review round 1, see F.13). 4–8 marks; each at a spoken line (within
   1.5 s of a cue start), inside the segment, labelled with its own time. The build refuses a mark
   outside its segment, mislabelled, or away from the narration.
 - **Transcript.** The cues inside the segment, joined into paragraphs where the narration pauses
@@ -519,6 +554,7 @@ one, "A"), `generated` (which generator fills it) and `aliases`.
 |---|---|---|
 | `#top` | cover | the masthead's id |
 | `#beach` | Ch 1 | Step 1 |
+| `#ground` | Ch 1 | the name of Part I; no element ever had this id, but outside links may use it |
 | `#pressure` | Ch 2 | Step 2 |
 | `#flow` | Ch 3 | Step 3 |
 | `#strength` | Ch 4 | Step 4 starts the strength material |
@@ -1050,7 +1086,9 @@ The running miniature: one drawing of an embankment section, 160 × 48 px, built
 standpipe; 4 σ′ arrows; 5 soaked zone shaded; 6 freeboard mark and spillway notch; 7 small concrete
 block with uplift arrows; 8 a raise on the crest; 9 core and filter; 10 two flow lines and three
 equipotentials; 11 toe filter and drain; 12 slip circle; 13 the 1 m workbench grid; 14 two
-piezometers and a weir). It never shows a foundation layer.
+piezometers and a weir). It never shows a foundation layer. How to read explains it in two
+sentences (the dam that grows a piece at a time); at stage 0 it draws the dam to come as a faint
+dashed outline, captioned "The dam, piece by piece: so far, only the ground".
 
 ### F.2 Cold open
 
@@ -1090,7 +1128,11 @@ Unnumbered margin note (Source, Units):
   under the line. No JavaScript.
 - At most six History, For the curious and Units notes per chapter. Source notes as many as the
   literature numbers need, at most one per paragraph.
-- Nothing the argument needs goes in a note.
+- Nothing the argument needs goes in a note. How to read promises the reader can skip every note,
+  so a worked step, a reason in the why column, a hint, a check or an answer may lean only on the
+  main text. If a step needs a fact that is also in a note (a triangle's centre of area, air's
+  density, a historical figure's result), say it again in the line that uses it. A note may not be
+  the only place a term used later is explained ("Coulomb's earth" was).
 
 ### F.4 Glossary span
 
@@ -1140,6 +1182,15 @@ stage E (the machinery keeps styling `div.formula` until then).
 
 - One operation per step, units on every line, the "why" in plain words. Two columns on a laptop,
   the why under the step on a phone.
+- **Every line reproduces.** A reader who redoes a step with a calculator, using the numbers printed
+  on that line, must get the number printed as its result. Print each input with enough digits (as
+  a keyed span: the same key shows more decimals, `<span data-n="depth.arm-m@H=50">16.67</span>`)
+  that the arithmetic comes out; in the conclusion lines round as you like. Check this for every
+  product, quotient and root before you hand in (`ch01.a-tan-cm2` failed at 572.6 × 0.6745).
+- **Givens the reader can check.** A number read from a figure is given with the dimensions that
+  make it ("20.4 × 29.2 − 2 × 3.2 × 3.6 = 572.64 cm²"), each keyed, never "read from the drawing".
+- **Check** answers its own question with numbers the reader can follow; a Check that says forces
+  balance has not explained where a force comes from.
 - Every computed number keyed (E.1). Givens from the code keyed on first appearance.
 - `Set the figure` is optional per example, required when a figure can show the example's state.
 
@@ -1188,6 +1239,12 @@ Two or three per chapter, one short question each, answer one or two sentences.
 `data-unlocks` is optional. Use one before each film that asks the film's question, if the chapter
 has no other predict nearby. New predict ids follow `pr-<slug>-<word>`.
 
+The text right after a predict box is visible before the reader answers, so it must not give the
+answer away ("The lake is the natural guess, and it is wrong."). Put the verdict and the reason in
+`.predict-reveal`; start the next paragraph with a neutral beat that sets up the argument ("Follow
+where the lake's weight goes."). Links to a figure behind a predict box are fine: the page routes
+them to the box.
+
 ### F.9 Interactive figure (existing sheets) and caption pattern
 
 The existing `figure.sheet` markup stays. The header becomes:
@@ -1209,6 +1266,12 @@ Every caption, interactive or static, follows one pattern:
 ```
 
 The caption teaches on its own (a reader who reads only figures and captions gets the argument).
+The bold claim is about *this* drawing (what it shows, in one sentence), never the book's spine
+sentence or a generic line. A unit a readout uses (MN, MPa) is explained in the caption or before
+the figure if the reader has not met it. Name controls by their label in prose ("the Sensor depth
+slider"), never by position ("the first slider"). A Try that asks for a measurement or has one
+right answer gets the answer in a one-line `<details class="try-ans"><summary>Answers</summary><p>…</p></details>`
+after `ul.try`, with keyed numbers.
 Experiments go in `ul.try`, never in the caption sentence. Colours are named with the words the
 drawing uses and wrapped in the colour key spans (`<span class="k-water">blue</span>`, `k-acc` for
 brick red, `k-ok` green, `k-grain` ochre).
@@ -1294,10 +1357,21 @@ Mount Polley's plate (Ch 13 only) also carries `data-mechanism-safe="See Chapter
   </ol>
   <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
   <figcaption>
-    <p class="film-after"><b>After you watch.</b> One paragraph that collects what the film showed and links back to the figure where the reader can try it.</p>
+    <details class="film-after"><summary>After you watch: the answer</summary><p>One paragraph that opens with the answer to the Before question, collects what the film showed and links back to the figure where the reader can try it.</p></details>
   </figcaption>
 </figure>
 ```
+
+- **The question must still be open.** The Before question asks something the chapter's text has
+  not already answered (if the chapter has worked it out, ask the next step: a number at a new
+  depth, which of two fixes). The After note is folded in a `details` because it opens with the
+  answer; its summary reads "After you watch: the answer" (just "After you watch" when the note
+  answers nothing). The poster shows the number, title, part and length only; `book.json`'s
+  `question` for the film should say the same thing as the Before question, in one line.
+- **A lead-in sentence** that introduces the film ("The first three minutes of the film … retell
+  the chapter up to this point:") carries `class="film-lead" data-lead-for="<film id>"`; when the
+  video is missing, `app-film.js` hides it with the film. Don't point at a film from elsewhere in
+  the prose by its timestamp; the film may be missing.
 
 - Segment times live in `book.json`, not in the markup; the build writes `data-start`/`data-end`
   onto the figure and fills `film-len` ("3 min 11 s") and the transcript (the VTT cues inside the
@@ -1411,7 +1485,14 @@ friend at a table. Concretely:
 - Canadian spelling, as the page already uses: metre, centre, colour, litre, -ize ("recognize"),
   "analyze". Dates as "4 August 2014". Numbers with comma thousands (12,263), a true minus (−),
   units after a space (kPa, kN/m³, m/s, L/day per metre of dam). Slopes: "2H:1V (two across for
-  every one up)" at first use in a chapter, "2:1" after.
+  every one up)" at first use in a chapter, "2:1" after (Ch 1 introduces both forms); a later
+  chapter refers back to `ex-beach-slope` instead of explaining the notation again.
+- **One word, one meaning.** The *toe* is where the downstream face meets the ground, and the pivot
+  a dam tips about; the *foot of the face* is the bottom of the wet upstream face; heights of a
+  push are measured above the *base*. *Moment* and *lever arm* are defined in Ch 2 (glossary). A
+  unit's first appearance is explained: pascal (Ch 2, under Eq. 2.1), MN and MPa (Ch 2), kN (Ch 1).
+- **Pore pressure** presses on every grain round a gap and pushes neighbouring grains apart; it does
+  not push "outward on every grain".
 - Disasters with dignity: each toll stated once, sourced, plainly. No adjectives doing the work.
 
 **Never write** (the course was just cleaned of these):
@@ -1430,7 +1511,7 @@ friend at a table. Concretely:
 
 | Character | Born | Returns |
 |---|---|---|
-| **The beach** | Ch 1: three sands; the pale halo round a footprint | Ch 2 (the hole that fills from below), Ch 3 (rivulets after the tide), Ch 4 (the 19° face derived), Ch 5 (the halo explained: dense sand dilates), Ch 6 (a mine builds a beach too), Ch 11 (quicksand at the swash is a boil), Epilogue's last page (the tide coming in) |
+| **The beach** | Ch 1: three sands; the pale halo round a footprint. The firm middle beach is *saturated* (every gap full, the water held up by suction, like a sponge lifted from the bath) and densely packed; only the bucket sand drains to damp on the way home | Ch 2 (the hole that fills from below), Ch 3 (rivulets after the tide), Ch 4 (the 19° face derived), Ch 5 (the halo explained: dense, saturated sand dilates under the foot, the gaps grow, the water surface is drawn down below the surface grains, and the sand looks dry for a moment; Reynolds 1885: "the sand is full of water"), Ch 6 (a mine builds a beach too), Ch 11 (quicksand at the swash is a boil), Epilogue's last page (the tide coming in) |
 | **The block on the ramp** | Ch 4 (`fig-block`) | Ch 7 (a gravity dam is the block; uplift is the cushion), Ch 11 (the floating block is the critical gradient), Ch 12 (a slice is a block on a curved ramp) |
 | **Terzaghi** | Ch 4 (effective stress, Istanbul, 1925) | Ch 5 (consolidation, how long water takes to leave), Ch 11 (his first filter, 1922), Ch 13 epigraph (1929, "Effect of minor geologic details on the safety of dams"), Epilogue (Peck, his co-author, and the observational method) |
 | **Bennett Dam** | Ch 9 cold open (183 m of dirt; "notice the transition zone, a few metres wide; it will matter") | Ch 11 close (the 1996 sinkhole; the transition caught the core's fines) |
@@ -1452,7 +1533,7 @@ drained strength and passed.
 | Prologue | The breach, the volume, the creek and lake, no deaths, a dam designed, checked and raised for years; a panel spent months finding out why. "By the last chapter you'll be able to follow their answer." | any cause, any layer, clay, foundation, undrained |
 | Ch 3 | The race: a metre of compacted clay takes about a decade to pass a drop of water. "Hold on to that slowness; the last chapter needs it." Do **not** name Polley in the clue paragraph. | Polley named next to clay |
 | Ch 5 | Clay, loaded fast, can be weaker than the same clay loaded slowly. "This is the most important sentence for the last chapter." Do **not** name Polley in it. | Polley named next to clay or undrained |
-| Ch 6 | Polley in the case table, labelled British Columbia, method modified centreline, mechanism "not liquefaction of the tailings; see Chapter 13" | foundation, layer, slid |
+| Ch 6 | Polley in the case table, labelled British Columbia, method modified centreline, mechanism "not liquefaction of the tailings; see Chapter 13"; volume "21 to 25 million m³" as the Prologue gives it (`polley-cim2015`, p. 13) | foundation, layer, slid |
 | Ch 8 | Polley was raised by the modified centreline method, not upstream; the film says so: "It wasn't raised the upstream way. In 2014, it failed anyway." | — |
 | Ch 9 | It had the zones this chapter describes (a core, a filter and rockfill), as the last minute of *Dams that are never finished* says. Verify against the panel report before writing. | — |
 | Ch 10 | "Its seepage was not what failed it" (verify the panel's finding before writing). | — |
@@ -1831,7 +1912,11 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
 - **Moves in:** C.6 (suction, loose and dense, drained and undrained, the sandbox, liquefaction, the
   film, the ideas cards as `trapped-comes-back`).
 - **New:** suction as a negative u, in numbers (the castle); contraction and dilation explain the
-  halo (dense sand swells as you step, draws water in, the surface dries pale) and the sinking foot;
+  halo and the sinking foot. The halo's sand is the *saturated*, dense, suction-held middle beach of
+  Ch 1's cold open, not damp sand with water rings: as you step it shears and swells, its gaps grow,
+  the water in them is drawn down below the surface grains, and the surface looks dry and pale for
+  a moment until water seeps back (Reynolds 1885, p. 209 of the reprint: "the sand is full of
+  water"). Keep "suction" for the damp castle and "negative excess pore pressure" for the halo;
   **drained and undrained as a matter of time**: t ≈ L²/c_v (`eq-trapped-time`), Terzaghi's
   consolidation in words; **`fig-trapped-clock`** (static, log scale): drainage time of a 2 m and a
   10 m layer of sand and of clay, against the length of an earthquake shake and of a year of dam
@@ -2416,7 +2501,9 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
 - **97-errata.html:** intro ("what changed and why, dated"), then the generated list. The back-matter
   agent seeds `src/book/errata/back.json` from the fix commits in `git log` (fig 1.1, Foster et al.,
   head not pressure, downstream shell, Fig. 6.1 caption, flow-line sets, piping pill, leak verdict,
-  Coquitlam, and the rest), each with date, where, was, now, why.
+  Coquitlam, and the rest), each with date, where, was, now, why. Also record, as a change rather
+  than a fix, that the seven films lost their "Why did that happen?" buttons (`ask-film-*`) on
+  purpose (F.13: films are not sheets; their describe() returned only "(no live settings)").
 - **98-colophon.html:** typefaces (Source Serif 4, Source Sans 3, IBM Plex Mono), the palette and
   colour meanings, how the figures were drawn (inline SVG, no libraries), the solvers and their test
   counts (read the counts from the test output at the time of writing), the date of the last physics
@@ -2587,7 +2674,7 @@ may also replace the existing entries listed with it. Total about 110.
 | front (Plate 0) | upstream, downstream, crest, heel, toe, freeboard, abutment, tailwater, slope-notation | — |
 | pro | breach | — |
 | ch01 | saturated, packing | angle-of-repose (only if wording needs it) |
-| ch02 | gauge-pressure, gravity-dam, kilopascal | hydrostatic |
+| ch02 | gauge-pressure, gravity-dam, kilopascal, moment, lever-arm | hydrostatic |
 | ch03 | elevation-head, pressure-head, seepage-velocity, seepage-force | hydraulic-head, permeability |
 | ch04 | strength-envelope, infinite-slope, unit-weight, buoyant-unit-weight, heave | effective-stress, friction-angle, factor-of-safety, critical-gradient |
 | ch05 | consolidation, excess-pore-pressure, undrained-strength, cavitation, clay, residual-strength | suction, drained, undrained, liquefaction |
