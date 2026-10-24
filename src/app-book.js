@@ -53,7 +53,14 @@ function goToTarget(t) {
     e.preventDefault();
     if (goToTarget(t)) history.replaceState(null, '', a.getAttribute('href'));
   });
-  const atLoad = () => { const id = decodeURIComponent(location.hash.slice(1)); const t = id && document.getElementById(id); if (t && hiddenHost(t)) goToTarget(t); };
+  // a #hash on load: a hidden target goes to its predict box; a visible one is put back in place at once
+  // (the figures drew after the browser's jump and moved it), and only then does in-page scrolling turn smooth
+  const atLoad = () => {
+    const id = decodeURIComponent(location.hash.slice(1)); const t = id && document.getElementById(id);
+    if (t && hiddenHost(t)) goToTarget(t);
+    else if (t && window.scrollY > 0) t.scrollIntoView({ behavior: 'instant', block: 'start' });
+    requestAnimationFrame(() => document.documentElement.classList.add('smooth'));
+  };
   if (document.readyState === 'complete') atLoad(); else window.addEventListener('load', atLoad);
 })();
 const NARROW = window.matchMedia ? matchMedia('(max-width: 1099px)') : { matches: false, addEventListener() {} };

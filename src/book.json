@@ -57,7 +57,7 @@
           "hook": "Why the depth of the water matters and the size of the lake doesn't.",
           "mini": 2,
           "wordTarget": [3500, 4500],
-          "aliases": [{ "id": "pressure" }],
+          "aliases": [{ "id": "pressure" }, { "id": "ask-film-depth-not-size", "before": "film-depth-not-size" }],
           "films": [{ "id": "film-depth-not-size", "film": "depth-not-size", "start": 0, "end": 191.0, "part": "part one",
             "question": "Most of the push on a dam is low down: what share does the bottom half of the face carry?" }],
           "newIds": ["fig-depth-triangle", "eq-depth-p", "eq-depth-push", "ex-depth-sensor", "ex-depth-push", "ex-depth-slot", "ex-depth-triangle", "ex-depth-sloping"]
@@ -94,7 +94,7 @@
           "hook": "Loose and dense, drained and undrained, and liquefaction.",
           "mini": 5,
           "wordTarget": [3500, 4500],
-          "aliases": [],
+          "aliases": [{ "id": "ask-film-same-sand", "before": "film-same-sand" }],
           "films": [{ "id": "film-same-sand", "film": "same-sand", "start": 0, "end": 524.5,
             "question": "No grain breaks, and the house goes down anyway. What let go?",
             "tail": "The film’s last {rest} ask the lake-or-slot question, which you answered in {ch-depth}." }],
@@ -139,7 +139,7 @@
           "hook": "Upstream, downstream and centreline: three ways to raise a tailings dam, and a water dam built like one.",
           "mini": 8,
           "wordTarget": [3500, 4500],
-          "aliases": [{ "id": "raising" }],
+          "aliases": [{ "id": "raising" }, { "id": "ask-film-never-finished", "before": "film-never-finished" }],
           "films": [{ "id": "film-never-finished", "film": "never-finished", "start": 0, "end": null,
             "question": "Brazil and Chile each banned one way of building a tailings dam. Why that one?" }],
           "newIds": ["tbl-raising-compare", "case-coquitlam", "ex-raising-fill", "ex-raising-crest", "ex-raising-rate"]
@@ -158,7 +158,7 @@
           "hook": "Core, filters, transitions and shells, and how loose earth is made into dense fill.",
           "mini": 9,
           "wordTarget": [3500, 4500],
-          "aliases": [{ "id": "zones" }],
+          "aliases": [{ "id": "zones" }, { "id": "ask-film-wall-of-dirt", "before": "film-wall-of-dirt" }],
           "films": [{ "id": "film-wall-of-dirt", "film": "wall-of-dirt", "start": 0, "end": null,
             "question": "Water soaks through dirt. So why is the back half of this dam dry?" }],
           "newIds": ["tbl-zones-earth", "ex-zones-compaction", "ex-zones-shell"]
@@ -183,7 +183,7 @@
           "hook": "Boils, pipes, the four kinds of internal erosion, and the filter that stops them.",
           "mini": 11,
           "wordTarget": [4000, 5000],
-          "aliases": [],
+          "aliases": [{ "id": "ask-film-sand-that-boils", "before": "film-sand-that-boils" }],
           "films": [{ "id": "film-sand-that-boils", "film": "sand-that-boils", "start": 0, "end": 540.0,
             "question": "How does a trickle at the toe bring down a whole dam?",
             "tail": "The film’s last {rest} ask why one way of raising a tailings dam was banned, which {ch-raising} answered." }],
@@ -203,7 +203,7 @@
           "hook": "The factor of safety on a curved surface, worked by hand and by computer.",
           "mini": 12,
           "wordTarget": [4000, 5000],
-          "aliases": [],
+          "aliases": [{ "id": "ask-film-every-dam-leaks", "before": "film-every-dam-leaks" }],
           "films": [{ "id": "film-every-dam-leaks", "film": "every-dam-leaks", "start": 0, "end": null,
             "question": "This dam is barely standing. Fatter, a wall underneath, or a strip of sand: which fix saves it?" }],
           "newIds": ["fig-slope-infinite", "fig-slope-slice", "eq-slope-infinite", "eq-slope-seep", "eq-slope-bishop", "ex-slope-infinite", "ex-slope-slice", "ex-slope-dry", "ex-slope-drawdown"]
@@ -216,7 +216,7 @@
           "hook": "A workbench, five missions, and Mount Polley's answer.",
           "mini": 13,
           "wordTarget": [4000, 5000],
-          "aliases": [{ "id": "build" }],
+          "aliases": [{ "id": "build" }, { "id": "ask-film-layer-nobody-found", "before": "film-layer-nobody-found" }],
           "films": [{ "id": "film-layer-nobody-found", "film": "layer-nobody-found", "start": 0, "end": null,
             "question": "Mount Polley, 4 August 2014, about one in the morning. What gave way?" }],
           "newIds": ["case-polley", "fig-build-strengths", "fig-build-cost", "ex-build-fatter", "ex-build-hold", "ex-build-polley", "ex-build-breakout"]

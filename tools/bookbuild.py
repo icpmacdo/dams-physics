@@ -669,7 +669,7 @@ class Book:
             for f in films:
                 s = self.segments.get(f)
                 if s:
-                    bits.append('%s, %d min' % (self.refs[f]['label'], max(1, int(round((s['end'] - s['start']) / 60)))))
+                    bits.append('%s, %s' % (self.refs[f]['label'], fmt_len(s['end'] - s['start'])))   # the played length, as the opener gives it
             meta = (' <small class="toc-meta">%s</small>' % H.esc(' · '.join(bits))) if bits else ''
             mini = self.mini(u['mini'], cls='mini toc-mini') if u.get('mini') is not None else ''
             if u['kind'] == 'chapter':  # a large numeral; the word is there for a screen reader

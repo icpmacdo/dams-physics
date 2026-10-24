@@ -81,8 +81,10 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* smooth only once the page has loaded (app-book.js adds .smooth): a deep link jumps straight to its place */
+html { scroll-padding-top: 64px; }
+html.smooth { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html.smooth { scroll-behavior: auto; } }
 body {
   background: var(--paper);
   color: var(--ink);

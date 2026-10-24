@@ -35,6 +35,13 @@ const PROBE = String(function probe() {
   const say = (ok, m) => log.push([!!ok, m]);
   const wait = ms => new Promise(r => setTimeout(r, ms));
   const until = async (fn, ms) => { const t = Date.now(); while (Date.now() - t < ms) { if (fn()) return true; await wait(50); } return false; };
+  // where a seek lands: the time at the first timeupdate after the 'seeked' that follows act() (a fixed real-time
+  // wait after a seek let a slow load drift the reading, so the test failed now and then)
+  const landing = (v, act, ms = 8000) => new Promise(res => {
+    const t0 = setTimeout(() => res(NaN), ms);
+    v.addEventListener('seeked', () => v.addEventListener('timeupdate', () => { clearTimeout(t0); res(v.currentTime); }, { once: true }), { once: true });
+    act();
+  });
   f.addEventListener('load', async () => {
     const w = f.contentWindow, d = w.document;
     const errs = [];
@@ -67,14 +74,13 @@ const PROBE = String(function probe() {
       say(card && !card.hidden && /End of part one/.test(card.textContent) && /Part two is Film 7\.1, in Chapter 7/.test(card.textContent) && card.querySelector('a[href="#film-depth-not-size-2"]'),
         'part one: the end card says where part two plays, with a link to it');
       card.querySelector('.fe-more').click();
-      await wait(1800);
-      say(!v.paused && v.currentTime > 191.6 && card.hidden, `part one: "Keep watching here" plays on past the cut (at ${v.currentTime.toFixed(2)} s)`);
+      say(await until(() => !v.paused && v.currentTime > 191.6 && card.hidden, 8000), `part one: "Keep watching here" plays on past the cut (at ${v.currentTime.toFixed(2)} s)`);
       v.pause();
       // a chapter mark seeks and plays, and is marked current
       const mk = [...fig.querySelectorAll('.film-marks button')].find(b => b.textContent === '2:05');
-      mk.click();
-      await wait(1300);
-      say(!v.paused && v.currentTime > 125.5 && v.currentTime < 128.5, `the 2:05 chapter mark seeks there and plays (at ${v.currentTime.toFixed(2)} s)`);
+      const at = await landing(v, () => mk.click());
+      const playing = await until(() => !v.paused, 8000);
+      say(playing && at >= 125.5 && at <= 128.6, `the 2:05 chapter mark seeks there and plays (lands at ${at.toFixed(2)} s)`);
       say(mk.closest('li').getAttribute('aria-current') === 'true', 'the mark now playing is marked current');
       // part two starts at its own start, and starting it pauses part one
       const fig2 = d.getElementById('film-depth-not-size-2'), v2 = fig2.querySelector('video');
@@ -82,7 +88,7 @@ const PROBE = String(function probe() {
       say(await until(() => !v2.paused && v2.currentTime > 191, 10000), `part two: Play starts at 191 s (at ${v2.currentTime.toFixed(2)} s)`);
       say(v.paused, 'starting part two pauses part one');
       v2.currentTime = 100;
-      await wait(900);
+      await until(() => v2.currentTime >= 190.9, 8000);
       say(v2.currentTime >= 190.9, `part two: a seek before its start is held at its start (at ${v2.currentTime.toFixed(2)} s)`);
       v2.pause();
       // The same sand, three ways: stops at 524.5 s with a note on what the rest holds
@@ -95,22 +101,21 @@ const PROBE = String(function probe() {
       const c3 = fig3.querySelector('.film-endcard');
       say(c3 && /This chapter stops here/.test(c3.textContent) && /last 23 seconds ask the lake-or-slot question, which you answered in Chapter 2/.test(c3.textContent) && c3.querySelector('a[href="#ch-depth"]'),
         'same sand: the end card says what the last 23 seconds hold, with a link');
-      c3.querySelector('.fe-again').click();
-      await wait(1000);
-      say(!v3.paused && v3.currentTime < 3, `same sand: "Watch again" starts it over (at ${v3.currentTime.toFixed(2)} s)`);
+      const again = await landing(v3, () => c3.querySelector('.fe-again').click());
+      await until(() => !v3.paused, 8000);
+      say(!v3.paused && again < 3, `same sand: "Watch again" starts it over (at ${v3.currentTime.toFixed(2)} s)`);
       v3.currentTime = 523;
       await until(() => v3.paused, 7000);
       fig3.querySelector('.film-endcard .fe-more').click();
-      await wait(1600);
-      say(!v3.paused && v3.currentTime > 525, `same sand: "Watch the rest" plays past the cut (at ${v3.currentTime.toFixed(2)} s)`);
+      say(await until(() => !v3.paused && v3.currentTime > 525, 8000), `same sand: "Watch the rest" plays past the cut (at ${v3.currentTime.toFixed(2)} s)`);
       v3.pause();
       // a transcript paragraph seeks
       const tr = fig3.querySelector('.film-transcript');
       tr.open = true;
       const tb = [...tr.querySelectorAll('button.tr-t')][3];
-      tb.click();
-      await wait(1100);
-      say(!v3.paused && v3.currentTime - +tb.dataset.t > -0.1 && v3.currentTime - +tb.dataset.t < 2, `a transcript paragraph seeks to its time, ${tb.textContent} (at ${v3.currentTime.toFixed(2)} s)`);
+      const tat = await landing(v3, () => tb.click());
+      await until(() => !v3.paused, 8000);
+      say(!v3.paused && tat - +tb.dataset.t > -0.1 && tat - +tb.dataset.t < 2, `a transcript paragraph seeks to its time, ${tb.textContent} (lands at ${tat.toFixed(2)} s)`);
       v3.pause();
       // a whole film: no end card
       const fig4 = d.getElementById('film-every-dam-leaks'), v4 = fig4.querySelector('video');
