@@ -68,3 +68,32 @@
     back(btn);
   });
 })();
+
+/* ===================== Embedded view for the academy (?embed=<old step id>) ===================== */
+/* The academy's reading lessons (docs/academy) load this page in a frame as ../index.html?embed=types
+   and hide every section.chapter but #types. The steps are chapters now, and some steps' material is
+   spread over two or three chapters, so the page shows the chapters that hold an old step's material
+   and takes them out of the academy's selector (class chapter → chapter-embedded). Anything else
+   (cover, contents, part openers, back matter) is hidden. */
+(function embedView() {
+  const want = new URLSearchParams(location.search).get('embed');
+  if (!want) return;
+  const STEPS = {
+    beach: ['ch-beach'], pressure: ['ch-depth'], flow: ['ch-head'], strength: ['ch-grip', 'ch-trapped'],
+    types: ['ch-two-dams'], raising: ['ch-raising'], zones: ['ch-zones', 'ch-erosion'],
+    seepage: ['ch-concrete', 'ch-seepage', 'ch-erosion'], build: ['ch-slope', 'ch-build']
+  };
+  let ids = STEPS[want];
+  if (!ids) {
+    const el = document.getElementById(want), sec = el && el.closest('section.chapter, section.prologue, section.epilogue');
+    ids = sec ? [sec.id] : [];
+  }
+  if (!ids.length) return;
+  document.documentElement.classList.add('book-embed');
+  ids.forEach(id => {
+    const s = document.getElementById(id);
+    if (!s) return;
+    s.classList.add('embed-show');
+    if (s.classList.contains('chapter')) { s.classList.remove('chapter'); s.classList.add('chapter-embedded'); }
+  });
+})();

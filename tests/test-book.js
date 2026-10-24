@@ -151,6 +151,18 @@ const FIGS = { 'fig-beach': 'ch-beach', 'fig-depth': 'ch-depth', 'film-depth-not
   'film-sand-that-boils': 'ch-erosion', 'pr-build': 'ch-slope', 'film-every-dam-leaks': 'ch-slope', 'fig-build': 'ch-build', 'film-layer-nobody-found': 'ch-build' };
 const wrong = Object.entries(FIGS).filter(([f, u]) => unitOf(f) !== u).map(([f, u]) => `${f} in ${unitOf(f)}, not ${u}`);
 check(!wrong.length, `every figure, predict box and film sits in its chapter (${Object.keys(FIGS).length}, book/SPEC.md C)` + (wrong.length ? ': ' + wrong.join('; ') : ''));
+// the academy's reading lessons frame the page as ../index.html?embed=<old step id>; app-book.js maps each
+// old step to the chapters that now hold its material
+{
+  const src = fs.readFileSync(path.join(SRC, 'app-book.js'), 'utf8');
+  const STEPS = new Function('return ' + src.slice(src.indexOf('const STEPS = ') + 14, src.indexOf('};', src.indexOf('const STEPS = ')) + 1))();
+  const chIds = new Set(chapters.map(c => c.id));
+  const badSteps = Object.entries(STEPS).filter(([, v]) => !v.length || v.some(id => !chIds.has(id))).map(([k]) => k);
+  check(!badSteps.length, 'every old step in the embedded view maps to chapters of the book' + (badSteps.length ? ': ' + badSteps.join(', ') : ''));
+  const course = fs.readFileSync(path.join(ROOT, 'academy', 'js', 'course.js'), 'utf8');
+  const embeds = [...course.matchAll(/href: CLASSIC \+ '#([\w-]+)'/g)].map(m => m[1]);
+  check(embeds.length > 0 && embeds.every(id => STEPS[id] && idSet.has(id)), `the academy's reading lessons (${embeds.join(', ')}) have an embedded view and an anchor`);
+}
 const OLD = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', 'ids-before-book.json'), 'utf8')).ids;
 const lost = OLD.filter(id => !idSet.has(id));
 check(!lost.length, `all ${OLD.length} ids of the nine-step page are still on the page` + (lost.length ? ': lost ' + lost.join(', ') : ''));

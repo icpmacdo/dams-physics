@@ -29,5 +29,10 @@ a.alias { display: block; height: 0; overflow: hidden; }
 .case-index { padding-left: 1.2em; }
 .bib-group { font-family: var(--f-label); font-size: 0.8rem; letter-spacing: 0.04em; margin: 22px 0 6px; }
 .bib-cited { color: var(--ink-3); font-size: 0.85em; }
+.bib a { overflow-wrap: anywhere; }
 .back-pill { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); }
 .set-fig-first { margin: 8px 0 0; font-size: 0.9rem; color: var(--accent); }
+/* the academy's embedded view (app-book.js, ?embed=<old step id>) */
+html.book-embed .page > section:not(.embed-show), html.book-embed .indexbar { display: none !important; }
+section.chapter-embedded { padding-block: 72px 8px; border-top: 1px solid var(--rule); margin-top: 56px; }
+html.book-embed section.embed-show:first-of-type, html.book-embed .page > section.embed-show:not(.embed-show ~ .embed-show) { margin-top: 0; border-top: 0; padding-top: 20px; }
