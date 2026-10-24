@@ -1,5 +1,5 @@
 
-/* ===================== Groundwork: Steps 1–4 ===================== */
+/* ===================== Part I figures: the beach, depth, head, grip (Chapters 1–4) ===================== */
 
 /* Predict widget (declarative, used by every part of the page).
    <div class="predict" data-answer="b" [data-unlocks="#id, #id2"]>
@@ -314,7 +314,7 @@ function groundPredictInit(root) {
       if (err > 0.05 || dx || shakeT > 0 || Math.abs(tg.wet - wetO) > 0.005 || Math.abs(tg.pool - poolO) > 0.005) draw(dx);
     });
     tutorRegister('fig-beach', {
-      title: 'The same sand, different water (Fig. 1.1)',
+      title: 'The same sand, different water (' + ref('fig-beach') + ')',
       describe: () => [
         'Sand state: ' + CAP[key][0] + ' (' + CAP[key][1] + '). Packing: ' + pack + '.',
         'Steepest slope it holds: ' + SLOPE[key][0] + ', ' + SLOPE[key][1] + '.',
@@ -434,7 +434,7 @@ function groundPredictInit(root) {
     }
     render();
     tutorRegister('fig-depth', {
-      title: 'Water pressure on a dam face (Fig. 2.1)',
+      title: 'Water pressure on a dam face (' + ref('fig-depth') + ')',
       describe: () => {
         const F = 0.5 * 9.81 * H * H / 1000;
         return ['Water depth at the dam H = ' + H + ' m. Sensor at depth h = ' + n1(h) + ' m.',
@@ -540,7 +540,7 @@ function groundPredictInit(root) {
     F.ticks.push((t, dt) => player.tick(dt));
     F.onFirst = () => { if (RM) player.set(9); };
     tutorRegister('fig-race', {
-      title: 'Permeability race through 1 m of gravel, sand, silt and clay (Fig. 3.1)',
+      title: 'Permeability race through 1 m of gravel, sand, silt and clay (' + ref('fig-race') + ')',
       describe: () => {
         const s = timeOf(lt);
         return ['Clock (log scale): ' + fmtDur(s) + ' elapsed.',
@@ -552,7 +552,7 @@ function groundPredictInit(root) {
 
   /* ===================== Fig 3.2 · Darcy's experiment ===================== */
   /* @fig-darcy-begin */
-  // the state on load (as the pressed buttons and sliders in body-ground.html); the clay plug fills
+  // the state on load (as the pressed buttons and sliders in src/book/ch03-head.html); the clay plug fills
   // the pipe from DARCY_PLUG[0] to DARCY_PLUG[1] of its length
   const DARCY0 = { mat: 'sand', plug: false, hl: 2, hr: 0.6, L: 2 }, DARCY_PLUG = [0.4, 0.6];
   function darcyKEff(st) { const [plugA, plugB] = DARCY_PLUG, k = MATS[st.mat].k; if (!st.plug) return k; return 1 / ((1 - (plugB - plugA)) / k + (plugB - plugA) / MATS.clay.k); }
@@ -694,7 +694,7 @@ function groundPredictInit(root) {
       placeParts();
     });
     tutorRegister('fig-darcy', {
-      title: "Darcy's experiment: a soil-filled pipe between two tanks (Fig. 3.2)",
+      title: "Darcy's experiment: a soil-filled pipe between two tanks (" + ref('fig-darcy') + ')',
       describe: () => {
         const dh = st.hl - st.hr, i = Math.abs(dh) / st.L;
         const lines = ['Pipe material: ' + MATS[st.mat].name + ' (k = ' + MATS[st.mat].k.toExponential(0) + ' m/s)' + (st.plug ? ', with a clay plug (k = 1e-9 m/s) in the middle 20% of the length.' : ', no plug.'),
@@ -708,7 +708,7 @@ function groundPredictInit(root) {
 
   /* ===================== Fig 4.1 · block on a ramp with a water cushion ===================== */
   /* @fig-block-begin */
-  // block weight (kN), friction angle, and the state on load (as the sliders in body-ground.html)
+  // block weight (kN), friction angle, and the state on load (as the sliders in src/book/ch04-grip.html)
   const BLOCK = { W: 20, PHI: 34 * deg, a: 25, u: 0 };
   function blockForces(a, u) { // ramp angle a (degrees), cushion pressure u (kPa) on a 1 m² base; forces in kN
     const W = BLOCK.W, th = a * deg;
@@ -819,7 +819,7 @@ function groundPredictInit(root) {
       render();
     });
     tutorRegister('fig-block', {
-      title: 'Block on a ramp with a water cushion (Fig. 4.1)',
+      title: 'Block on a ramp with a water cushion (' + ref('fig-block') + ')',
       describe: () => {
         const f = forces();
         return ['Ramp angle ' + st.a + '°, water pressure in the cushion ' + n1(st.u) + ' kPa (cushion area 1 m²). Block weight 20 kN, friction angle 34°.',
@@ -932,7 +932,7 @@ function groundPredictInit(root) {
     dragHandle(svg, hit, ([, y]) => { const v = clamp(Math.round(-((y - GY) / KZ) * 4) / 4, -10, 3); wtEl.value = v; wt = -v; render(); });
     render();
     tutorRegister('fig-column', {
-      title: 'Total, pore and effective stress in a 10 m sand column (Fig. 4.2)',
+      title: 'Total, pore and effective stress in a 10 m sand column (' + ref('fig-column') + ')',
       describe: () => {
         const [sB, uB] = stress(ZB);
         return ['Water table: ' + (wt >= ZB ? 'below the column (damp sand, no pore pressure)' : wt > 0 ? n1(wt) + ' m below ground' : n1(-wt) + ' m above ground (flooded)') + '. Unit weights 18 kN/m³ above it, 20 below, water 9.81.',

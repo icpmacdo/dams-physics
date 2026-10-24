@@ -1,0 +1,55 @@
+<section class="chapter" id="ch-zones">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.10): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col" data-stub>
+      <!-- Cold open (H.10): "From the highway, W.A.C. Bennett Dam looks like a long grassy hill." -->
+    </div>
+    <div class="col">
+      <p>A large embankment dam is rarely made of one material. It is <strong>zoned</strong>: built from several soils and rocks, each placed where it does one job. A zone holds water back, or lets water out without letting soil out, or adds weight. The clay <span class="gl" data-term="core">core</span> is the clay plug from <a data-ref="ch-head"></a>, taking almost the whole drop in head. <span class="gl" data-term="filter">Filters</span> and <span class="gl" data-term="drain">drains</span> let the water that gets through escape, so the pressure downstream of the core stays low. That leaves the downstream <span class="gl" data-term="shell">shell</span> fairly dry, its grains pressing hard on each other, which is where its grip comes from (<a data-ref="ch-grip"></a>). The upstream shell sits under the reservoir and stays soaked, but it is free-draining, so its water pressure is only what the reservoir puts there. Read any section from the middle outward and you'll find the same order: tight in the centre, coarser and more free-draining toward the faces.</p>
+      <p>Pick a dam type, then click any zone (or its chip) to see what it's made of and what it's for. <strong>Build</strong> replays the construction sequence; <strong>Explode</strong> pulls the zones apart.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-zones">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · <span id="zn-title">Zoned earth–rockfill dam with central core</span></span>
+        <span class="scale-note" id="zn-scale">Drawn to scale · 60 m high</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="tabs" role="tablist" id="zn-tabs" aria-label="Dam type"></div>
+      <div class="controls">
+        <button class="btn primary" id="zn-build" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Build</span></button>
+        <button class="btn" id="zn-explode" type="button" aria-pressed="false">Explode</button>
+        <span class="build-step" id="zn-step" aria-live="polite"></span>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-zones" viewBox="0 0 1000 400" role="img" aria-label="Cross-section of the selected dam type with each construction zone drawn and labelled with its zone code."></svg></div>
+      <div class="zone-layout">
+        <div class="chips" id="zn-chips" aria-label="Zones"></div>
+        <div class="zone-info" id="zn-info" aria-live="polite"></div>
+      </div>
+    </figure>
+
+    <div class="col" data-stub>
+      <!-- New (H.10): four jobs, zone numbers, the rule broken on purpose (CFRD, gravity, tailings),
+           tbl-zones-earth, compaction ("How a heap becomes fill"), "our dam" named;
+           ex-zones-compaction, ex-zones-shell; the Polley clue after the zones (G.4). -->
+    </div>
+    <figure class="sheet wide film" id="film-wall-of-dirt">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · A wall made of dirt</span><span class="scale-note" data-gen="film-len"></span></div>
+      <video controls preload="none" playsinline poster="video/wall-of-dirt.jpg" aria-label="Film: A wall made of dirt"><source src="video/wall-of-dirt.mp4" type="video/mp4"><track kind="captions" src="video/wall-of-dirt.vtt" srclang="en" label="English"></video>
+      <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
+      <figcaption>How a heap of soil can hold back a lake when water passes through soil: the permeability race, Darcy's pipe, and a clay core that takes almost the whole head so the downstream shell stays dry and strong.</figcaption>
+    </figure>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.10): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

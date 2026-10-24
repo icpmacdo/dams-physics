@@ -689,3 +689,20 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
    describe() returns a short plain-text summary of the settings and what the figure shows now. */
 const tutorFigs = new Map();
 function tutorRegister(id, o) { tutorFigs.set(id, o); }
+
+/* the book's numbers: build.py writes every figure, film, chapter and part label into #book-data,
+   so a script never types "Fig. 7.1". ref('fig-uplift') returns exactly the text the page shows;
+   ref(id, 'num') the bare number, ref(id, 'title') "Chapter 4, Grip". */
+let BOOK = null;
+function bookData() {
+  if (BOOK) return BOOK;
+  const el = document.getElementById('book-data');
+  try { BOOK = JSON.parse(el ? el.textContent : '{}'); } catch (e) { BOOK = {}; }
+  BOOK.refs = BOOK.refs || {}; BOOK.units = BOOK.units || []; BOOK.films = BOOK.films || {}; BOOK.glossaryExtra = BOOK.glossaryExtra || {};
+  return BOOK;
+}
+function ref(id, form) {
+  const r = bookData().refs[id];
+  if (!r) { console.error('ref(): no numbered element #' + id); return id; }
+  return form === 'num' ? r.num : form === 'title' ? r.label + ', ' + r.title : r.label;
+}

@@ -1,0 +1,101 @@
+<section class="chapter" id="ch-head">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.4): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col" data-stub>
+      <!-- Cold open (H.4): the beach at low tide; rivulets trickle out of the sand for hours. -->
+    </div>
+    <div class="col">
+      <p>Water in the ground is rarely still. It creeps through the gaps between the grains, from where its head is high to where it is low. Head is the measure below, and it is not the same as pressure: still water at the bottom of a lake is at high pressure and doesn't move. You can watch it happen as the tide goes out: for hours afterwards, little streams trickle out of the sand at the bottom of the beach.</p>
+      <p>To tell which way the water will go, engineers use a simple measure. Imagine pushing a clear straw down into wet ground and watching how high the water climbs inside it. The level the water reaches, measured from some fixed height such as sea level, is the <span class="gl" data-term="hydraulic-head">total head</span> at the bottom of the straw. <strong>Water flows from high head to low head.</strong></p>
+      <p>The level in the straw adds two things: how high the bottom of the straw is, and how far the water pressure there can push water up the straw. So groundwater can flow uphill, as long as it is heading toward lower head. That is how a spring bubbles up out of a hillside.</p>
+      <p>The straws are real. Engineers sink thin pipes into dams and the ground beneath them and measure the water level inside. They are called <span class="gl" data-term="piezometer">piezometers</span>, and reading them, along with measuring the water that seeps out, is one of the main ways engineers know what the water inside a dam is doing.</p>
+      
+      <h3>Some ground is a sieve, some is a wall</h3>
+      <p>How easily water passes depends on the size of the gaps. Gravel has gaps you can see. Clay is made of flat flakes hundreds to thousands of times smaller than a grain of sand, and the gaps between them are tiny and twisting. Engineers measure how easily water gets through as the <span class="gl" data-term="permeability">permeability</span>, written <em>k</em> and given in metres per second.</p>
+      
+      <h3>Darcy's law</h3>
+      <p>In 1855 and 1856 Henry Darcy, the engineer who had built the water supply of Dijon in France some fifteen years before, ran water down through sand packed in a single upright column 2.5 m tall, and found a simple rule. Double the difference in head between the two ends and the flow doubles. Double the length of the sand and the flow halves. What matters is how steeply the head drops along the way: the head lost for every metre the water travels. That slope is called the <span class="gl" data-term="hydraulic-gradient">hydraulic gradient</span>, written <em>i</em>.</p>
+      <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow (m³/s) · k permeability (m/s) · i gradient · Δh head difference (m) · L length of the path (m) · A area the water flows through (m²)</small></div>
+      <p>Below, his test is laid on its side: a pipe full of sand joins two tanks. Drag the water levels in the tanks, or use the sliders. The thin tubes along the pipe are piezometers. Watch how the water in them lines up in a straight slope from one tank to the other.</p>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-darcy">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Darcy's experiment</span>
+        <span class="scale-note">Schematic · flow per square metre of pipe</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-darcy" viewBox="0 0 480 280" role="img" aria-label="Two water tanks joined at the bottom by a horizontal pipe packed with soil. Piezometer tubes rise from the pipe. The water levels in the tubes fall in a straight line from the higher tank to the lower one, and water particles move through the pipe from high head to low head."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="ctl"><span>Material in the pipe</span><div class="seg" id="dc-mat"><button type="button" data-v="gravel" aria-pressed="false">Gravel</button><button type="button" data-v="sand" aria-pressed="true">Sand</button><button type="button" data-v="silt" aria-pressed="false">Silt</button></div></div>
+            <div class="ctl"><span>Clay plug in the middle</span><div class="seg" id="dc-plug"><button type="button" data-v="0" aria-pressed="true">None</button><button type="button" data-v="1" aria-pressed="false">Add a clay plug</button></div></div>
+            <div class="range"><label for="dc-hl">Left tank</label><input type="range" id="dc-hl" min="0.2" max="2.4" step="0.05" value="2"><output id="dc-hl-o">2.00 m</output></div>
+            <div class="range"><label for="dc-hr">Right tank</label><input type="range" id="dc-hr" min="0.2" max="2.4" step="0.05" value="0.6"><output id="dc-hr-o">0.60 m</output></div>
+            <div class="range"><label for="dc-L">Pipe length</label><input type="range" id="dc-L" min="1" max="4" step="0.5" value="2"><output id="dc-L-o">2.0 m</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Head difference <i class="g-sym">Δh</i></span><b id="dc-dh">1.40 m</b><small id="dc-dh2">left is higher</small></div>
+            <div class="ro"><span>Gradient <i class="g-sym">i = Δh / L</i></span><b id="dc-i">0.70</b><small id="dc-i2">head lost per metre</small></div>
+            <div class="ro"><span>Flow per m² <i class="g-sym">q/A</i></span><b id="dc-q">4.2 L/min</b><small id="dc-q2">through each m² of pipe</small></div>
+            <div class="ro"><span>Head lost in the plug</span><b id="dc-share">–</b><small id="dc-share2">no plug</small></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>The dashed line through the tops of the tubes is the head, falling steadily along the pipe. Water always flows down that line, from high head to low. Swap the tanks over and it flows the other way. Particle speeds are compressed so slow materials still show movement.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Now add the clay plug. The pipe is the same length and the tanks are at the same heights, but nearly all the head is lost across the short piece of clay. The tubes in the sand on either side read almost the same as the tank next to them. The same flow has to pass through every part of the pipe, and the tight clay needs a much steeper gradient to push it through, so the clay takes almost the whole drop.</p>
+      <p>This is how a dam with a clay <span class="gl" data-term="core">core</span> works. A core of clay, much narrower than the dam around it, takes almost the whole drop in head, from the reservoir level down to the downstream side. The sand and rock on either side carry almost none of it, so the water pressure in the downstream half of the dam stays low. <a data-ref="ch-zones"></a> shows the zones that make this work.</p>
+      
+      <div class="predict" data-answer="d" id="pr-clay" data-unlocks="#fig-race">
+        <p class="predict-q">A one-metre block of compacted clay has water pressing on one side, with the water level 1 m higher than on the other side. How long does a drop of water take to get through the metre?</p>
+        <div class="predict-opts"><button data-v="a">About a minute</button><button data-v="b">About a day</button><button data-v="c">About a month</button><button data-v="d">About ten years</button></div>
+        <div class="predict-reveal" hidden><p>About eleven years. Through gravel, the same push gets a drop across in about 30 seconds. The race below runs four materials side by side. Its clock has to speed up enormously before the clay moves at all.</p></div>
+      </div>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-race" hidden>
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · One metre of each material, the same push</span>
+        <span class="scale-note" id="rc-scale">Clock speeds up tenfold every second</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-race" viewBox="0 0 480 400" role="img" aria-label="Four columns, one metre tall, of gravel, sand, silt and clay, each with water on top. As the clock runs, a wet front moves down each column. Gravel is soaked through in seconds, sand in about an hour, silt in weeks and clay in about eleven years. A logarithmic time axis below marks when each finishes."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <button class="btn primary" id="rc-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Start the race</span></button>
+            <div class="range"><label for="rc-t">Clock</label><input type="range" id="rc-t" min="0" max="9" step="0.01" value="0"><output id="rc-t-o">0 s</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Time elapsed</span><b id="rc-clock">0 s</b><small id="rc-clock2">press start</small></div>
+            <div class="ro"><span>Through so far</span><b id="rc-done">None</b><small id="rc-done2">0 of four</small></div>
+          </div>
+          <p class="note">A drop of water moves faster than <em>k</em> alone suggests, because it can only travel through the gaps, which take up about a third of the volume. The times here allow for that: time = gap fraction × length ÷ (<em>k</em> × push).</p>
+        </div>
+      </div>
+      <figcaption>Gravel and compacted clay differ by ten million times in permeability. The scale under the columns is <strong>logarithmic</strong>: each step to the right is ten times longer than the one before. On an ordinary scale where gravel's 30 seconds took one millimetre, clay would need about twelve kilometres.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>That enormous range is what makes it possible to build a dam out of soil at all. A dam needs a part that water can barely get through, and parts that let water out quickly, side by side. Clay does the first job. Sand and gravel do the second.</p>
+    </div>
+    <div class="col" data-stub>
+      <!-- New (H.4): fig-head-straws, eq-head-total, eq-head-darcy, layers in series, seepage force;
+           the Polley clue after the race ("Hold on to that slowness…", G.4). -->
+    </div>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.4): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

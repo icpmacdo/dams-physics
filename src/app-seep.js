@@ -88,7 +88,7 @@
 
 /* ===================== Fig 6: seepage lab ===================== */
 /* @fig-lab-begin */
-// Fig 8.2: the lab's state on load (matches the pressed buttons and the slider in body.html),
+// fig-lab: the lab's state on load (matches the pressed buttons and the slider in src/book/ch10-seepage.html),
 // and the pure part of its readouts. Both are pinned by tests/test-figures.js.
 const LAB0 = { damType: 'homogeneous', drain: 'none', cutoff: 'none', foundation: 'pervious', reservoir: 0.85 };
 function labFmtQ(q) { // m3/s per m -> L/day per m
@@ -461,7 +461,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
   svg.setAttribute('viewBox', `0 0 1000 ${Math.round(M.H)}`);
   const g = E('g', null, svg);
   /* @fig-uplift-begin */
-  const B = 48, TW = 5, XD = 6, gw = 9.81, gc = 23.5, HW0 = 57; // HW0: reservoir on load, as the slider in body.html
+  const B = 48, TW = 5, XD = 6, gw = 9.81, gc = 23.5, HW0 = 57; // HW0: reservoir on load, as the slider in src/book/ch07-concrete.html
   const damPts = [[0, 0], [0, 60], [8, 60], [8, 50], [48, 0]];
   const W = gc * polyArea(damPts);
   const xW = (480 * 4 + 1000 * (8 + 40 / 3)) / 1480;

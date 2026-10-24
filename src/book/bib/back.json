@@ -1,0 +1,56 @@
+{
+  "vick1990": {
+    "group": "books", "short": "Vick (1990)",
+    "authors": "Vick, S.G.", "year": "1990",
+    "title": "Planning, Design, and Analysis of Tailings Dams",
+    "container": "Vancouver: BiTech", "doi": null, "url": null
+  },
+  "fell2015": {
+    "group": "books", "short": "Fell et al. (2015)",
+    "authors": "Fell, R., MacGregor, P., Stapledon, D., Bell, G., Foster, M.", "year": "2015",
+    "title": "Geotechnical Engineering of Dams, 2nd ed.",
+    "container": "Leiden: CRC Press/Balkema", "doi": null, "url": null
+  },
+  "foster2000": {
+    "group": "papers", "short": "Foster, Fell & Spannagle (2000)",
+    "authors": "Foster, M., Fell, R., Spannagle, M.", "year": "2000",
+    "title": "The statistics of embankment dam failures and accidents",
+    "container": "Canadian Geotechnical Journal 37(5): 1000–1024", "doi": "10.1139/t00-030", "url": null
+  },
+  "cooke-sherard1987": {
+    "group": "papers", "short": "Cooke & Sherard (1987)",
+    "authors": "Cooke, J.B., Sherard, J.L.", "year": "1987",
+    "title": "Concrete-face rockfill dam: II. Design",
+    "container": "Journal of Geotechnical Engineering 113(10)", "doi": null, "url": null
+  },
+  "sherard-dunnigan1989": {
+    "group": "papers", "short": "Sherard & Dunnigan (1989)",
+    "authors": "Sherard, J.L., Dunnigan, L.P.", "year": "1989",
+    "title": "Critical filters for impervious soils",
+    "container": "Journal of Geotechnical Engineering 115(7)", "doi": null, "url": null
+  },
+  "usbr1987": {
+    "group": "standards", "short": "USBR (1987)",
+    "authors": "U.S. Bureau of Reclamation", "year": "1987",
+    "title": "Design of Small Dams, 3rd ed.",
+    "container": "Denver", "doi": null, "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-pdfs/SmallDams.pdf"
+  },
+  "usace-em2200": {
+    "group": "standards", "short": "USACE EM 1110-2-2200",
+    "authors": "US Army Corps of Engineers", "year": null,
+    "title": "EM 1110-2-2200, Gravity Dam Design",
+    "container": null, "doi": null, "url": null
+  },
+  "gistm2020": {
+    "group": "standards", "short": "GISTM (2020)",
+    "authors": "International Council on Mining and Metals, United Nations Environment Programme and Principles for Responsible Investment", "year": "2020",
+    "title": "Global Industry Standard on Tailings Management",
+    "container": "August 2020", "doi": null, "url": null
+  },
+  "feijao2019": {
+    "group": "reports", "short": "Robertson et al. (2019)",
+    "authors": "Robertson, P.K., de Melo, L., Williams, D.J., Wilson, G.W.", "year": "2019",
+    "title": "Report of the Expert Panel on the Technical Causes of the Failure of Feijão Dam I",
+    "container": "12 December 2019", "doi": null, "url": "https://damfailures.org/sites/default/files/wp-pdf/IR_Feijao-Dam.pdf"
+  }
+}

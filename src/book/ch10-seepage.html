@@ -1,0 +1,90 @@
+<section class="chapter" id="ch-seepage">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.11): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col" data-stub>
+      <!-- Cold open (H.11): the USACE sentence (verify or paraphrase), then pr-seepage-core. -->
+    </div>
+    <div class="col">
+      <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. You met the rule in <a data-ref="ch-head"></a>: water flows from high <span class="gl" data-term="hydraulic-head">head</span> to low, as fast as the soil lets it. That's Darcy's law:</p>
+      <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow rate · k permeability (hydraulic conductivity, m/s) · i hydraulic gradient: head lost per metre travelled · A area</small></div>
+      <p>From gravel to compacted clay, <em>k</em> falls by a factor of ten million: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. Across all natural soils the range is wider still, more than ten powers of ten. Zoning depends on that spread. A clay core much narrower than the dam can carry almost the entire head, while the free-draining shells beside it carry almost none.</p>
+      <p>Water has five main ways past a dam, numbered in the drawing below.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-paths">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · The five main seepage paths</span>
+        <span class="scale-note">Schematic</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="pair" style="grid-template-columns:minmax(0,2.2fr) minmax(0,1fr)">
+        <div><div class="svgwrap"><svg class="dwg" id="svg-paths" viewBox="0 0 720 340" role="img" aria-label="Section through an embankment dam on alluvium over fractured rock, with animated seepage along four of the five paths: through the embankment, under it through the alluvium, deep through rock joints beneath the grout curtain, and along the outside of the outlet conduit. The fifth, around the ends of the dam through the abutments, is in the plan view beside it."></svg></div></div>
+        <div><div class="svgwrap"><svg class="dwg" id="svg-plan" viewBox="0 0 300 340" role="img" aria-label="Plan view of the dam across a valley. Seepage flows around both ends of the dam through the abutment hillsides."></svg></div></div>
+      </div>
+      <figcaption><strong>1 Through the embankment:</strong> slowed by the core, collected by the chimney drain. <strong>2 Under it:</strong> through the river sand and gravel (alluvium) in the valley floor, rising at the toe, where it can boil sand. <strong>3 Through rock:</strong> along open cracks (joints) below the grout curtain, a screen of cement grout injected into the rock. <strong>4 Along the conduit:</strong> the poorly compacted contact around a pipe or culvert is a classic concentrated leak. <strong>5 Around the abutments:</strong> through the valley sides, best seen in plan.</figcaption>
+    </figure>
+
+    <div class="col" data-stub>
+      <!-- New (H.11): how to read a flow net (eq-seepage-net, fig-seepage-net), ex-seepage-net. -->
+    </div>
+    <div class="col">
+      <h3>Seepage lab</h3>
+      <p>Everything in the next drawing is calculated. The page divides a 24 m embankment and the ground beneath it into 1 m cells, applies Darcy's law between every pair of neighbours, and solves for the head in all of them at once (the steady seepage equation, ∇·(k ∇h) = 0). Along the way it finds the <span class="gl" data-term="phreatic-surface">phreatic surface</span>, the water table inside the dam, using the same saturated–unsaturated approach as commercial seepage software. Lines of equal head are drawn every 10% of the reservoir head. Flow lines are drawn in two sets: four start on the dam's upstream face and five on the reservoir floor. Within each set, each neighbouring pair carries the same flow, as in a hand-drawn flow net. Between the sets it differs: on the starting settings a gap between two foundation lines carries about eight times the flow of a gap between two dam lines, so compare line spacing only within a set.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-lab">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Seepage lab · finite-volume solution</span>
+        <span class="scale-note">Drawn to scale · 24 m embankment, 2H:1V slopes</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <div class="ctl"><span>Dam</span><div class="seg" id="lab-dam"><button type="button" data-v="homogeneous" aria-pressed="true">Homogeneous</button><button type="button" data-v="cored" aria-pressed="false">Clay core + shells</button></div></div>
+        <div class="ctl"><span>Drain</span><div class="seg" id="lab-drain"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="toe" aria-pressed="false">Toe drain</button><button type="button" data-v="chimney" aria-pressed="false">Chimney + blanket</button></div></div>
+        <div class="ctl"><span>Cutoff</span><div class="seg" id="lab-cut"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="partial" aria-pressed="false">Half depth</button><button type="button" data-v="full" aria-pressed="false">Full</button></div></div>
+        <div class="ctl"><span>Foundation</span><div class="seg" id="lab-found"><button type="button" data-v="pervious" aria-pressed="true">Sand &amp; gravel</button><button type="button" data-v="tight" aria-pressed="false">Clay</button></div></div>
+      </div>
+      <div class="controls">
+        <div class="range"><label for="lab-res">Reservoir</label><input type="range" id="lab-res" min="40" max="95" step="5" value="85"><output id="lab-res-o">20.4 m</output></div>
+        <span class="solving" id="lab-status" aria-live="polite"></span>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-lab" viewBox="0 0 1000 270" role="img" aria-label="Computed seepage through and under an embankment dam: total head shaded from dark blue at the reservoir to pale at the exit, with equipotential lines, flow lines, animated water particles and the phreatic surface."></svg></div>
+      <div class="readouts">
+        <div class="ro"><span>Seepage</span><b id="lab-q">–</b><small id="lab-q2">per metre of dam</small></div>
+        <div class="ro"><span>Leaves via</span><b id="lab-split">–</b><small id="lab-split2"></small></div>
+        <div class="ro"><span>Max exit gradient</span><b id="lab-i">–</b><small id="lab-i2">unfiltered exits only</small></div>
+        <div class="ro"><span>Safety vs piping</span><b id="lab-fs">–</b><small id="lab-fs2">i<sub>c</sub> ≈ 1.0</small></div>
+        <div class="ro"><span>Phreatic surface</span><b id="lab-ph">–</b><small id="lab-ph2"></small></div>
+      </div>
+      <figcaption>Things to try. <strong>Homogeneous dam, no drain:</strong> the phreatic surface breaks out on the downstream slope (a <span class="gl" data-term="seepage-face">seepage face</span>, the thick red line), softening the soil until pieces of the slope slump away. On the starting sand &amp; gravel foundation it is only about 2 m high, because most of the water goes under the dam; switch the foundation to <strong>Clay</strong> to see a face about 8 m high. <strong>Add the chimney and blanket drain:</strong> the phreatic surface dives into it and the downstream half stays dry. <strong>Sand &amp; gravel foundation:</strong> most water goes under the dam and comes up at the toe; watch the exit gradient, then add a cutoff. Particle speeds are compressed so slow paths stay visible. Exit gradients right at the toe depend on grid size, so read them as indicative. The safety against piping compares the exit gradient with the 1.0 that floats sand out of level ground; where the water leaves the downstream slope it drags grains out of the face rather than lifting them, so there it is a measure of how hard the water drags.</figcaption>
+    </figure>
+
+    <div class="col" data-stub>
+      <!-- New (H.11): the lab's three surprises; ex-seepage-hand, ex-seepage-core, ex-seepage-drains,
+           ex-seepage-dupuit; the Polley clue (G.4). -->
+    </div>
+    <div class="col">
+      <h3>Five ways to manage seepage, and one to watch it</h3>
+      <div class="defences">
+        <div><b>Cut it off</b><span>Core, cutoff trench, slurry wall, grout curtain, face slab, geomembrane.</span></div>
+        <div><b>Lengthen the path</b><span>An upstream impervious blanket makes the water travel further, lowering the gradient.</span></div>
+        <div><b>Drain it</b><span>Chimney, blanket and toe drains, relief wells, gallery drains: control where the phreatic surface sits and bleed off pressure.</span></div>
+        <div><b>Filter every exit</b><span>Wherever water leaves soil, it passes a filter so it leaves without the soil.</span></div>
+        <div><b>Weigh it down</b><span>A berm at the toe adds weight against uplift and heave.</span></div>
+        <div><b>Watch it</b><span>Piezometers measure pore pressure; weirs measure flow; cloudy water means soil is moving.</span></div>
+      </div>
+    </div>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.11): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

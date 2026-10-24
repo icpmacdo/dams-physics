@@ -1,0 +1,48 @@
+<section class="chapter" id="ch-slope">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.13): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col">
+      <div class="predict" data-answer="b" id="pr-build">
+        <p class="predict-q">A dam made all of compacted fill has a factor of safety of 1.12, with water breaking out 8 m up its downstream slope. Which change helps it most?</p>
+        <div class="predict-opts"><button data-v="a">Flatten the downstream slope from 2:1 to 2.5:1 (11% more fill)</button><button data-v="b">Paint a sand drain inside the downstream half (about 10% of the dam)</button><button data-v="c">Add a cutoff wall through the foundation under the dam</button></div>
+        <div class="predict-reveal" hidden><p>The drain does the most: the factor of safety goes from 1.12 to about 1.6. The flatter slope reaches only about 1.27, and the cutoff about 1.14. The fill is strong enough when it is dry. Its trouble is the water in it: on the critical slip surface, water pressure carries about a third of the soil's weight, so the grains press together with only two-thirds of it. A drain lets that water out before it reaches the downstream slope. You'll paint that drain yourself in <a data-ref="ch-build"></a>.</p></div>
+      </div>
+    </div>
+    <div class="col" data-stub>
+      <h3 id="s-slope-ramp">A slice is a block on a curved ramp</h3>
+      <!-- The infinite slope (fig-slope-infinite, eq-slope-infinite, eq-slope-seep), ex-slope-infinite;
+           slip circles (Petterson and Fellenius, verify). -->
+    </div>
+    <div class="col" data-stub>
+      <h3 id="s-slope-slice">One slice by hand</h3>
+      <!-- fig-slope-slice, eq-slope-bishop, ex-slope-slice (slice 13 of 40), ex-slope-dry. -->
+    </div>
+    <div class="col">
+      <h3>What the check does, and what it leaves out</h3>
+      <p>For circular slip surfaces the page uses Bishop's simplified method, the standard hand-and-computer method since 1955. It cuts the sliding mass into 40 vertical slices, works out how hard each slice presses on its base after taking away the water pressure there, and balances the turning effect of the whole mass about the circle's centre. On the weak-layer foundation it also tries sliding blocks with a flat base along the layer, using Spencer's method, which balances forces and turning effects together.</p>
+      <p>Water pressure on each slice comes straight from the seepage solution. Suction above the water level is ignored, as is usual practice, because it can vanish in a wet spell. For the upstream check the reservoir is emptied quickly: the free-draining materials (anything that passes water at 10⁻⁵ m/s or faster: rockfill, filter sand, tailings sand and the sand &amp; gravel foundation) drain with it, while clay and fill keep their water pressure for a while (the classic <span class="gl" data-term="rapid-drawdown">rapid drawdown</span> case). Designers accept a lower factor of safety for that short-lived condition, about 1.2. The workbench in <a data-ref="ch-build"></a> fixes the upstream slope at 2:1, which is steep for an earth dam; real ones are often flatter for exactly this reason.</p>
+    </div>
+    <div class="col" data-stub>
+      <!-- New (H.13): ex-slope-drawdown; what 1.5 means (usace-em1902); the soft Polley clue (G.4). -->
+    </div>
+
+    <figure class="sheet wide film" id="film-every-dam-leaks">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Every dam leaks</span><span class="scale-note" data-gen="film-len"></span></div>
+      <video controls preload="none" playsinline poster="video/every-dam-leaks.jpg" aria-label="Film: Every dam leaks"><source src="video/every-dam-leaks.mp4" type="video/mp4"><track kind="captions" src="video/every-dam-leaks.vtt" srclang="en" label="English"></video>
+      <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
+      <figcaption>The question at the top of this chapter, worked through on film: a fill dam standing at 1.12, three possible fixes, and why the drain does the most, by letting out the water that was taking the soil's grip.</figcaption>
+    </figure>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.13): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

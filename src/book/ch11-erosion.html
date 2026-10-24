@@ -1,0 +1,78 @@
+<section class="chapter" id="ch-erosion">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.12): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col" data-stub>
+      <!-- Cold open (H.12): Teton, 5 June 1976. -->
+    </div>
+    <div class="col">
+      <h3>When seepage carries soil: piping</h3>
+      <p>At the toe, the foot of the downstream slope, water seeping under a dam comes up out of the ground and pushes on the sand grains it passes. When the upward gradient reaches the <span class="gl" data-term="critical-gradient">critical gradient</span>, the water carries the full weight of the soil, the <span class="gl" data-term="effective-stress">effective stress</span> drops to zero, and the sand boils. It's the block from <a data-ref="fig-block"></a> with so much water pressure under it that it floats:</p>
+      <div class="formula"><b>i<sub>c</sub></b> = (G<sub>s</sub> − 1) / (1 + e) ≈ (2.65 − 1) / (1 + 0.65) ≈ <b>1.0</b><small>Gs specific gravity of the grains · e void ratio · safety factor against heave = i_c / i_exit; designers want at least 3 at an unfiltered exit of an existing dam, and 4 for a new dam or a repair, or about 2 to 2.5 where the soil and the water pressures are well measured (US Bureau of Reclamation). It flags sand boils, not every kind of internal erosion</small></div>
+      <p>A boil at the toe is where <strong>backward erosion <span class="gl" data-term="piping">piping</span></strong> begins. Grains wash out, a small channel forms, and the channel eats its way <em>upstream</em> under the dam. Erosion inside a dam, of this kind and others (engineers group them as <span class="gl" data-term="internal-erosion">internal erosion</span>), is one of the two big killers of embankment dams. Foster, Fell and Spannagle's 2000 study of 124 embankment-dam failures up to 1986 counted every kind as "piping": through the embankment, through the foundation, or from one into the other. It caused about as many failures as overtopping: 47% against 48% once spillway and gate failures are counted with overtopping. That is more than overtopping alone (34%). Some failures had more than one cause, so the shares add up to a little over 100%. Teton Dam in Idaho failed by a different kind of internal erosion on its first filling in 1976: water carried soil from its core into open joints in the rock, deep in a trench cut for the core.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-pipe">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Backward erosion piping, from boil to breach</span>
+        <span class="scale-note">Schematic · hours to decades compressed</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <button class="btn primary" id="pp-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Play</span></button>
+        <div class="range" style="flex:2 1 280px"><label for="pp-t">Progress</label><input type="range" id="pp-t" min="0" max="5" step="0.01" value="0"><output class="stage-label" id="pp-stage">1 · Steady seepage under the dam</output></div>
+        <div class="ctl"><span>Toe</span><div class="seg" id="pp-filter"><button type="button" data-v="0" aria-pressed="true">Unprotected</button><button type="button" data-v="1" aria-pressed="false">Filter + weighting berm</button></div></div>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-pipe" viewBox="0 0 1000 330" role="img" aria-label="Animated sequence: seepage under a dam on sand exits at the toe, forms a sand boil, a pipe erodes backward under the dam to the reservoir, enlarges, and the dam breaches. With a filter at the toe, the process stops at the first stage."></svg></div>
+      <figcaption>Each stage feeds the next. The longer the pipe grows, the shorter the path left for the water to seep through, so the gradient steepens and erosion speeds up. With a <strong>filter and weighting berm</strong> (a mound of extra fill) at the toe, the water still comes out but the sand can't, and the chain never starts. That is why dam inspectors walk the toe looking for boils, cloudy (turbid) seepage and sinkholes.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>Why a filter works</h3>
+      <p>In most embankments the most important zone is a few metres of carefully graded sand. Water leaving the core pushes on every grain it passes. If the next material has big gaps, as rockfill does, core grains are carried into them, and that is the start of <strong>internal erosion</strong>. A filter's gaps are smaller than the larger core grains, so those grains lodge at the boundary and form a stable layer that holds back the finer grains behind them. The water still gets through.</p>
+      <div class="formula">Retention:&nbsp;&nbsp;&nbsp;&nbsp;<b>D15</b>(filter) ≤ 4–5 × <b>D85</b>(soil)<br>Permeability: <b>D15</b>(filter) ≥ 4–5 × <b>D15</b>(soil)<small>Terzaghi's criteria. Dx = the grain size that x% of the material (by weight) is finer than. A filter's pore throats are roughly a fifth of its D15. Sherard &amp; Dunnigan (1989) refined the rules for clay cores.</small></div>
+    </div>
+    <figure class="sheet wide" id="fig-filter">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Core grains meeting rockfill vs a filter</span>
+        <span class="scale-note">Grain scale · schematic</span>
+      </div>
+      <div class="svgwrap"><canvas class="filtercv" id="cv-filter" width="1100" height="300" role="img" aria-label="Left: fine core particles carried by seepage pass straight through the large voids in rockfill. Right: the same particles reach a sand filter, lodge at the interface and stop, while water continues through."></canvas></div>
+      <figcaption><strong>Left:</strong> seepage carries fine core particles through the large voids of rockfill, and the core erodes. <strong>Right:</strong> the same particles reach a sand filter. The pores are too small, the particles jam at the interface, and only water passes.</figcaption>
+    </figure>
+
+    <div class="col" data-stub>
+      <!-- New (H.12): the four kinds of internal erosion (fig-erosion-modes), the critical gradient in a
+           tube (fig-erosion-tube, eq-erosion-ic), filter rules (eq-erosion-filter); case-teton;
+           ex-erosion-exit, ex-erosion-pipe, ex-erosion-filter. -->
+    </div>
+    <div class="col cases">
+      <div class="case-grid">
+        <article class="case" id="case-bennett">
+          <p class="case-k">W.A.C. Bennett Dam, Peace River · 1996</p>
+          <h4>A sinkhole on the crest</h4>
+          <p>In June 1996, crews checking a small pothole on the crest of BC Hydro's 183 m earthfill dam found a much larger hole beneath it. A second sinkhole turned up during the drilling that followed. Both were in the core, each around a survey casing installed during construction. BC Hydro's 2012 expert panel found that loose core soil around the first casing had settled when it got wet, and that seepage had also washed some of the core's fine grains away (internal erosion); the second may have been the settling alone. Engineers lowered the reservoir and filled the voids by compaction grouting, carefully, so the injected grout wouldn't crack the core. R.A. Stewart's 1998 account of the crisis ranks it as the gravest dam safety concern in BC Hydro's history.</p>
+        </article>
+      </div>
+      <p class="case-src">Sources: R.A. Stewart (1998) and BC Hydro's expert engineering panel (2012) on the Bennett Dam sinkholes.</p>
+    </div>
+
+    <figure class="sheet wide film" id="film-sand-that-boils">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · The sand that boils</span><span class="scale-note" data-gen="film-len"></span></div>
+      <video controls preload="none" playsinline poster="video/sand-that-boils.jpg" aria-label="Film: The sand that boils"><source src="video/sand-that-boils.mp4" type="video/mp4"><track kind="captions" src="video/sand-that-boils.vtt" srclang="en" label="English"></video>
+      <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
+      <figcaption>How a cloudy trickle at the toe can bring a dam down: the critical gradient, a pipe working back toward the reservoir, the filter that stops it, and what happened at Teton and Bennett.</figcaption>
+    </figure>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.12): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

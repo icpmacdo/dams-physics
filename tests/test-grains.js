@@ -1,4 +1,4 @@
-/* Numerical checks for the grain sandbox (src/app-grains.js, Fig. 4.3 of Step 4).
+/* Numerical checks for the grain sandbox (src/app-grains.js, fig-grains in Chapter 5).
  * Extracts the pure simulation between the @grains-sim markers and runs each emergent
  * behaviour the figure promises, then checks it actually emerges:
  *   1 dense + drained shear dilates, loose + drained shear compacts

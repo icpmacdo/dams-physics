@@ -1,0 +1,94 @@
+<section class="chapter" id="ch-depth">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.3): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col">
+      <p>Swim to the bottom of a deep pool and your ears start to hurt. The water above you has weight, and the deeper you go, the more of it there is pressing down. Water passes that press on in every direction, sideways too. So the water behind a dam pushes on the dam the same way it pushes on your eardrums.</p>
+
+      <div class="predict" data-answer="c" id="pr-paradox">
+        <p class="predict-q">Two dams each hold back water 50 m deep. One holds a lake 10 km long. The other holds a slot of water only 2 m wide, with solid rock behind it. Which dam has to be stronger?</p>
+        <svg class="dwg gd g-paradox" viewBox="0 0 480 130" role="img" aria-label="Left: a dam holding a long lake 50 metres deep. Right: a dam holding a narrow slot of water 2 metres wide and 50 metres deep against rock.">
+          <rect x="6" y="34" width="190" height="72" class="water"/>
+          <path d="M6,34 h190" class="water-line"/>
+          <path d="M44,30 l-6,8 M38,30 l-6,8" style="stroke:var(--ink-2);stroke-width:1.2"/>
+          <text x="98" y="27" class="lbl-s" text-anchor="middle">lake, 10 km long</text>
+          <polygon points="196,22 208,22 236,106 196,106" style="fill:var(--m-conc)" class="edge"/>
+          <rect x="0" y="106" width="240" height="16" fill="url(#p-bedrock)" class="edge"/>
+          <text x="186" y="74" class="lbl lbl-w halo" text-anchor="end">50 m deep</text>
+          <rect x="356" y="34" width="10" height="72" class="water"/>
+          <path d="M356,34 h10" class="water-line"/>
+          <polygon points="256,22 356,22 356,106 256,106" fill="url(#p-bedrock)" class="edge"/>
+          <polygon points="366,22 378,22 406,106 366,106" style="fill:var(--m-conc)" class="edge"/>
+          <rect x="250" y="106" width="230" height="16" fill="url(#p-bedrock)" class="edge"/>
+          <text x="361" y="16" class="lbl-s" text-anchor="middle">slot, 2 m wide</text>
+          <text x="412" y="74" class="lbl lbl-w halo">50 m deep</text>
+          <text x="300" y="74" class="lbl-s halo" text-anchor="middle">rock</text>
+        </svg>
+        <div class="predict-opts"><button data-v="a">The dam holding the big lake</button><button data-v="b">The dam holding the narrow slot</button><button data-v="c">Both need to be equally strong</button></div>
+        <div class="predict-reveal" hidden><p>Water pressure depends only on how far below the surface you are. Fifty metres down it is the same in a slot as in an ocean, so the two dams feel exactly the same push. The big lake is far heavier, but its weight rests on the lake bed. The size of a lake decides how much water escapes if the dam breaks. The depth decides the load on the dam.</p></div>
+      </div>
+
+      <p>Each metre of depth adds the weight of one more metre of water standing on every square metre. That is a tonne of water, which presses down with about 9.81 kilonewtons. A kilonewton (kN) is roughly the weight of 100 kg, and a pressure of one kN on every square metre is a kilopascal (kPa). So every metre of depth adds 9.81 kPa. Engineers write it like this:</p>
+      <div class="formula"><b>p</b> = ρ · g · h&nbsp;&nbsp;&nbsp;≈&nbsp;&nbsp;9.81 kPa × depth in metres<small>p pressure (kPa) · ρ density of water, 1,000 kg/m³ · g gravity, 9.81 m/s² · h depth below the water surface (m)</small></div>
+      <p>Ten metres of water adds about 98 kPa, roughly the pressure of the whole atmosphere above us. Divers count their depth in those 10 m steps.</p>
+      <p>Drag the sensor up and down. Then change the depth of the water and watch the total push on the dam.</p>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-depth">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Water pressure on a dam face</span>
+        <span class="scale-note">Depths to scale · dam shape schematic</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-depth" viewBox="0 0 480 390" role="img" aria-label="A reservoir held by a concrete dam. A pressure sensor hangs in the water on a cable. Arrows on the dam face show water pressure growing in a straight line from zero at the surface to its largest value at the bottom, forming a triangle."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="range"><label for="dp-H">Water depth</label><input type="range" id="dp-H" min="5" max="100" step="1" value="50"><output id="dp-H-o">50 m</output></div>
+            <div class="range"><label for="dp-h">Sensor depth</label><input type="range" id="dp-h" min="0" max="50" step="0.5" value="30"><output id="dp-h-o">30.0 m</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Pressure at the sensor</span><b id="dp-p">294 kPa</b><small id="dp-p2">9.81 × 30.0 m</small></div>
+            <div class="ro"><span>At the foot of the dam</span><b id="dp-pb">491 kPa</b><small id="dp-pb2">9.81 × 50 m</small></div>
+            <div class="ro"><span>Push on each metre of dam</span><b id="dp-F">12.3 MN</b><small id="dp-F2">as heavy as 1,250 tonnes</small></div>
+          </div>
+          <svg class="dwg gd g-chart" id="svg-depth-chart" viewBox="0 0 300 200" role="img" aria-label="Chart of total push on the dam against water depth. The curve bends upward: half the depth gives a quarter of the push."></svg>
+        </div>
+      </div>
+      <figcaption>The pressure grows in a straight line with depth, so the arrows on the dam face form a triangle, from nothing at the surface to the most at the bottom. The total push is the area of that triangle. The chart shows what that means: <strong>double the depth and the push grows four times</strong>.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>The area of the triangle is ½ × (pressure at the bottom) × (depth). The depth appears twice, once in the pressure and once in the height of the wet face, so the push grows with the depth squared:</p>
+      <div class="formula"><b>F</b> = ½ · ρ · g · H²<small>F push of the water on each metre length of dam (kN per m) · H depth of water at the dam (m)</small></div>
+      <p>A dam holding 100 m of water takes four times the push of one holding 50 m. That is why tall dams are so much thicker at the bottom than at the top. The concrete dam in <a data-ref="fig-types"></a> runs this same sum: its readouts show the pressure at the dam's upstream foot and the push per metre.</p>
+
+      <h3>Water in the ground has pressure too</h3>
+      <p>Dig a hole in the sand near the sea and it fills with water from below. The water in the hole settles at a level, and below that level every gap between the grains is full of water. That level is the <span class="gl" data-term="water-table">water table</span>.</p>
+      <p>The water in those gaps is connected from gap to gap, like the water in a soaked sponge, so while it is still it obeys the same rule as the water in a lake. A metre below the water table it is at about 10 kPa. Ten metres down it is at about 98 kPa, pushing outward on every grain around it. The pressure of the water in the gaps between grains is called <span class="gl" data-term="pore-pressure">pore pressure</span>, and <a data-ref="ch-grip"></a> turns on it.</p>
+    </div>
+    <div class="col" data-stub>
+      <!-- New (H.3): the still-cube argument, Stevin, gauge pressure, where the push acts (H/3),
+           the right reason a dam is a triangle (fig-depth-triangle), water on a sloping face;
+           eq-depth-p and eq-depth-push replace the two div.formula boxes; worked examples
+           ex-depth-sensor, ex-depth-push, ex-depth-slot, ex-depth-triangle, ex-depth-sloping. -->
+    </div>
+
+    <figure class="sheet wide film" id="film-depth-not-size">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Depth, not size <span class="film-part">part one</span></span><span class="scale-note" data-gen="film-len"></span></div>
+      <video controls preload="none" playsinline poster="video/depth-not-size.jpg" aria-label="Film: Depth, not size, part one"><source src="video/depth-not-size.mp4" type="video/mp4"><track kind="captions" src="video/depth-not-size.vtt" srclang="en" label="English"></video>
+      <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
+      <figcaption>The lake-or-slot question, followed to the push that grows with the depth squared, and why a concrete gravity dam is a triangle. The film goes on to the water under a concrete dam; that half plays in <a data-ref="ch-concrete"></a>.</figcaption>
+    </figure>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.3): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

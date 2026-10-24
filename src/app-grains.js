@@ -1,4 +1,4 @@
-/* ===================== Step 4 sandbox: grains, water and effective stress ===================== */
+/* ===================== Chapter 5 sandbox (fig-grains): grains, water and effective stress ===================== */
 /* A 2D discrete element model (soft discs, spring-dashpot contacts, Coulomb friction, rolling
  * resistance) coupled to a coarse grid of pore-water pressure. Nothing about the outcome is
  * scripted: pore pressure comes only from the change in pore volume the grains cause, and the

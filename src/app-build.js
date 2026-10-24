@@ -1,10 +1,10 @@
-/* ===================== Step 9: build your own dam ===================== */
+/* ===================== Chapter 13: build your own dam (fig-build) ===================== */
 /* The reader paints the dam's zones cell by cell (1 m grid of the seepage solver), picks the
    foundation, cutoff, downstream slope and reservoir, and presses Test. A worker runs the seepage
    solver in custom mode and then the slope stability solver (stability-solver.js) on its pore
    pressures. Missions are defined in StabilitySolver.BUILD.missions (checked in tests). */
 /* @fig-verdict-begin */
-// Fig 9.1's leak verdict: where the water passes the dam, not where it enters. It reads the solver's
+// fig-build's leak verdict: where the water passes the dam, not where it enters. It reads the solver's
 // net flow across the vertical line under the crest (x = 0), above and below the original ground.
 function leakWhere(q) {
   const thr = Math.max(0, q.passThroughDam || 0), und = Math.max(0, q.passUnderDam || 0), tot = thr + und;
@@ -18,11 +18,11 @@ function leakWhere(q) {
     : 'Water is going both through the dam and under it: a clay core with a full cutoff beneath it closes both paths.';
   return { under, path, txt, tip };
 }
-// Fig 9.1's numbers for safety against piping and for slope stability, on the same band edges as their pills
+// fig-build's numbers for safety against piping and for slope stability, on the same band edges as their pills
 // and the missions' goals (piping 1.5 and 3; slopes 1.0, 1.2 and 1.5)
 const pipeNum = (f, big) => (!isFinite(f) || f > 50 ? big || '> 50' : sfTxt(f, 1, [1.5, 3]));
 const fosNum = f => sfTxt(f, 2, [1, 1.2, 1.5]);
-// Fig 9.1's piping row. i_c ≈ 1 is the heave criterion for water rising out of level ground; out of a
+// fig-build's piping row. i_c ≈ 1 is the heave criterion for water rising out of level ground; out of a
 // sloping face the water drags grains out along the slope, so there the number is only a measure of the drag.
 function pipeText(iExit, where, pipe) {
   if (iExit <= 0.005) return 'All the water leaves through filter or drain material, which lets water out but holds soil back.';
@@ -91,7 +91,7 @@ function pipeText(iExit, where, pipe) {
       hints: ['Tailings sand has no cohesion. Even dry, a slope of loose grains stands only up to its friction angle, and wet it stands much less.',
         'Keep it dry first: a drain inside the sand lowers the water level.',
         'A chimney and blanket drain plus a 2.5:1 downstream slope does it.'],
-      done: 'Kept dry and laid back at a gentle slope, the sand holds. Downstream-raised tailings dams use drains and flat downstream slopes for this reason. One thing this sandbox cannot show: loose saturated tailings sand can liquefy (Step 4), so real ones are also compacted.'
+      done: 'Kept dry and laid back at a gentle slope, the sand holds. Downstream-raised tailings dams use drains and flat downstream slopes for this reason. One thing this sandbox cannot show: loose saturated tailings sand can liquefy (' + ref('ch-trapped') + '), so real ones are also compacted.'
     }
   };
   const GOAL_TEXT = {

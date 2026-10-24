@@ -2,7 +2,8 @@
 /* ===================== Glossary: hover / tap definitions ===================== */
 /* Mark a term in the text with <span class="gl" data-term="key">term</span>. Hovering, focusing or
    tapping it shows the plain-language definition below. The glossary list at the end of the page
-   (#glossary-list) is generated from the same table, each entry linked to where the term first appears. */
+   (#glossary-list) is generated from the same table, each entry linked to where the term first appears
+   ("First met in Chapter 4", the chapter's label from #book-data). */
 const GLOSSARY = {
   'pore-pressure': ['Pore water pressure', 'The pressure of the water in the gaps between soil grains. Written u. In still groundwater it rises about 9.8 kPa per metre below the water table; where the water flows, as it does through a dam, it can be more or less than that.'],
   'effective-stress': ['Effective stress', 'The part of the load that the grains carry by pressing on each other: total stress minus pore water pressure (σ′ = σ − u). Soil strength depends on it, so more water pressure means less strength.'],
@@ -48,6 +49,9 @@ const GLOSSARY = {
 };
 
 (function glossary() {
+  // the chapters' own terms (src/book/glossary/*.json) arrive through #book-data; a chapter may
+  // also replace an entry above (book.json glossaryOwners says which)
+  Object.assign(GLOSSARY, bookData().glossaryExtra);
   const tip = document.createElement('div');
   tip.className = 'gl-tip'; tip.id = 'gl-tip'; tip.setAttribute('role', 'tooltip'); tip.hidden = true;
   document.body.appendChild(tip);
@@ -100,9 +104,9 @@ const GLOSSARY = {
       const k = el.dataset.term;
       if (first[k]) return;
       if (!el.id) el.id = 'gl-' + k;
-      const sec = el.closest('section[id]');
-      const no = sec && sec.querySelector('.sheetno');
-      first[k] = { id: el.id, where: no ? no.textContent.trim() : '' };
+      const sec = el.closest('section.chapter, section.prologue, section.epilogue, section.front, section.back');
+      const r = sec && bookData().refs[sec.id];
+      first[k] = { id: el.id, where: r ? r.label : '' };
     });
     Object.keys(GLOSSARY).sort((a, b) => GLOSSARY[a][0].localeCompare(GLOSSARY[b][0])).forEach(k => {
       const g = GLOSSARY[k];

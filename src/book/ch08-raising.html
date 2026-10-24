@@ -1,0 +1,100 @@
+<section class="chapter" id="ch-raising">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.9): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col" data-stub>
+      <!-- Cold open (H.9): Brazil's Lei 14.066 of 2020 and its definition of the upstream method (verify). -->
+    </div>
+    <div class="col">
+      <p>A tailings dam is never finished while the mine runs. The mill makes tailings every day, so the dam has to grow with them. It begins as a <strong>starter dam</strong> of soil dug from pits nearby (engineers call this borrow), and the tailings are piped out over its crest. When the deposit nears the top, the dam is raised. Each raise can step toward the pond, away from it, or straight up, and that direction names the method:</p>
+      <ul>
+        <li><strong><span class="gl" data-term="upstream-raise">Upstream</span>:</strong> the crest steps toward the pond. Each raise is a small dyke built on the tailings beach.</li>
+        <li><strong>Downstream:</strong> the crest steps away from the pond. Each raise is built over the previous downstream slope, on compacted fill and natural ground.</li>
+        <li><strong>Centreline:</strong> the crest rises vertically. Each raise straddles the beach and the downstream slope.</li>
+      </ul>
+    </div>
+
+    <figure class="sheet wide" id="fig-raise">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Staged construction of three tailings dams, same height, same starter dam</span>
+        <span class="scale-note">Schematic · vertical scale ×1.5 · beach and pond not to scale</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <button class="btn primary" id="rs-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Play</span></button>
+        <div class="range" style="flex:2 1 280px"><label for="rs-t">Stage</label><input type="range" id="rs-t" min="0" max="10" step="0.01" value="10"><output class="stage-label" id="rs-stage">Raise 4 complete · 68 m</output></div>
+        <button class="btn alarm" id="rs-shake" type="button">Earthquake</button>
+        <button class="btn" id="rs-reset" type="button" hidden>Reset</button>
+      </div>
+      <div id="rs-panels"></div>
+      <div class="legend">
+        <span><i></i>Fill resting on tailings</span>
+        <span><i class="cp"></i>Path of the crest, stage by stage</span>
+        <span><i class="ph"></i>Water table inside the dam (phreatic surface); hatched below it is saturated</span>
+        <span><i class="sw" style="background:var(--m-drain)"></i>Drains</span>
+        <span><i class="sw" style="background:var(--m-clay)"></i>Low-permeability zone</span>
+      </div>
+      <figcaption>All three dams end at the same height above the same starter dam. The fill numbers are cross-section areas, the volume per metre of dam length. Press <strong>Earthquake</strong> to shake all three: the loose, saturated tailings that carry the upstream raises can liquefy, and the raises go with them. Downstream raises rest entirely on compacted, drained fill. Centreline raises put only a small upstream wedge on the beach (9% of the fill here), which must be sandy, drained and compacted.</figcaption>
+    </figure>
+
+    <div class="wide">
+      <div class="three">
+        <div>
+          <h4>Upstream</h4>
+          <p class="pm">For</p>
+          <ul><li>Least fill by far: each raise is a small dyke. Cheapest and fastest.</li><li>Can be built from the tailings themselves.</li></ul>
+          <p class="pm">Against</p>
+          <ul><li>Each raise rests on loose, saturated tailings that can liquefy, statically or in an earthquake.</li><li>Needs a long dry beach and a pond kept far from the crest to hold the phreatic surface down; raising must be slow.</li><li>Drains can't be extended upward; can't store much water.</li><li>New upstream dams have been barred in Chile since 1970, at first only where people live within reach downstream and under its 2007 rules everywhere, and banned outright in Brazil (since 2019).</li></ul>
+        </div>
+        <div>
+          <h4>Downstream</h4>
+          <p class="pm">For</p>
+          <ul><li>Every raise is founded on compacted fill or natural ground.</li><li>A core and drains can be extended with each raise, like a water dam.</li><li>Best earthquake performance; can store water.</li></ul>
+          <p class="pm">Against</p>
+          <ul><li>Most fill: both faces move out with every raise, so the section grows fastest (9,792 m³ per metre here, against 6,144 for centreline).</li><li>The toe marches outward, so land downstream has to be reserved from the start.</li></ul>
+        </div>
+        <div>
+          <h4>Centreline</h4>
+          <p class="pm">For</p>
+          <ul><li>A middle path on fill volume and footprint.</li><li>The crest stays put, so tailings pipelines and access roads don't move.</li><li>A vertical chimney drain can be raised with every lift.</li></ul>
+          <p class="pm">Against</p>
+          <ul><li>The upstream edge of each raise sits on the beach, so the beach next to the crest must be sandy, drained and compacted.</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="col" data-stub>
+      <!-- New (H.9): the mechanism in prose, rate of rise (ex-raising-rate), modified centreline with the
+           Polley clue (G.4), the alternatives; tbl-raising-compare from the columns above;
+           ex-raising-fill, ex-raising-crest. -->
+    </div>
+
+    <figure class="sheet wide film" id="film-never-finished">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Dams that are never finished</span><span class="scale-note" data-gen="film-len"></span></div>
+      <video controls preload="none" playsinline poster="video/never-finished.jpg" aria-label="Film: Dams that are never finished"><source src="video/never-finished.mp4" type="video/mp4"><track kind="captions" src="video/never-finished.vtt" srclang="en" label="English"></video>
+      <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
+      <figcaption>Why a tailings dam keeps growing for as long as the mine runs, the three ways to raise it, and why the upstream method keeps failing, from Stava to Brumadinho.</figcaption>
+    </figure>
+
+    <div class="col cases">
+      <div class="case-grid">
+        <article class="case" id="case-coquitlam">
+          <p class="case-k">Coquitlam Dam · 1913, backed up by a new dam in 2007</p>
+          <h4>A water dam built like a tailings dam</h4>
+          <p>Coquitlam Dam was built by hydraulic fill: soil washed into place with water, which leaves it loose and saturated, much like an upstream tailings raise. Modern investigations found a loose zone that could liquefy in a large earthquake. Rather than repair the old fill, BC Hydro built a new compacted earth-core rockfill dam against its downstream toe, founded mostly on dense glacial soil. The new dam was finished in 2007, and BC Hydro declared the whole seismic upgrade complete in 2008. A dam built to hold water can carry the same risk as a tailings dam: what decides it is whether the fill is loose and wet or dense and drained.</p>
+        </article>
+      </div>
+      <p class="case-src">Sources: BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
+    </div>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.9): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

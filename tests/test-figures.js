@@ -2,14 +2,16 @@
  * Loads the pure code between the @fig-*-begin / @fig-*-end markers in src/app-core.js,
  * src/app-ground.js and src/app-seep.js (the same way test-grains.js loads the grain sandbox)
  * and checks, for each figure:
- *   - the state the JS starts in matches the controls in the page markup (src/*.html)
+ *   - the state the JS starts in matches the controls in the page markup (the built book, tests/lib/book.js)
  *   - the readouts the page shows before the JS runs match what the JS writes on load
  *   - the values on load, and a few other states, to the precision the page shows them
- * Figures: 1.1 beach, 2.1 pressure with depth, 3.1 permeability race, 3.2 Darcy, 4.1 block
- * on a ramp, 4.2 stress column, 5.1 hydro readouts, 6.1 raising methods, 8.2 piping readout
- * (on the seepage solver's results), 8.3 stage names, 8.4 uplift and sliding.
+ * Figures, by id (their numbers come from the build): fig-beach, fig-depth, fig-race, fig-darcy,
+ * fig-block, fig-column, fig-types (hydro readouts), fig-raise, fig-lab (piping readout, on the
+ * seepage solver's results), fig-pipe (stage names), fig-uplift, fig-build (leak verdict).
+ * The sentences that carry corrected facts are pinned per chapter in tests/pins/<key>.js
+ * (book/SPEC.md A.8); the pins that check code stay here.
  * When a fix changes one of these numbers on purpose, update its pin here in the same commit.
- * Run: node tests/test-figures.js   (about a second, five seepage solves included) */
+ * Run: node tests/test-figures.js   (a few seconds: it builds the book once, five seepage solves) */
 'use strict';
 const fs = require('fs'), path = require('path');
 const SRC = path.join(__dirname, '..', 'src');
@@ -46,18 +48,17 @@ for (const n of fs.readdirSync(SRC).filter(f => /^app-.*\.js$/.test(f)).sort()) 
   check(!err, `${n} parses` + (err ? ': ' + err.message : ''));
 }
 
-// ---- the page markup, assembled as build.py does
-let html = read('body.html');
-for (let k = 0; k < 4; k++) html = html.replace(/<!-- @include ([\w.-]+) -->/g, (_, n) => (fs.existsSync(path.join(SRC, n)) ? read(n) : ''));
-const decode = s => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');
+// ---- the page markup, built by build.py (once per run, into a temporary directory)
+const { book, plainText, decode } = require('./lib/book.js');
+const html = book().html;
 function staticText(id) { // text of an element with no child elements
   const m = html.match(new RegExp(`id="${id}"[^>]*>([^<]*)<`));
-  if (!m) throw new Error(`no element #${id} with plain text in src/*.html`);
+  if (!m) throw new Error(`no element #${id} with plain text in the built page`);
   return decode(m[1]);
 }
 function inputValue(id) {
   const tag = html.match(new RegExp(`<input[^>]*id="${id}"[^>]*>`));
-  if (!tag) throw new Error(`no input #${id} in src/*.html`);
+  if (!tag) throw new Error(`no input #${id} in the built page`);
   return +tag[0].match(/value="([^"]*)"/)[1];
 }
 function pressed(id) { // data-v of the pressed button in a segmented control
@@ -72,13 +73,13 @@ function staticMatches(pairs, fig) { // [id, the text the JS writes on load]
 
 const t0 = Date.now();
 
-console.log('\nFig. 1.1 · the beach');
+console.log('\nfig-beach · the beach');
 {
   const st = G.BEACH0, b = G.beachShapes(240, 241, 2);
   same(pressed('bc-state'), st, 'state on load matches the pressed button');
   same(pressed('bc-pack'), G.PACK0, 'packing on load matches the pressed button');
   same(html.match(/id="bc-state"[^>]*>([\s\S]*?)<\/div>/)[1].match(/data-v="(\w+)"/g).map(m => m.slice(8, -1)).join(' / '), 'dry / damp / under / drain', 'the four states offered');
-  staticMatches([['bc-slope', b.SLOPE[st][0]], ['bc-slope2', b.SLOPE[st][1]], ['bc-gap', b.GAP[st][0]], ['bc-gap2', b.GAP[st][1]], ['bc-zoom-note', b.ZN[st]], ['bc-jig', G.JIG0[0]], ['bc-jig2', G.JIG0[1]]], 'Fig. 1.1');
+  staticMatches([['bc-slope', b.SLOPE[st][0]], ['bc-slope2', b.SLOPE[st][1]], ['bc-gap', b.GAP[st][0]], ['bc-gap2', b.GAP[st][1]], ['bc-zoom-note', b.ZN[st]], ['bc-jig', G.JIG0[0]], ['bc-jig2', G.JIG0[1]]], 'fig-beach');
   same(['dry', 'damp', 'under', 'drain', 'flat'].map(k => b.SLOPE[k][0]).join(' / '), '34° / 90° / about 34° / about 19° / about 0°', 'steepest slope dry / damp / under still water / draining / jiggled loose');
   // the physics behind the two wet states (infinite slope, no cohesion)
   // infinite slope, no cohesion, per unit area of the face: grip = (weight of grains under water)·cos β·tan φ′,
@@ -105,11 +106,11 @@ console.log('\nFig. 1.1 · the beach');
   for (const k of ['dry', 'damp', 'under', 'drain', 'flat']) check(b.SLOPE[k] && b.GAP[k] && b.CAP[k] && b.ZN[k], `every readout has words for the ${k} shape`);
 }
 
-console.log('\nFig. 2.1 · pressure with depth');
+console.log('\nfig-depth · pressure with depth');
 {
   const H = inputValue('dp-H'), h = inputValue('dp-h'), c = G.depthCalc(H, h);
   same(H + ' / ' + h, '50 / 30', 'sliders on load: depth / sensor depth (m)');
-  staticMatches([['dp-H-o', c.txt.H], ['dp-h-o', c.txt.h], ['dp-p', c.txt.p], ['dp-p2', c.txt.p2], ['dp-pb', c.txt.pb], ['dp-pb2', c.txt.pb2], ['dp-F', c.txt.F], ['dp-F2', c.txt.F2]], 'Fig. 2.1');
+  staticMatches([['dp-H-o', c.txt.H], ['dp-h-o', c.txt.h], ['dp-p', c.txt.p], ['dp-p2', c.txt.p2], ['dp-pb', c.txt.pb], ['dp-pb2', c.txt.pb2], ['dp-F', c.txt.F], ['dp-F2', c.txt.F2]], 'fig-depth');
   same([c.txt.p, c.txt.pb, c.txt.F, c.txt.F2, c.txt.chart].join(' | '), '294 kPa | 491 kPa | 12.3 MN | as heavy as 1,250 tonnes | 12 MN at 50 m', 'on load (H 50 m, sensor 30 m)');
   const at = (H, h) => { const c = G.depthCalc(H, h); return [c.txt.p, c.txt.pb, c.txt.F, c.txt.F2, c.txt.chart, c.txt.tri].join(' | '); };
   same(at(100, 50), '491 kPa | 981 kPa | 49.0 MN | as heavy as 5,000 tonnes | 49 MN at 100 m | 981 kPa', 'H 100 m, sensor 50 m');
@@ -118,31 +119,31 @@ console.log('\nFig. 2.1 · pressure with depth');
   near(G.depthCalc(100, 0).F / G.depthCalc(50, 0).F, 4, 1e-12, 'double the depth, four times the push');
 }
 
-console.log('\nFig. 3.1 · the permeability race');
+console.log('\nfig-race · the permeability race');
 {
   const mats = ['gravel', 'sand', 'silt', 'clay'].map(k => Object.assign({ t: G.raceTime(G.MATS[k]) }, G.MATS[k]));
   same(mats.map(m => G.fmtDur(m.t)).join(' / '), '30 s / 58 min / 46 days / 11 years', 'time to cross 1 m: gravel / sand / silt / clay');
   same(Math.round(mats[3].t / mats[0].t / 1e6), 12, 'clay at the scale where gravel\'s time is 1 mm (km)');
   const v0 = inputValue('rc-t'), r0 = G.raceReadouts(v0, mats);
   same(v0, 0, 'clock on load');
-  staticMatches([['rc-t-o', r0.t], ['rc-clock', r0.t], ['rc-clock2', r0.clock2], ['rc-done', r0.done1], ['rc-done2', r0.done2]], 'Fig. 3.1');
+  staticMatches([['rc-t-o', r0.t], ['rc-clock', r0.t], ['rc-clock2', r0.clock2], ['rc-done', r0.done1], ['rc-done2', r0.done2]], 'fig-race');
   const at = v => { const r = G.raceReadouts(v, mats); return [r.t, r.clock2, r.done1, r.done2].join(' | '); };
   // the speed-up readout is now the clock's true rate, ln 10 · 10^v at a decade per second (it showed 10^(v − 0.5), about 7× too low)
   same(at(4), '2.8 h | clock is running 23,000× faster | Gravel, Sand | 2 of four', 'clock at 10⁴ s');
   same(at(7), '17 weeks | clock is running 23,000,000× faster | Gravel, Sand, Silt | 3 of four', 'clock at 10⁷ s');
   same(at(9), '32 years | clock is running 2,300,000,000× faster | All four | clay took 11 years', 'clock at the end');
   same(G.RACE_MAX / G.RACE_DUR, 1, 'the clock gains one decade (tenfold) every real second, as the scale note says');
-  same(staticText('rc-scale'), 'Clock speeds up tenfold every second', 'Fig. 3.1 scale note');
+  same(staticText('rc-scale'), 'Clock speeds up tenfold every second', 'fig-race scale note');
   const v = 5, dt = 1e-6, num = (Math.pow(10, v + dt * G.RACE_MAX / G.RACE_DUR) - Math.pow(10, v)) / dt;
   near(G.raceRate(v), num, 0.01 * num, 'the speed-up shown matches the clock\'s rate measured over a millionth of a second (within 1%)');
 }
 
-console.log('\nFig. 3.2 · Darcy\'s experiment');
+console.log('\nfig-darcy · Darcy\'s experiment');
 {
   const st = G.DARCY0, ro = G.darcyReadouts(st);
   same(pressed('dc-mat') + ' / ' + (pressed('dc-plug') === '1') + ' / ' + inputValue('dc-hl') + ' / ' + inputValue('dc-hr') + ' / ' + inputValue('dc-L'),
     st.mat + ' / ' + st.plug + ' / ' + st.hl + ' / ' + st.hr + ' / ' + st.L, 'state on load matches the controls (material / plug / left / right / length)');
-  staticMatches([['dc-hl-o', ro.hl], ['dc-hr-o', ro.hr], ['dc-L-o', ro.L], ['dc-dh', ro.dhTxt], ['dc-dh2', ro.dh2], ['dc-i', ro.iTxt], ['dc-i2', ro.i2], ['dc-q', ro.qTxt], ['dc-q2', ro.q2], ['dc-share', ro.shareTxt], ['dc-share2', ro.share2]], 'Fig. 3.2');
+  staticMatches([['dc-hl-o', ro.hl], ['dc-hr-o', ro.hr], ['dc-L-o', ro.L], ['dc-dh', ro.dhTxt], ['dc-dh2', ro.dh2], ['dc-i', ro.iTxt], ['dc-i2', ro.i2], ['dc-q', ro.qTxt], ['dc-q2', ro.q2], ['dc-share', ro.shareTxt], ['dc-share2', ro.share2]], 'fig-darcy');
   const at = o => { const r = G.darcyReadouts(Object.assign({}, st, o)); return [r.dhTxt, r.iTxt, r.qTxt, r.shareTxt].join(' | '); };
   same(at({}), '1.40 m | 0.70 | 4.2 L/min | –', 'on load: sand, no plug');
   same(at({ mat: 'gravel' }), '1.40 m | 0.70 | 7.0 L/s | –', 'gravel');
@@ -157,11 +158,11 @@ console.log('\nFig. 3.2 · Darcy\'s experiment');
   same([0, 0.4, 0.6, 1].map(f => G.darcyHeadAt(p, f).toFixed(4)).join(' / '), '2.0000 / 2.0000 / 0.6000 / 0.6000', 'head along the plugged sand pipe (m) at 0, 40, 60, 100% of the length');
 }
 
-console.log('\nFig. 4.1 · block on a ramp');
+console.log('\nfig-block · block on a ramp');
 {
   same(inputValue('bk-a') + ' / ' + inputValue('bk-u'), G.BLOCK.a + ' / ' + G.BLOCK.u, 'state on load matches the sliders (angle / pressure)');
   const ro = G.blockReadouts(G.BLOCK.a, G.BLOCK.u);
-  staticMatches([['bk-a-o', ro.a], ['bk-u-o', ro.u], ['bk-N', ro.N], ['bk-U', ro.U], ['bk-Ne', ro.Ne], ['bk-Fa', ro.Fa], ['bk-Fn', ro.Fn], ['bk-fs', ro.fs]], 'Fig. 4.1');
+  staticMatches([['bk-a-o', ro.a], ['bk-u-o', ro.u], ['bk-N', ro.N], ['bk-U', ro.U], ['bk-Ne', ro.Ne], ['bk-Fa', ro.Fa], ['bk-Fn', ro.Fn], ['bk-fs', ro.fs]], 'fig-block');
   const at = (a, u) => { const r = G.blockReadouts(a, u); return [r.N, r.U, r.Ne, r.Fa, r.Fn, r.fs, r.holds ? 'holds' : 'slides', r.pill].join(' | '); };
   same(at(25, 0), '18.1 kN | 0.0 kN | 18.1 kN | 12.2 kN | 8.5 kN | 1.45 | holds | ok', 'on load: 25°, dry cushion');
   const f = G.blockForces(25, 0), uSlide = f.N - f.Fn / Math.tan(G.BLOCK.PHI);
@@ -175,11 +176,11 @@ console.log('\nFig. 4.1 · block on a ramp');
   same(at(33, 0).split(' | ')[6] + ' / ' + at(35, 0).split(' | ')[6], 'holds / slides', 'dry block either side of the 34° friction angle');
 }
 
-console.log('\nFig. 4.2 · stresses in a sand column');
+console.log('\nfig-column · stresses in a sand column');
 {
   const wt = -inputValue('gc-wt'), ro = G.columnReadouts(wt);
   same(wt, 4, 'water table on load (m down)');
-  staticMatches([['gc-wt-o', ro.wt], ['gc-s', ro.s], ['gc-u', ro.u], ['gc-u2', ro.u2], ['gc-e', ro.e], ['gc-str', ro.str]], 'Fig. 4.2');
+  staticMatches([['gc-wt-o', ro.wt], ['gc-s', ro.s], ['gc-u', ro.u], ['gc-u2', ro.u2], ['gc-e', ro.e], ['gc-str', ro.str]], 'fig-column');
   const at = w => { const r = G.columnReadouts(w); return [r.wt, r.s, r.u, r.e, r.str, r.u2].join(' | '); };
   same(at(4), '4.0 m down | 192 kPa | 59 kPa | 133 kPa | 74% | water 6.0 m above this point', 'water table 4 m down (on load)');
   same(at(10), 'below the column | 180 kPa | 0 kPa | 180 kPa | 100% | no water at 10 m', 'water table at the foot');
@@ -189,11 +190,11 @@ console.log('\nFig. 4.2 · stresses in a sand column');
   same(G.columnStress(4, 4).map(v => v.toFixed(1)).join(' / '), '72.0 / 0.0', 'σ / u at the water table, 4 m down (kPa)');
 }
 
-console.log('\nFig. 5.1 · hydro dam readouts');
+console.log('\nfig-types · hydro dam readouts');
 {
   const lv = inputValue('hy-level'), Q = inputValue('hy-flow'), c = C.hydroCalc(lv, Q);
   same(lv + ' / ' + Q, '80 / 150', 'sliders on load: level / turbine flow');
-  staticMatches([['hy-level-o', c.txt.level], ['hy-flow-o', c.txt.flow], ['hy-P', c.txt.P], ['hy-p', c.txt.p], ['hy-F', c.txt.F]], 'Fig. 5.1');
+  staticMatches([['hy-level-o', c.txt.level], ['hy-flow-o', c.txt.flow], ['hy-P', c.txt.P], ['hy-p', c.txt.p], ['hy-F', c.txt.F]], 'fig-types');
   const at = (lv, Q) => { const c = C.hydroCalc(lv, Q); return [c.txt.level, c.txt.P, c.txt.p, c.txt.F].join(' | '); };
   // the load readout now names the heel depth it uses (it said only "Water load 39 MN per metre of dam")
   same(at(80, 150), 'H = 85 m | 112 MW | 0.87 MPa | 89 m deep at the heel · water load 39 MN per metre of dam', 'on load');
@@ -204,11 +205,11 @@ console.log('\nFig. 5.1 · hydro dam readouts');
   same(C.runnerTurn(1, 10) + ' / ' + C.runnerTurn(1, 300), '260 / 260', 'the runner turns at the same speed at any flow (degrees per second)');
 }
 
-console.log('\nFig. 6.1 · raising methods');
+console.log('\nfig-raise · raising methods');
 {
   const t0 = inputValue('rs-t');
   same(t0, 10, 'stage on load');
-  staticMatches([['rs-stage', C.stageText(t0)]], 'Fig. 6.1');
+  staticMatches([['rs-stage', C.stageText(t0)]], 'fig-raise');
   const at = (t, key) => { const d = C.raiseDam(key, C.stateAt(t)); return [d.txt.fill, d.txt.shift, d.txt.ontail].join(' | '); };
   same(at(10, 'up'), '2,496 | −112 m | 62%', 'upstream, finished: fill m³/m | crest shift | on tailings');
   same(at(10, 'down'), '9,792 | +96 m | 0%', 'downstream, finished');
@@ -218,12 +219,12 @@ console.log('\nFig. 6.1 · raising methods');
   same([0.5, 1.5, 4.5, 7.2, 10].map(C.stageText).join(' / '), 'Starter dam · placing fill / Starter dam · depositing tailings / Raise 2 · placing fill / Raise 3 · depositing tailings / Raise 4 complete · 68 m', 'stage names');
 }
 
-console.log('\nFig. 8.2 · seepage lab: piping readout');
+console.log('\nfig-lab · seepage lab: piping readout');
 {
   const s0 = S.LAB0;
   same(pressed('lab-dam') + ' / ' + pressed('lab-drain') + ' / ' + pressed('lab-cut') + ' / ' + pressed('lab-found') + ' / ' + inputValue('lab-res') / 100,
     [s0.damType, s0.drain, s0.cutoff, s0.foundation, s0.reservoir].join(' / '), 'state on load matches the controls');
-  same(staticText('lab-res-o'), (Math.round(s0.reservoir * 24 * 10) / 10).toFixed(1) + ' m', 'Fig. 8.2 #lab-res-o in the markup matches the reservoir on load');
+  same(staticText('lab-res-o'), (Math.round(s0.reservoir * 24 * 10) / 10).toFixed(1) + ' m', 'fig-lab #lab-res-o in the markup matches the reservoir on load');
   const at = o => {
     const r = solveSeepage(Object.assign({}, s0, o)), p = S.labPiping(r.exit);
     return [S.labFmtQ(r.q.inflowTotal) + ' L/day', p.i, p.i2, p.fs.toFixed(2), p.fsTxt, p.word, p.cls].join(' | ');
@@ -251,18 +252,18 @@ console.log('\nFig. 8.2 · seepage lab: piping readout');
 { // the caption's first thing to try: the seepage face on the starting foundation, and on clay
   const sf = f => { const r = solveSeepage(Object.assign({}, S.LAB0, { foundation: f })); return r.seepageFace.topZ.toFixed(0) + ' m, ' + Math.round(100 * r.q.outSeepageFace / r.q.inflowTotal) + '% of the flow'; };
   same(sf('pervious') + ' / ' + sf('tight'), '2 m, 1% of the flow / 8 m, 65% of the flow', 'seepage face on sand & gravel / on clay (the caption says about 2 m and about 8 m)');
-  check(/damType === 'homogeneous'\) E\('polygon', \{ points: M\.P\(dam\), fill: 'url\(#p-fill\)'[^\n]*\n\s*else \{\n\s*E\('polygon', \{ points: M\.P\(dam\), fill: 'url\(#p-trans\)'/.test(seep), 'Fig. 8.2: the 10⁻⁴ m/s shells are drawn as sand and gravel (p-trans), not rockfill');
+  check(/damType === 'homogeneous'\) E\('polygon', \{ points: M\.P\(dam\), fill: 'url\(#p-fill\)'[^\n]*\n\s*else \{\n\s*E\('polygon', \{ points: M\.P\(dam\), fill: 'url\(#p-trans\)'/.test(seep), 'fig-lab: the 10⁻⁴ m/s shells are drawn as sand and gravel (p-trans), not rockfill');
 }
 
-console.log('\nFig. 8.3 · piping stages');
+console.log('\nfig-pipe · piping stages');
 same(inputValue('pp-t'), 0, 'progress on load');
-staticMatches([['pp-stage', S.names[0]]], 'Fig. 8.3');
+staticMatches([['pp-stage', S.names[0]]], 'fig-pipe');
 
-console.log('\nFig. 8.4 · uplift and sliding');
+console.log('\nfig-uplift · uplift and sliding');
 {
   same(inputValue('up-hw'), S.HW0, 'reservoir on load matches the slider');
   same(pressed('up-drains'), '1', 'drains working on load');
-  same(staticText('up-hw-o'), S.HW0.toFixed(1) + ' m', 'Fig. 8.4 #up-hw-o in the markup matches the reservoir on load');
+  same(staticText('up-hw-o'), S.HW0.toFixed(1) + ' m', 'fig-uplift #up-hw-o in the markup matches the reservoir on load');
   same((S.W / 1000).toFixed(2), '34.78', 'weight W (MN/m)');
   const at = (drains, HW) => { const c = S.upliftCalc(HW, S.upliftDrainHead(drains, HW)), r = S.upliftReadouts(c); return { c, r, s: [r.W, r.H, r.U, r.U2, r.FS, r.fsW, r.R, r.rW].join(' | ') }; };
   const d = at(true, S.HW0), k = at(false, S.HW0);
@@ -282,7 +283,7 @@ console.log('\nFig. 8.4 · uplift and sliding');
   check(/drainLine = E\('path', \{ d: M\.D\(\[\[XD, /.test(seep), 'the drain hole is drawn at the uplift kink (XD), not 1.3 m downstream of it');
 }
 
-console.log('\nFig. 9.1 · workbench leak verdict');
+console.log('\nfig-build · workbench leak verdict');
 {
   const ST = require(path.join(SRC, 'stability-solver.js'));
   const BLD = load(block(read('app-build.js'), 'app-build.js', 'verdict'), ['leakWhere', 'pipeText', 'pipeNum', 'fosNum']);
@@ -318,109 +319,54 @@ console.log('\nFig. 9.1 · workbench leak verdict');
   check(/Safety 2\.96\./.test(BLD.pipeText(0.34, 'ground', 2.96)) && /Safety over 50\./.test(BLD.pipeText(0.01, 'ground', 80)), 'piping row: "Safety 2.96." below the goal of 3, "Safety over 50." far above it');
 }
 
-console.log('\nFig. 9.1 · slip-surface search count');
+console.log('\nfig-build · slip-surface search count');
 {
   const ST = require(path.join(SRC, 'stability-solver.js'));
   const tried = ['homogeneous', 'cored'].map(p => ST.runDesign({ cells: ST.presetCells(p, 2), slope: 2, foundation: p === 'cored' ? 'gravel' : 'clay', cutoff: 'none', reservoir: 0.85 }, { solveSeepage }).stab.downstream.tried);
   check(tried.every(n => n > 2000 && n < 3000), `the stability search tries more than two thousand surfaces (${tried.join(', ')}), as the text and the film say`);
-  const plain = decode(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
-  check(plain.includes('It tries more than two thousand curved surfaces through the slope (1,960 on a grid'), 'Step 9 text gives the same count');
+  // the text's count is pinned in tests/pins/ch13.js
 }
 
 console.log('\nFacts the text states (errata fixes)');
 {
-  const plain = decode(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
+  const plain = plainText(html);
   const says = (str, label) => check(plain.includes(str), `${label}: says "${str}"`);
   const never = (str, label) => check(!plain.includes(str), `${label}: no longer says "${str}"`);
+  // the text pins, one file per unit (tests/pins/<key>.js, book/SPEC.md A.8)
+  const PINS = path.join(__dirname, 'pins');
+  for (const f of fs.readdirSync(PINS).filter(f => /\.js$/.test(f)).sort()) {
+    const P = require(path.join(PINS, f)), key = f.replace(/\.js$/, '');
+    for (const [s, l] of P.says || []) says(s, key + ', ' + l);
+    for (const [s, l] of P.never || []) never(s, key + ', ' + l);
+    for (const [re, l] of P.markup || []) check(re.test(html), `${key}, ${l}: the markup matches ${re}`);
+  }
+  // the pins below check code, or text against code
   const gsrc = read('app-glossary.js');
   const GL = new Function(gsrc.slice(gsrc.indexOf('const GLOSSARY'), gsrc.indexOf('\n};', gsrc.indexOf('const GLOSSARY')) + 3) + '\nreturn GLOSSARY;')();
+  Object.assign(GL, book().data.glossaryExtra);
   const usedTerms = new Set([...html.matchAll(/data-term="([\w-]+)"/g)].map(m => m[1]));
   const missing = [...usedTerms].filter(t => !GL[t]);
   check(!missing.length, `glossary has an entry for all ${usedTerms.size} marked terms` + (missing.length ? ', missing ' + missing.join(', ') : ''));
-  // Foster, Fell & Spannagle (2000), Table 3: 124 failures to 1986; piping 46.9%, overtopping 34.2%,
-  // with spillways and gates 48.4%; after 1950, 54.2% against 40.7%
-  says('about as many failures as overtopping: 47% against 48% once spillway and gate failures are counted with overtopping', 'Step 8, Foster et al.');
-  // the post-1950 column (54.2% against 40.7%) doesn't say whether it counts dams built or failures since 1950, so the page leaves it out
-  says('That is more than overtopping alone (34%). Some failures', 'Step 8, Foster et al.');
-  never('since 1950 internal erosion has led', 'Step 8, Foster et al.');
-  never('nearly half of the failures whose cause was known', 'Step 8, Foster et al.');
   check(/internal erosion/i.test(GL.piping[1]) && !!GL['internal-erosion'], 'glossary: piping points to internal erosion, which has its own entry');
-  // Step 3 opens with head, not pressure
-  says('from where its head is high to where it is low', 'Step 3, first paragraph');
-  never('from where it is pushed hard to where it is pushed less', 'Step 3, first paragraph');
-  // only the downstream shell is kept dry; the upstream one is soaked by the reservoir
-  never('shells on either side fairly dry', 'Step 7');
-  never('Low water pressure in the outer zones', 'Step 4 ideas card');
-  says('That leaves the downstream shell fairly dry', 'Step 7');
-  says('The upstream shell stays soaked', 'Step 4 ideas card');
-  // Fig 8.2: flow lines are equal-flux only within each set
-  never('Flow lines are spaced so that each neighbouring pair carries the same flow, as in', 'Step 8, seepage lab');
-  says('Within each set, each neighbouring pair carries the same flow', 'Step 8, seepage lab');
-  // the films: the masthead no longer claims each retells only the step it ends
-  never('each at the end of the step it retells', 'masthead');
-  says('Each sits in one of the steps it retells, and several range over other steps as well', 'masthead');
-  says('Then it runs ahead: the block on the ramp and the factor of safety (Step 4)', 'Depth, not size caption');
-  never('so the shells stay dry and strong', 'A wall made of dirt caption (the film says the back half stays dry)');
   // readout labels are set in capitals, which turns η, ρ, σ into Η, Ρ, Σ: Greek must sit in an <i class="g-sym">
   const capsGreek = [...html.matchAll(/class="ro"><span>([^<]*)</g)].map(m => m[1]).filter(t => /[Ͱ-Ͽ]/.test(t));
   check(!capsGreek.length, 'no readout label puts a Greek letter in capitals' + (capsGreek.length ? ': ' + capsGreek.join(' / ') : ''));
-  // Fig 4.3: σ is the applied load and u the excess over still water; "suction" is kept for damp sand
+  // fig-grains: σ is the applied load and u the excess over still water; "suction" is kept for damp sand
   const grains = read('app-grains.js');
-  says('Applied load σ', 'Fig. 4.3 readout label');
-  says('Extra water pressure Δu', 'Fig. 4.3 readout label');
-  never('everything pressing down', 'Fig. 4.3 σ readout');
-  says('which engineers call negative excess pore pressure', 'Fig. 4.3 caption, experiment 4');
-  check(!/\(suction\)|no suction|Watch u go below zero|'u water'|'σ total'/.test(grains), 'Fig. 4.3 scripts: no "suction" for saturated sand, and the chart legend says Δu and σ load');
-  never('Every number here is measured from the model as it runs, not set in advance', 'Fig. 4.3 caption');
-  says('assumes a friction angle of 45° between concrete and rock (tan 45° = 1) and no bond', 'Fig. 8.4 caption');
-  // Step 8 labels
-  check(/id="svg-paths"[^>]*aria-label="[^"]*along four of the five paths[^"]*The fifth, around the ends of the dam through the abutments, is in the plan view beside it\./.test(html), 'Fig. 8.1 section aria label names four of the five paths and points to the plan');
-  never('in orange', 'Fig. 8.2 caption (the seepage face is drawn in the brick-red accent)');
-  says('switch the foundation to Clay to see a face about 8 m high', 'Fig. 8.2 caption');
-  says('Schematic · hours to decades compressed', 'Fig. 8.3 scale note');
-  // DS-13 ch. 8 §8.2.2.2: these are factors of safety against heave at an exit (2.0–2.5 may do with good data), "not a
-  // factor of safety against the initiation of internal erosion"
-  says('at least 3 at an unfiltered exit of an existing dam, and 4 for a new dam or a repair, or about 2 to 2.5 where the soil and the water pressures are well measured', 'Step 8 heave formula (USBR DS-13 ch. 8)');
-  says('It flags sand boils, not every kind of internal erosion', 'Step 8 heave formula');
-  says('For water rising out of level ground the US Bureau of Reclamation wants at least 3 for an existing dam and 4 for a new one (about 2 to 2.5 where the soil is well measured); the missions here ask for 3 at every exit.', 'Step 9 Pipes card');
-  says("The number warns of sand boils; it can't see every kind of internal erosion.", 'Step 9 Pipes card');
-  check(require(path.join(SRC, 'stability-solver.js')).BUILD.missions.filter(m => m.goals.minPipe != null).every(m => m.goals.minPipe === 3), 'Step 9 Pipes card: every mission with a piping goal asks for 3');
-  never('3 or more', 'Step 8 and Step 9');
-  // Coquitlam: the backup dam was completed in 2007 and BC Hydro declared the C$65M upgrade complete in Oct 2008
-  // (Renewable Energy World, 16 Oct 2008; BC Hydro release, 3 Oct 2008); the new dam is "mostly founded on dense
-  // glacial deposits" ("Seismic Deformation Analyses of the New Coquitlam Dam", ASCE GSP 181, 2008, doi:10.1061/40975(318)180)
-  says('Coquitlam Dam · 1913, backed up by a new dam in 2007', 'Coquitlam case');
-  says('The new dam was finished in 2007, and BC Hydro declared the whole seismic upgrade complete in 2008.', 'Coquitlam case');
-  never('buttressed', 'Coquitlam case (sources call it a backup dam)');
-  // Merriespruit: static liquefaction is Fourie, Blight & Papageorgiou's (2001) "possible explanation"
-  says('a flow one later study attributes to static liquefaction', 'Step 5 timeline, Merriespruit');
-  says('can lose nearly all of it at once', 'Step 5 (liquefied soil keeps a residual strength)');
-  // DS 86/1970 barred them where people live downstream; DS 248/2007 forbids the upstream method (secondary sources:
-  // Fundación Chile 2019, Falcón et al. 2017; the LeyChile text could not be fetched)
-  says('barred in Chile since 1970, at first only where people live within reach downstream and under its 2007 rules everywhere', 'Step 6 upstream card');
-  says('Not a liquefaction failure: the embankment, raised by a modified centreline method', 'Step 5 timeline, Mount Polley');
-  says('An upstream-raised gold tailings dam overtopped after heavy rain and breached', 'Step 5 timeline, Merriespruit');
-  says('is 30–35° for most sand', 'Step 1 angle of repose');
-  says('hundreds to thousands of times smaller than a grain of sand', 'Step 3 clay');
-  says('Schematic · vertical scale ×1.5 · beach and pond not to scale', 'Fig. 6.1 scale note (the 8% beach is schematic)');
+  check(!/\(suction\)|no suction|Watch u go below zero|'u water'|'σ total'/.test(grains), 'fig-grains scripts: no "suction" for saturated sand, and the chart legend says Δu and σ load');
+  check(require(path.join(SRC, 'stability-solver.js')).BUILD.missions.filter(m => m.goals.minPipe != null).every(m => m.goals.minPipe === 3), 'ch-build Pipes card: every mission with a piping goal asks for 3');
   const fin = k => C.raiseDam(k, C.stateAt(10)).txt.fill;
-  says('both faces move out with every raise, so the section grows fastest (' + fin('down') + ' m³ per metre here, against ' + fin('centre') + ' for centreline)', 'Step 6 downstream card quotes Fig. 6.1');
-  says('anything that passes water at 10⁻⁵ m/s or faster', 'Step 9 drawdown paragraph states the threshold');
-  check(!/so it is free|costs nothing/.test(read('app-build.js')), 'Step 9: tailings sand is cheap, not free');
-  check(/stands in for its weakness\. The real layer failed undrained/.test(read('app-build.js')), 'Step 9 Polley mission: the drained 19° is a stand-in for an undrained failure');
+  says('both faces move out with every raise, so the section grows fastest (' + fin('down') + ' m³ per metre here, against ' + fin('centre') + ' for centreline)', 'ch-raising downstream card quotes fig-raise');
+  check(!/so it is free|costs nothing/.test(read('app-build.js')), 'ch-build: tailings sand is cheap, not free');
+  check(/stands in for its weakness\. The real layer failed undrained/.test(read('app-build.js')), 'ch-build Polley mission: the drained 19° is a stand-in for an undrained failure');
   // definitions: hydrostatic only when still; water table and phreatic surface at air pressure, with a fringe above
   check(/In still groundwater/.test(GL['pore-pressure'][1]), 'glossary pore pressure: 9.8 kPa per metre only in still groundwater');
-  says('so while it is still it obeys the same rule as the water in a lake', 'Step 2 pore pressure');
   check(/pressure of the air/.test(GL['water-table'][1]) && /suction/.test(GL['water-table'][1]), 'glossary water table: air pressure, with a suction fringe above');
   check(/fringe can stay saturated/.test(GL['phreatic-surface'][1]), 'glossary phreatic surface: a saturated fringe above it');
   check(/30–35°/.test(GL['angle-of-repose'][1]), 'glossary angle of repose: 30–35°');
-  says('takes almost the whole drop in head, from the reservoir level down to the downstream side', 'Step 3 core');
-  says('Step 8 · Sand boils', 'Step 4 ideas card (heave, not piping)');
-  check(/Sherard and Dunnigan’s no-erosion rules govern/.test(read('app-zones.js')), 'Fig. 7.1 zone 2A: Sherard & Dunnigan govern for a clay core');
-  says('Flow per m² q/A', 'Fig. 3.2 readout: the flow through each m² is q/A, not the q of the formula');
-  // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
-  never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
-  says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');
+  check(/Sherard and Dunnigan’s no-erosion rules govern/.test(read('app-zones.js')), 'fig-zones zone 2A: Sherard & Dunnigan govern for a clay core');
+  // fig-raise: centreline puts some fill on the beach, as its own readout shows
+  says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'fig-raise caption quotes the centreline readout');
 }
 
 console.log(`\n${fails ? fails + ' check(s) FAILED' : 'all ' + passes + ' checks passed'} in ${((Date.now() - t0) / 1000).toFixed(1)} s`);

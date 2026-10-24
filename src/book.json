@@ -9,7 +9,7 @@
   "spineCoda": "And water that pours over the top can wash the whole heap away, however hard its grains press.",
 
   "front": [
-    { "id": "cover", "file": "src/book/00-cover.html", "title": "Dams in Section", "inContents": false,
+    { "id": "cover", "file": "src/book/00-cover.html", "title": "Dams in Section", "refLabel": "the cover", "inContents": false,
       "aliases": [{ "id": "top" }] },
     { "id": "contents", "file": "src/book/01-contents.html", "title": "Contents", "inContents": false, "generated": "toc" },
     { "id": "preface", "file": "src/book/02-preface.html", "title": "Preface", "key": "front", "wordTarget": [500, 700] },
@@ -239,6 +239,26 @@
     { "id": "errata", "file": "src/book/97-errata.html", "title": "Errata and changes", "key": "back", "generated": "errata" },
     { "id": "colophon", "file": "src/book/98-colophon.html", "title": "Colophon", "key": "back" }
   ],
+
+  "glossaryOwnersAbout": "Who may define which glossary slug in src/book/glossary/<key>.json (book/SPEC.md Appendix 2): new slugs, and existing GLOSSARY entries the unit may replace.",
+  "glossaryOwners": {
+    "front": { "new": ["upstream", "downstream", "crest", "heel", "toe", "freeboard", "abutment", "tailwater", "slope-notation"], "replaces": [] },
+    "pro": { "new": ["breach"], "replaces": [] },
+    "ch01": { "new": ["saturated", "packing"], "replaces": ["angle-of-repose"] },
+    "ch02": { "new": ["gauge-pressure", "gravity-dam", "kilopascal"], "replaces": ["hydrostatic"] },
+    "ch03": { "new": ["elevation-head", "pressure-head", "seepage-velocity", "seepage-force"], "replaces": ["hydraulic-head", "permeability"] },
+    "ch04": { "new": ["strength-envelope", "infinite-slope", "unit-weight", "buoyant-unit-weight", "heave"], "replaces": ["effective-stress", "friction-angle", "factor-of-safety", "critical-gradient"] },
+    "ch05": { "new": ["consolidation", "excess-pore-pressure", "undrained-strength", "cavitation", "clay", "residual-strength"], "replaces": ["suction", "drained", "undrained", "liquefaction"] },
+    "ch06": { "new": ["spillway", "overtopping", "penstock", "tailrace", "slimes", "spigot", "gross-head"], "replaces": ["beach", "tailings"] },
+    "ch07": { "new": ["middle-third", "gallery", "grout-curtain", "resultant"], "replaces": ["uplift"] },
+    "ch08": { "new": ["starter-dam", "downstream-raise", "centreline-raise", "modified-centreline", "cyclone-sand", "hydraulic-fill", "rate-of-rise"], "replaces": ["upstream-raise", "static-liquefaction"] },
+    "ch09": { "new": ["zone", "transition", "riprap", "concrete-face-rockfill-dam", "compaction", "optimum-water-content", "relative-compaction", "chimney-drain", "borrow"], "replaces": ["shell", "core", "filter", "drain"] },
+    "ch10": { "new": ["flow-net", "flow-line", "equipotential", "alluvium", "relief-well", "upstream-blanket", "turbidity", "anisotropy"], "replaces": ["seepage", "cutoff", "phreatic-surface"] },
+    "ch11": { "new": ["backward-erosion-piping", "concentrated-leak", "suffusion", "contact-erosion", "hydraulic-fracture", "dispersive-clay", "sand-boil", "sinkhole", "grain-size", "key-trench", "compaction-grouting"], "replaces": ["piping", "internal-erosion", "exit-gradient"] },
+    "ch12": { "new": ["slice-method", "bishop-method", "spencer-method", "pore-pressure-ratio", "load-case", "end-of-construction"], "replaces": ["slip-surface", "rapid-drawdown", "cohesion"] },
+    "ch13": { "new": ["glaciolacustrine", "strain-softening", "peak-strength", "site-investigation", "borehole"], "replaces": [] },
+    "epi": { "new": ["observational-method", "engineer-of-record", "consequence-class", "dam-safety-review", "inclinometer", "measuring-weir"], "replaces": ["piezometer"] }
+  },
 
   "films": {
     "same-sand":          { "episode": 1, "title": "The same sand, three ways", "src": "video/same-sand.mp4", "poster": "video/same-sand.jpg", "vtt": "video/same-sand.vtt", "duration": 547.37 },

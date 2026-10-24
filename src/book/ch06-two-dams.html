@@ -1,0 +1,86 @@
+<section class="chapter" id="ch-two-dams">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.7): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col" data-stub>
+      <!-- Cold open (H.7): Brumadinho, 25 January 2019 (verify against feijao2019). -->
+    </div>
+    <div class="col">
+      <p>A hydroelectric dam holds back water, and the water is the product. Its height above the turbines is stored energy, released on demand. A tailings dam holds back mine waste, called <span class="gl" data-term="tailings">tailings</span>: rock ground finer than flour, pumped out of the mill as a slurry with the water used to process it. Nobody wants it back. The job is to keep it in place, forever.</p>
+      <p>Both dams face the physics of <a data-ref="ch-depth,ch-head"></a>. Water pressure grows by about 9.8 kPa for every metre of depth (<span class="term">p = ρgh</span>), which comes to nearly 1,000 kPa, or 1 MPa, at the foot of a 100 m reservoir. And water seeps through anything that isn't perfectly tight.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-types">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Water dam and tailings dam in section</span>
+        <span class="scale-note">Schematic · not to scale</span>
+      </div>
+      <div class="pair">
+        <div>
+          <p class="panel-title">Concrete gravity dam with powerhouse <small>hydroelectric</small></p>
+          <div class="svgwrap"><svg class="dwg" id="svg-hydro" viewBox="0 0 560 340" role="img" aria-label="A concrete gravity dam holding a reservoir. Water enters an intake, drops through a penstock to a turbine in the powerhouse at the toe, and leaves through the tailrace. Water pressure on the upstream face grows with depth."></svg></div>
+          <div class="controls">
+            <div class="range"><label for="hy-level">Reservoir level</label><input type="range" id="hy-level" min="0" max="100" value="80"><output id="hy-level-o">H = 85 m</output></div>
+            <div class="range"><label for="hy-flow">Turbine flow</label><input type="range" id="hy-flow" min="10" max="300" value="150"><output id="hy-flow-o">150 m³/s</output></div>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Power, <i class="g-sym">P = ηρgQH</i></span><b id="hy-P">112 MW</b><small>η = 0.90 turbine–generator</small></div>
+            <div class="ro"><span>Pressure at the heel</span><b id="hy-p">0.87 MPa</b><small id="hy-F">89 m deep at the heel · water load 39 MN per metre of dam</small></div>
+          </div>
+        </div>
+        <div>
+          <p class="panel-title">Tailings storage facility <small>mine waste</small></p>
+          <div class="svgwrap"><svg class="dwg" id="svg-tail" viewBox="0 0 560 340" role="img" aria-label="A tailings dam. Slurry from the mill is discharged from spigots on the crest. Coarse sand settles first, forming a beach; fine slimes travel on to the pond at the back. A barge reclaims pond water for the mill."></svg></div>
+          <p class="note" style="margin-top:10px">Watch the grains as the slurry leaves the pipes on the crest (the spigots). Coarse sand drops out first and builds a sloping <span class="gl" data-term="beach">beach</span>; the finest particles ride the water out to the pond. That sorting decides how strong, and how wet, the tailings next to the dam will be.</p>
+        </div>
+      </div>
+      <figcaption><strong>Left:</strong> the head <em>H</em>, the drop from the reservoir to the tailwater, drives the turbines. The load on the dam comes from the water's full depth at the heel, a few metres more than <em>H</em>. Drag the sliders to change the power output and the water pressure on the heel. <strong>Right:</strong> the tailings deposit is the dam's main load, and much of the dam is eventually built on top of it or out of it.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>What differs is almost everything else</h3>
+      <figure class="table wide" id="tbl-two-dams-compare">
+        <figcaption class="tbl-cap"><b data-num></b> · A water dam and a tailings dam, side by side</figcaption>
+        <div class="tablewrap">
+      <table class="cmp">
+        <thead><tr><th></th><th>Hydroelectric (water) dam</th><th>Tailings dam</th></tr></thead>
+        <tbody>
+          <tr><th>Holds back</th><td>Water, released through turbines on demand</td><td>Ground rock (silt to fine sand size) and process water, settling into a soft deposit</td></tr>
+          <tr><th>Built</th><td>Usually to full height in one campaign, before the reservoir fills</td><td>Raised in stages for the life of the mine, often for decades, while tailings keep arriving</td></tr>
+          <tr><th>Made of</th><td>Concrete, or earth and rockfill from quarries and borrow pits, specified and tested</td><td>Often the tailings themselves (cycloned sand), mine waste rock and soil dug nearby (borrow)</td></tr>
+          <tr><th>Floods</th><td>A spillway passes the design flood past the dam</td><td>Often stores the flood in the impoundment; pond water is reclaimed to the mill</td></tr>
+          <tr><th>Design life</th><td>Decades to a century of operation; can be decommissioned and removed</td><td>Must stay stable in perpetuity after the mine closes</td></tr>
+          <tr><th>If it fails</th><td>A flood wave of water</td><td>A flow of liquefied tailings: denser than water, sometimes toxic, able to run tens to hundreds of kilometres</td></tr>
+          <tr><th>Rules</th><td>National dam-safety regulators, ICOLD guidance</td><td>Mining regulators and, since 2020, the Global Industry Standard on Tailings Management (GISTM)</td></tr>
+        </tbody>
+      </table>
+    </div>
+      </figure>
+      <h3>Why tailings dams fail differently</h3>
+      <p>Water has no strength to lose. A deposit of loose, saturated tailings has some, and can lose nearly all of it at once: it is the liquid beach from <a data-ref="ch-trapped"></a> at the scale of a mine. Sheared, the loose grains try to pack tighter, the trapped water takes over their load, and the deposit flows like a heavy fluid. That is <span class="gl" data-term="liquefaction">liquefaction</span>. An earthquake can set it off. So can something much quieter, with no shaking at all (<span class="gl" data-term="static-liquefaction">static liquefaction</span>): a rising water table, slow creep, or a small movement of the slope.</p>
+      <ul class="timeline">
+        <li><span class="yr">1985</span>Stava, Italy. Two upstream-raised fluorite tailings dams collapsed one into the other; 268 people killed.</li>
+        <li><span class="yr">1994</span>Merriespruit, South Africa. An upstream-raised gold tailings dam overtopped after heavy rain and breached; the tailings flowed into a town, a flow one later study attributes to static liquefaction. 17 killed.</li>
+        <li><span class="yr">2014</span>Mount Polley, British Columbia, Canada. A tailings dam raised by the modified centreline method breached in the night, releasing about 25 million m³ of tailings and water. It was not a liquefaction of the tailings. Its cause is the subject of <a data-ref="ch-build"></a>. No deaths.</li>
+        <li><span class="yr">2015</span>Fundão, Mariana, Brazil. An upstream-raised dam liquefied; 19 killed. Tailings travelled 663 km down the Gualaxo do Norte, Carmo and Doce rivers to the Atlantic.</li>
+        <li><span class="yr">2019</span>Brumadinho, Brazil. Dam I, upstream-raised, failed by static liquefaction in seconds; 270 killed. The disaster led to the GISTM and to Brazil banning upstream dams.</li>
+      </ul>
+    </div>
+    <div class="col" data-stub>
+      <!-- New (H.7): the scale of tailings, "Every dam needs a door" (spillways, freeboard, overtopping;
+           fig-two-dams-spillway, eq-two-dams-weir), the case table tbl-two-dams-cases from the timeline,
+           worked examples ex-two-dams-power, ex-two-dams-heel, ex-two-dams-sorting, ex-two-dams-spillway. -->
+    </div>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.7): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

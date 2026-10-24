@@ -1,0 +1,68 @@
+<section class="chapter" id="ch-concrete">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.8): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col" data-stub>
+      <!-- Cold open (H.8): Bouzey, France, 27 April 1895 (verify date, toll and cause).
+           Concrete and masonry can't lose strength the way sand can, so what happened? -->
+    </div>
+    <div class="col" data-stub>
+      <h3 id="s-concrete-block">The block, grown into a dam</h3>
+      <!-- The gravity dam as the block of fig-block with the cushion underneath; fig-concrete-forces;
+           eq-concrete-fs; ex-concrete-full. -->
+    </div>
+    <div class="col">
+      <h3>Seepage under a concrete dam: uplift</h3>
+      <p>A concrete dam is the block on the water cushion from <a data-ref="fig-block"></a>. Water seeping under its base pushes up on it, and that <span class="gl" data-term="uplift">uplift</span> cancels part of the dam's weight. The weight, through friction on the rock, is what stops the dam sliding. The usual remedy is a row of drain holes bored into the rock from a tunnel inside the dam (the gallery), just downstream of the grout curtain, to let the water out. A common design assumption, used by the US Bureau of Reclamation among others, is that working drains cut the pressure at the drain line to the tailwater (the water level downstream) plus one-third of the difference between reservoir and tailwater.</p>
+    </div>
+
+    <figure class="sheet wide" id="fig-uplift">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Uplift and sliding of a 60 m concrete gravity dam</span>
+        <span class="scale-note">Drawn to scale · per metre of dam</span>
+      </div>
+      <p class="swipe-hint">Drawing scrolls sideways →</p>
+      <div class="controls">
+        <div class="ctl"><span>Foundation drains</span><div class="seg" id="up-drains"><button type="button" data-v="1" aria-pressed="true">Working</button><button type="button" data-v="0" aria-pressed="false">Clogged</button></div></div>
+        <div class="range"><label for="up-hw">Reservoir</label><input type="range" id="up-hw" min="30" max="59" step="0.5" value="57"><output id="up-hw-o">57.0 m</output></div>
+      </div>
+      <div class="svgwrap"><svg class="dwg" id="svg-uplift" viewBox="0 0 1000 380" role="img" aria-label="A concrete gravity dam with the water pressure on its upstream face and the uplift pressure diagram beneath its base. With working drains, the uplift diagram drops sharply at the drain line."></svg></div>
+      <div class="readouts">
+        <div class="ro"><span>Weight W</span><b id="up-W">–</b><small>concrete at 23.5 kN/m³</small></div>
+        <div class="ro"><span>Water push H</span><b id="up-H">–</b><small>net of tailwater</small></div>
+        <div class="ro"><span>Uplift U</span><b id="up-U">–</b><small id="up-U2"></small></div>
+        <div class="ro"><span>Sliding safety</span><b id="up-FS">–</b><small>(W − U)·tan 45° / H</small></div>
+        <div class="ro"><span>Resultant at base</span><b id="up-R">–</b><small id="up-R2"></small></div>
+      </div>
+      <figcaption>Uplift alone can decide whether a gravity dam is safe. Clog the drains and the uplift force nearly doubles. Many design guides look for a sliding safety factor of about 1.5 under normal operating loads. The resultant force should also fall in the middle third of the base, so the heel (the upstream edge of the base) stays pressed onto the rock and no crack opens to let full reservoir pressure in underneath. The sliding check assumes a friction angle of 45° between concrete and rock (tan 45° = 1) and no bond; at 35°, a common lower value, the full reservoir with working drains gives about 1.19 instead of 1.70. Across this slider's range the resultant stays in the middle third, even with the drains clogged: the heel goes into tension only under bigger loads, such as a flood over the crest or an earthquake, which this figure doesn't apply.</figcaption>
+    </figure>
+
+    <div class="col" data-stub>
+      <h3 id="s-concrete-drains">Drains, and what happens when they clog</h3>
+      <!-- eq-concrete-drain (the USBR drain-line head); ex-concrete-clogged; ex-concrete-phi;
+           ex-concrete-level; calcite and galleries. -->
+    </div>
+    <div class="col" data-stub>
+      <h3 id="s-concrete-third">The middle third</h3>
+      <!-- Lévy's rule and the middle third (Bouzey); case-bouzey. -->
+    </div>
+
+    <figure class="sheet wide film" id="film-depth-not-size-2">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Depth, not size <span class="film-part">part two</span></span><span class="scale-note" data-gen="film-len"></span></div>
+      <video controls preload="none" playsinline poster="video/depth-not-size.jpg" aria-label="Film: Depth, not size, part two"><source src="video/depth-not-size.mp4" type="video/mp4"><track kind="captions" src="video/depth-not-size.vtt" srclang="en" label="English"></video>
+      <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
+      <figcaption>The second half of the film that begins in <a data-ref="film-depth-not-size"></a>: a concrete dam as a block on a ramp, the water under its base that lifts it from below, its drains, the sliding check, Bouzey and the middle third.</figcaption>
+    </figure>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.8): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>

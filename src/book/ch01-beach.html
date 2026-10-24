@@ -1,0 +1,63 @@
+<section class="chapter" id="ch-beach">
+  <header class="opener" data-gen="opener">
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    <div class="opener-written" data-stub>
+      <!-- Writer (book/SPEC.md F.1, H.2): optional epigraph, then
+           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    </div>
+  </header>
+    <div class="col" data-stub>
+      <!-- Cold open (H.2): a walk down a beach at low tide; three steps, one sand. -->
+    </div>
+    <div class="col">
+      <p class="g-lede">If you have played on a beach, you have felt sand behave in three different ways.</p>
+      <p><strong>Dry sand pours.</strong> It runs through your fingers, and the steepest heap you can make is a low cone.</p>
+      <p><strong>Damp sand stands.</strong> Pack it into a bucket, turn it out, and you get a castle with walls that go straight up.</p>
+      <p><strong>Loose wet sand turns to soup.</strong> At the water's edge, where every gap between the grains is full of water, the sand feels firm while you stand still. Wiggle your feet and it goes soft, and you sink to the ankles.</p>
+      <p>It is the same sand every time. Only the water between the grains has changed. Now picture an earth dam: a heap of soil the size of a hill, with a lake pressing on one side and water soaking into it. Whether it behaves like the damp castle or like the soup at the waterline depends on what that water is doing.</p>
+      <p>Pick a state, then press <strong>Jiggle</strong> to shake the ground.</p>
+    </div>
+
+    <figure class="sheet wide g-fig" id="fig-beach">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · The same sand, different water</span>
+        <span class="scale-note">Schematic · castle about 30 cm tall</span>
+      </div>
+      <div class="g-split">
+        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a cone with 34 degree sides. Damp, it stands as a castle with vertical walls. Under still water it still stands at about 34 degrees. With water draining out through its face, it slumps to about 19 degrees. Shaken, loose wet sand flows flat and the flag on top sinks, while dense wet sand holds its shape."></svg></div>
+        <div class="g-side">
+          <div class="controls">
+            <div class="ctl"><span>Sand</span><div class="seg" id="bc-state"><button type="button" data-v="dry" aria-pressed="false">Dry</button><button type="button" data-v="damp" aria-pressed="true">Damp</button><button type="button" data-v="under" aria-pressed="false">Under still water</button><button type="button" data-v="drain" aria-pressed="false">Water draining out</button></div></div>
+            <div class="ctl"><span>Packing</span><div class="seg" id="bc-pack"><button type="button" data-v="loose" aria-pressed="true">Loose</button><button type="button" data-v="dense" aria-pressed="false">Dense</button></div></div>
+            <button class="btn primary" id="bc-jiggle" type="button">Jiggle</button>
+          </div>
+          <div class="g-zoom">
+            <svg class="dwg gd" id="svg-beach-zoom" viewBox="0 0 220 150" role="img" aria-label="Close-up of seven sand grains and what fills the gaps between them."></svg>
+            <p class="note" id="bc-zoom-note">Close-up: a little water gathers in rings where the grains touch.</p>
+          </div>
+          <div class="readouts">
+            <div class="ro"><span>Steepest slope it holds</span><b id="bc-slope">90°</b><small id="bc-slope2">a vertical wall</small></div>
+            <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water where grains touch</small></div>
+            <div class="ro"><span>After a jiggle</span><b id="bc-jig">–</b><small id="bc-jig2">press Jiggle to shake it</small></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Dry sand settles at about 34°, however you pour it. Damp sand holds a vertical wall. Under still water the heap stands about as steep as dry sand, but with water draining out through its face it slumps to about 19°. Jiggle the wet heap: packed loose, it turns to a liquid and the flag sinks; packed dense, it holds. Pick a state or a packing again to rebuild the heap. <strong>Why</strong> each one happens is the subject of <a data-ref="ch-grip,ch-trapped"></a>.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>The slope a dry heap settles at (engineers call it the <span class="gl" data-term="angle-of-repose">angle of repose</span>) is 30–35° for most sand, steeper for angular grains than for rounded ones; the sand drawn here settles at 34°. Damp sand ignores that limit. Wet sand is subtler: under still water a heap stands about as steep as a dry one, where water drains out through its face it slumps to about 19°, and loose wet sand that gets shaken loses nearly all its strength. For a dam, that last one is the dangerous one.</p>
+      <p>To explain all of this, you need two facts about water first. Its pressure grows with depth (<a data-ref="ch-depth"></a>). And it moves through the ground, slowly or very slowly, depending on the ground (<a data-ref="ch-head"></a>). <a data-ref="ch-grip"></a> puts them together.</p>
+    </div>
+    <div class="col" data-stub>
+      <!-- New (H.2): fig-beach-dam, ex-beach-castle, ex-beach-slope, the spine stated as a promise. -->
+    </div>
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="ch-end-written" data-stub>
+      <!-- Writer (book/SPEC.md F.14, H.2): What to remember, 4–6 questions with hints and
+           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
+           inside nav.next-card below. -->
+    </div>
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+</section>
