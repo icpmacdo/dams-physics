@@ -380,6 +380,8 @@ section.we p.we-ans, section.we p.we-check, section.we p.we-means, .col p.toc-fi
 @media (max-width: 519px) { .we-gf { grid-template-columns: minmax(0, 1fr); gap: 0; } .we-gf dd { margin-bottom: 8px; } }
 /* "Set the figure": the controls it changed glow for a moment, and a pill leads back */
 .set-hl { outline: 2px solid var(--grain) !important; outline-offset: 3px; border-radius: 6px; background-color: var(--hl) !important; transition: background-color 0.4s, outline-color 0.4s; }
+/* a dark button keeps its dark fill (its label is light): the ring alone marks it */
+.btn.primary.set-hl { background-color: var(--ink) !important; }
 figure.set-target { box-shadow: 0 0 0 3px var(--hl); transition: box-shadow 0.6s; }
 .back-pill { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18); background: var(--sheet); min-height: 40px; }

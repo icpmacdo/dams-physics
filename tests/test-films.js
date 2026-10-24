@@ -45,8 +45,10 @@ const PROBE = String(function probe() {
       // part one: the poster, Play, then the stop at 191 s
       const fig = d.getElementById('film-depth-not-size'), v = fig.querySelector('video');
       const poster = fig.querySelector('.film-poster');
-      say(poster && !poster.hidden && /Film 2\.1/.test(poster.textContent) && /3 min 11 s/.test(poster.textContent) && /which dam has to be stronger\?/.test(poster.textContent),
-        'part one: the poster shows the number, the segment\'s length and the question');
+      // the question is in the markup for the poster, but the Before you watch box above asks it, so the poster hides it
+      const fq = poster && poster.querySelector('.fp-q');
+      say(poster && !poster.hidden && /Film 2\.1/.test(poster.textContent) && /3 min 11 s/.test(poster.textContent) && fq && /how many tonnes push on each metre/.test(fq.textContent) && w.getComputedStyle(fq).display === 'none',
+        'part one: the poster shows the number and the segment\'s length; its question stays with Before you watch');
       say(poster && poster.querySelector('button.fp-play'), 'part one: the poster has a real Play button');
       poster.querySelector('button.fp-play').click();
       say(await until(() => !v.paused && v.currentTime > 0.1, 10000), 'part one: Play starts the film');
