@@ -498,7 +498,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
   E('polygon', { points: M.P(damPts), fill: 'url(#p-conc)', class: 'edge' }, g);
   E('polygon', { points: M.P([[5, 3.5], [8.5, 3.5], [8.5, 7.5], [5, 7.5]]), class: 'void' }, g);
   E('polygon', { points: M.P([[4.6, 3.5], [6.0, 3.5], [-1.6, -30], [-3.2, -30]]), fill: 'url(#p-grout)' }, g);
-  const drainLine = E('path', { d: M.D([[7.3, 3.5], [7.3, -22]]), style: 'stroke-width:2.2;fill:none' }, g);
+  const drainLine = E('path', { d: M.D([[XD, 3.5], [XD, -22]]), style: 'stroke-width:2.2;fill:none' }, g); // at the uplift diagram's kink
   const drainX = E('path', { style: 'stroke:var(--bad);stroke-width:2;fill:none' }, g);
   const forces = E('g', null, g);
   const lbls = E('g', null, g);
@@ -562,7 +562,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
     // drains style
     drainLine.style.stroke = drains ? 'var(--water)' : 'var(--ink-3)';
     drainLine.style.strokeDasharray = drains ? '4 3' : '2 3';
-    const [dx, dy] = M.pt([7.3, -12]);
+    const [dx, dy] = M.pt([XD, -12]);
     drainX.setAttribute('d', drains ? '' : `M${dx - 6},${dy - 6} l12,12 M${dx + 6},${dy - 6} l-12,12`);
     drainLbl.textContent = drains ? 'Drains' : 'Drains clogged';
     // readouts

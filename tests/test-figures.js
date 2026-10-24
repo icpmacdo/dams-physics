@@ -256,6 +256,11 @@ console.log('\nFig. 8.4 · uplift and sliding');
   same(at(true, 59).s, '34.8 MN/m | 17.0 MN/m | 8.2 MN/m | 24% of the weight | 1.57 | Meets 1.5 | 0.58 B | Middle third', '59 m, drains working');
   same(at(false, 30).s, '34.8 MN/m | 4.3 MN/m | 8.2 MN/m | 24% of the weight | 6.18 | Meets 1.5 | 0.35 B | Middle third', '30 m, drains clogged');
   near(k.c.U / d.c.U, 1.83, 0.005, 'clogging the drains nearly doubles the uplift (ratio)');
+  same((d.c.FS * Math.tan(35 * Math.PI / 180)).toFixed(2), '1.19', 'the caption: with a 35° friction angle the 1.70 case falls to 1.19');
+  let lo = 1, hi = 0;
+  for (let hw = 30; hw <= 59; hw += 0.5) for (const dr of [true, false]) { const x = S.upliftCalc(hw, S.upliftDrainHead(dr, hw)).xR / S.B; lo = Math.min(lo, x); hi = Math.max(hi, x); }
+  check(lo > 1 / 3 && hi < 2 / 3, `the caption: across the slider (30–59 m, drains working or clogged) the resultant stays in the middle third (${lo.toFixed(2)}–${hi.toFixed(2)} B)`);
+  check(/drainLine = E\('path', \{ d: M\.D\(\[\[XD, /.test(seep), 'the drain hole is drawn at the uplift kink (XD), not 1.3 m downstream of it');
 }
 
 console.log('\nFig. 9.1 · workbench leak verdict');
@@ -326,6 +331,7 @@ console.log('\nFacts the text states (errata fixes)');
   says('which engineers call negative excess pore pressure', 'Fig. 4.3 caption, experiment 4');
   check(!/\(suction\)|no suction|Watch u go below zero|'u water'|'σ total'/.test(grains), 'Fig. 4.3 scripts: no "suction" for saturated sand, and the chart legend says Δu and σ load');
   never('Every number here is measured from the model as it runs, not set in advance', 'Fig. 4.3 caption');
+  says('assumes a friction angle of 45° between concrete and rock (tan 45° = 1) and no bond', 'Fig. 8.4 caption');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');
