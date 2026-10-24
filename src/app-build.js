@@ -43,7 +43,7 @@ function pipeText(iExit, where, pipe) {
     { key: 'clay', name: 'Clay core', pat: 'p-clay', note: 'Almost watertight, so it holds back the head. Weaker than the other materials.' },
     { key: 'rock', name: 'Rockfill shell', pat: 'p-rock', note: 'Heavy, strong and coarse. Water runs straight through it.' },
     { key: 'filter', name: 'Sand filter / drain', pat: 'p-drain', note: 'Lets water out but holds soil back. A patch joined to the toe at the base of the dam drains freely.' },
-    { key: 'tsand', name: 'Cycloned tailings sand', pat: 'p-cyclone', note: 'The coarse part of mine waste, so it is free. No cohesion, and it drains only moderately.' }
+    { key: 'tsand', name: 'Cycloned tailings sand', pat: 'p-cyclone', note: 'The coarse part of mine waste, so it is cheap: far cheaper than hauling borrowed fill. No cohesion, and it drains only moderately, though fast enough (10⁻⁵ m/s) that the drawdown check lets it drain with the reservoir.' }
   ];
   MAT.forEach((m, i) => Object.assign(m, B.materials[i]));
   const FOUND = { gravel: 'Sand & gravel', clay: 'Clay', weak: 'Clay with a weak clay layer 4–6 m down' };
@@ -75,15 +75,15 @@ function pipeText(iExit, where, pipe) {
     },
     polley: {
       title: 'Mount Polley',
-      brief: 'In 2014 the Mount Polley tailings dam in British Columbia slid on a weak clay layer in its foundation and released about 25 million m³ of water and tailings. The investigation found the design had not allowed for that layer, and a steep downstream slope made it worse. This dam sits on a similar layer 4 m down. Get the factor of safety to 1.5, checked on blocks sliding along the layer as well as on circles.',
+      brief: 'In 2014 the Mount Polley tailings dam in British Columbia slid on a weak clay layer in its foundation and released about 25 million m³ of water and tailings. The investigation found the design had not allowed for that layer, and a steep downstream slope made it worse. This dam sits on a similar layer 4 m down. Get the factor of safety to 1.5, checked on blocks sliding along the layer as well as on circles. The sandbox checks a slow, drained strength, and the layer\'s 19° friction angle stands in for its weakness. The real layer failed undrained, at a strength well below what a drained check allows, so the first lesson of Polley is finding the layer at all.',
       hints: ['Test it. The weakest surface is a flat-bottomed block sliding along the weak layer.',
         'Drains barely help here. The layer is weak because of what it is, and it lies sealed in clay below the dam.',
         'Weight pressing down on the layer beyond the toe holds the block back. Flatten the downstream slope.'],
-      done: 'The flatter slope puts more weight on the layer beyond the old toe, and the block has a longer stretch of layer to slide along. Flatter slopes and toe buttresses of extra fill are the usual fix for a weak foundation.'
+      done: 'The flatter slope puts more weight on the layer beyond the old toe, and the block has a longer stretch of layer to slide along. Flatter slopes and toe buttresses of extra fill are the usual fix for a weak foundation. A real design would also check the layer\'s undrained strength, which this sandbox does not.'
     },
     tailings: {
       title: 'Tailings on a budget',
-      brief: 'Mines build tailings dams from their own waste because it costs nothing. Make at least 70% of this dam from cycloned tailings sand, and get the factor of safety to 1.5 with a piping safety of 3 or more.',
+      brief: 'Mines build tailings dams from their own waste because it is far cheaper than hauling borrowed fill. Make at least 70% of this dam from cycloned tailings sand, and get the factor of safety to 1.5 with a piping safety of 3 or more.',
       hints: ['Tailings sand has no cohesion. Even dry, a slope of loose grains stands only up to its friction angle, and wet it stands much less.',
         'Keep it dry first: a drain inside the sand lowers the water level.',
         'A chimney and blanket drain plus a 2.5:1 downstream slope does it.'],

@@ -300,6 +300,15 @@ console.log('\nFig. 9.1 · workbench leak verdict');
   same(BLD.leakWhere({ passThroughDam: 1, passUnderDam: 1 }).txt, 'It splits between the dam itself (50%) and the ground beneath it (50%).', 'an even split');
 }
 
+console.log('\nFig. 9.1 · slip-surface search count');
+{
+  const ST = require(path.join(SRC, 'stability-solver.js'));
+  const tried = ['homogeneous', 'cored'].map(p => ST.runDesign({ cells: ST.presetCells(p, 2), slope: 2, foundation: p === 'cored' ? 'gravel' : 'clay', cutoff: 'none', reservoir: 0.85 }, { solveSeepage }).stab.downstream.tried);
+  check(tried.every(n => n > 2000 && n < 3000), `the stability search tries more than two thousand surfaces (${tried.join(', ')}), as the text and the film say`);
+  const plain = decode(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
+  check(plain.includes('It tries more than two thousand curved surfaces through the slope (1,960 on a grid'), 'Step 9 text gives the same count');
+}
+
 console.log('\nFacts the text states (errata fixes)');
 {
   const plain = decode(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
@@ -353,6 +362,23 @@ console.log('\nFacts the text states (errata fixes)');
   says('Designers want at least 3 for an existing dam and 4 for a new one; the missions here ask for 3.', 'Step 9 Pipes card');
   check(require(path.join(SRC, 'stability-solver.js')).BUILD.missions.filter(m => m.goals.minPipe != null).every(m => m.goals.minPipe === 3), 'Step 9 Pipes card: every mission with a piping goal asks for 3');
   never('3 or more', 'Step 8 and Step 9');
+  // Coquitlam: BC Hydro's release of 3 Oct 2008 announces the upgrade complete; the new dam is "mostly
+  // founded on dense glacial deposits" (GeoEdmonton 2008 paper)
+  says('Coquitlam Dam · 1913, buttressed by a new dam in 2008', 'Coquitlam case');
+  says('founded mostly on dense glacial soil (completed in 2008)', 'Coquitlam case');
+  never('backed up in 2007', 'Coquitlam case');
+  says('can lose nearly all of it at once', 'Step 5 (liquefied soil keeps a residual strength)');
+  says('barred in Chile wherever people live within reach downstream (since 1970)', 'Step 6 upstream card (DS 86/1970 is scoped)');
+  says('Not a liquefaction failure: the embankment, raised by a modified centreline method', 'Step 5 timeline, Mount Polley');
+  says('An upstream-raised gold tailings dam overtopped after heavy rain and breached', 'Step 5 timeline, Merriespruit');
+  says('is 30–35° for most sand', 'Step 1 angle of repose');
+  says('hundreds to thousands of times smaller than a grain of sand', 'Step 3 clay');
+  says('Schematic · vertical scale ×1.5 · beach and pond not to scale', 'Fig. 6.1 scale note (the 8% beach is schematic)');
+  const fin = k => C.raiseDam(k, C.stateAt(10)).txt.fill;
+  says('both faces move out with every raise, so the section grows fastest (' + fin('down') + ' m³ per metre here, against ' + fin('centre') + ' for centreline)', 'Step 6 downstream card quotes Fig. 6.1');
+  says('anything that passes water at 10⁻⁵ m/s or faster', 'Step 9 drawdown paragraph states the threshold');
+  check(!/so it is free|costs nothing/.test(read('app-build.js')), 'Step 9: tailings sand is cheap, not free');
+  check(/stands in for its weakness\. The real layer failed undrained/.test(read('app-build.js')), 'Step 9 Polley mission: the drained 19° is a stand-in for an undrained failure');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');
