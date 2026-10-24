@@ -26,11 +26,11 @@
           </div>
           <div class="g-zoom">
             <svg class="dwg gd" id="svg-beach-zoom" viewBox="0 0 220 150" role="img" aria-label="Close-up of seven sand grains and what fills the gaps between them."></svg>
-            <p class="note" id="bc-zoom-note">Close-up: a little water gathers in rings where grains touch.</p>
+            <p class="note" id="bc-zoom-note">Close-up: a little water gathers in rings where the grains touch.</p>
           </div>
           <div class="readouts">
             <div class="ro"><span>Steepest slope it holds</span><b id="bc-slope">90°</b><small id="bc-slope2">a vertical wall</small></div>
-            <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water at the contacts</small></div>
+            <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water where grains touch</small></div>
           </div>
         </div>
       </div>
@@ -168,7 +168,7 @@
           </div>
           <div class="readouts">
             <div class="ro"><span>Time elapsed</span><b id="rc-clock">0 s</b><small id="rc-clock2">press start</small></div>
-            <div class="ro"><span>Through so far</span><b id="rc-done">None</b><small id="rc-done2">of four</small></div>
+            <div class="ro"><span>Through so far</span><b id="rc-done">None</b><small id="rc-done2">0 of four</small></div>
           </div>
           <p class="note">A drop of water moves faster than <em>k</em> alone suggests, because it can only travel through the gaps, which take up about a third of the volume. The times here allow for that: time = gap fraction × length ÷ (<em>k</em> × push).</p>
         </div>
@@ -246,7 +246,7 @@
         <div class="g-side">
           <div class="controls">
             <div class="range"><label for="bk-a">Ramp angle</label><input type="range" id="bk-a" min="0" max="45" step="1" value="25"><output id="bk-a-o">25°</output></div>
-            <div class="range"><label for="bk-u">Water pressure</label><input type="range" id="bk-u" min="0" max="20" step="0.5" value="0"><output id="bk-u-o">0 kPa</output></div>
+            <div class="range"><label for="bk-u">Water pressure</label><input type="range" id="bk-u" min="0" max="20" step="0.5" value="0"><output id="bk-u-o">0.0 kPa</output></div>
             <button class="btn" id="bk-reset" type="button" hidden>Put the block back</button>
           </div>
           <div class="g-bars" aria-hidden="true">
@@ -290,7 +290,7 @@
           </div>
           <div class="readouts">
             <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gc-s">192 kPa</b><small>at 10 m depth</small></div>
-            <div class="ro"><span>Pore pressure <i class="g-sym">u</i></span><b id="gc-u">59 kPa</b><small id="gc-u2">at 10 m depth</small></div>
+            <div class="ro"><span>Pore pressure <i class="g-sym">u</i></span><b id="gc-u">59 kPa</b><small id="gc-u2">water 6.0 m above this point</small></div>
             <div class="ro"><span>Effective stress <i class="g-sym">σ′</i></span><b id="gc-e">133 kPa</b><small>σ − u</small></div>
             <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>compared with damp sand above the water table</small></div>
           </div>

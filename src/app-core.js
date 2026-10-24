@@ -14,6 +14,7 @@ function T(parent, x, y, str, cls, extra) {
   t.textContent = str;
   return t;
 }
+/* @fig-util-begin */ // pure helpers, also loaded by tests/test-figures.js
 const n1 = v => (Math.round(v * 10) / 10).toFixed(1);
 const P = pts => pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
 const D = pts => pts.length ? 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join('L') : '';
@@ -88,6 +89,7 @@ function pointAlong(pts, cum, s) { // pts polyline, cum cumulative lengths
   return [lerp(pts[i - 1][0], pts[i][0], t), lerp(pts[i - 1][1], pts[i][1], t)];
 }
 function cumLen(pts) { const c = [0]; for (let i = 1; i < pts.length; i++) c.push(c[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1])); return c; }
+/* @fig-util-end */
 let seed = 7;
 const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
 
@@ -183,7 +185,18 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
   /* ---------- hydro ---------- */
   const svg = $('#svg-hydro');
   const g = E('g', null, svg);
+  /* @fig-hydro-begin */
   const BASE = 270, TWY = 262;
+  // the readouts for the level slider (0–100) and the turbine flow Q (m³/s); svg y is 2 px per metre
+  function hydroCalc(level, Q) {
+    const wl = lerp(150, 78, level / 100);
+    const H = (TWY - wl) * 0.5, depth = (BASE - wl) * 0.5;
+    const pMPa = 9.81 * depth / 1000, Fmn = 0.5 * 9.81 * depth * depth / 1000;
+    const Pmw = 0.9 * 9.81 * Q * H / 1000;
+    return { wl, H, depth, pMPa, Fmn, Pmw,
+      txt: { level: 'H = ' + Math.round(H) + ' m', flow: Q + ' m³/s', P: fmt(Pmw) + ' MW', p: pMPa.toFixed(2) + ' MPa', F: 'Water load ' + Math.round(Fmn) + ' MN per metre of dam' } };
+  }
+  /* @fig-hydro-end */
   const water = E('path', { class: 'water' }, g);
   const surf = E('path', { class: 'water-line' }, g);
   E('polygon', { class: 'water', points: P([[340, TWY], [560, TWY], [560, 284], [350, 270], [340, 270]]) }, g);
@@ -251,15 +264,14 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
   const parts = [];
   for (let i = 0; i < 14; i++) parts.push({ x: rnd() * 180 + 10, y: 0, e: E('circle', { r: 1.6, class: 'particle', opacity: 0.8 }, g), sx: 0, sy: 0 });
   function hydroUpdate() {
-    wl = lerp(150, 78, +lvl.value / 100); Q = +flow.value;
-    const H = (TWY - wl) * 0.5, depth = (BASE - wl) * 0.5;
-    const pMPa = 9.81 * depth / 1000, Fmn = 0.5 * 9.81 * depth * depth / 1000;
-    const Pmw = 0.9 * 9.81 * Q * H / 1000;
-    $('#hy-level-o').textContent = 'H = ' + Math.round(H) + ' m';
-    $('#hy-flow-o').textContent = Q + ' m³/s';
-    $('#hy-P').textContent = fmt(Pmw) + ' MW';
-    $('#hy-p').textContent = pMPa.toFixed(2) + ' MPa';
-    $('#hy-F').textContent = 'Water load ' + Math.round(Fmn) + ' MN per metre of dam';
+    const c = hydroCalc(+lvl.value, +flow.value);
+    wl = c.wl; Q = +flow.value;
+    const H = c.H, pMPa = c.pMPa;
+    $('#hy-level-o').textContent = c.txt.level;
+    $('#hy-flow-o').textContent = c.txt.flow;
+    $('#hy-P').textContent = c.txt.P;
+    $('#hy-p').textContent = c.txt.p;
+    $('#hy-F').textContent = c.txt.F;
     const kp = 0.42, w = kp * (268 - wl);
     presPoly.setAttribute('points', P([[200, wl], [200, 268], [200 - w, 268]]));
     presArrows.textContent = '';
@@ -400,9 +412,9 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
 /* ===================== Fig 2: raising methods ===================== */
 (function figRaise() {
   const F = fig($('#fig-raise'));
+  /* @fig-raise-begin */
   const R = { h0: 20, dh: 12, n: 4, s: 2, c: 8, X0: 260, b: 0.08, Lb: 100, b2: 0.01 };
   const zk = k => R.h0 + R.dh * k;
-  const M = mapper({ x0: 0, x1: 580, z0: -12, z1: 84, X0: 10, X1: 990, Y0: 6, Y1: 246 });
   const starter = [[260, 0], [348, 0], [308, 20], [300, 20]];
   // per-method geometry
   const up = { faces: [300], dykes: [] };
@@ -413,27 +425,6 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
   }
   const dnRaise = k => { const a = zk(k - 1), b = zk(k); return [[260 + 2 * a, a], [260 + 2 * b, b], [268 + 2 * b, b], [268 + 4 * b, 0], [268 + 4 * a, 0], [268 + 2 * a, a]]; };
   const clRaise = k => { const a = zk(k - 1), b = zk(k); return [[276, a], [300, b], [308, b], [308 + 2 * b, 0], [308 + 2 * a, 0], [308, a], [300, a]]; };
-
-  const methods = [
-    { key: 'up', name: 'Upstream', note: 'Crest moves toward the pond' },
-    { key: 'down', name: 'Downstream', note: 'Crest moves away from the pond' },
-    { key: 'centre', name: 'Centreline', note: 'Crest rises vertically' }
-  ];
-  const host = $('#rs-panels');
-  for (const m of methods) {
-    const wrap = document.createElement('div'); wrap.className = 'raise-panel';
-    wrap.innerHTML = `<div class="raise-head"><h4>${m.name} <span class="scale-note" style="margin-left:8px">${m.note}</span></h4><div class="raise-stats"><span>Fill <b data-k="fill">–</b> m³/m</span><span>Crest shift <b data-k="shift">–</b></span><span>On tailings <b data-k="ontail">–</b></span><span class="pill neutral" data-k="pill">–</span></div></div>`;
-    const svg = E('svg', { class: 'dwg', viewBox: '0 0 1000 252', role: 'img', 'aria-label': `${m.name} method: staged cross-section of the dam and tailings` }, null);
-    const sw = document.createElement('div'); sw.className = 'svgwrap'; sw.appendChild(svg); wrap.appendChild(sw);
-    host.appendChild(wrap);
-    m.svg = svg; m.wrap = wrap;
-    m.root = E('g', null, svg);
-    const L = n => E('g', null, m.root);
-    m.gTail = L(); m.gOld = L(); m.gPond = L(); m.gDam = L(); m.gLobe = L(); m.gDyk = L(); m.gZones = L(); m.gAcc = L(); m.gSat = L(); m.gPh = L(); m.gCrest = L(); m.gGround = L(); m.gLbl = L();
-    E('polygon', { points: M.P([[0, 95], [95, 0], [580, 0], [580, -12], [0, -12]]), fill: 'url(#p-alluv)', class: 'edge' }, m.gGround);
-    T(m.gLbl, M.X(560), M.Z(-7), 'Foundation', 'lbl-s halo', { 'text-anchor': 'end' });
-  }
-
   function stateAt(t) {
     const p = Math.min(9, Math.floor(t)), f = t >= 10 ? 1 : t - p;
     let built = 0, partialK = 0, partialTop = 0, zt = 0, zDam = 0, starterTop = 20;
@@ -456,20 +447,63 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
     const k = Math.min(4, Math.ceil((zt - 20) / 12 - 1e-9));
     return up.dykes[k - 1].poly[0][0] + 2 * (zt - zk(k - 1));
   }
-  function render(m, t, fail) {
-    const S = stateAt(t);
-    [m.gOld, m.gTail, m.gPond, m.gSat, m.gDam, m.gLobe, m.gDyk, m.gZones, m.gAcc, m.gPh, m.gCrest].forEach(g => (g.textContent = ''));
-    const ff = m.key === 'up' ? fail : 0;
-    // --- dam polygons ---
+  // what is built at stage S (from stateAt) for one method: the fill polygons, the crest path,
+  // and the three numbers under each panel (fill area, crest shift, share of fill resting on tailings)
+  function raiseDam(key, S) {
     const dam = [];
     const st = S.p === 0 ? clipBelow(starter, S.starterTop) : starter;
     if (st.length) dam.push({ poly: st, kind: 'starter' });
     const nRaise = S.built + (S.partialK ? 1 : 0);
     for (let k = 1; k <= nRaise; k++) {
-      let poly = m.key === 'up' ? up.dykes[k - 1].poly : m.key === 'down' ? dnRaise(k) : clRaise(k);
+      let poly = key === 'up' ? up.dykes[k - 1].poly : key === 'down' ? dnRaise(k) : clRaise(k);
       if (k === S.partialK) poly = clipBelow(poly, S.partialTop);
       if (poly.length) dam.push({ poly, kind: 'raise', k });
     }
+    let fillA = 0, tailA = 0;
+    for (const d of dam) {
+      const a = polyArea(d.poly); fillA += a;
+      if (d.kind === 'raise' && key === 'up') tailA += a;
+      if (d.kind === 'raise' && key === 'centre') { const wedge = clipLeftOf(d.poly, 300); if (wedge.length) tailA += polyArea(wedge); }
+    }
+    const crests = [];
+    if (S.p > 0 || S.f > 0.99) crests.push([304, 20]);
+    for (let k = 1; k <= S.built + (S.partialK && S.f > 0.99 ? 1 : 0); k++) {
+      const cx = key === 'up' ? up.faces[k] + 4 : key === 'down' ? 264 + 2 * zk(k) : 304;
+      crests.push([cx, zk(k)]);
+    }
+    const shift = crests.length ? crests[crests.length - 1][0] - 304 : 0;
+    return { dam, nRaise, fillA, tailA, crests, shift,
+      txt: { fill: fmt(fillA), shift: (shift > 0.5 ? '+' : shift < -0.5 ? '−' : '') + Math.abs(Math.round(shift)) + ' m', ontail: fillA ? Math.round(100 * tailA / fillA) + '%' : '0%' } };
+  }
+  /* @fig-raise-end */
+  const M = mapper({ x0: 0, x1: 580, z0: -12, z1: 84, X0: 10, X1: 990, Y0: 6, Y1: 246 });
+
+  const methods = [
+    { key: 'up', name: 'Upstream', note: 'Crest moves toward the pond' },
+    { key: 'down', name: 'Downstream', note: 'Crest moves away from the pond' },
+    { key: 'centre', name: 'Centreline', note: 'Crest rises vertically' }
+  ];
+  const host = $('#rs-panels');
+  for (const m of methods) {
+    const wrap = document.createElement('div'); wrap.className = 'raise-panel';
+    wrap.innerHTML = `<div class="raise-head"><h4>${m.name} <span class="scale-note" style="margin-left:8px">${m.note}</span></h4><div class="raise-stats"><span>Fill <b data-k="fill">–</b> m³/m</span><span>Crest shift <b data-k="shift">–</b></span><span>On tailings <b data-k="ontail">–</b></span><span class="pill neutral" data-k="pill">–</span></div></div>`;
+    const svg = E('svg', { class: 'dwg', viewBox: '0 0 1000 252', role: 'img', 'aria-label': `${m.name} method: staged cross-section of the dam and tailings` }, null);
+    const sw = document.createElement('div'); sw.className = 'svgwrap'; sw.appendChild(svg); wrap.appendChild(sw);
+    host.appendChild(wrap);
+    m.svg = svg; m.wrap = wrap;
+    m.root = E('g', null, svg);
+    const L = n => E('g', null, m.root);
+    m.gTail = L(); m.gOld = L(); m.gPond = L(); m.gDam = L(); m.gLobe = L(); m.gDyk = L(); m.gZones = L(); m.gAcc = L(); m.gSat = L(); m.gPh = L(); m.gCrest = L(); m.gGround = L(); m.gLbl = L();
+    E('polygon', { points: M.P([[0, 95], [95, 0], [580, 0], [580, -12], [0, -12]]), fill: 'url(#p-alluv)', class: 'edge' }, m.gGround);
+    T(m.gLbl, M.X(560), M.Z(-7), 'Foundation', 'lbl-s halo', { 'text-anchor': 'end' });
+  }
+
+  function render(m, t, fail) {
+    const S = stateAt(t);
+    [m.gOld, m.gTail, m.gPond, m.gSat, m.gDam, m.gLobe, m.gDyk, m.gZones, m.gAcc, m.gPh, m.gCrest].forEach(g => (g.textContent = ''));
+    const ff = m.key === 'up' ? fail : 0;
+    // --- dam polygons ---
+    const built = raiseDam(m.key, S), dam = built.dam, nRaise = built.nRaise;
     // --- tailings ---
     const zt = S.zt;
     let xf = 0, zp = 0, xw = 0;
@@ -528,19 +562,14 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
       }
     }
     // --- draw dam fills ---
-    let fillA = 0, tailA = 0;
     for (const d of dam) {
-      const a = polyArea(d.poly); fillA += a;
       const target = (m.key === 'up' && d.kind === 'raise') ? m.gDyk : m.gDam;
       E('polygon', { points: M.P(d.poly), fill: 'url(#p-fill)', class: 'edge' }, target);
       if (d.kind === 'raise' && m.key === 'up') {
-        tailA += a;
         const dk = up.dykes[d.k - 1];
         E('path', { d: M.D([[dk.poly[0][0] + 0.5, dk.z0], [dk.xd - 4.5, dk.z0]]), class: 'acc-line' }, m.gDyk);
       }
       if (d.kind === 'raise' && m.key === 'centre') {
-        const wedge = clipLeftOf(d.poly, 300);
-        if (wedge.length) tailA += polyArea(wedge);
         E('path', { d: M.D([[276.5, zk(d.k - 1)], [299.5, zk(d.k - 1)]]), class: 'acc-line' }, m.gAcc);
       }
     }
@@ -572,12 +601,7 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
       m.gDyk.setAttribute('opacity', (1 - 0.6 * ff).toFixed(2));
     } else { m.gDyk.removeAttribute('transform'); m.gDyk.removeAttribute('opacity'); }
     // crest path
-    const crests = [];
-    if (S.p > 0 || S.f > 0.99) crests.push([304, 20]);
-    for (let k = 1; k <= S.built + (S.partialK && S.f > 0.99 ? 1 : 0); k++) {
-      const cx = m.key === 'up' ? up.faces[k] + 4 : m.key === 'down' ? 264 + 2 * zk(k) : 304;
-      crests.push([cx, zk(k)]);
-    }
+    const crests = built.crests;
     if (crests.length > 1) E('path', { d: M.D(crests), class: 'crest-path', opacity: (1 - ff).toFixed(2) }, m.gCrest);
     crests.forEach(c => E('circle', { cx: M.X(c[0]), cy: M.Z(c[1]) - 6, r: 2.6, class: 'crest-dot', opacity: (1 - ff).toFixed(2) }, m.gCrest));
     if (crests.length) {
@@ -592,11 +616,10 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
     if (zp > 8) lab(Math.max(40, xw - 40), zp + 3, 'Pond', 'lbl-s lbl-w');
     if (ff > 0.6) lab(470, 14, 'Liquefied tailings flow', 'lbl lbl-acc');
     // stats
-    const shift = crests.length ? crests[crests.length - 1][0] - 304 : 0;
     const q = k => m.wrap.querySelector(`[data-k="${k}"]`);
-    q('fill').textContent = fmt(fillA);
-    q('shift').textContent = (shift > 0.5 ? '+' : shift < -0.5 ? '−' : '') + Math.abs(Math.round(shift)) + ' m';
-    q('ontail').textContent = fillA ? Math.round(100 * tailA / fillA) + '%' : '0%';
+    q('fill').textContent = built.txt.fill;
+    q('shift').textContent = built.txt.shift;
+    q('ontail').textContent = built.txt.ontail;
   }
   function setPills(stateName) {
     for (const m of methods) {

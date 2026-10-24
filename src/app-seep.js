@@ -87,6 +87,27 @@
 })();
 
 /* ===================== Fig 6: seepage lab ===================== */
+/* @fig-lab-begin */
+// Fig 8.2: the lab's state on load (matches the pressed buttons and the slider in body.html),
+// and the pure part of its readouts. Both are pinned by tests/test-figures.js.
+const LAB0 = { damType: 'homogeneous', drain: 'none', cutoff: 'none', foundation: 'pervious', reservoir: 0.85 };
+function labFmtQ(q) { // m3/s per m -> L/day per m
+  const L = q * 86400 * 1000;
+  if (L >= 100) return fmt(L, 0);
+  if (L >= 1) return L.toFixed(1);
+  if (L >= 0.01) return L.toFixed(2);
+  return L.toExponential(1);
+}
+function labPiping(ex) { // max exit gradient and safety against piping, from the solver's r.exit
+  const imax = ex ? Math.max(ex.groundMax || 0, ex.faceMax || 0) : 0;
+  const i = imax > 0.005 ? imax.toFixed(2) : '≈ 0';
+  const i2 = ex && imax > 0.005 ? (ex.governing === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'all exits are filtered drains';
+  const fs = ex && isFinite(ex.fs) ? ex.fs : Infinity;
+  if (!isFinite(fs) || fs > 50) return { imax, i, i2, fs, fsTxt: '> 50', cls: 'ok', word: 'Safe' };
+  const cls = fs >= 3 ? 'ok' : fs >= 1.5 ? 'warn' : 'bad', word = fs >= 3 ? 'Adequate' : fs >= 1.5 ? 'Marginal' : 'Piping risk';
+  return { imax, i, i2, fs, fsTxt: fs.toFixed(1), cls, word };
+}
+/* @fig-lab-end */
 (function figLab() {
   const F = fig($('#fig-lab'));
   const svg = $('#svg-lab');
@@ -101,7 +122,7 @@
   const L = () => E('g', null, svg);
   const gRes = L(), gMat = L(), gImg = L(), gEq = L(), gFl = L(), gPh = L(), gMark = L(), gPart = L(), gLbl = L();
   const img = E('image', { x: M.X(G.x0), y: M.Z(G.z1), width: M.X(G.x1) - M.X(G.x0), height: M.Z(G.z0) - M.Z(G.z1), preserveAspectRatio: 'none', 'clip-path': 'url(#lab-clip)', opacity: 0.82 }, gImg);
-  const state = { damType: 'homogeneous', drain: 'none', cutoff: 'none', foundation: 'pervious', reservoir: 0.85 };
+  const state = Object.assign({}, LAB0);
   const segs = {
     damType: segGroup($('#lab-dam'), v => { state.damType = v; request(); }),
     drain: segGroup($('#lab-drain'), v => { state.drain = v; request(); }),
@@ -208,13 +229,7 @@
     c2.putImageData(im, 0, 0);
     img.setAttribute('href', cvs.toDataURL());
   }
-  function fmtQ(q) { // m3/s per m -> L/day per m
-    const L = q * 86400 * 1000;
-    if (L >= 100) return fmt(L, 0);
-    if (L >= 1) return L.toFixed(1);
-    if (L >= 0.01) return L.toFixed(2);
-    return L.toExponential(1);
-  }
+  const fmtQ = labFmtQ;
   function receive(r) {
     if (keyOf(r.params || state) !== keyOf(state)) return;
     last = r;
@@ -288,16 +303,10 @@
     outs.sort((a, b) => b[1] - a[1]);
     $('#lab-split').textContent = outs[0][0] + ' ' + Math.round(100 * outs[0][1] / osum) + '%';
     $('#lab-split2').textContent = outs.slice(1).map(o => o[0].toLowerCase() + ' ' + Math.round(100 * o[1] / osum) + '%').join(' · ');
-    const imax = ex ? Math.max(ex.groundMax || 0, ex.faceMax || 0) : 0;
-    $('#lab-i').textContent = imax > 0.005 ? imax.toFixed(2) : '≈ 0';
-    $('#lab-i2').textContent = ex && imax > 0.005 ? (ex.governing === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'all exits are filtered drains';
-    const fs = ex && isFinite(ex.fs) ? ex.fs : Infinity;
-    const fsEl = $('#lab-fs');
-    if (!isFinite(fs) || fs > 50) { fsEl.innerHTML = '> 50 <span class="pill ok">Safe</span>'; }
-    else {
-      const cls = fs >= 3 ? 'ok' : fs >= 1.5 ? 'warn' : 'bad', word = fs >= 3 ? 'Adequate' : fs >= 1.5 ? 'Marginal' : 'Piping risk';
-      fsEl.innerHTML = fs.toFixed(1) + ` <span class="pill ${cls}">${word}</span>`;
-    }
+    const pp = labPiping(ex);
+    $('#lab-i').textContent = pp.i;
+    $('#lab-i2').textContent = pp.i2;
+    $('#lab-fs').innerHTML = pp.fsTxt + ` <span class="pill ${pp.cls}">${pp.word}</span>`;
     if (sf && sf.present && sf.topZ > 0.3) { $('#lab-ph').textContent = 'Breaks out'; $('#lab-ph2').textContent = 'on the downstream slope up to ' + n1(sf.topZ) + ' m'; }
     else { $('#lab-ph').textContent = 'Contained'; $('#lab-ph2').textContent = state.drain === 'none' ? 'exits at the toe' : 'captured by the drain'; }
   }
@@ -371,7 +380,9 @@
   const intact = [[230, GY], [330, 155], [430, 90], [455, 90], [480, 90], [590, 155], [700, GY]];
   const sag = [[230, GY], [330, 155], [430, 92], [455, 120], [480, 92], [590, 155], [700, GY]];
   const breach = [[230, GY], [330, 155], [392, 122], [455, GY - 2], [518, 122], [590, 155], [700, GY]];
+  /* @fig-pipe-begin */
   const names = ['1 · Steady seepage under the dam', '2 · Sand boil: the exit gradient lifts the sand', '3 · A pipe erodes backward under the dam', '4 · The pipe reaches the reservoir; flow and erosion accelerate', '5 · The pipe enlarges until the roof collapses', '6 · Breach'];
+  /* @fig-pipe-end */
   let speed = 1, vis = {};
   function render(t) {
     const p = hasFilter ? Math.min(t, 1) : t;
@@ -448,10 +459,35 @@
   const M = uniformMapper(-110, 160, -38, 68, 1000, 20, 10, 380);
   svg.setAttribute('viewBox', `0 0 1000 ${Math.round(M.H)}`);
   const g = E('g', null, svg);
-  const B = 48, TW = 5, XD = 6, gw = 9.81, gc = 23.5;
+  /* @fig-uplift-begin */
+  const B = 48, TW = 5, XD = 6, gw = 9.81, gc = 23.5, HW0 = 57; // HW0: reservoir on load, as the slider in body.html
   const damPts = [[0, 0], [0, 60], [8, 60], [8, 50], [48, 0]];
   const W = gc * polyArea(damPts);
   const xW = (480 * 4 + 1000 * (8 + 40 / 3)) / 1480;
+  // head at the drain line: tailwater + a third of the difference with working drains, else the straight-line drop
+  function upliftDrainHead(drains, HW) { return drains ? TW + (HW - TW) / 3 : TW + (HW - TW) * (1 - XD / B); }
+  function upliftCalc(HW, ud) { // per metre of dam, kN; ud = head at the drain line
+    const prof = [[0, HW], [XD, ud], [B, TW]];
+    let U = 0, MU_toe = 0;
+    for (let i = 0; i < 2; i++) {
+      const [x1, h1] = prof[i], [x2, h2] = prof[i + 1], L = x2 - x1;
+      const f = gw * (h1 + h2) / 2 * L;
+      const xc = x1 + (L / 3) * (h1 + 2 * h2) / (h1 + h2);
+      U += f; MU_toe += f * (B - xc);
+    }
+    const Hup = 0.5 * gw * HW * HW, Htw = 0.5 * gw * TW * TW, H = Hup - Htw;
+    const FS = (W - U) * 1.0 / H;
+    const Mnet = W * (B - xW) + Htw * TW / 3 - Hup * HW / 3 - MU_toe;
+    const V = W - U, xR = B - Mnet / V;
+    return { U, H, FS, xR, Hup, prof };
+  }
+  function upliftReadouts(c) { // the readout texts for a result of upliftCalc
+    const inMid = c.xR >= 16 && c.xR <= 32;
+    return { inMid, W: n1(W / 1000) + ' MN/m', H: n1(c.H / 1000) + ' MN/m', U: n1(c.U / 1000) + ' MN/m', U2: Math.round(100 * c.U / W) + '% of the weight',
+      FS: c.FS.toFixed(2), fsCls: c.FS >= 1.5 ? 'ok' : c.FS >= 1 ? 'warn' : 'bad', fsW: c.FS >= 1.5 ? 'Meets 1.5' : c.FS >= 1 ? 'Below 1.5' : 'Slides',
+      R: (c.xR / B).toFixed(2) + ' B', rCls: inMid ? 'ok' : 'bad', rW: inMid ? 'Middle third' : 'Heel in tension', R2: 'from the heel; middle third is 0.33–0.67 B' };
+  }
+  /* @fig-uplift-end */
   const res = E('g', null, g);
   E('polygon', { points: M.P([[-110, 0], [160, 0], [160, -38], [-110, -38]]), fill: 'url(#p-bedrock)', class: 'edge' }, g);
   E('polygon', { class: 'water', points: M.P([[44, TW], [160, TW], [160, 0], [48, 0]]) }, g);
@@ -469,32 +505,17 @@
   leader(lbls, M.X(-2.5), M.Z(-24), M.X(-22), M.Z(-24)); T(lbls, M.X(-23), M.Z(-24) + 4, 'Grout curtain', 'lbl-s halo', { 'text-anchor': 'end' });
   const drainLbl = T(lbls, M.X(9), M.Z(-31), 'Drains', 'lbl-s halo');
   const hwEl = $('#up-hw');
-  let drains = true, HW = 57, uDrain = TW + (HW - TW) / 3, shownUD = uDrain, anim = null;
+  let drains = true, HW = HW0, uDrain = TW + (HW - TW) / 3, shownUD = uDrain, anim = null;
   segGroup($('#up-drains'), v => { drains = v === '1'; go(); });
   hwEl.addEventListener('input', () => { HW = +hwEl.value; $('#up-hw-o').textContent = HW.toFixed(1) + ' m'; go(true); });
-  function target() { return drains ? TW + (HW - TW) / 3 : TW + (HW - TW) * (1 - XD / B); }
+  function target() { return upliftDrainHead(drains, HW); }
   function go(instant) {
     const to = target();
     if (instant || RM) { shownUD = to; anim = null; draw(); }
     else anim = { from: shownUD, to, t: 0 };
   }
-  function calc(ud) {
-    const prof = [[0, HW], [XD, ud], [B, TW]];
-    let U = 0, MU_toe = 0;
-    for (let i = 0; i < 2; i++) {
-      const [x1, h1] = prof[i], [x2, h2] = prof[i + 1], L = x2 - x1;
-      const f = gw * (h1 + h2) / 2 * L;
-      const xc = x1 + (L / 3) * (h1 + 2 * h2) / (h1 + h2);
-      U += f; MU_toe += f * (B - xc);
-    }
-    const Hup = 0.5 * gw * HW * HW, Htw = 0.5 * gw * TW * TW, H = Hup - Htw;
-    const FS = (W - U) * 1.0 / H;
-    const Mnet = W * (B - xW) + Htw * TW / 3 - Hup * HW / 3 - MU_toe;
-    const V = W - U, xR = B - Mnet / V;
-    return { U, H, FS, xR, Hup, prof };
-  }
   function draw() {
-    const c = calc(shownUD);
+    const c = upliftCalc(HW, shownUD), ro = upliftReadouts(c);
     res.textContent = ''; upl.textContent = ''; forces.textContent = '';
     E('polygon', { class: 'water', points: M.P([[-110, HW], [0, HW], [0, 0], [-110, 0]]) }, res);
     E('path', { class: 'water-line', d: M.D([[-110, HW], [0, HW]]) }, res);
@@ -530,7 +551,7 @@
     // middle third + resultant
     E('path', { d: M.D([[16, 1.4], [32, 1.4]]), style: 'stroke:var(--ink);stroke-width:1;fill:none', 'marker-start': 'url(#arr)', 'marker-end': 'url(#arr)' }, forces);
     T(forces, M.X(24), M.Z(1.4) - 6, 'middle third', 'lbl-s halo', { 'text-anchor': 'middle' });
-    const inMid = c.xR >= 16 && c.xR <= 32;
+    const inMid = ro.inMid;
     const [rx, ry] = M.pt([clamp(c.xR, -5, 60), 0]);
     E('path', { d: `M${rx},${ry} l-6,10 h12 z`, style: `fill:${inMid ? 'var(--ok)' : 'var(--bad)'}` }, forces);
     // U arrow pushing up on the base
@@ -544,14 +565,13 @@
     drainX.setAttribute('d', drains ? '' : `M${dx - 6},${dy - 6} l12,12 M${dx + 6},${dy - 6} l-12,12`);
     drainLbl.textContent = drains ? 'Drains' : 'Drains clogged';
     // readouts
-    $('#up-W').textContent = n1(W / 1000) + ' MN/m';
-    $('#up-H').textContent = n1(c.H / 1000) + ' MN/m';
-    $('#up-U').textContent = n1(c.U / 1000) + ' MN/m';
-    $('#up-U2').textContent = Math.round(100 * c.U / W) + '% of the weight';
-    const fsCls = c.FS >= 1.5 ? 'ok' : c.FS >= 1 ? 'warn' : 'bad', fsW = c.FS >= 1.5 ? 'Meets 1.5' : c.FS >= 1 ? 'Below 1.5' : 'Slides';
-    $('#up-FS').innerHTML = c.FS.toFixed(2) + ` <span class="pill ${fsCls}">${fsW}</span>`;
-    $('#up-R').innerHTML = (c.xR / B).toFixed(2) + ' B ' + `<span class="pill ${inMid ? 'ok' : 'bad'}">${inMid ? 'Middle third' : 'Heel in tension'}</span>`;
-    $('#up-R2').textContent = 'from the heel; middle third is 0.33–0.67 B';
+    $('#up-W').textContent = ro.W;
+    $('#up-H').textContent = ro.H;
+    $('#up-U').textContent = ro.U;
+    $('#up-U2').textContent = ro.U2;
+    $('#up-FS').innerHTML = ro.FS + ` <span class="pill ${ro.fsCls}">${ro.fsW}</span>`;
+    $('#up-R').innerHTML = ro.R + ' ' + `<span class="pill ${ro.rCls}">${ro.rW}</span>`;
+    $('#up-R2').textContent = ro.R2;
   }
   go(true);
   F.ticks.push((t, dt) => {

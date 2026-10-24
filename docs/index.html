@@ -801,11 +801,11 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
           </div>
           <div class="g-zoom">
             <svg class="dwg gd" id="svg-beach-zoom" viewBox="0 0 220 150" role="img" aria-label="Close-up of seven sand grains and what fills the gaps between them."></svg>
-            <p class="note" id="bc-zoom-note">Close-up: a little water gathers in rings where grains touch.</p>
+            <p class="note" id="bc-zoom-note">Close-up: a little water gathers in rings where the grains touch.</p>
           </div>
           <div class="readouts">
             <div class="ro"><span>Steepest slope it holds</span><b id="bc-slope">90°</b><small id="bc-slope2">a vertical wall</small></div>
-            <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water at the contacts</small></div>
+            <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water where grains touch</small></div>
           </div>
         </div>
       </div>
@@ -943,7 +943,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
           </div>
           <div class="readouts">
             <div class="ro"><span>Time elapsed</span><b id="rc-clock">0 s</b><small id="rc-clock2">press start</small></div>
-            <div class="ro"><span>Through so far</span><b id="rc-done">None</b><small id="rc-done2">of four</small></div>
+            <div class="ro"><span>Through so far</span><b id="rc-done">None</b><small id="rc-done2">0 of four</small></div>
           </div>
           <p class="note">A drop of water moves faster than <em>k</em> alone suggests, because it can only travel through the gaps, which take up about a third of the volume. The times here allow for that: time = gap fraction × length ÷ (<em>k</em> × push).</p>
         </div>
@@ -1021,7 +1021,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <div class="g-side">
           <div class="controls">
             <div class="range"><label for="bk-a">Ramp angle</label><input type="range" id="bk-a" min="0" max="45" step="1" value="25"><output id="bk-a-o">25°</output></div>
-            <div class="range"><label for="bk-u">Water pressure</label><input type="range" id="bk-u" min="0" max="20" step="0.5" value="0"><output id="bk-u-o">0 kPa</output></div>
+            <div class="range"><label for="bk-u">Water pressure</label><input type="range" id="bk-u" min="0" max="20" step="0.5" value="0"><output id="bk-u-o">0.0 kPa</output></div>
             <button class="btn" id="bk-reset" type="button" hidden>Put the block back</button>
           </div>
           <div class="g-bars" aria-hidden="true">
@@ -1065,7 +1065,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
           </div>
           <div class="readouts">
             <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gc-s">192 kPa</b><small>at 10 m depth</small></div>
-            <div class="ro"><span>Pore pressure <i class="g-sym">u</i></span><b id="gc-u">59 kPa</b><small id="gc-u2">at 10 m depth</small></div>
+            <div class="ro"><span>Pore pressure <i class="g-sym">u</i></span><b id="gc-u">59 kPa</b><small id="gc-u2">water 6.0 m above this point</small></div>
             <div class="ro"><span>Effective stress <i class="g-sym">σ′</i></span><b id="gc-e">133 kPa</b><small>σ − u</small></div>
             <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>compared with damp sand above the water table</small></div>
           </div>
@@ -1271,7 +1271,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p class="swipe-hint">Drawing scrolls sideways →</p>
       <div class="controls">
         <button class="btn primary" id="rs-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Play</span></button>
-        <div class="range" style="flex:2 1 280px"><label for="rs-t">Stage</label><input type="range" id="rs-t" min="0" max="10" step="0.01" value="10"><output class="stage-label" id="rs-stage">Raise 4 complete</output></div>
+        <div class="range" style="flex:2 1 280px"><label for="rs-t">Stage</label><input type="range" id="rs-t" min="0" max="10" step="0.01" value="10"><output class="stage-label" id="rs-stage">Raise 4 complete · 68 m</output></div>
         <button class="btn alarm" id="rs-shake" type="button">Earthquake</button>
         <button class="btn" id="rs-reset" type="button" hidden>Reset</button>
       </div>
@@ -1441,7 +1441,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p class="swipe-hint">Drawing scrolls sideways →</p>
       <div class="controls">
         <button class="btn primary" id="pp-play" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 L11,6 L2,11 z"/></svg><span>Play</span></button>
-        <div class="range" style="flex:2 1 280px"><label for="pp-t">Progress</label><input type="range" id="pp-t" min="0" max="5" step="0.01" value="0"><output class="stage-label" id="pp-stage">1 · Steady seepage</output></div>
+        <div class="range" style="flex:2 1 280px"><label for="pp-t">Progress</label><input type="range" id="pp-t" min="0" max="5" step="0.01" value="0"><output class="stage-label" id="pp-stage">1 · Steady seepage under the dam</output></div>
         <div class="ctl"><span>Toe</span><div class="seg" id="pp-filter"><button type="button" data-v="0" aria-pressed="true">Unprotected</button><button type="button" data-v="1" aria-pressed="false">Filter + weighting berm</button></div></div>
       </div>
       <div class="svgwrap"><svg class="dwg" id="svg-pipe" viewBox="0 0 1000 330" role="img" aria-label="Animated sequence: seepage under a dam on sand exits at the toe, forms a sand boil, a pipe erodes backward under the dam to the reservoir, enlarges, and the dam breaches. With a filter at the toe, the process stops at the first stage."></svg></div>
@@ -3534,6 +3534,7 @@ function T(parent, x, y, str, cls, extra) {
   t.textContent = str;
   return t;
 }
+/* @fig-util-begin */ // pure helpers, also loaded by tests/test-figures.js
 const n1 = v => (Math.round(v * 10) / 10).toFixed(1);
 const P = pts => pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
 const D = pts => pts.length ? 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join('L') : '';
@@ -3608,6 +3609,7 @@ function pointAlong(pts, cum, s) { // pts polyline, cum cumulative lengths
   return [lerp(pts[i - 1][0], pts[i][0], t), lerp(pts[i - 1][1], pts[i][1], t)];
 }
 function cumLen(pts) { const c = [0]; for (let i = 1; i < pts.length; i++) c.push(c[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1])); return c; }
+/* @fig-util-end */
 let seed = 7;
 const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
 
@@ -3703,7 +3705,18 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
   /* ---------- hydro ---------- */
   const svg = $('#svg-hydro');
   const g = E('g', null, svg);
+  /* @fig-hydro-begin */
   const BASE = 270, TWY = 262;
+  // the readouts for the level slider (0–100) and the turbine flow Q (m³/s); svg y is 2 px per metre
+  function hydroCalc(level, Q) {
+    const wl = lerp(150, 78, level / 100);
+    const H = (TWY - wl) * 0.5, depth = (BASE - wl) * 0.5;
+    const pMPa = 9.81 * depth / 1000, Fmn = 0.5 * 9.81 * depth * depth / 1000;
+    const Pmw = 0.9 * 9.81 * Q * H / 1000;
+    return { wl, H, depth, pMPa, Fmn, Pmw,
+      txt: { level: 'H = ' + Math.round(H) + ' m', flow: Q + ' m³/s', P: fmt(Pmw) + ' MW', p: pMPa.toFixed(2) + ' MPa', F: 'Water load ' + Math.round(Fmn) + ' MN per metre of dam' } };
+  }
+  /* @fig-hydro-end */
   const water = E('path', { class: 'water' }, g);
   const surf = E('path', { class: 'water-line' }, g);
   E('polygon', { class: 'water', points: P([[340, TWY], [560, TWY], [560, 284], [350, 270], [340, 270]]) }, g);
@@ -3771,15 +3784,14 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
   const parts = [];
   for (let i = 0; i < 14; i++) parts.push({ x: rnd() * 180 + 10, y: 0, e: E('circle', { r: 1.6, class: 'particle', opacity: 0.8 }, g), sx: 0, sy: 0 });
   function hydroUpdate() {
-    wl = lerp(150, 78, +lvl.value / 100); Q = +flow.value;
-    const H = (TWY - wl) * 0.5, depth = (BASE - wl) * 0.5;
-    const pMPa = 9.81 * depth / 1000, Fmn = 0.5 * 9.81 * depth * depth / 1000;
-    const Pmw = 0.9 * 9.81 * Q * H / 1000;
-    $('#hy-level-o').textContent = 'H = ' + Math.round(H) + ' m';
-    $('#hy-flow-o').textContent = Q + ' m³/s';
-    $('#hy-P').textContent = fmt(Pmw) + ' MW';
-    $('#hy-p').textContent = pMPa.toFixed(2) + ' MPa';
-    $('#hy-F').textContent = 'Water load ' + Math.round(Fmn) + ' MN per metre of dam';
+    const c = hydroCalc(+lvl.value, +flow.value);
+    wl = c.wl; Q = +flow.value;
+    const H = c.H, pMPa = c.pMPa;
+    $('#hy-level-o').textContent = c.txt.level;
+    $('#hy-flow-o').textContent = c.txt.flow;
+    $('#hy-P').textContent = c.txt.P;
+    $('#hy-p').textContent = c.txt.p;
+    $('#hy-F').textContent = c.txt.F;
     const kp = 0.42, w = kp * (268 - wl);
     presPoly.setAttribute('points', P([[200, wl], [200, 268], [200 - w, 268]]));
     presArrows.textContent = '';
@@ -3920,9 +3932,9 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
 /* ===================== Fig 2: raising methods ===================== */
 (function figRaise() {
   const F = fig($('#fig-raise'));
+  /* @fig-raise-begin */
   const R = { h0: 20, dh: 12, n: 4, s: 2, c: 8, X0: 260, b: 0.08, Lb: 100, b2: 0.01 };
   const zk = k => R.h0 + R.dh * k;
-  const M = mapper({ x0: 0, x1: 580, z0: -12, z1: 84, X0: 10, X1: 990, Y0: 6, Y1: 246 });
   const starter = [[260, 0], [348, 0], [308, 20], [300, 20]];
   // per-method geometry
   const up = { faces: [300], dykes: [] };
@@ -3933,27 +3945,6 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
   }
   const dnRaise = k => { const a = zk(k - 1), b = zk(k); return [[260 + 2 * a, a], [260 + 2 * b, b], [268 + 2 * b, b], [268 + 4 * b, 0], [268 + 4 * a, 0], [268 + 2 * a, a]]; };
   const clRaise = k => { const a = zk(k - 1), b = zk(k); return [[276, a], [300, b], [308, b], [308 + 2 * b, 0], [308 + 2 * a, 0], [308, a], [300, a]]; };
-
-  const methods = [
-    { key: 'up', name: 'Upstream', note: 'Crest moves toward the pond' },
-    { key: 'down', name: 'Downstream', note: 'Crest moves away from the pond' },
-    { key: 'centre', name: 'Centreline', note: 'Crest rises vertically' }
-  ];
-  const host = $('#rs-panels');
-  for (const m of methods) {
-    const wrap = document.createElement('div'); wrap.className = 'raise-panel';
-    wrap.innerHTML = `<div class="raise-head"><h4>${m.name} <span class="scale-note" style="margin-left:8px">${m.note}</span></h4><div class="raise-stats"><span>Fill <b data-k="fill">–</b> m³/m</span><span>Crest shift <b data-k="shift">–</b></span><span>On tailings <b data-k="ontail">–</b></span><span class="pill neutral" data-k="pill">–</span></div></div>`;
-    const svg = E('svg', { class: 'dwg', viewBox: '0 0 1000 252', role: 'img', 'aria-label': `${m.name} method: staged cross-section of the dam and tailings` }, null);
-    const sw = document.createElement('div'); sw.className = 'svgwrap'; sw.appendChild(svg); wrap.appendChild(sw);
-    host.appendChild(wrap);
-    m.svg = svg; m.wrap = wrap;
-    m.root = E('g', null, svg);
-    const L = n => E('g', null, m.root);
-    m.gTail = L(); m.gOld = L(); m.gPond = L(); m.gDam = L(); m.gLobe = L(); m.gDyk = L(); m.gZones = L(); m.gAcc = L(); m.gSat = L(); m.gPh = L(); m.gCrest = L(); m.gGround = L(); m.gLbl = L();
-    E('polygon', { points: M.P([[0, 95], [95, 0], [580, 0], [580, -12], [0, -12]]), fill: 'url(#p-alluv)', class: 'edge' }, m.gGround);
-    T(m.gLbl, M.X(560), M.Z(-7), 'Foundation', 'lbl-s halo', { 'text-anchor': 'end' });
-  }
-
   function stateAt(t) {
     const p = Math.min(9, Math.floor(t)), f = t >= 10 ? 1 : t - p;
     let built = 0, partialK = 0, partialTop = 0, zt = 0, zDam = 0, starterTop = 20;
@@ -3976,20 +3967,63 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
     const k = Math.min(4, Math.ceil((zt - 20) / 12 - 1e-9));
     return up.dykes[k - 1].poly[0][0] + 2 * (zt - zk(k - 1));
   }
-  function render(m, t, fail) {
-    const S = stateAt(t);
-    [m.gOld, m.gTail, m.gPond, m.gSat, m.gDam, m.gLobe, m.gDyk, m.gZones, m.gAcc, m.gPh, m.gCrest].forEach(g => (g.textContent = ''));
-    const ff = m.key === 'up' ? fail : 0;
-    // --- dam polygons ---
+  // what is built at stage S (from stateAt) for one method: the fill polygons, the crest path,
+  // and the three numbers under each panel (fill area, crest shift, share of fill resting on tailings)
+  function raiseDam(key, S) {
     const dam = [];
     const st = S.p === 0 ? clipBelow(starter, S.starterTop) : starter;
     if (st.length) dam.push({ poly: st, kind: 'starter' });
     const nRaise = S.built + (S.partialK ? 1 : 0);
     for (let k = 1; k <= nRaise; k++) {
-      let poly = m.key === 'up' ? up.dykes[k - 1].poly : m.key === 'down' ? dnRaise(k) : clRaise(k);
+      let poly = key === 'up' ? up.dykes[k - 1].poly : key === 'down' ? dnRaise(k) : clRaise(k);
       if (k === S.partialK) poly = clipBelow(poly, S.partialTop);
       if (poly.length) dam.push({ poly, kind: 'raise', k });
     }
+    let fillA = 0, tailA = 0;
+    for (const d of dam) {
+      const a = polyArea(d.poly); fillA += a;
+      if (d.kind === 'raise' && key === 'up') tailA += a;
+      if (d.kind === 'raise' && key === 'centre') { const wedge = clipLeftOf(d.poly, 300); if (wedge.length) tailA += polyArea(wedge); }
+    }
+    const crests = [];
+    if (S.p > 0 || S.f > 0.99) crests.push([304, 20]);
+    for (let k = 1; k <= S.built + (S.partialK && S.f > 0.99 ? 1 : 0); k++) {
+      const cx = key === 'up' ? up.faces[k] + 4 : key === 'down' ? 264 + 2 * zk(k) : 304;
+      crests.push([cx, zk(k)]);
+    }
+    const shift = crests.length ? crests[crests.length - 1][0] - 304 : 0;
+    return { dam, nRaise, fillA, tailA, crests, shift,
+      txt: { fill: fmt(fillA), shift: (shift > 0.5 ? '+' : shift < -0.5 ? '−' : '') + Math.abs(Math.round(shift)) + ' m', ontail: fillA ? Math.round(100 * tailA / fillA) + '%' : '0%' } };
+  }
+  /* @fig-raise-end */
+  const M = mapper({ x0: 0, x1: 580, z0: -12, z1: 84, X0: 10, X1: 990, Y0: 6, Y1: 246 });
+
+  const methods = [
+    { key: 'up', name: 'Upstream', note: 'Crest moves toward the pond' },
+    { key: 'down', name: 'Downstream', note: 'Crest moves away from the pond' },
+    { key: 'centre', name: 'Centreline', note: 'Crest rises vertically' }
+  ];
+  const host = $('#rs-panels');
+  for (const m of methods) {
+    const wrap = document.createElement('div'); wrap.className = 'raise-panel';
+    wrap.innerHTML = `<div class="raise-head"><h4>${m.name} <span class="scale-note" style="margin-left:8px">${m.note}</span></h4><div class="raise-stats"><span>Fill <b data-k="fill">–</b> m³/m</span><span>Crest shift <b data-k="shift">–</b></span><span>On tailings <b data-k="ontail">–</b></span><span class="pill neutral" data-k="pill">–</span></div></div>`;
+    const svg = E('svg', { class: 'dwg', viewBox: '0 0 1000 252', role: 'img', 'aria-label': `${m.name} method: staged cross-section of the dam and tailings` }, null);
+    const sw = document.createElement('div'); sw.className = 'svgwrap'; sw.appendChild(svg); wrap.appendChild(sw);
+    host.appendChild(wrap);
+    m.svg = svg; m.wrap = wrap;
+    m.root = E('g', null, svg);
+    const L = n => E('g', null, m.root);
+    m.gTail = L(); m.gOld = L(); m.gPond = L(); m.gDam = L(); m.gLobe = L(); m.gDyk = L(); m.gZones = L(); m.gAcc = L(); m.gSat = L(); m.gPh = L(); m.gCrest = L(); m.gGround = L(); m.gLbl = L();
+    E('polygon', { points: M.P([[0, 95], [95, 0], [580, 0], [580, -12], [0, -12]]), fill: 'url(#p-alluv)', class: 'edge' }, m.gGround);
+    T(m.gLbl, M.X(560), M.Z(-7), 'Foundation', 'lbl-s halo', { 'text-anchor': 'end' });
+  }
+
+  function render(m, t, fail) {
+    const S = stateAt(t);
+    [m.gOld, m.gTail, m.gPond, m.gSat, m.gDam, m.gLobe, m.gDyk, m.gZones, m.gAcc, m.gPh, m.gCrest].forEach(g => (g.textContent = ''));
+    const ff = m.key === 'up' ? fail : 0;
+    // --- dam polygons ---
+    const built = raiseDam(m.key, S), dam = built.dam, nRaise = built.nRaise;
     // --- tailings ---
     const zt = S.zt;
     let xf = 0, zp = 0, xw = 0;
@@ -4048,19 +4082,14 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
       }
     }
     // --- draw dam fills ---
-    let fillA = 0, tailA = 0;
     for (const d of dam) {
-      const a = polyArea(d.poly); fillA += a;
       const target = (m.key === 'up' && d.kind === 'raise') ? m.gDyk : m.gDam;
       E('polygon', { points: M.P(d.poly), fill: 'url(#p-fill)', class: 'edge' }, target);
       if (d.kind === 'raise' && m.key === 'up') {
-        tailA += a;
         const dk = up.dykes[d.k - 1];
         E('path', { d: M.D([[dk.poly[0][0] + 0.5, dk.z0], [dk.xd - 4.5, dk.z0]]), class: 'acc-line' }, m.gDyk);
       }
       if (d.kind === 'raise' && m.key === 'centre') {
-        const wedge = clipLeftOf(d.poly, 300);
-        if (wedge.length) tailA += polyArea(wedge);
         E('path', { d: M.D([[276.5, zk(d.k - 1)], [299.5, zk(d.k - 1)]]), class: 'acc-line' }, m.gAcc);
       }
     }
@@ -4092,12 +4121,7 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
       m.gDyk.setAttribute('opacity', (1 - 0.6 * ff).toFixed(2));
     } else { m.gDyk.removeAttribute('transform'); m.gDyk.removeAttribute('opacity'); }
     // crest path
-    const crests = [];
-    if (S.p > 0 || S.f > 0.99) crests.push([304, 20]);
-    for (let k = 1; k <= S.built + (S.partialK && S.f > 0.99 ? 1 : 0); k++) {
-      const cx = m.key === 'up' ? up.faces[k] + 4 : m.key === 'down' ? 264 + 2 * zk(k) : 304;
-      crests.push([cx, zk(k)]);
-    }
+    const crests = built.crests;
     if (crests.length > 1) E('path', { d: M.D(crests), class: 'crest-path', opacity: (1 - ff).toFixed(2) }, m.gCrest);
     crests.forEach(c => E('circle', { cx: M.X(c[0]), cy: M.Z(c[1]) - 6, r: 2.6, class: 'crest-dot', opacity: (1 - ff).toFixed(2) }, m.gCrest));
     if (crests.length) {
@@ -4112,11 +4136,10 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
     if (zp > 8) lab(Math.max(40, xw - 40), zp + 3, 'Pond', 'lbl-s lbl-w');
     if (ff > 0.6) lab(470, 14, 'Liquefied tailings flow', 'lbl lbl-acc');
     // stats
-    const shift = crests.length ? crests[crests.length - 1][0] - 304 : 0;
     const q = k => m.wrap.querySelector(`[data-k="${k}"]`);
-    q('fill').textContent = fmt(fillA);
-    q('shift').textContent = (shift > 0.5 ? '+' : shift < -0.5 ? '−' : '') + Math.abs(Math.round(shift)) + ' m';
-    q('ontail').textContent = fillA ? Math.round(100 * tailA / fillA) + '%' : '0%';
+    q('fill').textContent = built.txt.fill;
+    q('shift').textContent = built.txt.shift;
+    q('ontail').textContent = built.txt.ontail;
   }
   function setPills(stateName) {
     for (const m of methods) {
@@ -4414,6 +4437,26 @@ function groundPredictInit(root) {
   }
 
   /* ===================== Fig 1.1 · the beach ===================== */
+  /* @fig-beach-begin */
+  // the state shown on load, the heap's height profile (px above the ground line) for each state,
+  // all holding the same area of sand, and the words the readouts show for each state
+  const BEACH0 = 'damp';
+  function beachShapes(CX, NC, DX) {
+    const xs = Array.from({ length: NC }, (_, i) => i * DX);
+    const tan34 = Math.tan(34 * deg), tanSat = Math.tan(19 * deg);
+    const damp = xs.map(x => { const d = Math.abs(x - CX); if (d > 50) return 0; return (d > 12 && d < 30) ? 128 : 146; });
+    const A = damp.reduce((s, h) => s + h * DX, 0);
+    const cone = (tn) => { const H = Math.sqrt(A * tn / 1); /* area of a cone section = H²/tan */ return xs.map(x => Math.max(0, H - Math.abs(x - CX) * tn)); };
+    const dry = cone(tan34), sat = cone(tanSat);
+    const flat = (() => { const raw = xs.map(x => { const d = Math.abs(x - CX); return clamp((214 - d) / 24, 0, 1); }); const s = raw.reduce((a, h) => a + h * DX, 0); return raw.map(h => h * A / s); })();
+    const PROF = { dry, damp, sat, flat };
+    const SLOPE = { dry: ['34°', 'the angle of repose'], damp: ['90°', 'a vertical wall'], sat: ['about 19°', 'while it is left alone'], flat: ['about 0°', 'it flowed flat'] };
+    const GAP = { dry: ['Air', 'nothing holds the grains together'], damp: ['Air + water', 'rings of water where grains touch'], sat: ['Water', 'every gap is full'], flat: ['Water', 'the grains are floating apart'] };
+    const CAP = { dry: ['Dry sand', 'pours into a cone'], damp: ['Damp sand', 'stands in a vertical wall'], sat: ['Saturated sand', 'slumps to a low mound'], flat: ['Saturated, jiggled', 'flows like a liquid, and the flag sinks'] };
+    const ZN = { dry: 'Close-up: the gaps hold only air. Each grain rests on its neighbours.', damp: 'Close-up: a little water gathers in rings where the grains touch.', sat: 'Close-up: water fills every gap between the grains.', flat: 'Close-up: water fills every gap, and the grains barely press on each other.' };
+    return { xs, tan34, tanSat, A, PROF, SLOPE, GAP, CAP, ZN };
+  }
+  /* @fig-beach-end */
   (function figBeach() {
     const el = $('#fig-beach'); if (!el) return;
     const F = fig(el);
@@ -4449,19 +4492,9 @@ function groundPredictInit(root) {
     E('path', { d: `M452,${GY - 150} v150 M447,${GY - 150} h10 M447,${GY} h10`, class: 'dim' }, gRoot);
     T(gRoot, 446, GY - 72, '30 cm', 'lbl-s halo', { 'text-anchor': 'end' });
 
-    const xs = Array.from({ length: NC }, (_, i) => i * DX);
-    const tan34 = Math.tan(34 * deg), tanSat = Math.tan(19 * deg);
-    const damp = xs.map(x => { const d = Math.abs(x - CX); if (d > 50) return 0; return (d > 12 && d < 30) ? 128 : 146; });
-    const A = damp.reduce((s, h) => s + h * DX, 0);
-    const cone = (tn) => { const H = Math.sqrt(A * tn / 1); /* area of a cone section = H²/tan */ return xs.map(x => Math.max(0, H - Math.abs(x - CX) * tn)); };
-    const dry = cone(tan34), sat = cone(tanSat);
-    const flat = (() => { const raw = xs.map(x => { const d = Math.abs(x - CX); return clamp((214 - d) / 24, 0, 1); }); const s = raw.reduce((a, h) => a + h * DX, 0); return raw.map(h => h * A / s); })();
-    const PROF = { dry, damp, sat, flat };
-    const SLOPE = { dry: ['34°', 'the angle of repose'], damp: ['90°', 'a vertical wall'], sat: ['about 19°', 'while it is left alone'], flat: ['about 0°', 'it flowed flat'] };
-    const GAP = { dry: ['Air', 'nothing holds the grains together'], damp: ['Air + water', 'rings of water where grains touch'], sat: ['Water', 'every gap is full'], flat: ['Water', 'the grains are floating apart'] };
-    const CAP = { dry: ['Dry sand', 'pours into a cone'], damp: ['Damp sand', 'stands in a vertical wall'], sat: ['Saturated sand', 'slumps to a low mound'], flat: ['Saturated, jiggled', 'flows like a liquid, and the flag sinks'] };
+    const { xs, tan34, tanSat, PROF, SLOPE, GAP, CAP, ZN } = beachShapes(CX, NC, DX), damp = PROF.damp;
 
-    let mode = 'damp', key = 'damp', shakeT = 0, lastEvent = 'Reader is looking at damp sand.';
+    let mode = BEACH0, key = BEACH0, shakeT = 0, lastEvent = 'Reader is looking at damp sand.';
     const cur = damp.slice();
     let wetO = 0, dampO = 1, sink = 0, tilt = 0, settle = 1;
     const seg = segGroup($('#bc-state'), v => { mode = v; key = v; lastEvent = 'Reader switched to ' + (v === 'sat' ? 'saturated' : v) + ' sand.'; if (RM) snap(); update(); });
@@ -4535,7 +4568,6 @@ function groundPredictInit(root) {
     }
     for (const c of C) E('circle', { cx: c[0], cy: c[1], r: R, style: 'fill:var(--m-tsand);stroke:var(--ink-2);stroke-width:1' }, zg);
     E('rect', { x: 0.5, y: 0.5, width: 219, height: 149, rx: 6, style: 'fill:none;stroke:var(--rule)' }, zs);
-    const ZN = { dry: 'Close-up: the gaps hold only air. Each grain rests on its neighbours.', damp: 'Close-up: a little water gathers in rings where the grains touch.', sat: 'Close-up: water fills every gap between the grains.', flat: 'Close-up: water fills every gap, and the grains barely press on each other.' };
     function drawZoom() {
       zbr.style.opacity = key === 'damp' ? 1 : 0;
       zwater.setAttribute('opacity', key === 'sat' || key === 'flat' ? 1 : 0);
@@ -4574,6 +4606,18 @@ function groundPredictInit(root) {
   })();
 
   /* ===================== Fig 2.1 · pressure with depth ===================== */
+  /* @fig-depth-begin */
+  // pressure at the sensor (depth h) and at the foot (depth H), push per metre of dam, and the readout texts
+  function depthCalc(H, h) {
+    const p = 9.81 * h, pb = 9.81 * H, F = 0.5 * 9.81 * H * H; // kPa, kPa, kN per m
+    const f = F / 1000; // MN per m, for the chart
+    return { p, pb, F, txt: {
+      H: H + ' m', h: n1(h) + ' m', p: fmt(p) + ' kPa', p2: '9.81 × ' + n1(h) + ' m', pb: fmt(pb) + ' kPa', pb2: '9.81 × ' + H + ' m',
+      F: (F >= 1000 ? (F / 1000).toFixed(F >= 10000 ? 1 : 2) + ' MN' : fmt(F) + ' kN'),
+      F2: 'as heavy as ' + fmt(Math.round(F / 9.81 / (F > 2000 ? 10 : 1)) * (F > 2000 ? 10 : 1)) + ' tonnes',
+      chart: (f < 10 ? f.toFixed(1) : Math.round(f)) + ' MN at ' + H + ' m', tri: H >= 25 ? fmt(pb) + ' kPa' : '' } };
+  }
+  /* @fig-depth-end */
   (function figDepth() {
     const el = $('#fig-depth'); if (!el) return;
     fig(el);
@@ -4622,21 +4666,20 @@ function groundPredictInit(root) {
         if (len > 8) arrow(arrows, FX - len, y, FX - 2, y, 'stroke:var(--accent);stroke-width:0.9;fill:none;opacity:.7', 'arr-acc');
       }
       triLbl.setAttribute('x', FX - kp * H - 4); triLbl.setAttribute('y', B - 6);
-      triLbl.textContent = H >= 25 ? fmt(9.81 * H) + ' kPa' : '';
+      const c = depthCalc(H, h);
+      triLbl.textContent = c.txt.tri;
       const y = ys + h * K;
       setArrow(hot, FX - kp * h, y, FX - 2, y);
       cable.setAttribute('d', `M${SX},${ys - 10} V${y - 9}`);
       sensor.setAttribute('transform', `translate(${SX},${y})`);
-      const p = 9.81 * h;
-      sL1.setAttribute('x', SX + 14); sL1.setAttribute('y', y - 2); sL1.textContent = 'h = ' + n1(h) + ' m';
-      sL2.setAttribute('x', SX + 14); sL2.setAttribute('y', y + 12); sL2.textContent = 'p = ' + fmt(p) + ' kPa';
-      const F = 0.5 * 9.81 * H * H; // kN per m
-      setTxt('dp-H-o', H + ' m'); setTxt('dp-h-o', n1(h) + ' m');
-      setTxt('dp-p', fmt(p) + ' kPa'); setTxt('dp-p2', '9.81 × ' + n1(h) + ' m');
-      setTxt('dp-pb', fmt(9.81 * H) + ' kPa'); setTxt('dp-pb2', '9.81 × ' + H + ' m');
-      setTxt('dp-F', (F >= 1000 ? (F / 1000).toFixed(F >= 10000 ? 1 : 2) + ' MN' : fmt(F) + ' kN'));
-      setTxt('dp-F2', 'as heavy as ' + fmt(Math.round(F / 9.81 / (F > 2000 ? 10 : 1)) * (F > 2000 ? 10 : 1)) + ' tonnes');
-      chart();
+      sL1.setAttribute('x', SX + 14); sL1.setAttribute('y', y - 2); sL1.textContent = 'h = ' + c.txt.h;
+      sL2.setAttribute('x', SX + 14); sL2.setAttribute('y', y + 12); sL2.textContent = 'p = ' + c.txt.p;
+      setTxt('dp-H-o', c.txt.H); setTxt('dp-h-o', c.txt.h);
+      setTxt('dp-p', c.txt.p); setTxt('dp-p2', c.txt.p2);
+      setTxt('dp-pb', c.txt.pb); setTxt('dp-pb2', c.txt.pb2);
+      setTxt('dp-F', c.txt.F);
+      setTxt('dp-F2', c.txt.F2);
+      chart(c);
     }
     HEl.addEventListener('input', () => { H = +HEl.value; hEl.max = H; h = Math.min(h, H); hEl.value = h; render(); });
     hEl.addEventListener('input', () => { h = +hEl.value; render(); });
@@ -4656,14 +4699,14 @@ function groundPredictInit(root) {
     const halfDot = E('circle', { r: 3.5, style: 'fill:var(--sheet);stroke:var(--ink-2);stroke-width:1.4' }, cg);
     const dot = E('circle', { r: 4.5, style: 'fill:var(--accent)' }, cg);
     const cLbl = T(cg, 0, 0, '', 'lbl lbl-acc halo'), hLbl = T(cg, 0, 0, '', 'lbl-s halo');
-    function chart() {
-      const f = 0.5 * 9.81 * H * H / 1000, fh = f / 4;
+    function chart(c) {
+      const f = c.F / 1000, fh = f / 4;
       dot.setAttribute('cx', X(H)); dot.setAttribute('cy', Y(f));
       halfDot.setAttribute('cx', X(H / 2)); halfDot.setAttribute('cy', Y(fh));
       guide.setAttribute('d', `M${X(H)},${cy0} V${Y(f)} H${cx0} M${X(H / 2)},${cy0} V${Y(fh)} H${cx0}`);
       const left = X(H) > 150; // label above-left of the dot, where the curve leaves room
       cLbl.setAttribute('x', X(H) + (left ? -9 : 9)); cLbl.setAttribute('y', Y(f) - (left ? 4 : 10)); cLbl.setAttribute('text-anchor', left ? 'end' : 'start');
-      cLbl.textContent = (f < 10 ? f.toFixed(1) : Math.round(f)) + ' MN at ' + H + ' m';
+      cLbl.textContent = c.txt.chart;
       hLbl.setAttribute('x', X(H / 2) + 8); hLbl.setAttribute('y', Y(fh) + 14);
       hLbl.textContent = 'half the depth: ¼ the push';
       hLbl.style.display = H >= 30 ? '' : 'none';
@@ -4681,6 +4724,7 @@ function groundPredictInit(root) {
   })();
 
   /* ===================== Fig 3.1 · the permeability race ===================== */
+  /* @fig-race-begin */
   const MATS = {
     gravel: { name: 'Gravel', k: 1e-2, n: 0.30, kTxt: '10⁻² m/s', pat: 'p-drain' },
     sand: { name: 'Sand', k: 1e-4, n: 0.35, kTxt: '10⁻⁴ m/s', pat: 'p-filter' },
@@ -4696,6 +4740,16 @@ function groundPredictInit(root) {
     if (s < 86400 * 365) return Math.round(s / 86400 / 7) + ' weeks';
     const y = s / 86400 / 365.25; return (y < 10 ? y.toFixed(1) : Math.round(y)) + ' years';
   }
+  const raceTime = m => m.n * 1 / (m.k * 1); // seconds to cross 1 m at gradient 1
+  // the race readouts with the clock at v (log10 of seconds); mats in race order, each with its crossing time t
+  function raceReadouts(v, mats) {
+    const s = v <= 0 ? 0 : Math.pow(10, v), t = fmtDur(s);
+    const done = mats.filter(m => s / m.t >= 1).length; // they finish in order
+    return { s, done, t, clock2: v <= 0 ? 'press start' : 'clock is running ' + fmt(Math.pow(10, Math.max(0, v - 0.5))) + '× faster',
+      done1: done === 0 ? 'None' : done === 4 ? 'All four' : mats.slice(0, done).map(m => m.name).join(', '),
+      done2: done === 4 ? 'clay took ' + fmtDur(mats[3].t) : done + ' of four' };
+  }
+  /* @fig-race-end */
   (function figRace() {
     const el = $('#fig-race'); if (!el) return;
     const F = fig(el);
@@ -4705,7 +4759,7 @@ function groundPredictInit(root) {
     const CW = 84, X0s = [20, 134, 248, 362], YT = 58, CH = 210;
     const cols = keys.map((k, i) => {
       const m = MATS[k], x = X0s[i];
-      m.t = m.n * 1 / (m.k * 1); // seconds to cross 1 m at gradient 1
+      m.t = raceTime(m);
       E('rect', { x, y: YT - 26, width: CW, height: 26, class: 'water' }, g);
       E('path', { d: `M${x},${YT - 26} h${CW}`, class: 'water-line' }, g);
       E('rect', { x, y: YT, width: CW, height: CH, fill: `url(#${m.pat})` }, g);
@@ -4740,7 +4794,6 @@ function groundPredictInit(root) {
     function render(v) {
       lt = v;
       const s = timeOf(v);
-      let done = 0;
       cols.forEach((c, i) => {
         const f = clamp(s / c.m.t, 0, 1);
         const y = YT + CH * f;
@@ -4749,14 +4802,13 @@ function groundPredictInit(root) {
         c.drip.setAttribute('opacity', f >= 1 ? 1 : 0);
         c.tl.textContent = f >= 1 ? fmtDur(c.m.t) : '…';
         marks[i].setAttribute('opacity', f >= 1 ? 1 : 0.3);
-        if (f >= 1) done++;
       });
       cursor.setAttribute('d', `M${LX(v)},${AY - 6} v12`);
-      const t = fmtDur(s);
-      setTxt('rc-t-o', t); setTxt('rc-clock', t);
-      setTxt('rc-clock2', v <= 0 ? 'press start' : 'clock is running ' + fmt(Math.pow(10, Math.max(0, v - 0.5))) + '× faster');
-      setTxt('rc-done', done === 0 ? 'None' : done === 4 ? 'All four' : cols.slice(0, done).map(c => c.m.name).join(', '));
-      setTxt('rc-done2', done === 4 ? 'clay took ' + fmtDur(cols[3].m.t) : done + ' of four');
+      const ro = raceReadouts(v, cols.map(c => c.m));
+      setTxt('rc-t-o', ro.t); setTxt('rc-clock', ro.t);
+      setTxt('rc-clock2', ro.clock2);
+      setTxt('rc-done', ro.done1);
+      setTxt('rc-done2', ro.done2);
     }
     const player = Player({ max: 9, dur: 10, btn: $('#rc-play'), slider: $('#rc-t'), onUpdate: render, playText: 'Start the race', replayText: 'Run again' });
     render(0);
@@ -4774,12 +4826,50 @@ function groundPredictInit(root) {
   })();
 
   /* ===================== Fig 3.2 · Darcy's experiment ===================== */
+  /* @fig-darcy-begin */
+  // the state on load (as the pressed buttons and sliders in body-ground.html); the clay plug fills
+  // the pipe from DARCY_PLUG[0] to DARCY_PLUG[1] of its length
+  const DARCY0 = { mat: 'sand', plug: false, hl: 2, hr: 0.6, L: 2 }, DARCY_PLUG = [0.4, 0.6];
+  function darcyKEff(st) { const [plugA, plugB] = DARCY_PLUG, k = MATS[st.mat].k; if (!st.plug) return k; return 1 / ((1 - (plugB - plugA)) / k + (plugB - plugA) / MATS.clay.k); }
+  function darcyHeadAt(st, f) { // linear head drop along each piece, the same flow through all
+    const [plugA, plugB] = DARCY_PLUG;
+    const dh = st.hl - st.hr;
+    if (!st.plug) return st.hl - dh * f;
+    const k = MATS[st.mat].k, kc = MATS.clay.k, Lp = plugB - plugA;
+    const rs = (1 - Lp) / k, rc = Lp / kc, tot = rs + rc;
+    const lossSand = dh * (1 - Lp) / k / tot / (1 - Lp), lossClay = dh * Lp / kc / tot / Lp; // head loss per unit fraction
+    if (f <= plugA) return st.hl - lossSand * f;
+    if (f <= plugB) return st.hl - lossSand * plugA - lossClay * (f - plugA);
+    return st.hl - lossSand * plugA - lossClay * Lp - lossSand * (f - plugB);
+  }
+  function flowRate(q) { // m³/s per m² → readable
+    const L = q * 1000;
+    if (L === 0) return '0';
+    if (L >= 1) return L.toFixed(L < 10 ? 1 : 0) + ' L/s';
+    if (L * 60 >= 1) return (L * 60).toFixed(L * 60 < 10 ? 1 : 0) + ' L/min';
+    if (L * 3600 >= 1) return (L * 3600).toFixed(L * 3600 < 10 ? 1 : 0) + ' L/h';
+    if (L * 86400 >= 1) return (L * 86400).toFixed(L * 86400 < 10 ? 1 : 0) + ' L/day';
+    const y = L * 86400 * 365.25;
+    return (y >= 1 ? y.toFixed(y < 10 ? 1 : 0) : y.toPrecision(1)) + ' L/year';
+  }
+  function darcyReadouts(st) {
+    const dh = st.hl - st.hr, i = Math.abs(dh) / st.L, q = darcyKEff(st) * i; // m³/s per m²
+    const o = { dh, i, q, share: null, hl: st.hl.toFixed(2) + ' m', hr: st.hr.toFixed(2) + ' m', L: st.L.toFixed(1) + ' m',
+      dhTxt: Math.abs(dh).toFixed(2) + ' m', dh2: Math.abs(dh) < 0.005 ? 'levels equal' : dh > 0 ? 'left is higher' : 'right is higher',
+      iTxt: i.toFixed(2), i2: st.plug ? 'average along the pipe' : 'head lost per metre', qTxt: flowRate(q), q2: 'through each m² of pipe' };
+    if (st.plug && Math.abs(dh) > 0.005) {
+      const lossClay = (darcyHeadAt(st, DARCY_PLUG[0]) - darcyHeadAt(st, DARCY_PLUG[1])) / dh;
+      o.share = lossClay; o.shareTxt = (lossClay * 100).toFixed(lossClay > 0.9999 ? 4 : 2) + '%'; o.share2 = 'plug is 20% of the length';
+    } else { o.shareTxt = '–'; o.share2 = st.plug ? 'no head difference' : 'no plug'; }
+    return o;
+  }
+  /* @fig-darcy-end */
   (function figDarcy() {
     const el = $('#fig-darcy'); if (!el) return;
     const F = fig(el);
     const svg = $('#svg-darcy');
     const YC = 222, PH = 30, KV = 70, TW = 58, XL0 = 14, PX = 80, YB = 246, YTOP = 36; // pipe centre, pipe height, px per m head, tank width
-    const st = { mat: 'sand', plug: false, hl: 2, hr: 0.6, L: 2 };
+    const st = Object.assign({}, DARCY0);
     const g = E('g', null, svg);
     const gT = E('g', null, g), gP = E('g', null, g), gPart = E('g', null, g), gTube = E('g', null, g), gTop = E('g', null, g);
     const yOf = hh => YC - KV * hh;
@@ -4810,18 +4900,8 @@ function groundPredictInit(root) {
     const parts = Array.from({ length: 14 }, (_, i) => ({ s: (i + 0.5) / 14, yo: ((i * 7) % 5 - 2) * 4.5, e: E('circle', { r: 2.2, class: 'particle' }, gPart) }));
     const P0 = 14 + TW; // pipe start x
     const PL = () => PX * st.L; // pipe px length
-    const plugA = 0.4, plugB = 0.6;
-    function kEff() { const k = MATS[st.mat].k; if (!st.plug) return k; return 1 / ((1 - (plugB - plugA)) / k + (plugB - plugA) / MATS.clay.k); }
-    function headAt(f) { // linear head drop along each piece, the same flow through all
-      const dh = st.hl - st.hr;
-      if (!st.plug) return st.hl - dh * f;
-      const k = MATS[st.mat].k, kc = MATS.clay.k, Lp = plugB - plugA;
-      const rs = (1 - Lp) / k, rc = Lp / kc, tot = rs + rc;
-      const lossSand = dh * (1 - Lp) / k / tot / (1 - Lp), lossClay = dh * Lp / kc / tot / Lp; // head loss per unit fraction
-      if (f <= plugA) return st.hl - lossSand * f;
-      if (f <= plugB) return st.hl - lossSand * plugA - lossClay * (f - plugA);
-      return st.hl - lossSand * plugA - lossClay * Lp - lossSand * (f - plugB);
-    }
+    const [plugA, plugB] = DARCY_PLUG;
+    const kEff = () => darcyKEff(st), headAt = f => darcyHeadAt(st, f);
     function drawTank(o, x, hh, side) {
       const y = yOf(hh);
       o.w.setAttribute('x', x); o.w.setAttribute('width', TW); o.w.setAttribute('y', y); o.w.setAttribute('height', YB - y);
@@ -4858,27 +4938,14 @@ function groundPredictInit(root) {
       }
       lenDim.setAttribute('d', `M${P0},${YB + 12} H${x1} M${P0},${YB + 7} v10 M${x1},${YB + 7} v10`);
       lenL.setAttribute('x', (P0 + x1) / 2); lenL.setAttribute('y', YB + 26); lenL.textContent = 'L = ' + st.L.toFixed(1) + ' m';
-      const dh = st.hl - st.hr, i = Math.abs(dh) / st.L, q = kEff() * i; // m³/s per m²
+      const ro = darcyReadouts(st), dh = ro.dh;
       flowL.setAttribute('x', (P0 + x1) / 2); flowL.setAttribute('y', YC + PH / 2 + 12);
       flowL.textContent = Math.abs(dh) < 0.005 ? 'no flow' : dh > 0 ? 'flow →' : '← flow';
-      setTxt('dc-hl-o', st.hl.toFixed(2) + ' m'); setTxt('dc-hr-o', st.hr.toFixed(2) + ' m'); setTxt('dc-L-o', st.L.toFixed(1) + ' m');
-      setTxt('dc-dh', Math.abs(dh).toFixed(2) + ' m'); setTxt('dc-dh2', Math.abs(dh) < 0.005 ? 'levels equal' : dh > 0 ? 'left is higher' : 'right is higher');
-      setTxt('dc-i', i.toFixed(2)); setTxt('dc-i2', st.plug ? 'average along the pipe' : 'head lost per metre');
-      setTxt('dc-q', rate(q)); setTxt('dc-q2', 'through each m² of pipe');
-      if (st.plug && Math.abs(dh) > 0.005) {
-        const lossClay = (headAt(plugA) - headAt(plugB)) / dh;
-        setTxt('dc-share', (lossClay * 100).toFixed(lossClay > 0.9999 ? 4 : 2) + '%'); setTxt('dc-share2', 'plug is 20% of the length');
-      } else { setTxt('dc-share', '–'); setTxt('dc-share2', st.plug ? 'no head difference' : 'no plug'); }
-    }
-    function rate(q) { // m³/s per m² → readable
-      const L = q * 1000;
-      if (L === 0) return '0';
-      if (L >= 1) return L.toFixed(L < 10 ? 1 : 0) + ' L/s';
-      if (L * 60 >= 1) return (L * 60).toFixed(L * 60 < 10 ? 1 : 0) + ' L/min';
-      if (L * 3600 >= 1) return (L * 3600).toFixed(L * 3600 < 10 ? 1 : 0) + ' L/h';
-      if (L * 86400 >= 1) return (L * 86400).toFixed(L * 86400 < 10 ? 1 : 0) + ' L/day';
-      const y = L * 86400 * 365.25;
-      return (y >= 1 ? y.toFixed(y < 10 ? 1 : 0) : y.toPrecision(1)) + ' L/year';
+      setTxt('dc-hl-o', ro.hl); setTxt('dc-hr-o', ro.hr); setTxt('dc-L-o', ro.L);
+      setTxt('dc-dh', ro.dhTxt); setTxt('dc-dh2', ro.dh2);
+      setTxt('dc-i', ro.iTxt); setTxt('dc-i2', ro.i2);
+      setTxt('dc-q', ro.qTxt); setTxt('dc-q2', ro.q2);
+      setTxt('dc-share', ro.shareTxt); setTxt('dc-share2', ro.share2);
     }
     segGroup($('#dc-mat'), v => { st.mat = v; render(); });
     segGroup($('#dc-plug'), v => { st.plug = v === '1'; render(); });
@@ -4907,7 +4974,7 @@ function groundPredictInit(root) {
         const dh = st.hl - st.hr, i = Math.abs(dh) / st.L;
         const lines = ['Pipe material: ' + MATS[st.mat].name + ' (k = ' + MATS[st.mat].k.toExponential(0) + ' m/s)' + (st.plug ? ', with a clay plug (k = 1e-9 m/s) in the middle 20% of the length.' : ', no plug.'),
           'Left tank head ' + st.hl.toFixed(2) + ' m, right tank ' + st.hr.toFixed(2) + ' m, pipe length ' + st.L.toFixed(1) + ' m: gradient i = ' + i.toFixed(2) + '.',
-          'Flow q = k·i·A = ' + rate(kEff() * i) + ' per m² of pipe, ' + (Math.abs(dh) < 0.005 ? 'none' : dh > 0 ? 'left to right' : 'right to left') + '.'];
+          'Flow q = k·i·A = ' + flowRate(kEff() * i) + ' per m² of pipe, ' + (Math.abs(dh) < 0.005 ? 'none' : dh > 0 ? 'left to right' : 'right to left') + '.'];
         if (st.plug && Math.abs(dh) > 0.005) lines.push('The clay plug takes ' + ((headAt(plugA) - headAt(plugB)) / dh * 100).toFixed(3) + '% of the head drop; the piezometers in the ' + st.mat + ' read almost the same as the tank beside them.');
         return lines.join('\n');
       }
@@ -4915,13 +4982,28 @@ function groundPredictInit(root) {
   })();
 
   /* ===================== Fig 4.1 · block on a ramp with a water cushion ===================== */
+  /* @fig-block-begin */
+  // block weight (kN), friction angle, and the state on load (as the sliders in body-ground.html)
+  const BLOCK = { W: 20, PHI: 34 * deg, a: 25, u: 0 };
+  function blockForces(a, u) { // ramp angle a (degrees), cushion pressure u (kPa) on a 1 m² base; forces in kN
+    const W = BLOCK.W, th = a * deg;
+    const N = W * Math.cos(th), U = Math.min(u * 1, N), Ne = Math.max(0, N - u), Fa = Ne * Math.tan(BLOCK.PHI), Fn = W * Math.sin(th);
+    const fs = Fn < 1e-6 ? Infinity : Fa / Fn;
+    return { th, N, U, Ne, Fa, Fn, fs };
+  }
+  function blockReadouts(a, u) {
+    const f = blockForces(a, u);
+    return { f, a: a + '°', u: n1(u) + ' kPa', N: n1(f.N) + ' kN', U: n1(f.U) + ' kN', Ne: n1(f.Ne) + ' kN', Fa: n1(f.Fa) + ' kN', Fn: n1(f.Fn) + ' kN',
+      fs: f.fs === Infinity ? '∞' : f.fs > 9.9 ? '> 10' : f.fs.toFixed(2), holds: f.fs >= 1, pill: f.fs >= 1 ? (f.fs < 1.25 ? 'warn' : 'ok') : 'bad' };
+  }
+  /* @fig-block-end */
   (function figBlock() {
     const el = $('#fig-block'); if (!el) return;
     const F = fig(el);
     const svg = $('#svg-block');
-    const O = [24, 292], LR = 380, BW = 92, BH = 62, W = 20, PHI = 34 * deg, KF = 4; // pivot, ramp length, block size, weight kN, px per kN
+    const O = [24, 292], LR = 380, BW = 92, BH = 62, W = BLOCK.W, KF = 4; // pivot, ramp length, block size, weight kN, px per kN
     const S0 = 215, SMIN = 58;
-    const st = { a: 25, u: 0, s: S0, v: 0, sliding: false, moved: false };
+    const st = { a: BLOCK.a, u: BLOCK.u, s: S0, v: 0, sliding: false, moved: false };
     const g = E('g', null, svg);
     E('path', { d: `M0,${O[1]} H480`, class: 'edge' }, g);
     E('rect', { x: 0, y: O[1], width: 480, height: 30, fill: 'url(#p-alluv)' }, g);
@@ -4942,14 +5024,9 @@ function groundPredictInit(root) {
     const status2 = T(g, 16, 44, '', 'lbl-s');
     const aEl = $('#bk-a'), uEl = $('#bk-u'), resetBtn = $('#bk-reset');
     let last = 'Reader opened the figure.';
-    function forces() {
-      const th = st.a * deg;
-      const N = W * Math.cos(th), U = Math.min(st.u * 1, N), Ne = Math.max(0, N - st.u), Fa = Ne * Math.tan(PHI), Fn = W * Math.sin(th);
-      const fs = Fn < 1e-6 ? Infinity : Fa / Fn;
-      return { th, N, U, Ne, Fa, Fn, fs };
-    }
+    const forces = () => blockForces(st.a, st.u);
     function render() {
-      const f = forces(), th = f.th, c = Math.cos(th), s = Math.sin(th);
+      const ro = blockReadouts(st.a, st.u), f = ro.f, th = f.th, c = Math.cos(th), s = Math.sin(th);
       const t = [c, -s], n = [-s, -c];
       const E2 = [O[0] + LR * c, O[1] - LR * s];
       ramp.setAttribute('points', P([O, E2, [E2[0], O[1]]]));
@@ -4979,15 +5056,14 @@ function groundPredictInit(root) {
       lU.setAttribute('x', ub[0] - n[0] * (uLen + 4) - 6); lU.setAttribute('y', ub[1] - n[1] * (uLen + 4) + 12);
       lU.style.display = f.U > 0.3 ? '' : 'none';
       // readouts
-      setTxt('bk-a-o', st.a + '°'); setTxt('bk-u-o', n1(st.u) + ' kPa');
-      setTxt('bk-N', n1(f.N) + ' kN'); setTxt('bk-U', n1(f.U) + ' kN'); setTxt('bk-Ne', n1(f.Ne) + ' kN');
-      setTxt('bk-Fa', n1(f.Fa) + ' kN'); setTxt('bk-Fn', n1(f.Fn) + ' kN');
+      setTxt('bk-a-o', ro.a); setTxt('bk-u-o', ro.u);
+      setTxt('bk-N', ro.N); setTxt('bk-U', ro.U); setTxt('bk-Ne', ro.Ne);
+      setTxt('bk-Fa', ro.Fa); setTxt('bk-Fn', ro.Fn);
       const fsEl = $('#bk-fs');
-      const fsTxt = f.fs === Infinity ? '∞' : f.fs > 9.9 ? '> 10' : f.fs.toFixed(2);
-      const holds = f.fs >= 1;
+      const holds = ro.holds;
       fsEl.innerHTML = '';
-      fsEl.append(fsTxt + ' ');
-      const pill = document.createElement('span'); pill.className = 'pill ' + (holds ? (f.fs < 1.25 ? 'warn' : 'ok') : 'bad'); pill.textContent = holds ? 'holds' : 'slides';
+      fsEl.append(ro.fs + ' ');
+      const pill = document.createElement('span'); pill.className = 'pill ' + ro.pill; pill.textContent = holds ? 'holds' : 'slides';
       fsEl.append(pill);
       const mx = 16;
       $('#bk-bar-a').style.width = clamp(f.Fa / mx * 100, 0, 100) + '%';
@@ -5030,11 +5106,32 @@ function groundPredictInit(root) {
   })();
 
   /* ===================== Fig 4.2 · total, pore and effective stress in a column ===================== */
+  /* @fig-column-begin */
+  // column depth (m), unit weights damp / soaked / water (kN/m³)
+  const COL = { ZB: 10, GD: 18, GS: 20, GW: 9.81 };
+  function columnStress(wt, z) { // wt depth of the water table below ground (negative = above); z depth; [σ, u] in kPa
+    const { ZB, GD, GS, GW } = COL;
+    const top = Math.min(0, wt);
+    if (z < top) return [0, 0];
+    let s;
+    if (z < 0) s = GW * (z - wt); // in the flood water
+    else { s = GW * Math.max(0, -wt); const zd = clamp(wt, 0, ZB); s += GD * Math.min(z, zd) + GS * Math.max(0, z - zd); }
+    const u = GW * Math.max(0, z - wt);
+    return [s, u];
+  }
+  function columnReadouts(wt) { // at the foot of the column
+    const { ZB, GD } = COL;
+    const [sB, uB] = columnStress(wt, ZB), eB = sB - uB;
+    return { sB, uB, eB, s: fmt(sB) + ' kPa', u: fmt(uB) + ' kPa', e: fmt(eB) + ' kPa', str: Math.round(eB / (GD * ZB) * 100) + '%',
+      wt: wt >= ZB ? 'below the column' : wt > 0.01 ? n1(wt) + ' m down' : wt > -0.01 ? 'at the ground' : n1(-wt) + ' m above ground',
+      u2: uB > 0.5 ? 'water ' + n1(ZB - wt) + ' m above this point' : 'no water at 10 m' };
+  }
+  /* @fig-column-end */
   (function figColumn() {
     const el = $('#fig-column'); if (!el) return;
     fig(el);
     const svg = $('#svg-column');
-    const GY = 92, KZ = 25, ZB = 10, CX0 = 30, CX1 = 100, AX0 = 150, AX1 = 462, SMAX = 240, GD = 18, GS = 20, GW = 9.81;
+    const GY = 92, KZ = 25, CX0 = 30, CX1 = 100, AX0 = 150, AX1 = 462, SMAX = 240, { ZB } = COL;
     const yz = z => GY + KZ * z; // z = depth below ground (negative above)
     const xs = s => AX0 + (AX1 - AX0) * s / SMAX;
     const defs = E('defs', null, svg);
@@ -5071,15 +5168,7 @@ function groundPredictInit(root) {
     const vT = T(g, 0, 0, '', 'lbl-s halo'), vU = T(g, 0, 0, '', 'lbl-s lbl-w halo'), vE = T(g, 0, 0, '', 'lbl-s lbl-acc halo');
     const wtEl = $('#gc-wt');
     let wt = -(+wtEl.value); // depth of water table below ground (negative = above)
-    function stress(z) {
-      const top = Math.min(0, wt);
-      if (z < top) return [0, 0];
-      let s;
-      if (z < 0) s = GW * (z - wt); // in the flood water
-      else { s = GW * Math.max(0, -wt); const zd = clamp(wt, 0, ZB); s += GD * Math.min(z, zd) + GS * Math.max(0, z - zd); }
-      const u = GW * Math.max(0, z - wt);
-      return [s, u];
-    }
+    const stress = z => columnStress(wt, z);
     function render() {
       const top = Math.min(0, wt), ywt = yz(wt);
       flood.setAttribute('y', yz(top)); flood.setAttribute('height', Math.max(0, yz(0) - yz(top)));
@@ -5104,15 +5193,15 @@ function groundPredictInit(root) {
       // shade the effective stress: between u and total
       const up = S.map(r => [xs(r[2]), yz(r[0])]), tp = S.map(r => [xs(r[1]), yz(r[0])]).reverse();
       effFill.setAttribute('d', D(up.concat(tp)) + 'Z');
-      const [sB, uB] = stress(ZB), eB = sB - uB;
+      const ro = columnReadouts(wt), sB = ro.sB, uB = ro.uB, eB = ro.eB;
       const by = yz(ZB) - 6;
       vT.setAttribute('x', xs(sB) + 5); vT.setAttribute('y', by - 8); vT.textContent = 'σ ' + fmt(sB);
       vU.setAttribute('x', xs(uB) + 5); vU.setAttribute('y', by + (Math.abs(xs(uB) - xs(eB)) < 40 ? 12 : -8)); vU.textContent = uB > 0.5 ? 'u ' + fmt(uB) : '';
       vE.setAttribute('x', xs(eB) - 5); vE.setAttribute('y', by - 22); vE.setAttribute('text-anchor', 'end'); vE.textContent = 'σ′ ' + fmt(eB);
-      setTxt('gc-s', fmt(sB) + ' kPa'); setTxt('gc-u', fmt(uB) + ' kPa'); setTxt('gc-e', fmt(eB) + ' kPa');
-      setTxt('gc-str', Math.round(eB / (GD * ZB) * 100) + '%');
-      setTxt('gc-wt-o', wt >= ZB ? 'below the column' : wt > 0.01 ? n1(wt) + ' m down' : wt > -0.01 ? 'at the ground' : n1(-wt) + ' m above ground');
-      setTxt('gc-u2', uB > 0.5 ? 'water ' + n1(ZB - wt) + ' m above this point' : 'no water at 10 m');
+      setTxt('gc-s', ro.s); setTxt('gc-u', ro.u); setTxt('gc-e', ro.e);
+      setTxt('gc-str', ro.str);
+      setTxt('gc-wt-o', ro.wt);
+      setTxt('gc-u2', ro.u2);
     }
     wtEl.addEventListener('input', () => { wt = -(+wtEl.value); render(); });
     dragHandle(svg, hit, ([, y]) => { const v = clamp(Math.round(-((y - GY) / KZ) * 4) / 4, -10, 3); wtEl.value = v; wt = -v; render(); });
@@ -6844,6 +6933,27 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
 })();
 
 /* ===================== Fig 6: seepage lab ===================== */
+/* @fig-lab-begin */
+// Fig 8.2: the lab's state on load (matches the pressed buttons and the slider in body.html),
+// and the pure part of its readouts. Both are pinned by tests/test-figures.js.
+const LAB0 = { damType: 'homogeneous', drain: 'none', cutoff: 'none', foundation: 'pervious', reservoir: 0.85 };
+function labFmtQ(q) { // m3/s per m -> L/day per m
+  const L = q * 86400 * 1000;
+  if (L >= 100) return fmt(L, 0);
+  if (L >= 1) return L.toFixed(1);
+  if (L >= 0.01) return L.toFixed(2);
+  return L.toExponential(1);
+}
+function labPiping(ex) { // max exit gradient and safety against piping, from the solver's r.exit
+  const imax = ex ? Math.max(ex.groundMax || 0, ex.faceMax || 0) : 0;
+  const i = imax > 0.005 ? imax.toFixed(2) : '≈ 0';
+  const i2 = ex && imax > 0.005 ? (ex.governing === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'all exits are filtered drains';
+  const fs = ex && isFinite(ex.fs) ? ex.fs : Infinity;
+  if (!isFinite(fs) || fs > 50) return { imax, i, i2, fs, fsTxt: '> 50', cls: 'ok', word: 'Safe' };
+  const cls = fs >= 3 ? 'ok' : fs >= 1.5 ? 'warn' : 'bad', word = fs >= 3 ? 'Adequate' : fs >= 1.5 ? 'Marginal' : 'Piping risk';
+  return { imax, i, i2, fs, fsTxt: fs.toFixed(1), cls, word };
+}
+/* @fig-lab-end */
 (function figLab() {
   const F = fig($('#fig-lab'));
   const svg = $('#svg-lab');
@@ -6858,7 +6968,7 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
   const L = () => E('g', null, svg);
   const gRes = L(), gMat = L(), gImg = L(), gEq = L(), gFl = L(), gPh = L(), gMark = L(), gPart = L(), gLbl = L();
   const img = E('image', { x: M.X(G.x0), y: M.Z(G.z1), width: M.X(G.x1) - M.X(G.x0), height: M.Z(G.z0) - M.Z(G.z1), preserveAspectRatio: 'none', 'clip-path': 'url(#lab-clip)', opacity: 0.82 }, gImg);
-  const state = { damType: 'homogeneous', drain: 'none', cutoff: 'none', foundation: 'pervious', reservoir: 0.85 };
+  const state = Object.assign({}, LAB0);
   const segs = {
     damType: segGroup($('#lab-dam'), v => { state.damType = v; request(); }),
     drain: segGroup($('#lab-drain'), v => { state.drain = v; request(); }),
@@ -6965,13 +7075,7 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
     c2.putImageData(im, 0, 0);
     img.setAttribute('href', cvs.toDataURL());
   }
-  function fmtQ(q) { // m3/s per m -> L/day per m
-    const L = q * 86400 * 1000;
-    if (L >= 100) return fmt(L, 0);
-    if (L >= 1) return L.toFixed(1);
-    if (L >= 0.01) return L.toFixed(2);
-    return L.toExponential(1);
-  }
+  const fmtQ = labFmtQ;
   function receive(r) {
     if (keyOf(r.params || state) !== keyOf(state)) return;
     last = r;
@@ -7045,16 +7149,10 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
     outs.sort((a, b) => b[1] - a[1]);
     $('#lab-split').textContent = outs[0][0] + ' ' + Math.round(100 * outs[0][1] / osum) + '%';
     $('#lab-split2').textContent = outs.slice(1).map(o => o[0].toLowerCase() + ' ' + Math.round(100 * o[1] / osum) + '%').join(' · ');
-    const imax = ex ? Math.max(ex.groundMax || 0, ex.faceMax || 0) : 0;
-    $('#lab-i').textContent = imax > 0.005 ? imax.toFixed(2) : '≈ 0';
-    $('#lab-i2').textContent = ex && imax > 0.005 ? (ex.governing === 'face' ? 'on the downstream slope' : 'at the ground beyond the toe') : 'all exits are filtered drains';
-    const fs = ex && isFinite(ex.fs) ? ex.fs : Infinity;
-    const fsEl = $('#lab-fs');
-    if (!isFinite(fs) || fs > 50) { fsEl.innerHTML = '> 50 <span class="pill ok">Safe</span>'; }
-    else {
-      const cls = fs >= 3 ? 'ok' : fs >= 1.5 ? 'warn' : 'bad', word = fs >= 3 ? 'Adequate' : fs >= 1.5 ? 'Marginal' : 'Piping risk';
-      fsEl.innerHTML = fs.toFixed(1) + ` <span class="pill ${cls}">${word}</span>`;
-    }
+    const pp = labPiping(ex);
+    $('#lab-i').textContent = pp.i;
+    $('#lab-i2').textContent = pp.i2;
+    $('#lab-fs').innerHTML = pp.fsTxt + ` <span class="pill ${pp.cls}">${pp.word}</span>`;
     if (sf && sf.present && sf.topZ > 0.3) { $('#lab-ph').textContent = 'Breaks out'; $('#lab-ph2').textContent = 'on the downstream slope up to ' + n1(sf.topZ) + ' m'; }
     else { $('#lab-ph').textContent = 'Contained'; $('#lab-ph2').textContent = state.drain === 'none' ? 'exits at the toe' : 'captured by the drain'; }
   }
@@ -7128,7 +7226,9 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
   const intact = [[230, GY], [330, 155], [430, 90], [455, 90], [480, 90], [590, 155], [700, GY]];
   const sag = [[230, GY], [330, 155], [430, 92], [455, 120], [480, 92], [590, 155], [700, GY]];
   const breach = [[230, GY], [330, 155], [392, 122], [455, GY - 2], [518, 122], [590, 155], [700, GY]];
+  /* @fig-pipe-begin */
   const names = ['1 · Steady seepage under the dam', '2 · Sand boil: the exit gradient lifts the sand', '3 · A pipe erodes backward under the dam', '4 · The pipe reaches the reservoir; flow and erosion accelerate', '5 · The pipe enlarges until the roof collapses', '6 · Breach'];
+  /* @fig-pipe-end */
   let speed = 1, vis = {};
   function render(t) {
     const p = hasFilter ? Math.min(t, 1) : t;
@@ -7205,10 +7305,35 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
   const M = uniformMapper(-110, 160, -38, 68, 1000, 20, 10, 380);
   svg.setAttribute('viewBox', `0 0 1000 ${Math.round(M.H)}`);
   const g = E('g', null, svg);
-  const B = 48, TW = 5, XD = 6, gw = 9.81, gc = 23.5;
+  /* @fig-uplift-begin */
+  const B = 48, TW = 5, XD = 6, gw = 9.81, gc = 23.5, HW0 = 57; // HW0: reservoir on load, as the slider in body.html
   const damPts = [[0, 0], [0, 60], [8, 60], [8, 50], [48, 0]];
   const W = gc * polyArea(damPts);
   const xW = (480 * 4 + 1000 * (8 + 40 / 3)) / 1480;
+  // head at the drain line: tailwater + a third of the difference with working drains, else the straight-line drop
+  function upliftDrainHead(drains, HW) { return drains ? TW + (HW - TW) / 3 : TW + (HW - TW) * (1 - XD / B); }
+  function upliftCalc(HW, ud) { // per metre of dam, kN; ud = head at the drain line
+    const prof = [[0, HW], [XD, ud], [B, TW]];
+    let U = 0, MU_toe = 0;
+    for (let i = 0; i < 2; i++) {
+      const [x1, h1] = prof[i], [x2, h2] = prof[i + 1], L = x2 - x1;
+      const f = gw * (h1 + h2) / 2 * L;
+      const xc = x1 + (L / 3) * (h1 + 2 * h2) / (h1 + h2);
+      U += f; MU_toe += f * (B - xc);
+    }
+    const Hup = 0.5 * gw * HW * HW, Htw = 0.5 * gw * TW * TW, H = Hup - Htw;
+    const FS = (W - U) * 1.0 / H;
+    const Mnet = W * (B - xW) + Htw * TW / 3 - Hup * HW / 3 - MU_toe;
+    const V = W - U, xR = B - Mnet / V;
+    return { U, H, FS, xR, Hup, prof };
+  }
+  function upliftReadouts(c) { // the readout texts for a result of upliftCalc
+    const inMid = c.xR >= 16 && c.xR <= 32;
+    return { inMid, W: n1(W / 1000) + ' MN/m', H: n1(c.H / 1000) + ' MN/m', U: n1(c.U / 1000) + ' MN/m', U2: Math.round(100 * c.U / W) + '% of the weight',
+      FS: c.FS.toFixed(2), fsCls: c.FS >= 1.5 ? 'ok' : c.FS >= 1 ? 'warn' : 'bad', fsW: c.FS >= 1.5 ? 'Meets 1.5' : c.FS >= 1 ? 'Below 1.5' : 'Slides',
+      R: (c.xR / B).toFixed(2) + ' B', rCls: inMid ? 'ok' : 'bad', rW: inMid ? 'Middle third' : 'Heel in tension', R2: 'from the heel; middle third is 0.33–0.67 B' };
+  }
+  /* @fig-uplift-end */
   const res = E('g', null, g);
   E('polygon', { points: M.P([[-110, 0], [160, 0], [160, -38], [-110, -38]]), fill: 'url(#p-bedrock)', class: 'edge' }, g);
   E('polygon', { class: 'water', points: M.P([[44, TW], [160, TW], [160, 0], [48, 0]]) }, g);
@@ -7226,32 +7351,17 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
   leader(lbls, M.X(-2.5), M.Z(-24), M.X(-22), M.Z(-24)); T(lbls, M.X(-23), M.Z(-24) + 4, 'Grout curtain', 'lbl-s halo', { 'text-anchor': 'end' });
   const drainLbl = T(lbls, M.X(9), M.Z(-31), 'Drains', 'lbl-s halo');
   const hwEl = $('#up-hw');
-  let drains = true, HW = 57, uDrain = TW + (HW - TW) / 3, shownUD = uDrain, anim = null;
+  let drains = true, HW = HW0, uDrain = TW + (HW - TW) / 3, shownUD = uDrain, anim = null;
   segGroup($('#up-drains'), v => { drains = v === '1'; go(); });
   hwEl.addEventListener('input', () => { HW = +hwEl.value; $('#up-hw-o').textContent = HW.toFixed(1) + ' m'; go(true); });
-  function target() { return drains ? TW + (HW - TW) / 3 : TW + (HW - TW) * (1 - XD / B); }
+  function target() { return upliftDrainHead(drains, HW); }
   function go(instant) {
     const to = target();
     if (instant || RM) { shownUD = to; anim = null; draw(); }
     else anim = { from: shownUD, to, t: 0 };
   }
-  function calc(ud) {
-    const prof = [[0, HW], [XD, ud], [B, TW]];
-    let U = 0, MU_toe = 0;
-    for (let i = 0; i < 2; i++) {
-      const [x1, h1] = prof[i], [x2, h2] = prof[i + 1], L = x2 - x1;
-      const f = gw * (h1 + h2) / 2 * L;
-      const xc = x1 + (L / 3) * (h1 + 2 * h2) / (h1 + h2);
-      U += f; MU_toe += f * (B - xc);
-    }
-    const Hup = 0.5 * gw * HW * HW, Htw = 0.5 * gw * TW * TW, H = Hup - Htw;
-    const FS = (W - U) * 1.0 / H;
-    const Mnet = W * (B - xW) + Htw * TW / 3 - Hup * HW / 3 - MU_toe;
-    const V = W - U, xR = B - Mnet / V;
-    return { U, H, FS, xR, Hup, prof };
-  }
   function draw() {
-    const c = calc(shownUD);
+    const c = upliftCalc(HW, shownUD), ro = upliftReadouts(c);
     res.textContent = ''; upl.textContent = ''; forces.textContent = '';
     E('polygon', { class: 'water', points: M.P([[-110, HW], [0, HW], [0, 0], [-110, 0]]) }, res);
     E('path', { class: 'water-line', d: M.D([[-110, HW], [0, HW]]) }, res);
@@ -7287,7 +7397,7 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
     // middle third + resultant
     E('path', { d: M.D([[16, 1.4], [32, 1.4]]), style: 'stroke:var(--ink);stroke-width:1;fill:none', 'marker-start': 'url(#arr)', 'marker-end': 'url(#arr)' }, forces);
     T(forces, M.X(24), M.Z(1.4) - 6, 'middle third', 'lbl-s halo', { 'text-anchor': 'middle' });
-    const inMid = c.xR >= 16 && c.xR <= 32;
+    const inMid = ro.inMid;
     const [rx, ry] = M.pt([clamp(c.xR, -5, 60), 0]);
     E('path', { d: `M${rx},${ry} l-6,10 h12 z`, style: `fill:${inMid ? 'var(--ok)' : 'var(--bad)'}` }, forces);
     // U arrow pushing up on the base
@@ -7301,14 +7411,13 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
     drainX.setAttribute('d', drains ? '' : `M${dx - 6},${dy - 6} l12,12 M${dx + 6},${dy - 6} l-12,12`);
     drainLbl.textContent = drains ? 'Drains' : 'Drains clogged';
     // readouts
-    $('#up-W').textContent = n1(W / 1000) + ' MN/m';
-    $('#up-H').textContent = n1(c.H / 1000) + ' MN/m';
-    $('#up-U').textContent = n1(c.U / 1000) + ' MN/m';
-    $('#up-U2').textContent = Math.round(100 * c.U / W) + '% of the weight';
-    const fsCls = c.FS >= 1.5 ? 'ok' : c.FS >= 1 ? 'warn' : 'bad', fsW = c.FS >= 1.5 ? 'Meets 1.5' : c.FS >= 1 ? 'Below 1.5' : 'Slides';
-    $('#up-FS').innerHTML = c.FS.toFixed(2) + ` <span class="pill ${fsCls}">${fsW}</span>`;
-    $('#up-R').innerHTML = (c.xR / B).toFixed(2) + ' B ' + `<span class="pill ${inMid ? 'ok' : 'bad'}">${inMid ? 'Middle third' : 'Heel in tension'}</span>`;
-    $('#up-R2').textContent = 'from the heel; middle third is 0.33–0.67 B';
+    $('#up-W').textContent = ro.W;
+    $('#up-H').textContent = ro.H;
+    $('#up-U').textContent = ro.U;
+    $('#up-U2').textContent = ro.U2;
+    $('#up-FS').innerHTML = ro.FS + ` <span class="pill ${ro.fsCls}">${ro.fsW}</span>`;
+    $('#up-R').innerHTML = ro.R + ' ' + `<span class="pill ${ro.rCls}">${ro.rW}</span>`;
+    $('#up-R2').textContent = ro.R2;
   }
   go(true);
   F.ticks.push((t, dt) => {
