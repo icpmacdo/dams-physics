@@ -68,9 +68,15 @@ LAYERS = {
 TOP = max(LAYERS)
 
 
+# the dam to come, as a faint dashed outline: drawn only at stage 0 (the Prologue), so the bare ground
+# line reads as the start of a drawing rather than a stray rule
+GHOST = '<path d="%s" style="fill:none;stroke:var(--ink-3);stroke-width:0.7;stroke-dasharray:2 2;opacity:0.7"/>' % HEAP
+
+
 def symbols():
     """the <symbol> per layer, plus the clip path the grid needs, for the page's <defs>"""
-    out = ['<clipPath id="mini-clip"><path d="%s"/></clipPath>' % HEAP]
+    out = ['<clipPath id="mini-clip"><path d="%s"/></clipPath>' % HEAP,
+           '<symbol id="mini-ghost" viewBox="0 0 160 48">%s</symbol>' % GHOST]
     for n in sorted(LAYERS):
         out.append('<symbol id="mini-L%d" viewBox="0 0 160 48">%s</symbol>' % (n, ''.join(LAYERS[n][1])))
     return '\n    '.join(out)
@@ -81,5 +87,7 @@ def svg(n, label=None, cls='mini'):
     n = max(0, min(TOP, int(n)))
     order = sorted(range(n + 1), key=lambda k: (LAYERS[k][0], k))
     uses = ''.join('<use href="#mini-L%d" class="mini-l%d%s"/>' % (k, k, ' mini-new' if (k == n and n > 0) else '') for k in order)
+    if n == 0:
+        uses = '<use href="#mini-ghost" class="mini-ghost"/>' + uses
     a11y = ('role="img" aria-label="%s"' % label.replace('"', '&quot;')) if label else 'aria-hidden="true" focusable="false"'
     return '<svg class="%s" viewBox="0 0 160 48" %s data-mini="%d">%s</svg>' % (cls, a11y, n, uses)

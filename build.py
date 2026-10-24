@@ -16,7 +16,7 @@ OUT=/some/dir python3 build.py builds into another directory (parallel work).
 DRAFT=1 python3 build.py lets references to ids a unit has planned (newIds) but not written yet
 build as "?", with a warning.
 """
-import json, os, pathlib, sys
+import json, os, pathlib, re, sys
 root = pathlib.Path(__file__).parent
 sys.path.insert(0, str(root / 'tools'))
 import bookbuild  # noqa: E402
@@ -49,10 +49,34 @@ if errors:
 markup, data = res
 
 app = "(() => {\n'use strict';\n" + ''.join(read(n) for n in APP) + "\n})();\n"
+
+
+def strip_css_comments(css):
+    """/* … */ out of the shipped CSS (strings are left alone); the sources keep them"""
+    out, i, n = [], 0, len(css)
+    while i < n:
+        c = css[i]
+        if c in '"\'':
+            j = i + 1
+            while j < n and css[j] != c:
+                j += 2 if css[j] == '\\' else 1
+            out.append(css[i:j + 1]); i = j + 1
+        elif css.startswith('/*', i):
+            j = css.find('*/', i + 2)
+            i = n if j < 0 else j + 2
+        else:
+            out.append(c); i += 1
+    return re.sub(r'\n\s*\n+', '\n', ''.join(out))
+
+
+def strip_html_comments(html):
+    """<!-- … --> out of the shipped markup (none of them is read at run time); build/book.html keeps them"""
+    return re.sub(r'<!--(?!\[).*?-->', '', html, flags=re.S)
+
 data_json = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
 body = (
-    '<title>Dams in Section</title>\n' + fonts + '\n<style>\n' + '\n'.join(read(n) for n in CSS) + '\n</style>\n'
-    + markup
+    '<title>Dams in Section</title>\n' + fonts + '\n<style>\n' + strip_css_comments('\n'.join(read(n) for n in CSS)) + '\n</style>\n'
+    + strip_html_comments(markup)
     + '\n<script id="book-data" type="application/json">' + data_json.replace('</', '<\\/') + '</script>\n'
     + ''.join(f'\n<script id="{i}">\n{read(n)}\n</script>\n' for i, n in WORKERS if read(n))
     + '<script>\n' + app + '</script>\n'
@@ -60,7 +84,9 @@ body = (
 (out / 'build').mkdir(parents=True, exist_ok=True)
 (out / 'build' / 'book.html').write_text(markup)
 (out / 'build' / 'book-data.json').write_text(json.dumps(data, ensure_ascii=False, indent=1))
-(out / 'index.html').write_text(body)
+# the root page is the body only (the claude.ai artifact wraps it in a document), but opened on its own it
+# must not fall into quirks mode, where ids match case-insensitively and #dp-h finds #dp-H
+(out / 'index.html').write_text('<!doctype html>\n' + body)
 (out / 'app.bundle.js').write_text(app)
 data_desc = (json.loads((src / 'book.json').read_text()).get('subtitle', '') + '. An interactive book on how dams stand and fail, with simulations you can run in the page.').replace('"', '&quot;')
 preview = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'

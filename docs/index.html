@@ -2,7 +2,7 @@
 <title>Dams in Section</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400..700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
 <style>
-/* Layout: a warm textbook page — one centred reading column (~66ch) between wide figure plates, callout boxes for the questions, a slim sticky index on top. */
+
 :root {
   --paper: #f6f1e7;
   --sheet: #fffcf5;
@@ -22,7 +22,6 @@
   --warn: #875800;
   --ramp-lo: #eaf3f9;
   --ramp-hi: #1c5d93;
-
   --m-clay: #b2825a;
   --m-filter: #e3c977;
   --m-trans: #cbb48c;
@@ -37,12 +36,10 @@
   --m-drain: #ecd27c;
   --m-liq: #7f7867;
   --tex: rgba(20, 35, 43, 0.3);
-
   --f-display: "Archivo", "Arial Narrow", "Helvetica Neue", sans-serif;
   --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --f-label: "Archivo", "Helvetica Neue", Arial, sans-serif;
-
   --step--1: 0.8125rem;
   --step-0: 1.125rem;
   --step-1: 1.3rem;
@@ -76,14 +73,10 @@
   --m-fill: #786549; --m-drain: #a38c3f; --m-liq: #8a7f63; --tex: rgba(228, 238, 240, 0.2);
   color-scheme: dark;
 }
-
-/* Type for this page: textbook serif for reading and headings, a humanist sans for labels and figures.
-   (The block above is shared with academy/, which keeps its own faces.) */
 :root {
   --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
   --f-label: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 64px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -96,15 +89,12 @@ body {
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
-
 .page { padding-inline: 16px; padding-block: 0 72px; }
 .col { max-width: 1160px; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) min(44rem, 100%) minmax(0, 1fr); }
 .col > * { grid-column: 2; min-width: 0; }
 .col > .tablewrap, .col > .defences { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }
 .masthead .eyebrow, .masthead h1, .masthead .lede, .chapter-head { max-width: 44rem; margin-left: auto; margin-right: auto; }
 .wide { max-width: 1160px; margin-inline: auto; }
-
-/* ---------- masthead ---------- */
 .masthead { padding-block: 72px 36px; }
 .eyebrow { font-family: var(--f-label); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 14px; }
 h1 {
@@ -125,8 +115,6 @@ h1 .cut { color: var(--accent); font-style: italic; font-weight: 600; }
   .topics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .topics a { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); }
 }
-
-/* ---------- sections ---------- */
 section.chapter { padding-block: 72px 8px; border-top: 1px solid var(--rule); margin-top: 56px; }
 .chapter-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
 .sheetno { font-family: var(--f-label); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); white-space: nowrap; display: flex; align-items: center; gap: 10px; }
@@ -144,8 +132,6 @@ strong { font-weight: 650; }
 }
 .formula b { color: var(--water); font-weight: 500; }
 .formula small { display: block; color: var(--ink-2); font-size: 0.85rem; line-height: 1.5; margin-top: 6px; font-family: var(--f-body); }
-
-/* ---------- figures ("sheets") ---------- */
 figure.sheet {
   margin: 36px auto 40px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px;
   box-shadow: var(--shadow); padding: 20px 22px 18px; position: relative;
@@ -163,8 +149,6 @@ svg.dwg { display: block; width: 100%; height: auto; max-width: 100%; overflow: 
 .panel-title { font-family: var(--f-display); font-weight: 700; font-size: 1.1rem; margin: 0 0 4px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .panel-title small { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
 @media (max-width: 820px) { .pair { grid-template-columns: minmax(0, 1fr); } }
-
-/* svg text + strokes */
 .dwg text { font-family: var(--f-label); --fs: 11.5px; font-size: var(--fs); fill: var(--ink); }
 .dwg .lbl { --fs: 11px; fill: var(--ink); }
 .dwg .lbl-s { --fs: 9.5px; fill: var(--ink-2); }
@@ -191,8 +175,6 @@ svg.dwg { display: block; width: 100%; height: auto; max-width: 100%; overflow: 
 .dwg .particle { fill: var(--water); }
 .dwg .flowline { stroke: var(--water); stroke-width: 0.9; fill: none; opacity: 0.55; }
 .dwg .equip { stroke: var(--ink-2); stroke-width: 0.7; fill: none; opacity: 0.75; }
-
-/* ---------- controls ---------- */
 .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 10px 0 4px; }
 .btn {
   font-family: var(--f-label); font-weight: 600; font-size: 0.85rem;
@@ -222,8 +204,6 @@ svg.dwg { display: block; width: 100%; height: auto; max-width: 100%; overflow: 
 .range output { font-family: var(--f-mono); font-size: 0.8rem; color: var(--ink); min-width: 6.5em; font-variant-numeric: tabular-nums; }
 input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .stage-label { font-family: var(--f-mono); font-size: 0.8rem; color: var(--ink); min-width: 16em; font-variant-numeric: tabular-nums; }
-
-/* readouts */
 .readouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border-top: 1px solid var(--rule); margin-top: 12px; }
 .ro { padding: 10px 12px 8px 0; border-right: 1px solid var(--rule); padding-left: 12px; min-width: 0; }
 .ro:first-child { padding-left: 0; }
@@ -239,8 +219,6 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .pill.warn { color: var(--warn); }
 .pill.bad { color: var(--bad); }
 .pill.neutral { color: var(--ink-3); }
-
-/* raise panels */
 .raise-panel { border-top: 1px solid var(--rule); padding-top: 8px; margin-top: 6px; }
 .raise-panel:first-of-type { border-top: 0; margin-top: 0; }
 .raise-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; justify-content: space-between; }
@@ -252,8 +230,6 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .legend i.ph { border-top: 2px dashed var(--water); }
 .legend i.cp { border-top: 1.5px dashed var(--accent); }
 .legend i.sw { height: 10px; border: 1px solid var(--ink-2); border-radius: 2px; }
-
-/* tabs */
 .tabs { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1.5px solid var(--ink); margin-bottom: 12px; }
 .tabs button {
   font-family: var(--f-display); font-weight: 700; font-size: 0.95rem; background: transparent; color: var(--ink-2);
@@ -262,7 +238,6 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
 .tabs button:hover { color: var(--ink); }
 .tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-
 .zone-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; margin-top: 12px; }
 @media (max-width: 820px) { .zone-layout { grid-template-columns: minmax(0, 1fr); } }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
@@ -280,8 +255,6 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .zone-info dd { margin: 0; line-height: 1.45; }
 .build-step { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-2); }
 .build-step b { color: var(--accent); font-weight: 500; }
-
-/* zones svg interaction */
 .zone { cursor: pointer; transition: opacity 0.25s; }
 .zone.dimmed { opacity: 0.28; }
 .zone .zshape { transition: stroke-width 0.2s; }
@@ -292,15 +265,12 @@ input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
 .marker text { --fs: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; fill: var(--ink); }
 .zone.sel .marker rect { fill: var(--accent); stroke: var(--accent); }
 .zone.sel .marker text { fill: var(--sheet); }
-
-/* comparison table */
 .tablewrap { overflow-x: auto; margin: 18px 0 8px; border-top: 2px solid var(--ink); }
 table.cmp { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.95rem; }
 table.cmp th, table.cmp td { text-align: left; vertical-align: top; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--rule); }
 table.cmp thead th { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; }
 table.cmp tbody th { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); width: 9.5em; padding-top: 12px; }
 table.cmp td { width: 42%; }
-
 .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); margin: 16px 0 8px; }
 .three > div { padding: 12px 16px 12px 0; border-right: 1px solid var(--rule); padding-left: 16px; min-width: 0; }
 .three > div:first-child { padding-left: 0; }
@@ -310,36 +280,26 @@ table.cmp td { width: 42%; }
 .three li { margin-bottom: 4px; }
 .three .pm { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 10px 0 2px; }
 @media (max-width: 760px) { .three { grid-template-columns: minmax(0, 1fr); } .three > div { border-right: 0; padding-left: 0; border-bottom: 1px solid var(--rule); } }
-
 .timeline { list-style: none; padding: 0; margin: 14px 0 10px; border-left: 2px solid var(--rule); }
 .timeline li { position: relative; padding: 0 0 12px 18px; }
 .timeline li::before { content: ""; position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--sheet); border: 2px solid var(--bad); }
 .timeline .yr { font-family: var(--f-mono); font-size: 0.78rem; color: var(--bad); margin-right: 8px; font-variant-numeric: tabular-nums; }
-
 .defences { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border-top: 2px solid var(--ink); margin: 14px 0; }
 .defences > div { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule); min-width: 0; }
 .defences b { font-family: var(--f-display); font-size: 1.1rem; display: block; }
 .defences span { font-size: 0.93rem; color: var(--ink-2); }
-
 .solving { font-family: var(--f-mono); font-size: 0.72rem; color: var(--accent); min-height: 1.2em; }
 .note { font-family: var(--f-body); font-size: 0.88rem; color: var(--ink-2); line-height: 1.5; }
 .sources { font-size: 0.9rem; color: var(--ink-2); }
 .sources li { margin-bottom: 6px; }
 footer.end { border-top: 1px solid var(--rule); margin-top: 48px; padding-top: 22px; }
-
 canvas.filtercv { width: 100%; height: auto; display: block; border-radius: 4px; }
 .swipe-hint { display: none; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 2px 0 6px; }
 @media (max-width: 760px) {
   #svg-plan { max-width: 340px; }
 }
-
-/* Films: one per big idea, at the end of the step it retells. Nothing loads until play. */
 figure.film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 4px; background: var(--rule); }
-
-/* ---------- groundwork chapters (Steps 1–4) and the shared predict widget ---------- */
 .g-lede { font-size: 1.22rem; line-height: 1.5; }
-
-/* figure layout: drawing beside its controls, stacked on narrow screens */
 .g-split { display: grid; grid-template-columns: minmax(0, 600px) minmax(0, 1fr); gap: 16px 32px; align-items: start; }
 .g-draw { min-width: 0; }
 .g-side { min-width: 0; }
@@ -359,8 +319,6 @@ svg.gd { overflow: hidden; }
   .g-split { grid-template-columns: minmax(0, 1fr); }
   .g-draw { max-width: 600px; }
 }
-
-/* drawing text: one size on desktop, larger on phones so labels stay legible */
 svg.gd text, svg.gd .lbl { --fs: 11px; }
 svg.gd .lbl-s { --fs: 10px; }
 svg.gd .lbl-b { --fs: 13px; }
@@ -372,37 +330,26 @@ svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
   figure.g-fig { padding-inline: 12px; }
   .g-side .range label { min-width: 0; }
 }
-
-/* Fig 1.1 close-up */
 .g-zoom { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); gap: 12px; align-items: center; }
 .g-zoom .note { margin: 0; }
 @media (max-width: 560px) { .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); } }
-/* four sand states: on a phone, two rows of two rather than three and a straggler */
 @media (max-width: 560px) {
   #bc-state { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
   #bc-state button { border-bottom: 1px solid var(--rule); }
   #bc-state button:nth-child(2n) { border-right: 0; }
   #bc-state button:nth-child(n+3) { border-bottom: 0; }
 }
-
-/* Fig 4.1 friction bars */
 .g-bars { margin: 14px 0 2px; display: grid; gap: 6px; }
 .g-bars > div { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); align-items: center; gap: 10px; }
 .g-bars span { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
 .g-bars i { display: block; height: 12px; background: var(--accent); border-radius: 2px; width: 0; transition: width 0.15s; }
 .g-bars i.need { background: transparent; border: 1.5px dashed var(--ink-2); }
 @media (prefers-reduced-motion: reduce) { .g-bars i { transition: none; } }
-
-/* Fig 4.2 legend swatches */
 .g-legend { margin-top: 12px; }
 .g-legend i.g-l-tot { border-top: 2px solid var(--ink); }
 .g-legend i.g-l-u { border-top: 2.5px solid var(--water); }
 .g-legend i.g-l-eff { border-top: 4px solid var(--accent); }
-
-/* hydrostatic paradox drawing inside the predict box */
 svg.g-paradox { max-width: 520px; margin: 4px 0 12px; }
-
-/* ---------- course map ---------- */
 ol.course { list-style: none; padding: 0; margin: 12px 0 8px; border-top: 2px solid var(--ink); max-width: 44rem; }
 ol.course li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 2px 18px; padding: 9px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
 ol.course a { text-decoration: none; color: var(--ink); display: flex; gap: 10px; align-items: baseline; }
@@ -412,8 +359,6 @@ ol.course a:hover strong, ol.course a:focus-visible strong { color: var(--accent
 ol.course a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 @media (max-width: 620px) { ol.course li { grid-template-columns: minmax(0, 1fr); } ol.course p { padding-left: calc(4.6em + 10px); font-size: 0.92rem; } }
-
-/* ---------- "this one idea" map ---------- */
 .col > .ideas { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }
 .ideas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 24px; border-top: 2px solid var(--ink); margin: 6px 0 12px; }
 .ideas a { display: block; text-decoration: none; color: var(--ink); padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
@@ -422,8 +367,6 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .ideas em { display: block; font-style: normal; font-size: 0.93rem; line-height: 1.45; color: var(--ink-2); }
 .ideas a:hover b, .ideas a:focus-visible b { color: var(--accent); }
 .ideas a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-/* ---------- predict widget (shared) ---------- */
 .predict { margin: 28px 0 32px; background: var(--callout); border-left: 4px solid var(--accent); border-radius: 4px 8px 8px 4px; padding: 16px 20px 14px; }
 .predict::before { content: "Predict first"; display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
 .predict.is-done::before { content: "Predicted"; color: var(--ink-3); }
@@ -465,10 +408,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .predict-unlocked { animation: g-unlock 0.5s ease-out; }
 @keyframes g-unlock { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .predict-unlocked { animation: none; } }
-
 .ro span i.g-sym { text-transform: none; font-style: normal; letter-spacing: 0.02em; font-size: 1.1em; }
-
-/* Step 4 grain sandbox (#fig-grains) */
 .gr-exps { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 2px 0 8px; }
 .gr-label { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-right: 2px; }
 .gr-exps .btn { text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
@@ -494,8 +434,6 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
   .gr-side .readouts.gr-ro .ro:nth-child(odd) { padding-right: 12px; }
   .gr-side .readouts.gr-ro .ro:last-child { grid-column: 1 / -1; }
 }
-
-/* ---------- Step 9: build your own dam ---------- */
 #fig-build .bd-tabs { margin-bottom: 8px; }
 #fig-build .bd-tabs button.bd-done::after { content: " ✓"; color: var(--ok); }
 .bd-mission { min-height: 2.5em; margin-bottom: 4px; }
@@ -519,7 +457,6 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .bd-touch { display: none; }
 .bd-coarse .bd-touch { display: flex; }
 @media (max-width: 760px) { .bd-touch { display: flex; } }
-
 #svg-build { cursor: crosshair; touch-action: none; -webkit-user-select: none; user-select: none; }
 #svg-build.bd-pan { touch-action: pan-x pan-y; }
 #svg-build:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -541,7 +478,6 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .dwg .bd-exit.ok { stroke: var(--ok); } .dwg .bd-exit.warn { stroke: var(--warn); } .dwg .bd-exit.bad { stroke: var(--bad); }
 .dwg .bd-exit-dot.ok { fill: var(--ok); } .dwg .bd-exit-dot.warn { fill: var(--warn); } .dwg .bd-exit-dot.bad { fill: var(--bad); }
 .dwg .bd-t-ok { fill: var(--ok); } .dwg .bd-t-warn { fill: var(--warn); } .dwg .bd-t-bad { fill: var(--bad); }
-
 .bd-stale { opacity: 0.45; transition: opacity 0.2s; }
 @media (prefers-reduced-motion: reduce) { .bd-stale { transition: none; } }
 .bd-readouts .ro b .pill { font-size: 0.6rem; vertical-align: 5px; margin-left: 4px; }
@@ -568,8 +504,6 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 #fig-build .seg button:disabled { opacity: 0.4; cursor: not-allowed; }
 #fig-build .seg button[aria-pressed="true"]:disabled { opacity: 0.7; }
 #fig-build input[type="range"]:disabled { opacity: 0.45; }
-
-/* ---------- tutor: a docked notebook sheet, bottom right (bottom sheet on phones) ---------- */
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .tutor-ask { margin-left: auto; border-color: var(--accent); color: var(--accent); min-height: 28px; padding: 3px 10px; font-size: 0.7rem; }
 .tutor-ask:hover { background: var(--accent-soft); }
@@ -609,8 +543,6 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
   .tutor:not([hidden]) { animation: tutor-in 160ms ease-out; }
   @keyframes tutor-in { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
 }
-
-/* ---------- glossary terms and their definitions ---------- */
 .gl { text-decoration: underline dotted var(--ink-3); text-decoration-thickness: 1.5px; text-underline-offset: 3px; cursor: help; }
 .gl:hover, .gl:focus-visible { text-decoration-color: var(--accent); color: var(--accent); outline: none; }
 .gl-tip {
@@ -624,8 +556,6 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .glossary-list dd { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
 .glossary-list dd a { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--accent); white-space: nowrap; }
 @media (max-width: 560px) { .glossary-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .glossary-list dd { margin-bottom: 10px; } }
-
-/* ---------- BC case files ---------- */
 .col > .case-grid { grid-column: 1 / -1; justify-self: center; width: min(58rem, 100%); }
 .cases { margin-top: 40px; }
 .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
@@ -638,43 +568,27 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
 .case-src { font-family: var(--f-mono); font-size: 0.68rem; color: var(--ink-3); }
 @media (max-width: 860px) { .case { padding-left: 0; border-right: 0; border-bottom: 1px solid var(--rule); } }
 .glossary { margin-top: 48px; }
-
-/* ---------- links in running text ---------- */
 .page p a, .page li a, .case a, figcaption a { color: var(--water); text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .page p a:hover, .page li a:hover, figcaption a:hover { color: var(--accent); }
 .page p a:focus-visible, .page li a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 .page ol.course a { color: var(--ink); text-decoration: none; }
 .page ol.course a:hover strong { color: var(--accent); }
-
-/* =====================================================================================================
-   The book's design system (book/SPEC.md F; propose-design §4). Loaded after the older sheets, so it
-   sets the grid, the type and the book's furniture over them. Tokens shared with the academy stay in
-   styles.css; the page-only tokens are here.
-   Contents: 1 tokens · 2 type · 3 grid · 4 running head and Contents dialog · 5 openers and parts ·
-   6 headings · 7 notes · 8 equations · 9 figures, plates, Expand · 10 worked examples · 11 checks,
-   questions, chapter ends · 12 tables, case files, films · 13 front and back matter · 14 controls ·
-   15 the academy's embedded view · 16 print
-   ===================================================================================================== */
-
-/* ---------- 1. tokens ---------- */
 :root {
-  --measure: 38rem;           /* the reading column, about 64 characters of 18px Source Serif */
-  --gap: 2.5rem;              /* between the text and the margin column */
-  --margin: 15rem;            /* sidenotes, margin notes, the opener's miniature, the "why" of a worked step */
+  --measure: 38rem;           
+  --gap: 2.5rem;              
+  --margin: 15rem;            
   --wide: calc(var(--measure) + var(--gap) + var(--margin));
   --full: 1160px;
-  --head-h: 46px;             /* the running head */
-  --ink-3: #6a5e52;           /* darker than the shared token: 5.6:1 on paper, 5.1:1 on the callout (WCAG AA) */
-  --grain: #8a5a12;           /* ochre: grains and effective stress (Plate 0's colour key) */
+  --head-h: 46px;             
+  --ink-3: #6a5e52;           
+  --grain: #8a5a12;           
   --grain-soft: rgba(138, 90, 18, 0.12);
-  --hl: rgba(201, 140, 30, 0.28); /* a control just changed by "Set the figure" */
+  --hl: rgba(201, 140, 30, 0.28); 
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) { --ink-3: #a39483; --grain: #d9a654; --grain-soft: rgba(217, 166, 84, 0.14); --hl: rgba(217, 166, 84, 0.3); }
 }
 :root[data-theme="dark"] { --ink-3: #a39483; --grain: #d9a654; --grain-soft: rgba(217, 166, 84, 0.14); --hl: rgba(217, 166, 84, 0.3); }
-
-/* ---------- 2. type ---------- */
 html { scroll-padding-top: calc(var(--head-h) + 16px); }
 body { line-height: 1.56; font-kerning: normal; font-variant-numeric: proportional-nums; }
 p, li, dd, figcaption { text-wrap: pretty; }
@@ -682,11 +596,10 @@ p, li, dd, figcaption { text-wrap: pretty; }
   body { font-size: 1.0625rem; line-height: 1.6; }
   .col p, .col li, figcaption, .we, .sidenote, .marginnote { hyphens: auto; -webkit-hyphens: auto; }
 }
-.col p, .col li { max-width: none; }          /* one right edge for every block in the text column */
+.col p, .col li { max-width: none; }          
 .g-lede { font-size: 1.2rem; line-height: 1.5; }
 .newthought { font-variant-caps: all-small-caps; letter-spacing: 0.04em; font-weight: 600; }
 var { font-style: italic; font-family: var(--f-body); }
-/* mono is for live numbers only: sentences that were set in it go back to the sans */
 .build-step, .bd-matinfo, .gr-result, .predict-verdict, .case-src, .solving, .bd-g, .zone-info h4 .code,
 .timeline .yr, .tutor-msg.you, .tutor-msg.thinking, .tutor-msg.note, .tutor-starters .chip, .tutor-note, .term {
   font-family: var(--f-label); font-variant-numeric: tabular-nums;
@@ -695,21 +608,13 @@ var { font-style: italic; font-family: var(--f-body); }
 .predict-verdict { font-size: 0.85rem; letter-spacing: 0; }
 .case-src { font-size: 0.82rem; }
 .predict-key { font-family: var(--f-label); }
-/* links outside p, li and figcaption (epigraph footers, worked-example givens, question summaries) take the book's link colour */
 .page .epigraph a, .page dd a, .page summary a { color: var(--water); text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .page .epigraph a:hover, .page dd a:hover, .page summary a:hover { color: var(--accent); }
 .glossary-list dd a { font-family: var(--f-label); font-size: 0.82rem; letter-spacing: 0; color: var(--ink-3); }
-/* colour-key words (Plate 0): the prose names a colour with the drawing's own colour */
 .k-water { color: var(--water); }
 .k-acc { color: var(--accent); }
 .k-ok { color: var(--ok); }
 .k-grain { color: var(--grain); }
-
-/* ---------- 3. grid ---------- */
-/* One left edge for text, figures and plates; the margin column on the right from 1100px. A .col is a
-   plain block (so sidenotes can float out of their paragraphs, as in Tufte CSS) whose right padding is
-   the margin column; wide children reach into it. .wide spans text and margin; .full is the six big
-   instruments. */
 .page { padding-inline: 16px; }
 .col { display: block; max-width: var(--wide); margin-inline: auto; padding-right: calc(var(--margin) + var(--gap)); }
 .col > * { min-width: 0; max-width: none; }
@@ -727,8 +632,6 @@ figure.sheet.full { max-width: var(--full); }
   .col > figure.table, .col > .tablewrap, .col > .defences, .col > .ideas, .col > .case-grid, .col > .three,
   .col > .wide, .col > section.we, .col > figure.fig, .col > figure.case-plate, .col > nav#toc, .col > .glossary-list { margin-right: 0; }
 }
-
-/* ---------- 4. running head, progress hairline, Contents dialog ---------- */
 .runhead {
   position: sticky; top: 0; z-index: 25; margin-inline: -16px; padding-inline: 16px;
   background: color-mix(in srgb, var(--paper) 90%, transparent);
@@ -762,7 +665,6 @@ figure.sheet.full { max-width: var(--full); }
   .rh-where { font-size: 0.88rem; }
   .rh-toc { padding: 0 10px; }
 }
-
 dialog.toc-dialog {
   border: 0; padding: 0; margin: 0 0 0 auto; height: 100dvh; max-height: 100dvh; width: min(27rem, 100vw); max-width: 100vw;
   background: var(--paper); color: var(--ink); border-left: 1px solid var(--rule); box-shadow: -12px 0 40px -24px rgba(0, 0, 0, 0.45);
@@ -793,13 +695,10 @@ dialog.toc-dialog::backdrop { background: rgba(30, 22, 16, 0.35); }
   @keyframes tocd-in { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
 }
 html.dialog-open { overflow: hidden; }
-
-/* ---------- 5. openers (chapters, Prologue, Epilogue) and part openers ---------- */
 section.chapter, section.prologue, section.epilogue { padding-block: clamp(4rem, 9vw, 8rem) 8px; border-top: 1px solid var(--rule); margin-top: 72px; }
 section.part-opener { padding-block: clamp(4rem, 10vw, 9rem) 24px; margin-top: 72px; border-top: 3px double var(--rule); }
 section.front:not(#cover), section.back { padding-block: 72px 8px; border-top: 1px solid var(--rule); margin-top: 56px; }
 a.alias { display: block; height: 0; overflow: hidden; }
-
 header.opener { max-width: var(--wide); margin: 0 auto 2.5rem; display: grid;
   grid-template-columns: [text-start] minmax(0, var(--measure)) [text-end] var(--gap) [margin-start] var(--margin) [margin-end]; align-items: start; }
 header.opener > * { grid-column: text; min-width: 0; }
@@ -844,8 +743,6 @@ svg.mini .mini-new { animation: none; }
   .part-head { max-width: var(--measure); grid-template-columns: minmax(0, 1fr); }
   .part-head svg.part-mini { grid-column: 1; grid-row: auto; max-width: 13rem; margin-top: 14px; }
 }
-
-/* ---------- 6. headings: numbered sections and a ¶ anchor ---------- */
 .col h3 { margin: 2.6rem 0 0.6rem; position: relative; }
 .secno { font-family: var(--f-label); font-weight: 600; font-size: 0.72em; color: var(--accent); margin-right: 0.45em; font-variant-numeric: lining-nums tabular-nums; vertical-align: 0.06em; }
 .h-anchor { position: absolute; left: -1.3em; top: 0; padding: 0 0.3em; color: var(--ink-3); text-decoration: none; font-weight: 400; opacity: 0; transition: opacity 0.15s; }
@@ -853,10 +750,6 @@ h3:hover .h-anchor, .h-anchor:focus-visible { opacity: 1; }
 .h-anchor:focus-visible { outline: 2px solid var(--accent); border-radius: 3px; }
 @media (max-width: 759px) { .h-anchor { display: none; } }
 section.back > h3:first-of-type, section.back > h2, section.front > h2 { font-size: var(--step-3); line-height: 1.1; margin: 0 0 16px; }
-
-/* ---------- 7. sidenotes and margin notes (Tufte; pure CSS, enhanced by app-book.js) ---------- */
-/* Markup (SPEC F.3): <label class="sn-ref" for=…></label><input type="checkbox" class="margin-toggle"><span class="sidenote" data-kind=…>.
-   app-book.js turns the label into a <button aria-expanded> on narrow screens; without it the label still works. */
 section.chapter, section.prologue, section.epilogue, section.front, section.back { counter-reset: sn; }
 .sn-ref { counter-increment: sn; }
 .sn-ref::after { content: counter(sn); font-family: var(--f-label); font-weight: 600; font-size: 0.68em; line-height: 0; vertical-align: super; color: var(--accent); padding: 0 1px; }
@@ -889,13 +782,10 @@ button.sn-ref, button.mn-ref { font: inherit; background: none; border: 0; paddi
   .mn-ref { display: inline; cursor: pointer; }
   .mn-ref::after { content: "\2295"; font-family: var(--f-label); font-size: 0.85em; color: var(--accent); padding: 0 2px; vertical-align: 0.05em; }
   .sn-ref, .mn-ref { cursor: pointer; }
-  /* tap targets: a 32 px box round a small mark, without moving the text */
   .sn-ref::after, .mn-ref::after { display: inline-block; min-width: 1.4em; text-align: center; padding: 6px 2px; margin: -6px 0; line-height: 1; }
   button.sn-ref:focus-visible, button.mn-ref:focus-visible, label.sn-ref:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-radius: 3px; }
   button[aria-expanded="true"].sn-ref::after, button[aria-expanded="true"].mn-ref::after { background: var(--accent-soft); border-radius: 3px; }
 }
-
-/* ---------- 8. equations, set in the serif ---------- */
 div.eq { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 1.1rem 0 0.4rem; padding: 0.2rem 0 0.2rem 1.6rem;
   font-family: var(--f-body); font-size: 1.18rem; font-variant-numeric: lining-nums; }
 .eq-body { overflow-wrap: anywhere; }
@@ -903,16 +793,11 @@ div.eq { display: flex; align-items: baseline; justify-content: space-between; g
 .eq-no { font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .eq-where { font-family: var(--f-label); font-size: 0.86rem; line-height: 1.5; color: var(--ink-2); margin: 0 0 1.2rem 1.6rem !important; }
 .eq-where var { font-family: var(--f-body); font-size: 1.05em; }
-/* the older formula boxes, until the writers replace them with div.eq (SPEC F.5): serif, no code type */
 .formula { font-family: var(--f-body); font-size: 1.12rem; background: none; border: 0; border-left: 0; padding: 0.2rem 0 0.2rem 1.6rem; margin: 1rem 0 1.2rem;
   border-radius: 0; overflow-x: visible; font-variant-numeric: lining-nums; line-height: 1.5; }
 .formula b { color: var(--ink); font-weight: 400; font-style: italic; }
 .formula small { font-family: var(--f-label); font-size: 0.86rem; color: var(--ink-2); margin-top: 6px; }
 @media (max-width: 759px) { div.eq, .formula { padding-left: 0.8rem; } .eq-where { margin-left: 0.8rem !important; } div.eq { flex-wrap: wrap; } }
-
-/* ---------- 9. figures, plates, captions, Expand ---------- */
-/* Every interactive figure keeps its title strip (figure number left, honest scale note right). The sheet
-   loses its app-card shadow: a ruled plate on a slightly lighter page. */
 figure.sheet { box-shadow: none; border-radius: 4px; border: 1px solid var(--rule); padding: 18px 22px 16px; margin: 2.5rem auto 2.75rem; }
 figure.film { position: relative; margin: 2.5rem auto 2.75rem; border-top: 1px solid var(--rule); padding: 14px 0 0; }
 figure.fig { margin-block: 2.25rem 2.5rem; padding-top: 12px; border-top: 1px solid var(--rule); }
@@ -929,15 +814,12 @@ ul.try::before { content: "Try"; display: block; font-weight: 600; font-size: 0.
 ul.try li { position: relative; padding-left: 1.1em; margin-bottom: 3px; }
 ul.try li::before { content: "→"; position: absolute; left: 0; color: var(--ink-3); }
 .swipe-hint { display: none !important; }
-/* drawings fit their plate: no sideways scrolling; labels keep a readable size (app-book.js sets --s,
-   the drawing's rendered width over its viewBox width) */
 .svgwrap { overflow: visible; }
 .svgwrap > svg.dwg, .svgwrap > canvas.filtercv { min-width: 0 !important; }
 svg.dwg { --s: 1; --floor: 10.5px; --cap: 1.4; }
 svg.dwg text { font-size: max(var(--fs, 11.5px), min(calc(var(--floor) / var(--s)), calc(var(--fs, 11.5px) * var(--cap)))); }
 svg.dwg .marker text { --cap: 1; }
 @media (max-width: 759px) { svg.dwg { --floor: 11px; --cap: 1.5; } }
-/* Expand: a plate opens in a full-screen dialog, turned to landscape on a phone held upright */
 .fig-expand { display: none; margin-left: auto; position: relative; z-index: 2; font-family: var(--f-label); font-weight: 600; font-size: 0.78rem; color: var(--ink);
   background: var(--sheet); border: 1px solid var(--ink-2); border-radius: 6px; min-height: 36px; padding: 0 12px; cursor: pointer; align-items: center; gap: 6px; }
 .fig-expand svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.6; }
@@ -954,20 +836,17 @@ dialog.plate-dialog::backdrop { background: var(--paper); }
 .plate-scroll { flex: 1; overflow: auto; overscroll-behavior: contain; padding: 8px 10px 24px; }
 .plate-scroll > figure.sheet { margin: 0 auto; max-width: none; border: 0; padding: 0; background: transparent; }
 .plate-scroll > figure.sheet .fig-expand { display: none; }
-/* full screen, the drawing comes first and stays in view while the controls scroll under it */
 .plate-scroll > figure.sheet { display: flex; flex-direction: column; }
 .plate-scroll > figure.sheet > .sheet-top { order: -2; }
 .plate-scroll > figure.sheet > .svgwrap { order: -1; position: sticky; top: -8px; z-index: 3; background: var(--paper); padding: 6px 0; border-bottom: 1px solid var(--rule); }
 .plate-scroll svg.dwg { --floor: 11px; --cap: 3; }
 @media (orientation: portrait) {
-  /* the phone is upright: turn the plate a quarter turn so the drawing lies along the long side */
   dialog.plate-dialog.turn .plate-frame { inset: auto; top: 0; left: 100vw; width: 100dvh; height: 100vw; transform-origin: 0 0; transform: rotate(90deg); }
 }
 .plate-hint { font-family: var(--f-label); font-size: 0.78rem; color: var(--ink-3); margin: 0; white-space: nowrap; }
 @media (orientation: landscape) { .plate-hint { display: none; } }
 .plate-slot { display: block; border: 1px dashed var(--rule); border-radius: 4px; padding: 18px; margin: 2rem auto; max-width: var(--wide);
   font-family: var(--f-label); font-size: 0.9rem; color: var(--ink-3); text-align: center; }
-/* phones: plates go full-bleed, so a drawing gains the page's gutters */
 @media (max-width: 759px) {
   .page > section > figure.sheet, .page > section > figure.fig, .page > section > figure.film, .page > section > figure.case-plate,
   .page > section > .col > figure.table {
@@ -976,8 +855,6 @@ dialog.plate-dialog::backdrop { background: var(--paper); }
   figure.sheet { padding-top: 14px; }
   .g-split { gap: 12px; }
 }
-
-/* ---------- 10. worked examples ---------- */
 section.we { margin-block: 2.25rem 2.5rem; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 0.7rem 0 1rem; }
 .we-head { display: grid; grid-template-columns: [text-start] minmax(0, var(--measure)) [text-end] var(--gap) [margin-start] var(--margin) [margin-end]; }
 .we-head > * { grid-column: text; }
@@ -1009,14 +886,11 @@ ol.we-steps > li::before { content: counter(we); grid-column: n; font-family: va
   .we-steps .why { grid-column: eq; margin-top: 2px; }
 }
 @media (max-width: 519px) { .we-gf { grid-template-columns: minmax(0, 1fr); gap: 0; } .we-gf dd { margin-bottom: 8px; } }
-/* "Set the figure": the controls it changed glow for a moment, and a pill leads back */
 .set-hl { outline: 2px solid var(--grain) !important; outline-offset: 3px; border-radius: 6px; background-color: var(--hl) !important; transition: background-color 0.4s, outline-color 0.4s; }
 figure.set-target { box-shadow: 0 0 0 3px var(--hl); transition: box-shadow 0.6s; }
 .back-pill { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18); background: var(--sheet); min-height: 40px; }
 .set-fig-first { margin: 8px 0 0; font-size: 0.9rem; color: var(--accent); font-family: var(--f-label); }
-
-/* ---------- 11. Check yourself, predict, questions, chapter ends ---------- */
 details.check { margin: 1.4rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 0; }
 details.check > summary { list-style: none; cursor: pointer; padding: 0.7rem 2rem 0.7rem 0; position: relative; font-size: 1rem; line-height: 1.45; }
 details.check > summary::-webkit-details-marker { display: none; }
@@ -1026,7 +900,6 @@ details.check > summary:focus-visible { outline: 2px solid var(--accent); outlin
 .check-k { display: block; font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--water); }
 details.check > :not(summary) { margin: 0 0 0.8rem; padding-left: 0.9rem; border-left: 2px solid var(--water); font-size: 0.98rem; }
 .predict { border-radius: 4px; }
-
 section.ch-end { margin-top: 3.5rem; padding-top: 0; }
 .remember { background: var(--callout); border-radius: 4px; padding: 16px 20px 12px; margin: 0 0 2.5rem; }
 .remember-k, .q-k, .reading-k { font-family: var(--f-label); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
@@ -1038,7 +911,6 @@ li.q { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0 10px; p
 li.q > * { grid-column: 2; }
 li.q > .q-no { grid-column: 1; grid-row: 1 / span 6; font-family: var(--f-label); font-weight: 600; font-size: 0.95rem; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 0.15em; }
 li.q > p:first-of-type { margin-bottom: 6px; }
-/* the tag and difficulty come from the question's own attributes (SPEC F.14): data-tag, data-level */
 li.q[data-tag]::before { grid-column: 2; grid-row: 1; content: attr(data-tag); font-family: var(--f-label); font-weight: 600; font-size: 0.7rem;
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px; }
 li.q[data-tag][data-level="1"]::before { content: attr(data-tag) "\2002 \25CF\25CB\25CB"; }
@@ -1069,8 +941,6 @@ nav.next-card p.prev-k { order: 3; margin-top: 10px; }
 nav.next-card p.prev-k a { color: var(--ink-2); }
 nav.next-card p.prev-k a::before { content: "← "; }
 nav.next-card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
-
-/* ---------- 12. tables, case files, films ---------- */
 .col > figure.table { margin-block: 1.6rem 2rem; }
 .tbl-cap { font-family: var(--f-label); font-weight: 600; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 8px; }
 .tbl-cap b { color: var(--accent); font-weight: 700; }
@@ -1080,7 +950,6 @@ table.cmp thead th { border-bottom: 1px solid var(--ink); }
 table.cmp tbody tr:last-child > * { border-bottom: 0; }
 .tbl-note { font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-3); margin: 6px 0 0; }
 @media (max-width: 759px) { table.cmp { min-width: 0; } table.cmp td, table.cmp th { padding-right: 8px; } table.cmp tbody th { width: 6.5em; } }
-/* case files: a ruled plate with the facts in the margin */
 figure.case-plate { margin-block: 2.5rem; border-top: 2px solid var(--ink); padding-top: 10px; }
 figure.case-plate .sheet-top { border-bottom: 0; padding-bottom: 0; }
 .case-body { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); gap: 0 var(--gap); align-items: start; }
@@ -1091,14 +960,12 @@ dl.case-facts dd { margin: 0; padding-bottom: 7px; border-bottom: 1px solid var(
 .case-explains { margin: 8px 0 0; padding-left: 12px; border-left: 2px solid var(--accent); }
 @media (max-width: 1099px) { .case-body { grid-template-columns: minmax(0, 1fr); } dl.case-facts { grid-template-columns: 7.5rem minmax(0, 1fr); margin-top: 12px; }
   dl.case-facts dt { padding-top: 6px; border-bottom: 1px solid var(--rule); } dl.case-facts dd { padding-top: 6px; } }
-/* the older case articles, one per chapter now: a ruled plate the width of text and margin */
 .case-grid { border-top: 2px solid var(--ink); }
 .case-grid > .case:only-child { padding: 12px 0 4px; border: 0; display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); gap: 0 var(--gap); }
 .case-grid > .case:only-child > * { grid-column: 1; }
 .case-grid > .case:only-child > .case-k, .case-grid > .case:only-child > h4 { grid-column: 1 / -1; }
 @media (max-width: 1099px) { .case-grid > .case:only-child { grid-template-columns: minmax(0, 1fr); } }
 .case h4 { font-weight: 700; }
-/* films (SPEC F.13): numbered like figures, a question before, the poster, marks, a transcript, a note after */
 figure.film video { border-radius: 2px; }
 figure.film .sheet-top { border-bottom: 0; padding-bottom: 0; margin-bottom: 10px; }
 .film-stage { position: relative; }
@@ -1127,9 +994,7 @@ ol.film-marks button:focus-visible, .film-transcript button.tr-t:focus-visible {
 .film-transcript-text p { margin: 0 0 0.7em; line-height: 1.55; }
 .film-transcript-text p[data-now] { color: var(--ink); }
 .film-transcript button.tr-t { font-family: var(--f-label); font-size: 0.8rem; padding: 2px 6px 2px 0; min-height: 24px; }
-/* the poster: the book's own type over the frame; the Play button is real and hands over to the native player */
 .film-poster { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; padding: clamp(14px, 5vw, 48px);
-  /* the drawing in the top of the frame shows faintly; the film's own title card at the bottom does not */
   background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 88%, transparent) 0 56%, var(--paper) 72%);
   box-shadow: inset 0 0 0 1px var(--rule); color: var(--ink); cursor: pointer; border-radius: 2px; }
 .film-poster[hidden] { display: none; }
@@ -1142,7 +1007,6 @@ ol.film-marks button:focus-visible, .film-transcript button.tr-t:focus-visible {
 .film-poster .fp-play::before { content: ""; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent currentColor; }
 .film-poster:hover .fp-play, .film-poster .fp-play:focus-visible { background: var(--accent); }
 .film-poster .fp-play:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-/* the end card, when a segment stops before its file does */
 .film-endcard { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; padding: clamp(14px, 5vw, 48px);
   background: color-mix(in srgb, var(--paper) 92%, transparent); box-shadow: inset 0 0 0 1px var(--rule); border-radius: 2px; }
 .film-endcard .fe-k { font-family: var(--f-label); font-weight: 600; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 0; }
@@ -1161,8 +1025,6 @@ ol.film-marks button:focus-visible, .film-transcript button.tr-t:focus-visible {
 figure.film video:not(.playing) { filter: saturate(0.9); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) figure.film video:not(.playing) { filter: brightness(0.82) saturate(0.85); } }
 :root[data-theme="dark"] figure.film video:not(.playing) { filter: brightness(0.82) saturate(0.85); }
-
-/* ---------- 13. front and back matter ---------- */
 .masthead { padding-block: clamp(3rem, 10vw, 7rem) 36px; }
 .masthead .eyebrow, .masthead h1, .masthead .lede { max-width: var(--wide); }
 .masthead .lede { max-width: var(--measure); margin-left: 0; }
@@ -1207,11 +1069,9 @@ ol.toc-film-list .tf-l { grid-column: 3; grid-row: 1; font-variant-numeric: tabu
 .bib-group { font-family: var(--f-label); font-size: 0.8rem; letter-spacing: 0.04em; margin: 22px 0 6px; }
 .bib li, ul.bib > li { padding-left: 1.5em; text-indent: -1.5em; list-style: none; }
 .bib-cited { color: var(--ink-3); font-size: 0.85em; }
-.bib a, .page cite a { overflow-wrap: anywhere; }   /* long URLs in the bibliography and in further reading wrap on a phone */
+.bib a, .page cite a { overflow-wrap: anywhere; }   
 .glossary-list { max-width: none; }
 @media (min-width: 1100px) { .glossary-list { grid-template-columns: minmax(9rem, 12rem) minmax(0, 1fr); } }
-
-/* ---------- 14. controls: a calmer pressed state, larger targets on touch ---------- */
 .seg { border-width: 1px; border-color: var(--ink-2); }
 .seg button[aria-pressed="true"] { background: var(--callout); color: var(--ink); box-shadow: inset 0 -2.5px 0 var(--accent); font-weight: 600; }
 .seg button:hover:not([aria-pressed="true"]) { background: var(--accent-soft); }
@@ -1227,13 +1087,9 @@ ol.toc-film-list .tf-l { grid-column: 3; grid-row: 1; font-variant-numeric: tabu
   .range { flex-wrap: wrap; row-gap: 0; }
   .range input[type="range"] { flex: 1 1 140px; min-height: 32px; }
 }
-
-/* ---------- 15. the academy's embedded view (app-book.js, ?embed=<old step id>) ---------- */
 html.book-embed .page > section:not(.embed-show), html.book-embed .indexbar, html.book-embed .runhead { display: none !important; }
 section.chapter-embedded { padding-block: 72px 8px; border-top: 1px solid var(--rule); margin-top: 56px; }
 html.book-embed section.embed-show:first-of-type, html.book-embed .page > section.embed-show:not(.embed-show ~ .embed-show) { margin-top: 0; border-top: 0; padding-top: 20px; }
-
-/* ---------- 16. print: the book on paper ---------- */
 @media print {
   @page { size: auto; margin: 18mm 16mm 20mm; }
   :root, :root[data-theme="dark"] { --paper: #fff; --sheet: #fff; --callout: #f3efe7; --ink: #111; --ink-2: #333; --ink-3: #555; --rule: #bbb;
@@ -1270,24 +1126,15 @@ html.book-embed section.embed-show:first-of-type, html.book-embed .page > sectio
   video { display: none; }
   .ch-num { font-size: 60pt; }
 }
-
-/* figures with the drawing beside its controls: at the book's wide measure the drawing takes the text
-   column's share and the controls the margin's */
 @media (min-width: 861px) { .g-split { grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 1fr); gap: 16px 28px; } }
 .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); }
-/* targets: every range and the predict box's skip link at least 24 px tall (WCAG 2.2 target size) */
 input[type="range"] { min-height: 24px; }
 .predict-skip { min-height: 24px; padding: 3px 0; }
 @media (pointer: coarse) { .predict-skip { min-height: 36px; } }
 .eq-no { margin-left: auto; }
 div.eq + div.eq { margin-top: 0.1rem; }
-
-/* Chapter 1: the static section of an earth dam, and the book's sentence set apart. */
 #fig-beach-dam svg.dwg { max-width: 640px; }
 #ch-beach p.spine { font-family: var(--f-body); font-size: 1.12em; line-height: 1.45; margin: 1.1em 0 1.2em; padding-left: 1em; border-left: 2px solid var(--rule); color: var(--ink); }
-
-/* Chapter 2's static figures (book/SPEC.md F.10). Label sizes go through --fs so the floor in
-   styles-book.css can lift them on a phone. */
 #fig-depth-stevin .ch02-panels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 22px; max-width: 760px; }
 #fig-depth-stevin svg.dwg { display: block; width: 100%; height: auto; }
 #fig-depth-stevin svg.dwg text { --fs: 12px; }
@@ -1298,20 +1145,12 @@ div.eq + div.eq { margin-top: 0.1rem; }
 @media (max-width: 599px) {
   #fig-depth-stevin .ch02-panels { grid-template-columns: minmax(0, 1fr); }
 }
-/* the colour key above fig-depth-triangle: HTML, so it reflows on a phone */
 .ch02-key { font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-2); margin: 0 0 8px; line-height: 1.6; }
 .ch02-sw { display: inline-block; width: 12px; height: 8px; margin: 0 5px 0 0; vertical-align: 1px; }
 .ch02-sw + .ch02-sw, .ch02-key .ch02-sw:not(:first-child) { margin-left: 10px; }
 .ch02-sw-acc { background: var(--accent); }
 .ch02-sw-ok { background: var(--ok); }
 .ch02-unit { color: var(--ink-3); margin-left: 10px; white-space: nowrap; }
-
-/* =====================================================================================================
-   The front matter (book/SPEC.md H.0): the cover plate and title page, How to read this book, Plate 0
-   (how to read a section) and the toolkit. Loaded after styles-book.css; uses its tokens only.
-   ===================================================================================================== */
-
-/* ---------- the cover ---------- */
 section#cover { padding-top: clamp(2.5rem, 7vw, 5.5rem); }
 .cover { max-width: var(--wide); margin: 0 auto; }
 .cover-k { font-family: var(--f-label); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 16px; }
@@ -1328,8 +1167,6 @@ svg.cover-dwg text { --fs: 11px; }
   svg.cover-dwg .cv-scale { display: none; }
   .cover-plate figcaption { margin-inline: 16px; }
 }
-
-/* ---------- the title page ---------- */
 .title-page { margin-top: clamp(3.5rem, 9vw, 6rem); padding-top: clamp(2rem, 5vw, 3rem); border-top: 3px double var(--rule); }
 .tp-name { font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; line-height: 1.1; margin: 0 0 4px; }
 .tp-sub { font-family: var(--f-body); font-style: italic; color: var(--ink-2); margin: 0 0 2rem; }
@@ -1338,19 +1175,13 @@ svg.cover-dwg text { --fs: 11px; }
 .tp-lede { font-size: 1.12rem; line-height: 1.55; color: var(--ink-2); }
 .title-page .topics { margin: 1.8rem 0 1.2rem; }
 .tp-ed { font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-3); margin: 1.4rem 0 0; }
-
-/* ---------- Preface ---------- */
 .preface-sign { font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-3); margin-top: 1.6rem; }
-
-/* ---------- How to read this book ---------- */
 .htr-tags { list-style: none; margin: 0.4rem 0 1.2rem; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
 .htr-tags li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 12px; align-items: baseline; padding: 4px 0; border-bottom: 1px dotted var(--rule); }
 .htr-tags .q-tag { margin: 0; }
 @media (max-width: 519px) { .htr-tags li { grid-template-columns: minmax(0, 1fr); } }
 .htr-conv { margin: 0.4rem 0 1.2rem; padding-left: 1.1em; }
 .htr-conv li { margin-bottom: 4px; }
-
-/* ---------- Plate 0 ---------- */
 figure#fig-plate-0 { margin-top: 1.25rem; }
 #fig-plate-0 svg.p0-dwg text { --fs: 12px; }
 #fig-plate-0 svg.p0-dwg .p0-dim { --fs: 11px; fill: var(--ink-2); }
@@ -1391,20 +1222,13 @@ ul.p0-colours svg { width: 46px; height: 22px; }
   ul.p0-hatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   ul.p0-colours { grid-template-columns: minmax(0, 1fr); }
 }
-
-/* ---------- the toolkit ---------- */
 #toolkit details.check .tk-a { margin-top: 0; }
 .tk-end { margin-top: 1.6rem; }
-
-/* ---------- print ---------- */
 @media print {
   section#cover { break-after: page; }
   .title-page { break-before: page; border-top: 0; }
   #fig-plate-0 svg.p0-dwg .p0-w { display: inline; }
 }
-
-/* The Prologue's figure (book/SPEC.md H.1): the section of the embankment that failed, drawn to scale,
-   and a schematic map beside the caption. Label sizes use --fs, so the phone floor can lift them. */
 #fig-prologue-section svg.pro-dwg text { --fs: 12px; }
 #fig-prologue-section svg.pro-dwg .lbl-s, #fig-prologue-section svg.pro-dwg .p0-dim { --fs: 10.5px; }
 #fig-prologue-section svg.pro-dwg .p0-dim { fill: var(--ink-2); }
@@ -1508,6 +1332,7 @@ svg.pro-ph { display: none; }
     </marker>
   
     <clipPath id="mini-clip"><path d="M30,42 L66,18 L78,18 L114,42 Z"/></clipPath>
+    <symbol id="mini-ghost" viewBox="0 0 160 48"><path d="M30,42 L66,18 L78,18 L114,42 Z" style="fill:none;stroke:var(--ink-3);stroke-width:0.7;stroke-dasharray:2 2;opacity:0.7"/></symbol>
     <symbol id="mini-L0" viewBox="0 0 160 48"><path d="M0,42 H160" style="stroke:var(--ink-2);stroke-width:1"/></symbol>
     <symbol id="mini-L1" viewBox="0 0 160 48"><path d="M30,42 L66,18 L78,18 L114,42 Z" style="fill:var(--m-fill);stroke:var(--ink-2);stroke-width:0.9;stroke-linejoin:round"/></symbol>
     <symbol id="mini-L2" viewBox="0 0 160 48"><path d="M2,22 H60 L30,42 H2 Z" style="fill:var(--water-fill)"/><path d="M2,22 H60" style="stroke:var(--water);stroke-width:1"/><path d="M9,22 V42 H21 Z" style="fill:none;stroke:var(--water);stroke-width:0.8"/><path d="M9,28 h4 M9,34 h8 M9,40 h11.4" style="stroke:var(--water);stroke-width:0.5"/></symbol>
@@ -1527,8 +1352,7 @@ svg.pro-ph { display: none; }
 </svg>
 
 <div class="page">
-  <!-- the running head (app-book.js fills it): the book's name, the unit in view, the Contents
-       dialog and a reading-progress hairline. Without JavaScript the Contents link goes to the page. -->
+  
   <header class="runhead" id="runhead">
     <div class="rh-in">
       <a class="rh-mark" href="#cover">Dams in Section</a>
@@ -1539,9 +1363,7 @@ svg.pro-ph { display: none; }
   </header>
 
   <section class="front" id="cover"><a class="alias" id="top" aria-hidden="true" tabindex="-1"></a>
-  <!-- The cover plate and the title page (book/SPEC.md H.0). The drawing is fig-zones' earth–rockfill
-       section (src/app-zones.js, the first tab), drawn to scale in the book's hatches. The title,
-       subtitle, edition and spine sentence repeat src/book.json; tests/pins/front.js holds them equal. -->
+  
   <header class="cover">
     <p class="cover-k">A book in thirteen chapters · First edition · 2026</p>
     <h1>Dams in <span class="cut">Section</span></h1>
@@ -1591,7 +1413,7 @@ svg.pro-ph { display: none; }
 
 <section class="front col" id="contents">
   <p class="eyebrow">Contents</p>
-  <nav id="toc" data-gen="toc" aria-label="Contents"><ol class="course"><li><a href="#prologue"><span>Prologue</span><strong>4 August 2014</strong></a><p>A tailings dam in central British Columbia gives way in the dark. <small class="toc-meta">1 figure</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="0"><use href="#mini-L0" class="mini-l0"/></svg></li></ol><p class="eyebrow toc-part"><a href="#part-1">Part I · Ground</a></p><ol class="course"><li class="toc-ch"><a href="#ch-beach"><span><i class="sr">Chapter </i>1</span><strong>The beach</strong></a><p>Three kinds of sand, and the water that makes the difference. <small class="toc-meta">2 figures</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="1"><use href="#mini-L1" class="mini-l1 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-depth"><span><i class="sr">Chapter </i>2</span><strong>Depth, not size</strong></a><p>Why the depth of the water matters and the size of the lake doesn't. <small class="toc-meta">4 figures · film 3 min 11 s</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="2"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L2" class="mini-l2 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-head"><span><i class="sr">Chapter </i>3</span><strong>Which way the water goes</strong></a><p>Head, Darcy's law, and the clay that takes almost the whole drop. <small class="toc-meta">2 figures</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="3"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-grip"><span><i class="sr">Chapter </i>4</span><strong>Grip</strong></a><p>Friction, a block on a water cushion, and Terzaghi's effective stress. <small class="toc-meta">2 figures</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="4"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-trapped"><span><i class="sr">Chapter </i>5</span><strong>When the water can't get out</strong></a><p>Loose and dense, drained and undrained, and liquefaction. <small class="toc-meta">1 figure · film 8 min 45 s</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="5"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L0" class="mini-l0"/></svg></li></ol><p class="eyebrow toc-part"><a href="#part-2">Part II · Two kinds of dam</a></p><ol class="course"><li class="toc-ch"><a href="#ch-two-dams"><span><i class="sr">Chapter </i>6</span><strong>Two dams, two jobs</strong></a><p>A dam whose water is the product, a dam whose waste must stay put, and the flood both must pass. <small class="toc-meta">1 figure</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="6"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-concrete"><span><i class="sr">Chapter </i>7</span><strong>A block on a cushion of water</strong></a><p>The concrete gravity dam, and the water that lifts it from below. <small class="toc-meta">1 figure · film 5 min 13 s</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="7"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7 mini-new"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-raising"><span><i class="sr">Chapter </i>8</span><strong>Never finished</strong></a><p>Upstream, downstream and centreline: three ways to raise a tailings dam, and a water dam built like one. <small class="toc-meta">1 figure · film 9 min 6 s</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="8"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li></ol><p class="eyebrow toc-part"><a href="#part-3">Part III · Inside the embankment</a></p><ol class="course"><li class="toc-ch"><a href="#ch-zones"><span><i class="sr">Chapter </i>9</span><strong>Every zone has one job</strong></a><p>Core, filters, transitions and shells, and how loose earth is made into dense fill. <small class="toc-meta">1 figure · film 6 min 51 s</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="9"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-seepage"><span><i class="sr">Chapter </i>10</span><strong>Where the water goes</strong></a><p>Seepage paths, flow nets drawn by hand, and a seepage lab you can run. <small class="toc-meta">2 figures</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="10"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10 mini-new"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-erosion"><span><i class="sr">Chapter </i>11</span><strong>When water carries soil</strong></a><p>Boils, pipes, the four kinds of internal erosion, and the filter that stops them. <small class="toc-meta">2 figures · film 9 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="11"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li></ol><p class="eyebrow toc-part"><a href="#part-4">Part IV · Will it stand?</a></p><ol class="course"><li class="toc-ch"><a href="#ch-slope"><span><i class="sr">Chapter </i>12</span><strong>Will the slope stand?</strong></a><p>The factor of safety on a curved surface, worked by hand and by computer. <small class="toc-meta">film 6 min 4 s</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="12"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12 mini-new"/></svg></li><li class="toc-ch"><a href="#ch-build"><span><i class="sr">Chapter </i>13</span><strong>Build your own dam</strong></a><p>A workbench, five missions, and Mount Polley's answer. <small class="toc-meta">1 figure · film 8 min 46 s</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="13"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L13" class="mini-l13 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12"/></svg></li></ol><p class="eyebrow toc-part">At the back</p><ol class="course"><li><a href="#answers"><span>Reference</span><strong>Answers and hints</strong></a></li><li><a href="#glossary"><span>Reference</span><strong>Glossary</strong></a></li><li><a href="#case-files"><span>Reference</span><strong>Case files</strong></a></li><li><a href="#bibliography"><span>Reference</span><strong>Bibliography</strong></a></li><li><a href="#models"><span>Appendix A</span><strong>How the models work</strong></a></li></ol><section class="toc-films" aria-labelledby="toc-films-h"><p class="eyebrow toc-part" id="toc-films-h">The films</p><p class="toc-films-k">Seven films, 58 minutes in all. Each sits in the chapter it retells most closely, with a question before it, chapter marks and a transcript. The book plays some of them in part, and says where.</p><ol class="toc-film-list"><li><span class="tf-n"><a href="#film-depth-not-size">2.1</a> and <a href="#film-depth-not-size-2">7.1</a></span><span class="tf-t">Depth, not size</span><span class="tf-w">in two parts, Chapters 2 and 7</span><span class="tf-l">8 min 24 s</span></li><li><span class="tf-n"><a href="#film-same-sand">5.1</a></span><span class="tf-t">The same sand, three ways</span><span class="tf-w">Chapter 5</span><span class="tf-l">9 min 7 s</span></li><li><span class="tf-n"><a href="#film-never-finished">8.1</a></span><span class="tf-t">Dams that are never finished</span><span class="tf-w">Chapter 8</span><span class="tf-l">9 min 6 s</span></li><li><span class="tf-n"><a href="#film-wall-of-dirt">9.1</a></span><span class="tf-t">A wall made of dirt</span><span class="tf-w">Chapter 9</span><span class="tf-l">6 min 51 s</span></li><li><span class="tf-n"><a href="#film-sand-that-boils">11.1</a></span><span class="tf-t">The sand that boils</span><span class="tf-w">Chapter 11</span><span class="tf-l">9 min 19 s</span></li><li><span class="tf-n"><a href="#film-every-dam-leaks">12.1</a></span><span class="tf-t">Every dam leaks</span><span class="tf-w">Chapter 12</span><span class="tf-l">6 min 4 s</span></li><li><span class="tf-n"><a href="#film-layer-nobody-found">13.1</a></span><span class="tf-t">Mount Polley's answer</span><span class="tf-w">Chapter 13</span><span class="tf-l">8 min 46 s</span></li></ol></section><details class="toc-figs"><summary>Figures and tables</summary><ol class="toc-list"><li><a href="#fig-plate-0">Plate 0</a> · How to read a section</li><li><a href="#fig-prologue-section">Fig. P.1</a> · The dam that failed, the evening before</li><li><a href="#fig-beach">Fig. 1.1</a> · The same sand, different water</li><li><a href="#fig-beach-dam">Fig. 1.2</a> · The beach inside an earth dam</li><li><a href="#fig-depth">Fig. 2.1</a> · Water pressure on a dam face</li><li><a href="#fig-depth-stevin">Fig. 2.2</a> · Stevin's argument: set the lake solid</li><li><a href="#fig-depth-triangle">Fig. 2.3</a> · Weight and push above three levels of a triangular dam</li><li><a href="#fig-depth-sloping">Fig. 2.4</a> · Water on a sloping face</li><li><a href="#fig-darcy">Fig. 3.1</a> · Darcy's experiment</li><li><a href="#fig-race">Fig. 3.2</a> · One metre of each material, the same push</li><li><a href="#fig-block">Fig. 4.1</a> · A block on a ramp, with a water cushion underneath</li><li><a href="#fig-column">Fig. 4.2</a> · Stresses in 10 m of sand as the water table rises</li><li><a href="#fig-grains">Fig. 5.1</a> · Grain sandbox · a live discrete-element model</li><li><a href="#fig-types">Fig. 6.1</a> · Water dam and tailings dam in section</li><li><a href="#tbl-two-dams-compare">Table 6.1</a> · A water dam and a tailings dam, side by side</li><li><a href="#fig-uplift">Fig. 7.1</a> · Uplift and sliding of a 60 m concrete gravity dam</li><li><a href="#fig-raise">Fig. 8.1</a> · Staged construction of three tailings dams, same height, same starter dam</li><li><a href="#fig-zones">Fig. 9.1</a> · Zoned earth–rockfill dam with central core</li><li><a href="#fig-paths">Fig. 10.1</a> · The five main seepage paths</li><li><a href="#fig-lab">Fig. 10.2</a> · Seepage lab · finite-volume solution</li><li><a href="#fig-pipe">Fig. 11.1</a> · Backward erosion piping, from boil to breach</li><li><a href="#fig-filter">Fig. 11.2</a> · Core grains meeting rockfill vs a filter</li><li><a href="#fig-build">Fig. 13.1</a> · Your dam, tested by the seepage solver and a slope stability check</li></ol></details></nav>
+  <nav id="toc" data-gen="toc" aria-label="Contents"><ol class="course"><li><a href="#prologue"><span>Prologue</span><strong>4 August 2014</strong></a><p>A tailings dam in central British Columbia gives way in the dark. <small class="toc-meta">1 figure</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="0"><use href="#mini-ghost" class="mini-ghost"/><use href="#mini-L0" class="mini-l0"/></svg></li></ol><p class="eyebrow toc-part"><a href="#part-1">Part I · Ground</a></p><ol class="course"><li class="toc-ch"><a href="#ch-beach"><span><i class="sr">Chapter </i>1</span><strong>The beach</strong></a><p>Three kinds of sand, and the water that makes the difference. <small class="toc-meta">2 figures</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="1"><use href="#mini-L1" class="mini-l1 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-depth"><span><i class="sr">Chapter </i>2</span><strong>Depth, not size</strong></a><p>Why the depth of the water matters and the size of the lake doesn't. <small class="toc-meta">4 figures · Film 2.1, 3 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="2"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L2" class="mini-l2 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-head"><span><i class="sr">Chapter </i>3</span><strong>Which way the water goes</strong></a><p>Head, Darcy's law, and the clay that takes almost the whole drop. <small class="toc-meta">2 figures</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="3"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-grip"><span><i class="sr">Chapter </i>4</span><strong>Grip</strong></a><p>Friction, a block on a water cushion, and Terzaghi's effective stress. <small class="toc-meta">2 figures</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="4"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-trapped"><span><i class="sr">Chapter </i>5</span><strong>When the water can't get out</strong></a><p>Loose and dense, drained and undrained, and liquefaction. <small class="toc-meta">1 figure · Film 5.1, 9 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="5"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L0" class="mini-l0"/></svg></li></ol><p class="eyebrow toc-part"><a href="#part-2">Part II · Two kinds of dam</a></p><ol class="course"><li class="toc-ch"><a href="#ch-two-dams"><span><i class="sr">Chapter </i>6</span><strong>Two dams, two jobs</strong></a><p>A dam whose water is the product, a dam whose waste must stay put, and the flood both must pass. <small class="toc-meta">1 figure</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="6"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-concrete"><span><i class="sr">Chapter </i>7</span><strong>A block on a cushion of water</strong></a><p>The concrete gravity dam, and the water that lifts it from below. <small class="toc-meta">1 figure · Film 7.1, 5 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="7"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7 mini-new"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-raising"><span><i class="sr">Chapter </i>8</span><strong>Never finished</strong></a><p>Upstream, downstream and centreline: three ways to raise a tailings dam, and a water dam built like one. <small class="toc-meta">1 figure · Film 8.1, 9 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="8"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li></ol><p class="eyebrow toc-part"><a href="#part-3">Part III · Inside the embankment</a></p><ol class="course"><li class="toc-ch"><a href="#ch-zones"><span><i class="sr">Chapter </i>9</span><strong>Every zone has one job</strong></a><p>Core, filters, transitions and shells, and how loose earth is made into dense fill. <small class="toc-meta">1 figure · Film 9.1, 7 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="9"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-seepage"><span><i class="sr">Chapter </i>10</span><strong>Where the water goes</strong></a><p>Seepage paths, flow nets drawn by hand, and a seepage lab you can run. <small class="toc-meta">2 figures</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="10"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10 mini-new"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li><li class="toc-ch"><a href="#ch-erosion"><span><i class="sr">Chapter </i>11</span><strong>When water carries soil</strong></a><p>Boils, pipes, the four kinds of internal erosion, and the filter that stops them. <small class="toc-meta">2 figures · Film 11.1, 9 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="11"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></li></ol><p class="eyebrow toc-part"><a href="#part-4">Part IV · Will it stand?</a></p><ol class="course"><li class="toc-ch"><a href="#ch-slope"><span><i class="sr">Chapter </i>12</span><strong>Will the slope stand?</strong></a><p>The factor of safety on a curved surface, worked by hand and by computer. <small class="toc-meta">Film 12.1, 6 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="12"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12 mini-new"/></svg></li><li class="toc-ch"><a href="#ch-build"><span><i class="sr">Chapter </i>13</span><strong>Build your own dam</strong></a><p>A workbench, five missions, and Mount Polley's answer. <small class="toc-meta">1 figure · Film 13.1, 9 min</small></p><svg class="mini toc-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="13"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L13" class="mini-l13 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12"/></svg></li></ol><p class="eyebrow toc-part">At the back</p><ol class="course"><li><a href="#answers"><span>Reference</span><strong>Answers and hints</strong></a></li><li><a href="#glossary"><span>Reference</span><strong>Glossary</strong></a></li><li><a href="#case-files"><span>Reference</span><strong>Case files</strong></a></li><li><a href="#bibliography"><span>Reference</span><strong>Bibliography</strong></a></li><li><a href="#models"><span>Appendix A</span><strong>How the models work</strong></a></li></ol><section class="toc-films" aria-labelledby="toc-films-h"><p class="eyebrow toc-part" id="toc-films-h">The films</p><p class="toc-films-k">Seven films, 58 minutes in all. Each sits in the chapter it retells most closely, with a question before it, chapter marks and a transcript. The book plays some of them in part, and says where.</p><ol class="toc-film-list"><li><span class="tf-n"><a href="#film-depth-not-size">2.1</a> and <a href="#film-depth-not-size-2">7.1</a></span><span class="tf-t">Depth, not size</span><span class="tf-w">in two parts, Chapters 2 and 7</span><span class="tf-l">8 min 24 s</span></li><li><span class="tf-n"><a href="#film-same-sand">5.1</a></span><span class="tf-t">The same sand, three ways</span><span class="tf-w">Chapter 5</span><span class="tf-l">9 min 7 s</span></li><li><span class="tf-n"><a href="#film-never-finished">8.1</a></span><span class="tf-t">Dams that are never finished</span><span class="tf-w">Chapter 8</span><span class="tf-l">9 min 6 s</span></li><li><span class="tf-n"><a href="#film-wall-of-dirt">9.1</a></span><span class="tf-t">A wall made of dirt</span><span class="tf-w">Chapter 9</span><span class="tf-l">6 min 51 s</span></li><li><span class="tf-n"><a href="#film-sand-that-boils">11.1</a></span><span class="tf-t">The sand that boils</span><span class="tf-w">Chapter 11</span><span class="tf-l">9 min 19 s</span></li><li><span class="tf-n"><a href="#film-every-dam-leaks">12.1</a></span><span class="tf-t">Every dam leaks</span><span class="tf-w">Chapter 12</span><span class="tf-l">6 min 4 s</span></li><li><span class="tf-n"><a href="#film-layer-nobody-found">13.1</a></span><span class="tf-t">Mount Polley's answer</span><span class="tf-w">Chapter 13</span><span class="tf-l">8 min 46 s</span></li></ol></section><details class="toc-figs"><summary>Figures and tables</summary><ol class="toc-list"><li><a href="#fig-plate-0">Plate 0</a> · How to read a section</li><li><a href="#fig-prologue-section">Fig. P.1</a> · The dam that failed, the evening before</li><li><a href="#fig-beach">Fig. 1.1</a> · The same sand, different water</li><li><a href="#fig-beach-dam">Fig. 1.2</a> · The beach inside an earth dam</li><li><a href="#fig-depth">Fig. 2.1</a> · Water pressure on a dam face</li><li><a href="#fig-depth-stevin">Fig. 2.2</a> · Stevin's argument: set the lake solid</li><li><a href="#fig-depth-triangle">Fig. 2.3</a> · Weight and push above three levels of a triangular dam</li><li><a href="#fig-depth-sloping">Fig. 2.4</a> · Water on a sloping face</li><li><a href="#fig-darcy">Fig. 3.1</a> · Darcy's experiment</li><li><a href="#fig-race">Fig. 3.2</a> · One metre of each material, the same push</li><li><a href="#fig-block">Fig. 4.1</a> · A block on a ramp, with a water cushion underneath</li><li><a href="#fig-column">Fig. 4.2</a> · Stresses in 10 m of sand as the water table rises</li><li><a href="#fig-grains">Fig. 5.1</a> · Grain sandbox · a live discrete-element model</li><li><a href="#fig-types">Fig. 6.1</a> · Water dam and tailings dam in section</li><li><a href="#tbl-two-dams-compare">Table 6.1</a> · A water dam and a tailings dam, side by side</li><li><a href="#fig-uplift">Fig. 7.1</a> · Uplift and sliding of a 60 m concrete gravity dam</li><li><a href="#fig-raise">Fig. 8.1</a> · Staged construction of three tailings dams, same height, same starter dam</li><li><a href="#fig-zones">Fig. 9.1</a> · Zoned earth–rockfill dam with central core</li><li><a href="#fig-paths">Fig. 10.1</a> · The five main seepage paths</li><li><a href="#fig-lab">Fig. 10.2</a> · Seepage lab · finite-volume solution</li><li><a href="#fig-pipe">Fig. 11.1</a> · Backward erosion piping, from boil to breach</li><li><a href="#fig-filter">Fig. 11.2</a> · Core grains meeting rockfill vs a filter</li><li><a href="#fig-build">Fig. 13.1</a> · Your dam, tested by the seepage solver and a slope stability check</li></ol></details></nav>
 </section>
 
 <section class="front col" id="preface">
@@ -1603,12 +1425,11 @@ svg.pro-ph { display: none; }
   <p>By the last chapter you will be able to read a dam's cross-section the way an engineer does, work out how hard the water pushes on it and where, follow water through and under it, and say why one soil is strong and another weak. You will be able to check whether a slope will stand, name the ways embankments fail, and design a small dam of your own. You will also be able to say what your own check cannot see.</p>
   <p>One sentence holds the book together. It is on the title page: soil holds only as well as its grains press on one another, and the water between them can take that press away. The first chapters build it from a beach, a bucket and a block on a ramp; <a data-ref="ch-grip" href="#ch-grip" class="xref">Chapter 4</a> proves it; every chapter after that applies it. It does not cover everything that brings a dam down. A flood that pours over the crest can wash a heap away however hard its grains press, and <a data-ref="ch-two-dams" href="#ch-two-dams" class="xref">Chapter 6</a> deals with that separately.</p>
   <p>The figures run in your browser, among them a seepage solver, a slope-stability solver and a box of simulated grains. Each number the text quotes from a figure is checked by a test that recomputes it from the code behind the figure, so the words and the drawings can't drift apart. Numbers from the literature carry a note in the margin that names their source. The seven narrated films were made separately; each is captioned, and each has a transcript.</p>
-  <!-- acknowledgements: the owner supplies the wording -->
+  
 </section>
 
 <section class="front col" id="how-to-read">
-  <!-- How to read this book (book/SPEC.md H.0): each device shown once, small and live. The old footer's
-       "all drawings are simplified" note is in the last section. Keys: tests/numbers/front.js. -->
+  
   <h2>How to read this book</h2>
   <p><span class="newthought">This is a book to read</span> and a set of instruments to play. A few habits get the most out of both, and each is shown here once, working.</p>
 
@@ -1686,11 +1507,7 @@ svg.pro-ph { display: none; }
 </section>
 
 <section class="front" id="plate-0">
-  <!-- Plate 0 (book/SPEC.md H.0, F.15). The section is "our dam": the 24 m embankment of the seepage lab
-       and the workbench, from stability-solver.js buildRequest().stab.geom (crest 24 m, crest from −3 to
-       3 m, toes at ±51 m), on the lab's alluvium foundation, 15 m deep as the seepage model holds it, with
-       the phreatic surface the seepage solver computes for the lab on load (LAB0). Generated to scale; the
-       labels are placed by hand. Keys: tests/numbers/front.js. -->
+  
   <div class="col">
     <h2>Plate 0 · How to read a section</h2>
     <p>A section is what you would see if you cut a dam straight across with a very large knife, lifted one half away and looked at the cut face, the way you look at the layers in a slice of cake. Engineers draw dams this way because the things that decide whether a dam stands (how deep the water is against it, where water seeps through it, which slope might slide) all show in that one cut, and along most of a long dam one slice looks much like the next. So the book works per metre of dam: picture a slice one metre thick.</p>
@@ -1709,48 +1526,48 @@ svg.pro-ph { display: none; }
       <path class="phreatic" d="M297.2,83.1 L304,92.9 L311.1,98.8 L321.4,105.5 L331.7,111.6 L342,116.9 L352.3,121.6 L362.6,125.8 L372.9,129.8 L385.7,134.1 L398.6,137.7 L408.9,140.5 L423.9,144.4 L434.6,146.6 L447.1,149.5 L460.4,152.1 L472,154.7 L486.1,157.2 L498.2,159.8 L511.8,162.2 L525,165 L537.6,167.2 L551.6,170.1 L563.3,172.2 L591.6,177.9"/>
       <rect class="water" x="612.2" y="185.8" width="97.8" height="2.3"/>
       <path class="water-line" d="M612.2,185.8 L710,185.8"/>
-      <!-- direction of flow -->
+      
       <path class="p0-arrow" d="M104,21 H612" marker-end="url(#arr-w)"/>
       <text class="p0-flow halo" x="12" y="25">upstream</text>
       <text class="p0-flow halo" x="708" y="25" text-anchor="end">downstream</text>
-      <!-- 1 crest, with its width -->
+      
       <text class="lbl halo" x="349.7" y="44" text-anchor="middle"><tspan class="p0-n">1</tspan><tspan class="p0-w"> crest</tspan></text>
       <path class="dim" d="M334.3,55 H365.1 M334.3,51 V59 M365.1,51 V59"/>
       <text class="p0-dim halo" x="370" y="59"><tspan data-n="front.crest-w-m">6</tspan> m</text>
-      <!-- 6 freeboard -->
+      
       <path class="dim" d="M334.3,64.6 H262" stroke-dasharray="2 2"/>
       <path class="dim" d="M268,64.6 V83.1 M264,64.6 H272 M264,83.1 H272"/>
       <text class="lbl halo" x="261" y="78" text-anchor="end"><tspan class="p0-n">6</tspan><tspan class="p0-w"> freeboard</tspan><tspan class="p0-dim"> <tspan data-n="front.freeboard-m">3.6</tspan> m</tspan></text>
-      <!-- 7 reservoir, and its depth -->
+      
       <text class="lbl halo" x="40" y="108"><tspan class="p0-n">7</tspan><tspan class="p0-w"> reservoir</tspan></text>
       <path class="dim" d="M22,83.1 V188.1 M18,83.1 H26 M18,188.1 H26"/>
       <text class="p0-dim halo" x="28" y="170"><tspan data-n="lab.res-m">20.4</tspan> m</text>
-      <!-- 2 upstream face, 3 downstream face -->
+      
       <text class="lbl halo" x="190" y="128" text-anchor="end"><tspan class="p0-n">2</tspan><tspan class="p0-w"> upstream face</tspan></text>
       <text class="lbl halo" x="452" y="100"><tspan class="p0-n">3</tspan><tspan class="p0-w"> downstream face</tspan></text>
-      <!-- 11 the slope triangle on the downstream face -->
+      
       <path class="ink-s" d="M468.1,116.1 H509.3 V136.7" style="stroke-width:1.1"/>
       <text class="lbl-s halo" x="488.7" y="112" text-anchor="middle">2</text>
       <text class="lbl-s halo" x="514" y="131">1</text>
       <text class="lbl halo" x="522" y="152"><tspan class="p0-n">11</tspan><tspan class="p0-w"> slope </tspan><tspan class="p0-dim p0-w"><tspan data-n="front.slope-down">2</tspan>H:1V</tspan></text>
-      <!-- 9 phreatic surface, along the line -->
+      
       <text class="lbl halo lbl-w" x="356" y="117" transform="rotate(16.4 356 117)"><tspan class="p0-n">9</tspan><tspan class="p0-w"> phreatic surface</tspan></text>
-      <!-- 8 tailwater -->
+      
       <text class="lbl halo" x="640" y="177" text-anchor="middle"><tspan class="p0-n">8</tspan><tspan class="p0-w"> tailwater</tspan></text>
-      <!-- the height -->
+      
       <path class="dim" d="M365.1,64.6 H704" stroke-dasharray="2 2"/>
       <path class="dim" d="M700,64.6 V188.1 M696,64.6 H704 M696,188.1 H704"/>
       <text class="p0-dim halo" x="694" y="128" text-anchor="middle" transform="rotate(-90 694 128)"><tspan data-n="front.dam-h-m">24</tspan> m</text>
-      <!-- 4 heel, 5 toe -->
+      
       <path class="lead" d="M87.2,190 V198 M612.2,190 V198"/>
       <text class="lbl halo" x="87.2" y="211" text-anchor="middle"><tspan class="p0-n">4</tspan><tspan class="p0-w"> heel</tspan></text>
       <text class="lbl halo" x="612.2" y="211" text-anchor="middle"><tspan class="p0-n">5</tspan><tspan class="p0-w"> toe</tspan></text>
-      <!-- the base, heel to toe -->
+      
       <path class="dim" d="M87.2,232 H612.2 M87.2,226 V238 M612.2,226 V238"/>
       <text class="p0-dim halo" x="349.7" y="228" text-anchor="middle"><tspan data-n="front.base-m">102</tspan> m</text>
-      <!-- 10 foundation -->
+      
       <text class="lbl halo" x="130" y="256"><tspan class="p0-n">10</tspan><tspan class="p0-w"> foundation</tspan></text>
-      <!-- scale bar: 0, 10, 20 m (5.147 units per metre) -->
+      
       <path class="ink-s" d="M560,293 H662.9 M560,289 V297 M611.5,290 V296 M662.9,289 V297"/>
       <text class="p0-dim halo" x="560" y="285" text-anchor="middle">0</text>
       <text class="p0-dim halo" x="611.5" y="285" text-anchor="middle">10</text>
@@ -1854,8 +1671,7 @@ svg.pro-ph { display: none; }
 </section>
 
 <section class="front col" id="toolkit">
-  <!-- The toolkit (book/SPEC.md H.0): eight checks, each with the numbers of the book's own figures.
-       Keys: tests/numbers/front.js, figs.js. -->
+  
   <h2>The toolkit: a self-check</h2>
   <p>The book uses arithmetic, a little trigonometry and no algebra beyond turning a formula round. These eight questions cover all of it, and each uses a number you will meet later. Answer in your head or on paper first, then open the answer.</p>
 
@@ -1903,12 +1719,8 @@ svg.pro-ph { display: none; }
 </section>
 
 <section class="prologue" id="prologue" data-label="P">
-  <!-- Prologue · 4 August 2014 (book/SPEC.md H.1). The Polley guard (G.4) applies to every word here:
-       no paragraph that names Mount Polley may also hold any of the guarded words. Facts: the Review
-       Panel's report (polley2015) and the Chief Inspector of Mines' report (polley-cim2015), page numbers
-       as printed. The section is traced from the panel's Figure 5.4.9(b), p. 70, with the crest and pond
-       levels the panel reports (pp. 6, i); it shows no layers below the ground. -->
-  <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="sheetno ch-kicker">Prologue</p><h2 class="ch-title">4 August 2014</h2><p class="dek">How does a dam that passed its calculations fail in a night?</p></div></div><div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section, before anything is built" data-mini="0"><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">The running section</span> the site, before anything is built</p></div><p class="ch-meta">1 figure · about 5 min to read</p></div></header>
+  
+  <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="sheetno ch-kicker">Prologue</p><h2 class="ch-title">4 August 2014</h2><p class="dek">How does a dam that passed its calculations fail in a night?</p></div></div><div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section: the dam, drawn piece by piece; so far, only the ground" data-mini="0"><use href="#mini-ghost" class="mini-ghost"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">The dam, piece by piece</span> so far, only the ground</p></div><p class="ch-meta">1 figure · about 5 min to read</p></div></header>
 
   <div class="col">
     <p class="cold"><span class="newthought">At half past ten</span> on the night of 3 August 2014, the night shift's logbook at the Mount Polley mine, in the hills of central British Columbia, recorded three things about the tailings dam: "Good berm, good slope, no visible cracks." (A berm is a bank or ledge of earth.)<label for="mn-pro-log" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-pro-log" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015" href="#bib-polley2015">Mount Polley Review Panel (2015)</a>, the timeline of the night, p. 10. The mine is about 65 km northeast of Williams Lake: <a data-cite="polley-cim2015" href="#bib-polley-cim2015">Chief Inspector of Mines (2015)</a>, p. 1.</span> At a quarter to twelve another worker drove along the top of the dam, across the stretch that was about to fail, and back again, and noticed nothing unusual.</p>
@@ -1931,13 +1743,13 @@ svg.pro-ph { display: none; }
       <polygon class="water" points="22,39.6 128.5,39.6 107.9,51.8 22,51.8"/>
       <path class="water-line" d="M22,39.6 L128.5,39.6"/>
       <polygon points="94.5,59.8 129,39.4 198,39.4 206.6,31.8 300.1,31.8 336,58 420.1,123.6 441.5,139.8 467.1,158.1 489.1,166.7 222.1,162.9 211.8,149.5 191.1,132.2 170.4,115 135.9,97.7 135.9,66.7 94.5,59.8" fill="url(#p-rock)" class="edge"/>
-      <!-- what was gone by morning: the outline of the breach at this section -->
+      
       <polygon class="pro-gone" points="94.5,59.8 129,39.4 198,39.4 206.6,31.8 300.1,31.8 336,58 420.1,123.6 441.5,139.8 467.1,158.1 489.1,166.7 222.1,162.9 211.8,149.5 191.1,132.2 170.4,115 135.9,97.7 135.9,66.7 94.5,59.8"/>
       <text class="lbl halo lbl-acc" x="338" y="22">gone by morning</text>
       <path class="pro-out" d="M356,44 C410,44 460,50 506,64" marker-end="url(#arr-acc)"/>
       <text class="lbl-s halo lbl-acc" x="436" y="86">water and tailings,</text>
       <text class="lbl-s halo lbl-acc" x="436" y="99">for about 16 hours</text>
-      <!-- the crest, the pond and the freeboard -->
+      
       <path class="dim" d="M206.6,31.8 H176" stroke-dasharray="2 2"/>
       <path class="dim" d="M182,31.8 V39.6 M178,31.8 H186 M178,39.6 H186"/>
       <text class="p0-dim halo" x="176" y="29" text-anchor="end">2.3 m</text>
@@ -1947,13 +1759,13 @@ svg.pro-ph { display: none; }
       <text class="lbl halo" x="40" y="112">tailings</text>
       <text class="lbl halo" x="250" y="112" text-anchor="middle">embankment</text>
       <text class="lbl-s halo" x="250" y="125" text-anchor="middle">core, filters and rockfill</text>
-      <!-- the height, ground and toe -->
+      
       <path class="dim" d="M300.1,31.8 H560" stroke-dasharray="2 2"/>
       <path class="dim" d="M556,31.8 V166.7 M552,31.8 H560 M552,166.7 H560"/>
       <text class="lbl halo" x="564" y="108">about 40 m</text>
       <text class="lbl halo" x="489.1" y="186" text-anchor="middle">toe</text>
       <text class="lbl halo" x="640" y="160" text-anchor="middle">original ground</text>
-      <!-- elevations and a scale bar -->
+      
       <path class="ink-s" d="M18,28.7 V166.7 M14,28.7 H18 M14,97.7 H18 M14,166.7 H18" style="stroke-width:0.8"/>
       <text class="lbl-s halo" x="12" y="31.7" text-anchor="end">970</text>
       <text class="lbl-s halo" x="12" y="100.7" text-anchor="end">950</text>
@@ -2038,12 +1850,12 @@ svg.pro-ph { display: none; }
 
 <section class="part-opener" id="part-1" data-label="I">
   <div class="wide part-head"><p class="part-num" aria-hidden="true">I</p><div class="chapter-head"><span class="sheetno">Part I</span><h2>Ground</h2></div><svg class="mini part-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="1"><use href="#mini-L1" class="mini-l1 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></div>
-  <div class="col"><p class="prospect">Before there is a dam there is ground: grains of sand and the water between them. These five chapters start on a beach and end in a box of simulated grains. Along the way they build the one idea the rest of the book stands on.</p><ol class="course"><li><a href="#ch-beach"><span>Chapter 1</span><strong>The beach</strong></a><p>Three kinds of sand, and the water that makes the difference.</p></li><li><a href="#ch-depth"><span>Chapter 2</span><strong>Depth, not size</strong></a><p>Why the depth of the water matters and the size of the lake doesn't.</p></li><li><a href="#ch-head"><span>Chapter 3</span><strong>Which way the water goes</strong></a><p>Head, Darcy's law, and the clay that takes almost the whole drop.</p></li><li><a href="#ch-grip"><span>Chapter 4</span><strong>Grip</strong></a><p>Friction, a block on a water cushion, and Terzaghi's effective stress.</p></li><li><a href="#ch-trapped"><span>Chapter 5</span><strong>When the water can't get out</strong></a><p>Loose and dense, drained and undrained, and liquefaction.</p></li></ol></div>
+  <div class="col"><p class="prospect">Before there is a dam there is ground: grains of sand and the water between them. These five chapters start on a beach and end in a box of simulated grains. Along the way they build the one idea the rest of the book stands on.</p><ol class="course"><li class="toc-ch"><a href="#ch-beach"><span><i class="sr">Chapter </i>1</span><strong>The beach</strong></a><p>Three kinds of sand, and the water that makes the difference.</p></li><li class="toc-ch"><a href="#ch-depth"><span><i class="sr">Chapter </i>2</span><strong>Depth, not size</strong></a><p>Why the depth of the water matters and the size of the lake doesn't.</p></li><li class="toc-ch"><a href="#ch-head"><span><i class="sr">Chapter </i>3</span><strong>Which way the water goes</strong></a><p>Head, Darcy's law, and the clay that takes almost the whole drop.</p></li><li class="toc-ch"><a href="#ch-grip"><span><i class="sr">Chapter </i>4</span><strong>Grip</strong></a><p>Friction, a block on a water cushion, and Terzaghi's effective stress.</p></li><li class="toc-ch"><a href="#ch-trapped"><span><i class="sr">Chapter </i>5</span><strong>When the water can't get out</strong></a><p>Loose and dense, drained and undrained, and liquefaction.</p></li></ol></div>
 </section>
 
 <section class="chapter" id="ch-beach" data-label="1"><a class="alias" id="beach" aria-hidden="true" tabindex="-1"></a><a class="alias" id="ground" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">1</p><p class="sheetno ch-kicker">Chapter 1 · Part I · Ground</p><h2 class="ch-title">The beach</h2><p class="dek">The same sand, and only the water has changed. Why does it behave three ways?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     <blockquote class="epigraph">
       <p>When the falling tide leaves the sand firm, as the foot falls on it the sand whitens, or appears momentarily to dry round the foot.</p>
       <footer>Osborne Reynolds, <a data-cite="reynolds1885" href="#bib-reynolds1885">On the dilatancy of media composed of rigid particles in contact</a>, 1885</footer>
@@ -2305,7 +2117,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-depth" data-label="2"><a class="alias" id="pressure" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">2</p><p class="sheetno ch-kicker">Chapter 2 · Part I · Ground</p><h2 class="ch-title">Depth, not size</h2><p class="dek">Two dams hold water 50 m deep, one a long lake and one a narrow slot. Which has to be stronger?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     <p class="so-far"><b>So far.</b> On the beach one sand behaved three ways, and only the water had changed. To say why, we need two facts about water first. This chapter is the first of them: how hard still water presses, and on what. <a data-ref="ch-head" href="#ch-head" class="xref">Chapter 3</a> adds the second, what happens when it moves.</p>
     <div class="can">
       <p class="can-k">After this chapter you can</p>
@@ -2654,7 +2466,7 @@ svg.pro-ph { display: none; }
           <text x="4" y="61" class="lbl lbl-w halo"><tspan data-n="lab.res-m">20.4</tspan> m deep</text>
           <path d="M20,42 H224 M20,38 V46 M224,38 V46" class="dim"/>
           <text x="122" y="35" class="lbl-s halo" text-anchor="middle">face runs <tspan data-n="ch02.slope-run-m">40.8</tspan> m across</text>
-          <!-- force diagram, to scale with itself: across 32 px, down 64 px; the whole push at right angles to the face -->
+          
           <text x="10" y="214" class="lbl-s">The whole push on each</text>
           <text x="10" y="229" class="lbl-s">metre of dam, in kN,</text>
           <text x="10" y="244" class="lbl-s">split in two:</text>
@@ -2765,7 +2577,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-head" data-label="3"><a class="alias" id="flow" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">3</p><p class="sheetno ch-kicker">Chapter 3 · Part I · Ground</p><h2 class="ch-title">Which way the water goes</h2><p class="dek">The sea is lower than the beach. What pushes the water out of the sand, and why does it take hours?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 3; this chapter adds the phreatic line through the heap and one standpipe (the straw)" data-mini="3"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> the phreatic line through the heap and one standpipe (the straw)</p></div><p class="ch-meta">2 figures · about 5 min to read</p></div></header>
     
@@ -2856,7 +2668,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-grip" data-label="4"><a class="alias" id="strength" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">4</p><p class="sheetno ch-kicker">Chapter 4 · Part I · Ground</p><h2 class="ch-title">Grip</h2><p class="dek">If water doesn't grease the grains, what does it do to them?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 4; this chapter adds small paired arrows under the slope: grains pressing (σ′)" data-mini="4"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> small paired arrows under the slope: grains pressing (σ′)</p></div><p class="ch-meta">2 figures · about 5 min to read</p></div></header>
     
@@ -2958,7 +2770,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-trapped" data-label="5">
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">5</p><p class="sheetno ch-kicker">Chapter 5 · Part I · Ground</p><h2 class="ch-title">When the water can't get out</h2><p class="dek">Why does firm wet sand go pale under one foot, while the sand at the water's edge swallows the other?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 5; this chapter adds the soaked zone below the phreatic line shaded (water carrying load)" data-mini="5"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> the soaked zone below the phreatic line shaded (water carrying load)</p></div><p class="ch-meta">1 figure · about 5 min to read · Film 5.1, 8 min 45 s</p></div></header>
     
@@ -3089,12 +2901,12 @@ svg.pro-ph { display: none; }
 
 <section class="part-opener" id="part-2" data-label="II">
   <div class="wide part-head"><p class="part-num" aria-hidden="true">II</p><div class="chapter-head"><span class="sheetno">Part II</span><h2>Two kinds of dam</h2></div><svg class="mini part-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="6"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg></div>
-  <div class="col"><p class="prospect">Some dams hold water that is worth money. Others hold mine waste that nobody wants back and that has to stay put long after the mine has closed. Part II looks at both: at the flood every dam must pass, at a block of concrete that stands by its weight alone, and at dams that keep growing for as long as a mine runs.</p><ol class="course"><li><a href="#ch-two-dams"><span>Chapter 6</span><strong>Two dams, two jobs</strong></a><p>A dam whose water is the product, a dam whose waste must stay put, and the flood both must pass.</p></li><li><a href="#ch-concrete"><span>Chapter 7</span><strong>A block on a cushion of water</strong></a><p>The concrete gravity dam, and the water that lifts it from below.</p></li><li><a href="#ch-raising"><span>Chapter 8</span><strong>Never finished</strong></a><p>Upstream, downstream and centreline: three ways to raise a tailings dam, and a water dam built like one.</p></li></ol></div>
+  <div class="col"><p class="prospect">Some dams hold water that is worth money. Others hold mine waste that nobody wants back and that has to stay put long after the mine has closed. Part II looks at both: at the flood every dam must pass, at a block of concrete that stands by its weight alone, and at dams that keep growing for as long as a mine runs.</p><ol class="course"><li class="toc-ch"><a href="#ch-two-dams"><span><i class="sr">Chapter </i>6</span><strong>Two dams, two jobs</strong></a><p>A dam whose water is the product, a dam whose waste must stay put, and the flood both must pass.</p></li><li class="toc-ch"><a href="#ch-concrete"><span><i class="sr">Chapter </i>7</span><strong>A block on a cushion of water</strong></a><p>The concrete gravity dam, and the water that lifts it from below.</p></li><li class="toc-ch"><a href="#ch-raising"><span><i class="sr">Chapter </i>8</span><strong>Never finished</strong></a><p>Upstream, downstream and centreline: three ways to raise a tailings dam, and a water dam built like one.</p></li></ol></div>
 </section>
 
 <section class="chapter" id="ch-two-dams" data-label="6"><a class="alias" id="types" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">6</p><p class="sheetno ch-kicker">Chapter 6 · Part II · Two kinds of dam</p><h2 class="ch-title">Two dams, two jobs</h2><p class="dek">What changes when the thing behind the dam can lose its own strength?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 6; this chapter adds freeboard mark and a spillway notch at the crest" data-mini="6"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6 mini-new"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> freeboard mark and a spillway notch at the crest</p></div><p class="ch-meta">1 figure · about 5 min to read</p></div></header>
     
@@ -3168,7 +2980,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-concrete" data-label="7">
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">7</p><p class="sheetno ch-kicker">Chapter 7 · Part II · Two kinds of dam</p><h2 class="ch-title">A block on a cushion of water</h2><p class="dek">A concrete dam weighs more than twice the push of the water on it. Why isn't that the end of the story?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 7; this chapter adds a small concrete block beside the dam, with uplift arrows under it" data-mini="7"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7 mini-new"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> a small concrete block beside the dam, with uplift arrows under it</p></div><p class="ch-meta">1 figure · about 5 min to read · Film 7.1, 5 min 13 s</p></div></header>
     
@@ -3236,7 +3048,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-raising" data-label="8"><a class="alias" id="raising" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">8</p><p class="sheetno ch-kicker">Chapter 8 · Part II · Two kinds of dam</p><h2 class="ch-title">Never finished</h2><p class="dek">Why would a country write the word “upstream” into its laws?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 8; this chapter adds a raise stepped onto the crest" data-mini="8"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> a raise stepped onto the crest</p></div><p class="ch-meta">1 figure · about 5 min to read · Film 8.1, 9 min 6 s</p></div></header>
     
@@ -3343,12 +3155,12 @@ svg.pro-ph { display: none; }
 
 <section class="part-opener" id="part-3" data-label="III">
   <div class="wide part-head"><p class="part-num" aria-hidden="true">III</p><div class="chapter-head"><span class="sheetno">Part III</span><h2>Inside the embankment</h2></div><svg class="mini part-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="9"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg></div>
-  <div class="col"><p class="prospect">Most of the world's large dams are heaps of earth and rock. Part III opens one up: why it is built from several soils, where the water inside it goes, and what happens when that water starts to carry the soil away.</p><ol class="course"><li><a href="#ch-zones"><span>Chapter 9</span><strong>Every zone has one job</strong></a><p>Core, filters, transitions and shells, and how loose earth is made into dense fill.</p></li><li><a href="#ch-seepage"><span>Chapter 10</span><strong>Where the water goes</strong></a><p>Seepage paths, flow nets drawn by hand, and a seepage lab you can run.</p></li><li><a href="#ch-erosion"><span>Chapter 11</span><strong>When water carries soil</strong></a><p>Boils, pipes, the four kinds of internal erosion, and the filter that stops them.</p></li></ol></div>
+  <div class="col"><p class="prospect">Most of the world's large dams are heaps of earth and rock. Part III opens one up: why it is built from several soils, where the water inside it goes, and what happens when that water starts to carry the soil away.</p><ol class="course"><li class="toc-ch"><a href="#ch-zones"><span><i class="sr">Chapter </i>9</span><strong>Every zone has one job</strong></a><p>Core, filters, transitions and shells, and how loose earth is made into dense fill.</p></li><li class="toc-ch"><a href="#ch-seepage"><span><i class="sr">Chapter </i>10</span><strong>Where the water goes</strong></a><p>Seepage paths, flow nets drawn by hand, and a seepage lab you can run.</p></li><li class="toc-ch"><a href="#ch-erosion"><span><i class="sr">Chapter </i>11</span><strong>When water carries soil</strong></a><p>Boils, pipes, the four kinds of internal erosion, and the filter that stops them.</p></li></ol></div>
 </section>
 
 <section class="chapter" id="ch-zones" data-label="9"><a class="alias" id="zones" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">9</p><p class="sheetno ch-kicker">Chapter 9 · Part III · Inside the embankment</p><h2 class="ch-title">Every zone has one job</h2><p class="dek">Why build a dam out of six different soils?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 9; this chapter adds a core and a filter inside the heap" data-mini="9"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> a core and a filter inside the heap</p></div><p class="ch-meta">1 figure · about 5 min to read · Film 9.1, 6 min 51 s</p></div></header>
     
@@ -3410,7 +3222,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-seepage" data-label="10"><a class="alias" id="seepage" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">10</p><p class="sheetno ch-kicker">Chapter 10 · Part III · Inside the embankment</p><h2 class="ch-title">Where the water goes</h2><p class="dek">If every dam leaks, what makes a leak safe?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 10; this chapter adds two flow lines and three equipotentials" data-mini="10"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10 mini-new"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> two flow lines and three equipotentials</p></div><p class="ch-meta">2 figures · about 5 min to read</p></div></header>
     
@@ -3487,7 +3299,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-erosion" data-label="11">
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">11</p><p class="sheetno ch-kicker">Chapter 11 · Part III · Inside the embankment</p><h2 class="ch-title">When water carries soil</h2><p class="dek">Bennett and Teton both leaked through their cores. Why does one of them still stand?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 11; this chapter adds a filter and drain at the toe" data-mini="11"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> a filter and drain at the toe</p></div><p class="ch-meta">2 figures · about 5 min to read · Film 11.1, 9 min</p></div></header>
     
@@ -3573,12 +3385,12 @@ svg.pro-ph { display: none; }
 
 <section class="part-opener" id="part-4" data-label="IV">
   <div class="wide part-head"><p class="part-num" aria-hidden="true">IV</p><div class="chapter-head"><span class="sheetno">Part IV</span><h2>Will it stand?</h2></div><svg class="mini part-mini" viewBox="0 0 160 48" aria-hidden="true" focusable="false" data-mini="12"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12 mini-new"/></svg></div>
-  <div class="col"><p class="prospect">An engineer judges a slope by one number: the grip the soil can offer, divided by the grip it needs. Part IV shows how that number is worked out, by hand and by computer, and then hands you a dam to design. The last chapter tests the number against a dam that passed it.</p><ol class="course"><li><a href="#ch-slope"><span>Chapter 12</span><strong>Will the slope stand?</strong></a><p>The factor of safety on a curved surface, worked by hand and by computer.</p></li><li><a href="#ch-build"><span>Chapter 13</span><strong>Build your own dam</strong></a><p>A workbench, five missions, and Mount Polley's answer.</p></li></ol></div>
+  <div class="col"><p class="prospect">An engineer judges a slope by one number: the grip the soil can offer, divided by the grip it needs. Part IV shows how that number is worked out, by hand and by computer, and then hands you a dam to design. The last chapter tests the number against a dam that passed it.</p><ol class="course"><li class="toc-ch"><a href="#ch-slope"><span><i class="sr">Chapter </i>12</span><strong>Will the slope stand?</strong></a><p>The factor of safety on a curved surface, worked by hand and by computer.</p></li><li class="toc-ch"><a href="#ch-build"><span><i class="sr">Chapter </i>13</span><strong>Build your own dam</strong></a><p>A workbench, five missions, and Mount Polley's answer.</p></li></ol></div>
 </section>
 
 <section class="chapter" id="ch-slope" data-label="12">
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">12</p><p class="sheetno ch-kicker">Chapter 12 · Part IV · Will it stand?</p><h2 class="ch-title">Will the slope stand?</h2><p class="dek">This dam is standing, with water breaking out of its face. How close is it to sliding?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 12; this chapter adds a slip circle through the downstream slope" data-mini="12"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12 mini-new"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> a slip circle through the downstream slope</p></div><p class="ch-meta">about 5 min to read · Film 12.1, 6 min 4 s</p></div></header>
     <div class="col">
@@ -3630,7 +3442,7 @@ svg.pro-ph { display: none; }
 
 <section class="chapter" id="ch-build" data-label="13"><a class="alias" id="build" aria-hidden="true" tabindex="-1"></a>
   <header class="opener" data-gen="opener"><div class="wide opener-head"><div class="chapter-head"><p class="ch-num" aria-hidden="true">13</p><p class="sheetno ch-kicker">Chapter 13 · Part IV · Will it stand?</p><h2 class="ch-title">Build your own dam</h2><p class="dek">Can you design a dam that passes every check, and what can the checks not see?</p></div></div>
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
+    
     
   <div class="wide opener-foot"><div class="mini-wrap"><svg class="mini" viewBox="0 0 160 48" role="img" aria-label="The running section as it stands in Chapter 13; this chapter adds the 1 m grid of the workbench over the section" data-mini="13"><use href="#mini-L1" class="mini-l1"/><use href="#mini-L5" class="mini-l5"/><use href="#mini-L8" class="mini-l8"/><use href="#mini-L9" class="mini-l9"/><use href="#mini-L11" class="mini-l11"/><use href="#mini-L13" class="mini-l13 mini-new"/><use href="#mini-L2" class="mini-l2"/><use href="#mini-L7" class="mini-l7"/><use href="#mini-L3" class="mini-l3"/><use href="#mini-L10" class="mini-l10"/><use href="#mini-L4" class="mini-l4"/><use href="#mini-L6" class="mini-l6"/><use href="#mini-L0" class="mini-l0"/><use href="#mini-L12" class="mini-l12"/></svg><p class="mini-cap"><span class="mini-k">This chapter adds</span> the 1 m grid of the workbench over the section</p></div><p class="ch-meta">1 figure · about 5 min to read · Film 13.1, 8 min 46 s</p></div></header>
     
@@ -7301,8 +7113,11 @@ function groundPredictInit(root) {
     aEl.addEventListener('input', () => { st.a = +aEl.value; changed(); });
     uEl.addEventListener('input', () => { st.u = +uEl.value; changed(); });
     resetBtn.addEventListener('click', () => { st.s = S0; st.v = 0; st.moved = false; st.sliding = false; last = 'Reader put the block back at the top.'; changed(); });
-    render();
+    // hidden behind its predict box on load: the readouts' defaults are already in the markup, and the
+    // drawing (whose labels measure themselves) is drawn when the box opens, or for print
+    if (!el.hidden) render();
     document.addEventListener('predict', () => requestAnimationFrame(render)); // labels measure once visible
+    window.addEventListener('beforeprint', render);
     F.ticks.push((t, dt) => {
       if (!st.sliding) return;
       const f = forces();

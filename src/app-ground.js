@@ -807,8 +807,11 @@ function groundPredictInit(root) {
     aEl.addEventListener('input', () => { st.a = +aEl.value; changed(); });
     uEl.addEventListener('input', () => { st.u = +uEl.value; changed(); });
     resetBtn.addEventListener('click', () => { st.s = S0; st.v = 0; st.moved = false; st.sliding = false; last = 'Reader put the block back at the top.'; changed(); });
-    render();
+    // hidden behind its predict box on load: the readouts' defaults are already in the markup, and the
+    // drawing (whose labels measure themselves) is drawn when the box opens, or for print
+    if (!el.hidden) render();
     document.addEventListener('predict', () => requestAnimationFrame(render)); // labels measure once visible
+    window.addEventListener('beforeprint', render);
     F.ticks.push((t, dt) => {
       if (!st.sliding) return;
       const f = forces();

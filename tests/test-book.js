@@ -367,6 +367,28 @@ console.log('\nLayout and furniture (book/SPEC.md F)');
   // italics at every weight, so the title's bold italic is real, not synthesized
   const page = fs.readFileSync(path.join(book().out, 'docs', 'index.html'), 'utf8');
   check(/Source\+Serif\+4:ital,opsz,wght@0,8\.\.60,400\.\.700;1,8\.\.60,400\.\.700/.test(page), 'Source Serif 4 italics load at 400–700');
+  // both pages run in standards mode: in quirks mode ids match case-insensitively, and #dp-h finds #dp-H
+  const rootPage = fs.readFileSync(path.join(book().out, 'index.html'), 'utf8');
+  check(/^<!doctype html>/i.test(page) && /^<!doctype html>/i.test(rootPage), 'docs/index.html and the root index.html both start with <!doctype html>');
+  // the shipped page carries no source comments, and stays inside its weight budget
+  const gz = require('zlib').gzipSync(page).length;
+  check(!/<!--/.test(page.replace(/<script[\s\S]*?<\/script>/g, '')) && !/\/\*/.test((page.match(/<style>([\s\S]*?)<\/style>/) || ['', ''])[1]), 'no HTML or CSS comments are shipped to readers');
+  check(gz < 450 * 1024, `docs/index.html is ${(gz / 1024).toFixed(0)} kB gzipped, under the 450 kB budget (${(page.length / 1024).toFixed(0)} kB raw)`);
+  // every SVG path in the markup is well formed: each command has a whole number of argument sets
+  // (Chrome stops drawing a path at the first bad number and logs an error)
+  const ARITY = { m: 2, l: 2, h: 1, v: 1, c: 6, s: 4, q: 4, t: 2, a: 7, z: 0 };
+  const badPaths = [];
+  for (const m of html.matchAll(/<path\b[^>]*?\sd="([^"]*)"/g)) {
+    const d = m[1].trim();
+    if (!d) continue;
+    const parts = d.match(/[a-zA-Z][^a-zA-Z]*/g) || [];
+    const bad = !/^[mM]/.test(d) || /[^mlhvcsqtazMLHVCSQTAZ0-9eE.,+\-\s]/.test(d) || parts.some(p => {
+      const k = ARITY[p[0].toLowerCase()], n = (p.slice(1).match(/[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?/g) || []).length;
+      return k === undefined || (k === 0 ? n !== 0 : n === 0 || n % k !== 0);
+    });
+    if (bad) badPaths.push(d.slice(0, 60));
+  }
+  check(!badPaths.length, 'every <path d> in the markup is well formed' + (badPaths.length ? ': ' + badPaths.join(' | ') : ''));
   check(/<meta name="description"/.test(page) && /<meta name="theme-color"/.test(page), 'the page has a description and a theme colour');
 }
 

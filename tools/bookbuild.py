@@ -355,7 +355,8 @@ class Book:
 
     def part_opener(self, p):
         first = p['chapters'][0]
-        lis = ''.join('<li><a href="#%s"><span>%s %s</span><strong>%s</strong></a><p>%s</p></li>' % (
+        # the bare numeral, as in the Contents; the word is there for a screen reader
+        lis = ''.join('<li class="toc-ch"><a href="#%s"><span><i class="sr">%s </i>%s</span><strong>%s</strong></a><p>%s</p></li>' % (
             c['id'], self.B['unitWord'], c['label'], H.esc(c['title']), H.esc(c['hook'])) for c in p['chapters'])
         m = ('<section class="part-opener" id="%s" data-label="%s">\n'
              '  <div class="wide part-head"><p class="part-num" aria-hidden="true">%s</p><div class="chapter-head"><span class="sheetno">Part %s</span><h2>%s</h2></div>%s</div>\n'
@@ -592,10 +593,10 @@ class Book:
             if n_mini is not None:
                 adds = self.mini_adds(n_mini)
                 label = 'The running section%s%s' % (
-                    (' as it stands in %s' % self.unit_label(u)) if u['kind'] != 'prologue' else ', before anything is built',
+                    (' as it stands in %s' % self.unit_label(u)) if u['kind'] != 'prologue' else ': the dam, drawn piece by piece; so far, only the ground',
                     ('; this chapter adds %s' % adds) if (adds and u['kind'] == 'chapter') else '')
                 cap = ('<span class="mini-k">This chapter adds</span> %s' % H.esc(adds)) if (adds and u['kind'] == 'chapter' and n_mini > 0) else \
-                      ('<span class="mini-k">The running section</span> %s' % ('the site, before anything is built' if n_mini == 0 else 'complete'))
+                      ('<span class="mini-k">The dam, piece by piece</span> %s' % ('so far, only the ground' if n_mini == 0 else 'complete'))
                 foot += '<div class="mini-wrap">%s<p class="mini-cap">%s</p></div>' % (self.mini(n_mini, label), cap)
             foot += '<p class="ch-meta">%s</p></div>' % H.esc(' · '.join(meta))
             op.insert(0, *frag(head))
@@ -638,7 +639,7 @@ class Book:
             for f in films:
                 s = self.segments.get(f)
                 if s:
-                    bits.append('film %s' % fmt_len(s['end'] - s['start']))
+                    bits.append('%s, %d min' % (self.refs[f]['label'], max(1, int(round((s['end'] - s['start']) / 60)))))
             meta = (' <small class="toc-meta">%s</small>' % H.esc(' · '.join(bits))) if bits else ''
             mini = self.mini(u['mini'], cls='mini toc-mini') if u.get('mini') is not None else ''
             if u['kind'] == 'chapter':  # a large numeral; the word is there for a screen reader
