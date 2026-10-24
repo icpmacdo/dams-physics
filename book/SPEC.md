@@ -430,11 +430,17 @@ before the punctuation that follows a reference.
   instruments, now marked so). Below 760px plates go full-bleed.
 - **No sideways scrolling.** Every drawing fits its plate. `app-book.js` sets `--s` (rendered width ÷
   viewBox width) on each `svg.dwg`, and `styles-book.css` lifts small labels toward a floor (11px on a
-  phone, 10.5px on a laptop) within a cap, so dense drawings don't collide. Every plate with a
-  scrolling-era drawing (`.full`, or a `.svgwrap`/canvas) gets an **Expand** button below 900px: the
+  phone, 10.5px on a laptop) within a cap, so dense drawings don't collide. Every `.wide` or `.full`
+  plate with an `svg.dwg` or a canvas (interactive, static or case file; not films or tables) gets an
+  **Expand** button below 900px (review round 2: How to read promises it): the
   figure itself moves into a full-screen dialog (drawing first and pinned, controls under it), turned a
   quarter turn on an upright phone, where labels reach 11px. SVG label sizes are set with `--fs` (not
-  `font-size`) so the floor can work; new figure CSS must do the same.
+  `font-size`) so the floor can work; new figure CSS must do the same. **Every shape stays inside its
+  own viewBox** (round 2: a stray `578.3` in a 420-wide phone drawing made the whole book scroll
+  sideways and shrink on phones). Plates clip overflow past 12px as a backstop, and `test-setfig.js`
+  checks at 390 and 360px that the page never scrolls sideways, that no shape reaches more than 16px
+  outside its drawing, and that every wide plate shows Expand. A phone drawing made by scaling a wide
+  one must clamp every coordinate to its own viewBox.
 - **The running section** is drawn once in `tools/bookmini.py` (one `<symbol>` per layer, stacked by
   depth) and placed in each opener (with "This chapter adds …" from `book.json`), each part opener,
   each Contents row and the running head. The Ch 7 concrete block sits right of the toe, not left.
@@ -463,13 +469,42 @@ before the punctuation that follows a reference.
   2 × 2 grid at every width.
 - **Expand** sits in the figure's title strip on every figure (over the drawing it hid the toe).
 - **Static figures.** Static plates keep their drawing at the width their own CSS gives it
-  (`src/fig/<key>-*.css`), left-aligned with the caption. A caption in the margin column was
-  considered and rejected while captions run to 80–130 words.
+  (`src/fig/<key>-*.css`), centred under the title strip (round 2: left-aligned drawings left a hole at
+  the top right); the caption keeps to the measure. A caption in the margin column was
+  considered and rejected while captions run to 80–130 words. Draw a static plate as wide as its
+  content needs, up to the plate; draw a section to its toes rather than cutting it off.
 - **Equations.** `eq-depth-p`, `eq-depth-push`, `eq-head-darcy`, `eq-grip-sigma` and
   `eq-grip-strength` are now `div.eq` (same text). The other `div.formula`s are restyled in the serif
   until the writers replace them.
-- **Print.** One chapter per page, controls hidden, predict answers shown, notes in a 38mm margin.
+- **Print.** One chapter per page, controls hidden, predict answers and folded answers shown, notes in a
+  38mm margin. A printed page is narrower than 760 CSS px, so **every narrow-screen media query is
+  `@media screen and (max-width: …)`** (round 2: without `screen`, paper got the phone layout, Fig. P.1
+  printed its phone drawing and Fig. 2.1 split across two pages), and a wide-layout rule written as
+  `min-width` that paper should also get is `@media print, (min-width: …)`. On paper SVG labels are
+  set at their `--fs` size (a print floor of zero once erased every chart label) and a drawing is at
+  most 95mm tall. New figure CSS follows the same two rules.
 - Not built: a "plain page" mode (SPEC does not ask for one) and a theme toggle.
+- **Added in review round 2.** Worked-example reasons sit in the margin column at ≥1100px, at the
+  sidenotes' x in every example (below that, under their step). `span.m` keeps an inline expression
+  on one line (F.5). Disclosure summaries (Hint, Answers, transcript, After you watch, the Contents'
+  figure lists) share one turning triangle; Check yourself keeps Show/Hide. Labels on water or ground
+  take `halo on-water`, `on-fill`, `on-rock` or `on-conc`, so the halo is the colour under the label
+  (a white halo on blue reads as a sticker). A generated reference that opens a sentence is
+  capitalised by the build ("The Prologue starts…"). Part openers show the miniature of the stage the
+  part ends on, captioned "By the end of Part I". Contents rows give a film's played length, as the
+  opener does. The seven old `ask-film-*` ids are aliases placed before their films (`book.json`), so
+  no old id is lost. A `#hash` on load jumps straight to its target; scrolling turns smooth only after
+  load (`html.smooth`). The film poster's veil is even over the frame (a film's question may set two
+  things side by side; a left-hand veil erased one of them). Solver status lines are `--ink-3`
+  (brick is for pushes and failure). `test-book.js` recomputes every printed product or quotient in
+  worked lines, answers, Checks and Try answers from its printed digits. `test-films.js` reads a
+  seek where it lands (first `timeupdate` after `seeked`), not after a fixed wait.
+- **Page weight** (round 2): 276 kB gzip and about 17,000 DOM nodes with three chapters written; the
+  grain sandbox prepares its opening sample in idle time at load (about 0.5 s of main-thread work at
+  4× throttle). Gating that on the figure nearing the viewport was tried and reverted: a Set the figure
+  for `gr-top` pressed before the sample has settled does not take (`segGroup('#gr-top')` ignores a
+  change while `S.phase !== 'run'`). Fix that first if the load needs trimming; the 450 kB gzip budget
+  in `test-book.js` stays the hard gate.
 
 ### A.11 What the film stage built (F.13, as implemented)
 
@@ -1153,7 +1188,11 @@ must exist in `GLOSSARY` or a glossary file (Appendix 2).
 Set in the serif: variables in `<var>`, a true minus (−, U+2212), thin spaces (U+2009) around ×,
 `<sub>`/`<sup>` for indices, `·` for multiplication of symbols. No MathJax, no code font. Each
 chapter numbers its equations; reference them as `<a data-ref="eq-grip-sigma"></a>`. Inline maths
-in a sentence uses `<var>` too, no box. The old `div.formula` boxes are replaced by `div.eq` in
+in a sentence uses `<var>` too, no box. Wrap every inline expression in `<span class="m">…</span>`
+(no line break inside it): `<span class="m">½ × <var>H</var> × (9.81 × <var>H</var>)</span>`, and in a
+worked step wrap the result chunk, `<span class="m">= <span data-n="…">9.40</span> <var>z</var>² kN</span>`,
+so "A" or "= 9.40" is never stranded at a line end. An expression longer than about 35 characters goes
+on its own line as a `div.eq`. The old `div.formula` boxes are replaced by `div.eq` in
 stage E (the machinery keeps styling `div.formula` until then).
 
 ### F.6 Worked example
@@ -1186,7 +1225,15 @@ stage E (the machinery keeps styling `div.formula` until then).
   on that line, must get the number printed as its result. Print each input with enough digits (as
   a keyed span: the same key shows more decimals, `<span data-n="depth.arm-m@H=50">16.67</span>`)
   that the arithmetic comes out; in the conclusion lines round as you like. Check this for every
-  product, quotient and root before you hand in (`ch01.a-tan-cm2` failed at 572.6 × 0.6745).
+  product, quotient and root before you hand in (`ch01.a-tan-cm2` failed at 572.6 × 0.6745; in round 2
+  "5.01 ÷ 1.635 = 3.07" gave 3.064, and a root used a 4,082.5 that no earlier line printed). Print the
+  extra digit **on the line where the number is made** and carry it to the lines that use it; never
+  apologise for a digit in the why column. `test-book.js` now recomputes every chain of printed
+  numbers joined by × or ÷ that ends "= result" (a result in MN or MPa is read as thousands of kN or
+  kPa), so write such lines as plain digits and operators; roots and sums you check yourself.
+- **A why says it in this example's own words.** Don't reuse a phrase the chapter gave another
+  meaning ("its wide side" meant the base of the pressure triangle; for a triangle measured across,
+  say "its tallest side").
 - **Givens the reader can check.** A number read from a figure is given with the dimensions that
   make it ("20.4 × 29.2 − 2 × 3.2 × 3.6 = 572.64 cm²"), each keyed, never "read from the drawing".
 - **Check** answers its own question with numbers the reader can follow; a Check that says forces
@@ -1241,8 +1288,10 @@ has no other predict nearby. New predict ids follow `pr-<slug>-<word>`.
 
 The text right after a predict box is visible before the reader answers, so it must not give the
 answer away ("The lake is the natural guess, and it is wrong."). Put the verdict and the reason in
-`.predict-reveal`; start the next paragraph with a neutral beat that sets up the argument ("Follow
-where the lake's weight goes."). Links to a figure behind a predict box are fine: the page routes
+`.predict-reveal`; start the next paragraph with a neutral beat that raises the question without
+settling it ("To decide, start with what sets how hard water presses on anything at all."). The
+mechanism that decides the answer ("the bed carries the lake; only the water touching the dam pushes
+on it") belongs in the reveal, not in the visible paragraph. Links to a figure behind a predict box are fine: the page routes
 them to the box.
 
 ### F.9 Interactive figure (existing sheets) and caption pattern
@@ -1272,9 +1321,17 @@ the figure if the reader has not met it. Name controls by their label in prose (
 slider"), never by position ("the first slider"). A Try that asks for a measurement or has one
 right answer gets the answer in a one-line `<details class="try-ans"><summary>Answers</summary><p>…</p></details>`
 after `ul.try`, with keyed numbers.
-Experiments go in `ul.try`, never in the caption sentence. Colours are named with the words the
+Experiments go in `ul.try`, never in the caption sentence. **Every figure, static ones too, has a
+`ul.try` with at least one item** (How to read promises it; on a static figure a Try can be a
+measurement, a division of two labels, or a check with a set square). Colours are named with the words the
 drawing uses and wrapped in the colour key spans (`<span class="k-water">blue</span>`, `k-acc` for
-brick red, `k-ok` green, `k-grain` ochre).
+brick red, `k-ok` green, `k-grain` ochre). **Name lines by their role** ("the total-stress line", "the
+dashed water line"), never as "the black line" or "the white line": ink colours change with the theme.
+Every mark the drawing draws is in the caption (a heavier arrow, an open dot). A label that a figure
+computes uses the readout's own formatter, so the drawing and the readout never round differently.
+A label that moves with a control is clamped to stay off the ground and other labels (display only).
+Labels set on water or ground take `class="… halo on-water"` (or `on-fill`, `on-rock`, `on-conc`);
+plain `halo` is for labels on the paper. Solver status lines are `--ink-3`.
 
 ### F.10 Static figure (new)
 
@@ -1363,8 +1420,11 @@ Mount Polley's plate (Ch 13 only) also carries `data-mechanism-safe="See Chapter
 ```
 
 - **The question must still be open.** The Before question asks something the chapter's text has
-  not already answered (if the chapter has worked it out, ask the next step: a number at a new
-  depth, which of two fixes). The After note is folded in a `details` because it opens with the
+  not already answered (if the chapter has worked it out, ask the next step: a share the chapter
+  stopped short of, which of two fixes). Before you hand in, search the chapter for the answer: in a
+  paragraph, a worked example's lines, a Try, a readout the Try sets. Round 1's "how many tonnes at
+  100 m" failed this three times (¶2.3, Ex 2.2 step 6, Fig. 2.1's Try). The Before box may name the
+  film time it is about ("At 2:44 the film says…"). The After note is folded in a `details` because it opens with the
   answer; its summary reads "After you watch: the answer" (just "After you watch" when the note
   answers nothing). The poster shows the number, title, part and length only; `book.json`'s
   `question` for the film should say the same thing as the Before question, in one line.
@@ -1472,7 +1532,10 @@ friend at a table. Concretely:
 - **Concrete before abstract.** A scene, a handful of sand, a number the reader can check, then the
   principle, then (if at all) the formula. No equation before the reader has seen what it describes.
 - **Misconception first, then the test** (Ciechanowski): "One could assume…" or "Most people say…",
-  then the figure that refutes it. At least once per chapter, on a belief beginners really hold.
+  then the figure that refutes it. At least once per chapter, on a belief beginners really hold. Use
+  each of those two openings **at most once per chapter**; state other beliefs concretely ("A stack of
+  bricks presses down on the floor and hardly at all on the walls beside it…"), or the device turns
+  into a tic (round 2 counted three "One could assume" in two chapters).
 - **Point the eye before explaining** (Ciechanowski's rhythm): set-up sentence ending in a colon →
   the figure → "Notice that…" → the explanation → the formula.
 - **Say what nobody knows** (Feynman): nobody can see inside a dam; piezometers are pinpricks; 1.5
@@ -1491,8 +1554,13 @@ friend at a table. Concretely:
   a dam tips about; the *foot of the face* is the bottom of the wet upstream face; heights of a
   push are measured above the *base*. *Moment* and *lever arm* are defined in Ch 2 (glossary). A
   unit's first appearance is explained: pascal (Ch 2, under Eq. 2.1), MN and MPa (Ch 2), kN (Ch 1).
-- **Pore pressure** presses on every grain round a gap and pushes neighbouring grains apart; it does
-  not push "outward on every grain".
+- **Pore pressure** presses equally on every grain round a gap. It does not "push grains apart" and
+  it does not push "outward on every grain": it carries part of the load the grains would otherwise
+  carry between them, so they press on one another less, and only σ′ = σ − u says how much (a lake
+  over soil raises σ and u alike and changes nothing). Before Ch 4, say "takes part of the grains'
+  press away" and point to Ch 4.
+- **Mass and weight.** A kilogram is a mass: "a cubic metre of air has a mass of about 1.2 kg", never
+  "weighs 1.2 kg". Weights are in kN.
 - Disasters with dignity: each toll stated once, sourced, plainly. No adjectives doing the work.
 
 **Never write** (the course was just cleaned of these):
@@ -1596,10 +1664,11 @@ followed by "Notice that…".
 
 **00-cover.html** (`id="cover"`, alias `top`). The cover plate: a full-width line drawing of a zoned
 earth–rockfill section (the geometry of `fig-zones`' first tab), in the book's hatches, with the
-title, subtitle and edition from `book.json`, and one caption line: "Most of what decides whether
-this stands is two numbers: how hard its grains press together, and how hard the water between them
-pushes back." Then the title page: title, subtitle, the spine sentence (from `book.json`), and the
-edition line. 150–250 words in all.
+title and subtitle from `book.json`, and one caption line that describes the drawing ("An earth and
+rockfill dam, cut across and drawn to scale: the kind of section this book builds up a piece at a
+time"). Then the title page: the spine sentence (from `book.json`), the blurb, and the edition line,
+which appears once, here. Review round 2: the cover said the spine's idea three times in one screen;
+say it once, in the spine sentence. 150–250 words in all.
 
 **01-contents.html** (`id="contents"`): `<section class="front" id="contents"><h2>Contents</h2><nav id="toc" data-gen="toc"></nav></section>`. Generated (B.5).
 
@@ -1831,6 +1900,9 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
   `academy/index.html`), optional.
 - **Next hook:** Water that flows drags on the grains it passes. Water that can't get away carries
   their load for them. What does that do to a heap of sand?
+- **Layout (review round 2).** Fig. 3.2 (`fig-darcy`) fills only about 300 of 520 px and is not on
+  `g-reflow`; put it on `div.g-split.g-reflow` (A.10) and give its caption a bold claim about this
+  drawing. Ch 3 does not measure the drag on the beach face; leave that to `ex-grip-face` (H.5).
 - **Glossary owned:** elevation-head, pressure-head, seepage-velocity, seepage-force.
 
 ### H.5 Chapter 4 · Grip (`ch-grip`, 4,000–5,000 words, miniature 4)
@@ -1895,6 +1967,14 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
 - **Film:** none (*The same sand, three ways* closes Ch 5).
 - **Next hook:** Everything here assumed the water could come and go as it pleased. What if it can't
   get out in time?
+- **Promises to keep (review round 2).** Ch 1 says "Why that drag costs about fifteen degrees is a sum
+  Chapter 4 does in a few lines": `ex-grip-face` must do it, in a few lines, and the Ch 1 sentence then
+  links to it (`<a data-ref="ex-grip-face">a sum Chapter 4 does in a few lines</a>`; list the Ch 1 edit
+  under `deferred` for the integration pass). The moved Ch 4 text no longer sends the drag to Ch 3
+  (Ch 3 does not measure it). Fig. 4.2's caption names the lines by role (total-stress line σ,
+  pore-pressure line u), not "black and blue". Glossary `factor-of-safety` now says long-term designs
+  use about 1.5 and operating conditions sometimes 1.3 (the Prologue's Mount Polley criterion was 1.3);
+  the Units note on "about 1.5" should agree.
 - **Glossary owned:** strength-envelope, infinite-slope, unit-weight, buoyant-unit-weight, heave.
 
 ### H.6 Chapter 5 · When the water can't get out (`ch-trapped`, 3,500–4,500 words, miniature 5)
@@ -2455,6 +2535,11 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
   VTT). After you watch: the film's last minute is the whole book in one list.
 - **Next hook (into the Epilogue):** Every number in this book was a calculation. Real dams are
   watched.
+- **Two numbers for one slope (review round 2).** Fig. P.1's Try has the reader measure the downstream
+  slope from the crest's edge to the toe: about 1.4 across for 1 up (`pro.js`). The panel gives
+  1.3H:1V for the unbuttressed downstream face itself (`polley2015`, p. 75). When Ch 13 quotes the
+  panel's figure, reconcile the two in one clause ("you measured about 1.4:1 from the crest's edge in
+  Fig. P.1; the face itself stood at 1.3H:1V"). Neither number may appear before Ch 13 next to a cause.
 - **Glossary owned:** glaciolacustrine, strain-softening, peak-strength, site-investigation, borehole.
 
 ### H.15 Epilogue · The dam after the drawings (`90-epilogue.html`, 1,500–2,500 words, miniature 14)
@@ -2503,7 +2588,9 @@ The refresher lives at the start of `96-models.html` as its own h3 (back-matter 
   head not pressure, downstream shell, Fig. 6.1 caption, flow-line sets, piping pill, leak verdict,
   Coquitlam, and the rest), each with date, where, was, now, why. Also record, as a change rather
   than a fix, that the seven films lost their "Why did that happen?" buttons (`ask-film-*`) on
-  purpose (F.13: films are not sheets; their describe() returned only "(no live settings)").
+  purpose (F.13: films are not sheets; their describe() returned only "(no live settings)"), and that
+  their ids still land on the film (review round 2: `book.json` aliases). Until the errata page ships,
+  this is a release gate.
 - **98-colophon.html:** typefaces (Source Serif 4, Source Sans 3, IBM Plex Mono), the palette and
   colour meanings, how the figures were drawn (inline SVG, no libraries), the solvers and their test
   counts (read the counts from the test output at the time of writing), the date of the last physics
@@ -2542,7 +2629,13 @@ A reviewer ticks every box. Any unticked box means the chapter is not done.
 - [ ] Equations as `div.eq` with numbers; no `div.formula` left.
 - [ ] 2–3 Check yourself; predict boxes kept.
 - [ ] Film block complete: before, marks (verified against the VTT), transcript placeholder, after;
-      the segment plays and stops at the right time.
+      the segment plays and stops at the right time. The Before question is not answered anywhere
+      earlier in the chapter (searched: prose, examples, Tries, readouts).
+- [ ] Every figure has a `ul.try`; captions name lines by role, not by a colour word that changes in
+      dark mode; labels on water or ground use the matching `on-*` halo.
+- [ ] Every promise the chapter's text makes about another chapter ("a sum Chapter 4 does") is kept
+      there, and every promise an earlier chapter made about this one (search the built page for this
+      chapter's label) is kept here.
 - [ ] Case plate (if any) to scale, with sources for each dimension.
 - [ ] Chapter end: What to remember (3–5 lines in the spine's terms), 4–6 tagged questions each with
       hint and answer, 2–3 annotated readings, the Next pull.
@@ -2555,7 +2648,10 @@ A reviewer ticks every box. Any unticked box means the chapter is not done.
       "but"; nothing is used before it is explained; the chapter ends on a question.
 - [ ] None of the G.2 "never write" patterns (search for them).
 - [ ] Laptop (1440 px) and phone (390 px) screenshots in light and dark taken and looked at: no
-      sideways page scroll, notes open on tap, labels legible.
+      sideways page scroll, notes open on tap, labels legible. `node tests/test-setfig.js` passes
+      (it checks 390 and 360 px for sideways scroll and for shapes outside their drawing).
+- [ ] Print preview of the chapter looked at once: figures on one page, chart labels present.
+- [ ] Inline expressions in `span.m`; `test-book.js`'s worked-line arithmetic check passes.
 
 ---
 
