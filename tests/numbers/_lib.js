@@ -6,8 +6,9 @@
  * X.U  app-core's util block (n1, fmt, polyArea, …)
  * X.seep(opts)    the seepage solver, cached per argument set
  * X.bench(design) a workbench run: { seep, stab, m (designMetrics), crit (downstream critical surface), up }
- *                 design = { preset, slope, found, cut, res } with the workbench's defaults
+ *                 design = { preset, slope, found, cut, res, uprock } with the workbench's defaults
  * X.ST            the stability solver module (BUILD.materials, presetCells, …)
+ * X.grains()      the grain sandbox's parameters (prm) as the page builds it (app-grains.js @grains-sim)
  * X.deg           π/180
  *
  * load(), evaluate(key) and parseKey() are what tests/test-book.js uses. */
@@ -43,19 +44,41 @@ function seepRun(opts) {
   return seepCache.get(k);
 }
 const benchCache = new Map();
-const BENCH0 = { preset: 'homogeneous', slope: 2, found: 'clay', cut: 'none', res: 0.85 };
+// uprock: rockfill painted over every dam cell upstream of x = uprock (m from the dam's centre line;
+// the crest runs from -3 to 3), as the "Empty it fast" mission's fix; 'none' paints nothing
+const BENCH0 = { preset: 'homogeneous', slope: 2, found: 'clay', cut: 'none', res: 0.85, uprock: 'none' };
+function benchCells(o) {
+  const c = ST.presetCells(o.preset, o.slope);
+  if (o.uprock !== 'none' && o.uprock != null) {
+    const xb = +o.uprock, rock = ST.BUILD.materials.findIndex(m => m.key === 'rock');
+    for (let i = 0; i < 170; i++) for (let j = 15; j < 39; j++) if (-80 + i + 0.5 < xb) c[i * 39 + j] = rock;
+  }
+  return c;
+}
 function bench(d) {
   const o = Object.assign({}, BENCH0, d);
-  o.slope = +o.slope; o.res = +o.res;
+  o.slope = +o.slope; o.res = +o.res; if (o.uprock == null) o.uprock = 'none';
   const k = JSON.stringify(o);
   if (!benchCache.has(k)) {
-    const r = ST.runDesign({ cells: ST.presetCells(o.preset, o.slope), slope: o.slope, foundation: o.found, cutoff: o.cut, reservoir: o.res }, { solveSeepage });
+    const r = ST.runDesign({ cells: benchCells(o), slope: o.slope, foundation: o.found, cutoff: o.cut, reservoir: o.res }, { solveSeepage });
     benchCache.set(k, { seep: r.seep, stab: r.stab, m: ST.designMetrics(r.seep, r.stab), crit: r.stab.downstream && r.stab.downstream.critical, up: r.stab.upstream });
   }
   return benchCache.get(k);
 }
 
-const X = { G, C, S, U, ST, seep: seepRun, bench, BENCH0, deg: Math.PI / 180 };
+// the grain sandbox: its pure simulation block, built as the page builds it, for its parameters
+let grainsPrm = null;
+function grains() {
+  if (!grainsPrm) {
+    const src = read('app-grains.js'), a = src.indexOf('/* @grains-sim-begin */'), b = src.indexOf('/* @grains-sim-end */');
+    if (a < 0 || b < a) throw new Error('markers @grains-sim missing in app-grains.js');
+    const grainsSim = new Function(src.slice(a, b) + '\nreturn grainsSim;')();
+    grainsPrm = grainsSim({ N: 420, seed: 11, bench: 0.55 }).prm;
+  }
+  return grainsPrm;
+}
+
+const X = { G, C, S, U, ST, seep: seepRun, bench, BENCH0, grains, deg: Math.PI / 180 };
 
 // ---- keys: ns.name@a=1,b=x
 const KEY = /^([a-z][a-z0-9-]*)\.([a-z][a-z0-9-]*)(?:@((?:[a-z][a-z0-9]*=[-+.0-9a-z]+)(?:,[a-z][a-z0-9]*=[-+.0-9a-z]+)*))?$/i;

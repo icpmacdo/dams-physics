@@ -16,8 +16,8 @@ const LAB = { dam: 'homogeneous', drain: 'none', cut: 'none', found: 'pervious',
 const lab = (a, X) => X.seep({ damType: a.dam, drain: a.drain, cutoff: a.cut, foundation: a.found, reservoir: +a.res });
 const UP = { hw: '57', drains: '1' };
 const upl = (a, X) => X.S.upliftCalc(+a.hw, X.S.upliftDrainHead(a.drains === '1', +a.hw));
-const BENCH = { preset: 'homogeneous', slope: '2', found: 'clay', cut: 'none', res: '0.85' };
-const bench = (a, X) => X.bench({ preset: a.preset, slope: a.slope, found: a.found, cut: a.cut, res: a.res });
+const BENCH = { preset: 'homogeneous', slope: '2', found: 'clay', cut: 'none', res: '0.85', uprock: 'none' };
+const bench = (a, X) => X.bench({ preset: a.preset, slope: a.slope, found: a.found, cut: a.cut, res: a.res, uprock: a.uprock });
 const slice = (a, X) => bench(a, X).crit.slices[+a.i];
 const mat = (a, X) => X.ST.BUILD.materials.find(m => m.key === a.mat);
 const SLICE = Object.assign({ i: '12' }, BENCH);
@@ -151,13 +151,17 @@ module.exports = {
   'bench.slice-w-kn': { args: SLICE, doc: 'its weight, kN per metre', f: (a, X) => slice(a, X).W },
   'bench.slice-u-kpa': { args: SLICE, doc: 'water pressure at its base, kPa', f: (a, X) => slice(a, X).u },
   'bench.slice-alpha-deg': { args: SLICE, doc: 'inclination of its base (the circle’s tangent at its centre)', f: (a, X) => { const c = bench(a, X).crit, s = c.slices[+a.i]; return Math.asin((c.xc - s.x) / c.R) / X.deg; } },
+  'bench.goal': { args: { mission: 'dry', goal: 'minFoS' }, doc: 'a mission’s target (goal: maxQ, minPipe, minFoS, minFoSUp, maxClay, minTsand; minTsand as a fraction)', f: (a, X) => {
+    const m = X.ST.BUILD.missions.find(q => q.id === a.mission), k = m && Object.keys(m.goals).find(g => g.toLowerCase() === String(a.goal).toLowerCase());
+    return k ? m.goals[k] : NaN; } },
   'bench.min-depth-m': { doc: 'shallowest slip the check counts, m', f: (a, X) => X.ST.BUILD.minDepth },
   'bench.mat-phi': { args: { mat: 'fill' }, doc: 'friction angle, degrees', f: (a, X) => mat(a, X).phi },
   'bench.mat-c': { args: { mat: 'fill' }, doc: 'cohesion, kPa', f: (a, X) => mat(a, X).c },
   'bench.mat-gs': { args: { mat: 'fill' }, doc: 'saturated unit weight, kN/m³', f: (a, X) => mat(a, X).gs },
   'bench.mat-gm': { args: { mat: 'fill' }, doc: 'moist unit weight, kN/m³', f: (a, X) => mat(a, X).gm },
-  'bench.mat-k': { args: { mat: 'fill' }, doc: 'permeability, m/s', f: (a, X) => mat(a, X).k }
+  'bench.mat-k': { args: { mat: 'fill' }, doc: 'permeability, m/s', f: (a, X) => mat(a, X).k },
 
-  // grains.cav-kpa and grains.mu (the sandbox's parameters) are added by the Chapter 5 writer with a
-  // pure block around them; app-grains.js has none yet.
+  // ---- fig-grains, the sandbox's model parameters (its outputs are trends only: SPEC 0.3.15)
+  'grains.cav-kpa': { doc: 'the lowest water pressure the model allows before the water cavitates, model kPa* (negative)', f: (a, X) => -X.grains().uCav },
+  'grains.mu': { doc: 'contact friction coefficient between grains', f: (a, X) => X.grains().mu }
 };

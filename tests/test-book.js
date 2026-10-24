@@ -87,7 +87,9 @@ for (const s of spans) {
     'bench.q-lday': 44.37, 'bench.pipe': 1.368, 'bench.fos': 1.116, 'bench.fos-up': 0.940, 'bench.clay-m3': 0, 'bench.cells': 1296, 'bench.face-m': 8, 'bench.ru': 0.353, 'bench.fos-nowater': 1.741,
     'bench.slice-b': 1.359, 'bench.slice-w-kn': 319.0, 'bench.slice-u-kpa': 76.4, 'bench.slice-alpha-deg': 31.9,
     'bench.mat-phi': 32, 'bench.mat-c': 10, 'bench.mat-gs': 20.5, 'bench.mat-gm': 19, 'bench.mat-phi@mat=clay': 26, 'bench.mat-c@mat=clay': 8,
-    'bench.mat-phi@mat=rock': 42, 'bench.mat-gs@mat=rock': 22, 'bench.mat-phi@mat=filter': 36, 'bench.mat-phi@mat=tsand': 33, 'bench.mat-gs@mat=tsand': 19.5
+    'bench.mat-phi@mat=rock': 42, 'bench.mat-gs@mat=rock': 22, 'bench.mat-phi@mat=filter': 36, 'bench.mat-phi@mat=tsand': 33, 'bench.mat-gs@mat=tsand': 19.5,
+    'bench.fos-up@uprock=-6': 1.244, 'bench.fos-up@uprock=-3': 1.324, 'bench.q-lday@uprock=-6': 57.3, 'bench.goal@mission=drawdown,goal=minFoSUp': 1.2,
+    'bench.goal@mission=drawdown,goal=maxQ': 1000, 'grains.cav-kpa': -100, 'grains.mu': 0.5
   };
   const off = [];
   for (const [k, w] of Object.entries(A4)) { // a value, or [value, significant figures]
