@@ -301,6 +301,11 @@ console.log('\nFacts the text states (errata fixes)');
   // Fig 8.2: flow lines are equal-flux only within each set
   never('Flow lines are spaced so that each neighbouring pair carries the same flow, as in', 'Step 8, seepage lab');
   says('Within each set, each neighbouring pair carries the same flow', 'Step 8, seepage lab');
+  // the films: the masthead no longer claims each retells only the step it ends
+  never('each at the end of the step it retells', 'masthead');
+  says('Each sits in one of the steps it retells, and several range over other steps as well', 'masthead');
+  says('Then it runs ahead: the block on the ramp and the factor of safety (Step 4)', 'Depth, not size caption');
+  never('so the shells stay dry and strong', 'A wall made of dirt caption (the film says the back half stays dry)');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');
