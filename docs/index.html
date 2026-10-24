@@ -8980,7 +8980,7 @@ if (window.grainsDebug) window.grainsDebug.describe = tutorSpec.describe;
       ctx.fillText(pn.kind === 'rock' ? 'Core against rockfill' : 'Core against a sand filter', 0, 17);
       ctx.font = '12px "Source Sans 3", "Helvetica Neue", sans-serif'; ctx.fillStyle = C.ink2;
       ctx.fillText('Core', 8, H - 6);
-      ctx.fillText(pn.kind === 'rock' ? 'Rockfill: voids ≫ core grains' : 'Filter: pores < core grains', IF + 6, H - 6);
+      ctx.fillText(pn.kind === 'rock' ? 'Rockfill: voids ≫ core grains' : 'Filter: the coarser core grains bridge its pores', IF + 6, H - 6);
       ctx.textAlign = 'right';
       if (pn.kind === 'rock') { ctx.fillStyle = C.bad; ctx.fillText('Core grains lost: ' + pn.lost, PW, 17); }
       else { ctx.fillStyle = C.ok; ctx.fillText('Core grains lost: 0', PW, 17); }

@@ -89,7 +89,9 @@ for (const s of spans) {
     'bench.mat-phi': 32, 'bench.mat-c': 10, 'bench.mat-gs': 20.5, 'bench.mat-gm': 19, 'bench.mat-phi@mat=clay': 26, 'bench.mat-c@mat=clay': 8,
     'bench.mat-phi@mat=rock': 42, 'bench.mat-gs@mat=rock': 22, 'bench.mat-phi@mat=filter': 36, 'bench.mat-phi@mat=tsand': 33, 'bench.mat-gs@mat=tsand': 19.5,
     'bench.fos-up@uprock=-6': 1.244, 'bench.fos-up@uprock=-3': 1.324, 'bench.q-lday@uprock=-6': 57.3, 'bench.goal@mission=drawdown,goal=minFoSUp': 1.2,
-    'bench.goal@mission=drawdown,goal=maxQ': 1000, 'grains.cav-kpa': -100, 'grains.mu': 0.5
+    'bench.goal@mission=drawdown,goal=maxQ': 1000, 'grains.cav-kpa': -100, 'grains.mu': 0.5,
+    'bench.crit-xc': 42.45, 'bench.crit-zc': 40.30, 'bench.crit-r-m': 42.89, 'bench.crit-entry-x': 2.78, 'bench.crit-exit-x': 57.12, 'bench.crit-depth-m': 11.92,
+    'bench.slices-n': 40, 'bench.slice-x': 19.76, 'bench.slice-zb': 3.90, 'bench.slice-zt': 15.62
   };
   const off = [];
   for (const [k, w] of Object.entries(A4)) { // a value, or [value, significant figures]
