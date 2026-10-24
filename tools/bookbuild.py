@@ -20,6 +20,7 @@ What it does, in order (SPEC A.2):
 """
 import html as _html
 import json
+import math
 import pathlib
 import re
 
@@ -45,9 +46,28 @@ def words(s):
 
 
 def fmt_len(sec):
-    sec = int(round(sec))
+    sec = int(math.floor(sec + 0.5))  # half up, as the tests and the scripts round
     m, s = divmod(sec, 60)
     return ('%d min %d s' % (m, s) if s else '%d min' % m) if m else '%d s' % s
+
+
+def clock(t):
+    """a film time as the player shows it: 191.6 → "3:11" """
+    m, sec = divmod(int(t), 60)
+    return '%d:%02d' % (m, sec)
+
+
+def parse_vtt(text):
+    cues = []
+    for block in re.split(r'\n\s*\n', text):
+        m = re.search(r'(\d+):(\d\d):(\d\d\.\d+)\s*-->\s*(\d+):(\d\d):(\d\d\.\d+)', block)
+        if not m:
+            continue
+        t0 = int(m.group(1)) * 3600 + int(m.group(2)) * 60 + float(m.group(3))
+        t1 = int(m.group(4)) * 3600 + int(m.group(5)) * 60 + float(m.group(6))
+        text = ' '.join(l.strip() for l in block[m.end():].strip().split('\n') if l.strip())
+        cues.append((t0, t1, _html.unescape(re.sub(r'<[^>]+>', '', text))))
+    return cues
 
 
 def join_and(items):
@@ -68,6 +88,7 @@ class Book:
         self.src = self.root / 'src'
         self.draft = draft
         self.errors, self.warnings = [], []
+        self._cues = {}
 
     # ------------------------------------------------------------------ messages
     def error(self, msg, draftable=False):
@@ -294,7 +315,8 @@ class Book:
             'units': [self.unit_data(u) for u in self.present],
             'glossaryExtra': self.glossary_extra,
             'films': {k: {'film': s['film'], 'start': s['start'], 'end': s['end'], 'part': s.get('part'), 'unit': s['unit']['id'],
-                          'title': s['info']['title'], 'safeTitle': s['info'].get('safeTitle'), 'duration': s['info']['duration']} for k, s in self.segments.items()},
+                          'title': s['info']['title'], 'safeTitle': s['info'].get('safeTitle'), 'duration': s['info']['duration'],
+                          'question': s.get('question'), 'tail': self.film_tail(s)} for k, s in self.segments.items()},
         }
         return self.doc.html(), data
 
@@ -641,20 +663,9 @@ class Book:
             out.append('<ol class="course">%s</ol>' % ''.join(
                 '<li><a href="#%s"><span>%s</span><strong>%s</strong></a></li>' % (u['id'], 'Appendix %s' % u['label'] if u.get('label') else 'Reference', H.esc(u['title']))
                 for u in back))
-        # films, in book order, with the safe title before the last chapter
-        films = [(k, r) for k, r in self.refs.items() if r['kind'] == 'film']
-        total = sum(self.segments[k]['end'] - self.segments[k]['start'] for k, _ in films if k in self.segments)
-        fl = []
-        for k, r in films:
-            s = self.segments.get(k)
-            if not s:
-                continue
-            title = s['info'].get('safeTitle') or s['info']['title']
-            part = (' (%s)' % s['part']) if s.get('part') else ''
-            fl.append('<li><a href="#%s">%s</a> · %s%s · %s · %s</li>' % (
-                k, r['label'], H.esc(title), H.esc(part), self.refs[s['unit']['id']]['label'], fmt_len(s['end'] - s['start'])))
-        if fl:
-            out.append('<details class="toc-films"><summary>Films · %s in all</summary><ol class="toc-list">%s</ol></details>' % (fmt_len(total), ''.join(fl)))
+        # the films (SPEC B.5, final-plan front matter): all seven, in the order the book plays them,
+        # each with its whole running time and where it plays; the safe title before the last chapter
+        out.append(self.film_list())
         figs = ['<li><a href="#%s">%s</a> · %s</li>' % (k, r['label'], H.esc(r['title'])) for k, r in self.refs.items() if r['kind'] in ('fig', 'table')]
         if figs:
             out.append('<details class="toc-figs"><summary>Figures and tables</summary><ol class="toc-list">%s</ol></details>' % ''.join(figs))
@@ -795,8 +806,36 @@ class Book:
             elif e.tag == 'cite' and not e.text.strip() and k in self.bib:
                 e.append(*frag(self.bib_entry(k, self.bib[k])))
 
+    def film_list(self):
+        order = []
+        for k, r in self.refs.items():
+            if r['kind'] == 'film' and k in self.segments and self.segments[k]['film'] not in order:
+                order.append(self.segments[k]['film'])
+        if not order:
+            return ''
+        rows, total = [], 0.0
+        for f in order:
+            info = self.B['films'][f]
+            total += info['duration']
+            segs = [(k, self.segments[k]) for k, r in self.refs.items() if r['kind'] == 'film' and self.segments.get(k, {}).get('film') == f]
+            nums = join_and('<a href="#%s">%s</a>' % (k, H.esc(self.refs[k]['num'])) for k, _ in segs)
+            units = [self.refs[sg['unit']['id']] for _, sg in segs]
+            where = units[0]['label'] if len(units) == 1 else '%s %s' % (PLURAL['chapter'], join_and(r['num'] for r in units))
+            if len(segs) > 1:
+                where = 'in %s parts, %s' % ({2: 'two', 3: 'three'}.get(len(segs), len(segs)), where)
+            title = info.get('safeTitle') or info['title']
+            rows.append('<li><span class="tf-n">%s</span><span class="tf-t">%s</span><span class="tf-w">%s</span><span class="tf-l">%s</span></li>' % (
+                nums, H.esc(title), H.esc(where), H.esc(fmt_len(info['duration']))))
+        words_n = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine'}
+        head = '%s films, %d minutes in all' % (words_n.get(len(order), str(len(order))), round(total / 60))
+        return ('<section class="toc-films" aria-labelledby="toc-films-h"><p class="eyebrow toc-part" id="toc-films-h">The films</p>'
+                '<p class="toc-films-k">%s. Each one closes the chapter it retells, with a question before it, chapter marks and a transcript. '
+                'The book plays some of them in part, and says where.</p><ol class="toc-film-list">%s</ol></section>') % (H.esc(head), ''.join(rows))
+
     # ------------------------------------------------------------------ films
     def films(self):
+        """SPEC F.13: segment times onto each film block, its length, the poster question, the chapter
+        marks checked against the segment and the captions, and a transcript built from the VTT"""
         figs = {e.id: e for e in self.doc.find_all(lambda e: e.tag == 'figure' and e.hascls('film'))}
         for fid, e in figs.items():
             if fid not in self.segments:
@@ -813,42 +852,101 @@ class Book:
             e.set('data-film', s['film'])
             e.set('data-start', ('%g' % s['start']))
             e.set('data-end', ('%g' % s['end']))
+            if s.get('question'):
+                e.set('data-question', s['question'])
             ln = e.find(lambda x: x.get('data-gen') == 'film-len')
             if ln is not None:
                 ln.clear()
                 ln.append(H.Text(H.esc('%s · captions' % fmt_len(s['end'] - s['start']))))
+            cues = self.cues(s)
+            self.check_marks(fid, e, s, cues)
             tr = e.find(lambda x: x.get('data-gen') == 'transcript')
-            if tr is not None:
-                paras = self.transcript(s)
-                if paras is not None:
-                    tr.append(*frag('<div class="film-transcript-text">%s</div>' % ''.join('<p>%s</p>' % H.esc(p) for p in paras)))
+            if tr is not None and cues is not None:
+                paras = self.transcript(s, cues)
+                tr.append(*frag('<div class="film-transcript-text">%s</div>' % ''.join(
+                    '<p><button type="button" class="tr-t" data-t="%g" aria-label="Play from %s">%s</button> %s</p>' % (t, clock(t), clock(t), H.esc(p))
+                    for t, p in paras)))
 
-    def transcript(self, s):
+    def film_tail(self, s):
+        """the end card's line for a segment that stops before its file ends (book.json "tail"):
+        {rest} becomes the length left, {unit-or-figure id} a link labelled as the page labels it"""
+        t = s.get('tail')
+        if not t:
+            return None
+        def sub(m):
+            k = m.group(1)
+            if k == 'rest':  # in prose: "23 seconds", "1 min 5 s"
+                rest = s['info']['duration'] - s['end']
+                return H.esc('%d seconds' % math.floor(rest + 0.5) if rest < 59.5 else fmt_len(rest))
+            if k not in self.refs:
+                self.error('src/book.json: film %s: tail names {%s}, which has no number on the page' % (s['id'], k))
+                return '?'
+            return '<a href="#%s">%s</a>' % (k, H.esc(self.refs[k]['label']))
+        return re.sub(r'\{([a-z0-9-]+)\}', sub, H.esc(t))
+
+    def cues(self, s):
+        """every cue of the film's VTT file: (start, end, text), times in seconds from the file's start"""
+        key = s['film']
+        if key in self._cues:
+            return self._cues[key]
         vtt = self.root / 'docs' / s['info']['vtt']
         if not vtt.is_file():
             self.error('film %s: caption file %s is missing' % (s['film'], s['info']['vtt']))
+            self._cues[key] = None
             return None
-        cues = []
-        for block in re.split(r'\n\s*\n', vtt.read_text()):
-            m = re.search(r'(\d+):(\d\d):(\d\d\.\d+)\s*-->\s*(\d+):(\d\d):(\d\d\.\d+)', block)
-            if not m:
+        self._cues[key] = parse_vtt(vtt.read_text())
+        return self._cues[key]
+
+    def check_marks(self, fid, e, s, cues):
+        """chapter marks (SPEC F.13): inside the segment, labelled with their own time, and each at a
+        spoken line of the captions (within 1.5 s of a cue's start)"""
+        for b in e.find_all(lambda x: x.tag == 'button' and x.has('data-t') and x.closest(lambda a: a.hascls('film-marks')) is not None):
+            try:
+                t = float(b.get('data-t'))
+            except ValueError:
+                self.error('film #%s: chapter mark data-t="%s" is not a time' % (fid, b.get('data-t')))
                 continue
-            t0 = int(m.group(1)) * 3600 + int(m.group(2)) * 60 + float(m.group(3))
-            t1 = int(m.group(4)) * 3600 + int(m.group(5)) * 60 + float(m.group(6))
-            text = ' '.join(l.strip() for l in block[m.end():].strip().split('\n') if l.strip())
-            cues.append((t0, t1, _html.unescape(re.sub(r'<[^>]+>', '', text))))
-        paras, cur, last = [], [], None
-        for t0, t1, text in cues:
-            if t0 < s['start'] - 0.05 or t0 >= s['end']:
-                continue
-            if last is not None and t0 - last > 1.5 and cur:
-                paras.append(' '.join(cur))
+            if not (s['start'] - 0.01 <= t < s['end']):
+                self.error('film #%s: chapter mark at %s s is outside its segment (%g–%g s)' % (fid, b.get('data-t'), s['start'], s['end']))
+            if b.text.strip() != clock(t):
+                self.error('film #%s: chapter mark at %s s is labelled "%s", not "%s"' % (fid, b.get('data-t'), b.text.strip(), clock(t)))
+            if cues and not any(abs(c[0] - t) <= 1.5 for c in cues):
+                self.error('film #%s: chapter mark at %s s is not at a spoken line of %s' % (fid, b.get('data-t'), s['info']['vtt']))
+
+    def transcript(self, s, cues):
+        """the cues inside the segment as readable paragraphs: a paragraph breaks where the narration
+        pauses (0.9 s or more: the films leave about 1.2 s between beats and 0.3–0.4 s between lines),
+        and a paragraph longer than about 650 characters is split at the line break nearest its middle.
+        Returns [(start time, text)]."""
+        inside = [c for c in cues if s['start'] - 0.05 <= c[0] < s['end']]
+        groups, cur, last = [], [], None
+        for c in inside:
+            if last is not None and c[0] - last >= 0.9 and cur:
+                groups.append(cur)
                 cur = []
-            cur.append(text)
-            last = t1
+            cur.append(c)
+            last = c[1]
         if cur:
-            paras.append(' '.join(cur))
-        return paras
+            groups.append(cur)
+        def split(g):
+            if len(' '.join(c[2] for c in g)) <= 650 or len(g) < 2:
+                return [g]
+            total = len(' '.join(c[2] for c in g))
+            best, run = None, 0
+            for i in range(1, len(g)):
+                run += len(g[i - 1][2]) + 1
+                if g[i][0] - g[i - 1][1] < 0.2:  # inside one spoken line
+                    continue
+                if best is None or abs(run - total / 2) < abs(best[1] - total / 2):
+                    best = (i, run)
+            if best is None:
+                return [g]
+            return split(g[:best[0]]) + split(g[best[0]:])
+        out = []
+        for g in groups:
+            for h in split(g):
+                out.append((math.floor(h[0][0] * 10 + 1e-6) / 10, ' '.join(c[2] for c in h)))  # a tenth early, never clipping the first word
+        return out
 
     # ------------------------------------------------------------------ global checks
     def checks(self):

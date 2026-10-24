@@ -110,7 +110,9 @@ function unitShort(sec) {
       const ul = document.createElement('ul'); ul.className = 'tocd-figs';
       for (const [k, r] of fl) {
         const l = document.createElement('li'), fa = document.createElement('a'), fb = document.createElement('b');
-        fa.href = '#' + k; fb.textContent = r.label; fa.append(fb, ' ' + (r.title || ''));
+        // a film that names its own answer (the last one) goes by its safe title here, as in the Contents
+        const t = r.kind === 'film' && D.films[k] && D.films[k].safeTitle ? D.films[k].safeTitle : r.title;
+        fa.href = '#' + k; fb.textContent = r.label; fa.append(fb, ' ' + (t || ''));
         l.appendChild(fa); ul.appendChild(l);
       }
       li.appendChild(ul);

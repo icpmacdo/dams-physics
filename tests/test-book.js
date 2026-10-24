@@ -4,11 +4,13 @@
  *   - no dangling reference, no duplicate id, no internal link to a missing id;
  *   - every unit in src/book.json is on the page, in order; every old #anchor and every old id
  *     still lands where it should;
- *   - every film segment sits inside its file (durations from book.json against the VTT captions);
+ *   - every film segment sits inside its file (durations from book.json against the VTT captions), cuts
+ *     fall between spoken lines, marks sit inside their segment at a spoken line, the transcript holds
+ *     exactly the segment's cues, and the Contents lists all seven films with their running times;
  *   - no typed figure or chapter number in a script string, and every ref('…') names a real target;
  *   - every "Set the figure" button names controls and values that exist;
  *   - no visible placeholder text; nothing before Chapter 13 gives Mount Polley's cause away;
- *   - the build refuses a dangling reference, a duplicate id and a typed number.
+ *   - the build refuses a dangling reference, a duplicate id, a typed number and a misplaced film mark.
  * Run: node tests/test-book.js   (a few seconds: one build, a handful of solver runs) */
 'use strict';
 const fs = require('fs'), os = require('os'), path = require('path');
@@ -187,6 +189,59 @@ for (const [, u] of units) for (const s of u.films || []) {
 }
 check((html.match(/class="film-transcript-text"/g) || []).length === Object.keys(data.films).length, 'every film block has its transcript');
 
+// the film treatment (book/SPEC.md F.13): each block, its marks, its transcript, its end card
+const parseVtt = file => [...fs.readFileSync(path.join(ROOT, 'docs', file), 'utf8').split(/\n\s*\n/)].map(b => {
+  const m = b.match(/(\d+):(\d\d):(\d\d\.\d+)\s*-->\s*(\d+):(\d\d):(\d\d\.\d+)/);
+  if (!m) return null;
+  const t0 = +m[1] * 3600 + +m[2] * 60 + +m[3], t1 = +m[4] * 3600 + +m[5] * 60 + +m[6];
+  return [t0, t1, decode(b.slice(b.indexOf(m[0]) + m[0].length).trim().split('\n').map(l => l.trim()).filter(Boolean).join(' ').replace(/<[^>]+>/g, ''))];
+}).filter(Boolean);
+const clockOf = t => Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
+const lenOf = sec => { sec = Math.round(sec); const m = Math.floor(sec / 60), s = sec % 60; return m ? (s ? `${m} min ${s} s` : `${m} min`) : `${s} s`; };
+const segs = [];
+for (const [, u] of units) for (const s of u.films || []) segs.push(Object.assign({}, s, { end: s.end == null ? B.films[s.film].duration : s.end, unit: u.id }));
+for (const s of segs) {
+  const F = B.films[s.film], cues = parseVtt(F.vtt);
+  const i = html.indexOf(`id="${s.id}"`), blk = i < 0 ? '' : html.slice(html.lastIndexOf('<figure', i), html.indexOf('</figure>', i));
+  const tag = (blk.match(/^<figure[^>]*>/) || [''])[0];
+  check(!/class="[^"]*\bsheet\b/.test(tag), `${s.id}: a film block, not a sheet (no tutor button)`);
+  check(new RegExp(`data-question="[^"]{12,}"`).test(tag), `${s.id}: the poster has its one-line question`);
+  check(/class="film-before"[\s\S]*?Before you watch[\s\S]*?<p>[^<]{40,}/.test(blk), `${s.id}: a "Before you watch" question`);
+  check(/class="film-after"><b>After you watch\.<\/b> [\s\S]{80,}?<\/p>/.test(blk), `${s.id}: an "After you watch" note`);
+  check(blk.includes(`data-gen="film-len">${lenOf(s.end - s.start)} · captions<`), `${s.id}: shows the segment's length, ${lenOf(s.end - s.start)}`);
+  check(/<video[^>]*preload="none"/.test(blk) && /<track kind="captions"/.test(blk), `${s.id}: preload="none", with captions`);
+  // the cut: at a pause in the narration, and a cut before the file's end has narration after it
+  const straddles = b => cues.some(([a, z]) => a < b - 0.01 && z > b + 0.01);
+  check(!(s.start > 0 && straddles(s.start)) && !(s.end < F.duration - 0.01 && straddles(s.end)), `${s.id}: its cuts (${s.start}–${s.end.toFixed(2)} s) fall between spoken lines`);
+  if (s.end < F.duration - 0.01) check(cues.some(c => c[0] >= s.end), `${s.id}: something is spoken after its end at ${s.end} s, so the cut leaves it out`);
+  // chapter marks
+  const marks = [...blk.matchAll(/<li><button type="button" data-t="([\d.]+)">([^<]*)<\/button>/g)].map(m => [+m[1], m[2]]);
+  check(marks.length >= 4 && marks.length <= 8, `${s.id}: ${marks.length} chapter marks (4–8)`);
+  const badMarks = marks.filter(([t, l]) => !(t >= s.start && t < s.end) || l !== clockOf(t) || !cues.some(c => Math.abs(c[0] - t) <= 1.5));
+  check(!badMarks.length, `${s.id}: every mark sits inside the segment, at a spoken line, labelled with its time` + (badMarks.length ? ': ' + badMarks.map(m => m.join(' ')).join(', ') : ''));
+  check(marks.every((m, k) => !k || m[0] > marks[k - 1][0]), `${s.id}: the marks run in order`);
+  // the transcript: every cue inside the segment, in order, and nothing from outside it
+  const paras = [...blk.matchAll(/<p><button type="button" class="tr-t" data-t="([\d.]+)"[^>]*>([^<]*)<\/button> ([^<]*)<\/p>/g)].map(m => [+m[1], m[2], decode(m[3])]);
+  const inside = cues.filter(c => c[0] >= s.start - 0.05 && c[0] < s.end);
+  const want = inside.map(c => c[2]).join(' '), got = paras.map(p => p[2]).join(' ');
+  check(paras.length > 3 && got === want, `${s.id}: the transcript holds all ${inside.length} cues of the segment in ${paras.length} paragraphs, and nothing else`);
+  check(paras.every(([t, l], k) => t >= s.start - 0.11 && t < s.end && l === clockOf(t) && (!k || t > paras[k - 1][0])), `${s.id}: each paragraph is stamped with a time inside the segment, in order`);
+  check(paras.every(p => p[2].length <= 900), `${s.id}: no paragraph runs past 900 characters (longest ${Math.max(...paras.map(p => p[2].length))})`);
+  // the end card: a segment that stops early either continues elsewhere or says what it leaves out
+  const D = data.films[s.id];
+  const next = segs.find(o => o !== s && o.film === s.film && o.start >= s.end - 0.5);
+  if (s.end < F.duration - 0.01) check(!!next || (D && /<a href="#[\w-]+">/.test(D.tail || '')), `${s.id}: stops ${lenOf(F.duration - s.end)} early, and its end card says ` + (next ? `where it continues (${next.id})` : 'what the rest holds'));
+  else check(!(D && D.tail), `${s.id}: plays to the end, so it has no tail note`);
+}
+{
+  const list = (html.match(/<ol class="toc-film-list">([\s\S]*?)<\/ol>/) || [, ''])[1];
+  const rows = [...list.matchAll(/<li>[\s\S]*?<span class="tf-t">([^<]*)<\/span>[\s\S]*?<span class="tf-l">([^<]*)<\/span><\/li>/g)].map(m => [decode(m[1]), m[2]]);
+  const films = Object.values(B.films);
+  const total = films.reduce((a, F) => a + F.duration, 0);
+  check(rows.length === films.length && films.every(F => rows.some(([t, l]) => t === (F.safeTitle || F.title) && l === lenOf(F.duration))), `the Contents lists all ${films.length} films with their running times`);
+  check(new RegExp(`films, ${Math.round(total / 60)} minutes in all`).test(html) && Math.round(total / 60) === 58, `the Contents gives the films' total: ${Math.round(total / 60)} minutes (${total.toFixed(1)} s)`);
+}
+
 // ---------------------------------------------------------------- scripts
 console.log('\nScripts');
 // string literals in a script, comments left out
@@ -343,6 +398,10 @@ console.log('\nThe build refuses');
     check(/Polley guard/.test(e), 'Mount Polley\'s cause before Chapter 13');
     const f = tryBuild('ch04-grip.html', 'Friction comes from pressing</h3>', 'Friction comes from pressing</h3><p>Grains grip.<label for="mn-grip-t" class="mn-ref"></label><input type="checkbox" id="mn-grip-t" class="margin-toggle"><span class="marginnote" data-kind="source">Horn and Deere (1962), Table 2.</span> Wet or dry, Table 2 says.</p>');
     check(/typed number "Table 2" in "Wet or dry/.test(f) && !/Horn and Deere/.test(f), 'a typed number in the prose, but not a source\'s own table cited in a Source note');
+    const g = tryBuild('ch02-depth.html', '<button type="button" data-t="160.8">2:40</button>', '<button type="button" data-t="200.0">3:20</button>');
+    check(/chapter mark at 200\.0 s is outside its segment/.test(g), 'a film\'s chapter mark outside its segment');
+    const h = tryBuild('ch02-depth.html', '<button type="button" data-t="100.3">1:40</button>', '<button type="button" data-t="98">1:38</button>');
+    check(/chapter mark at 98 s is not at a spoken line/.test(h), 'a film\'s chapter mark that is not at a spoken line');
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 }
 

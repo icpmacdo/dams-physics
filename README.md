@@ -21,7 +21,9 @@ Every step asks you to predict before it shows you. Dotted terms have hover defi
 
 ## Films
 
-Seven narrated films, 6 to 9 minutes each, sit at the end of the steps they retell: *Depth, not size* (Step 2), *The same sand, three ways* (Step 4), *Dams that are never finished* (Step 6), *A wall made of dirt* (Step 7), *The sand that boils* and *The layer nobody found* (Step 8), and *Every dam leaks* (Step 9). They are made in the vibes repo (`engine/concepts/dams/`) and live in `docs/video/` with WebVTT captions and poster frames. Nothing downloads until play. A copy of the page without `docs/video/`, such as the claude.ai artifact, hides the film blocks.
+Seven narrated films, 6 to 9 minutes each and 58 minutes in all, close the chapters they retell: *Depth, not size* (in two parts, Chapters 2 and 7), *The same sand, three ways* (5), *Dams that are never finished* (8), *A wall made of dirt* (9), *The sand that boils* (11), *Every dam leaks* (12) and *The layer nobody found* (13, listed before then as "Mount Polley's answer"). They are made in the vibes repo (`engine/concepts/dams/`) and live in `docs/video/` with WebVTT captions and poster frames. Nothing downloads until play. A copy of the page without `docs/video/`, such as the claude.ai artifact, hides the film blocks.
+
+The films are never re-rendered. `src/book.json` gives each film block its segment (start and end in seconds of the file), the poster's question and, for a segment that stops early, a line on what the rest holds; the file lengths stored there are ffprobe's. The build numbers each block ("Film 2.1"), writes its length, checks its chapter marks against the segment and the captions, and builds a transcript from the VTT, paragraphed at the narration's pauses and stamped with times. `src/app-film.js` draws the poster, plays only the segment, and at its end offers to keep watching or says where the next part plays.
 
 ```sh
 python3 tools/import_videos.py   # re-import after a re-render: Day cuts, captions (+4.1 s title card), posters
@@ -45,6 +47,7 @@ node tests/test-seepage.js     # solver cases + 12 physical sanity checks (incl.
 node tests/test-stability.js   # Bishop/Spencer checks against closed-form and benchmark cases
 node tests/test-grains.js      # emergent behaviour of the grain sandbox (about 30 s)
 node tests/test-setfig.js      # in headless Chrome: "Set the figure" on every control of every figure, the running head, Contents, Expand
+node tests/test-films.js       # in headless Chrome, in real time: segments stop at their ends, posters, end cards, marks (about 25 s)
 ```
 
 ## Dams Academy

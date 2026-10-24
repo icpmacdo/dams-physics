@@ -58,7 +58,8 @@
           "mini": 2,
           "wordTarget": [3500, 4500],
           "aliases": [{ "id": "pressure" }],
-          "films": [{ "id": "film-depth-not-size", "film": "depth-not-size", "start": 0, "end": 191.0, "part": "part one" }],
+          "films": [{ "id": "film-depth-not-size", "film": "depth-not-size", "start": 0, "end": 191.0, "part": "part one",
+            "question": "A lake or a slot of water, both 50 m deep: which dam has to be stronger?" }],
           "newIds": ["fig-depth-triangle", "eq-depth-p", "eq-depth-push", "ex-depth-sensor", "ex-depth-push", "ex-depth-slot", "ex-depth-triangle", "ex-depth-sloping"]
         },
         {
@@ -94,7 +95,9 @@
           "mini": 5,
           "wordTarget": [3500, 4500],
           "aliases": [],
-          "films": [{ "id": "film-same-sand", "film": "same-sand", "start": 0, "end": 545.0 }],
+          "films": [{ "id": "film-same-sand", "film": "same-sand", "start": 0, "end": 524.5,
+            "question": "No grain breaks, and the house goes down anyway. What let go?",
+            "tail": "The film’s last {rest} ask the lake-or-slot question, which you answered in {ch-depth}." }],
           "newIds": ["fig-trapped-clock", "eq-trapped-time", "ex-trapped-castle", "ex-trapped-time", "ex-trapped-clay", "trapped-comes-back"]
         }
       ]
@@ -124,7 +127,8 @@
           "mini": 7,
           "wordTarget": [3000, 4000],
           "aliases": [],
-          "films": [{ "id": "film-depth-not-size-2", "film": "depth-not-size", "start": 191.0, "end": null, "part": "part two" }],
+          "films": [{ "id": "film-depth-not-size-2", "film": "depth-not-size", "start": 191.0, "end": null, "part": "part two",
+            "question": "Is there a cushion of water under a concrete dam?" }],
           "newIds": ["fig-concrete-forces", "case-bouzey", "eq-concrete-fs", "eq-concrete-drain", "ex-concrete-full", "ex-concrete-clogged", "ex-concrete-phi", "ex-concrete-level"]
         },
         {
@@ -136,7 +140,8 @@
           "mini": 8,
           "wordTarget": [3500, 4500],
           "aliases": [{ "id": "raising" }],
-          "films": [{ "id": "film-never-finished", "film": "never-finished", "start": 0, "end": null }],
+          "films": [{ "id": "film-never-finished", "film": "never-finished", "start": 0, "end": null,
+            "question": "Brazil and Chile each banned one way of building a tailings dam. Why that one?" }],
           "newIds": ["tbl-raising-compare", "case-coquitlam", "ex-raising-fill", "ex-raising-crest", "ex-raising-rate"]
         }
       ]
@@ -154,7 +159,8 @@
           "mini": 9,
           "wordTarget": [3500, 4500],
           "aliases": [{ "id": "zones" }],
-          "films": [{ "id": "film-wall-of-dirt", "film": "wall-of-dirt", "start": 0, "end": null }],
+          "films": [{ "id": "film-wall-of-dirt", "film": "wall-of-dirt", "start": 0, "end": null,
+            "question": "Water soaks through dirt. So why is the back half of this dam dry?" }],
           "newIds": ["tbl-zones-earth", "ex-zones-compaction", "ex-zones-shell"]
         },
         {
@@ -178,7 +184,9 @@
           "mini": 11,
           "wordTarget": [4000, 5000],
           "aliases": [],
-          "films": [{ "id": "film-sand-that-boils", "film": "sand-that-boils", "start": 0, "end": 540.0 }],
+          "films": [{ "id": "film-sand-that-boils", "film": "sand-that-boils", "start": 0, "end": 540.0,
+            "question": "How does a trickle at the toe bring down a whole dam?",
+            "tail": "The film’s last {rest} ask why one way of raising a tailings dam was banned, which {ch-raising} answered." }],
           "newIds": ["fig-erosion-tube", "fig-erosion-modes", "case-teton", "case-bennett", "eq-erosion-ic", "eq-erosion-filter", "ex-erosion-exit", "ex-erosion-pipe", "ex-erosion-filter"]
         }
       ]
@@ -196,7 +204,8 @@
           "mini": 12,
           "wordTarget": [4000, 5000],
           "aliases": [],
-          "films": [{ "id": "film-every-dam-leaks", "film": "every-dam-leaks", "start": 0, "end": null }],
+          "films": [{ "id": "film-every-dam-leaks", "film": "every-dam-leaks", "start": 0, "end": null,
+            "question": "This dam is barely standing. Fatter, a wall underneath, or a strip of sand: which fix saves it?" }],
           "newIds": ["fig-slope-infinite", "fig-slope-slice", "eq-slope-infinite", "eq-slope-seep", "eq-slope-bishop", "ex-slope-infinite", "ex-slope-slice", "ex-slope-dry", "ex-slope-drawdown"]
         },
         {
@@ -208,7 +217,8 @@
           "mini": 13,
           "wordTarget": [4000, 5000],
           "aliases": [{ "id": "build" }],
-          "films": [{ "id": "film-layer-nobody-found", "film": "layer-nobody-found", "start": 0, "end": null }],
+          "films": [{ "id": "film-layer-nobody-found", "film": "layer-nobody-found", "start": 0, "end": null,
+            "question": "Mount Polley, 4 August 2014, about one in the morning. What gave way?" }],
           "newIds": ["case-polley", "fig-build-strengths", "fig-build-cost", "ex-build-fatter", "ex-build-hold", "ex-build-polley", "ex-build-breakout"]
         }
       ]
