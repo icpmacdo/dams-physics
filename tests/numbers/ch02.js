@@ -7,6 +7,7 @@ const num = v => +v;
 // literature constants (each carries a Source note where the page prints it)
 const P_ATM = 101.325;   // kPa, sea-level pressure of the U.S. Standard Atmosphere, 1976
 const RHO_AIR = 1.225;   // kg/m³, sea-level air density, same source
+const RHO_HG = 13.595;   // relative density of mercury at 0 °C (the standard atmosphere is defined as 760 mm of it)
 const REV_H = 175;       // m, height of Revelstoke Dam (BC Hydro, 2013 news release)
 const REV_B = 126;       // m, its thickness at the base (BC Hydro, 2016 presentation)
 // the chapter's own illustrative inputs
@@ -26,6 +27,7 @@ module.exports = {
   'ch02.kn-kg': { doc: 'mass whose weight is one kilonewton, kg', f: (a, X) => 1000 / gw(X) },
   'ch02.tonnes-m2': { args: { h: '30' }, doc: 'pressure at depth h as tonnes of weight on each square metre', f: (a, X) => X.G.depthCalc(50, num(a.h)).p / gw(X) },
   'ch02.atm-m': { doc: 'height of water whose pressure equals the standard atmosphere, m', f: (a, X) => P_ATM / gw(X) },
+  'ch02.atm-hg-cm': { doc: 'height of mercury whose pressure equals the standard atmosphere, cm', f: (a, X) => P_ATM / (RHO_HG * gw(X)) * 100 },
   'ch02.abs-kpa': { args: { h: '30' }, doc: 'absolute pressure at depth h (gauge + standard atmosphere), kPa', f: (a, X) => X.G.depthCalc(50, num(a.h)).p + P_ATM },
   'ch02.air-kpa': { args: { h: '30' }, doc: 'pressure change over h metres of sea-level air, kPa', f: (a, X) => RHO_AIR * 9.81 * num(a.h) / 1000 },
   'ch02.air-ratio': { doc: 'water (1,000 kg/m³) ÷ sea-level air density', f: () => 1000 / RHO_AIR },
@@ -36,6 +38,9 @@ module.exports = {
   'ch02.bottom-pct': { doc: 'share of the push carried by the bottom third of the face, % (1 − (2/3)²)', f: (a, X) => 100 * (1 - F(100 * 2 / 3, X) / F(100, X)) },
   'ch02.M-ratio': { args: { a: '100', b: '50' }, doc: 'tipping moment at depth a ÷ at depth b', f: (a, X) => (F(num(a.a), X) * num(a.a)) / (F(num(a.b), X) * num(a.b)) },
   'ch02.slot-tonnes': { doc: 'the water in the slot, tonnes per metre of dam (2 m × 50 m × 1 t/m³)', f: () => SLOT_W * SLOT_H * 1 },
+  'ch02.slot-floor-m2': { doc: 'the slot’s floor under each metre of dam, m² (2 m × 1 m)', f: () => SLOT_W * 1 },
+  'ch02.slot-face-m2': { doc: 'the dam’s wet face on each metre of dam, m² (50 m × 1 m)', f: () => SLOT_H * 1 },
+  'ch02.face-avg-t-m2': { doc: 'average pressure on the 50 m face, as tonnes on each square metre (half the pressure at the foot)', f: (a, X) => X.G.depthCalc(SLOT_H, SLOT_H).p / gw(X) / 2 },
   'ch02.slot-ratio': { doc: 'the slot’s push ÷ the slot’s own weight', f: (a, X) => F(SLOT_H, X) / gw(X) / (SLOT_W * SLOT_H) },
 
   // ---- why a gravity dam is a triangle (a section 0.8z wide at depth z, as the Chapter 7 dam)

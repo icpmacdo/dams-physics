@@ -41,7 +41,7 @@
     "container": "Online exhibition",
     "doi": null,
     "url": "https://imss.fi.it/vuoto/eesper1.html",
-    "note": "Galileo's account of the limit of about 18 braccia (around 11 m) to which a pump could raise water."
+    "note": "Galileo's account of the limit of about 18 braccia to which a pump could raise water. The page gives it as around 11 m; 18 Florentine braccia of 58.4 cm is about 10.5 m, and no suction pump can lift water above about 10.3 m."
   },
   "museogalileo-torricelli": {
     "group": "web",
@@ -52,7 +52,7 @@
     "container": "Catalogue of the collections, In depth",
     "doi": null,
     "url": "https://catalogue.museogalileo.it/indepth/TorricellianExperiment.html",
-    "note": "Torricelli's letter to Michelangelo Ricci of 11 June 1644: the mercury column stood at about 1¼ braccia (c. 70 cm)."
+    "note": "Torricelli's letter to Michelangelo Ricci of 11 June 1644: the mercury column stood at about 1¼ braccia. The page rounds that to c. 70 cm; 1¼ braccia is about 73 cm, and the standard atmosphere holds 76 cm of mercury."
   },
   "bchydro-revelstoke2013": {
     "group": "web",

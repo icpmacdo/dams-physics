@@ -9,7 +9,7 @@
    - chapter marks and transcript paragraphs (button[data-t]) that seek the film and play, and the
      mark for the passage now playing is shown as current.
    A film whose files are missing (the claude.ai copy of the page ships without docs/video/) hides
-   itself rather than showing a dead player; the small poster image is the probe, since
+   itself rather than showing a dead player, with the sentence that leads into it (data-lead-for); the small poster image is the probe, since
    preload="none" fetches nothing from the video until play. Starting one film pauses any other. */
 (function films() {
   const clock = t => { t = Math.max(0, Math.floor(t)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
@@ -23,9 +23,11 @@
 
     // the probe, and pause-the-others
     const probe = new Image();
-    probe.onerror = () => { fig.hidden = true; };
+    // the sentence that leads into the film (p[data-lead-for]) goes with it, so the prose doesn't end on a colon
+    const hideFilm = () => { fig.hidden = true; document.querySelectorAll('[data-lead-for="' + fig.id + '"]').forEach(p => { p.hidden = true; }); };
+    probe.onerror = hideFilm;
     probe.src = v.getAttribute('poster');
-    v.querySelector('source')?.addEventListener('error', () => { fig.hidden = true; });
+    v.querySelector('source')?.addEventListener('error', hideFilm);
     v.addEventListener('play', () => vids.forEach(o => { if (o !== v && !o.paused) o.pause(); }));
 
     // the segment: [start, end) of the file; "open" once the reader asks to keep watching past the end

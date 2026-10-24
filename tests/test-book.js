@@ -207,7 +207,8 @@ for (const s of segs) {
   check(!/class="[^"]*\bsheet\b/.test(tag), `${s.id}: a film block, not a sheet (no tutor button)`);
   check(new RegExp(`data-question="[^"]{12,}"`).test(tag), `${s.id}: the poster has its one-line question`);
   check(/class="film-before"[\s\S]*?Before you watch[\s\S]*?<p>[^<]{40,}/.test(blk), `${s.id}: a "Before you watch" question`);
-  check(/class="film-after"><b>After you watch\.<\/b> [\s\S]{80,}?<\/p>/.test(blk), `${s.id}: an "After you watch" note`);
+  // folded away until the reader opens it, since it starts with the answer to the question before the film
+  check(/<details class="film-after"><summary>After you watch[^<]*<\/summary><p>[\s\S]{80,}?<\/p><\/details>/.test(blk), `${s.id}: an "After you watch" note, folded in a <details>`);
   check(blk.includes(`data-gen="film-len">${lenOf(s.end - s.start)} · captions<`), `${s.id}: shows the segment's length, ${lenOf(s.end - s.start)}`);
   check(/<video[^>]*preload="none"/.test(blk) && /<track kind="captions"/.test(blk), `${s.id}: preload="none", with captions`);
   // the cut: at a pause in the narration, and a cut before the file's end has narration after it

@@ -20,10 +20,10 @@
       <p class="cold"><span class="newthought">Walk down a beach at low tide,</span> from the dunes to the sea, and the sand changes under you three times. Up by the dunes it is dry. Your foot sinks in, the sand pours back round your ankle, and when you kick it, it runs.</p>
       <p>Halfway down, where the sea was an hour ago, the sand is dark and firm. It takes a crisp footprint, and as your weight comes down a pale ring spreads round your foot for a moment, as if the sand had dried where you stood. Then the colour comes back.</p>
       <p>At the edge, where every wave lays down a fresh sheet of sand and soaks it, you can stand quite happily as long as you keep still. Wiggle your feet and the sand goes soft. You sink to the ankles, and it takes a tug to get out.</p>
-      <p>Three steps, one sand. The grains are near enough the same all the way down the beach. What changes is the water in the gaps between them: almost none at the top, a little in the middle, and at the edge water and nothing else.</p>
+      <p>Three steps, one sand. The grains are near enough the same all the way down the beach. What changes is the water in the gaps between them. At the top there is almost none. In the middle every gap is still full, but the water is held up in the sand by the pull of its own surface, the way a sponge lifted out of the bath stays full, and the grains there are packed tight. At the edge the gaps are full too, and the grains lie loose.</p>
 
       <h3 id="s-beach-three">Three sands</h3>
-      <p>Take those three sands home in buckets and they keep their characters.</p>
+      <p>Take those three sands home in buckets. On the way the middle sand drains a little, as sand lifted out of water does, and arrives damp: air in most of its gaps, and water clinging only where the grains touch. Then the three keep their characters.</p>
       <p><strong>Dry sand pours.</strong> Tip it out and it spreads into a low heap whose sides settle at one slope, however carefully you pour.</p>
       <p><strong>Damp sand stands.</strong> Pack it into the bucket, turn it out, and you get a castle with walls that go straight up.</p>
       <p><strong>Loose wet sand flows.</strong> Where every gap is full of water and the grains were laid down loosely, the sand bears you while you keep still and turns to something like soup when you shake it.</p>
@@ -85,7 +85,7 @@
           <p class="we-t">Same sand, new shape</p>
         </header>
         <dl class="we-gf">
-          <dt>Given</dt><dd>The damp castle's section: <span data-n="ch01.castle-w-cm">20</span> cm wide and <span data-n="ch01.castle-h-cm">29.2</span> cm tall with battlements on top, an area <var>A</var> = <span data-n="beach.area-cm2">572.6</span> cm² (read from the figure's drawing). Dry, the sand stands at <var>β</var> = <span data-n="beach.repose-deg">34</span>°.</dd>
+          <dt>Given</dt><dd>The damp castle's section, as the figure draws it: <span data-n="ch01.castle-w-cm">20.4</span> cm across and <span data-n="ch01.castle-h-cm">29.2</span> cm tall, less two notches between the battlements, each <span data-n="ch01.notch-w-cm">3.2</span> cm wide and <span data-n="ch01.notch-d-cm">3.6</span> cm deep. Its area is <var>A</var> = <span data-n="ch01.castle-w-cm">20.4</span> × <span data-n="ch01.castle-h-cm">29.2</span> − 2 × <span data-n="ch01.notch-w-cm">3.2</span> × <span data-n="ch01.notch-d-cm">3.6</span> = <span data-n="beach.area-cm2">572.64</span> cm². Dry, the sand stands at <var>β</var> = <span data-n="beach.repose-deg">34</span>°.</dd>
           <dt>Find</dt><dd>The height and width of a dry heap holding the same sand.</dd>
           <dt>The idea</dt><dd>The dry heap's section is a triangle with 34° sides. Write its area in terms of its height, set it equal to the castle's, and solve for the height (<a data-ref="fig-beach"></a>).</dd>
         </dl>
@@ -93,13 +93,13 @@
           <li><span class="we-eq">half-base = <var>H</var> ÷ tan <var>β</var></span><span class="why">each side climbs <var>H</var> over a run of <var>H</var>/tan <var>β</var>, the definition of the slope's tangent</span></li>
           <li><span class="we-eq"><var>A</var> = ½ × (2<var>H</var> ÷ tan <var>β</var>) × <var>H</var> = <var>H</var>² ÷ tan <var>β</var></span><span class="why">a triangle's area is half its base times its height</span></li>
           <li><span class="we-eq"><var>H</var> = √(<var>A</var> · tan <var>β</var>)</span><span class="why">rearranged for the height</span></li>
-          <li><span class="we-eq">tan 34° = <span data-n="ch01.tan-repose">0.6745</span></span><span class="why">from a calculator</span></li>
-          <li><span class="we-eq"><var>A</var> · tan <var>β</var> = 572.6 × 0.6745 = <span data-n="ch01.a-tan-cm2">386.3</span> cm²</span><span class="why">the same sand, now on a 34° slope</span></li>
-          <li><span class="we-eq"><var>H</var> = √386.3 = <span data-n="beach.cone-h-cm">19.65</span> cm</span><span class="why">the height of the dry heap</span></li>
-          <li><span class="we-eq">half-base = 19.65 ÷ 0.6745 = <span data-n="ch01.cone-half-cm">29.14</span> cm, so the base is <span data-n="beach.cone-base-cm">58.27</span> cm</span><span class="why">back to step 1 with the height known</span></li>
+          <li><span class="we-eq">tan 34° = <span data-n="ch01.tan-repose">0.67451</span></span><span class="why">from a calculator; the steps below keep enough digits to come out the same on yours</span></li>
+          <li><span class="we-eq"><var>A</var> · tan <var>β</var> = <span data-n="beach.area-cm2">572.64</span> × <span data-n="ch01.tan-repose">0.67451</span> = <span data-n="ch01.a-tan-cm2">386.25</span> cm²</span><span class="why">the same sand, now on a 34° slope</span></li>
+          <li><span class="we-eq"><var>H</var> = √<span data-n="ch01.a-tan-cm2">386.25</span> = <span data-n="beach.cone-h-cm">19.653</span> cm</span><span class="why">the height of the dry heap</span></li>
+          <li><span class="we-eq">half-base = <span data-n="beach.cone-h-cm">19.653</span> ÷ <span data-n="ch01.tan-repose">0.67451</span> = <span data-n="ch01.cone-half-cm">29.137</span> cm, so the base is <span data-n="beach.cone-base-cm">58.27</span> cm</span><span class="why">back to step 1 with the height known</span></li>
         </ol>
         <p class="we-ans">The dry heap stands <span data-n="beach.cone-h-cm">19.7</span> cm tall on a base <span data-n="beach.cone-base-cm">58.3</span> cm wide: <span data-n="ch01.cone-h-ratio">0.67</span> times the castle's height and <span data-n="ch01.cone-w-ratio">2.9</span> times its width.</p>
-        <p class="we-check"><b>Check.</b> Put the area back together: ½ × 58.27 × 19.65 = <span data-n="ch01.cone-area-cm2">572.6</span> cm², the castle's area. And the limits behave: a gentler slope (smaller tan <var>β</var>) gives a lower, wider heap, and a slope near vertical gives a tall thin one, more like the castle.</p>
+        <p class="we-check"><b>Check.</b> Put the area back together: ½ × <span data-n="beach.cone-base-cm">58.27</span> × <span data-n="beach.cone-h-cm">19.653</span> = <span data-n="ch01.cone-area-cm2">572.6</span> cm², the castle's area. And the limits behave: a gentler slope (smaller tan <var>β</var>) gives a lower, wider heap, and a slope near vertical gives a tall thin one, more like the castle.</p>
         <p class="we-means"><b>What it means.</b> The castle lost no sand when it dried; it lost the grip that held its walls up, and the same sand then needed about three times the ground. Soil that cannot hold a steep face has to be laid out wide. Most of the width of an earth dam is the price of its slopes.</p>
         <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-beach","set":{"bc-state":"dry"}}'>Set the figure</button></p>
       </section>
@@ -107,7 +107,7 @@
       <p>You can measure an angle of repose at home with a funnel, a ruler and a cup of dry sand, sugar or rice. Pour a heap, measure its height and the width of its base, and the tangent of the angle is the height divided by half the base. The questions at the end of the chapter ask you to try.</p>
 
       <h3 id="s-beach-slope">A slope is a number</h3>
-      <p>Angles are awkward on a building site. Nobody holds a protractor against a hillside of fill. Engineers write a slope as a ratio instead, how far across for each unit up, and they put the across first: a slope of 2H:1V (two across for every one up) climbs one metre for every two metres of ground it covers. From here on this book writes it 2:1. The bigger the first number, the flatter the slope.<label for="mn-beach-grade" class="mn-ref" aria-label="Units"></label><input type="checkbox" id="mn-beach-grade" class="margin-toggle"><span class="marginnote" data-kind="units">Road signs turn the same ratio upside down and give it as a percentage, rise over run: a 10% hill climbs 1 m for every 10 m across, which this book would write 10:1.</span></p>
+      <p>Angles are awkward on a building site. Nobody holds a protractor against a hillside of fill. Engineers write a slope as a ratio instead, how far across for each unit up, and they put the across first: a slope of 2H:1V (two across for every one up) climbs one metre for every two metres of ground it covers. This book writes it 2H:1V, or 2:1 for short. The bigger the first number, the flatter the slope.<label for="mn-beach-grade" class="mn-ref" aria-label="Units"></label><input type="checkbox" id="mn-beach-grade" class="margin-toggle"><span class="marginnote" data-kind="units">Road signs turn the same ratio upside down and give it as a percentage, rise over run: a 10% hill climbs 1 m for every 10 m across, which this book would write 10:1.</span></p>
       <p>The ratio and the angle are tied by one piece of trigonometry. The tangent of a slope's angle <var>β</var> is the rise over the run, so for a slope written <var>n</var>:1, tan <var>β</var> = 1 ÷ <var>n</var>. A dam drawn at 2:1 and a heap at 34° can then be compared on the same footing:</p>
 
       <section class="we" id="ex-beach-slope">
@@ -127,7 +127,7 @@
           <li><span class="we-eq"><var>n</var> = 1 ÷ tan 19.0° = 1 ÷ <span data-n="beach.tan-drain">0.344</span> = <span data-n="ch01.drain-ratio">2.9</span></span><span class="why">the same for the face with water seeping out</span></li>
         </ol>
         <p class="we-ans">A 2:1 face slopes at <span data-n="ch01.slope-deg@h=2">26.6</span>°. The dry heap stands at <span data-n="ch01.repose-ratio">1.48</span>:1, and the draining face at <span data-n="ch01.drain-ratio">2.9</span>:1.</p>
-        <p class="we-check"><b>Check.</b> A 1:1 slope is <span data-n="ch01.slope-deg@h=1">45</span>°, Coulomb's earth, and a 3:1 slope is arctan ⅓ = <span data-n="ch01.slope-deg@h=3">18.4</span>°. A 2:1 slope must lie between them, and 26.6° does.</p>
+        <p class="we-check"><b>Check.</b> A 1:1 slope is <span data-n="ch01.slope-deg@h=1">45</span>°, as steep as it is wide, and a 3:1 slope is arctan ⅓ = <span data-n="ch01.slope-deg@h=3">18.4</span>°. A 2:1 slope must lie between them, and 26.6° does.</p>
         <p class="we-means"><b>What it means.</b> A 2:1 face built of this beach's sand would stand dry, with room to spare, and would slump wherever water seeped out of it. Keeping water from coming out of the face of a dam, or catching it safely where it does, is much of Part III of this book.</p>
         <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-beach","set":{"bc-state":"drain"}}'>Set the figure</button></p>
       </section>
@@ -216,7 +216,7 @@
         <li class="q" id="q-beach-kept" data-tag="check" data-level="1">
           <p>As the heap in <a data-ref="fig-beach"></a> changes shape, one thing stays fixed. What is it, and how could you check it with the numbers in <a data-ref="ex-beach-castle"></a>?</p>
           <details class="q-hint"><summary>Hint</summary><p>Work out the area of the dry heap's triangle and compare it with the castle's.</p></details>
-          <div class="q-answer"><p>The amount of sand, which in a section is its area. The dry heap's triangle has area ½ × <span data-n="beach.cone-base-cm">58.27</span> × <span data-n="beach.cone-h-cm">19.65</span> = <span data-n="ch01.cone-area-cm2">572.6</span> cm², the same as the castle's <span data-n="beach.area-cm2">572.6</span> cm². The draining heap is lower again, <span data-n="ch01.drain-h-cm">14.0</span> cm tall, and wider in proportion.</p></div>
+          <div class="q-answer"><p>The amount of sand, which in a section is its area. The dry heap's triangle has area ½ × <span data-n="beach.cone-base-cm">58.27</span> × <span data-n="beach.cone-h-cm">19.653</span> = <span data-n="ch01.cone-area-cm2">572.6</span> cm², the same as the castle's <span data-n="beach.area-cm2">572.6</span> cm². The draining heap is lower again, <span data-n="ch01.drain-h-cm">14.0</span> cm tall, and wider in proportion.</p></div>
         </li>
         <li class="q" id="q-beach-packing" data-tag="explore" data-level="1">
           <p>Set the heap under still water, packed densely, and jiggle it. Then switch to loosely packed and jiggle again. What differs, and what does that tell you about the soup at the water's edge?</p>
@@ -240,7 +240,7 @@
           <div class="q-answer"><p>1.5:1 is arctan <span data-n="ch01.tan-slope@h=1.5">0.667</span> = <span data-n="ch01.slope-deg@h=1.5">33.7</span>°; 2:1 is <span data-n="ch01.slope-deg@h=2">26.6</span>°; 3:1 is arctan <span data-n="ch01.tan-slope@h=3">0.333</span> = <span data-n="ch01.slope-deg@h=3">18.4</span>°. All three are flatter than <span data-n="beach.repose-deg">34</span>°, so dry sand stands at each, though at 1.5:1 it has almost nothing to spare.</p></div>
         </li>
         <li class="q" id="q-beach-design" data-tag="design" data-level="2">
-          <p>You must build a sand embankment of the figure's sand, and water will seep out of the lower part of its downstream face. The workbench in <a data-ref="ch-build"></a> offers faces of 1.5:1, 2:1, 2.5:1 and 3:1. By the rule of <a data-ref="fig-beach"></a>, which would the wet part of the face stand at?</p>
+          <p>You must build a sand embankment of the figure's sand, and water will seep out of the lower part of its downstream face. The workbench in <a data-ref="ch-build"></a> offers faces of 1.5:1, 2:1, 2.5:1 and 3:1. By the rule of <a data-ref="fig-beach"></a>, which of these faces could the wet part stand at?</p>
           <details class="q-hint"><summary>Hint</summary><p>Compare each angle with the draining face's <span data-n="beach.drain-deg">19.0</span>°.</p></details>
           <div class="q-answer"><p>Only 3:1, at <span data-n="ch01.slope-deg@h=3">18.4</span>°, is flatter than <span data-n="beach.drain-deg">19.0</span>°, and barely. 2.5:1 is <span data-n="ch01.slope-deg@h=2.5">21.8</span>°, too steep where water comes out. The other choice is to stop the water reaching the face, with a drain, and keep the steeper, cheaper slope. Real fill is not clean beach sand and designers want a margin as well; <a data-ref="ch-slope"></a> and <a data-ref="ch-build"></a> do the full check.</p></div>
         </li>

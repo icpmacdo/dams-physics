@@ -45,7 +45,7 @@
           "hook": "Three kinds of sand, and the water that makes the difference.",
           "mini": 1,
           "wordTarget": [2500, 3500],
-          "aliases": [{ "id": "beach" }],
+          "aliases": [{ "id": "beach" }, { "id": "ground" }],
           "films": [],
           "newIds": ["fig-beach-dam", "ex-beach-castle", "ex-beach-slope"]
         },
@@ -59,7 +59,7 @@
           "wordTarget": [3500, 4500],
           "aliases": [{ "id": "pressure" }],
           "films": [{ "id": "film-depth-not-size", "film": "depth-not-size", "start": 0, "end": 191.0, "part": "part one",
-            "question": "A lake or a slot of water, both 50 m deep: which dam has to be stronger?" }],
+            "question": "Make the water twice as deep: how many tonnes push on each metre of the dam?" }],
           "newIds": ["fig-depth-triangle", "eq-depth-p", "eq-depth-push", "ex-depth-sensor", "ex-depth-push", "ex-depth-slot", "ex-depth-triangle", "ex-depth-sloping"]
         },
         {
@@ -255,7 +255,7 @@
     "front": { "new": ["upstream", "downstream", "crest", "heel", "toe", "freeboard", "abutment", "tailwater", "slope-notation"], "replaces": [] },
     "pro": { "new": ["breach"], "replaces": [] },
     "ch01": { "new": ["saturated", "packing"], "replaces": ["angle-of-repose"] },
-    "ch02": { "new": ["gauge-pressure", "gravity-dam", "kilopascal"], "replaces": ["hydrostatic"] },
+    "ch02": { "new": ["gauge-pressure", "gravity-dam", "kilopascal", "moment", "lever-arm"], "replaces": ["hydrostatic"] },
     "ch03": { "new": ["elevation-head", "pressure-head", "seepage-velocity", "seepage-force"], "replaces": ["hydraulic-head", "permeability"] },
     "ch04": { "new": ["strength-envelope", "infinite-slope", "unit-weight", "buoyant-unit-weight", "heave"], "replaces": ["effective-stress", "friction-angle", "factor-of-safety", "critical-gradient"] },
     "ch05": { "new": ["consolidation", "excess-pore-pressure", "undrained-strength", "cavitation", "clay", "residual-strength"], "replaces": ["suction", "drained", "undrained", "liquefaction"] },

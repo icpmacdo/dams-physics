@@ -16,7 +16,7 @@ const GLOSSARY = {
   'darcy': ['Darcy’s law', 'Flow through soil is proportional to how easily the soil passes water and how steeply the head drops: q = k · i · A.'],
   'hydraulic-gradient': ['Hydraulic gradient', 'How steeply the head drops along the water’s path: head lost per metre travelled (i = Δh / L). Flow is proportional to it, and steeper gradients push loose grains harder.'],
   'angle-of-repose': ['Angle of repose', 'The steepest slope a heap of loose, dry grains settles at. About 30–35° for most sand, steeper for angular grains.'],
-  'water-table': ['Water table', 'The level where the water in the ground is at the pressure of the air. Below it every gap between grains is full of water, pushing outward; just above it a thin fringe can stay wet, the water pulling (suction). Dig a hole and water settles at this level.'],
+  'water-table': ['Water table', 'The level where the water in the ground is at the pressure of the air. Below it every gap between grains is full of water, which presses on the grains around every gap; just above it a thin fringe can stay wet, the water pulling (suction). Dig a hole and water settles at this level.'],
   'liquefaction': ['Liquefaction', 'When loose, saturated soil is sheared or shaken, the grains try to pack tighter, the water can’t escape fast enough, and the water pressure rises until the grains barely touch. The soil flows like a heavy liquid.'],
   'static-liquefaction': ['Static liquefaction', 'Liquefaction with no earthquake: triggered by a rising water level, a small slip, creep, or extra load on loose saturated soil.'],
   'contractive': ['Contractive', 'Describes loose soil that packs tighter when sheared. If the water can’t drain, its pressure rises and the soil weakens.'],

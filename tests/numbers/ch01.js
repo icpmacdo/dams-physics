@@ -8,11 +8,18 @@ const G_DAMP = 18;                  // kN/m³, damp sand, illustrative
 const deg = (X, t) => Math.atan(t) / X.deg;
 const coneH = X => Math.sqrt(beach(X).A * beach(X).tan34) / CM;              // cm, the dry heap's height
 const castleH = X => Math.max(...beach(X).PROF.damp) / CM;                    // cm
-const castleW = X => { const b = beach(X), xs = b.xs.filter((x, i) => b.PROF.damp[i] > 0); return (xs[xs.length - 1] - xs[0]) / CM; }; // cm
+// the area is summed over upright strips 2 px (0.4 cm) wide, so the castle's width, as the area counts it, is its number of strips × 0.4 cm
+const DX = 2;
+const castleW = X => beach(X).PROF.damp.filter(h => h > 0).length * DX / CM;   // cm
+const castleTop = X => Math.max(...beach(X).PROF.damp);
+const notchW = X => beach(X).PROF.damp.filter(h => h > 0 && h < castleTop(X)).length / 2 * DX / CM; // cm, one notch
+const notchD = X => (castleTop(X) - Math.min(...beach(X).PROF.damp.filter(h => h > 0))) / CM;         // cm
 
 module.exports = {
   // ---- the castle and the dry heap (ex-beach-castle)
-  'ch01.castle-w-cm': { doc: 'width of the damp castle in fig-beach', f: (a, X) => castleW(X) },
+  'ch01.castle-w-cm': { doc: 'width of the damp castle in fig-beach, as its area counts it (strips × 0.4 cm)', f: (a, X) => castleW(X) },
+  'ch01.notch-w-cm': { doc: 'width of one notch between the castle’s battlements, cm', f: (a, X) => notchW(X) },
+  'ch01.notch-d-cm': { doc: 'depth of the notches between the battlements, cm', f: (a, X) => notchD(X) },
   'ch01.castle-h-cm': { doc: 'height of the damp castle in fig-beach', f: (a, X) => castleH(X) },
   'ch01.tan-repose': { doc: 'tan 34°, the dry heap’s slope as the code holds it', f: (a, X) => beach(X).tan34 },
   'ch01.a-tan-cm2': { doc: 'A·tan 34° for the castle’s section, cm²', f: (a, X) => beach(X).A / (CM * CM) * beach(X).tan34 },
