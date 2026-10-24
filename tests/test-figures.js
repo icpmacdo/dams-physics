@@ -241,5 +241,23 @@ console.log('\nFig. 8.4 · uplift and sliding');
   near(k.c.U / d.c.U, 1.83, 0.005, 'clogging the drains nearly doubles the uplift (ratio)');
 }
 
+console.log('\nFacts the text states (errata fixes)');
+{
+  const plain = decode(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
+  const says = (str, label) => check(plain.includes(str), `${label}: says "${str}"`);
+  const never = (str, label) => check(!plain.includes(str), `${label}: no longer says "${str}"`);
+  const gsrc = read('app-glossary.js');
+  const GL = new Function(gsrc.slice(gsrc.indexOf('const GLOSSARY'), gsrc.indexOf('\n};', gsrc.indexOf('const GLOSSARY')) + 3) + '\nreturn GLOSSARY;')();
+  const usedTerms = new Set([...html.matchAll(/data-term="([\w-]+)"/g)].map(m => m[1]));
+  const missing = [...usedTerms].filter(t => !GL[t]);
+  check(!missing.length, `glossary has an entry for all ${usedTerms.size} marked terms` + (missing.length ? ', missing ' + missing.join(', ') : ''));
+  // Foster, Fell & Spannagle (2000), Table 3: 124 failures to 1986; piping 46.9%, overtopping 34.2%,
+  // with spillways and gates 48.4%; after 1950, 54.2% against 40.7%
+  says('about as many failures as overtopping: 47% against 48% once spillway and gate failures are counted with overtopping', 'Step 8, Foster et al.');
+  says('more than overtopping alone (34%), and since 1950 internal erosion has led, 54% against 41%', 'Step 8, Foster et al.');
+  never('nearly half of the failures whose cause was known', 'Step 8, Foster et al.');
+  check(/internal erosion/i.test(GL.piping[1]) && !!GL['internal-erosion'], 'glossary: piping points to internal erosion, which has its own entry');
+}
+
 console.log(`\n${fails ? fails + ' check(s) FAILED' : 'all ' + passes + ' checks passed'} in ${((Date.now() - t0) / 1000).toFixed(1)} s`);
 process.exit(fails ? 1 : 0);
