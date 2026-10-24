@@ -146,6 +146,42 @@ const PROBE = String(function probe() {
       w.bookExpand.hide(); await wait(200);
       say(!pd.open && d.getElementById('fig-lab').closest('#ch-seepage') && !d.querySelector('.plate-slot'), 'closing Expand puts fig-lab back in its chapter');
     }
+    // on a phone: the page never scrolls sideways, no drawing reaches past its own plate, and every
+    // wide plate with a drawing has an Expand button (How to read promises one)
+    for (const width of [390, 360]) {
+      f.style.width = width + 'px'; w.dispatchEvent(new Event('resize')); await wait(700);
+      const de = d.documentElement;
+      const past = [...d.querySelectorAll('body *')].filter(el => { if (el.closest('dialog')) return false; const r = el.getBoundingClientRect(); return r.width && r.right > de.clientWidth + 0.5; });
+      const deepest = past.filter(el => !past.some(o => o !== el && el.contains(o)));
+      say(de.scrollWidth <= de.clientWidth, `at ${width} px the page does not scroll sideways (scrollWidth ${de.scrollWidth}, width ${de.clientWidth})` +
+        (deepest.length ? ': ' + deepest.slice(0, 4).map(el => el.tagName.toLowerCase() + (el.closest('[id]') ? '@' + el.closest('[id]').id : '')).join(', ') : ''));
+      if (width !== 390) continue;
+      const stray = [];
+      d.querySelectorAll('svg.dwg').forEach(svg => {
+        const sr = svg.getBoundingClientRect();
+        if (!sr.width || svg.closest('[hidden], dialog')) return;
+        if (w.getComputedStyle(svg).overflow !== 'visible') return;
+        svg.querySelectorAll('polygon, path, rect, line, polyline, circle, ellipse').forEach(el => {
+          if (el.closest('defs, pattern, marker, symbol, clipPath, mask, [clip-path]')) return;
+          const r = el.getBoundingClientRect();
+          if (r.width && (r.right > sr.right + 16 || r.left < sr.left - 16)) stray.push((svg.closest('figure[id], .predict[id], [id]') || {}).id + ' ' + el.tagName + ' ' + Math.round(r.left - sr.left) + '…' + Math.round(r.right - sr.left) + ' of ' + Math.round(sr.width));
+        });
+      });
+      say(!stray.length, 'at 390 px no shape in a drawing reaches more than 16 px outside its own drawing' + (stray.length ? ': ' + stray.slice(0, 5).join('; ') : ''));
+      const plates = [...d.querySelectorAll('figure.wide[id], figure.full[id]')].filter(fg => !fg.classList.contains('film') && !fg.classList.contains('table') && fg.querySelector('svg.dwg, canvas'));
+      const noBtn = plates.filter(fg => { const b = fg.querySelector('.fig-expand'); return !b || !b.getClientRects().length; }).filter(fg => !fg.hidden);
+      say(plates.length > 10 && !noBtn.length, `at 390 px every wide plate with a drawing shows an Expand button (${plates.length} plates)` + (noBtn.length ? ': missing on ' + noBtn.map(x => x.id).join(', ') : ''));
+    }
+    {
+      const pd = d.getElementById('plate-dialog');
+      w.bookExpand.show('fig-depth-sloping'); await wait(300);
+      const svg = pd.querySelector('#fig-depth-sloping svg.dwg');
+      const long = svg ? Math.max(svg.getBoundingClientRect().width, svg.getBoundingClientRect().height) : 0;   // the dialog may be turned a quarter turn
+      say(pd.open && long > 400, 'Expand opens the static plate fig-depth-sloping full screen, its drawing ' + Math.round(long) + ' px along its long side');
+      w.bookExpand.hide(); await wait(200);
+      say(!pd.open && d.getElementById('fig-depth-sloping').closest('#ch-depth'), 'closing Expand puts fig-depth-sloping back');
+      f.style.width = '1280px'; w.dispatchEvent(new Event('resize')); await wait(300);
+    }
     res.done = true;
     document.getElementById('out').textContent = JSON.stringify(res);
   });

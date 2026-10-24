@@ -284,13 +284,15 @@ function unitShort(sec) {
 })();
 
 /* ---------------------------------------------------------------- Expand: plates full screen */
-/* The big drawings (and every plate whose drawing would be small on a phone) get an Expand button.
+/* Every wide plate with a drawing gets an Expand button on a narrow screen (How to read promises it).
    The figure itself moves into a full-screen dialog, controls and all, so nothing is copied and every
    id stays unique; closing puts it back. On a phone held upright the dialog turns a quarter turn, so
    the drawing lies along the long side of the screen: hold the phone sideways to read it. */
 (function expand() {
   if (typeof HTMLDialogElement !== 'function') return;
-  const plates = $$('figure.sheet[id]').filter(f => !f.classList.contains('film') && (f.classList.contains('full') || f.querySelector('.svgwrap, canvas')));
+  // every plate that reaches past the text column and holds a drawing: the six instruments, the
+  // interactive figures, the static plates and the case files (not films, not tables)
+  const plates = $$('figure.wide[id], figure.full[id]').filter(f => !f.classList.contains('film') && !f.classList.contains('table') && f.querySelector('svg.dwg, canvas'));
   if (!plates.length) return;
   const PORTRAIT = matchMedia('(orientation: portrait) and (max-width: 899px)');
   const dlg = document.createElement('dialog');

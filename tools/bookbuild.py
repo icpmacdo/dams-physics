@@ -70,6 +70,25 @@ def parse_vtt(text):
     return cues
 
 
+NOTE_BITS = ('sidenote', 'marginnote', 'sn-ref', 'mn-ref', 'margin-toggle')
+
+
+def starts_sentence(e):
+    """True when a generated reference opens a sentence: it is the first words of its block, or the
+    prose before it (notes skipped) ends a sentence."""
+    node = e
+    while node.parent is not None:
+        sibs = node.parent.children
+        before = ''.join(c.text for c in sibs[:sibs.index(node)]
+                         if isinstance(c, H.Text) or (isinstance(c, H.El) and not (c.tag in ('input', 'label') or any(c.hascls(k) for k in NOTE_BITS))))
+        if before.strip():
+            return bool(re.search(r'[.!?][\u2019\u201d"\')\]]*\s+$', before))
+        if node.parent.tag in H.BLOCK:
+            return True
+        node = node.parent
+    return True
+
+
 def join_and(items):
     items = list(items)
     if len(items) < 2:
@@ -801,6 +820,8 @@ class Book:
                     text = '%s %s' % (PLURAL[rs[0]['kind']], join_and(r['num'] for r in rs))
                 else:
                     text = join_and(r['label'] for r in rs)
+            if text[:1].islower() and starts_sentence(e):
+                text = text[:1].upper() + text[1:]   # "the Prologue starts…" at the head of a sentence
             e.append(H.Text(H.esc(text)))
 
     def resolve_cites(self):

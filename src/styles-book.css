@@ -296,6 +296,10 @@ ul.try li::before { content: "→"; position: absolute; left: 0; color: var(--in
 /* drawings fit their plate: no sideways scrolling; labels keep a readable size (app-book.js sets --s,
    the drawing's rendered width over its viewBox width) */
 .svgwrap { overflow: visible; }
+/* a backstop: a stray coordinate in a drawing must never widen the page (on a phone the browser would
+   then shrink the whole book to fit). Labels may hang a little outside a plate; nothing more. */
+figure.fig, figure.sheet, figure.case-plate { overflow-x: clip; overflow-clip-margin: 12px; }
+@media screen and (max-width: 759px) { figure.fig, figure.sheet, figure.case-plate { overflow-clip-margin: 0px; } }
 .svgwrap > svg.dwg, .svgwrap > canvas.filtercv { min-width: 0 !important; }
 svg.dwg { --s: 1; --floor: 10.5px; --cap: 1.4; }
 svg.dwg text { font-size: max(var(--fs, 11.5px), min(calc(var(--floor) / var(--s)), calc(var(--fs, 11.5px) * var(--cap)))); }
@@ -314,11 +318,13 @@ dialog.plate-dialog::backdrop { background: var(--paper); }
 .plate-bar p { margin: 0; font-family: var(--f-label); font-size: 0.85rem; font-weight: 600; color: var(--ink-2); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .plate-bar .btn { min-height: 36px; }
 .plate-scroll { flex: 1; overflow: auto; overscroll-behavior: contain; padding: 8px 10px 24px; }
-.plate-scroll > figure.sheet { margin: 0 auto; max-width: none; border: 0; padding: 0; background: transparent; }
-.plate-scroll > figure.sheet .fig-expand { display: none; }
+.plate-scroll > figure { margin: 0 auto; max-width: none; border: 0; padding: 0; background: transparent; }
+.plate-scroll > figure .fig-expand { display: none; }
 /* full screen, the drawing comes first and stays in view while the controls scroll under it */
-.plate-scroll > figure.sheet { display: flex; flex-direction: column; }
-.plate-scroll > figure.sheet > .sheet-top { order: -2; }
+.plate-scroll > figure { display: flex; flex-direction: column; }
+.plate-scroll > figure > .sheet-top { order: -2; }
+/* a static plate: its drawing as wide as the screen allows, whatever width its own CSS gives it in the page */
+.plate-scroll > figure:not(.sheet) svg.dwg { max-width: none; width: 100%; margin-inline: auto; }
 .plate-scroll > figure.sheet > .svgwrap { order: -1; position: sticky; top: -8px; z-index: 3; background: var(--paper); padding: 6px 0; border-bottom: 1px solid var(--rule); }
 .plate-scroll svg.dwg { --floor: 11px; --cap: 3; }
 @media (orientation: portrait) {
@@ -718,4 +724,8 @@ details.try-ans > p { margin: 2px 0 0; }
 .part-opener ol.course li { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); column-gap: 16px; align-items: baseline; }
 .part-opener ol.course li > a { gap: 0; }
 .part-opener ol.course li.toc-ch a span { flex: 0 0 2.4rem; width: 2.4rem; font-size: 1.4rem; color: var(--accent); }
-@media (max-width: 620px) { .part-opener ol.course p { padding-left: 2.4rem; } }
+@media (max-width: 620px) {
+  .part-opener ol.course li { grid-template-columns: minmax(0, 1fr); }
+  .part-opener ol.course li > * { grid-column: 1 / -1; }
+  .part-opener ol.course p { padding-left: 2.4rem; }
+}
