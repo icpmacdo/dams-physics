@@ -257,6 +257,17 @@ console.log('\nFacts the text states (errata fixes)');
   says('more than overtopping alone (34%), and since 1950 internal erosion has led, 54% against 41%', 'Step 8, Foster et al.');
   never('nearly half of the failures whose cause was known', 'Step 8, Foster et al.');
   check(/internal erosion/i.test(GL.piping[1]) && !!GL['internal-erosion'], 'glossary: piping points to internal erosion, which has its own entry');
+  // Step 3 opens with head, not pressure
+  says('from where its head is high to where it is low', 'Step 3, first paragraph');
+  never('from where it is pushed hard to where it is pushed less', 'Step 3, first paragraph');
+  // only the downstream shell is kept dry; the upstream one is soaked by the reservoir
+  never('shells on either side fairly dry', 'Step 7');
+  never('Low water pressure in the outer zones', 'Step 4 ideas card');
+  says('That leaves the downstream shell fairly dry', 'Step 7');
+  says('The upstream shell stays soaked', 'Step 4 ideas card');
+  // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
+  never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
+  says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');
 }
 
 console.log(`\n${fails ? fails + ' check(s) FAILED' : 'all ' + passes + ' checks passed'} in ${((Date.now() - t0) / 1000).toFixed(1)} s`);
