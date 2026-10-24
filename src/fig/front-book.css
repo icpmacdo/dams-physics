@@ -1,0 +1,97 @@
+/* =====================================================================================================
+   The front matter (book/SPEC.md H.0): the cover plate and title page, How to read this book, Plate 0
+   (how to read a section) and the toolkit. Loaded after styles-book.css; uses its tokens only.
+   ===================================================================================================== */
+
+/* ---------- the cover ---------- */
+section#cover { padding-top: clamp(2.5rem, 7vw, 5.5rem); }
+.cover { max-width: var(--wide); margin: 0 auto; }
+.cover-k { font-family: var(--f-label); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 16px; }
+.cover h1 { font-size: clamp(3.1rem, 10vw, 6.4rem); line-height: 0.95; letter-spacing: -0.025em; margin: 0 0 14px; }
+.cover-sub { font-family: var(--f-body); font-style: italic; font-size: clamp(1.2rem, 2.8vw, 1.65rem); line-height: 1.3; color: var(--ink-2); margin: 0 0 clamp(1.6rem, 4vw, 2.6rem); max-width: 34rem; }
+figure.cover-plate { max-width: var(--wide); margin: 0 auto; padding: 0; }
+svg.cover-dwg { display: block; width: 100%; height: auto; overflow: visible; }
+svg.cover-dwg .edge-l { stroke-width: 0.5; }
+svg.cover-dwg text { --fs: 11px; }
+.cover-plate figcaption { font-family: var(--f-body); font-style: italic; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.45; color: var(--ink-2);
+  max-width: var(--measure); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--rule); }
+@media (max-width: 759px) {
+  figure.cover-plate { margin-inline: -16px; }
+  svg.cover-dwg .cv-scale { display: none; }
+  .cover-plate figcaption { margin-inline: 16px; }
+}
+
+/* ---------- the title page ---------- */
+.title-page { margin-top: clamp(3.5rem, 9vw, 6rem); padding-top: clamp(2rem, 5vw, 3rem); border-top: 3px double var(--rule); }
+.tp-name { font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; line-height: 1.1; margin: 0 0 4px; }
+.tp-sub { font-family: var(--f-body); font-style: italic; color: var(--ink-2); margin: 0 0 2rem; }
+.tp-spine { font-family: var(--f-body); font-style: italic; font-size: clamp(1.4rem, 3.2vw, 1.85rem); line-height: 1.32; color: var(--ink);
+  margin: 0 0 2rem; padding-left: 18px; border-left: 3px solid var(--accent); text-wrap: balance; }
+.tp-lede { font-size: 1.12rem; line-height: 1.55; color: var(--ink-2); }
+.title-page .topics { margin: 1.8rem 0 1.2rem; }
+.tp-ed { font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-3); margin: 1.4rem 0 0; }
+
+/* ---------- Preface ---------- */
+.preface-sign { font-family: var(--f-label); font-size: 0.85rem; color: var(--ink-3); margin-top: 1.6rem; }
+
+/* ---------- How to read this book ---------- */
+/* the shared rule enlarges a front section's first h3 (an old title slot); here the title is the h2 */
+section#how-to-read > h3:first-of-type { font-size: 1.4rem; line-height: 1.2; margin: 2.6rem 0 0.6rem; }
+.htr-tags { list-style: none; margin: 0.4rem 0 1.2rem; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
+.htr-tags li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 12px; align-items: baseline; padding: 4px 0; border-bottom: 1px dotted var(--rule); }
+.htr-tags .q-tag { margin: 0; }
+@media (max-width: 519px) { .htr-tags li { grid-template-columns: minmax(0, 1fr); } }
+.htr-conv { margin: 0.4rem 0 1.2rem; padding-left: 1.1em; }
+.htr-conv li { margin-bottom: 4px; }
+
+/* ---------- Plate 0 ---------- */
+figure#fig-plate-0 { margin-top: 1.25rem; }
+#fig-plate-0 svg.p0-dwg text { --fs: 12px; }
+#fig-plate-0 svg.p0-dwg .p0-dim { --fs: 11px; fill: var(--ink-2); }
+#fig-plate-0 svg.p0-dwg .p0-flow { --fs: 12.5px; font-weight: 600; fill: var(--water); }
+#fig-plate-0 svg.p0-plan text { --fs: 11px; }
+#fig-plate-0 svg.p0-tri text { --fs: 12px; }
+.p0-n { font-weight: 700; fill: var(--accent); }
+.p0-sat { stroke: none; }
+.p0-arrow { stroke: var(--water); stroke-width: 1.6; fill: none; }
+.p0-hill { fill: var(--m-alluv); opacity: 0.55; }
+.p0-contour { stroke: var(--ink-3); stroke-width: 0.7; fill: none; opacity: 0.7; }
+.p0-sec { stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 5 3; fill: none; }
+.p0-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 28px; align-items: start; margin: 18px 0 6px; padding-top: 14px; border-top: 1px dotted var(--rule); }
+.p0-row svg { display: block; width: 100%; height: auto; overflow: visible; }
+.p0-sub { font-family: var(--f-label); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 6px; }
+#fig-plate-0 .htr-conv { font-family: var(--f-label); font-size: 0.9rem; line-height: 1.42; color: var(--ink-2); margin-top: 0; }
+ol.p0-key { margin: 6px 0 4px; padding: 0; list-style: none; columns: 2 17rem; column-gap: var(--gap); font-family: var(--f-label); font-size: 0.9rem; line-height: 1.42; }
+ol.p0-key li { break-inside: avoid; margin: 0 0 7px; padding-left: 1.9em; text-indent: -1.9em; color: var(--ink-2); }
+ol.p0-key li b { color: var(--ink); font-weight: 600; }
+ol.p0-key .k-no { display: inline-block; width: 1.9em; text-indent: 0; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+ul.p0-hatches { list-style: none; margin: 6px 0 4px; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 16px; font-family: var(--f-label); font-size: 0.86rem; line-height: 1.25; }
+ul.p0-hatches li { display: flex; align-items: center; gap: 9px; min-width: 0; }
+ul.p0-hatches small { display: block; color: var(--ink-3); font-size: 0.78rem; }
+svg.sw { flex: none; width: 46px; height: 28px; }
+svg.sw rect { stroke: var(--ink-2); stroke-width: 0.8; }
+ul.p0-colours { list-style: none; margin: 6px 0 4px; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 22px; font-family: var(--f-label); font-size: 0.9rem; line-height: 1.35; }
+ul.p0-colours li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 10px; align-items: center; }
+ul.p0-colours svg { width: 46px; height: 22px; }
+.p0-block { margin-top: 16px; padding-top: 12px; border-top: 1px dotted var(--rule); }
+@media (max-width: 899px) { ul.p0-hatches { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 759px) {
+  #fig-plate-0 svg.p0-dwg text { --fs: 15px; }
+  #fig-plate-0 svg.p0-dwg .p0-dim { --fs: 14px; }
+  #fig-plate-0 svg.p0-dwg .p0-flow { --fs: 15px; }
+  #fig-plate-0 svg.p0-dwg .p0-w { display: none; }
+  .p0-row { grid-template-columns: minmax(0, 1fr); }
+  ul.p0-hatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  ul.p0-colours { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- the toolkit ---------- */
+#toolkit details.check .tk-a { margin-top: 0; }
+.tk-end { margin-top: 1.6rem; }
+
+/* ---------- print ---------- */
+@media print {
+  section#cover { break-after: page; }
+  .title-page { break-before: page; border-top: 0; }
+  #fig-plate-0 svg.p0-dwg .p0-w { display: inline; }
+}

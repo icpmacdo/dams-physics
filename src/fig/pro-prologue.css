@@ -1,0 +1,23 @@
+/* The Prologue's figure (book/SPEC.md H.1): the section of the embankment that failed, drawn to scale,
+   and a schematic map beside the caption. Label sizes use --fs, so the phone floor can lift them. */
+#fig-prologue-section svg.pro-dwg text { --fs: 12px; }
+#fig-prologue-section svg.pro-dwg .lbl-s, #fig-prologue-section svg.pro-dwg .p0-dim { --fs: 10.5px; }
+#fig-prologue-section svg.pro-dwg .p0-dim { fill: var(--ink-2); }
+#fig-prologue-section svg.pro-plan text { --fs: 11.5px; }
+#fig-prologue-section svg.pro-plan .lbl-s { --fs: 10.5px; }
+.pro-ground { fill: var(--callout); stroke: none; }
+.pro-gone { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 4; stroke-linejoin: round; }
+.pro-out { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+.pro-creek { fill: none; stroke: var(--water); stroke-width: 3; stroke-linecap: round; }
+.pro-breach { stroke: var(--accent); stroke-width: 4; stroke-linecap: round; }
+.pro-under { display: grid; grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); gap: 0 28px; align-items: start; margin-top: 10px; }
+.pro-under svg.pro-plan { display: block; width: 100%; height: auto; margin-top: 14px; overflow: visible; }
+svg.pro-ph { display: none; }
+@media (max-width: 759px) {
+  svg.pro-wide { display: none; }
+  svg.pro-ph { display: block; }
+  .pro-under { grid-template-columns: minmax(0, 1fr); }
+  .pro-under svg.pro-plan { max-width: 16rem; margin: 10px auto 0; }
+  #fig-prologue-section svg.pro-dwg text { --fs: 14px; }
+  #fig-prologue-section svg.pro-dwg .lbl-s, #fig-prologue-section svg.pro-dwg .p0-dim { --fs: 13px; }
+}

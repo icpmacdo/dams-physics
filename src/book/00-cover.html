@@ -1,17 +1,50 @@
 <section class="front" id="cover">
-  <div class="cover-written" data-stub>
-    <!-- Front-matter writer (book/SPEC.md H.0): the cover plate (a zoned earth–rockfill section) with its
-         caption line, then the title page with the spine from src/book.json. -->
-  </div>
-  <header class="masthead wide">
-    <p class="eyebrow">A course in thirteen chapters, from a handful of sand to a dam you design</p>
+  <!-- The cover plate and the title page (book/SPEC.md H.0). The drawing is fig-zones' earth–rockfill
+       section (src/app-zones.js, the first tab), drawn to scale in the book's hatches. The title,
+       subtitle, edition and spine sentence repeat src/book.json; tests/pins/front.js holds them equal. -->
+  <header class="cover">
+    <p class="cover-k">A book in thirteen chapters · First edition · 2026</p>
     <h1>Dams in <span class="cut">Section</span></h1>
-    <p class="lede">A dam is a pile of soil or a block of concrete holding back water. Whether it stands or fails comes down to one idea you already know from the beach: sand is strong when its grains press together, and water pressure pushes them apart. This course builds that idea step by step, then uses it to cut real dams open. Every drawing is live, so press play, drag the sliders and try to break things. Seven short narrated films tell the same story. Each sits in one of the chapters it retells, and several range over other chapters as well; the captions say which.</p>
-    <div class="topics">
+    <p class="cover-sub">From a handful of sand to a dam you design</p>
+  </header>
+  <figure class="cover-plate">
+    <svg class="dwg cover-dwg" viewBox="0 0 1000 313.3" role="img" aria-label="A large earth and rockfill dam cut across and drawn to scale, 60 metres high. A lake leans on its left face. Inside, a narrow clay core runs up the middle, wrapped in sand filters and coarser transition zones, with heavy rockfill shells on either side and riprap armouring the upstream face. A dashed blue line, the top of the water inside the dam, drops almost the whole height of the lake as it crosses the core.">
+      <polygon points="0,313.3 1000,313.3 1000,253.3 0,253.3" fill="url(#p-bedrock)" class="edge-l"/>
+      <polygon points="0,253.3 1000,253.3 1000,213.3 0,213.3" fill="url(#p-alluv)" class="edge-l"/>
+      <polygon points="461.1,213.3 592.2,213.3 553.3,253.3 500,253.3" fill="url(#p-clay)" class="edge-l"/>
+      <polygon points="521.3,313.3 532,313.3 532,253.3 521.3,253.3" fill="url(#p-grout)" class="edge-l"/>
+      <polygon class="water" points="0,30 470,30 66.7,213.3 0,213.3"/>
+      <path class="water-line" d="M0,30 L470,30"/>
+      <polygon points="66.7,213.3 437.8,213.3 498.6,17" fill="url(#p-rock)" class="edge-l"/>
+      <polygon points="615.6,213.3 926.7,213.3 554.9,17.7" fill="url(#p-rock)" class="edge-l"/>
+      <polygon points="125.3,186.7 140.3,186.7 521.7,13.3 506.7,13.3" fill="url(#p-riprap)" class="edge-l"/>
+      <polygon points="437.8,213.3 451.1,213.3 510,23.3 496.7,23.3" fill="url(#p-trans)" class="edge-l"/>
+      <polygon points="602.2,213.3 615.6,213.3 556.7,23.3 543.3,23.3" fill="url(#p-trans)" class="edge-l"/>
+      <polygon points="451.1,213.3 461.1,213.3 520,23.3 510,23.3" fill="url(#p-filter)" class="edge-l"/>
+      <polygon points="592.2,213.3 602.2,213.3 543.3,23.3 533.3,23.3" fill="url(#p-filter)" class="edge-l"/>
+      <polygon points="461.1,213.3 592.2,213.3 533.3,23.3 520,23.3" fill="url(#p-clay)" class="edge-l"/>
+      <polygon points="615.6,213.3 926.7,213.3 916.5,208 615.6,208" fill="url(#p-filter)" class="edge-l"/>
+      <polygon points="853.3,213.3 926.7,213.3 888.7,193.3 853.3,193.3" fill="url(#p-drain)" class="edge-l"/>
+      <polygon points="496.7,23.3 556.7,23.3 554.9,17.7 546.7,13.3 506.7,13.3 498.6,17" fill="url(#p-fill)" class="edge-l"/>
+      <polygon class="water" points="914,206.7 1000,206.7 1000,213.3 926.7,213.3"/>
+      <polygon points="66.7,213.3 926.7,213.3 546.7,13.3 506.7,13.3" fill="none" class="edge"/>
+      <path class="phreatic" d="M470,30 L518,30 L528.3,46.7 L538.3,73.3 L548.3,103.3 L558.3,133.3 L568.3,163.3 L578.3,186.7 L588.3,200 L596.7,206 L616.7,208.7 L726.7,209.7 L860,210.3 L920,211.3"/>
+      <g class="cv-scale"><path class="ink-s" d="M833.3,296.7 h166.7 M833.3,292.7 v8 M916.7,293.7 v6 M1000,292.7 v8"/><text class="lbl-s halo" x="833.3" y="288.7">0</text><text class="lbl-s halo" x="1000" y="288.7" text-anchor="end">50 m</text></g>
+    </svg>
+    <figcaption>Most of what decides whether this stands is two numbers: how hard its grains press together, and how hard the water between them pushes back.</figcaption>
+  </figure>
+
+  <div class="col title-page">
+    <p class="tp-name">Dams in Section</p>
+    <p class="tp-sub">From a handful of sand to a dam you design</p>
+    <p class="tp-spine">Soil holds only as well as its grains press on one another, and the water between them can take that press away.</p>
+    <p class="tp-lede">A dam is a heap of earth and rock, or a block of concrete, that holds back water or mine waste. This book cuts dams open the way engineers draw them, in section, and asks of each one the same two questions: how hard do its grains press together, and how hard does the water between them push back? It starts with a handful of sand on a beach and ends with a dam you design and test yourself. Most of the drawings are live. Drag them, play them, and try to break them.</p>
+    <nav class="topics" aria-label="The four parts of the book">
       <a href="#part-1"><span>Part I</span><strong>Ground</strong></a>
       <a href="#part-2"><span>Part II</span><strong>Two kinds of dam</strong></a>
       <a href="#part-3"><span>Part III</span><strong>Inside the embankment</strong></a>
       <a href="#part-4"><span>Part IV</span><strong>Will it stand?</strong></a>
-    </div>
-  </header>
+    </nav>
+    <p class="tp-ed">First edition · 2026</p>
+  </div>
 </section>

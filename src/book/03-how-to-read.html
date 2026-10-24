@@ -1,9 +1,77 @@
 <section class="front col" id="how-to-read">
-  <p class="eyebrow">How to read this book</p>
-  <div class="how-written" data-stub>
-    <!-- Front-matter writer (book/SPEC.md H.0, 600–900 words): each device shown once, reading time, the tutor. -->
+  <!-- How to read this book (book/SPEC.md H.0): each device shown once, small and live. The old footer's
+       "all drawings are simplified" note is in the last section. Keys: tests/numbers/front.js. -->
+  <h2>How to read this book</h2>
+  <p><span class="newthought">This is a book to read</span> and a set of instruments to play. A few habits get the most out of both, and each is shown here once, working.</p>
+
+  <h3 id="s-how-commit">Commit before you look</h3>
+  <p>Some figures wait behind a question. Pick an answer before you open them. A wrong guess you committed to teaches more than a right answer you only nodded at, because it shows you exactly which picture in your head needs mending. Try this one:</p>
+  <div class="predict" data-answer="b" id="pr-how-glass">
+    <p class="predict-q">A glass is filled to the brim with dry sand. Can you still pour water into it without spilling any?</p>
+    <div class="predict-opts">
+      <button type="button" data-v="a">No: it is already full</button>
+      <button type="button" data-v="b">Yes: about a third of a glass</button>
+      <button type="button" data-v="c">Yes: another whole glass</button>
+    </div>
+    <div class="predict-reveal" hidden>
+      <p>About a third. Sand grains can't fill space: they touch at points and leave gaps between them, and in the sand this book uses the gaps make up <span data-n="front.sand-gaps-pct">35</span>% of the volume. Every drop of water in this book lives in gaps like those, and almost everything that goes wrong with a dam starts there.</p>
+    </div>
   </div>
-  <ul class="sources">
-    <li>All drawings are simplified. <a data-ref="fig-uplift,fig-zones,fig-lab,fig-build"></a> are drawn to scale; the others are schematic. Permeabilities and slopes are typical values, not design values.</li>
+
+  <h3 id="s-how-figures">Figures you can play with</h3>
+  <p>Most figures are instruments. The strip across the top gives each one its number, and on the right says whether it is drawn to scale or simplified. <a data-ref="fig-plate-0"></a>, on the next pages, is a still drawing; <a data-ref="fig-depth"></a> is live, and its sliders move a sensor through a lake. Every caption opens with the figure's claim in bold, says how to read the drawing, gives the one number worth keeping and ends with a short list of things to try. On a phone, the large drawings have an <b>Expand</b> button that opens them full screen; turn the phone sideways to read them.</p>
+  <p>Every number the text quotes from a figure is the figure's own. A test recomputes each one from the code that draws the figure, so when <a data-ref="ch-slope"></a> says a dam's slope has a factor of safety of <span data-n="bench.fos">1.12</span>, the workbench in the last chapter shows <span data-n="bench.fos">1.12</span> for the same dam.</p>
+
+  <h3 id="s-how-examples">Worked examples, and Set the figure</h3>
+  <p>Each chapter works two to five problems with real numbers, one step to a line, with the reason for each step beside it (under it, on a phone). Most end with a <b>Set the figure</b> button, which loads the example's numbers into the live figure and takes you there; a pill at the foot of the screen brings you back. Here is the smallest one in the book:</p>
+  <section class="we" id="ex-how-sensor" data-label="Example 0">
+    <header class="we-head">
+      <p class="we-k" data-num></p>
+      <p class="we-t">How hard does the water press 10 m down?</p>
+    </header>
+    <dl class="we-gf">
+      <dt>Given</dt><dd>A sensor 10 m below the surface of still water. Water weighs <span data-n="const.gw">9.81</span> kN per cubic metre.</dd>
+      <dt>Find</dt><dd>The water pressure on the sensor.</dd>
+      <dt>The idea</dt><dd>Every square metre at that depth carries the weight of the column of water standing on it.</dd>
+    </dl>
+    <ol class="we-steps">
+      <li><span class="we-eq">column above one square metre: 10&nbsp;m × 1&nbsp;m² = 10&nbsp;m³</span><span class="why">the water standing on the sensor's patch</span></li>
+      <li><span class="we-eq">its weight: 10 × <span data-n="const.gw">9.81</span> = <span data-n="depth.p-kpa@h=10">98.1</span> kN</span><span class="why">each cubic metre weighs <span data-n="const.gw">9.81</span> kN</span></li>
+      <li><span class="we-eq"><var>p</var> = <span data-n="depth.p-kpa@h=10">98.1</span> kN ÷ 1 m² = <span data-n="depth.p-kpa@h=10">98.1</span> kPa</span><span class="why">pressure is force per area; 1 kPa is 1 kN/m²</span></li>
+    </ol>
+    <p class="we-ans">The water presses <span data-n="depth.p-kpa@h=10">98.1</span> kPa on the sensor.</p>
+    <p class="we-check"><b>Check.</b> Set the figure: it rounds to whole kilopascals and shows <span data-n="depth.p-kpa@h=10">98</span>. Double the depth and the column doubles, so at 20 m it shows <span data-n="depth.p-kpa@h=20">196</span> kPa; at the surface, with no column, zero.</p>
+    <p class="we-means"><b>What it means.</b> Ten metres of water press about as hard as the whole height of the air above us. The size of the lake appears nowhere in the sum. <a data-ref="ch-depth"></a> asks whether that can really be right.</p>
+    <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-depth","set":{"dp-H":50,"dp-h":10}}'>Set the figure</button></p>
+  </section>
+
+  <h3 id="s-how-notes">Notes in the margin</h3>
+  <p>Notes sit in the right-hand margin beside the line they belong to, and on a phone they fold away behind a small number or ⊕ that you tap to open.<label for="sn-how-notes" class="sn-ref"></label><input type="checkbox" id="sn-how-notes" class="margin-toggle"><span class="sidenote" data-kind="curious">Like this one. Nothing the argument needs is ever in a note; you can skip every one and lose nothing but the pleasure.</span> They come in four kinds. <b>Source</b> notes name where a number from the literature comes from, with the page or table when there is one; <a data-ref="prologue"></a> has several. <b>Units</b> notes translate a unit into something you can feel.<label for="mn-how-kpa" class="mn-ref" aria-label="Units"></label><input type="checkbox" id="mn-how-kpa" class="margin-toggle"><span class="marginnote" data-kind="units">A kilopascal is a kilonewton spread over a square metre: about the weight of a 100 kg mass, <span data-n="front.weight-100kg-kn">0.981</span> kN, resting on a square metre.</span> <b>History</b> notes say who found something out, and when. <b>For the curious</b> notes hold a derivation or an aside for anyone who wants to go a step further.</p>
+
+  <h3 id="s-how-questions">Check yourself, and the questions at the end</h3>
+  <p>Inside each chapter, a few one-line questions fold open to show their answer:</p>
+  <details class="check">
+    <summary><span class="check-k">Check yourself</span> A dam's crest is <span data-n="front.dam-h-m">24</span> m above the ground, and the lake behind it is <span data-n="lab.res-m">20.4</span> m deep. How far below the crest is the water?</summary>
+    <p><span data-n="front.freeboard-m">3.6</span> m. That margin has a name, the <span class="gl" data-term="freeboard">freeboard</span>, and <a data-ref="fig-plate-0"></a> shows it on this very dam.</p>
+  </details>
+  <p>Each chapter ends with a box of what to remember and then four to six questions. A tag says what kind each one is, and the dots say how hard:</p>
+  <ul class="htr-tags">
+    <li><span class="q-tag">Check</span><span>recall what the chapter said</span></li>
+    <li><span class="q-tag">Reckon</span><span>estimate on paper, with numbers</span></li>
+    <li><span class="q-tag">Explore</span><span>use a figure to find out</span></li>
+    <li><span class="q-tag">Case</span><span>reason about a real dam</span></li>
+    <li><span class="q-tag">Design</span><span>choose something and justify it</span></li>
+    <li><span class="q-tag"><i>●○○</i> to <i>●●●</i></span><span>from a quick one to a long one</span></li>
   </ul>
+  <p>Every question has a hint under it, and the answers, with their working, are collected at the back of the book. After the questions come two or three readings, each marked <i>gentle</i>, <i>serious</i> or <i>primary source</i>, and a card that points to the next chapter.</p>
+
+  <h3 id="s-how-films">Films</h3>
+  <p>Seven narrated films, <span data-n="front.films-min">58</span> minutes in all, retell the story with moving drawings. Each sits in the chapter it retells most closely, and several range over other chapters as well; the note before each film says where. Before it plays, a film asks its question. Under it, chapter marks jump to the part you want, each linked back to the figure it retells, and a transcript is there for reading instead of watching. <a data-ref="film-depth-not-size"></a> is the first you will meet.</p>
+
+  <h3 id="s-how-words">Words, scale and typical values</h3>
+  <p>A dotted underline marks a word defined in the Glossary at the back: hover over it, or tap it on a phone, to read the definition, as with <span class="gl" data-term="crest">crest</span>. <a data-ref="fig-plate-0"></a> names the parts of a dam and gives the book's three conventions.</p>
+  <p>All drawings are simplified. Those marked "drawn to scale" are drawn to scale, from the code's own dimensions or from published ones; the rest are schematic, and say so. The soil properties are typical values for teaching, not design values: a real dam is designed from tests on its own soils.</p>
+
+  <h3 id="s-how-time">Time, and a tutor</h3>
+  <p>Plan on eight to ten hours for the whole book, more if you work the questions, plus the films. Each chapter's opening page says how long it takes to read, and the bar at the top of the screen shows where you are and opens the Contents. If you are reading on claude.ai, each live figure also has a <b>Why did that happen?</b> button that asks Claude about exactly what the figure is showing you; the standalone page does not have it.</p>
 </section>

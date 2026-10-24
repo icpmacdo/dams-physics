@@ -1,0 +1,16 @@
+{
+  "polley2015": {
+    "group": "reports", "short": "Mount Polley Review Panel (2015)",
+    "authors": "Independent Expert Engineering Investigation and Review Panel", "year": "2015",
+    "title": "Report on Mount Polley Tailings Storage Facility Breach",
+    "container": "Province of British Columbia, January 2015", "doi": null,
+    "url": "https://www.mountpolleyreviewpanel.ca/sites/default/files/report/ReportonMountPolleyTailingsStorageFacilityBreach.pdf"
+  },
+  "polley-cim2015": {
+    "group": "reports", "short": "Chief Inspector of Mines (2015)",
+    "authors": "Chief Inspector of Mines", "year": "2015",
+    "title": "Mount Polley Mine Tailings Storage Facility Breach, August 4, 2014: Investigation Report of the Chief Inspector of Mines",
+    "container": "BC Ministry of Energy and Mines, 30 November 2015", "doi": null,
+    "url": "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/mineral-exploration-mining/documents/directives-alerts-incidents/chief-inspector-s-report-page/m-200_mount_polley_2015-11-30_ci_investigation_report.pdf"
+  }
+}

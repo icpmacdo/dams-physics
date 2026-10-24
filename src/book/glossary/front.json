@@ -1,0 +1,11 @@
+{
+  "upstream": ["Upstream", "Toward the water a dam holds back, against the way the river flows. In every section drawing in this book the upstream side is on the left."],
+  "downstream": ["Downstream", "Away from the water a dam holds back, the way the river flows. In every section drawing in this book it is on the right."],
+  "crest": ["Crest", "The top of a dam: the level strip, often carrying a road, that runs along its whole length."],
+  "heel": ["Heel", "Where the upstream face of a dam meets the ground."],
+  "toe": ["Toe", "Where the downstream face of a dam meets the ground. Water that seeps through or under an embankment usually comes out at or near the toe, so that is where an inspector looks first."],
+  "freeboard": ["Freeboard", "The height of the crest above the water behind the dam: the margin left for waves and floods before water spills over the top."],
+  "abutment": ["Abutment", "A valley side that the end of a dam rests against. The left and right abutments are named as you look downstream."],
+  "tailwater": ["Tailwater", "The water on the downstream side of a dam, in the river or pond below it. The difference between the reservoir level and the tailwater level is the drop the water makes on its way past the dam."],
+  "slope-notation": ["Slope notation (H:V)", "A slope written as horizontal distance to vertical rise. 2H:1V, often shortened to 2:1, means two metres across for every metre up; the larger the first number, the flatter the slope."]
+}

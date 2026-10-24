@@ -1,3 +1,48 @@
-<section class="front" id="toolkit" data-stub>
-  <!-- The toolkit (book/SPEC.md H.0): eight details.check questions. Remove data-stub when written. -->
+<section class="front col" id="toolkit">
+  <!-- The toolkit (book/SPEC.md H.0): eight checks, each with the numbers of the book's own figures.
+       Keys: tests/numbers/front.js, figs.js. -->
+  <h2>The toolkit: a self-check</h2>
+  <p>The book uses arithmetic, a little trigonometry and no algebra beyond turning a formula round. These eight questions cover all of it, and each uses a number you will meet later. Answer in your head or on paper first, then open the answer.</p>
+
+  <details class="check">
+    <summary><span class="check-k">1 · Powers of ten</span> The workbench's rockfill has a <span class="gl" data-term="permeability">permeability</span> of <span data-n="front.k-rock">10⁻⁴</span> m/s; its clay, <span data-n="front.k-clay">10⁻⁹</span> m/s. How many times more easily does water pass through the rockfill?</summary>
+    <p class="tk-a"><span data-n="front.k-rock">10⁻⁴</span> ÷ <span data-n="front.k-clay">10⁻⁹</span> = 10<sup>−4 + 9</sup> = <span data-n="front.k-ratio">10⁵</span>, a hundred thousand times. Dividing powers of ten subtracts their exponents: −4 − (−9) = 5.</p>
+  </details>
+
+  <details class="check">
+    <summary><span class="check-k">2 · A slope as an angle</span> Both faces of our dam slope at <span data-n="front.slope-down">2</span>H:1V, two metres across for every metre up. What angle does each face make with the ground?</summary>
+    <p class="tk-a">The tangent of the angle is rise over run: tan <var>β</var> = 1 ÷ <span data-n="front.slope-down">2</span> = <span data-n="front.tan-slope2">0.5</span>, so <var>β</var> = tan<sup>−1</sup> <span data-n="front.tan-slope2">0.5</span> = <span data-n="front.tan-slope2-deg">26.6</span>°. On a calculator, tan<sup>−1</sup> is often marked atan or arctan, and it must be set to degrees.</p>
+  </details>
+
+  <details class="check">
+    <summary><span class="check-k">3 · The area of a section</span> Our dam is <span data-n="front.dam-h-m">24</span> m high, with a crest <span data-n="front.crest-w-m">6</span> m wide and both faces at <span data-n="front.slope-down">2</span>H:1V. What is the area of its cross-section?</summary>
+    <p class="tk-a">Split it into a rectangle under the crest and a triangle on each side. Each face runs <span data-n="front.slope-down">2</span> × <span data-n="front.dam-h-m">24</span> = <span data-n="front.tri-run-m">48</span> m across, so each triangle is ½ × <span data-n="front.tri-run-m">48</span> × <span data-n="front.dam-h-m">24</span> = <span data-n="front.area-tri-m2">576</span> m². The rectangle is <span data-n="front.crest-w-m">6</span> × <span data-n="front.dam-h-m">24</span> = <span data-n="front.area-rect-m2">144</span> m². In all, <span data-n="front.area-m2">1,296</span> m²: that many cubic metres of fill for every metre of dam, and the same <span data-n="bench.cells">1,296</span> one-metre squares you will paint in the workbench at the end of the book.</p>
+  </details>
+
+  <details class="check">
+    <summary><span class="check-k">4 · Mass and weight</span> What does a 100 kg mass weigh, in kilonewtons?</summary>
+    <p class="tk-a">Weight is mass times gravity: 100 kg × <span data-n="front.g">9.81</span> m/s² = <span data-n="front.weight-100kg-n">981</span> newtons, or <span data-n="front.weight-100kg-kn">0.981</span> kN. A tonne weighs <span data-n="const.gw">9.81</span> kN, and a cubic metre of water has a mass of one tonne, so it weighs <span data-n="const.gw">9.81</span> kN. That number turns up on almost every page.</p>
+  </details>
+
+  <details class="check">
+    <summary><span class="check-k">5 · Pressure</span> A tonne of water stands on one square metre. How hard does it press, in kilopascals?</summary>
+    <p class="tk-a"><span data-n="const.gw">9.81</span> kN spread over 1 m² is <span data-n="const.gw">9.81</span> kN/m², and a kilopascal (kPa) is exactly one kilonewton per square metre: <span data-n="const.gw">9.81</span> kPa. A column of water one metre deep presses that hard on its base; ten metres press <span data-n="depth.p-kpa@h=10">98.1</span> kPa.</p>
+  </details>
+
+  <details class="check">
+    <summary><span class="check-k">6 · A log axis</span> On an axis whose ticks read 10⁻⁶, 10⁻⁵, 10⁻⁴, what value sits exactly halfway between the first tick and the last?</summary>
+    <p class="tk-a"><span data-n="front.log-mid">10⁻⁵</span>, the middle tick. On a logarithmic axis each step multiplies by the same factor, here ten, so halfway between 10⁻⁶ and 10⁻⁴ is the value ten times the first and a tenth of the last. The tempting answer, 5 × 10⁻⁵, sits much nearer the 10⁻⁴ end. The book needs one for permeability, which runs from <span data-n="race.k@mat=gravel">10⁻²</span> m/s for gravel to <span data-n="race.k@mat=clay">10⁻⁹</span> m/s for clay.</p>
+  </details>
+
+  <details class="check">
+    <summary><span class="check-k">7 · Turning a formula round</span> A formula says <var>q</var> = <var>k</var> · <var>i</var> · <var>A</var>. If <var>q</var>/<var>A</var> = <span data-n="darcy.q-ms">7.0 × 10⁻⁵</span> m/s and <var>i</var> = <span data-n="darcy.i">0.70</span>, what is <var>k</var>?</summary>
+    <p class="tk-a">Divide both sides by <var>i</var> · <var>A</var>: <var>k</var> = (<var>q</var>/<var>A</var>) ÷ <var>i</var> = <span data-n="darcy.q-ms">7.0 × 10⁻⁵</span> ÷ <span data-n="darcy.i">0.70</span> = <span data-n="front.k-sand">1.0 × 10⁻⁴</span> m/s. These are the numbers of the sand in Darcy's pipe in <a data-ref="ch-head"></a>, and the formula is his law.</p>
+  </details>
+
+  <details class="check">
+    <summary><span class="check-k">8 · Significant figures</span> The seepage lab opens with <span data-n="lab.q-lday">2,366</span> litres a day seeping past each metre of dam. Write that to two significant figures.</summary>
+    <p class="tk-a"><span data-n="lab.q-lday" data-n-sig="2">2,400</span>. Keep the first two digits, 2 and 3, and let the next one, 6, round the 3 up. The lab works with typical soil properties, not measured ones, so two figures are as many as its answer deserves.</p>
+  </details>
+
+  <p class="tk-end">Missed two or more? <a data-ref="models"></a> opens with a refresher on each of these.</p>
 </section>
