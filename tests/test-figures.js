@@ -33,7 +33,7 @@ const core = read('app-core.js'), ground = read('app-ground.js'), seep = read('a
 const UTIL = block(core, 'app-core.js', 'util'); // n1, fmt, clamp, lerp, polyArea, clipBelow, ...
 const load = (code, names) => new Function(UTIL + '\nconst deg = Math.PI / 180;\n' + code + `\nreturn { ${names.join(', ')} };`)();
 const G = load(['beach', 'depth', 'race', 'darcy', 'block', 'column'].map(n => block(ground, 'app-ground.js', n)).join('\n'),
-  ['BEACH0', 'PACK0', 'JIG0', 'beachShapes', 'beachJiggle', 'depthCalc', 'MATS', 'fmtDur', 'raceTime', 'raceReadouts', 'DARCY0', 'DARCY_PLUG', 'darcyKEff', 'darcyHeadAt', 'flowRate', 'darcyReadouts',
+  ['BEACH0', 'PACK0', 'JIG0', 'beachShapes', 'beachJiggle', 'depthCalc', 'MATS', 'fmtDur', 'raceTime', 'raceReadouts', 'RACE_MAX', 'RACE_DUR', 'raceRate', 'DARCY0', 'DARCY_PLUG', 'darcyKEff', 'darcyHeadAt', 'flowRate', 'darcyReadouts',
     'BLOCK', 'blockForces', 'blockReadouts', 'COL', 'columnStress', 'columnReadouts']);
 const C = load(block(core, 'app-core.js', 'hydro') + block(core, 'app-core.js', 'raise'), ['hydroCalc', 'runnerTurn', 'R', 'stateAt', 'stageText', 'raiseDam']);
 const S = load(block(seep, 'app-seep.js', 'lab') + block(seep, 'app-seep.js', 'pipe') + block(seep, 'app-seep.js', 'uplift'),
@@ -116,9 +116,14 @@ console.log('\nFig. 3.1 · the permeability race');
   same(v0, 0, 'clock on load');
   staticMatches([['rc-t-o', r0.t], ['rc-clock', r0.t], ['rc-clock2', r0.clock2], ['rc-done', r0.done1], ['rc-done2', r0.done2]], 'Fig. 3.1');
   const at = v => { const r = G.raceReadouts(v, mats); return [r.t, r.clock2, r.done1, r.done2].join(' | '); };
-  same(at(4), '2.8 h | clock is running 3,162× faster | Gravel, Sand | 2 of four', 'clock at 10⁴ s');
-  same(at(7), '17 weeks | clock is running 3,162,278× faster | Gravel, Sand, Silt | 3 of four', 'clock at 10⁷ s');
-  same(at(9), '32 years | clock is running 316,227,766× faster | All four | clay took 11 years', 'clock at the end');
+  // the speed-up readout is now the clock's true rate, ln 10 · 10^v at a decade per second (it showed 10^(v − 0.5), about 7× too low)
+  same(at(4), '2.8 h | clock is running 23,000× faster | Gravel, Sand | 2 of four', 'clock at 10⁴ s');
+  same(at(7), '17 weeks | clock is running 23,000,000× faster | Gravel, Sand, Silt | 3 of four', 'clock at 10⁷ s');
+  same(at(9), '32 years | clock is running 2,300,000,000× faster | All four | clay took 11 years', 'clock at the end');
+  same(G.RACE_MAX / G.RACE_DUR, 1, 'the clock gains one decade (tenfold) every real second, as the scale note says');
+  same(staticText('rc-scale'), 'Clock speeds up tenfold every second', 'Fig. 3.1 scale note');
+  const v = 5, dt = 1e-6, num = (Math.pow(10, v + dt * G.RACE_MAX / G.RACE_DUR) - Math.pow(10, v)) / dt;
+  near(G.raceRate(v), num, 0.01 * num, 'the speed-up shown matches the clock\'s rate measured over a millionth of a second (within 1%)');
 }
 
 console.log('\nFig. 3.2 · Darcy\'s experiment');

@@ -462,11 +462,15 @@ function groundPredictInit(root) {
     const y = s / 86400 / 365.25; return (y < 10 ? y.toFixed(1) : Math.round(y)) + ' years';
   }
   const raceTime = m => m.n * 1 / (m.k * 1); // seconds to cross 1 m at gradient 1
+  // the clock runs from 10⁰ to 10⁹ s in 9 real seconds: one decade, ten times the clock time, every second
+  const RACE_MAX = 9, RACE_DUR = 9;
+  // how many times faster than real time the clock runs at v: d(10^v)/dt = ln 10 · 10^v · (decades per second)
+  function raceRate(v) { const r = Math.LN10 * Math.pow(10, v) * RACE_MAX / RACE_DUR; return r >= 100 ? +r.toPrecision(2) : Math.round(r); }
   // the race readouts with the clock at v (log10 of seconds); mats in race order, each with its crossing time t
   function raceReadouts(v, mats) {
     const s = v <= 0 ? 0 : Math.pow(10, v), t = fmtDur(s);
     const done = mats.filter(m => s / m.t >= 1).length; // they finish in order
-    return { s, done, t, clock2: v <= 0 ? 'press start' : 'clock is running ' + fmt(Math.pow(10, Math.max(0, v - 0.5))) + '× faster',
+    return { s, done, t, clock2: v <= 0 ? 'press start' : 'clock is running ' + fmt(raceRate(v)) + '× faster',
       done1: done === 0 ? 'None' : done === 4 ? 'All four' : mats.slice(0, done).map(m => m.name).join(', '),
       done2: done === 4 ? 'clay took ' + fmtDur(mats[3].t) : done + ' of four' };
   }
@@ -531,7 +535,7 @@ function groundPredictInit(root) {
       setTxt('rc-done', ro.done1);
       setTxt('rc-done2', ro.done2);
     }
-    const player = Player({ max: 9, dur: 10, btn: $('#rc-play'), slider: $('#rc-t'), onUpdate: render, playText: 'Start the race', replayText: 'Run again' });
+    const player = Player({ max: RACE_MAX, dur: RACE_DUR, btn: $('#rc-play'), slider: $('#rc-t'), onUpdate: render, playText: 'Start the race', replayText: 'Run again' });
     render(0);
     F.ticks.push((t, dt) => player.tick(dt));
     F.onFirst = () => { if (RM) player.set(9); };
