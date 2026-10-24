@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "about": "The manifest build.py reads to assemble the book. book/SPEC.md section B defines every field. Prose here is reader-facing: it follows the SPEC voice rules.",
+  "title": "Dams in Section",
+  "subtitle": "From a handful of sand to a dam you design",
+  "edition": "First edition · 2026",
+  "unitWord": "Chapter",
+  "spine": "Soil holds only as well as its grains press on one another, and the water between them can take that press away.",
+  "spineCoda": "And water that pours over the top can wash the whole heap away, however hard its grains press.",
+
+  "front": [
+    { "id": "cover", "file": "src/book/00-cover.html", "title": "Dams in Section", "inContents": false,
+      "aliases": [{ "id": "top" }] },
+    { "id": "contents", "file": "src/book/01-contents.html", "title": "Contents", "inContents": false, "generated": "toc" },
+    { "id": "preface", "file": "src/book/02-preface.html", "title": "Preface", "key": "front", "wordTarget": [500, 700] },
+    { "id": "how-to-read", "file": "src/book/03-how-to-read.html", "title": "How to read this book", "key": "front", "wordTarget": [600, 900] },
+    { "id": "plate-0", "file": "src/book/04-plate-0.html", "title": "Plate 0 · How to read a section", "key": "front",
+      "newIds": ["fig-plate-0"] },
+    { "id": "toolkit", "file": "src/book/05-toolkit.html", "title": "The toolkit: a self-check", "key": "front" }
+  ],
+
+  "prologue": {
+    "id": "prologue", "label": "P", "key": "pro", "slug": "prologue",
+    "title": "4 August 2014",
+    "file": "src/book/10-prologue.html",
+    "question": "How does a dam that passed its calculations fail in a night?",
+    "hook": "A tailings dam in central British Columbia gives way in the dark.",
+    "mini": 0,
+    "wordTarget": [600, 900],
+    "aliases": [],
+    "films": [],
+    "newIds": ["fig-prologue-section"]
+  },
+
+  "parts": [
+    {
+      "id": "part-1", "numeral": "I", "title": "Ground",
+      "prospect": "Before there is a dam there is ground: grains of sand and the water between them. These five chapters start on a beach and end in a box of simulated grains. Along the way they build the one idea the rest of the book stands on.",
+      "chapters": [
+        {
+          "n": 1, "id": "ch-beach", "slug": "beach", "key": "ch01", "label": "1",
+          "title": "The beach",
+          "file": "src/book/ch01-beach.html",
+          "question": "The same sand, and only the water has changed. Why does it behave three ways?",
+          "hook": "Three kinds of sand, and the water that makes the difference.",
+          "mini": 1,
+          "wordTarget": [2500, 3500],
+          "aliases": [{ "id": "beach" }],
+          "films": [],
+          "newIds": ["fig-beach-dam", "ex-beach-castle", "ex-beach-slope"]
+        },
+        {
+          "n": 2, "id": "ch-depth", "slug": "depth", "key": "ch02", "label": "2",
+          "title": "Depth, not size",
+          "file": "src/book/ch02-depth.html",
+          "question": "Two dams hold water 50 m deep, one a long lake and one a narrow slot. Which has to be stronger?",
+          "hook": "Why the depth of the water matters and the size of the lake doesn't.",
+          "mini": 2,
+          "wordTarget": [3500, 4500],
+          "aliases": [{ "id": "pressure" }],
+          "films": [{ "id": "film-depth-not-size", "film": "depth-not-size", "start": 0, "end": 191.0, "part": "part one" }],
+          "newIds": ["fig-depth-triangle", "eq-depth-p", "eq-depth-push", "ex-depth-sensor", "ex-depth-push", "ex-depth-slot", "ex-depth-triangle", "ex-depth-sloping"]
+        },
+        {
+          "n": 3, "id": "ch-head", "slug": "head", "key": "ch03", "label": "3",
+          "title": "Which way the water goes",
+          "file": "src/book/ch03-head.html",
+          "question": "The sea is lower than the beach. What pushes the water out of the sand, and why does it take hours?",
+          "hook": "Head, Darcy's law, and the clay that takes almost the whole drop.",
+          "mini": 3,
+          "wordTarget": [4000, 5000],
+          "aliases": [{ "id": "flow" }],
+          "films": [],
+          "newIds": ["fig-head-straws", "eq-head-total", "eq-head-darcy", "ex-head-darcy", "ex-head-plug", "ex-head-race", "ex-head-core", "ex-head-force"]
+        },
+        {
+          "n": 4, "id": "ch-grip", "slug": "grip", "key": "ch04", "label": "4",
+          "title": "Grip",
+          "file": "src/book/ch04-grip.html",
+          "question": "If water doesn't grease the grains, what does it do to them?",
+          "hook": "Friction, a block on a water cushion, and Terzaghi's effective stress.",
+          "mini": 4,
+          "wordTarget": [4000, 5000],
+          "aliases": [{ "id": "strength" }],
+          "films": [],
+          "newIds": ["fig-grip-face", "fig-grip-envelope", "eq-grip-fs", "eq-grip-sigma", "eq-grip-strength", "eq-grip-ic", "eq-grip-face", "ex-grip-block", "ex-grip-column", "ex-grip-ic", "ex-grip-face", "ex-grip-envelope"]
+        },
+        {
+          "n": 5, "id": "ch-trapped", "slug": "trapped", "key": "ch05", "label": "5",
+          "title": "When the water can't get out",
+          "file": "src/book/ch05-trapped.html",
+          "question": "Why does firm wet sand go pale under one foot, while the sand at the water's edge swallows the other?",
+          "hook": "Loose and dense, drained and undrained, and liquefaction.",
+          "mini": 5,
+          "wordTarget": [3500, 4500],
+          "aliases": [],
+          "films": [{ "id": "film-same-sand", "film": "same-sand", "start": 0, "end": 545.0 }],
+          "newIds": ["fig-trapped-clock", "eq-trapped-time", "ex-trapped-castle", "ex-trapped-time", "ex-trapped-clay", "trapped-comes-back"]
+        }
+      ]
+    },
+    {
+      "id": "part-2", "numeral": "II", "title": "Two kinds of dam",
+      "prospect": "Some dams hold water that is worth money. Others hold mine waste that nobody wants back and that has to stay put long after the mine has closed. Part II looks at both: at the flood every dam must pass, at a block of concrete that stands by its weight alone, and at dams that keep growing for as long as a mine runs.",
+      "chapters": [
+        {
+          "n": 6, "id": "ch-two-dams", "slug": "two-dams", "key": "ch06", "label": "6",
+          "title": "Two dams, two jobs",
+          "file": "src/book/ch06-two-dams.html",
+          "question": "What changes when the thing behind the dam can lose its own strength?",
+          "hook": "A dam whose water is the product, a dam whose waste must stay put, and the flood both must pass.",
+          "mini": 6,
+          "wordTarget": [3500, 4500],
+          "aliases": [{ "id": "types" }],
+          "films": [],
+          "newIds": ["tbl-two-dams-compare", "tbl-two-dams-cases", "fig-two-dams-spillway", "eq-two-dams-power", "eq-two-dams-weir", "ex-two-dams-power", "ex-two-dams-heel", "ex-two-dams-sorting", "ex-two-dams-spillway"]
+        },
+        {
+          "n": 7, "id": "ch-concrete", "slug": "concrete", "key": "ch07", "label": "7",
+          "title": "A block on a cushion of water",
+          "file": "src/book/ch07-concrete.html",
+          "question": "A concrete dam weighs more than twice the push of the water on it. Why isn't that the end of the story?",
+          "hook": "The concrete gravity dam, and the water that lifts it from below.",
+          "mini": 7,
+          "wordTarget": [3000, 4000],
+          "aliases": [],
+          "films": [{ "id": "film-depth-not-size-2", "film": "depth-not-size", "start": 191.0, "end": null, "part": "part two" }],
+          "newIds": ["fig-concrete-forces", "case-bouzey", "eq-concrete-fs", "eq-concrete-drain", "ex-concrete-full", "ex-concrete-clogged", "ex-concrete-phi", "ex-concrete-level"]
+        },
+        {
+          "n": 8, "id": "ch-raising", "slug": "raising", "key": "ch08", "label": "8",
+          "title": "Never finished",
+          "file": "src/book/ch08-raising.html",
+          "question": "Why would a country write the word “upstream” into its laws?",
+          "hook": "Upstream, downstream and centreline: three ways to raise a tailings dam, and a water dam built like one.",
+          "mini": 8,
+          "wordTarget": [3500, 4500],
+          "aliases": [{ "id": "raising" }],
+          "films": [{ "id": "film-never-finished", "film": "never-finished", "start": 0, "end": null }],
+          "newIds": ["tbl-raising-compare", "case-coquitlam", "ex-raising-fill", "ex-raising-crest", "ex-raising-rate"]
+        }
+      ]
+    },
+    {
+      "id": "part-3", "numeral": "III", "title": "Inside the embankment",
+      "prospect": "Most of the world's large dams are heaps of earth and rock. Part III opens one up: why it is built from several soils, where the water inside it goes, and what happens when that water starts to carry the soil away.",
+      "chapters": [
+        {
+          "n": 9, "id": "ch-zones", "slug": "zones", "key": "ch09", "label": "9",
+          "title": "Every zone has one job",
+          "file": "src/book/ch09-zones.html",
+          "question": "Why build a dam out of six different soils?",
+          "hook": "Core, filters, transitions and shells, and how loose earth is made into dense fill.",
+          "mini": 9,
+          "wordTarget": [3500, 4500],
+          "aliases": [{ "id": "zones" }],
+          "films": [{ "id": "film-wall-of-dirt", "film": "wall-of-dirt", "start": 0, "end": null }],
+          "newIds": ["tbl-zones-earth", "ex-zones-compaction", "ex-zones-shell"]
+        },
+        {
+          "n": 10, "id": "ch-seepage", "slug": "seepage", "key": "ch10", "label": "10",
+          "title": "Where the water goes",
+          "file": "src/book/ch10-seepage.html",
+          "question": "If every dam leaks, what makes a leak safe?",
+          "hook": "Seepage paths, flow nets drawn by hand, and a seepage lab you can run.",
+          "mini": 10,
+          "wordTarget": [4000, 5000],
+          "aliases": [{ "id": "seepage" }],
+          "films": [],
+          "newIds": ["pr-seepage-core", "fig-seepage-net", "fig-seepage-defences", "eq-seepage-net", "ex-seepage-net", "ex-seepage-hand", "ex-seepage-core", "ex-seepage-drains", "ex-seepage-dupuit"]
+        },
+        {
+          "n": 11, "id": "ch-erosion", "slug": "erosion", "key": "ch11", "label": "11",
+          "title": "When water carries soil",
+          "file": "src/book/ch11-erosion.html",
+          "question": "Bennett and Teton both leaked through their cores. Why does one of them still stand?",
+          "hook": "Boils, pipes, the four kinds of internal erosion, and the filter that stops them.",
+          "mini": 11,
+          "wordTarget": [4000, 5000],
+          "aliases": [],
+          "films": [{ "id": "film-sand-that-boils", "film": "sand-that-boils", "start": 0, "end": 540.0 }],
+          "newIds": ["fig-erosion-tube", "fig-erosion-modes", "case-teton", "case-bennett", "eq-erosion-ic", "eq-erosion-filter", "ex-erosion-exit", "ex-erosion-pipe", "ex-erosion-filter"]
+        }
+      ]
+    },
+    {
+      "id": "part-4", "numeral": "IV", "title": "Will it stand?",
+      "prospect": "An engineer judges a slope by one number: the grip the soil can offer, divided by the grip it needs. Part IV shows how that number is worked out, by hand and by computer, and then hands you a dam to design. The last chapter tests the number against a dam that passed it.",
+      "chapters": [
+        {
+          "n": 12, "id": "ch-slope", "slug": "slope", "key": "ch12", "label": "12",
+          "title": "Will the slope stand?",
+          "file": "src/book/ch12-slope.html",
+          "question": "This dam is standing, with water breaking out of its face. How close is it to sliding?",
+          "hook": "The factor of safety on a curved surface, worked by hand and by computer.",
+          "mini": 12,
+          "wordTarget": [4000, 5000],
+          "aliases": [],
+          "films": [{ "id": "film-every-dam-leaks", "film": "every-dam-leaks", "start": 0, "end": null }],
+          "newIds": ["fig-slope-infinite", "fig-slope-slice", "eq-slope-infinite", "eq-slope-seep", "eq-slope-bishop", "ex-slope-infinite", "ex-slope-slice", "ex-slope-dry", "ex-slope-drawdown"]
+        },
+        {
+          "n": 13, "id": "ch-build", "slug": "build", "key": "ch13", "label": "13",
+          "title": "Build your own dam",
+          "file": "src/book/ch13-build.html",
+          "question": "Can you design a dam that passes every check, and what can the checks not see?",
+          "hook": "A workbench, five missions, and Mount Polley's answer.",
+          "mini": 13,
+          "wordTarget": [4000, 5000],
+          "aliases": [{ "id": "build" }],
+          "films": [{ "id": "film-layer-nobody-found", "film": "layer-nobody-found", "start": 0, "end": null }],
+          "newIds": ["case-polley", "fig-build-strengths", "fig-build-cost", "ex-build-fatter", "ex-build-hold", "ex-build-polley", "ex-build-breakout"]
+        }
+      ]
+    }
+  ],
+
+  "epilogue": {
+    "id": "epilogue", "label": "E", "key": "epi", "slug": "epilogue",
+    "title": "The dam after the drawings",
+    "file": "src/book/90-epilogue.html",
+    "question": "What happens to a dam once the drawings are done?",
+    "hook": "Instruments, inspections, the law, and a small dam near Oliver, BC.",
+    "mini": 14,
+    "wordTarget": [1500, 2500],
+    "aliases": [],
+    "films": [],
+    "newIds": ["fig-epilogue-instruments", "case-testalinden", "ex-epilogue-ru"]
+  },
+
+  "back": [
+    { "id": "answers", "file": "src/book/91-answers.html", "title": "Answers and hints", "key": "back", "generated": "answers" },
+    { "id": "symbols", "file": "src/book/92-symbols.html", "title": "Symbols and units", "key": "back" },
+    { "id": "glossary", "file": "src/book/93-glossary.html", "title": "Glossary", "key": "back", "generated": "glossary" },
+    { "id": "case-files", "file": "src/book/94-case-files.html", "title": "Case files", "key": "back", "generated": "cases",
+      "aliases": [{ "id": "cases" }] },
+    { "id": "bibliography", "file": "src/book/95-bibliography.html", "title": "Bibliography", "key": "back", "generated": "bibliography" },
+    { "id": "models", "file": "src/book/96-models.html", "title": "How the models work", "label": "A", "key": "back" },
+    { "id": "errata", "file": "src/book/97-errata.html", "title": "Errata and changes", "key": "back", "generated": "errata" },
+    { "id": "colophon", "file": "src/book/98-colophon.html", "title": "Colophon", "key": "back" }
+  ],
+
+  "films": {
+    "same-sand":          { "episode": 1, "title": "The same sand, three ways", "src": "video/same-sand.mp4", "poster": "video/same-sand.jpg", "vtt": "video/same-sand.vtt", "duration": 547.37 },
+    "depth-not-size":     { "episode": 2, "title": "Depth, not size", "src": "video/depth-not-size.mp4", "poster": "video/depth-not-size.jpg", "vtt": "video/depth-not-size.vtt", "duration": 504.33 },
+    "wall-of-dirt":       { "episode": 3, "title": "A wall made of dirt", "src": "video/wall-of-dirt.mp4", "poster": "video/wall-of-dirt.jpg", "vtt": "video/wall-of-dirt.vtt", "duration": 411.07 },
+    "every-dam-leaks":    { "episode": 4, "title": "Every dam leaks", "src": "video/every-dam-leaks.mp4", "poster": "video/every-dam-leaks.jpg", "vtt": "video/every-dam-leaks.vtt", "duration": 363.67 },
+    "sand-that-boils":    { "episode": 5, "title": "The sand that boils", "src": "video/sand-that-boils.mp4", "poster": "video/sand-that-boils.jpg", "vtt": "video/sand-that-boils.vtt", "duration": 559.37 },
+    "never-finished":     { "episode": 6, "title": "Dams that are never finished", "src": "video/never-finished.mp4", "poster": "video/never-finished.jpg", "vtt": "video/never-finished.vtt", "duration": 546.30 },
+    "layer-nobody-found": { "episode": 7, "title": "The layer nobody found", "safeTitle": "Mount Polley's answer", "src": "video/layer-nobody-found.mp4", "poster": "video/layer-nobody-found.jpg", "vtt": "video/layer-nobody-found.vtt", "duration": 525.75 }
+  },
+
+  "mini": [
+    { "n": 0, "adds": "ground line only" },
+    { "n": 1, "adds": "a heap of sand at its angle of repose" },
+    { "n": 2, "adds": "water against the left face, with the pressure triangle" },
+    { "n": 3, "adds": "the phreatic line through the heap and one standpipe (the straw)" },
+    { "n": 4, "adds": "small paired arrows under the slope: grains pressing (σ′)" },
+    { "n": 5, "adds": "the soaked zone below the phreatic line shaded (water carrying load)" },
+    { "n": 6, "adds": "freeboard mark and a spillway notch at the crest" },
+    { "n": 7, "adds": "a small concrete block at the left with uplift arrows under it" },
+    { "n": 8, "adds": "a raise stepped onto the crest" },
+    { "n": 9, "adds": "a core and a filter inside the heap" },
+    { "n": 10, "adds": "two flow lines and three equipotentials" },
+    { "n": 11, "adds": "a filter and drain at the toe" },
+    { "n": 12, "adds": "a slip circle through the downstream slope" },
+    { "n": 13, "adds": "the 1 m grid of the workbench over the section" },
+    { "n": 14, "adds": "two piezometers and a weir at the toe" }
+  ]
+}
