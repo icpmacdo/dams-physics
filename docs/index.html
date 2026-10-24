@@ -782,7 +782,7 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p class="g-lede">If you have played on a beach, you have felt sand behave in three different ways.</p>
       <p><strong>Dry sand pours.</strong> It runs through your fingers, and the steepest heap you can make is a low cone.</p>
       <p><strong>Damp sand stands.</strong> Pack it into a bucket, turn it out, and you get a castle with walls that go straight up.</p>
-      <p><strong>Saturated sand turns to soup.</strong> At the water's edge, where every gap between the grains is full of water, the sand feels firm while you stand still. Wiggle your feet and it goes soft, and you sink to the ankles.</p>
+      <p><strong>Loose wet sand turns to soup.</strong> At the water's edge, where every gap between the grains is full of water, the sand feels firm while you stand still. Wiggle your feet and it goes soft, and you sink to the ankles.</p>
       <p>It is the same sand every time. Only the water between the grains has changed. Now picture an earth dam: a heap of soil the size of a hill, with a lake pressing on one side and water soaking into it. Whether it behaves like the damp castle or like the soup at the waterline depends on what that water is doing.</p>
       <p>Pick a state, then press <strong>Jiggle</strong> to shake the ground.</p>
     </div>
@@ -793,10 +793,11 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
         <span class="scale-note">Schematic · castle about 30 cm tall</span>
       </div>
       <div class="g-split">
-        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a cone with 34 degree sides. Damp, it stands as a castle with vertical walls. Saturated, it slumps, and when shaken it flows flat and the flag on top sinks."></svg></div>
+        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a cone with 34 degree sides. Damp, it stands as a castle with vertical walls. Under still water it still stands at about 34 degrees. With water draining out through its face, it slumps to about 19 degrees. Shaken, loose wet sand flows flat and the flag on top sinks, while dense wet sand holds its shape."></svg></div>
         <div class="g-side">
           <div class="controls">
-            <div class="ctl"><span>Sand</span><div class="seg" id="bc-state"><button type="button" data-v="dry" aria-pressed="false">Dry</button><button type="button" data-v="damp" aria-pressed="true">Damp</button><button type="button" data-v="sat" aria-pressed="false">Saturated</button></div></div>
+            <div class="ctl"><span>Sand</span><div class="seg" id="bc-state"><button type="button" data-v="dry" aria-pressed="false">Dry</button><button type="button" data-v="damp" aria-pressed="true">Damp</button><button type="button" data-v="under" aria-pressed="false">Under still water</button><button type="button" data-v="drain" aria-pressed="false">Water draining out</button></div></div>
+            <div class="ctl"><span>Packing</span><div class="seg" id="bc-pack"><button type="button" data-v="loose" aria-pressed="true">Loose</button><button type="button" data-v="dense" aria-pressed="false">Dense</button></div></div>
             <button class="btn primary" id="bc-jiggle" type="button">Jiggle</button>
           </div>
           <div class="g-zoom">
@@ -806,14 +807,15 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
           <div class="readouts">
             <div class="ro"><span>Steepest slope it holds</span><b id="bc-slope">90°</b><small id="bc-slope2">a vertical wall</small></div>
             <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water where grains touch</small></div>
+            <div class="ro"><span>After a jiggle</span><b id="bc-jig">–</b><small id="bc-jig2">press Jiggle to shake it</small></div>
           </div>
         </div>
       </div>
-      <figcaption>Dry sand settles at about 34°, however you pour it. Damp sand holds a vertical wall. Saturated sand slumps, and a jiggle turns it to a liquid: the flag sinks. Pick a state again to rebuild the heap. <strong>Why</strong> each one happens is the subject of <a href="#strength">Step 4</a>.</figcaption>
+      <figcaption>Dry sand settles at about 34°, however you pour it. Damp sand holds a vertical wall. Under still water the heap stands about as steep as dry sand, but with water draining out through its face it slumps to about 19°. Jiggle the wet heap: packed loose, it turns to a liquid and the flag sinks; packed dense, it holds. Pick a state or a packing again to rebuild the heap. <strong>Why</strong> each one happens is the subject of <a href="#strength">Step 4</a>.</figcaption>
     </figure>
 
     <div class="col">
-      <p>The slope a dry heap settles at (engineers call it the <span class="gl" data-term="angle-of-repose">angle of repose</span>) is about 34° for most sand. Damp sand ignores that limit. Saturated sand that gets shaken loses its strength altogether, and for a dam that is the dangerous one.</p>
+      <p>The slope a dry heap settles at (engineers call it the <span class="gl" data-term="angle-of-repose">angle of repose</span>) is about 34° for most sand. Damp sand ignores that limit. Wet sand is subtler: under still water a heap stands about as steep as a dry one, where water drains out through its face it slumps to about 19°, and loose wet sand that gets shaken loses nearly all its strength. For a dam, that last one is the dangerous one.</p>
       <p>To explain all three, you need two facts about water first. Its pressure grows with depth (Step 2). And it moves through the ground, slowly or very slowly, depending on the ground (Step 3). Step 4 puts them together.</p>
 
       <h3>The course</h3>
@@ -1083,7 +1085,8 @@ ol.course p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
       <p>Two things to notice. First, flooding the column from damp to soaked cuts the effective stress at 10 m from 180 to about 102 kPa. That is more than 40% of the soil's strength gone, though no grain has to move. Second, once the water rises above the ground, every extra metre adds the same 9.81 kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
 
       <h3>Damp sand: water that pulls</h3>
-      <p>That accounts for soaked sand. The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch (look back at the close-up in <a href="#fig-beach">Fig. 1.1</a>). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it, a negative pore pressure that engineers call <span class="gl" data-term="suction">suction</span>.</p>
+      <p>That accounts for soaked sand. It also explains a surprise in <a href="#fig-beach">Fig. 1.1</a>: a heap under still water stands about as steep as a dry one. The water carries part of each grain's weight, so the grains press on each other less, but the same buoyancy lightens their pull down the slope by the same share, and the angle depends only on the ratio of the two. The heap slumps to about 19° only where water drains out through its face, because the flowing water drags the grains downhill as well (<a href="#seepage">Step 8</a> measures that drag).</p>
+      <p>The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch (look back at the close-up in <a href="#fig-beach">Fig. 1.1</a>). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it, a negative pore pressure that engineers call <span class="gl" data-term="suction">suction</span>.</p>
       <p>Put a negative <em>u</em> into σ′ = σ − u and the effective stress goes up. The grains press together harder than their own weight could make them, so friction can hold them even on a vertical face. Suction in damp beach sand is only a few kPa. But near the top of a sandcastle the grains carry almost no weight, so those few kPa are most of what holds them in place.</p>
       <p>Dry the sand and the rings evaporate, the suction goes, and the castle crumbles. Flood it and the rings merge into one body of water at ordinary positive pressure, the suction goes again, and the wall slumps.</p>
 
@@ -4438,30 +4441,46 @@ function groundPredictInit(root) {
 
   /* ===================== Fig 1.1 · the beach ===================== */
   /* @fig-beach-begin */
-  // the state shown on load, the heap's height profile (px above the ground line) for each state,
-  // all holding the same area of sand, and the words the readouts show for each state
-  const BEACH0 = 'damp';
+  // the state and packing shown on load, the heap's height profile (px above the ground line) for each
+  // shape, all holding the same area of sand, and the words the readouts show for each shape.
+  // Infinite slope, no cohesion: dry, the face stands at φ′ (34°). Under still water the buoyancy
+  // lightens the press between grains and the pull down the face alike, so it still stands at φ′.
+  // With water draining out parallel to the face, the flow drags the grains downhill as well:
+  // tan β = (γ′/γsat)·tan φ′ = (10.19/20)·tan 34°, about 19°.
+  const BEACH0 = 'damp', PACK0 = 'loose';
+  const G_SAT = 20, G_W = 9.81; // kN/m³, soaked sand and water
   function beachShapes(CX, NC, DX) {
     const xs = Array.from({ length: NC }, (_, i) => i * DX);
-    const tan34 = Math.tan(34 * deg), tanSat = Math.tan(19 * deg);
+    const tan34 = Math.tan(34 * deg), tanDrain = (G_SAT - G_W) / G_SAT * tan34;
+    const drainDeg = Math.round(Math.atan(tanDrain) / deg);
     const damp = xs.map(x => { const d = Math.abs(x - CX); if (d > 50) return 0; return (d > 12 && d < 30) ? 128 : 146; });
     const A = damp.reduce((s, h) => s + h * DX, 0);
     const cone = (tn) => { const H = Math.sqrt(A * tn / 1); /* area of a cone section = H²/tan */ return xs.map(x => Math.max(0, H - Math.abs(x - CX) * tn)); };
-    const dry = cone(tan34), sat = cone(tanSat);
+    const dry = cone(tan34), drain = cone(tanDrain);
     const flat = (() => { const raw = xs.map(x => { const d = Math.abs(x - CX); return clamp((214 - d) / 24, 0, 1); }); const s = raw.reduce((a, h) => a + h * DX, 0); return raw.map(h => h * A / s); })();
-    const PROF = { dry, damp, sat, flat };
-    const SLOPE = { dry: ['34°', 'the angle of repose'], damp: ['90°', 'a vertical wall'], sat: ['about 19°', 'while it is left alone'], flat: ['about 0°', 'it flowed flat'] };
-    const GAP = { dry: ['Air', 'nothing holds the grains together'], damp: ['Air + water', 'rings of water where grains touch'], sat: ['Water', 'every gap is full'], flat: ['Water', 'the grains are floating apart'] };
-    const CAP = { dry: ['Dry sand', 'pours into a cone'], damp: ['Damp sand', 'stands in a vertical wall'], sat: ['Saturated sand', 'slumps to a low mound'], flat: ['Saturated, jiggled', 'flows like a liquid, and the flag sinks'] };
-    const ZN = { dry: 'Close-up: the gaps hold only air. Each grain rests on its neighbours.', damp: 'Close-up: a little water gathers in rings where the grains touch.', sat: 'Close-up: water fills every gap between the grains.', flat: 'Close-up: water fills every gap, and the grains barely press on each other.' };
-    return { xs, tan34, tanSat, A, PROF, SLOPE, GAP, CAP, ZN };
+    const PROF = { dry, damp, under: dry, drain, flat };
+    const TAN = { dry: tan34, under: tan34, drain: tanDrain };
+    const ANG = { dry: '34°', under: '≈34°', drain: '≈' + drainDeg + '°' };
+    const SLOPE = { dry: ['34°', 'the angle of repose'], damp: ['90°', 'a vertical wall'], under: ['about 34°', 'the same as dry sand'], drain: ['about ' + drainDeg + '°', 'the water pushes the face downhill'], flat: ['about 0°', 'it flowed flat'] };
+    const GAP = { dry: ['Air', 'nothing holds the grains together'], damp: ['Air + water', 'rings of water where grains touch'], under: ['Water', 'every gap is full, and the water is still'], drain: ['Water', 'every gap is full, and it is flowing out'], flat: ['Water', 'the grains are floating apart'] };
+    const CAP = { dry: ['Dry sand', 'pours into a cone'], damp: ['Damp sand', 'stands in a vertical wall'], under: ['Under still water', 'stands about as steep as dry sand'], drain: ['Water draining out', 'the face slumps to a low mound'], flat: ['Loose wet sand, jiggled', 'flows like a liquid, and the flag sinks'] };
+    const ZN = { dry: 'Close-up: the gaps hold only air. Each grain rests on its neighbours.', damp: 'Close-up: a little water gathers in rings where the grains touch.', under: 'Close-up: still water fills every gap. It buoys each grain, easing the press between grains and the pull downhill alike.', drain: 'Close-up: water fills every gap and flows out through the face, dragging the grains downhill as it goes.', flat: 'Close-up: water fills every gap, and the grains barely press on each other.' };
+    return { xs, tan34, tanDrain, A, PROF, TAN, ANG, SLOPE, GAP, CAP, ZN };
+  }
+  // what a jiggle does to each state: the shape it ends in, and the jiggle readout
+  const JIG0 = ['–', 'press Jiggle to shake it'];
+  function beachJiggle(mode, pack) {
+    if (mode === 'dry') return { key: 'dry', jig: ['Barely changed', 'still about 34°'] };
+    if (mode === 'damp') return { key: 'damp', jig: ['Held', 'the water rings hold the walls up'] };
+    if (pack === 'loose') return { key: 'flat', jig: ['Flowed', 'the grains packed tighter and the trapped water took their weight'] };
+    return { key: mode, jig: ['Held', 'the grains had to swell apart to move, which drew water in'] };
   }
   /* @fig-beach-end */
   (function figBeach() {
     const el = $('#fig-beach'); if (!el) return;
     const F = fig(el);
     const svg = $('#svg-beach');
-    const GY = 214, CX = 240, NC = 241, DX = 2; // ground line, centre, columns every 2 px from x=0
+    const GY = 214, CX = 240, NC = 241, DX = 2, WS = 60; // ground line, centre, columns every 2 px from x=0, still-water surface
     const defs = E('defs', null, svg);
     pattern(defs, 'gp-damp', 7, 7, '--m-trans', [[2, 2, 0.7], [5.5, 5, 0.7]]);
     const clip = E('clipPath', { id: 'gb-clip' }, defs);
@@ -4472,6 +4491,11 @@ function groundPredictInit(root) {
     const groundWet = E('rect', { x: -20, y: GY, width: 520, height: 40, class: 'sat', opacity: 0 }, gRoot);
     E('path', { d: `M-20,${GY} H500`, class: 'edge' }, gRoot);
     const puddle = E('rect', { x: -20, y: GY - 5, width: 520, height: 5, class: 'water', opacity: 0 }, gRoot);
+    // still water over the whole heap (behind the sand, so the heap reads clearly)
+    const pool = E('g', { opacity: 0 }, gRoot);
+    E('rect', { x: -20, y: WS, width: 520, height: GY - WS, class: 'water' }, pool);
+    E('path', { d: `M-20,${WS} H500`, class: 'water-line' }, pool);
+    waterSymbol(pool, 400, WS);
     // flag (behind the sand, so a sunk flag disappears into it)
     const flag = E('g', null, gRoot);
     E('path', { d: 'M0,0 V-44', style: 'stroke:var(--ink);stroke-width:1.6' }, flag);
@@ -4482,6 +4506,9 @@ function groundPredictInit(root) {
     const wet = E('rect', { x: 0, y: 0, width: 480, height: GY, class: 'sat', 'clip-path': 'url(#gb-clip)', opacity: 0 }, gRoot);
     const outline = E('path', { class: 'edge', style: 'fill:none' }, gRoot);
     const shine = E('path', { class: 'water-line', opacity: 0 }, gRoot);
+    // water seeping out through the faces, drawn once the draining heap has settled
+    const seepG = E('g', { opacity: 0 }, gRoot);
+    const seepArr = [0, 1, 2, 3].map(() => E('path', { style: 'stroke:var(--water);stroke-width:1.6;fill:none', 'marker-end': 'url(#arr-w)' }, seepG));
     // angle marker
     const gAng = E('g', null, gRoot);
     const angArc = E('path', { style: 'stroke:var(--accent);stroke-width:1.4;fill:none' }, gAng);
@@ -4492,27 +4519,39 @@ function groundPredictInit(root) {
     E('path', { d: `M452,${GY - 150} v150 M447,${GY - 150} h10 M447,${GY} h10`, class: 'dim' }, gRoot);
     T(gRoot, 446, GY - 72, '30 cm', 'lbl-s halo', { 'text-anchor': 'end' });
 
-    const { xs, tan34, tanSat, PROF, SLOPE, GAP, CAP, ZN } = beachShapes(CX, NC, DX), damp = PROF.damp;
+    const { xs, tanDrain, PROF, TAN, ANG, SLOPE, GAP, CAP, ZN } = beachShapes(CX, NC, DX), damp = PROF.damp;
+    const NAME = { dry: 'dry sand', damp: 'damp sand', under: 'sand under still water', drain: 'sand with water draining out of it' };
+    { // the seepage arrows run parallel to the draining faces, just inside them
+      const H = PROF.drain[Math.round(CX / DX)], w = H / tanDrain, b = Math.atan(tanDrain), c = Math.cos(b), s = Math.sin(b), L = 24;
+      [0.3, 0.6].forEach((f, j) => [-1, 1].forEach((sd, k) => {
+        const px = CX + sd * f * w + sd * 5 * s, py = GY - (1 - f) * H + 5 * c; // a point on the face, moved 5 px into the sand
+        seepArr[j * 2 + k].setAttribute('d', `M${(px - sd * c * L / 2).toFixed(1)},${(py - s * L / 2).toFixed(1)} L${(px + sd * c * L / 2).toFixed(1)},${(py + s * L / 2).toFixed(1)}`);
+      }));
+    }
 
-    let mode = BEACH0, key = BEACH0, shakeT = 0, lastEvent = 'Reader is looking at damp sand.';
+    let mode = BEACH0, pack = PACK0, key = BEACH0, jig = JIG0, shakeT = 0, lastEvent = 'Reader is looking at ' + NAME[BEACH0] + ', packed ' + PACK0 + '.';
     const cur = damp.slice();
-    let wetO = 0, dampO = 1, sink = 0, tilt = 0, settle = 1;
-    const seg = segGroup($('#bc-state'), v => { mode = v; key = v; lastEvent = 'Reader switched to ' + (v === 'sat' ? 'saturated' : v) + ' sand.'; if (RM) snap(); update(); });
-    void seg;
+    let wetO = 0, dampO = 1, poolO = 0, sink = 0, tilt = 0, settle = 1;
+    function rebuild() { key = mode; jig = JIG0; if (RM) snap(); update(); }
+    segGroup($('#bc-state'), v => { mode = v; lastEvent = 'Reader switched to ' + NAME[v] + ' (packed ' + pack + ').'; rebuild(); });
+    segGroup($('#bc-pack'), v => { pack = v; lastEvent = 'Reader rebuilt the heap of ' + NAME[mode] + ', packed ' + v + '.'; rebuild(); });
     $('#bc-jiggle').addEventListener('click', () => {
       shakeT = 1.4;
-      if (mode === 'sat') { key = 'flat'; lastEvent = 'Reader jiggled the saturated heap: it flowed flat and the flag sank.'; }
-      else lastEvent = 'Reader jiggled the ' + mode + ' heap: it kept its shape (' + (mode === 'dry' ? '34° slope' : 'vertical walls') + ').';
+      const j = beachJiggle(mode, pack);
+      key = j.key; jig = j.jig;
+      lastEvent = 'Reader jiggled the heap of ' + NAME[mode] + ', packed ' + pack + ': ' + jig[0].toLowerCase() + ' (' + jig[1] + ')' + (key === 'flat' ? ', and the flag sank.' : '.');
       if (RM) { shakeT = 0; snap(); }
       update();
     });
     function targets() {
-      return { wet: (key === 'sat' || key === 'flat') ? 1 : 0, damp: key === 'dry' ? 0 : 1, sink: key === 'flat' ? 26 : 0, tilt: key === 'flat' ? 22 : 0 };
+      const wetM = mode === 'under' || mode === 'drain';
+      return { wet: wetM ? 1 : 0, damp: mode === 'dry' ? 0 : 1, pool: mode === 'under' ? 0.75 : 0, sink: key === 'flat' ? 26 : 0, tilt: key === 'flat' ? 22 : 0 };
     }
-    function snap() { const t = targets(), p = PROF[key]; for (let i = 0; i < NC; i++) cur[i] = p[i]; wetO = t.wet; dampO = t.damp; sink = t.sink; tilt = t.tilt; draw(0); }
+    function snap() { const t = targets(), p = PROF[key]; for (let i = 0; i < NC; i++) cur[i] = p[i]; wetO = t.wet; dampO = t.damp; poolO = t.pool; sink = t.sink; tilt = t.tilt; draw(0); }
     function update() {
       setTxt('bc-slope', SLOPE[key][0]); setTxt('bc-slope2', SLOPE[key][1]);
       setTxt('bc-gap', GAP[key][0]); setTxt('bc-gap2', GAP[key][1]);
+      setTxt('bc-jig', jig[0]); setTxt('bc-jig2', jig[1]);
       caption.textContent = CAP[key][0]; sub.textContent = CAP[key][1];
       drawZoom();
     }
@@ -4526,18 +4565,20 @@ function groundPredictInit(root) {
       shine.setAttribute('d', top.length > 2 ? top.slice(0, -1) : '');
       sandDamp.setAttribute('opacity', dampO.toFixed(2));
       wet.setAttribute('opacity', wetO.toFixed(2)); shine.setAttribute('opacity', (wetO * 0.8).toFixed(2));
-      groundWet.setAttribute('opacity', wetO.toFixed(2)); puddle.setAttribute('opacity', wetO.toFixed(2));
+      groundWet.setAttribute('opacity', wetO.toFixed(2)); puddle.setAttribute('opacity', (mode === 'drain' ? wetO : 0).toFixed(2));
+      pool.setAttribute('opacity', poolO.toFixed(2));
       const ci = Math.round(CX / DX), hTop = cur[ci];
       flag.setAttribute('transform', `translate(${CX + 3},${(GY - hTop + sink).toFixed(1)}) rotate(${tilt.toFixed(1)})`);
       gRoot.setAttribute('transform', dx ? `translate(${dx.toFixed(2)},0)` : '');
-      // angle marker once the shape has settled
+      // angle marker and seepage arrows once the shape has settled
       gAng.style.opacity = settle > 0.97 ? 1 : 0;
-      if (key === 'dry' || key === 'sat') {
-        const tn = key === 'dry' ? tan34 : tanSat, H = PROF[key][ci], x0 = CX - H / tn, r = 34;
+      seepG.setAttribute('opacity', settle > 0.97 && key === 'drain' ? 1 : 0);
+      if (TAN[key]) {
+        const tn = TAN[key], H = PROF[key][ci], x0 = CX - H / tn, r = 34;
         const a = Math.atan(tn);
         angArc.setAttribute('d', `M${x0 + r},${GY} A${r},${r} 0 0 0 ${(x0 + r * Math.cos(a)).toFixed(1)},${(GY - r * Math.sin(a)).toFixed(1)}`);
         angTxt.setAttribute('x', (x0 + r + 6).toFixed(1)); angTxt.setAttribute('y', GY - 6); angTxt.setAttribute('text-anchor', 'start');
-        angTxt.textContent = key === 'dry' ? '34°' : '≈19°';
+        angTxt.textContent = ANG[key];
       } else if (key === 'damp') {
         const x0 = CX - 51;
         angArc.setAttribute('d', `M${x0 - 12},${GY} h-0 M${x0 - 12},${GY} v-12 h12`);
@@ -4570,7 +4611,7 @@ function groundPredictInit(root) {
     E('rect', { x: 0.5, y: 0.5, width: 219, height: 149, rx: 6, style: 'fill:none;stroke:var(--rule)' }, zs);
     function drawZoom() {
       zbr.style.opacity = key === 'damp' ? 1 : 0;
-      zwater.setAttribute('opacity', key === 'sat' || key === 'flat' ? 1 : 0);
+      zwater.setAttribute('opacity', mode === 'under' || mode === 'drain' ? 1 : 0);
       setTxt('bc-zoom-note', ZN[key]);
       void zbg;
     }
@@ -4581,25 +4622,27 @@ function groundPredictInit(root) {
       const k = Math.min(1, dt * rate);
       let err = 0;
       for (let i = 0; i < NC; i++) err = Math.max(err, Math.abs(p[i] - cur[i]));
-      if (key === 'sat' || key === 'flat') { // wet sand slumps and spreads: a little diffusion makes it flow
+      if (key === 'under' || key === 'drain' || key === 'flat') { // wet sand slumps and spreads: a little diffusion makes it flow
         const it = Math.round(clamp(err, 0, 40) / 4);
         for (let r = 0; r < it; r++) for (let i = 1; i < NC - 1; i++) cur[i] += 0.12 * (cur[i - 1] + cur[i + 1] - 2 * cur[i]);
       }
       err = 0;
       for (let i = 0; i < NC; i++) { cur[i] += (p[i] - cur[i]) * k; err = Math.max(err, Math.abs(p[i] - cur[i])); }
-      wetO += (tg.wet - wetO) * Math.min(1, dt * 4); dampO += (tg.damp - dampO) * Math.min(1, dt * 4);
+      wetO += (tg.wet - wetO) * Math.min(1, dt * 4); dampO += (tg.damp - dampO) * Math.min(1, dt * 4); poolO += (tg.pool - poolO) * Math.min(1, dt * 4);
       sink += (tg.sink - sink) * k; tilt += (tg.tilt - tilt) * k;
       settle = err < 1.5 ? 1 : 0;
       let dx = 0;
       if (shakeT > 0) { shakeT = Math.max(0, shakeT - dt); dx = 3.2 * Math.sin(t * 52) * Math.min(1, shakeT / 0.4); }
-      if (err > 0.05 || dx || shakeT > 0 || Math.abs(tg.wet - wetO) > 0.005) draw(dx);
+      if (err > 0.05 || dx || shakeT > 0 || Math.abs(tg.wet - wetO) > 0.005 || Math.abs(tg.pool - poolO) > 0.005) draw(dx);
     });
     tutorRegister('fig-beach', {
       title: 'The same sand, three ways (Fig. 1.1)',
       describe: () => [
-        'Sand state: ' + CAP[key][0] + ' (' + CAP[key][1] + ').',
+        'Sand state: ' + CAP[key][0] + ' (' + CAP[key][1] + '). Packing: ' + pack + '.',
         'Steepest slope it holds: ' + SLOPE[key][0] + ', ' + SLOPE[key][1] + '.',
         'In the gaps between grains: ' + GAP[key][0] + ', ' + GAP[key][1] + '.',
+        'After a jiggle: ' + (jig === JIG0 ? 'not jiggled yet.' : jig[0] + ', ' + jig[1] + '.'),
+        'Why, in the figure\'s model: dry sand stands at its friction angle, 34°. Under still water the water buoys every grain, which lightens the press between grains and the pull down the face by the same share, so the heap still stands at about 34°. Where water drains out through the face, the flow also drags the grains downhill, and the face can stand only at tan β = (γ′/γsat)·tan 34° = (10.19/20)·tan 34°, about 19°. Shaken, loose wet sand tries to pack tighter, the trapped water takes the grains\' weight and it flows; dense wet sand has to swell to move, which draws water in, so it holds.',
         lastEvent
       ].join('\n')
     });
@@ -8202,7 +8245,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
 
   const RULES = [
     'You are the tutor inside "Dams in Section", an interactive course that teaches how dams stand and fail to a curious adult with no engineering background.',
-    'The course builds everything from one idea: soil is strong because its grains press on each other, and water pressure in the pores pushes them apart and steals that strength (effective stress = total stress − pore water pressure). Its steps, in order: 1 The beach (dry, damp and saturated sand). 2 Pressure grows with depth. 3 Water moves through ground (permeability, head, Darcy). 4 Water pressure steals strength (effective stress, suction, loose vs dense grains, liquefaction). 5 Hydroelectric vs tailings dams. 6 Raising tailings dams: upstream, downstream, centreline. 7 Dam zones (core, filters, shells, drains). 8 Seepage paths, piping and uplift. 9 Build your own dam (seepage solver + slope stability).',
+    'The course builds everything from one idea: soil is strong because its grains press on each other, and water pressure in the pores pushes them apart and steals that strength (effective stress = total stress − pore water pressure). Its steps, in order: 1 The beach (dry, damp, under still water and draining sand; loose against dense when shaken). 2 Pressure grows with depth. 3 Water moves through ground (permeability, head, Darcy). 4 Water pressure steals strength (effective stress, suction, loose vs dense grains, liquefaction). 5 Hydroelectric vs tailings dams. 6 Raising tailings dams: upstream, downstream, centreline. 7 Dam zones (core, filters, shells, drains). 8 Seepage paths, piping and uplift. 9 Build your own dam (seepage solver + slope stability).',
     'How to answer: explain what the reader is seeing in the figure, using the live state below, the numbers it shows, and the cause-and-effect chain behind them. Connect it back to water pressure and grain contact when it fits. Use plain words, and when you use a technical term, say what it means in a few words. Use an everyday comparison if it helps. Be accurate; if the figure simplifies something, say so briefly. Don\'t invent numbers that aren\'t in the state. Keep it under about 160 words unless the reader asks for more. Write short paragraphs of plain text: no headings, no tables, no bullet lists unless steps are needed, **bold** at most for one or two key words. Canadian spelling. End with one short suggestion of something to try next in the figure when that would help.',
     'Voice: write like a warm, exact teacher talking to one person, in the same plain voice as the course. Say what something is rather than what it is not: avoid "It\'s not X, it\'s Y" contrasts, stacked lists of three, set-ups like "Here\'s the thing", em dashes, and a closing sentence that restates the answer. No praise of the question and no filler.'
   ].join('\n\n');

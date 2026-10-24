@@ -33,7 +33,7 @@ const core = read('app-core.js'), ground = read('app-ground.js'), seep = read('a
 const UTIL = block(core, 'app-core.js', 'util'); // n1, fmt, clamp, lerp, polyArea, clipBelow, ...
 const load = (code, names) => new Function(UTIL + '\nconst deg = Math.PI / 180;\n' + code + `\nreturn { ${names.join(', ')} };`)();
 const G = load(['beach', 'depth', 'race', 'darcy', 'block', 'column'].map(n => block(ground, 'app-ground.js', n)).join('\n'),
-  ['BEACH0', 'beachShapes', 'depthCalc', 'MATS', 'fmtDur', 'raceTime', 'raceReadouts', 'DARCY0', 'DARCY_PLUG', 'darcyKEff', 'darcyHeadAt', 'flowRate', 'darcyReadouts',
+  ['BEACH0', 'PACK0', 'JIG0', 'beachShapes', 'beachJiggle', 'depthCalc', 'MATS', 'fmtDur', 'raceTime', 'raceReadouts', 'DARCY0', 'DARCY_PLUG', 'darcyKEff', 'darcyHeadAt', 'flowRate', 'darcyReadouts',
     'BLOCK', 'blockForces', 'blockReadouts', 'COL', 'columnStress', 'columnReadouts']);
 const C = load(block(core, 'app-core.js', 'hydro') + block(core, 'app-core.js', 'raise'), ['hydroCalc', 'R', 'stateAt', 'stageText', 'raiseDam']);
 const S = load(block(seep, 'app-seep.js', 'lab') + block(seep, 'app-seep.js', 'pipe') + block(seep, 'app-seep.js', 'uplift'),
@@ -69,14 +69,29 @@ console.log('\nFig. 1.1 · the beach');
 {
   const st = G.BEACH0, b = G.beachShapes(240, 241, 2);
   same(pressed('bc-state'), st, 'state on load matches the pressed button');
-  staticMatches([['bc-slope', b.SLOPE[st][0]], ['bc-slope2', b.SLOPE[st][1]], ['bc-gap', b.GAP[st][0]], ['bc-gap2', b.GAP[st][1]], ['bc-zoom-note', b.ZN[st]]], 'Fig. 1.1');
-  same(b.SLOPE.dry[0] + ' / ' + b.SLOPE.damp[0] + ' / ' + b.SLOPE.sat[0] + ' / ' + b.SLOPE.flat[0], '34° / 90° / about 19° / about 0°', 'steepest slope dry / damp / saturated / jiggled');
+  same(pressed('bc-pack'), G.PACK0, 'packing on load matches the pressed button');
+  same(html.match(/id="bc-state"[^>]*>([\s\S]*?)<\/div>/)[1].match(/data-v="(\w+)"/g).map(m => m.slice(8, -1)).join(' / '), 'dry / damp / under / drain', 'the four states offered');
+  staticMatches([['bc-slope', b.SLOPE[st][0]], ['bc-slope2', b.SLOPE[st][1]], ['bc-gap', b.GAP[st][0]], ['bc-gap2', b.GAP[st][1]], ['bc-zoom-note', b.ZN[st]], ['bc-jig', G.JIG0[0]], ['bc-jig2', G.JIG0[1]]], 'Fig. 1.1');
+  same(['dry', 'damp', 'under', 'drain', 'flat'].map(k => b.SLOPE[k][0]).join(' / '), '34° / 90° / about 34° / about 19° / about 0°', 'steepest slope dry / damp / under still water / draining / jiggled loose');
+  // the physics behind the two wet states (infinite slope, no cohesion)
+  near(Math.atan(b.TAN.under) / (Math.PI / 180), 34, 1e-9, 'under still water: buoyancy cancels top and bottom, so φ′ (degrees)');
+  near(b.tanDrain, (20 - 9.81) / 20 * Math.tan(34 * Math.PI / 180), 1e-12, 'draining: tan β = (γ′/γsat)·tan φ′');
+  same(b.tanDrain.toFixed(3) + ' / ' + (Math.atan(b.tanDrain) / (Math.PI / 180)).toFixed(1) + '°', '0.344 / 19.0°', 'draining face: tan β / β');
+  same(b.ANG.dry + ' / ' + b.ANG.under + ' / ' + b.ANG.drain, '34° / ≈34° / ≈19°', 'angle labels on the drawing');
   const area = p => p.reduce((s, h) => s + h * 2, 0);
   same(b.A, 14316, 'sand in the heap (px², the damp castle)');
-  for (const k of ['dry', 'sat', 'flat']) near(area(b.PROF[k]), b.A, 1e-4 * b.A, `${k} heap holds the same sand (within 0.01%)`);
+  for (const k of ['dry', 'under', 'drain', 'flat']) near(area(b.PROF[k]), b.A, 1e-4 * b.A, `${k} heap holds the same sand (within 0.01%)`);
   const top = k => Math.max(...b.PROF[k]);
-  same(top('damp').toFixed(1) + ' / ' + top('dry').toFixed(1) + ' / ' + top('sat').toFixed(1) + ' / ' + top('flat').toFixed(1), '146.0 / 98.3 / 70.2 / 35.4', 'heap height in px, damp / dry / saturated / jiggled (5 px per cm)');
+  // the draining heap is 70.1 px tall (it was 70.2 at a rounded 19°): H = √(A·tan β)
+  same(['damp', 'dry', 'under', 'drain', 'flat'].map(k => top(k).toFixed(1)).join(' / '), '146.0 / 98.3 / 98.3 / 70.1 / 35.4', 'heap height in px, damp / dry / under water / draining / jiggled (5 px per cm)');
+  near(top('drain'), Math.sqrt(b.A * b.tanDrain), 1e-9, 'conserved area: H = √(A·tan β) for the draining heap');
   near(Math.atan((b.PROF.dry[120] - b.PROF.dry[130]) / 20) / (Math.PI / 180), 34, 1e-9, 'dry cone side slope (degrees)');
+  near(Math.atan((b.PROF.drain[120] - b.PROF.drain[130]) / 20) / (Math.PI / 180), 18.97, 0.005, 'draining cone side slope (degrees)');
+  // a jiggle: loose wet sand flows flat, dense wet sand holds, dry and damp sand keep their shape
+  const jg = (m, p) => { const j = G.beachJiggle(m, p); return j.key + ' (' + j.jig[0] + ')'; };
+  same(['dry', 'damp', 'under', 'drain'].map(m => jg(m, 'loose')).join(' / '), 'dry (Barely changed) / damp (Held) / flat (Flowed) / flat (Flowed)', 'jiggle, packed loose: dry / damp / under water / draining');
+  same(['dry', 'damp', 'under', 'drain'].map(m => jg(m, 'dense')).join(' / '), 'dry (Barely changed) / damp (Held) / under (Held) / drain (Held)', 'jiggle, packed dense: dry / damp / under water / draining');
+  for (const k of ['dry', 'damp', 'under', 'drain', 'flat']) check(b.SLOPE[k] && b.GAP[k] && b.CAP[k] && b.ZN[k], `every readout has words for the ${k} shape`);
 }
 
 console.log('\nFig. 2.1 · pressure with depth');

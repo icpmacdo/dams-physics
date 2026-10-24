@@ -7,7 +7,7 @@
       <p class="g-lede">If you have played on a beach, you have felt sand behave in three different ways.</p>
       <p><strong>Dry sand pours.</strong> It runs through your fingers, and the steepest heap you can make is a low cone.</p>
       <p><strong>Damp sand stands.</strong> Pack it into a bucket, turn it out, and you get a castle with walls that go straight up.</p>
-      <p><strong>Saturated sand turns to soup.</strong> At the water's edge, where every gap between the grains is full of water, the sand feels firm while you stand still. Wiggle your feet and it goes soft, and you sink to the ankles.</p>
+      <p><strong>Loose wet sand turns to soup.</strong> At the water's edge, where every gap between the grains is full of water, the sand feels firm while you stand still. Wiggle your feet and it goes soft, and you sink to the ankles.</p>
       <p>It is the same sand every time. Only the water between the grains has changed. Now picture an earth dam: a heap of soil the size of a hill, with a lake pressing on one side and water soaking into it. Whether it behaves like the damp castle or like the soup at the waterline depends on what that water is doing.</p>
       <p>Pick a state, then press <strong>Jiggle</strong> to shake the ground.</p>
     </div>
@@ -18,10 +18,11 @@
         <span class="scale-note">Schematic · castle about 30 cm tall</span>
       </div>
       <div class="g-split">
-        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a cone with 34 degree sides. Damp, it stands as a castle with vertical walls. Saturated, it slumps, and when shaken it flows flat and the flag on top sinks."></svg></div>
+        <div class="g-draw"><svg class="dwg gd" id="svg-beach" viewBox="0 0 480 250" role="img" aria-label="A heap of sand on a beach. Dry, it forms a cone with 34 degree sides. Damp, it stands as a castle with vertical walls. Under still water it still stands at about 34 degrees. With water draining out through its face, it slumps to about 19 degrees. Shaken, loose wet sand flows flat and the flag on top sinks, while dense wet sand holds its shape."></svg></div>
         <div class="g-side">
           <div class="controls">
-            <div class="ctl"><span>Sand</span><div class="seg" id="bc-state"><button type="button" data-v="dry" aria-pressed="false">Dry</button><button type="button" data-v="damp" aria-pressed="true">Damp</button><button type="button" data-v="sat" aria-pressed="false">Saturated</button></div></div>
+            <div class="ctl"><span>Sand</span><div class="seg" id="bc-state"><button type="button" data-v="dry" aria-pressed="false">Dry</button><button type="button" data-v="damp" aria-pressed="true">Damp</button><button type="button" data-v="under" aria-pressed="false">Under still water</button><button type="button" data-v="drain" aria-pressed="false">Water draining out</button></div></div>
+            <div class="ctl"><span>Packing</span><div class="seg" id="bc-pack"><button type="button" data-v="loose" aria-pressed="true">Loose</button><button type="button" data-v="dense" aria-pressed="false">Dense</button></div></div>
             <button class="btn primary" id="bc-jiggle" type="button">Jiggle</button>
           </div>
           <div class="g-zoom">
@@ -31,14 +32,15 @@
           <div class="readouts">
             <div class="ro"><span>Steepest slope it holds</span><b id="bc-slope">90°</b><small id="bc-slope2">a vertical wall</small></div>
             <div class="ro"><span>In the gaps</span><b id="bc-gap">Air + water</b><small id="bc-gap2">rings of water where grains touch</small></div>
+            <div class="ro"><span>After a jiggle</span><b id="bc-jig">–</b><small id="bc-jig2">press Jiggle to shake it</small></div>
           </div>
         </div>
       </div>
-      <figcaption>Dry sand settles at about 34°, however you pour it. Damp sand holds a vertical wall. Saturated sand slumps, and a jiggle turns it to a liquid: the flag sinks. Pick a state again to rebuild the heap. <strong>Why</strong> each one happens is the subject of <a href="#strength">Step 4</a>.</figcaption>
+      <figcaption>Dry sand settles at about 34°, however you pour it. Damp sand holds a vertical wall. Under still water the heap stands about as steep as dry sand, but with water draining out through its face it slumps to about 19°. Jiggle the wet heap: packed loose, it turns to a liquid and the flag sinks; packed dense, it holds. Pick a state or a packing again to rebuild the heap. <strong>Why</strong> each one happens is the subject of <a href="#strength">Step 4</a>.</figcaption>
     </figure>
 
     <div class="col">
-      <p>The slope a dry heap settles at (engineers call it the <span class="gl" data-term="angle-of-repose">angle of repose</span>) is about 34° for most sand. Damp sand ignores that limit. Saturated sand that gets shaken loses its strength altogether, and for a dam that is the dangerous one.</p>
+      <p>The slope a dry heap settles at (engineers call it the <span class="gl" data-term="angle-of-repose">angle of repose</span>) is about 34° for most sand. Damp sand ignores that limit. Wet sand is subtler: under still water a heap stands about as steep as a dry one, where water drains out through its face it slumps to about 19°, and loose wet sand that gets shaken loses nearly all its strength. For a dam, that last one is the dangerous one.</p>
       <p>To explain all three, you need two facts about water first. Its pressure grows with depth (Step 2). And it moves through the ground, slowly or very slowly, depending on the ground (Step 3). Step 4 puts them together.</p>
 
       <h3>The course</h3>
@@ -308,7 +310,8 @@
       <p>Two things to notice. First, flooding the column from damp to soaked cuts the effective stress at 10 m from 180 to about 102 kPa. That is more than 40% of the soil's strength gone, though no grain has to move. Second, once the water rises above the ground, every extra metre adds the same 9.81 kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
 
       <h3>Damp sand: water that pulls</h3>
-      <p>That accounts for soaked sand. The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch (look back at the close-up in <a href="#fig-beach">Fig. 1.1</a>). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it, a negative pore pressure that engineers call <span class="gl" data-term="suction">suction</span>.</p>
+      <p>That accounts for soaked sand. It also explains a surprise in <a href="#fig-beach">Fig. 1.1</a>: a heap under still water stands about as steep as a dry one. The water carries part of each grain's weight, so the grains press on each other less, but the same buoyancy lightens their pull down the slope by the same share, and the angle depends only on the ratio of the two. The heap slumps to about 19° only where water drains out through its face, because the flowing water drags the grains downhill as well (<a href="#seepage">Step 8</a> measures that drag).</p>
+      <p>The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch (look back at the close-up in <a href="#fig-beach">Fig. 1.1</a>). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it, a negative pore pressure that engineers call <span class="gl" data-term="suction">suction</span>.</p>
       <p>Put a negative <em>u</em> into σ′ = σ − u and the effective stress goes up. The grains press together harder than their own weight could make them, so friction can hold them even on a vertical face. Suction in damp beach sand is only a few kPa. But near the top of a sandcastle the grains carry almost no weight, so those few kPa are most of what holds them in place.</p>
       <p>Dry the sand and the rings evaporate, the suction goes, and the castle crumbles. Flood it and the rings merge into one body of water at ordinary positive pressure, the suction goes again, and the wall slumps.</p>
 
