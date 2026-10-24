@@ -333,7 +333,9 @@ console.log('\nFacts the text states (errata fixes)');
   // Foster, Fell & Spannagle (2000), Table 3: 124 failures to 1986; piping 46.9%, overtopping 34.2%,
   // with spillways and gates 48.4%; after 1950, 54.2% against 40.7%
   says('about as many failures as overtopping: 47% against 48% once spillway and gate failures are counted with overtopping', 'Step 8, Foster et al.');
-  says('more than overtopping alone (34%), and since 1950 internal erosion has led, 54% against 41%', 'Step 8, Foster et al.');
+  // the post-1950 column (54.2% against 40.7%) doesn't say whether it counts dams built or failures since 1950, so the page leaves it out
+  says('That is more than overtopping alone (34%). Some failures', 'Step 8, Foster et al.');
+  never('since 1950 internal erosion has led', 'Step 8, Foster et al.');
   never('nearly half of the failures whose cause was known', 'Step 8, Foster et al.');
   check(/internal erosion/i.test(GL.piping[1]) && !!GL['internal-erosion'], 'glossary: piping points to internal erosion, which has its own entry');
   // Step 3 opens with head, not pressure
@@ -369,17 +371,26 @@ console.log('\nFacts the text states (errata fixes)');
   never('in orange', 'Fig. 8.2 caption (the seepage face is drawn in the brick-red accent)');
   says('switch the foundation to Clay to see a face about 8 m high', 'Fig. 8.2 caption');
   says('Schematic · hours to decades compressed', 'Fig. 8.3 scale note');
-  says('at least 3 at an unfiltered exit of an existing dam, and 4 for a new dam or a repair', 'Step 8 heave formula (USBR DS-13 ch. 8)');
-  says('Designers want at least 3 for an existing dam and 4 for a new one; the missions here ask for 3.', 'Step 9 Pipes card');
+  // DS-13 ch. 8 §8.2.2.2: these are factors of safety against heave at an exit (2.0–2.5 may do with good data), "not a
+  // factor of safety against the initiation of internal erosion"
+  says('at least 3 at an unfiltered exit of an existing dam, and 4 for a new dam or a repair, or about 2 to 2.5 where the soil and the water pressures are well measured', 'Step 8 heave formula (USBR DS-13 ch. 8)');
+  says('It flags sand boils, not every kind of internal erosion', 'Step 8 heave formula');
+  says('For water rising out of level ground the US Bureau of Reclamation wants at least 3 for an existing dam and 4 for a new one (about 2 to 2.5 where the soil is well measured); the missions here ask for 3 at every exit.', 'Step 9 Pipes card');
+  says("The number warns of sand boils; it can't see every kind of internal erosion.", 'Step 9 Pipes card');
   check(require(path.join(SRC, 'stability-solver.js')).BUILD.missions.filter(m => m.goals.minPipe != null).every(m => m.goals.minPipe === 3), 'Step 9 Pipes card: every mission with a piping goal asks for 3');
   never('3 or more', 'Step 8 and Step 9');
-  // Coquitlam: BC Hydro's release of 3 Oct 2008 announces the upgrade complete; the new dam is "mostly
-  // founded on dense glacial deposits" (GeoEdmonton 2008 paper)
-  says('Coquitlam Dam · 1913, buttressed by a new dam in 2008', 'Coquitlam case');
-  says('founded mostly on dense glacial soil (completed in 2008)', 'Coquitlam case');
-  never('backed up in 2007', 'Coquitlam case');
+  // Coquitlam: the backup dam was completed in 2007 and BC Hydro declared the C$65M upgrade complete in Oct 2008
+  // (Renewable Energy World, 16 Oct 2008; BC Hydro release, 3 Oct 2008); the new dam is "mostly founded on dense
+  // glacial deposits" ("Seismic Deformation Analyses of the New Coquitlam Dam", ASCE GSP 181, 2008, doi:10.1061/40975(318)180)
+  says('Coquitlam Dam · 1913, backed up by a new dam in 2007', 'Coquitlam case');
+  says('The new dam was finished in 2007, and BC Hydro declared the whole seismic upgrade complete in 2008.', 'Coquitlam case');
+  never('buttressed', 'Coquitlam case (sources call it a backup dam)');
+  // Merriespruit: static liquefaction is Fourie, Blight & Papageorgiou's (2001) "possible explanation"
+  says('a flow one later study attributes to static liquefaction', 'Step 5 timeline, Merriespruit');
   says('can lose nearly all of it at once', 'Step 5 (liquefied soil keeps a residual strength)');
-  says('barred in Chile wherever people live within reach downstream (since 1970)', 'Step 6 upstream card (DS 86/1970 is scoped)');
+  // DS 86/1970 barred them where people live downstream; DS 248/2007 forbids the upstream method (secondary sources:
+  // Fundación Chile 2019, Falcón et al. 2017; the LeyChile text could not be fetched)
+  says('barred in Chile since 1970, at first only where people live within reach downstream and under its 2007 rules everywhere', 'Step 6 upstream card');
   says('Not a liquefaction failure: the embankment, raised by a modified centreline method', 'Step 5 timeline, Mount Polley');
   says('An upstream-raised gold tailings dam overtopped after heavy rain and breached', 'Step 5 timeline, Merriespruit');
   says('is 30–35° for most sand', 'Step 1 angle of repose');
