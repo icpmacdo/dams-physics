@@ -235,6 +235,12 @@ console.log('\nFig. 8.2 · seepage lab: piping readout');
   same(Math.round((r.q.inflowFloor / (nf + 1)) / (r.q.inflowDamFace / (nd + 1))), 8, 'flow per foundation tube ÷ flow per dam tube on load (the text says about eight times)');
 }
 
+{ // the caption's first thing to try: the seepage face on the starting foundation, and on clay
+  const sf = f => { const r = solveSeepage(Object.assign({}, S.LAB0, { foundation: f })); return r.seepageFace.topZ.toFixed(0) + ' m, ' + Math.round(100 * r.q.outSeepageFace / r.q.inflowTotal) + '% of the flow'; };
+  same(sf('pervious') + ' / ' + sf('tight'), '2 m, 1% of the flow / 8 m, 65% of the flow', 'seepage face on sand & gravel / on clay (the caption says about 2 m and about 8 m)');
+  check(/damType === 'homogeneous'\) E\('polygon', \{ points: M\.P\(dam\), fill: 'url\(#p-fill\)'[^\n]*\n\s*else \{\n\s*E\('polygon', \{ points: M\.P\(dam\), fill: 'url\(#p-trans\)'/.test(seep), 'Fig. 8.2: the 10⁻⁴ m/s shells are drawn as sand and gravel (p-trans), not rockfill');
+}
+
 console.log('\nFig. 8.3 · piping stages');
 same(inputValue('pp-t'), 0, 'progress on load');
 staticMatches([['pp-stage', S.names[0]]], 'Fig. 8.3');
@@ -332,6 +338,14 @@ console.log('\nFacts the text states (errata fixes)');
   check(!/\(suction\)|no suction|Watch u go below zero|'u water'|'σ total'/.test(grains), 'Fig. 4.3 scripts: no "suction" for saturated sand, and the chart legend says Δu and σ load');
   never('Every number here is measured from the model as it runs, not set in advance', 'Fig. 4.3 caption');
   says('assumes a friction angle of 45° between concrete and rock (tan 45° = 1) and no bond', 'Fig. 8.4 caption');
+  // Step 8 labels
+  check(/id="svg-paths"[^>]*aria-label="[^"]*along four of the five paths[^"]*The fifth, around the ends of the dam through the abutments, is in the plan view beside it\./.test(html), 'Fig. 8.1 section aria label names four of the five paths and points to the plan');
+  never('in orange', 'Fig. 8.2 caption (the seepage face is drawn in the brick-red accent)');
+  says('switch the foundation to Clay to see a face about 8 m high', 'Fig. 8.2 caption');
+  says('Schematic · hours to decades compressed', 'Fig. 8.3 scale note');
+  says('at least 3 at an unfiltered exit of an existing dam, and 4 for a new dam or a repair', 'Step 8 heave formula (USBR DS-13 ch. 8)');
+  says('Designers want at least 3 for an existing dam and 4 for a new one.', 'Step 9 Pipes card');
+  never('3 or more', 'Step 8 and Step 9');
   // Fig 6.1: centreline puts some fill on the beach, as its own readout shows
   never('In the other two, every raise rests on compacted', 'Fig. 6.1 caption');
   says('Centreline raises put only a small upstream wedge on the beach (' + C.raiseDam('centre', C.stateAt(10)).txt.ontail + ' of the fill here)', 'Fig. 6.1 caption quotes the centreline readout');

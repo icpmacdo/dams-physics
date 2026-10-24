@@ -146,7 +146,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
     E('rect', { x: M.X(G.x0), y: M.Z(0), width: M.X(G.x1) - M.X(G.x0), height: M.Z(G.z0) - M.Z(0), fill: state.foundation === 'pervious' ? 'url(#p-alluv)' : 'url(#p-clay)', class: 'edge' }, gMat);
     if (state.damType === 'homogeneous') E('polygon', { points: M.P(dam), fill: 'url(#p-fill)', class: 'edge' }, gMat);
     else {
-      E('polygon', { points: M.P(dam), fill: 'url(#p-rock)', class: 'edge' }, gMat);
+      E('polygon', { points: M.P(dam), fill: 'url(#p-trans)', class: 'edge' }, gMat); // 10⁻⁴ m/s shells: sand and gravel, not rockfill
       E('polygon', { points: M.P([[-wcore(0), 0], [wcore(0), 0], [1.5, 23], [-1.5, 23]]), fill: 'url(#p-clay)', class: 'edge-l' }, gMat);
     }
     const drains = [];
