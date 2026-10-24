@@ -39,6 +39,13 @@ svg.gd.g-chart { margin-top: 14px; max-width: 360px; }
 .g-zoom { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); gap: 12px; align-items: center; }
 .g-zoom .note { margin: 0; }
 @media (max-width: 560px) { .g-zoom { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); } }
+/* four sand states: on a phone, two rows of two rather than three and a straggler */
+@media (max-width: 560px) {
+  #bc-state { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  #bc-state button { border-bottom: 1px solid var(--rule); }
+  #bc-state button:nth-child(2n) { border-right: 0; }
+  #bc-state button:nth-child(n+3) { border-bottom: 0; }
+}
 
 /* Fig 4.1 friction bars */
 .g-bars { margin: 14px 0 2px; display: grid; gap: 6px; }

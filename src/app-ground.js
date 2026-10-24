@@ -148,10 +148,10 @@ function groundPredictInit(root) {
   // what a jiggle does to each state: the shape it ends in, and the jiggle readout
   const JIG0 = ['–', 'press Jiggle to shake it'];
   function beachJiggle(mode, pack) {
-    if (mode === 'dry') return { key: 'dry', jig: ['Barely changed', 'still about 34°'] };
+    if (mode === 'dry') return { key: 'dry', jig: ['Barely changed', 'a long shake would settle it a few degrees flatter; the drawing leaves that out'] };
     if (mode === 'damp') return { key: 'damp', jig: ['Held', 'the water rings hold the walls up'] };
     if (pack === 'loose') return { key: 'flat', jig: ['Flowed', 'the grains packed tighter and the trapped water took their weight'] };
-    return { key: mode, jig: ['Held', 'the grains had to swell apart to move, which drew water in'] };
+    return { key: mode, jig: ['Held', 'to move, the grains must swell apart; water can\'t get in fast enough, so they grip harder (surface grains may still roll off)'] };
   }
   /* @fig-beach-end */
   (function figBeach() {
@@ -314,13 +314,13 @@ function groundPredictInit(root) {
       if (err > 0.05 || dx || shakeT > 0 || Math.abs(tg.wet - wetO) > 0.005 || Math.abs(tg.pool - poolO) > 0.005) draw(dx);
     });
     tutorRegister('fig-beach', {
-      title: 'The same sand, three ways (Fig. 1.1)',
+      title: 'The same sand, different water (Fig. 1.1)',
       describe: () => [
         'Sand state: ' + CAP[key][0] + ' (' + CAP[key][1] + '). Packing: ' + pack + '.',
         'Steepest slope it holds: ' + SLOPE[key][0] + ', ' + SLOPE[key][1] + '.',
         'In the gaps between grains: ' + GAP[key][0] + ', ' + GAP[key][1] + '.',
         'After a jiggle: ' + (jig === JIG0 ? 'not jiggled yet.' : jig[0] + ', ' + jig[1] + '.'),
-        'Why, in the figure\'s model: dry sand stands at its friction angle, 34°. Under still water the water buoys every grain, which lightens the press between grains and the pull down the face by the same share, so the heap still stands at about 34°. Where water drains out through the face, the flow also drags the grains downhill, and the face can stand only at tan β = (γ′/γsat)·tan 34° = (10.19/20)·tan 34°, about 19°. Shaken, loose wet sand tries to pack tighter, the trapped water takes the grains\' weight and it flows; dense wet sand has to swell to move, which draws water in, so it holds.',
+        'Why, in the figure\'s model: dry sand stands at its friction angle, 34°. Under still water the water buoys every grain, which lightens the press between grains and the pull down the face by the same share, so the heap still stands at about 34°. Where water drains out through the face, the flow also drags the grains downhill, and the face can stand only at tan β = (γ′/γsat)·tan 34° = (10.19/20)·tan 34°, about 19°. Shaken, loose wet sand tries to pack tighter, the trapped water takes the grains\' weight and it flows; dense wet sand has to swell to move, and water can't flow in fast enough to fill the growing gaps, so the water pressure drops, the grains press harder and the heap holds (the figure draws it unchanged, though a few grains on the surface, which nothing presses on, may still roll off).',
         lastEvent
       ].join('\n')
     });

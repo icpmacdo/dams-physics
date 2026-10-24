@@ -74,8 +74,12 @@ console.log('\nFig. 1.1 · the beach');
   staticMatches([['bc-slope', b.SLOPE[st][0]], ['bc-slope2', b.SLOPE[st][1]], ['bc-gap', b.GAP[st][0]], ['bc-gap2', b.GAP[st][1]], ['bc-zoom-note', b.ZN[st]], ['bc-jig', G.JIG0[0]], ['bc-jig2', G.JIG0[1]]], 'Fig. 1.1');
   same(['dry', 'damp', 'under', 'drain', 'flat'].map(k => b.SLOPE[k][0]).join(' / '), '34° / 90° / about 34° / about 19° / about 0°', 'steepest slope dry / damp / under still water / draining / jiggled loose');
   // the physics behind the two wet states (infinite slope, no cohesion)
-  near(Math.atan(b.TAN.under) / (Math.PI / 180), 34, 1e-9, 'under still water: buoyancy cancels top and bottom, so φ′ (degrees)');
-  near(b.tanDrain, (20 - 9.81) / 20 * Math.tan(34 * Math.PI / 180), 1e-12, 'draining: tan β = (γ′/γsat)·tan φ′');
+  // infinite slope, no cohesion, per unit area of the face: grip = (weight of grains under water)·cos β·tan φ′,
+  // pull = (buoyant weight, plus the flow's drag if it seeps out parallel to the face)·sin β. Each wet face stands at FS = 1.
+  const gsat = 20, gw = 9.81, gb = gsat - gw, tphi = Math.tan(34 * Math.PI / 180), cosSin = t => [1 / Math.hypot(1, t), t / Math.hypot(1, t)];
+  const fsFace = (t, pullW) => { const [c, sn] = cosSin(t); return gb * c * tphi / (pullW * sn); };
+  near(fsFace(b.TAN.under, gb), 1, 1e-9, 'under still water: the drawn face is at FS = 1 with buoyancy on both grip and pull');
+  near(fsFace(b.TAN.drain, gb + gw), 1, 1e-9, 'draining: the drawn face is at FS = 1 with the seepage drag γw·sin β added to the pull');
   same(b.tanDrain.toFixed(3) + ' / ' + (Math.atan(b.tanDrain) / (Math.PI / 180)).toFixed(1) + '°', '0.344 / 19.0°', 'draining face: tan β / β');
   same(b.ANG.dry + ' / ' + b.ANG.under + ' / ' + b.ANG.drain, '34° / ≈34° / ≈19°', 'angle labels on the drawing');
   const area = p => p.reduce((s, h) => s + h * 2, 0);
