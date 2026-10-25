@@ -1,0 +1,8 @@
+/* Chapter 7's static figures (book/SPEC.md F.10). Label sizes go through --fs so the floor in
+   styles-book.css can lift them on a phone. */
+#fig-concrete-forces svg.dwg { display: block; width: 100%; max-width: 640px; height: auto; margin-inline: auto; }
+#fig-concrete-forces svg.dwg text { --fs: 13px; }
+#fig-concrete-forces svg.dwg .lbl-s { --fs: 11.5px; }
+#case-bouzey svg.dwg { display: block; width: 100%; max-width: 520px; height: auto; }
+#case-bouzey svg.dwg text { --fs: 12px; }
+#case-bouzey svg.dwg .lbl-s { --fs: 10.5px; }

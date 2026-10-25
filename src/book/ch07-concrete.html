@@ -1,23 +1,145 @@
 <section class="chapter" id="ch-concrete">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.8): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <blockquote class="epigraph">
+      <p>The danger peculiar to high dams, as they have been built until now, abroad as much as in France, comes from the uplift, or upward pressure, that water produces in them when it gets into the masonry through cracks over a large enough extent.</p>
+      <footer>Maurice Lévy, <a data-cite="levy1895">Quelques considérations sur la construction des grands barrages</a>, 1895 (translated)</footer>
+    </blockquote>
+    <p class="so-far"><b>So far.</b> <a data-ref="ch-depth"></a> worked out the push of a lake on a dam, and why a concrete dam is a triangle. <a data-ref="ch-grip"></a> put a block on a ramp and showed that water under it takes away the press its grip depends on. <a data-ref="ch-two-dams"></a> set the water dam, whose water is the product, beside the tailings dam. This chapter takes the simplest water dam of all, a block of concrete that holds its lake by weight alone, and finds the block's weakness in it.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>work out the weight, the push, the uplift and the factor of safety against sliding of a concrete gravity dam, with its drains working and clogged;</li>
+        <li>explain how a grout curtain and a line of drains spend the water's head before it reaches the base, and why the grip of the rock matters as much as the weight;</li>
+        <li>find where the resultant crosses the base, apply the middle-third rule, and say what Lévy asked for after Bouzey and why.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.8): Bouzey, France, 27 April 1895 (verify date, toll and cause).
-           Concrete and masonry can't lose strength the way sand can, so what happened? -->
-    </div>
-    <div class="col" data-stub>
-      <h3 id="s-concrete-block">The block, grown into a dam</h3>
-      <!-- The gravity dam as the block of fig-block with the cushion underneath; fig-concrete-forces;
-           eq-concrete-fs; ex-concrete-full. -->
-    </div>
+
     <div class="col">
-      <h3 id="s-concrete-uplift">Seepage under a concrete dam: uplift</h3>
-      <p>A concrete dam is the block on the water cushion from <a data-ref="fig-block"></a>. Water seeping under its base pushes up on it, and that <span class="gl" data-term="uplift">uplift</span> cancels part of the dam's weight. The weight, through friction on the rock, is what stops the dam sliding. The usual remedy is a row of drain holes bored into the rock from a tunnel inside the dam (the gallery), just downstream of the grout curtain, to let the water out. A common design assumption, used by the US Bureau of Reclamation among others, is that working drains cut the pressure at the drain line to the tailwater (the water level downstream) plus one-third of the difference between reservoir and tailwater.</p>
+      <p class="cold"><span class="newthought">On 14 March 1884 the reservoir</span> behind the new dam at Bouzey, in the Vosges hills of eastern France, was filling for the first time. The dam was a wall of stone masonry 22 m high, built to store water for the Canal de l'Est, and it stood on sandstone laid down in flat beds.<label for="mn-concrete-bouzey" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-bouzey" class="margin-toggle"><span class="marginnote" data-kind="source">Height, foundation and the events of 1884 and 1895: <a data-cite="usbr1998-dso9805"></a>, pp. 16–17. The canal: <a data-cite="bordes2010"></a>, p. 104.</span> With the water a little over 3 m below the crest, a 135 m length of the wall slid as much as 34 cm downstream on its foundation. It sheared off the key that anchored its heel in the rock, and the leaks below the dam jumped to 230 litres a second.</p>
+      <p>The wall moved no further. In 1888 and 1889 the engineers thickened its lower third with a buttress of new masonry on the downstream side and sealed the crack along the heel; a drainage gallery was proposed and turned down.<label for="mn-concrete-gallery" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-gallery" class="margin-toggle"><span class="marginnote" data-kind="source">The buttress: <a data-cite="usbr1998-dso9805"></a>, p. 16; the 4 m crest, its Fig. BF-1. The gallery that was proposed and set aside: <a data-cite="bordes2010"></a>, p. 104.</span> The upper two thirds kept their thin original section, 4 m thick at the crest.</p>
+      <p>On 27 April 1895, with the reservoir 55 cm below the crest, the upper wall broke away along 170 m of its length. The break ran almost level through the masonry about 10.5 m below the crest, well above the foundation, which this time did not move. The water went down the valley of the Avière through Bouzey and the villages below it. Accounts of the dead differ; the figure most often given is 87.<label for="mn-concrete-toll" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-toll" class="margin-toggle"><span class="marginnote" data-kind="source">The break: <a data-cite="usbr1998-dso9805"></a>, pp. 16–17. The toll of 87: <a data-cite="bordes2010"></a>, p. 76; the same article gives 70 on p. 104, and <a data-cite="usbr1998-dso9805"></a>, p. 17, "more than 100".</span></p>
+      <p>Engineers argued over the cause: the mortar, the thin upper wall. But masonry cannot lose its strength the way the loose wet sand of <a data-ref="ch-beach"></a> did, and nothing had shaken it. So what pushed the wall along its foundation in 1884, and what broke it in two in 1895? The answer that came out of Bouzey is the cushion of water from <a data-ref="ch-grip"></a>, at the base of a dam and in the cracks inside one.</p>
+
+      <h3 id="s-concrete-block">The block, grown into a dam</h3>
+      <p>Take the triangle of <a data-ref="fig-depth-triangle"></a>, <span data-n="ch07.tri-h-m">50</span> m tall and <span data-n="ch07.tri-b-m">40</span> m wide at its base, and lean it against a wall of concrete <span data-n="ch07.crest-m">8</span> m thick and <span data-n="ch07.h-m">60</span> m tall, whose top carries a road. That makes the <span class="gl" data-term="gravity-dam">gravity dam</span> of this chapter, <span data-n="ch07.b-m">48</span> m wide at its base, drawn to scale in <a data-ref="fig-concrete-forces"></a>. Fill its reservoir to <span data-n="ch07.hw-m">57</span> m, 3 m below the crest, and let the river below it, the <span class="gl" data-term="tailwater">tailwater</span>, run <span data-n="ch07.tw-m">5</span> m deep.<label for="sn-concrete-bc" class="sn-ref"></label><input type="checkbox" id="sn-concrete-bc" class="margin-toggle"><span class="sidenote" data-kind="curious">Not every big water dam is concrete. British Columbia's tallest, Mica on the Columbia, is earthfill, 244 m high and nearly a kilometre thick at its base. Revelstoke, downstream, is a concrete gravity dam 175 m high (<a data-cite="bchydro-cbrac2016"></a>, slides 7 and 8; <a data-cite="bchydro-revelstoke2013"></a>).</span></p>
+      <p>Each metre of the dam is a slab of concrete <span data-n="uplift.area-m2">1,480</span> m² in section, and concrete weighs <span data-n="const.gconc">23.5</span> kN/m³, so each metre of dam weighs <span class="m"><span data-n="const.gconc">23.5</span> × <span data-n="uplift.area-m2">1,480</span> = <span data-n="ch07.w-kn">34,780</span> kN</span>, or <span data-n="uplift.W-mn">34.78</span> MN. The reservoir pushes on its upright face with <span class="m">½ × <span data-n="const.gw">9.81</span> × 57²</span> = <span data-n="ch07.fup-kn">15,936</span> kN (<a data-ref="eq-depth-push"></a>), and the river pushes back on the toe with <span data-n="ch07.ftw-kn">123</span> kN. The net push, <var>F</var>, is <span data-n="ch07.f-kn">15,814</span> kN, or <span data-n="uplift.F-mn">15.81</span> MN.</p>
+      <p>Weight holds a gravity dam the way it held the block in <a data-ref="fig-block"></a>, by pressing on what is underneath: the dam is that block on level ground. The push <var>F</var> tries to slide it downstream; the rock grips back with the press times tan <var>φ</var>, where <var>φ</var> is the <span class="gl" data-term="friction-angle">friction angle</span> between concrete and rock. Take <var>φ</var> = 45°, so tan <var>φ</var> = 1, and count no glue. The <span class="gl" data-term="factor-of-safety">factor of safety</span> against sliding, the grip on offer divided by the grip needed, is then <span class="m"><span data-n="ch07.w-kn">34,780</span> ÷ <span data-n="ch07.f-kn">15,814</span> = <span data-n="ch07.w-over-f">2.20</span></span>: the opening question's dam, more than twice as heavy as the push on it.</p>
+      <p>But the block in <a data-ref="fig-block"></a> also had a thin cushion of water under its base, and <a data-ref="pr-cushion">the question about the cushion</a> showed what that does to a grip. The dam stands on rock, and rock is cracked.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> With only 30 m of water behind it, is the same dam about twice as safe against sliding?</summary>
+        <p>Far safer than that. The push grows with the square of the depth, so at 30 m it is only <span class="m">½ × <span data-n="const.gw">9.81</span> × (30² − 5²)</span> = <span data-n="ch07.f-kn@hw=30">4,292</span> kN, and the weight is <span data-n="ch07.w-over-f@hw=30">8.10</span> times that. A gravity dam is in most danger in its last few metres of water.</p>
+      </details>
+
+      <h3 id="s-concrete-uplift">Water under the base</h3>
+      <p>One could assume a dam this heavy would hardly notice water under it. Concrete is 2.4 times as heavy as water, and the water in a crack is a film millimetres thick. To test the idea, go back to the hole in the sand of <a data-ref="s-depth-ground"></a>, which fills from below because the water in the gaps is joined to the sea. The rock under a dam is cracked by joints and by the partings between its beds, and the reservoir fills them in the same way. At the <span class="gl" data-term="heel">heel</span>, where the base meets the reservoir, the water in the cracks has the full pressure of the <span data-n="ch07.hw-m">57</span> m above it, <span class="m"><span data-n="const.gw">9.81</span> × 57 = <span data-n="ch07.p-kpa">559</span> kPa</span>. The film holds almost no water, but <a data-ref="ex-depth-slot"></a> showed that a thin layer of water presses as hard as the depth it hangs from.</p>
+      <p>At the toe the water in the cracks is at the river's pressure, <span data-n="ch07.p-kpa@h=5">49</span> kPa. In between it creeps from high head to low, and if the rock is the same all the way across, it loses its head evenly with distance, as the water did in the uniform sand of <a data-ref="fig-darcy"></a>. So the pressure under the base falls in a straight line from heel to toe, pushing up on every square metre of the base. That push from below is called <span class="gl" data-term="uplift">uplift</span>, <var>U</var>. Before the numbers, a guess:</p>
+
+      <div class="predict" data-answer="c" id="pr-concrete-wedge" data-unlocks="#fig-concrete-forces">
+        <p class="predict-q">Nothing is done to stop the water: no drains, no seal. What share of the 60 m dam's weight does the uplift take away?</p>
+        <div class="predict-opts"><button type="button" data-v="a">A few per cent. Concrete is far heavier than water.</button><button type="button" data-v="b">About a fifth.</button><button type="button" data-v="c">About two fifths.</button></div>
+        <div class="predict-reveal" hidden><p>About two fifths, <span data-n="uplift.U-pct@drains=0">42</span>%. The comparison that matters is per square metre of base. The dam is on average only <span data-n="ch07.hmean-m">30.8</span> m of concrete deep over its 48 m base, pressing the rock with <span data-n="ch07.wmean-kpa">725</span> kPa. The water under it presses up with <span data-n="ch07.umean-kpa">304</span> kPa on average, the mean of 559 and 49. The next figure draws it to scale.</p></div>
+      </div>
+
+      <p>To decide, compare the two per square metre of base: how hard the concrete presses down on the rock, and how hard the water presses up. Here is the dam with its forces, drawn to scale:</p>
+    </div>
+
+    <figure class="fig wide" id="fig-concrete-forces" hidden>
+      <div class="sheet-top"><span class="figno"><b data-num></b> · The forces on the 60 m dam, with water under its base</span><span class="scale-note">Section and forces to scale · per metre of dam</span></div>
+      <svg class="dwg" viewBox="0 0 580 462" role="img" aria-label="A concrete gravity dam 60 metres tall with an upright upstream face, a reservoir 57 metres deep on its left and a river 5 metres deep at its toe on the right. Arrows drawn to scale: the weight, 34.78 meganewtons, acts downward; the water's net push, 15.81 meganewtons, acts sideways a third of the way up; the uplift with no drains, 14.60 meganewtons, pushes up on the base; the rock's grip, 20.18 meganewtons, acts along the base toward the reservoir. Under the base a shaded wedge of water pressure falls in a straight line from 57 metres of head at the heel to 5 metres at the toe. A dashed outline shows the smaller wedge when drains 6 metres from the heel are working: it drops sharply at the drain line.">
+        <defs>
+          <marker id="concrete-arr-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ok)"/></marker>
+        </defs>
+        <rect x="0" y="330" width="580" height="104" fill="url(#p-bedrock)" class="edge"/>
+        <rect x="8" y="45" width="142" height="285" class="water"/>
+        <path d="M8,45 H150" class="water-line"/>
+        <polygon points="370,305 572,305 572,330 390,330" class="water"/>
+        <path d="M370,305 H572" class="water-line"/>
+        <polygon points="150,330 150,30 190,30 190,80 390,330" fill="url(#p-conc)" class="edge"/>
+        <rect x="175" y="292.5" width="17.5" height="20" class="void"/>
+        <polygon points="173,330 180,330 152,426 145,426" fill="url(#p-grout)" style="stroke:var(--ink-2);stroke-width:.8"/>
+        <path d="M180,312.5 V426" style="stroke:var(--water);stroke-width:2;stroke-dasharray:4 3;fill:none"/>
+        <polygon points="150,330 150,398.4 390,336 390,330" style="fill:var(--sheet)"/>
+        <polygon points="150,330 150,398.4 390,336 390,330" style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.2"/>
+        <path d="M150,398.4 L180,356.8 L390,336" style="stroke:var(--ink);stroke-width:1.4;stroke-dasharray:5 3;fill:none"/>
+        <path d="M228.6,155.5 V293" style="stroke:var(--ink);stroke-width:3;fill:none" marker-end="url(#arr)"/>
+        <path d="M86.7,235 H148" style="stroke:var(--ink);stroke-width:3;fill:none" marker-end="url(#arr)"/>
+        <path d="M236.5,389.4 V333" style="stroke:var(--accent);stroke-width:3;fill:none" marker-end="url(#arr-acc)"/>
+        <path d="M330,322 H251" style="stroke:var(--ok);stroke-width:3;fill:none" marker-end="url(#concrete-arr-ok)"/>
+        <text x="236" y="196" class="lbl halo on-conc"><tspan font-weight="600">W</tspan> <tspan data-n="uplift.W-mn">34.78</tspan> MN</text>
+        <text x="20" y="226" class="lbl halo on-water"><tspan font-weight="600">F</tspan> <tspan data-n="uplift.F-mn">15.81</tspan> MN</text>
+        <text x="252" y="315" class="lbl-s halo on-conc" style="fill:var(--ok)">grip <tspan data-n="ch07.v-mn@drains=0">20.18</tspan> MN</text>
+        <text x="262" y="380" class="lbl lbl-acc halo on-rock"><tspan font-weight="600">U</tspan> <tspan data-n="uplift.U-mn@drains=0">14.60</tspan> MN, no drains</text>
+        <text x="262" y="398" class="lbl-s halo on-rock">dashed: drains working, <tspan data-n="uplift.U-mn">7.97</tspan> MN</text>
+        <text x="146" y="404" class="lbl-s lbl-acc halo on-rock" text-anchor="end"><tspan data-n="ch07.hw-m">57</tspan> m</text>
+        <text x="190" y="368" class="lbl-s halo"><tspan data-n="uplift.ud-m">22.3</tspan> m</text>
+        <text x="396" y="346" class="lbl-s lbl-acc halo on-rock"><tspan data-n="ch07.tw-m">5</tspan> m</text>
+        <text x="190" y="420" class="lbl-s halo on-rock">drains</text>
+        <text x="141" y="420" class="lbl-s halo on-rock" text-anchor="end">grout curtain</text>
+        <text x="196" y="306" class="lbl-s halo on-conc">gallery</text>
+        <text x="16" y="66" class="lbl-s lbl-w halo on-water">reservoir</text>
+        <text x="470" y="298" class="lbl-s lbl-w halo">river</text>
+        <text x="170" y="22" class="lbl-s halo" text-anchor="middle">crest</text>
+        <path d="M150,444 H390 M150,439 V449 M390,439 V449" class="dim"/>
+        <text x="270" y="459" class="lbl-s halo" text-anchor="middle">base <tspan data-n="ch07.b-m">48</tspan> m</text>
+        <path d="M556,30 V330 M551,30 H561 M551,330 H561" class="dim"/>
+        <text x="550" y="176" class="lbl-s halo" text-anchor="end"><tspan data-n="ch07.h-m">60</tspan> m</text>
+        <path d="M420,64 H460 M420,60 V68 M460,60 V68" style="stroke:var(--ink);stroke-width:1.2;fill:none"/>
+        <text x="466" y="68" class="lbl-s">10 MN</text>
+        <text x="420" y="50" class="lbl-s">forces:</text>
+      </svg>
+      <figcaption>
+        <p class="cap"><b>With water under its base and nothing done about it, the 60 m dam loses about two fifths of its weight to uplift, and its grip on the rock goes down by the same share.</b> The section is to scale, its upstream face upright and its base on rock. The heavy arrows are forces on each metre length of dam, to the scale bar: the weight <var>W</var> through the section's centre, the water's net push <var>F</var> a third of the way up the wet face, the uplift <var>U</var>, and the rock's grip along the base, (<var>W</var> − <var>U</var>) × tan 45°. Under the base, the shaded wedge is the water pressure with no drains, in metres of head at about a quarter of the section's scale: the reservoir's <span data-n="ch07.hw-m">57</span> m at the heel falling in a straight line to the river's <span data-n="ch07.tw-m">5</span> m at the toe. The dashed outline is the same pressure with a line of drains working, 6 m from the heel, below the gallery; the grout curtain is the hatched band slanting down from the heel. <span class="cap-n">The number to remember: with no drains the water lifts <span data-n="uplift.U-mn@drains=0">14.60</span> MN, <span data-n="uplift.U-pct@drains=0">42</span>% of the weight; with drains, <span data-n="uplift.U-mn">7.97</span> MN.</span></p>
+        <ul class="try">
+          <li>Divide the grip by the push, both read from the labels. That is the dam's factor of safety with no drains.</li>
+          <li>Measure the shaded wedge and the dashed outline at the drain line. By how much do the drains lower the head there?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p><span data-n="ch07.v-mn@drains=0">20.18</span> ÷ <span data-n="uplift.F-mn">15.81</span> = <span data-n="uplift.fs@drains=0">1.28</span>. At the drain line the straight line stands at <span data-n="uplift.ud-m@drains=0">50.5</span> m of head and the drained outline at <span data-n="uplift.ud-m">22.3</span> m, <span data-n="ch07.drop-m">28.2</span> m lower.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the uplift arrow is nearly as long as the push, although the cracks hold very little water: the uplift is pressure spread over 48 m of base. The wedge under the base does in the dam what the cushion did in <a data-ref="fig-block"></a>. It carries part of the weight, so the dam presses on the rock with less, and the grip shrinks with the press. The factor of safety becomes</p>
+      <div class="eq" id="eq-concrete-fs">
+        <span class="eq-body"><var>FS</var> = (<var>W</var> − <var>U</var>) · tan <var>φ</var> ÷ <var>F</var></span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>W</var> weight of the dam · <var>U</var> uplift on its base · <var>F</var> net push of the water, all per metre of dam (kN or MN) · <var>φ</var> friction angle between dam and rock. This is <a data-ref="eq-grip-fs"></a> on level ground, with <var>W</var> − <var>U</var> the press left.</p>
+
+      <section class="we" id="ex-concrete-clogged">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Water under the base, with nothing done about it</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The 60 m dam: weight <span data-n="ch07.w-kn">34,780</span> kN and net push <span data-n="ch07.f-kn">15,814</span> kN per metre, base <span data-n="ch07.b-m">48</span> m, reservoir <span data-n="ch07.hw-m">57</span> m and river <span data-n="ch07.tw-m">5</span> m above the base, tan <var>φ</var> = 1. Water weighs <span data-n="const.gw">9.81</span> kN/m³.</dd>
+          <dt>Find</dt><dd>The uplift with no drains, its share of the weight, and the factor of safety against sliding.</dd>
+          <dt>The idea</dt><dd>The pressure under the base falls in a straight line from the reservoir's at the heel to the river's at the toe, and a straight-line wedge pushes as hard as its average all the way across.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Mean head under the base: halfway between 57 and 5 m <span class="m">= <span data-n="ch07.mean-m">31</span> m</span></span><span class="why">a wedge that falls evenly averages its two ends</span></li>
+          <li><span class="we-eq"><var>U</var> = <span data-n="const.gw">9.81</span> × <span data-n="ch07.mean-m">31</span> × 48 = <span data-n="ch07.u-kn@drains=0">14,597</span> kN</span><span class="why">the mean pressure times the base, a metre long</span></li>
+          <li><span class="we-eq"><span data-n="ch07.u-kn@drains=0">14,597</span> ÷ <span data-n="ch07.w-kn">34,780</span> = <span data-n="ch07.u-share@drains=0">0.420</span></span><span class="why">the share of the weight the water carries</span></li>
+          <li><span class="we-eq">Press left: <span data-n="ch07.w-kn">34,780</span> − <span data-n="ch07.u-kn@drains=0">14,597</span> <span class="m">= <span data-n="ch07.v-kn@drains=0">20,183</span> kN</span></span><span class="why"><var>W</var> − <var>U</var>, what the grip works with</span></li>
+          <li><span class="we-eq"><var>FS</var> = <span data-n="ch07.v-kn@drains=0">20,183</span> ÷ <span data-n="ch07.f-kn">15,814</span> = <span data-n="uplift.fs@drains=0">1.276</span></span><span class="why"><a data-ref="eq-concrete-fs"></a> with tan 45° = 1</span></li>
+        </ol>
+        <p class="we-ans">With no drains the water lifts <span data-n="uplift.U-mn@drains=0">14.60</span> MN off each metre of dam, <span data-n="uplift.U-pct@drains=0">42</span>% of its weight, and the factor of safety falls from <span data-n="ch07.w-over-f">2.20</span> to <span data-n="uplift.fs@drains=0">1.28</span>.</p>
+        <p class="we-check"><b>Check.</b> Compare pressures instead of forces. Spread over its base, the section is <span data-n="ch07.hmean-m">30.833</span> m of concrete deep on average, pressing with <span class="m"><span data-n="const.gconc">23.5</span> × <span data-n="ch07.hmean-m">30.833</span> = <span data-n="ch07.wmean-kpa">724.6</span> kPa</span>. The water under it averages <span class="m"><span data-n="const.gw">9.81</span> × 31 = <span data-n="ch07.umean-kpa">304.1</span> kPa</span>, and <span class="m"><span data-n="ch07.umean-kpa">304.1</span> ÷ <span data-n="ch07.wmean-kpa">724.6</span> = <span data-n="ch07.u-share@drains=0">0.420</span></span>, the same share.</p>
+        <p class="we-means"><b>What it means.</b> Nothing about the concrete changed. Water in the rock took away two fifths of the press that gives the dam its grip, and with it most of the margin the weight seemed to promise.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-uplift","set":{"up-drains":"0","up-hw":57}}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-concrete-drains">Drains, and what happens when they clog</h3>
+      <p>The weight is fixed, and so is the lake. What an engineer can change is the water under the base, with two rows of holes. Near the heel runs a <span class="gl" data-term="grout-curtain">grout curtain</span>: holes drilled deep into the rock in a line along the dam and pumped full of cement grout, to seal as many cracks as they can reach. A few metres downstream runs a line of drains, drilled into the rock from a <span class="gl" data-term="gallery">gallery</span>, a tunnel along the dam inside it, close to the base. Water that reaches a drain rises into the gallery and is led away, so the pressure at the drain line can be little more than the gallery's own.<label for="mn-concrete-holes" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-holes" class="margin-toggle"><span class="marginnote" data-kind="source">Foundation drains as 3-inch (76 mm) holes on 10-foot (3 m) centres, the rule below taken as conservative when they reach 40 to 50 per cent of the dam's height: <a data-cite="usbr1987"></a>, §8.10, p. 321.</span></p>
+      <p>How much do drains take off? Nobody can see into the rock, and the answer depends on which cracks the holes happen to cross. Designers start from a rule. The US Bureau of Reclamation's rule assumes that the head at the drain line is the tailwater's, plus a third of the difference between the reservoir and the tailwater:</p>
+      <div class="eq" id="eq-concrete-drain">
+        <span class="eq-body"><var>h</var><sub>d</sub> = <var>h</var><sub>t</sub> + (<var>h</var><sub>r</sub> − <var>h</var><sub>t</sub>) ÷ 3</span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>h</var><sub>d</sub> head at the drain line · <var>h</var><sub>t</sub> head of the tailwater · <var>h</var><sub>r</sub> head of the reservoir, all in metres above the base. On either side of the drain line the pressure is taken to fall in a straight line.</p>
+      <p>In the language of <a data-ref="ch-head"></a>, the water reaches the heel with <span data-n="ch07.diff-m">52</span> m of head to lose before it gets out at the toe. Uniform rock would spend it evenly; the curtain and the drains make it spend two thirds of it in the first <span data-n="ch07.xd-m">6</span> m.<label for="mn-concrete-usace" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-usace" class="margin-toggle"><span class="marginnote" data-kind="source">The one-third rule: <a data-cite="usbr1987"></a>, §8.10, pp. 320–321. The US Army Corps of Engineers is more cautious: its drains remove 25 to 50 per cent of the straight-line pressure above the tailwater's at the drain line, up to 67 per cent with tests to justify it (<a data-cite="usace-em2200"></a>, para. 3-3.d(1)(c)).</span> The figure below draws the dam with its curtain, gallery and drains. Switch Foundation drains between Working and Clogged, and move the Reservoir slider:</p>
     </div>
 
     <figure class="sheet full" id="fig-uplift">
@@ -38,24 +160,211 @@
         <div class="ro"><span>Sliding safety</span><b id="up-FS">–</b><small>(W − U)·tan 45° / F</small></div>
         <div class="ro"><span>Resultant at base</span><b id="up-R">–</b><small id="up-R2"></small></div>
       </div>
-      <figcaption>Uplift alone can decide whether a gravity dam is safe. Clog the drains and the uplift force nearly doubles. Many design guides look for a sliding safety factor of about 1.5 under normal operating loads. The resultant force should also fall in the middle third of the base, so the heel (the upstream edge of the base) stays pressed onto the rock and no crack opens to let full reservoir pressure in underneath. The sliding check assumes a friction angle of 45° between concrete and rock (tan 45° = 1) and no bond; at 35°, a common lower value, the full reservoir with working drains gives about <span data-n="uplift.fs-phi@phi=35">1.19</span> instead of <span data-n="uplift.fs">1.70</span>. Across this slider's range the resultant stays in the middle third, even with the drains clogged: the heel goes into tension only under bigger loads, such as a flood over the crest or an earthquake, which this figure doesn't apply.</figcaption>
+      <figcaption>
+        <p class="cap"><b>Working drains nearly halve the uplift under a gravity dam, and give back much of the grip the water took from it.</b> The reservoir is on the left, with the <span class="k-acc">brick-red</span> triangle of its pressure on the upright face. Under the base the brick-red wedge is the uplift, in metres of head: the reservoir's at the heel, the river's at the toe, and with the drains working a sharp drop at the drain line, the dashed line below the gallery; clogged drains are crossed out and the wedge returns to a straight line. The heavy arrows are the weight <var>W</var>, the push <var>F</var> and the uplift <var>U</var>, to scale, in MN per metre of dam. The small triangle on the base marks where the resultant crosses it: green inside the middle third, marked by the double arrow, red outside. The sliding check assumes a friction angle of 45° between concrete and rock (tan 45° = 1) and no bond. <span class="cap-n">The number to remember: with the reservoir at 57 m the dam's factor of safety is <span data-n="uplift.fs">1.70</span> with its drains working and <span data-n="uplift.fs@drains=0">1.28</span> with them clogged.</span></p>
+        <ul class="try">
+          <li>Clog the drains and watch the wedge fill out to a straight line. Which readouts change, and which stay put?</li>
+          <li>With the drains clogged, lower the reservoir until the sliding safety reaches 1.5.</li>
+          <li>With the drains clogged, raise the reservoir to 59 m. Does the resultant leave the middle third?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>Only the uplift, the sliding safety and the resultant change; the weight and the push do not. The safety crosses 1.5 at about <span data-n="uplift.hw-cross">53.6</span> m: the slider reads <span data-n="uplift.fs@hw=53.5,drains=0">1.51</span> at 53.5 m. At 59 m the resultant sits at <span data-n="uplift.xr@hw=59,drains=0">0.66</span> B, inside the middle third but close to its end at 0.67 B.</p></details>
+      </figcaption>
     </figure>
 
-    <div class="col" data-stub>
-      <h3 id="s-concrete-drains">Drains, and what happens when they clog</h3>
-      <!-- eq-concrete-drain (the USBR drain-line head); ex-concrete-clogged; ex-concrete-phi;
-           ex-concrete-level; calcite and galleries. -->
-    </div>
-    <div class="col" data-stub>
+    <div class="col">
+      <p>Notice that the pressure at the heel never changes when you switch the drains: the heel touches the reservoir, which sets it. What the drains change comes after the heel. The wedge drops steeply to the drain line and runs gently on to the toe, and its area, the uplift, shrinks to a little over half:</p>
+
+      <section class="we" id="ex-concrete-full">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The same dam with its drains working</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The dam of <a data-ref="ex-concrete-clogged"></a>, with a line of drains <span data-n="ch07.xd-m">6</span> m from the heel. Reservoir <span data-n="ch07.hw-m">57</span> m, river <span data-n="ch07.tw-m">5</span> m.</dd>
+          <dt>Find</dt><dd>The head at the drain line, the uplift, and the factor of safety against sliding.</dd>
+          <dt>The idea</dt><dd><a data-ref="eq-concrete-drain"></a> sets the head at the drains; the wedge is then two straight-line pieces, each pushing as hard as its own average.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>h</var><sub>d</sub> = 5 + 52 ÷ 3 = <span data-n="uplift.ud-m">22.33</span> m</span><span class="why">the river's head plus a third of the 52 m difference</span></li>
+          <li><span class="we-eq">Heel to drains: <span data-n="ch07.seg-mean-m">39.667</span> × 6 = <span data-n="ch07.seg-m2">238.0</span> m²</span><span class="why">the mean of 57 and 22.33 m of head, over 6 m</span></li>
+          <li><span class="we-eq">Drains to toe: <span data-n="ch07.seg-mean-m@seg=2">13.667</span> × 42 = <span data-n="ch07.seg-m2@seg=2">574.0</span> m²</span><span class="why">the mean of 22.33 and 5 m, over the other 42 m</span></li>
+          <li><span class="we-eq"><var>U</var> = <span data-n="const.gw">9.81</span> × <span data-n="ch07.uarea-m2">812.0</span> = <span data-n="ch07.u-kn">7,966</span> kN</span><span class="why">the two pieces together, a metre of head being 9.81 kPa</span></li>
+          <li><span class="we-eq">Press left: <span data-n="ch07.w-kn">34,780</span> − <span data-n="ch07.u-kn">7,966</span> <span class="m">= <span data-n="ch07.v-kn">26,814</span> kN</span></span><span class="why"><var>W</var> − <var>U</var></span></li>
+          <li><span class="we-eq"><var>FS</var> = <span data-n="ch07.v-kn">26,814</span> ÷ <span data-n="ch07.f-kn">15,814</span> = <span data-n="uplift.fs">1.696</span></span><span class="why"><a data-ref="eq-concrete-fs"></a></span></li>
+        </ol>
+        <p class="we-ans">With its drains working the dam carries <span data-n="uplift.U-mn">7.97</span> MN of uplift, <span data-n="uplift.U-pct">23</span>% of its weight, and its factor of safety is <span data-n="uplift.fs">1.70</span>. Clog the drains and the uplift grows <span class="m"><span data-n="ch07.u-kn@drains=0">14,597</span> ÷ <span data-n="ch07.u-kn">7,966</span> = <span data-n="ch07.u-ratio">1.83</span></span> times.</p>
+        <p class="we-check"><b>Check.</b> The uplift is the area of the head wedge times 9.81, so the two states should compare as their areas: <span data-n="ch07.uarea-m2">812</span> m² against the straight line's <span class="m"><span data-n="ch07.mean-m">31</span> × 48 = <span data-n="ch07.uarea-m2@drains=0">1,488</span></span> m², and <span class="m"><span data-n="ch07.uarea-m2@drains=0">1,488</span> ÷ <span data-n="ch07.uarea-m2">812</span> = <span data-n="ch07.u-ratio">1.83</span></span>.</p>
+        <p class="we-means"><b>What it means.</b> The drains act on one line, <span data-n="ch07.xd-m">6</span> m from the heel, but the saving is felt over the <span data-n="ch07.seg-len-m@seg=2">42</span> m beyond it, where the head now falls from <span data-n="uplift.ud-m">22.3</span> m to the river's 5 instead of from <span data-n="uplift.ud-m@drains=0">50.5</span> m.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-uplift","set":{"up-drains":"1","up-hw":57}}'>Set the figure</button></p>
+      </section>
+
+      <p>With no glue counted, a common target for this check is a factor of safety of 1.5 under the worst ordinary loads, a convention that leaves room for what nobody can measure, such as the real head in the cracks.<label for="mn-concrete-fs" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-fs" class="margin-toggle"><span class="marginnote" data-kind="source">1.5 for the worst static case when no cohesion is counted, 1.3 for the probable maximum flood: <a data-cite="ferc2016-ch3"></a>, p. 3-27, the table of factors for a no-cohesion analysis.</span> The dam passes with its drains working and fails with them clogged.</p>
+      <p>But drains clog. Water seeping through rock and grout dissolves calcium out of them, and in the drain holes the calcium comes out again as a crust, like the scale in a kettle; silt and bacterial slime add to it.<label for="mn-concrete-clog" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-clog" class="margin-toggle"><span class="marginnote" data-kind="source">Drains are usually "plugged with calcium deposits, sediment, or biological growth": <a data-cite="campbell2022"></a>. Watching drain efficiency for clogging: <a data-cite="ferc2016-ch3"></a>, §3-2.4.3.2.</span> A drain that passes no water lowers no pressure, and the wedge creeps back toward the straight line. That is what the gallery is for: engineers walk it to measure what each drain gives, read gauges set in some of the holes, and clean or redrill the holes that have gone quiet. A falling flow from a drain is as much a warning as a rising one.<label for="sn-concrete-oroville" class="sn-ref"></label><input type="checkbox" id="sn-concrete-oroville" class="margin-toggle"><span class="sidenote" data-kind="curious">Uplift lifts more than dams. On 7 February 2017 the fast flow down the concrete chute of Oroville Dam's main spillway, in California, drove water through cracks and joints into the ground under a slab, probably faster than the drains there could carry it away. The forensic team concluded that the uplift most likely beat what the slab's weight, its anchors and the water on top could hold; the slab lifted out, and the flow tore into the poor rock beneath (<a data-cite="oroville2018"></a>, pp. S-1 and 33).</span></p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Drains clog and a grout curtain needs no cleaning. Why not seal the rock with grout and leave out the drains?</summary>
+        <p>Grout seals only the cracks it reaches, and a curtain ages. Water that finds a way past it arrives under the base with nearly the reservoir's head, and with no drains the wedge is the straight line again. The US federal regulator of hydropower dams allows no reduction in uplift for grouting alone.<label for="mn-concrete-grout" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-grout" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="ferc2016-ch3"></a>, §3-2.4.3.2.</span></p>
+      </details>
+
+      <p>Clogged drains matter most when the reservoir is high:</p>
+
+      <section class="we" id="ex-concrete-level">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">How fast the margin goes as the lake rises</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The dam with its drains clogged, the reservoir at 50 m and at 57 m, the river at 5 m. Weight <span data-n="ch07.w-kn">34,780</span> kN per metre.</dd>
+          <dt>Find</dt><dd>The factor of safety at 50 m, and the level at which it falls to 1.5.</dd>
+          <dt>The idea</dt><dd>The push grows with the square of the depth (<a data-ref="eq-depth-push"></a>). The uplift grows only with the depth itself, through the head at the heel.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>F</var> = ½ × <span data-n="const.gw">9.81</span> × <span data-n="ch07.depth2-m2@hw=50">2,475</span> = <span data-n="ch07.f-kn@hw=50">12,140</span> kN</span><span class="why">2,475 is 50² − 5², the reservoir's push less the river's</span></li>
+          <li><span class="we-eq"><var>U</var> = <span data-n="const.gw">9.81</span> × <span data-n="ch07.mean-m@hw=50">27.5</span> × 48 = <span data-n="ch07.u-kn@hw=50,drains=0">12,949</span> kN</span><span class="why">the mean of 50 and 5 m of head, over the base</span></li>
+          <li><span class="we-eq"><var>FS</var> = <span data-n="ch07.v-kn@hw=50,drains=0">21,831</span> ÷ <span data-n="ch07.f-kn@hw=50">12,140</span> = <span data-n="uplift.fs@hw=50,drains=0">1.80</span></span><span class="why"><span data-n="ch07.w-kn">34,780</span> − <span data-n="ch07.u-kn@hw=50,drains=0">12,949</span> = <span data-n="ch07.v-kn@hw=50,drains=0">21,831</span> kN left pressing</span></li>
+          <li><span class="we-eq"><var>FS</var> = 1.5 at <span class="m"><var>h</var> = <span data-n="uplift.hw-cross">53.6</span> m</span></span><span class="why">read from <a data-ref="fig-uplift"></a>, and checked below</span></li>
+        </ol>
+        <p class="we-ans">With its drains clogged the dam has a factor of safety of <span data-n="uplift.fs@hw=50,drains=0">1.80</span> with 50 m of water, 1.5 at <span data-n="uplift.hw-cross">53.6</span> m and <span data-n="uplift.fs@drains=0">1.28</span> at 57 m. The last 7 m take away more than half of its margin above 1.</p>
+        <p class="we-check"><b>Check.</b> For a reservoir <var>h</var> metres deep, <var>U</var> = <span data-n="ch07.dudh-kn">235.44</span>(<var>h</var> + 5) and <var>F</var> = <span data-n="ch07.fcoef">4.905</span>(<var>h</var>² − 25), in kN. Setting <var>W</var> − <var>U</var> = 1.5<var>F</var> gives <span class="m"><span data-n="ch07.qa">7.3575</span><var>h</var>² + <span data-n="ch07.dudh-kn">235.44</span><var>h</var> − <span data-n="ch07.qc">33,787</span> = 0</span>, whose positive root is <var>h</var> = <span data-n="ch07.qroot-m">53.6</span> m.</p>
+        <p class="we-means"><b>What it means.</b> One more metre of water at 57 m adds about <span data-n="ch07.dfdh-kn">559</span> kN of push and only <span data-n="ch07.dudh-kn">235</span> kN of uplift. So a flood that lifts a full reservoir a few metres costs far more margin than the same rise lower down.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-uplift","set":{"up-drains":"0","up-hw":53.5}}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-concrete-grip">How hard concrete grips rock</h3>
+      <p>Every number so far leaned on tan <var>φ</var> = 1, as the figure's readout says. The Bureau of Reclamation's guide gives a friction coefficient of 1 for concrete in a first design, and a federal regulator's worked example of a gravity dam uses 45°.<label for="mn-concrete-phi" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-phi" class="margin-toggle"><span class="marginnote" data-kind="source">Coefficient of internal friction 1.0 for concrete, for preliminary designs: <a data-cite="usbr1987"></a>, §8.6, p. 316. A worked example with <var>φ</var> = 45°: <a data-cite="ferc2016-ch3"></a>, Appendix C.</span> But a dam can also slide on a joint or a bedding plane a few metres down in the rock, which is only as rough as the rock's own partings, and those may be polished smooth or filled with soft material.</p>
+
+      <div class="predict" data-answer="b" id="pr-concrete-grip">
+        <p class="predict-q">With its drains working and a grip of 45°, the 60 m dam has a factor of safety of <span data-n="uplift.fs">1.70</span>. If the rock under it grips at only 35°, the dam:</p>
+        <div class="predict-opts"><button type="button" data-v="a">still passes 1.5</button><button type="button" data-v="b">holds, but below 1.5</button><button type="button" data-v="c">slides</button></div>
+        <div class="predict-reveal" hidden><p>It holds, below 1.5: the factor of safety falls to <span data-n="uplift.fs-phi@phi=35">1.19</span>. Ten degrees off the friction angle costs more margin than clogging the drains did. With the drains clogged as well it would slide.</p></div>
+      </div>
+
+      <p>To decide, look at where tan <var>φ</var> sits in <a data-ref="eq-concrete-fs"></a>. It multiplies everything else.</p>
+
+      <section class="we" id="ex-concrete-phi">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The friction angle decides it</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The factors of safety at tan <var>φ</var> = 1: <span data-n="uplift.fs">1.696</span> with the drains working, <span data-n="uplift.fs@drains=0">1.276</span> with them clogged (<a data-ref="ex-concrete-clogged,ex-concrete-full"></a>).</dd>
+          <dt>Find</dt><dd>Both at <var>φ</var> = 35°, and the friction angle at which each would slide.</dd>
+          <dt>The idea</dt><dd>The factor of safety is proportional to tan <var>φ</var>; the dam slides where it reaches 1.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">tan 35° = <span data-n="ch07.tan">0.7002</span></span><span class="why">from a calculator</span></li>
+          <li><span class="we-eq">Drains working: 1.696 × 0.7002 = <span data-n="uplift.fs-phi@phi=35">1.19</span></span><span class="why">the factor scales with tan <var>φ</var></span></li>
+          <li><span class="we-eq">Drains clogged: 1.276 × 0.7002 = <span data-n="uplift.fs-phi@drains=0,phi=35">0.89</span></span><span class="why">below 1: it slides</span></li>
+          <li><span class="we-eq">Working, slides at tan <var>φ</var> = 1 ÷ 1.696 = <span data-n="ch07.tan-slide">0.590</span>, <var>φ</var> = <span data-n="ch07.phi-slide-deg">30.5</span>°</span><span class="why">the tan <var>φ</var> that brings the factor to 1</span></li>
+          <li><span class="we-eq">Clogged, slides at tan <var>φ</var> = 1 ÷ 1.276 = <span data-n="ch07.tan-slide@drains=0">0.784</span>, <var>φ</var> = <span data-n="ch07.phi-slide-deg@drains=0">38.1</span>°</span><span class="why">the same, with the bigger uplift</span></li>
+        </ol>
+        <p class="we-ans">At 35° the dam holds with its drains working, at <span data-n="uplift.fs-phi@phi=35">1.19</span>, and slides with them clogged, at <span data-n="uplift.fs-phi@drains=0,phi=35">0.89</span>. With working drains it is safe down to <span data-n="ch07.phi-slide-deg">30.5</span>°; with clogged drains, only down to <span data-n="ch07.phi-slide-deg@drains=0">38.1</span>°.</p>
+        <p class="we-check"><b>Check.</b> Work the clogged case from <a data-ref="eq-concrete-fs"></a> directly: <span class="m"><span data-n="ch07.v-kn@drains=0">20,183</span> × 0.7002 ÷ <span data-n="ch07.f-kn">15,814</span> = <span data-n="uplift.fs-phi@drains=0,phi=35">0.894</span></span>, as step 3 found by scaling.</p>
+        <p class="we-means"><b>What it means.</b> Weight is easy to know and friction is hard. That is why the rock under a gravity dam is dug down to sound material, cleaned and grouted before any concrete is placed on it.</p>
+      </section>
+
+      <p>Site C, the newest dam on the Peace River in British Columbia, stands on bedded shale.<label for="sn-concrete-sitec" class="sn-ref"></label><input type="checkbox" id="sn-concrete-sitec" class="margin-toggle"><span class="sidenote" data-kind="curious">BC Hydro's 1978 preliminary design for Site C was already an earthfill dam, because a concrete gravity dam was not feasible on that rock. The powerhouse and spillways sit on a concrete buttress keyed down through one bedding plane; in 2018 a deeper plane moved about 5 mm. The remedy chosen in 2020 sets up to 125 piles through that plane and adds drainage to lower the water pressure in the rock, the two levers of <a data-ref="eq-concrete-fs"></a> (<a data-cite="bchydro-sitec2021"></a>, pp. 3, 4 and 6).</span> During its construction a bedding plane under the concrete that carries its powerhouse and spillways turned out to grip at about 11°, below the 16° its contingency design had allowed for.<label for="mn-concrete-sitec" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-sitec" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="bchydro-sitec2021"></a>, Appendix A (Technical Advisory Board), pp. 3–4: "≈11º" against the contingency case's 16º.</span></p>
+
       <h3 id="s-concrete-third">The middle third</h3>
-      <!-- Lévy's rule and the middle third (Bouzey); case-bouzey. -->
+      <p>Sliding is one way for the push to win. The other is tipping: the push turns the dam about its toe with a <span class="gl" data-term="moment">moment</span>, as <a data-ref="ch-depth"></a> showed. Engineers check it by adding the weight, the push and the uplift into one force, the <span class="gl" data-term="resultant">resultant</span>, and asking where its line crosses the base.</p>
+      <p>Where the resultant crosses the middle of the base, the rock is pressed evenly. Move it downstream and the toe is pressed harder and the heel less, until the heel is not pressed at all: the pressure under the base, taken to change in a straight line, is then a triangle with its point at the heel, which balances a third of the way in from its tallest side (<a data-ref="s-depth-arm"></a>). So while the resultant stays between a third and two thirds of the base from the heel, in the <span class="gl" data-term="middle-third">middle third</span>, the whole base stays pressed onto the rock. For the 60 m dam that is <span data-n="ch07.third-b-m">16</span> to <span data-n="ch07.third-b-m@k=2">32</span> m from the heel; the readout of <a data-ref="fig-uplift"></a> puts the resultant at <span data-n="uplift.xr">0.56</span> B, <span data-n="ch07.xr-m">26.7</span> m, with the drains working and <span data-n="uplift.xr@drains=0">0.62</span> B with them clogged. The same straight-line picture gives the pressure at the heel:</p>
+      <div class="eq" id="eq-concrete-heel">
+        <span class="eq-body"><var>p</var><sub>heel</sub> = (<var>V</var> ÷ <var>B</var>) · (4 − 6<var>x</var> ÷ <var>B</var>)</span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>p</var><sub>heel</sub> pressure of the dam on the rock at its heel (kPa) · <var>V</var> the downward force on the base (kN per metre) · <var>B</var> base width (m) · <var>x</var> where the resultant crosses the base, from the heel (m). At <var>x</var> = <var>B</var>/2 it gives an even press, <var>V</var>/<var>B</var>; at <var>x</var> = 2<var>B</var>/3, zero.</p>
+      <p>The middle third was the rule of the day at Bouzey. Lévy pointed out that it only keeps the joints from tending to open at their upstream ends, which is not enough: a crack can open anyway, from heat or a bad joint, and the reservoir fills it. A crack no thicker than a sheet of paper carries the full pressure of its depth (<a data-ref="ex-depth-slot"></a>), which pushes its faces apart so that it grows.<label for="sn-concrete-levy" class="sn-ref"></label><input type="checkbox" id="sn-concrete-levy" class="margin-toggle"><span class="sidenote" data-kind="history">Lévy, an engineer and member of the Academy of Sciences, read his note on 5 August 1895. He compared the danger to a boiler without a safety valve, and proposed a valve: a guard wall on the upstream face with wells behind it, so that any crack opened into a well and drained instead of holding pressure. The wells would empty into a drain along the dam, whose flow would warn of what was happening inside (<a data-cite="levy1895"></a>, pp. 288–289). Drains in the body of the dam later did the same job (<a data-cite="bordes2010"></a>, p. 104).</span> So Lévy asked for more: at the upstream end of every joint, the masonry must press harder than the water presses there, and then water that finds a crack is squeezed back out.<label for="mn-concrete-levyrule" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-levyrule" class="margin-toggle"><span class="marginnote" data-kind="source">The usual condition and Lévy's new one: <a data-cite="levy1895"></a>, p. 289.</span> Here is his test at the base of the 60 m dam, with no water inside the joint, as he posed it:</p>
+
+      <section class="we" id="ex-concrete-third">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Does the heel press harder than the water?</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The 60 m dam, reservoir at 57 m: weight <span data-n="ch07.w-kn">34,780</span> kN per metre, acting <span data-n="ch07.xw-m">15.71</span> m from the heel; pushes of <span data-n="ch07.fup-kn">15,936</span> kN from the reservoir, 19 m up, and <span data-n="ch07.ftw-kn">122.6</span> kN from the river, 5/3 m up; base 48 m.</dd>
+          <dt>Find</dt><dd>Where weight and push together cross the base, and the pressure at the heel against the water's.</dd>
+          <dt>The idea</dt><dd>The push moves the resultant downstream of the weight by its moment ÷ the weight; <a data-ref="eq-concrete-heel"></a> does the rest.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Moment of the push: <span data-n="ch07.fup-kn">15,936.345</span> × 19 = <span data-n="ch07.mup-knm">302,790.6</span> kN·m</span><span class="why">the reservoir's push times its height, <var>H</var>/3</span></li>
+          <li><span class="we-eq">Less the river's: <span data-n="ch07.mup-knm">302,790.6</span> − <span data-n="ch07.mtw-knm">204.4</span> <span class="m">= <span data-n="ch07.mom-knm">302,586.2</span> kN·m</span></span><span class="why">the river pushes the other way, 122.6 kN at 5/3 m</span></li>
+          <li><span class="we-eq">Shift: <span data-n="ch07.mom-knm">302,586.2</span> ÷ <span data-n="ch07.w-kn">34,780</span> = <span data-n="ch07.shift-m">8.700</span> m</span><span class="why">how far downstream of the weight the resultant crosses the base</span></li>
+          <li><span class="we-eq"><var>x</var> = <span data-n="ch07.xw-m">15.712</span> + <span data-n="ch07.shift-m">8.700</span> <span class="m">= <span data-n="ch07.x0-m">24.412</span> m</span></span><span class="why">a little past the middle, 24 m; well inside the middle third</span></li>
+          <li><span class="we-eq">6 × 24.412 ÷ 48 = <span data-n="ch07.heel-term">3.0515</span>, and 4 − 3.0515 <span class="m">= <span data-n="ch07.heel-factor">0.9485</span></span></span><span class="why">the bracket of <a data-ref="eq-concrete-heel"></a></span></li>
+          <li><span class="we-eq"><var>p</var><sub>heel</sub> = <span data-n="ch07.wmean-kpa">724.58</span> × 0.9485 = <span data-n="ch07.heel-kpa">687.3</span> kPa</span><span class="why"><var>V</var>/<var>B</var> = 34,780 ÷ 48, times the bracket</span></li>
+          <li><span class="we-eq">Water at the heel: <span data-n="const.gw">9.81</span> × 57 = <span data-n="ch07.p-kpa">559.2</span> kPa, and <span class="m"><span data-n="ch07.heel-kpa">687.3</span> ÷ <span data-n="ch07.p-kpa">559.2</span> = <span data-n="ch07.levy-ratio">1.23</span></span></span><span class="why">Lévy's comparison</span></li>
+        </ol>
+        <p class="we-ans">At its base the dam presses the rock at the heel with <span data-n="ch07.heel-kpa">687</span> kPa, <span data-n="ch07.levy-ratio">1.23</span> times the water's <span data-n="ch07.p-kpa">559</span> kPa, so it passes Lévy's test there.</p>
+        <p class="we-check"><b>Check.</b> With no push the resultant would sit under the weight, <span data-n="ch07.xw-m">15.71</span> m from the heel, pressing the heel harder than the toe. The push moves it <span data-n="ch07.shift-m">8.7</span> m downstream, almost to the middle, so the heel pressure should be close to the even press, <span data-n="ch07.wmean-kpa">725</span> kPa, and it is.</p>
+        <p class="we-means"><b>What it means.</b> The section puts its weight upstream of the middle, where the push needs it. A thinner wall, or one with its weight further downstream, leaves less press at the heel for the water to beat.</p>
+      </section>
+
+      <p>Bouzey's upper wall had no such margin. Here is its section as it stood in 1895, from the published drawing:</p>
+    </div>
+
+    <figure class="case-plate wide" id="case-bouzey"
+            data-case="Bouzey Dam" data-year="1895" data-where="Vosges, France"
+            data-type="Masonry gravity, 22 m" data-mechanism="Water in the joints of a wall too thin above its buttress; sliding on the foundation in 1884">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Case file: Bouzey Dam, 1884 and 1895</span><span class="scale-note">Section to scale from the published drawing · curves traced</span></div>
+      <div class="case-body">
+        <svg class="dwg" viewBox="0 0 392 350" role="img" aria-label="Cross-section of the Bouzey masonry dam, drawn to scale. The upstream face is upright; the wall is 4 metres thick at its crest, flares out lower down, and stands on sandstone with a key under its heel. A buttress added in 1888 and 1889 thickens its lower part on the downstream side. The reservoir stands 0.55 metres below the crest. The part swept away in 1895 is hatched: everything above a break that runs level from the upstream face at 361.45 metres and dips down to the top of the buttress, about 10.5 metres below the crest. A dashed line across the key marks where the base sheared in 1884.">
+          <defs>
+            <pattern id="concrete-swept" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0,0 V6" style="stroke:var(--accent);stroke-width:1.2"/></pattern>
+          </defs>
+          <rect x="6" y="274.4" width="380" height="69.6" fill="url(#p-bedrock)" class="edge"/>
+          <rect x="6" y="201.2" width="90" height="73.2" fill="url(#p-fill)"/>
+          <rect x="6" y="39.2" width="90" height="162" class="water"/>
+          <path d="M6,39.2 H96" class="water-line"/>
+          <polygon points="172.7,187.2 291.2,273.8 253.9,323.4 232.2,323.4 232.2,274.4" fill="url(#p-conc)" style="opacity:.6;stroke:var(--ink);stroke-width:1;stroke-dasharray:4 3"/>
+          <polygon points="96,32.6 143,32.6 143,99.8 144.7,113.2 146.8,126.7 149.8,140.1 153.8,153.6 163.9,173.7 172.7,187.2 187.2,207.3 206.2,234.2 232.2,274.4 120,274.4 120,308 96,308" fill="url(#p-conc)" class="edge"/>
+          <polygon points="96,32.6 143,32.6 143,99.8 144.7,113.2 146.8,126.7 149.8,140.1 153.8,153.6 163.9,173.7 172.7,187.2 138,158.6 96,158.6" fill="url(#concrete-swept)" style="stroke:var(--accent);stroke-width:1.6;stroke-dasharray:5 3"/>
+          <path d="M96,267.2 H120" style="stroke:var(--accent);stroke-width:2;stroke-dasharray:4 2;fill:none"/>
+          <text x="12" y="33" class="lbl-s lbl-w halo">reservoir, 27 April 1895</text>
+          <text x="148" y="27" class="lbl-s halo">crest 371.95 m</text>
+          <path d="M152,159 L182,150" class="lead"/>
+          <text x="184" y="148" class="lbl-s lbl-acc halo">break, 361.45 m</text>
+          <text x="184" y="162" class="lbl-s lbl-acc halo">upper wall swept away</text>
+          <path d="M243,259 L262,240" class="lead"/>
+          <text x="264" y="238" class="lbl-s halo">buttress, 1888–89</text>
+          <text x="92" y="262" class="lbl-s lbl-acc halo on-fill" text-anchor="end">1884 slip</text>
+          <text x="92" y="302" class="lbl-s halo on-rock" text-anchor="end">key</text>
+          <text x="300" y="336" class="lbl-s halo on-rock">bedded sandstone</text>
+          <text x="40" y="120" class="lbl-s lbl-w halo on-water">reservoir</text>
+          <path d="M290,40 H350 M290,35 V45 M350,35 V45" style="stroke:var(--ink);stroke-width:1.2;fill:none"/>
+          <text x="320" y="58" class="lbl-s halo" text-anchor="middle">5 m</text>
+        </svg>
+        <dl class="case-facts">
+          <dt>Dam</dt><dd>Bouzey, on the Avière near Épinal, Vosges, France</dd>
+          <dt>Built</dt><dd>Finished 1880–81 (accounts differ), to store water for the Canal de l'Est</dd>
+          <dt>Height</dt><dd>22 m; crest 4 m thick; base about 11 m before the buttress</dd>
+          <dt>Type</dt><dd>Masonry gravity dam on horizontally bedded sandstone</dd>
+          <dt>What happened</dt><dd>14 March 1884, first filling: 135 m of the wall slid up to 34 cm on its foundation. 27 April 1895, reservoir 55 cm below the crest: the upper 10.5 m broke away along 170 m.</dd>
+          <dt>Toll</dt><dd>Most often given as 87; accounts range from 70 to more than 100</dd>
+          <dt>Sources</dt><dd>Section after ICOLD (1974), redrawn in <a data-cite="usbr1998-dso9805"></a>, Fig. BF-1; events, pp. 16–17; <a data-cite="bordes2010"></a>, pp. 76, 77, 104</dd>
+        </dl>
+      </div>
+      <figcaption>
+        <p class="cap"><b>Bouzey's buttress strengthened the bottom of the wall and left the thin top as it was, and the top is where it broke.</b> The section is the dam in 1895, to scale, its upright face on the left against the reservoir. The original wall is solid; the buttress added after 1884 is the paler, dashed shape on the downstream side; the hatched part above the dashed break line is what the water took. In 1884 the wall slid on its sandstone and sheared the key under its heel (the short dashed line). In 1895 it broke through the masonry, level from the upstream face for about 3.5 m and then dipping steeply downstream to the top of the buttress. Back-calculating that break, the US Bureau of Reclamation found the upper wall's resultant outside its middle third even with no water in the joint, and its upstream face in tension; with water in the joint, the face was in about 0.23 MPa of tension, and a crack that opened and filled would run right through.<label for="mn-concrete-bf4" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-bf4" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usbr1998-dso9805"></a>, p. 17 and Fig. BF-4: at the break, the resultant lay 4.65 ft from the centre of the 16.24 ft joint with no uplift, where the middle third ends 2.71 ft out.</span> <span class="cap-n">The number to remember: 10.5 m, the height of wall above the break, about half the dam.</span></p>
+        <p class="case-explains"><b>What this chapter explains.</b> In 1884 the foundation's cracks put the cushion of <a data-ref="fig-concrete-forces"></a> under the whole base with nothing to drain it. In 1895 a thin wall with tension at its upstream face let water into a joint, and the joint carried the reservoir's full pressure, the failure Lévy's condition is written to prevent.</p>
+        <ul class="try">
+          <li>Measure the wall's thickness at the break with the scale bar, and its height above the break. Compare their ratio with the 60 m dam's base and height.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>About 5 m thick under 10.5 m of wall, a ratio near 0.5, against <span data-n="ch07.base-ratio">0.8</span> for the 60 m dam. Bouzey's upper wall was much slimmer than its own base, and slimmer still than the triangle of <a data-ref="fig-depth-triangle"></a>.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice how high the swept-away part sits. The lower wall, thickened and keyed, held; the upper wall took the push of a full reservoir on a section hardly thicker than a road.</p>
+      <p>After Bouzey, a ministerial decision of 10 March 1896 had every masonry dam in France checked again,<label for="mn-concrete-1896" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-concrete-1896" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="bordes2010"></a>, p. 104.</span> and gravity dams since have been built thicker, with drains in their bodies and their foundations. Lévy's condition survives in design manuals in a gentler form, with an allowance for drains.<label for="sn-concrete-modern" class="sn-ref"></label><input type="checkbox" id="sn-concrete-modern" class="margin-toggle"><span class="sidenote" data-kind="curious">In the Bureau of Reclamation's version, the face must be pressed harder than four tenths of the water's pressure there when drains work and harder than all of it when they do not, less an allowance for the concrete's strength in tension (<a data-cite="usbr1987"></a>, sec. 8.19(b)(2), p. 329).</span></p>
+
+      <p class="film-lead" data-lead-for="film-depth-not-size-2">The second half of the film <i>Depth, not size</i> retells this chapter in five minutes and answers a question it left open:</p>
     </div>
 
     <figure class="film wide" id="film-depth-not-size-2">
       <div class="sheet-top"><span class="figno"><b data-num></b> · Depth, not size <span class="film-part">part two</span></span><span class="scale-note" data-gen="film-len"></span></div>
       <div class="film-before">
         <p class="film-k">Before you watch</p>
-        <p>You met the block on its cushion of water in <a data-ref="ch-grip"></a>. Now the block is a concrete dam and the cushion is water in the cracked rock under it. Its weight is fixed, and so is the lake. What else could an engineer change?</p>
+        <p>This chapter checked Lévy's condition only at the base of the 60 m dam, where it passed. Bouzey broke 10.5 m below its crest, through its thin upper wall, and higher up the 60 m dam is thinner too. Does it pass Lévy's test all the way to the top?</p>
         <p class="film-bridge">This is the second half of the film that starts in <a data-ref="film-depth-not-size"></a>, and it opens with a short recap of the block.</p>
       </div>
       <div class="film-stage">
@@ -64,25 +373,79 @@
       <p class="film-k film-marks-k">In this film</p>
       <ol class="film-marks">
         <li><button type="button" data-t="191.6">3:11</button> <span class="fm-l">The block on its cushion, again</span> <a data-ref="fig-block"></a></li>
-        <li><button type="button" data-t="235.6">3:55</button> <span class="fm-l">Water under the base: uplift</span> <a data-ref="fig-uplift"></a></li>
-        <li><button type="button" data-t="293.1">4:53</button> <span class="fm-l">Drain holes from a tunnel</span></li>
-        <li><button type="button" data-t="327.1">5:27</button> <span class="fm-l">Does it slide?</span></li>
-        <li><button type="button" data-t="350.2">5:50</button> <span class="fm-l">When the drains clog</span></li>
-        <li><button type="button" data-t="395">6:35</button> <span class="fm-l">Bouzey, 1895</span></li>
-        <li><button type="button" data-t="439.1">7:19</button> <span class="fm-l">The middle third, and Lévy's test</span></li>
+        <li><button type="button" data-t="235.6">3:55</button> <span class="fm-l">Water under the base: uplift</span> <a data-ref="fig-concrete-forces"></a></li>
+        <li><button type="button" data-t="293.1">4:53</button> <span class="fm-l">Drain holes from a tunnel</span> <a data-ref="eq-concrete-drain"></a></li>
+        <li><button type="button" data-t="327.1">5:27</button> <span class="fm-l">Does it slide?</span> <a data-ref="ex-concrete-full"></a></li>
+        <li><button type="button" data-t="350.2">5:50</button> <span class="fm-l">When the drains clog</span> <a data-ref="fig-uplift"></a></li>
+        <li><button type="button" data-t="395">6:35</button> <span class="fm-l">Bouzey, 1895</span> <a data-ref="case-bouzey"></a></li>
+        <li><button type="button" data-t="439.1">7:19</button> <span class="fm-l">The middle third, and Lévy's test</span> <a data-ref="ex-concrete-third"></a></li>
         <li><button type="button" data-t="480.9">8:00</button> <span class="fm-l">A dam that water can soak through</span> <a data-ref="ch-zones"></a></li>
       </ol>
       <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
       <figcaption>
-        <details class="film-after"><summary>After you watch: the answer</summary><p>Drain the rock. Holes drilled under the dam let the water out, and the wedge of uplift under the base drops sharply at the drain line. The film's dam is <a data-ref="fig-uplift"></a> as it opens, with the water nearly to the top. With the drains working, its factor of safety against sliding is <span data-n="uplift.fs">1.70</span>. Clog them and it falls to <span data-n="uplift.fs@drains=0">1.28</span>: the dam still stands, below the 1.5 its designers would ask for. The film ends by asking how a wall of dirt can hold back a lake; <a data-ref="ch-zones"></a> answers that. <button type="button" class="set-fig" data-set='{"fig":"fig-uplift","set":{"up-drains":"0"}}'>Set the figure</button></p></details>
+        <details class="film-after"><summary>After you watch: the answer</summary><p>Yes, all the way up; at 7:43 the film says so. The base, which <a data-ref="ex-concrete-third"></a> checked, is the closest call: <span data-n="ch07.heel-kpa">687</span> kPa at the heel against the water's <span data-n="ch07.p-kpa">559</span>, <span data-n="ch07.levy-ratio">1.23</span> times. Higher up the wall above each joint is thinner and lighter, but the water there is shallower, and its push, which tips the joint, falls with the square of the depth. Thirty metres above the base the upstream end of the joint is pressed with <span data-n="ch07.levy-heel-kpa">474</span> kPa where the water presses <span data-n="ch07.levy-water-kpa">265</span>, <span data-n="ch07.levy-z-ratio">1.79</span> times, and from a metre up to the water line the margin never falls below <span data-n="ch07.levy-min-up">1.24</span>. The film also retells the drains, the sliding check and Bouzey, and ends by asking how a wall of earth, which water can soak through, can hold back a lake. <a data-ref="ch-zones"></a> answers that. <button type="button" class="set-fig" data-set='{"fig":"fig-uplift","set":{"up-drains":"1","up-hw":57}}'>Set the figure</button></p></details>
       </figcaption>
     </figure>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.8): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>A gravity dam is the block on the ramp, on level ground: its weight presses it onto the rock, and the rock's grip, (<var>W</var> − <var>U</var>) · tan <var>φ</var>, holds it against the water's push.</li>
+        <li>Water in the cracks under the base presses up with the reservoir's pressure at the heel and the river's at the toe. With nothing to stop it, it carried <span data-n="uplift.U-pct@drains=0">42</span>% of the 60 m dam's weight and cut its factor of safety from <span data-n="ch07.w-over-f">2.20</span> to <span data-n="uplift.fs@drains=0">1.28</span>.</li>
+        <li>A grout curtain and a line of drains make the water spend most of its head near the heel; working drains raised the factor to <span data-n="uplift.fs">1.70</span>. Drains clog, and the gallery is there so they can be measured and cleaned.</li>
+        <li>The friction angle multiplies everything: at 35° the same dam fell to <span data-n="uplift.fs-phi@phi=35">1.19</span>.</li>
+        <li>The resultant must cross the base inside the middle third, or the heel stops being pressed. Lévy asked for more after Bouzey: the masonry at every joint's upstream end must press harder than the water there, so that water is squeezed out of a crack instead of into it.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-concrete-cushion" data-tag="check" data-level="1">
+          <p>In one sentence, say how the uplift under a gravity dam is the water cushion under the block of <a data-ref="fig-block"></a>.</p>
+          <details class="q-hint"><summary>Hint</summary><p>What did the cushion take away from the block, and what does the friction depend on?</p></details>
+          <div class="q-answer"><p>Both carry part of the weight on water, so the block or the dam presses on what is under it with less, and the friction, which comes from that press, shrinks while the push or pull trying to move it stays the same: <var>W</var> − <var>U</var> in <a data-ref="eq-concrete-fs"></a> is the "press left over" of <a data-ref="fig-block"></a>.</p></div>
+        </li>
+        <li class="q" id="q-concrete-fifty" data-tag="reckon" data-level="2">
+          <p>By hand: the reservoir behind the 60 m dam stands at 50 m and the drains are working. What are the head at the drain line, the uplift and the factor of safety against sliding?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Use <a data-ref="eq-concrete-drain"></a> with 50 and 5 m, then the two straight-line pieces of <a data-ref="ex-concrete-full"></a>. The push at 50 m is in <a data-ref="ex-concrete-level"></a>.</p></details>
+          <div class="q-answer"><p><var>h</var><sub>d</sub> = 5 + 45 ÷ 3 = <span data-n="uplift.ud-m@hw=50">20</span> m. Heel to drains: 35 × 6 = <span data-n="ch07.seg-m2@hw=50">210</span> m²; drains to toe: 12.5 × 42 = <span data-n="ch07.seg-m2@hw=50,seg=2">525</span> m². <var>U</var> = 9.81 × 735 = <span data-n="ch07.u-kn@hw=50">7,210</span> kN. <var>FS</var> = <span data-n="ch07.v-kn@hw=50">27,570</span> ÷ <span data-n="ch07.f-kn@hw=50">12,140</span> = <span data-n="uplift.fs@hw=50">2.27</span>.</p></div>
+        </li>
+        <li class="q" id="q-concrete-never" data-tag="explore" data-level="2">
+          <p>With the drains working, slide the reservoir from 30 m up to 59 m, a metre below the crest. Does the factor of safety ever fall below 1.5? Why does it fall faster near the top?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-uplift","set":{"up-drains":"1","up-hw":59}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Compare how the push and the uplift grow with depth (<a data-ref="ex-concrete-level"></a>).</p></details>
+          <div class="q-answer"><p>No: at 59 m it is still <span data-n="uplift.fs@hw=59">1.57</span>. It falls faster near the top because the push grows with the square of the depth while the uplift grows only in proportion to it; at 57 m one more metre of water adds about <span data-n="ch07.dfdh-kn">559</span> kN of push, and with the drains working even less than the <span data-n="ch07.dudh-kn">235</span> kN of uplift it would add with them clogged.</p></div>
+        </li>
+        <li class="q" id="q-concrete-third" data-tag="explore" data-level="2">
+          <p>Clog the drains and raise the reservoir to 59 m. Where does the resultant cross the base, and is the heel still pressed?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-uplift","set":{"up-drains":"0","up-hw":59}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>The middle third runs from 0.33 B to 0.67 B. What happens to the heel pressure in <a data-ref="eq-concrete-heel"></a> as <var>x</var> approaches 2<var>B</var>/3?</p></details>
+          <div class="q-answer"><p>At <span data-n="uplift.xr@hw=59,drains=0">0.66</span> B, inside the middle third but close to its end, so the heel is still pressed, but barely. With <var>V</var> = <var>W</var> − <var>U</var> = <span data-n="ch07.v-kn@hw=59,drains=0">19,712</span> kN, <a data-ref="eq-concrete-heel"></a> gives <span data-n="ch07.heel-u-kpa@hw=59,drains=0">23</span> kPa at the heel, against an even press of <span data-n="ch07.vb-kpa@hw=59,drains=0">411</span> kPa. The factor of safety against sliding is <span data-n="uplift.fs@hw=59,drains=0">1.16</span>. A crack opening at the heel would let in the full reservoir pressure and push the resultant further downstream.</p></div>
+        </li>
+        <li class="q" id="q-concrete-usace" data-tag="design" data-level="3">
+          <p>The US Army Corps of Engineers assumes that drains remove only 25 to 50 per cent of the straight-line pressure above the tailwater's at the drain line. With the reservoir at 57 m, what does the 60 m dam's factor of safety come to at each end of that range, and would you accept the Bureau of Reclamation's one-third rule for this dam without measurements?</p>
+          <details class="q-hint"><summary>Hint</summary><p>With no drains the straight line stands at 50.5 m at the drain line; take 50 or 25 per cent of its height above the river's 5 m away.</p></details>
+          <div class="q-answer"><p>At 50 per cent the head at the drains is 5 + 0.5 × 45.5 = <span data-n="ch07.ud-e-m">27.75</span> m and the factor of safety <span data-n="ch07.fs-e">1.61</span>; at 25 per cent, 5 + 0.75 × 45.5 = <span data-n="ch07.ud-e-m@e=25">39.13</span> m and <span data-n="ch07.fs-e@e=25">1.45</span>, below 1.5. The one-third rule amounts to removing <span data-n="ch07.e-usbr-pct">62</span> per cent here, above the Corps' usual range and close to the 67 per cent it allows only when tests justify it (<a data-cite="usace-em2200"></a>, para. 3-3.d(1)(c)). With the result this sensitive, a careful designer would want pressure gauges in the drain holes to show what the drains actually achieve, and would keep watching them.</p></div>
+        </li>
+        <li class="q" id="q-concrete-levy" data-tag="case" data-level="3">
+          <p>Lévy said that the masonry at the upstream end of every joint must press harder than the reservoir's water presses there. What does that prevent, and why is the middle-third rule alone not enough to prevent it?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Think about a crack that has already opened, and what pressure the water in it carries (<a data-ref="ex-depth-slot"></a>).</p></details>
+          <div class="q-answer"><p>It prevents a crack, once open, from being pushed wider by the water in it: if the masonry presses the crack shut harder than the water pushes it open, water is squeezed out instead of forced in. The middle-third rule only keeps the face from being pulled apart by the weight and the push; it allows the face to be pressed with almost nothing, and any crack then fills with the reservoir's full pressure and spreads. At Bouzey's break the Bureau of Reclamation's back-calculation found the upper wall failing even the middle-third rule, with its face in tension (<a data-ref="case-bouzey"></a>).</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="usbr1987"></cite> <span class="level">serious</span> Its chapter on concrete gravity dams sets out the loads of this chapter (uplift with and without drains, the one-third rule), the stress check at the upstream face that descends from Lévy's, and the sliding check. Free from the Bureau of Reclamation.</li>
+        <li><cite data-cite="usbr1998-dso9805"></cite> <span class="level">serious</span> Case histories of concrete and masonry dams that slid, cracked or failed, Bouzey among them, each with the Bureau's own back-calculation of the forces. A good place to see this chapter's checks applied to real failures.</li>
+        <li><cite data-cite="levy1895"></cite> <span class="level">primary source</span> Lévy's note, in French. The first two pages hold the boiler, the drained wells and the new condition; the rest works out the stresses inside a dam.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">Concrete keeps its strength whatever the water does; only the press on its base changes. The waste behind a mine's dam is different. It is ground rock, sand and silt pumped in wet, and it can lose its strength altogether. What happens when a dam has to be built up, a few metres at a time, on top of the very waste it holds?</p></nav>
   </section>
 </section>

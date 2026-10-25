@@ -1,0 +1,7 @@
+{
+  "middle-third": ["Middle third", "The middle third of a dam's base, from a third to two thirds of the way across. While the resultant of the weight, the water's push and the uplift crosses the base inside it, the whole base stays pressed onto the rock; outside it, the heel would have to pull, and a crack can open there."],
+  "gallery": ["Gallery", "A tunnel that runs along the length of a dam inside it. From a gallery near the base, engineers drill and clean the foundation drains, measure what each one gives, grout the rock and read instruments."],
+  "grout-curtain": ["Grout curtain", "A row of deep holes drilled into the rock under a dam's heel and filled with cement grout under pressure, to seal the cracks the reservoir would seep through. It makes the water lose head before it reaches the drains, but cracks it misses stay open and the grout ages, so designers pair it with drains."],
+  "resultant": ["Resultant", "The single force that does what several forces do together. For a gravity dam it is the sum of the weight, the water's push and the uplift; where its line crosses the base tells how the base is pressed."],
+  "uplift": { "replace": true, "entry": ["Uplift", "The upward push of water under a dam's base, or in a crack inside it, over the whole area the water reaches. It carries part of the dam's weight, so the dam presses on the rock with less and the friction that keeps it from sliding shrinks. Drains under the base reduce it."] }
+}

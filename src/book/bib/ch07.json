@@ -1,0 +1,78 @@
+{
+  "levy1895": {
+      "group": "papers",
+      "short": "Lévy (1895)",
+      "authors": "Lévy, M.",
+      "year": "1895",
+      "title": "Quelques considérations sur la construction des grands barrages",
+      "container": "Comptes rendus hebdomadaires des séances de l'Académie des sciences 121(6): 288–300 (séance du 5 août 1895)",
+      "doi": null,
+      "url": "https://archive.org/details/mobot31753002064894",
+      "note": "p. 288: the danger peculiar to high dams is the uplift ('sous-pression ou pression ascendante') of water that gets into the masonry through cracks over a large enough extent; compared to a boiler without a safety valve; a guard wall with wells, drained by a collector whose flow would warn of trouble (pp. 288–289). p. 289: the usual condition, that horizontal joints do not tend to open at their upstream ends, amounts to keeping the line of pressures in the middle third; it is not enough, and the pressure at the upstream end of every joint must exceed the reservoir's water pressure there. Read in the séance of 5 August 1895."
+  },
+  "usbr1998-dso9805": {
+      "group": "reports",
+      "short": "USBR (1998)",
+      "authors": "Anderson, C., Mohorovic, C., Mogck, L., Cohen, B., Scott, G.",
+      "year": "1998",
+      "title": "Concrete Dams: Case Histories of Failures and Nonfailures with Back Calculations",
+      "container": "Report DSO-98-05. Denver: U.S. Bureau of Reclamation, Dam Safety Office, December 1998",
+      "doi": null,
+      "url": "https://www.usbr.gov/ssle/damsafety/TechDev/DSOTechDev/DSO-98-05.pdf",
+      "note": "Bouzey, pp. 16–22: 22 m masonry gravity dam on horizontally bedded sandstone; 14 March 1884, at el. 368.8 m (crest 371.95 m), 135 m of dam moved downstream up to 0.34 m, shearing the cutoff key, seepage 230 L/s; buttress 1888–89; 27 April 1895, reservoir at el. 371.4 m, upper central part about 10.5 m high and 170 m long swept away, the break nearly level for about 3.5 m from the upstream face then dipping downstream; 'more than 100' deaths (p. 17). Back-calculation at the 1895 break (Fig. BF-4): resultant 4.65 ft from the centre of a 16.24 ft joint without uplift (middle third ±2.71 ft); heel tension about 0.23 MPa with linear uplift (p. 17). Section after ICOLD (1974), Fig. BF-1."
+  },
+  "bordes2010": {
+      "group": "papers",
+      "short": "Bordes (2010)",
+      "authors": "Bordes, J.-L.",
+      "year": "2010",
+      "title": "Les barrages en France du XVIIIe à la fin du XXe siècle : histoire, évolution technique et transmission du savoir",
+      "container": "Pour mémoire 9 (hiver 2010): 70–121",
+      "doi": null,
+      "url": "https://www.barrages-cfbr.eu/IMG/pdf/barrages-jlb.pdf",
+      "note": "p. 76: the Bouzey failure of 1895 killed 87 people. p. 77, Table 1: Bouzey, 1881, 22 m, reservoir 7.1 million m³. p. 104: built to feed the Canal de l'Est; the 1884 foundation accident and its repair, in which a drainage gallery was proposed and set aside; the 1895 break through the body of the dam ('On déplora 70 morts'); the thin profile and tension at the upstream face; Lévy's note; the ministerial decision of 10 March 1896 to check every existing masonry dam."
+  },
+  "ferc2016-ch3": {
+      "group": "standards",
+      "short": "FERC (2016)",
+      "authors": "Federal Energy Regulatory Commission",
+      "year": "2016",
+      "title": "Engineering Guidelines for the Evaluation of Hydropower Projects, Chapter III: Gravity Dams",
+      "container": "Washington, D.C.: FERC, Division of Dam Safety and Inspections, 4 March 2016",
+      "doi": null,
+      "url": "https://www.ferc.gov/sites/default/files/2020-04/chap3.pdf",
+      "note": "p. 3-27: the table of alternate minimum factors of safety for use with a no-cohesion assumption (Table 2A): 1.5 for the worst static case, 1.3 for the probable maximum flood and after an earthquake. §3-2.4.3.2: grouting alone does not justify assuming an uplift reduction; drains downstream of the curtain, with monitoring to detect a fall in drain efficiency from clogging. Appendix C, Example gravity analysis: φ = 45°, drain effectiveness 50%."
+  },
+  "campbell2022": {
+      "group": "web",
+      "short": "Campbell, Rivett & Walpole (2022)",
+      "authors": "Campbell, R., Rivett, P., Walpole, B.",
+      "year": "2022",
+      "title": "Cleaning of foundation relief drains in concrete dams: a case study of Mahinerangi Dam",
+      "container": "Australian National Committee on Large Dams (ANCOLD), paper",
+      "doi": null,
+      "url": "https://ancold.org.au/?p=28948",
+      "note": "The paper's abstract on the ANCOLD site: 'Non-functioning relief drains, usually, have become plugged with calcium deposits, sediment, or biological growth'; blocked drains raise the uplift beneath a dam. Case study of Mahinerangi Dam, New Zealand."
+  },
+  "oroville2018": {
+      "group": "reports",
+      "short": "Oroville Independent Forensic Team (2018)",
+      "authors": "Independent Forensic Team",
+      "year": "2018",
+      "title": "Independent Forensic Team Report: Oroville Dam Spillway Incident",
+      "container": "5 January 2018",
+      "doi": null,
+      "url": "https://damfailures.org/sites/default/files/wp-pdf/IR_IFT_Oroville.pdf"
+  },
+  "bchydro-sitec2021": {
+      "group": "reports",
+      "short": "BC Hydro (2021)",
+      "authors": "BC Hydro",
+      "year": "2021",
+      "title": "Site C Clean Energy Project: Geotechnical Safety Overview Report",
+      "container": "February 2021",
+      "doi": null,
+      "url": "https://www.sitecproject.com/sites/default/files/SiteC-Geotechnical-Safety-Overview-Report.pdf",
+      "note": "p. 2: the two-part remedy identified in fall 2020. p. 3: the shale bedrock and its bedding planes; in 1978 a concrete gravity dam was judged not feasible on the foundation bedrock, and the design was an earthfill dam. p. 4: the right-bank roller-compacted concrete buttress and its shear key; small movements in 2018 on a deeper bedding plane. p. 6: up to 125 piles up to 2.5 m across through the deeper plane, and more drainage. Appendix A (Technical Advisory Board summary statement), p. 3: movements of about 5 mm at El. 372 m; p. 4: the contingency case adopted 16° and the plane mobilized about 11°."
+  }
+}
