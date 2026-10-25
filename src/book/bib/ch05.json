@@ -1,0 +1,143 @@
+{
+  "reynolds1885": {
+    "group": "papers",
+    "short": "Reynolds (1885)",
+    "authors": "Reynolds, O.",
+    "year": "1885",
+    "title": "On the dilatancy of media composed of rigid particles in contact. With experimental illustrations",
+    "container": "Philosophical Magazine, Series 5, 20(127): 469–481",
+    "doi": "10.1080/14786448508627791",
+    "url": "https://archive.org/details/papersonmechanic02reynrich",
+    "note": "The footprint on the beach is on p. 475. Reprinted in Reynolds, Papers on Mechanical and Physical Subjects, vol. 2 (Cambridge University Press, 1901); the link is to that reprint."
+  },
+  "usstd1976": {
+    "group": "standards",
+    "short": "U.S. Standard Atmosphere (1976)",
+    "authors": "National Oceanic and Atmospheric Administration, National Aeronautics and Space Administration, United States Air Force",
+    "year": "1976",
+    "title": "U.S. Standard Atmosphere, 1976",
+    "container": "NOAA-S/T 76-1562. Washington, D.C.: U.S. Government Printing Office",
+    "doi": null,
+    "url": "https://ntrs.nasa.gov/citations/19770009539",
+    "note": "Sea level: pressure 101,325 Pa, density 1.225 kg/m³."
+  },
+  "richefeu2006": {
+    "group": "papers",
+    "short": "Richefeu, El Youssoufi & Radjaï (2006)",
+    "authors": "Richefeu, V., El Youssoufi, M.S., Radjaï, F.",
+    "year": "2006",
+    "title": "Shear strength properties of wet granular materials",
+    "container": "Physical Review E 73(5): 051304",
+    "doi": "10.1103/PhysRevE.73.051304",
+    "url": "https://arxiv.org/abs/cond-mat/0604368",
+    "note": "Direct shear tests on wetted sand (angular grains 0.1–0.4 mm) and glass beads in the pendular state; the sand's Coulomb cohesion levels off at about 600 Pa at a water content of about 0.03."
+  },
+  "salencon2024": {
+    "group": "papers",
+    "short": "Salençon (2024)",
+    "authors": "Salençon, J.",
+    "year": "2024",
+    "title": "About the critical height of a vertical cut",
+    "container": "Comptes Rendus. Mécanique 352: 269–275",
+    "doi": "10.5802/crmeca.276",
+    "url": null,
+    "note": "p. 273: the best available upper bound for γh·tan(π/4 − φ/2)/C, with no tension cutoff, is 3.83 whatever φ (3.77649 for φ = 0)."
+  },
+  "terzaghi1923": {
+    "group": "papers",
+    "short": "Terzaghi (1923)",
+    "authors": "Terzaghi, K.",
+    "year": "1923",
+    "title": "Die Berechnung der Durchlässigkeitsziffer des Tones aus dem Verlauf der hydrodynamischen Spannungserscheinungen",
+    "container": "Sitzungsberichte der Akademie der Wissenschaften in Wien, Mathematisch-naturwissenschaftliche Klasse, Abteilung IIa, 132: 125–138",
+    "doi": null,
+    "url": null,
+    "note": "The theory of one-dimensional consolidation: how excess water pressure drains from a layer of clay."
+  },
+  "bishop1959": {
+    "group": "papers",
+    "short": "Bishop (1959)",
+    "authors": "Bishop, A.W.",
+    "year": "1959",
+    "title": "The principle of effective stress",
+    "container": "Teknisk Ukeblad 106(39): 859–863",
+    "doi": null,
+    "url": null,
+    "note": "Effective stress in unsaturated soil, with the factor χ on the suction."
+  },
+  "casagrande1936": {
+    "group": "papers",
+    "short": "Casagrande (1936)",
+    "authors": "Casagrande, A.",
+    "year": "1936",
+    "title": "Characteristics of cohesionless soils affecting the stability of slopes and earth fills",
+    "container": "Journal of the Boston Society of Civil Engineers 23(1): 13–32",
+    "doi": null,
+    "url": null,
+    "note": "Drained tests on loose and dense sand converging on one density, the critical void ratio."
+  },
+  "seed1975": {
+    "group": "papers",
+    "short": "Seed et al. (1975)",
+    "authors": "Seed, H.B., Lee, K.L., Idriss, I.M., Makdisi, F.I.",
+    "year": "1975",
+    "title": "The slides in the San Fernando dams during the earthquake of February 9, 1971",
+    "container": "Journal of the Geotechnical Engineering Division, ASCE 101(GT7): 651–688",
+    "doi": "10.1061/AJGEB6.0000178",
+    "url": null,
+    "note": "The slide in the Lower dam resulted from an extensive zone of liquefaction near the base of the embankment."
+  },
+  "mesri1989": {
+    "group": "papers",
+    "short": "Mesri (1989)",
+    "authors": "Mesri, G.",
+    "year": "1989",
+    "title": "A reevaluation of su(mob) = 0.22σp using laboratory shear tests",
+    "container": "Canadian Geotechnical Journal 26(1): 162–164",
+    "doi": "10.1139/t89-017",
+    "url": null,
+    "note": "The average undrained strength mobilized along slip surfaces in soft clays, about 0.22 times the preconsolidation pressure; first from field failures, then from laboratory tests."
+  },
+  "terzaghi-peck-mesri1996": {
+    "group": "books",
+    "short": "Terzaghi, Peck & Mesri (1996)",
+    "authors": "Terzaghi, K., Peck, R.B., Mesri, G.",
+    "year": "1996",
+    "title": "Soil Mechanics in Engineering Practice, 3rd ed.",
+    "container": "New York: Wiley",
+    "doi": null,
+    "url": null
+  },
+  "asdso-lsfd": {
+    "group": "web",
+    "short": "ASDSO, Lower San Fernando Dam",
+    "authors": "Association of State Dam Safety Officials",
+    "year": null,
+    "title": "Lower San Fernando Dam (California, 1971)",
+    "container": "Dam failures and incidents, case study",
+    "doi": null,
+    "url": "https://damfailures.org/case-study/lower-san-fernando-dam-california-1971",
+    "note": "Hydraulic and rolled fill dam begun in 1912; Mw 6.6 earthquake of 9 February 1971; about 15 s of strong shaking; upstream slope slid, about 5 ft of freeboard left; 80,000 residents evacuated for four days; reservoir lowered 9.6 ft in 1966."
+  },
+  "asdso-fortpeck": {
+    "group": "web",
+    "short": "ASDSO, Fort Peck Dam",
+    "authors": "Association of State Dam Safety Officials",
+    "year": null,
+    "title": "Fort Peck Dam (Montana, 1938)",
+    "container": "Dam failures and incidents, case study",
+    "doi": null,
+    "url": "https://damfailures.org/case-study/fort-peck-dam-montana-1938",
+    "note": "The upstream slope slid during construction on 22 September 1938, killing eight men; the Board of Consultants blamed weathered shale and bentonite seams, with partial liquefaction of the fill possibly extending the slide."
+  },
+  "johansson2000": {
+    "group": "web",
+    "short": "Johansson (2000)",
+    "authors": "Johansson, J.",
+    "year": "2000",
+    "title": "Soil Liquefaction Web Site",
+    "container": "Department of Civil Engineering, University of Washington",
+    "doi": null,
+    "url": "https://depts.washington.edu/liquefy/html/main.html"
+  }
+}

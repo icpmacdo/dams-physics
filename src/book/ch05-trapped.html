@@ -1,46 +1,343 @@
 <section class="chapter" id="ch-trapped">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.6): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <p class="so-far"><b>So far.</b> A soil grips only as hard as its grains press on one another, and water pressure in the gaps takes part of that press away: <span class="m"><var>σ′</var> = <var>σ</var> − <var>u</var></span>. A lake standing on top changes nothing, because it adds to the weight and to the water pressure alike. All of that assumed the water could come and go as it pleased.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>put a number on the grip of damp sand, and say why a sand wall stands a quarter of a metre and never thirty;</li>
+        <li>predict from how sand is packed whether shearing makes it swell or shrink, and so explain the pale footprint, the sinking foot and liquefaction;</li>
+        <li>estimate how long water takes to leave a layer of sand or clay, and so tell a drained loading from an undrained one.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.6): the two feet, the pale halo on firm sand and the sinking foot at the swash line. -->
-    </div>
-    <div class="col">
-      <h3 id="s-trapped-suction">Damp sand: water that pulls</h3>
-      <p>The damp sandcastle needs one more piece. In damp sand there is only a little water, and it gathers in tiny rings where the grains touch (look back at the close-up in <a data-ref="fig-beach"></a>). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. The water in those rings is at less than the pressure of the air around it, a negative pore pressure that engineers call <span class="gl" data-term="suction">suction</span>.</p>
-      <p>Put a negative <em>u</em> into σ′ = σ − u and the effective stress goes up. The grains press together harder than their own weight could make them, so friction can hold them even on a vertical face. Suction in damp beach sand is only a few kPa. But near the top of a sandcastle the grains carry almost no weight, so those few kPa are most of what holds them in place.</p>
-      <p>Dry the sand and the rings evaporate, the suction goes, and the castle crumbles. Flood it and the rings merge into one body of water at ordinary positive pressure, the suction goes again, and the wall slumps.</p>
-      
-      <h3 id="s-trapped-loose">Loose, dense, and the liquid beach</h3>
-      <p>One beach state is left: the sand at the waterline that goes soft when you wiggle your feet. To understand it, you need to watch the grains themselves move.</p>
-      <p>When grains are pushed so they slide past one another, how tightly they are packed decides what happens to the water in the gaps. Densely packed grains have to ride up over each other to move, so the heap swells and draws water in. Loosely packed grains drop into the gaps below them, so the heap shrinks and squeezes its water.</p>
-      <p>Whether that matters depends on time. Push slowly and the water has time to flow in or out; engineers call that <span class="gl" data-term="drained">drained</span>. Push quickly, or in a soil like silt that water crosses slowly, and the water is trapped. That is <span class="gl" data-term="undrained">undrained</span>, and then the pore pressure changes instead.</p>
-      <p>In the sandbox below, every grain is simulated. Pack the grains loose or dense, add water, then shake them or shear them (push the top sideways so the grains slide past each other), and watch the water pressure and the force between grains.</p>
-    </div>
-
-    <!-- @include body-grains.html -->
 
     <div class="col">
-      <p>In loose, saturated sand, a shake makes the grains try to settle into the gaps below them. The water can't get out of the way in time, so for a moment it carries the weight instead of the grains. The grains still touch, but they hardly press on each other. The effective stress falls toward zero, and the friction goes with it. The sand flows like a heavy liquid. That is <span class="gl" data-term="liquefaction">liquefaction</span>, and it is what your wiggling feet do to the sand at the waterline.</p>
-      <p>Dense sand does the opposite. Forcing its grains to slide makes it swell, and the water can't flow in fast enough to fill the growing gaps, so the pore pressure drops and the sand gets stronger the harder you push.</p>
-      <p>This is why mine waste worries engineers so much. The ground-up rock a mine pumps out as slurry, called tailings, often settles loose and stays saturated for decades. <a data-ref="ch-raising"></a> shows what happens to a dam built on top of it.</p>
+      <p class="cold"><span class="newthought">Go back to the beach at low tide</span> and walk down to the firm sand in the middle, where the sea was an hour ago. Put your weight on one foot. A pale ring spreads round it, as if the sand had dried where you stood, and fades in a second or two. Lift the foot and the print turns dark and shiny for a moment, wetter than the sand around it.</p>
+      <p>Now step down to the edge, where each wave lays a fresh sheet of sand. Stand still and it holds you. Wiggle your feet and it goes soft and swallows them to the ankle.</p>
+      <p>Both sands are <span class="gl" data-term="saturated">saturated</span>: every gap between the grains is full of water. <a data-ref="ch-grip"></a> showed that water pressure in the gaps takes part of the grains' press away, and that still water standing on top changes nothing. By that account two wet sands pressed by the same foot ought to behave alike. They behave as opposites. Most people, asked what a foot does to wet sand, say it squeezes the water out, so the sand round the foot should look wetter. On the firm beach it looks drier.</p>
+      <p><a data-ref="ch-beach"></a> left a clue. When its heap of wet sand was jiggled, the densely packed heap held and the loosely packed one flowed, so packing matters. Time matters too. Every sum in <a data-ref="ch-grip"></a> let the water flow in or out as fast as it liked, and under a moving foot it can't, not quickly enough. This chapter is about what water does when it is trapped. It starts with the simplest case, the damp castle, where the water pulls.</p>
+
+      <h3 id="s-trapped-suction">Water that pulls</h3>
+      <p>The damp castle has only a little water in it, and that water gathers in tiny rings where the grains touch (the close-up in <a data-ref="fig-beach"></a> draws them). The surface of each ring is curved and stretched, like the skin of a soap bubble, and it pulls the two grains toward each other. So the water in a ring is at less than the pressure of the air around it: a negative <span class="gl" data-term="pore-pressure">pore pressure</span>, which engineers call <span class="gl" data-term="suction">suction</span>.</p>
+      <p>Put a negative <var>u</var> into <a data-ref="eq-grip-sigma"></a> and the effective stress goes up: <span class="m"><var>σ</var> − <var>u</var></span> is more than <var>σ</var> when <var>u</var> is below zero. The grains press together harder than their own weight could make them, and by <a data-ref="eq-grip-strength"></a> more press means more grip. That extra grip does not depend on how much sand lies above, so it can hold grains on a vertical face, where weight alone would roll them off.</p>
+      <p>How much grip? Nobody can put a pressure gauge inside a ring of water a fraction of a millimetre across, but the grip can be measured whole. Shear damp sand in a box with nothing pressing on it and it still resists, with about 0.6 kPa for a sand of fine, angular grains.<label for="mn-trapped-richefeu" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-trapped-richefeu" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="richefeu2006"></a>: sand of angular grains 0.1–0.4 mm across, sheared in a box; its cohesion rose with the water content and levelled off at about 600 Pa once the water was about 3% of the weight of the grains.</span> Grip that is there with no press at all is called <span class="gl" data-term="cohesion">cohesion</span>, written <var>c</var>. In damp sand it is borrowed from the water, so engineers call it apparent cohesion. It is the grip a suction of <span class="m">0.6 ÷ tan 34° = <span data-n="ch05.s-equiv-kpa">0.89</span> kPa</span> would give if it pressed on every grain, the weight of about <span data-n="ch05.s-equiv-cm">5</span> cm of damp sand. Whether that matters depends on what it is set against.</p>
+      <p>A wall of soil with cohesion fails when a wedge of it slides off along a sloping crack: the block on the ramp of <a data-ref="fig-block"></a>, with a little glue on the ramp. Try every angle of crack and every shape of wedge, and the worst one gives the tallest vertical wall the soil can hold:<label for="mn-trapped-cut" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-trapped-cut" class="margin-toggle"><span class="marginnote" data-kind="source">The factor 3.83, the best upper bound for a vertical cut whatever the friction angle: <a data-cite="salencon2024"></a>, p. 273. <a data-ref="ch-slope"></a> does the same kind of search for slopes.</span></p>
+      <div class="eq" id="eq-trapped-cut">
+        <span class="eq-body"><var>H</var> ≈ 3.83 · (<var>c</var> ⁄ <var>γ</var>) · tan(45° + <var>φ′</var>⁄2)</span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>H</var> tallest vertical wall (m) · <var>c</var> cohesion (kPa) · <var>γ</var> unit weight of the soil (kN/m³) · <var>φ′</var> its friction angle</p>
+      <p>Notice that the height grows with the cohesion and shrinks with the weight. The ratio <var>c</var>/<var>γ</var> is the cohesion written as a height of soil, and the wall can stand a few times taller than that.</p>
+
+      <section class="we" id="ex-trapped-castle">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">How tall can a damp wall stand?</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Damp sand weighing <var>γ</var> = <span data-n="ch05.gamma-damp">18</span> kN/m³ (the stress column's damp sand, <a data-ref="fig-column"></a>), friction angle <var>φ′</var> = <span data-n="beach.repose-deg">34</span>° (the dry heap's), and the measured apparent cohesion <var>c</var> = 0.6 kPa. The castle in <a data-ref="fig-beach"></a> is about 0.3 m tall.</dd>
+          <dt>Find</dt><dd>The press at the foot of the castle from its own weight, the tallest wall this sand can hold, and the cohesion a 30 m wall would need.</dd>
+          <dt>The idea</dt><dd>The weight presses harder the taller the wall grows; the cohesion stays the same. <a data-ref="eq-trapped-cut"></a> says where the two balance.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>σ</var> = <span data-n="ch05.gamma-damp">18</span> × 0.3 = <span data-n="ch05.castle-kpa">5.4</span> kPa</span><span class="why">the weight on each square metre at the foot of a 30 cm wall</span></li>
+          <li><span class="we-eq">tan(45° + 17°) = tan 62° = <span data-n="ch05.tan-cut">1.8807</span></span><span class="why">half the friction angle, added to 45°</span></li>
+          <li><span class="we-eq"><var>H</var> = 3.83 × 0.6 ÷ <span data-n="ch05.gamma-damp">18</span> × <span data-n="ch05.tan-cut">1.8807</span> = <span data-n="ch05.cut-m">0.24</span> m</span><span class="why"><a data-ref="eq-trapped-cut"></a>: the tallest wall</span></li>
+          <li><span class="we-eq"><var>σ</var> = <span data-n="ch05.gamma-damp">18</span> × 30 = <span data-n="ch05.base-kpa@h=30">540</span> kPa</span><span class="why">the press at the foot of a 30 m wall</span></li>
+          <li><span class="we-eq">3.83 × <span data-n="ch05.tan-cut">1.8807</span> = <span data-n="ch05.cut-k">7.203</span></span><span class="why">the two numbers in the formula that don't change</span></li>
+          <li><span class="we-eq"><var>c</var> = <span data-n="ch05.base-kpa@h=30">540</span> ÷ <span data-n="ch05.cut-k">7.203</span> = <span data-n="ch05.c-30m-kpa">75.0</span> kPa</span><span class="why">the same formula turned round: <var>c</var> = <var>γ</var><var>H</var> ÷ (3.83 tan 62°)</span></li>
+          <li><span class="we-eq"><span data-n="ch05.c-30m-kpa">75</span> ÷ 0.6 = <span data-n="ch05.c-ratio">125</span></span><span class="why">how many times the grip the water rings supply</span></li>
+        </ol>
+        <p class="we-ans">This sand holds a vertical wall about <span data-n="ch05.cut-m">0.24</span> m tall. A wall 30 m tall would need <span data-n="ch05.c-30m-kpa">75</span> kPa of cohesion, <span data-n="ch05.c-ratio">125</span> times what the water supplies.</p>
+        <p class="we-check"><b>Check.</b> The answer falls a little short of the 0.3 m castle, and the gap is fair: 0.6 kPa was measured on one sand, prepared one way. Finer sand has more contacts in each square metre, each with its own ring, so it grips harder, and a round tower is braced by its own curve. What the sum settles is the size: tens of centimetres, never tens of metres. And with no cohesion at all, dry sand, <var>H</var> = 0: no vertical face, only the <span data-n="beach.repose-deg">34</span>° heap.</p>
+        <p class="we-means"><b>What it means.</b> At the foot of the castle the weight already presses with <span data-n="ch05.castle-kpa">5.4</span> kPa, six times the <span data-n="ch05.s-equiv-kpa">0.89</span> kPa the suction adds, so suction matters most near the top, where the grains carry almost no weight. At the base of a dam the grains press with hundreds of kilopascals. Designers leave suction out, as <a data-ref="ch-beach"></a> said, and a week of rain or drought would take it away in any case.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-beach","set":{"bc-state":"damp"}}'>Set the figure</button></p>
+      </section>
+
+      <p>Dry the sand and the rings evaporate; flood it and they merge into one body of water at ordinary positive pressure. Either way the suction goes and the wall slumps.<label for="sn-trapped-chi" class="sn-ref"></label><input type="checkbox" id="sn-trapped-chi" class="margin-toggle"><span class="sidenote" data-kind="curious">Treating suction as a negative <var>u</var> slightly overstates it. The rings wet only part of each grain, so only part of the suction presses the grains together. Alan Bishop wrote the effective stress of a damp soil with a factor <var>χ</var> between 0 (dry) and 1 (saturated) in front of the suction (<a data-cite="bishop1959"></a>). The measured cohesion used here already includes that factor.</span> Suction needs air in the gaps. But the firm sand under your foot has no air in its gaps. It is saturated, and it stiffens anyway.</p>
+
+      <h3 id="s-trapped-loose">Loose and dense</h3>
+      <p>The answer lies in how the grains are packed. Push on a heap of grains so that they must slide past one another, and what happens next depends on how they sat. Densely packed grains sit in each other's hollows. To slide, each must ride up over the one in front, so the heap swells as it shears. Loosely packed grains have hollows below them, and shearing drops them in, so the heap shrinks. Engineers call the first kind <span class="gl" data-term="dilative">dilative</span> and the second <span class="gl" data-term="contractive">contractive</span>.<label for="sn-trapped-reynolds" class="sn-ref"></label><input type="checkbox" id="sn-trapped-reynolds" class="margin-toggle"><span class="sidenote" data-kind="history">Osborne Reynolds named the swelling <i>dilatancy</i> in 1885. He filled a rubber bag with lead shot and water and sealed it, and the bag went rigid in whatever shape it had: to change shape the shot had to spread apart, and there was no more water to fill the room. Connected to a measuring vessel, the bag drew water in as he squeezed it out of shape. He explained the pale footprint in the same paper (<a data-cite="reynolds1885"></a>, p. 475).</span></p>
+      <p>Here are both, in close-up, with every gap full of water:</p>
     </div>
-    <div class="col" data-stub>
-      <!-- New (H.6): drained and undrained as a matter of time (eq-trapped-time, fig-trapped-clock),
-           clay and its undrained strength (the Ch 5 Polley clue, G.4), worked examples
-           ex-trapped-castle, ex-trapped-time, ex-trapped-clay. -->
+
+    <figure class="fig wide" id="fig-trapped-feet">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Two wet sands under a foot</span><span class="scale-note">Schematic · grains drawn far larger than life</span></div>
+      <div class="t5-panels">
+        <svg class="dwg" viewBox="0 0 300 196" role="img" aria-label="Left panel, firm sand: densely packed grains, each sitting in the hollows of the row below, with water filling every gap to the top. Sheared under a foot, the grains ride up into a looser, square stack, the pack grows taller, the water surface sinks below the top row of grains, which are drawn pale and dry, and the lines between the grains, showing how hard they press, grow thicker.">
+          <text x="150" y="15" class="lbl" text-anchor="middle">Firm sand: densely packed</text>
+          <rect x="12" y="68.6" width="108" height="71.4" class="sat"/>
+          <path d="M12,68.6 H120" class="water-line"/>
+          <circle cx="22" cy="132" r="7.4" class="t5-g"/><circle cx="38" cy="132" r="7.4" class="t5-g"/><circle cx="54" cy="132" r="7.4" class="t5-g"/><circle cx="70" cy="132" r="7.4" class="t5-g"/><circle cx="86" cy="132" r="7.4" class="t5-g"/><circle cx="102" cy="132" r="7.4" class="t5-g"/><circle cx="30" cy="118.1" r="7.4" class="t5-g"/><circle cx="46" cy="118.1" r="7.4" class="t5-g"/><circle cx="62" cy="118.1" r="7.4" class="t5-g"/><circle cx="78" cy="118.1" r="7.4" class="t5-g"/><circle cx="94" cy="118.1" r="7.4" class="t5-g"/><circle cx="110" cy="118.1" r="7.4" class="t5-g"/><circle cx="22" cy="104.3" r="7.4" class="t5-g"/><circle cx="38" cy="104.3" r="7.4" class="t5-g"/><circle cx="54" cy="104.3" r="7.4" class="t5-g"/><circle cx="70" cy="104.3" r="7.4" class="t5-g"/><circle cx="86" cy="104.3" r="7.4" class="t5-g"/><circle cx="102" cy="104.3" r="7.4" class="t5-g"/><circle cx="30" cy="90.4" r="7.4" class="t5-g"/><circle cx="46" cy="90.4" r="7.4" class="t5-g"/><circle cx="62" cy="90.4" r="7.4" class="t5-g"/><circle cx="78" cy="90.4" r="7.4" class="t5-g"/><circle cx="94" cy="90.4" r="7.4" class="t5-g"/><circle cx="110" cy="90.4" r="7.4" class="t5-g"/><circle cx="22" cy="76.6" r="7.4" class="t5-g"/><circle cx="38" cy="76.6" r="7.4" class="t5-g"/><circle cx="54" cy="76.6" r="7.4" class="t5-g"/><circle cx="70" cy="76.6" r="7.4" class="t5-g"/><circle cx="86" cy="76.6" r="7.4" class="t5-g"/><circle cx="102" cy="76.6" r="7.4" class="t5-g"/>
+          <path d="M22,132 L30,118.1 M38,132 L30,118.1 M38,132 L46,118.1 M54,132 L46,118.1 M54,132 L62,118.1 M70,132 L62,118.1 M70,132 L78,118.1 M86,132 L78,118.1 M86,132 L94,118.1 M102,132 L94,118.1 M102,132 L110,118.1 M30,118.1 L22,104.3 M30,118.1 L38,104.3 M46,118.1 L38,104.3 M46,118.1 L54,104.3 M62,118.1 L54,104.3 M62,118.1 L70,104.3 M78,118.1 L70,104.3 M78,118.1 L86,104.3 M94,118.1 L86,104.3 M94,118.1 L102,104.3 M110,118.1 L102,104.3 M22,104.3 L30,90.4 M38,104.3 L30,90.4 M38,104.3 L46,90.4 M54,104.3 L46,90.4 M54,104.3 L62,90.4 M70,104.3 L62,90.4 M70,104.3 L78,90.4 M86,104.3 L78,90.4 M86,104.3 L94,90.4 M102,104.3 L94,90.4 M102,104.3 L110,90.4 M30,90.4 L22,76.6 M30,90.4 L38,76.6 M46,90.4 L38,76.6 M46,90.4 L54,76.6 M62,90.4 L54,76.6 M62,90.4 L70,76.6 M78,90.4 L70,76.6 M78,90.4 L86,76.6 M94,90.4 L86,76.6 M94,90.4 L102,76.6 M110,90.4 L102,76.6" class="t5-chain" style="stroke-width:1.6"/>
+          <path d="M128,104 H164" class="lead" marker-end="url(#arr)"/>
+          <rect x="196" y="38" width="56" height="10" rx="3" class="t5-foot"/>
+          <path d="M224,24 V36" class="lead" marker-end="url(#arr)"/>
+          <text x="232" y="31" class="lbl-s halo">foot</text>
+          <rect x="174" y="71" width="100" height="69" class="sat"/>
+          <circle cx="184" cy="132" r="7.4" class="t5-g"/><circle cx="200" cy="132" r="7.4" class="t5-g"/><circle cx="216" cy="132" r="7.4" class="t5-g"/><circle cx="232" cy="132" r="7.4" class="t5-g"/><circle cx="248" cy="132" r="7.4" class="t5-g"/><circle cx="264" cy="132" r="7.4" class="t5-g"/><circle cx="184" cy="116" r="7.4" class="t5-g"/><circle cx="200" cy="116" r="7.4" class="t5-g"/><circle cx="216" cy="116" r="7.4" class="t5-g"/><circle cx="232" cy="116" r="7.4" class="t5-g"/><circle cx="248" cy="116" r="7.4" class="t5-g"/><circle cx="264" cy="116" r="7.4" class="t5-g"/><circle cx="184" cy="100" r="7.4" class="t5-g"/><circle cx="200" cy="100" r="7.4" class="t5-g"/><circle cx="216" cy="100" r="7.4" class="t5-g"/><circle cx="232" cy="100" r="7.4" class="t5-g"/><circle cx="248" cy="100" r="7.4" class="t5-g"/><circle cx="264" cy="100" r="7.4" class="t5-g"/><circle cx="184" cy="84" r="7.4" class="t5-g"/><circle cx="200" cy="84" r="7.4" class="t5-g"/><circle cx="216" cy="84" r="7.4" class="t5-g"/><circle cx="232" cy="84" r="7.4" class="t5-g"/><circle cx="248" cy="84" r="7.4" class="t5-g"/><circle cx="264" cy="84" r="7.4" class="t5-g"/><circle cx="184" cy="68" r="7.4" class="t5-g-dry"/><circle cx="200" cy="68" r="7.4" class="t5-g-dry"/><circle cx="216" cy="68" r="7.4" class="t5-g-dry"/><circle cx="232" cy="68" r="7.4" class="t5-g-dry"/><circle cx="248" cy="68" r="7.4" class="t5-g-dry"/><circle cx="264" cy="68" r="7.4" class="t5-g-dry"/>
+          <path d="M184,132 L184,116 M200,132 L200,116 M216,132 L216,116 M232,132 L232,116 M248,132 L248,116 M264,132 L264,116 M184,116 L184,100 M200,116 L200,100 M216,116 L216,100 M232,116 L232,100 M248,116 L248,100 M264,116 L264,100 M184,100 L184,84 M200,100 L200,84 M216,100 L216,84 M232,100 L232,84 M248,100 L248,84 M264,100 L264,84 M184,84 L184,68 M200,84 L200,68 M216,84 L216,68 M232,84 L232,68 M248,84 L248,68 M264,84 L264,68" class="t5-chain" style="stroke-width:3.2"/>
+          <path d="M174,71 H274" class="water-line t5-wl"/>
+          <text x="66" y="157" class="lbl-s" text-anchor="middle">before</text>
+          <text x="224" y="157" class="lbl-s" text-anchor="middle">sheared: it swells</text>
+          <text x="150" y="176" class="lbl-s" text-anchor="middle">the water is drawn down between the grains,</text>
+          <text x="150" y="191" class="lbl-s" text-anchor="middle">and the top grains are left dry: the pale ring</text>
+        </svg>
+        <svg class="dwg" viewBox="0 0 300 196" role="img" aria-label="Right panel, soft sand at the water's edge: loosely packed grains stacked straight on top of one another, water filling every gap. Wiggled under a foot, alternate rows shift toward the hollows beside them, but the box stays exactly the same size, because the water cannot leave in time. The water is drawn darker because its pressure has risen, the lines between grains are gone because the water now carries the load, and the foot sinks.">
+          <text x="150" y="15" class="lbl" text-anchor="middle">Soft sand at the edge: loosely packed</text>
+          <rect x="12" y="60" width="100" height="80" class="sat"/>
+          <path d="M12,60 H112" class="water-line"/>
+          <circle cx="22" cy="132" r="7.4" class="t5-g"/><circle cx="38" cy="132" r="7.4" class="t5-g"/><circle cx="54" cy="132" r="7.4" class="t5-g"/><circle cx="70" cy="132" r="7.4" class="t5-g"/><circle cx="86" cy="132" r="7.4" class="t5-g"/><circle cx="102" cy="132" r="7.4" class="t5-g"/><circle cx="22" cy="116" r="7.4" class="t5-g"/><circle cx="38" cy="116" r="7.4" class="t5-g"/><circle cx="54" cy="116" r="7.4" class="t5-g"/><circle cx="70" cy="116" r="7.4" class="t5-g"/><circle cx="86" cy="116" r="7.4" class="t5-g"/><circle cx="102" cy="116" r="7.4" class="t5-g"/><circle cx="22" cy="100" r="7.4" class="t5-g"/><circle cx="38" cy="100" r="7.4" class="t5-g"/><circle cx="54" cy="100" r="7.4" class="t5-g"/><circle cx="70" cy="100" r="7.4" class="t5-g"/><circle cx="86" cy="100" r="7.4" class="t5-g"/><circle cx="102" cy="100" r="7.4" class="t5-g"/><circle cx="22" cy="84" r="7.4" class="t5-g"/><circle cx="38" cy="84" r="7.4" class="t5-g"/><circle cx="54" cy="84" r="7.4" class="t5-g"/><circle cx="70" cy="84" r="7.4" class="t5-g"/><circle cx="86" cy="84" r="7.4" class="t5-g"/><circle cx="102" cy="84" r="7.4" class="t5-g"/><circle cx="22" cy="68" r="7.4" class="t5-g"/><circle cx="38" cy="68" r="7.4" class="t5-g"/><circle cx="54" cy="68" r="7.4" class="t5-g"/><circle cx="70" cy="68" r="7.4" class="t5-g"/><circle cx="86" cy="68" r="7.4" class="t5-g"/><circle cx="102" cy="68" r="7.4" class="t5-g"/>
+          <path d="M22,132 L22,116 M38,132 L38,116 M54,132 L54,116 M70,132 L70,116 M86,132 L86,116 M102,132 L102,116 M22,116 L22,100 M38,116 L38,100 M54,116 L54,100 M70,116 L70,100 M86,116 L86,100 M102,116 L102,100 M22,100 L22,84 M38,100 L38,84 M54,100 L54,84 M70,100 L70,84 M86,100 L86,84 M102,100 L102,84 M22,84 L22,68 M38,84 L38,68 M54,84 L54,68 M70,84 L70,68 M86,84 L86,68 M102,84 L102,68" class="t5-chain" style="stroke-width:1.6"/>
+          <path d="M122,104 H160" class="lead" marker-end="url(#arr)"/>
+          <rect x="174" y="60" width="100" height="80" class="t5-water-hi"/>
+          <path d="M174,60 H274" class="water-line"/>
+          <circle cx="181" cy="132" r="7.4" class="t5-g"/><circle cx="197" cy="132" r="7.4" class="t5-g"/><circle cx="213" cy="132" r="7.4" class="t5-g"/><circle cx="229" cy="132" r="7.4" class="t5-g"/><circle cx="245" cy="132" r="7.4" class="t5-g"/><circle cx="261" cy="132" r="7.4" class="t5-g"/><circle cx="187" cy="116" r="7.4" class="t5-g"/><circle cx="203" cy="116" r="7.4" class="t5-g"/><circle cx="219" cy="116" r="7.4" class="t5-g"/><circle cx="235" cy="116" r="7.4" class="t5-g"/><circle cx="251" cy="116" r="7.4" class="t5-g"/><circle cx="267" cy="116" r="7.4" class="t5-g"/><circle cx="181" cy="100" r="7.4" class="t5-g"/><circle cx="197" cy="100" r="7.4" class="t5-g"/><circle cx="213" cy="100" r="7.4" class="t5-g"/><circle cx="229" cy="100" r="7.4" class="t5-g"/><circle cx="245" cy="100" r="7.4" class="t5-g"/><circle cx="261" cy="100" r="7.4" class="t5-g"/><circle cx="187" cy="84" r="7.4" class="t5-g"/><circle cx="203" cy="84" r="7.4" class="t5-g"/><circle cx="219" cy="84" r="7.4" class="t5-g"/><circle cx="235" cy="84" r="7.4" class="t5-g"/><circle cx="251" cy="84" r="7.4" class="t5-g"/><circle cx="267" cy="84" r="7.4" class="t5-g"/><circle cx="181" cy="68" r="7.4" class="t5-g"/><circle cx="197" cy="68" r="7.4" class="t5-g"/><circle cx="213" cy="68" r="7.4" class="t5-g"/><circle cx="229" cy="68" r="7.4" class="t5-g"/><circle cx="245" cy="68" r="7.4" class="t5-g"/><circle cx="261" cy="68" r="7.4" class="t5-g"/>
+          <rect x="196" y="46" width="56" height="10" rx="3" class="t5-foot"/>
+          <path d="M224,28 V44" class="lead" marker-end="url(#arr)"/>
+          <text x="232" y="37" class="lbl-s halo">foot sinks</text>
+          <text x="62" y="157" class="lbl-s" text-anchor="middle">before</text>
+          <text x="224" y="157" class="lbl-s" text-anchor="middle">wiggled: it can't shrink yet</text>
+          <text x="150" y="176" class="lbl-s" text-anchor="middle">the water can't get out, so it takes the load:</text>
+          <text x="150" y="191" class="lbl-s" text-anchor="middle">the grains no longer press on one another</text>
+        </svg>
+      </div>
+      <figcaption>
+        <p class="cap"><b>Sheared under a foot, dense sand must swell and loose sand must shrink, and the water in the gaps cannot keep up with either.</b> Each panel shows a few grains before and after, with the gaps full of <span class="k-water">water</span>. The <span class="k-grain">ochre</span> lines join grains that press on one another, thicker where they press harder (the sandbox later in this chapter draws them the same way). Left: the dense stack rides up into a looser one; the water it holds no longer fills the gaps, so the water surface (the dashed line) sinks below the top grains, which are left pale. Right: the loose stack starts to drop toward a tighter one, but it can shrink only by pushing water out, and the water can't leave in time, so the box keeps its size; the water's pressure rises (drawn darker) and it carries the load the grains were carrying. <span class="cap-n">The number to remember: the water can follow only as fast as it drains, and leaving 2 m of sand takes it about <span data-n="ch05.t-sand-s@L=2">20</span> s (<a data-ref="ex-trapped-time"></a>), while a footstep lasts about one.</span></p>
+        <ul class="try">
+          <li>Count the grains in each box. What changes between before and after, and what doesn't?</li>
+          <li>Lay a ruler against the left panel. How much taller is the sheared stack than the one before? Then measure the two right-hand boxes.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>Thirty grains in every box; only the space between them changes. The sheared dense stack is about an eighth taller: where the first measures 40 mm, the second measures about 45 mm (the drawing exaggerates the swelling so you can see it). The two right-hand boxes are the same size: the loose sand has not shrunk at all, because shrinking means pushing water out.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that in both drawings the water is the wrong amount for the new arrangement. The dense stack has grown more gap than it has water to fill. More water can only flow in through the narrow gaps from the sand around, which takes time. Until it arrives, the water already there is stretched to fill the larger space, and its pressure falls below what still water at that depth would have. Engineers call the difference from the still-water pressure the <span class="gl" data-term="excess-pore-pressure">excess pore pressure</span>, Δ<var>u</var>; here it is negative. A negative Δ<var>u</var> works like suction: by <a data-ref="eq-grip-sigma"></a> the grains press harder, and the sand under your foot stiffens.</p>
+      <p>The water the sheared sand pulls in has to come from somewhere, and the nearest supply is the water among the top grains. So the water surface is drawn down below the top grains and leaves them looking dry: that is the pale ring. Reynolds saw both supplies, the surface and the sand around, and saw why the surface wins at first: drawing water through the sand "requires time to accomplish".<label for="mn-trapped-reyn" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-trapped-reyn" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="reynolds1885"></a>, p. 475 (p. 209 of the 1901 reprint).</span> A second or two later the water from below arrives, the surface rises, and the ring darkens again.</p>
+      <p>Keep the words apart. <i>Suction</i> is the pull in damp sand, where air fills most of each gap. <i>Negative excess pore pressure</i> is the pull in saturated sand that is trying to swell faster than water can follow. Both make the grains press harder.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> You lift your foot out of the pale ring and the print turns dark and shiny for a moment. Why?</summary>
+        <p>With the foot gone, the swollen sand settles back into its dense arrangement and shrinks. It now holds more water than its gaps need, and the extra is pushed up to the surface until it drains away.</p>
+      </details>
+
+      <p>The loose sand at the water's edge does the opposite. Each wiggle of your foot shears it, and its grains start to drop into the hollows below them. For the pack to shrink, water has to leave it, and water leaves sand only through the same narrow gaps. So the pack can't shrink yet. The water, squeezed between grains that are trying to close on it, rises in pressure: a positive Δ<var>u</var>. It now carries part of the weight the grains were carrying, so they press on one another less, and grip less, and your foot sinks. Stand still for a few seconds and the water seeps away upward, the grains settle and press again, and the sand holds you once more.</p>
+      <p>A house on the same sand is a much bigger foot, and an earthquake shakes it for longer than you can wiggle. Make a prediction before reading on:</p>
+
+      <div class="predict" data-answer="b" id="pr-grains-house">
+        <p class="predict-q">A house stands on loose sand that is full of water. An earthquake shakes the ground for a few seconds, too fast for the water to drain away. What happens to the house?</p>
+        <div class="predict-opts">
+          <button type="button" data-v="a">Nothing much. Sand under water is still sand.</button>
+          <button type="button" data-v="b">It sinks and tilts, as if the ground had turned to liquid.</button>
+          <button type="button" data-v="c">It rises, because the water pushes it up.</button>
+        </div>
+        <div class="predict-reveal" hidden><p>It sinks and tilts. Each shake lets loose grains drop toward the gaps below them; the water in those gaps can't escape in time, so its pressure rises and it takes the weight the grains were carrying. Grains that hardly press can hardly grip. Experiment 3 in the grain sandbox, <a data-ref="fig-grains"></a>, lets you watch it.</p></div>
+      </div>
+
+      <p>The question turns on its last words: too fast for the water to drain away. How fast is that?</p>
+
+      <h3 id="s-trapped-time">A matter of time</h3>
+      <p>Whether the water keeps up is a race between two clocks: how long the load takes to come on, and how long the water needs to move. If the water wins, its pressure stays at the still-water value while the grains rearrange, and engineers call the loading <span class="gl" data-term="drained">drained</span>. If the load wins, the water is trapped, the soil can't change its volume, and the water pressure changes instead; that is <span class="gl" data-term="undrained">undrained</span>. The same sand can be either; what decides is how fast.</p>
+      <p>The water's clock can be worked out from things you already have. Picture a saturated layer <var>L</var> thick, with free-draining gravel at its top, and a load put on it suddenly. At first the water carries the whole of the new load as an excess pressure Δ<var>u</var>. To hand it on to the grains, the layer must squeeze out enough water to let it shorten, and how far it shortens depends on its stiffness against squeezing, <var>M</var>, in kPa: a press of Δ<var>u</var> shortens it by the fraction Δ<var>u</var>/<var>M</var> of its thickness. That is a volume of water Δ<var>u</var>·<var>L</var>/<var>M</var> under each square metre. Darcy's law, <a data-ref="eq-head-darcy"></a>, says how fast it leaves: the excess is a head of Δ<var>u</var>/<var>γ</var><sub>w</sub> spread over a path of length <var>L</var>, so each square metre passes <var>k</var>·Δ<var>u</var>/(<var>γ</var><sub>w</sub>·<var>L</var>) cubic metres a second. Divide the volume by the rate. Δ<var>u</var> cancels, and what is left is a time:<label for="sn-trapped-terzaghi" class="sn-ref"></label><input type="checkbox" id="sn-trapped-terzaghi" class="margin-toggle"><span class="sidenote" data-kind="history">Karl Terzaghi published the theory of how excess water pressure drains out of a layer of clay in 1923 (<a data-cite="terzaghi1923"></a>), two years before the book <a data-ref="ch-grip"></a> credits with effective stress. The rough sum here gives the form of his answer; his full solution adds a factor close to 1 for most of the pressure to drain.</span></p>
+      <div class="eq" id="eq-trapped-time">
+        <span class="eq-body"><var>t</var> ≈ <var>L</var>² ⁄ <var>c</var><sub>v</sub></span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <div class="eq" id="eq-trapped-cv">
+        <span class="eq-body"><var>c</var><sub>v</sub> = <var>k</var> · <var>M</var> ⁄ <var>γ</var><sub>w</sub></span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>t</var> time for most of the excess pressure to drain (s) · <var>L</var> the longest path the water must travel to a free-draining face (m) · <var>c</var><sub>v</sub> the coefficient of consolidation (m²/s) · <var>k</var> permeability (m/s) · <var>M</var> the soil's stiffness against squeezing (kPa) · <var>γ</var><sub>w</sub> = <span data-n="const.gw">9.81</span> kN/m³</p>
+      <p>Notice the square. A layer twice as thick has twice the water to lose along a path twice as long, so it takes four times as long. And notice the <var>k</var>. Sand lets water through a hundred thousand times more easily than clay, so for the same stiffness its water leaves a hundred thousand times sooner. The slow squeezing out of water under a new load is called <span class="gl" data-term="consolidation">consolidation</span>.</p>
+    </div>
+
+    <div class="col">
+      <section class="we" id="ex-trapped-time">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">How long does a layer take to drain?</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Sand with <var>k</var> = <span data-n="race.k@mat=sand">10⁻⁴</span> m/s and clay with <var>k</var> = <span data-n="race.k@mat=clay">10⁻⁹</span> m/s, the permeabilities of <a data-ref="fig-race"></a>. Stiffnesses, illustrative round numbers (real soils vary widely, and stiffen with depth): <var>M</var> = 20,000 kPa for the sand and 10,000 kPa for the clay. Layers 2 m and 10 m thick, each draining through one face.</dd>
+          <dt>Find</dt><dd>How long each layer takes to drain.</dd>
+          <dt>The idea</dt><dd>Work out <var>c</var><sub>v</sub> from <a data-ref="eq-trapped-cv"></a>, then the time from <a data-ref="eq-trapped-time"></a>.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>M</var> ÷ <var>γ</var><sub>w</sub> = 20,000 ÷ <span data-n="const.gw">9.81</span> = <span data-n="ch05.mg-m@soil=sand">2,038.7</span> m</span><span class="why">the sand's stiffness written as a height of water</span></li>
+          <li><span class="we-eq"><var>c</var><sub>v</sub> = <span data-n="race.k@mat=sand">10⁻⁴</span> × <span data-n="ch05.mg-m@soil=sand">2,038.7</span> <span class="m">= <span data-n="ch05.cv-sand">0.20387</span> m²/s</span></span><span class="why">permeability times that height</span></li>
+          <li><span class="we-eq"><var>t</var> = 2² ÷ <span data-n="ch05.cv-sand">0.20387</span> = <span data-n="ch05.t-sand-s@L=2">19.6</span> s</span><span class="why">2 m of sand</span></li>
+          <li><span class="we-eq"><var>t</var> = 10² ÷ <span data-n="ch05.cv-sand">0.20387</span> = <span data-n="ch05.t-sand-s@L=10">490.5</span> s</span><span class="why">10 m of sand: about <span data-n="ch05.t-sand-min@L=10">8.2</span> minutes</span></li>
+          <li><span class="we-eq"><var>M</var> ÷ <var>γ</var><sub>w</sub> = 10,000 ÷ <span data-n="const.gw">9.81</span> = <span data-n="ch05.mg-m@soil=clay">1,019.4</span> m</span><span class="why">the clay's stiffness as a height of water</span></li>
+          <li><span class="we-eq"><var>c</var><sub>v</sub> = <span data-n="race.k@mat=clay">10⁻⁹</span> × <span data-n="ch05.mg-m@soil=clay">1,019.4</span> <span class="m">= <span data-n="ch05.cv-clay">1.0194 × 10⁻⁶</span> m²/s</span></span><span class="why">times 86,400 seconds in a day, <span data-n="ch05.cv-clay-day">0.08807</span> m² a day</span></li>
+          <li><span class="we-eq"><var>t</var> = 2² ÷ <span data-n="ch05.cv-clay-day">0.08807</span> = <span data-n="ch05.t-clay-day@L=2">45.4</span> days</span><span class="why">2 m of clay</span></li>
+          <li><span class="we-eq"><var>t</var> = 10² ÷ <span data-n="ch05.cv-clay-day">0.08807</span> = <span data-n="ch05.t-clay-day@L=10">1,135</span> days</span><span class="why">10 m of clay</span></li>
+          <li><span class="we-eq"><span data-n="ch05.t-clay-day@L=10">1,135</span> ÷ 365.25 = <span data-n="ch05.t-clay-yr@L=10">3.11</span> years</span><span class="why">in years</span></li>
+        </ol>
+        <p class="we-ans">The sand drains in <span data-n="ch05.t-sand-s@L=2">20</span> seconds (2 m) to about <span data-n="ch05.t-sand-min@L=10">8</span> minutes (10 m). The clay takes <span data-n="ch05.t-clay-day@L=2">45</span> days to <span data-n="ch05.t-clay-yr@L=10">3.1</span> years.</p>
+        <p class="we-check"><b>Check.</b> For the same 2 m layer the clay should take longer than the sand by the factor of 100,000 in <var>k</var> times the factor of 2 in <var>M</var>, so 200,000 times. In seconds the clay takes <span class="m"><span data-n="ch05.t-clay-day@L=2">45.4</span> × 86,400</span>, and that divided by <span data-n="ch05.t-sand-s@L=2">19.6</span> s is about 200,000. The 10 m layers take 25 times as long as the 2 m ones, as the square says.</p>
+        <p class="we-means"><b>What it means.</b> Sand is drained under anything slower than a few minutes and undrained under anything quicker: a footstep, an earthquake. Clay is undrained under almost everything except the slow work of months and years.</p>
+      </section>
+
+      <p>Laid on one line beside the loads a soil meets, those four times sort themselves. The strong shaking of the 1971 earthquake at Lower San Fernando Dam, which comes back below, lasted about 15 seconds:<label for="mn-trapped-15s" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-trapped-15s" class="margin-toggle"><span class="marginnote" data-kind="source">Strong shaking at the dam for about 15 s: <a data-cite="asdso-lsfd"></a>.</span></p>
+    </div>
+
+    <figure class="fig wide" id="fig-trapped-clock">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Two clocks: the load and the water</span><span class="scale-note">Time on a ten-fold scale · illustrative soils</span></div>
+      <svg class="dwg" viewBox="0 0 480 250" role="img" aria-label="A horizontal time line from one second to about forty years, each equal step ten times longer than the last. Three dashed red lines mark how long loads last: a footstep, about one second; the strong shaking of the 1971 earthquake at Lower San Fernando Dam, about 15 seconds; a year of building. Four blue bars run from the left to how long the water takes to leave a layer: 2 metres of sand, 19.6 seconds; 10 metres of sand, 490.5 seconds, about 8 minutes; 2 metres of clay, 45 days; 10 metres of clay, 3.1 years. The sand bars end near the earthquake line and well short of a year; the clay bars run past the earthquake and, for the thick layer, past a year.">
+        <path d="M40,46 V206 M94.1,46 V206 M385,46 V206" class="t5-load"/>
+        <text x="36" y="22" class="lbl-s lbl-acc halo">a footstep</text>
+        <text x="90" y="40" class="lbl-s lbl-acc halo">an earthquake's strong shaking</text>
+        <text x="389" y="22" class="lbl-s lbl-acc halo" text-anchor="end">a year of building</text>
+        <path d="M40,76 H99.5 M40,106 H163.8 M40,146 H343.3 M40,176 H407.6" class="t5-bar"/>
+        <circle cx="99.5" cy="76" r="3.6" class="t5-dot"/><circle cx="163.8" cy="106" r="3.6" class="t5-dot"/><circle cx="343.3" cy="146" r="3.6" class="t5-dot"/><circle cx="407.6" cy="176" r="3.6" class="t5-dot"/>
+        <text x="110" y="80" class="lbl-s lbl-w halo">2 m of sand · <tspan data-n="ch05.t-sand-s@L=2">19.6</tspan> s</text>
+        <text x="174" y="110" class="lbl-s lbl-w halo">10 m of sand · <tspan data-n="ch05.t-sand-min@L=10">8.2</tspan> min</text>
+        <text x="44" y="138" class="lbl-s lbl-w halo">2 m of clay · <tspan data-n="ch05.t-clay-day@L=2">45</tspan> days</text>
+        <text x="44" y="168" class="lbl-s lbl-w halo">10 m of clay · <tspan data-n="ch05.t-clay-yr@L=10">3.1</tspan> years</text>
+        <path d="M40,206 H460" class="edge" style="fill:none"/>
+        <path d="M40,206 V211 M121.8,206 V211 M203.6,206 V211 M267.1,206 V211 M385,206 V211 M431,206 V211" class="edge" style="fill:none"/>
+        <text x="40" y="224" class="lbl-s" text-anchor="middle">1 s</text>
+        <text x="121.8" y="224" class="lbl-s" text-anchor="middle">1 min</text>
+        <text x="203.6" y="224" class="lbl-s" text-anchor="middle">1 h</text>
+        <text x="267.1" y="224" class="lbl-s" text-anchor="middle">1 day</text>
+        <text x="385" y="224" class="lbl-s" text-anchor="middle">1 yr</text>
+        <text x="431" y="224" class="lbl-s" text-anchor="middle">10 yr</text>
+        <text x="250" y="243" class="lbl-s" text-anchor="middle" style="fill:var(--ink-2)">time: every tenfold step is the same length</text>
+      </svg>
+      <figcaption>
+        <p class="cap"><b>Sand gives up its water in seconds to minutes and clay in months to years, so the same load can be drained for one and undrained for the other.</b> Time runs left to right on a scale where each equal step is ten times longer. The dashed <span class="k-acc">brick-red</span> lines mark how long three loads last. Each <span class="k-water">blue</span> bar runs to the time water needs to leave a layer, from <a data-ref="ex-trapped-time"></a>. Where a bar reaches past a load's line, the water is still trapped when the load is done: that load is undrained for that layer. <span class="cap-n">The number to remember: 2 m of sand drains in about <span data-n="ch05.t-sand-s@L=2">20</span> s, 2 m of clay in about <span data-n="ch05.t-clay-day@L=2">45</span> days.</span></p>
+        <ul class="try">
+          <li>Find the load that is undrained for every layer, and the one layer whose water is still trapped after a year of building.</li>
+          <li>Where would 4 m of sand end? Its time is four times that of 2 m.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>A footstep: every bar runs past its line. After a year of building only the 10 m of clay still holds its water. Four metres of sand takes 4 × <span data-n="ch05.t-sand-s@L=2">19.62</span> = <span data-n="ch05.t-sand-s@L=4">78.5</span> s, a little past one minute on the line.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice where the bar for 2 m of sand ends: a little past the earthquake's line. The sand's water has barely started to leave when the shaking stops, and each swing of the ground, a small fraction of the whole, is far quicker still: the shaking is undrained. The clay bars run past the earthquake and the footstep by a long way, and the thickest runs past a year. A dam raised over clay a few metres at a time loads it undrained at first, and the clay hands the load from its water to its grains over the months that follow.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A 4 m layer of clay has sand above it and sand below it, and water can leave through both faces. Does it drain faster or slower than a 2 m layer that drains through one face?</summary>
+        <p>The same. Water in the middle of the 4 m layer has 2 m to go either way, so <var>L</var> is 2 m and <span class="m"><var>t</var> = 2² ÷ <span data-n="ch05.cv-clay-day">0.08807</span> = <span data-n="ch05.t-clay-day@L=2">45.4</span> days</span>. Drained through one face only, it would take four times as long.</p>
+      </details>
+
+      <h3 id="s-trapped-sandbox">The sandbox as a laboratory</h3>
+      <p>The two clocks are hard to watch in real sand: the grains are small and the water is hidden. The sandbox below shows both. Every grain in it is simulated as a disc that pushes, rubs and rolls on its neighbours, and the water in the gaps is a pressure that rises when the pack is squeezed and falls when it swells. To shear the grains is to push the top sideways so that they slide past one another. The Drain switch sets the race: Open lets water flow in and out of the box freely, which is drained; Shut traps it, which is undrained.</p>
+      <p>The four experiments are this chapter's four cases: the damp castle, dense and loose sand sheared, the house on loose wet sand shaken, and dense wet sand sheared with its water trapped, which is the firm beach under your foot. Pick one, or set the box up yourself:</p>
+    </div>
+
+    <figure class="sheet full" id="fig-grains">
+      <div class="sheet-top">
+        <span class="figno"><b data-num></b> · Grain sandbox · a live discrete-element model</span>
+        <span class="scale-note">2D teaching model · stresses in scaled model units (kPa*)</span>
+      </div>
+      <div class="gr-exps" role="group" aria-label="Experiments">
+        <span class="gr-label">Experiments</span>
+        <button class="btn" type="button" data-exp="castle">1 · Sandcastle: damp vs dry</button>
+        <button class="btn" type="button" data-exp="shear">2 · Shear it: dense vs loose</button>
+        <button class="btn" type="button" data-exp="liq">3 · Loose and saturated: shake the house</button>
+        <button class="btn" type="button" data-exp="suction">4 · Dense, drain shut: shear it</button>
+      </div>
+      <p class="gr-hint" id="gr-hint" aria-live="polite"></p>
+      <div class="gr-main">
+        <div class="gr-stage"><canvas id="cv-grains" role="img" aria-label="A box of sand grains drawn as discs. Lines between touching grains get thicker the harder the grains press on each other, so the load paths (force chains) show. Water in the pores is tinted blue, darker where its pressure is higher."></canvas></div>
+        <div class="gr-side">
+          <div class="readouts gr-ro">
+            <div class="ro"><span>Applied load <i class="g-sym">σ</i></span><b id="gr-sig">–</b><small>the load on top; still water left out</small></div>
+            <div class="ro"><span>Extra water pressure <i class="g-sym">Δu</i></span><b id="gr-u">–</b><small>above the still-water pressure</small></div>
+            <div class="ro"><span>Grain stress <i class="g-sym">σ′ = σ − Δu</i></span><b id="gr-se">–</b><small id="gr-se2">platen force from grain contacts</small></div>
+            <div class="ro"><span>Void ratio <i class="g-sym">e</i></span><b id="gr-e">–</b><small id="gr-e2">2D discs</small></div>
+            <div class="ro"><span>Shear stress <i class="g-sym">τ</i></span><b id="gr-tau">–</b><small id="gr-tau2">τ/σ′</small></div>
+          </div>
+          <div class="gr-chart"><canvas id="cv-grains-chart" role="img" aria-label="Live chart of the grain stress σ′, the extra water pressure Δu and the applied load σ over time."></canvas></div>
+        </div>
+      </div>
+      <p class="gr-result" id="gr-result" aria-live="polite" hidden></p>
+      <div class="controls">
+        <div class="ctl"><span>Packing</span><div class="seg" id="gr-pack"><button type="button" data-v="loose" aria-pressed="false">Loose</button><button type="button" data-v="dense" aria-pressed="true">Dense</button></div></div>
+        <div class="ctl"><span>Water</span><div class="seg" id="gr-water"><button type="button" data-v="dry" aria-pressed="true">Dry</button><button type="button" data-v="damp" aria-pressed="false">Damp</button><button type="button" data-v="sat" aria-pressed="false">Saturated</button></div></div>
+        <div class="ctl"><span>Drain</span><div class="seg" id="gr-drain"><button type="button" data-v="open" aria-pressed="true">Open</button><button type="button" data-v="shut" aria-pressed="false">Shut</button></div></div>
+        <div class="ctl"><span>On top</span><div class="seg" id="gr-top"><button type="button" data-v="platen" aria-pressed="true">Platen</button><button type="button" data-v="none" aria-pressed="false">Nothing</button><button type="button" data-v="house" aria-pressed="false">House</button></div></div>
+      </div>
+      <div class="controls">
+        <div class="range"><label for="gr-load">Platen load</label><input type="range" id="gr-load" min="10" max="80" step="5" value="40"><output id="gr-load-o" for="gr-load">40 kPa*</output></div>
+        <button class="btn primary" id="gr-shear" type="button"><span>Shear</span></button>
+        <button class="btn" id="gr-shake" type="button"><span>Shake</span></button>
+        <button class="btn" id="gr-wall" type="button"><span>Remove side wall</span></button>
+        <button class="btn" id="gr-run" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2,1 h3 v10 h-3 z M7,1 h3 v10 h-3 z"/></svg><span>Pause</span></button>
+        <button class="btn" id="gr-step" type="button"><span>Step</span></button>
+      </div>
+      <figcaption>
+        <p class="cap"><b>A box of about four hundred simulated grains, packed loose or dense, dry, damp or saturated, that you can shear, shake or cut, with nothing about the outcome scripted.</b> The lines between grains are <span class="gl" data-term="force-chain">force chains</span>: the thicker the line, the harder those two grains press together. The <span class="k-water">blue</span> tint in the gaps is the water, darker where its pressure is higher. The readouts leave out the still-water pressure and the buoyancy of the grains: <var>σ</var> is the load on top and Δ<var>u</var> the water pressure above its still-water value, so they are not the <var>σ</var> and <var>u</var> of <a data-ref="fig-column"></a>, and the grain stress is <span class="m"><var>σ′</var> = <var>σ</var> − Δ<var>u</var></span>, measured from the forces between grains. The chart under the readouts follows all three in time. Every reading is measured from the model as it runs. It is a 2D teaching model: discs pack tighter than real sand, so <span class="gl" data-term="void-ratio">void ratios</span> (space between grains ÷ space taken by grains) come out lower than real ones (about 0.5 to 0.9), and the water is one pressure field on a coarse grid. Stresses are scaled to read like kPa (marked kPa*); they are not lab results. Read the trends, not the numbers. <span class="cap-n">The numbers to remember are the model's two fixed settings: friction between grains in contact of <span data-n="grains.mu">0.5</span> (an angle of about 27°), and the lowest water pressure it allows, <span data-n="grains.cav-kpa">−100</span> kPa*, where the water would boil.</span></p>
+        <ul class="try">
+          <li><strong>Experiment 1:</strong> the damp cut stands and the dry one slumps.</li>
+          <li><strong>Experiment 2:</strong> watch the platen. Dense sand lifts it as it shears (it <span class="gl" data-term="dilative">dilates</span>), and its strength peaks then drops; loose sand lets it sink (it <span class="gl" data-term="contractive">compacts</span>).</li>
+          <li><strong>Experiment 3:</strong> with the drain shut, follow the extra water pressure on the chart as it climbs toward the load, and the force chains under the house as they fade.</li>
+          <li><strong>Experiment 4:</strong> dense sand pulls the water pressure below its still-water value (a negative Δ<var>u</var>, which engineers call negative excess pore pressure) and gets stronger. Then run it again with the drain open.</li>
+        </ul>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice two things the sandbox does that the rest of this chapter has only described. In Experiment 2 the dense sample's strength rises to a peak and then falls as it keeps swelling: once its grains have climbed out of each other's hollows, the pack is no longer dense, and it grips like loose sand. And in Experiment 4 the extra water pressure falls and then stops falling, near <span data-n="grains.cav-kpa">−100</span> kPa*. Water can be pulled only so hard before it boils into bubbles of vapour, which is called <span class="gl" data-term="cavitation">cavitation</span>, and the model stops it there.<label for="sn-trapped-cav" class="sn-ref"></label><input type="checkbox" id="sn-trapped-cav" class="margin-toggle"><span class="sidenote" data-kind="curious">Why about −100? Pressures in this book are gauge pressures, counted from the air's 101 kPa (<a data-cite="usstd1976"></a>). Lower the water's pressure to near zero absolute, which is about −100 kPa gauge (strictly, to its vapour pressure, a little above zero absolute), and dissolved air and vapour come out of it as bubbles. So a dense sand sheared with its water trapped can gain only so much strength. Laboratory tests meet the same ceiling, which is why they are run with the water under raised pressure, and the sandbox copies it.</span></p>
+
+      <h3 id="s-trapped-liquid">Liquefaction</h3>
+      <p>Push Experiment 3 to its end and the loose sand's trapped water carries nearly all the load. The grains still touch, but they hardly press, the effective stress falls toward zero, and the grip goes with it. The sand flows like a heavy liquid. That is <span class="gl" data-term="liquefaction">liquefaction</span>, and your wiggling feet do a small version of it at the water's edge. It needs three things at once: loose grains, every gap full of water, and a load that comes faster than the water can leave. An earthquake supplies the speed, but any load that comes on fast enough will do, even a small slip that sets the grains moving. Liquefaction with no earthquake is called <span class="gl" data-term="static-liquefaction">static liquefaction</span>, and <a data-ref="ch-raising"></a> meets it.</p>
+      <p>Water dams are not immune. Lower San Fernando Dam, north of Los Angeles, was begun in 1912 largely as hydraulic fill: soil sluiced into place with water, which settles loose and stays saturated. Early on 9 February 1971 an earthquake of magnitude 6.6 shook it hard for about 15 seconds. Within about 12 of them, the water pressure in the sandy fill near the base of the upstream slope had climbed so high that much of that fill had liquefied, and most of the upstream slope slid into the reservoir. What was left of the embankment stood about 1.5 m above the water, and that was with the water kept, since 1966, at least 2.9 m below its old maximum level. Some 80,000 people below the dam were evacuated for four days while the reservoir was pumped down, and nobody was killed at the dam.<label for="mn-trapped-lsfd" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-trapped-lsfd" class="margin-toggle"><span class="marginnote" data-kind="source">The slide and its cause: <a data-cite="seed1975"></a>. The date, magnitude, about 15 s of strong shaking with high water pressures after about 12 s, the 5 ft (1.5 m) of freeboard left, the 80,000 evacuated for four days and the 9.6 ft (2.9 m) cut in the maximum operating level in 1966: <a data-cite="asdso-lsfd"></a>.</span><span class="case-ref" data-case="Lower San Fernando Dam"></span></p>
+      <p>Dense sand behaves differently. Once its grains start to slide they must climb over one another, the pack must swell, its water is pulled thin, and the grains press harder. That is why the densely packed heap of <a data-ref="fig-beach"></a> held when it was jiggled. Engineers who want an embankment that will not liquefy compact its fill densely, layer by layer, as <a data-ref="ch-zones"></a> describes.<label for="sn-trapped-casagrande" class="sn-ref"></label><input type="checkbox" id="sn-trapped-casagrande" class="margin-toggle"><span class="sidenote" data-kind="history">In 1936 Arthur Casagrande sheared loose and dense samples of sand side by side and found that both ended at the same density, which he called the critical void ratio: sand looser than that shrinks as it shears, and sand denser swells (<a data-cite="casagrande1936"></a>). Two years later the upstream slope of Fort Peck Dam in Montana, a hydraulic fill dam, slid during construction and killed eight men. The board that investigated blamed weak shale and bentonite under the dam, and thought liquefaction of the fill may have carried the slide further (<a data-cite="asdso-fortpeck"></a>).</span></p>
+      <p>This is why mine waste worries engineers so much. The ground-up rock a mine pumps out as slurry, called tailings, often settles loose and stays saturated for decades, and <a data-ref="ch-two-dams,ch-raising"></a> follow what that means for a dam that holds it back, or stands on it.</p>
+
+      <h3 id="s-trapped-clay">Clay, the slow soil</h3>
+      <p>Everything so far was sand. <span class="gl" data-term="clay">Clay</span>, the soil of the cores that <a data-ref="ch-head"></a> made watertight, follows the same rule, <var>σ′</var> = <var>σ</var> − <var>u</var>, on a far slower clock. Its flakes are so small that its water needs about a decade to cross a metre of it (<span data-n="race.t-yr@mat=clay">11</span> years in <a data-ref="fig-race"></a>), and by <a data-ref="ex-trapped-time"></a> a 2 m layer takes weeks to drain and a 10 m layer years. So almost any load on clay starts undrained.</p>
+      <p>Clay also grips less than sand. Its flat flakes slide on one another more easily than rounded quartz grains climb over each other: the workbench of <a data-ref="ch-build"></a> gives its clay a friction angle of <span data-n="bench.mat-phi@mat=clay">26</span>°, against <span data-n="beach.repose-deg">34</span>° for the beach sand. Loaded slowly, so that its water keeps pace, a clay grips as <a data-ref="eq-grip-strength"></a> says, with <span class="m"><var>σ′</var> · tan <var>φ′</var></span>.</p>
+      <p>Loaded fast, it is another matter, and the reason is the loose sand's. A soft clay that has never carried more load than it carries now is loosely packed for its load, and when it is sheared it tries to contract. Its water can't leave in time, so the water pressure rises, <var>σ′</var> falls, and the grip falls with it. The strength a clay shows when it is sheared too fast for its water to move is its <span class="gl" data-term="undrained-strength">undrained strength</span>, <var>s</var><sub>u</sub>. Engineers who worked back from failures of soft clay under embankments, footings and excavations found the average strength the clay had actually supplied along the slip, and Gholamreza Mesri showed in 1989 that laboratory tests give the same answer:<label for="mn-trapped-mesri" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-trapped-mesri" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="mesri1989"></a>: <var>s</var><sub>u</sub> = 0.22 times the largest effective stress the clay has ever carried, which for a clay never loaded more than now is its present <var>σ′</var>; first from field failures, then confirmed from laboratory tests.</span></p>
+      <div class="eq" id="eq-trapped-su">
+        <span class="eq-body"><var>s</var><sub>u</sub> ≈ 0.22 · <var>σ′</var></span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>s</var><sub>u</sub> undrained strength of a soft clay never loaded more than now (kPa) · <var>σ′</var> its effective stress before the fast loading began (kPa)</p>
+
+      <section class="we" id="ex-trapped-clay">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The same clay, slow and fast</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>A soft clay whose grains press with <var>σ′</var> = 150 kPa (an illustrative value, about what 15 m of soil and water above might give) and friction angle <var>φ′</var> = <span data-n="bench.mat-phi@mat=clay">26</span>°, with no cohesion.</dd>
+          <dt>Find</dt><dd>The grip it offers when sheared slowly, and when sheared fast.</dd>
+          <dt>The idea</dt><dd>Slowly, the water keeps pace and the grip is <span class="m"><var>σ′</var> · tan <var>φ′</var></span> (<a data-ref="eq-grip-strength"></a>). Fast, the clay tries to contract, its trapped water takes part of the press, and the grip is <var>s</var><sub>u</sub> (<a data-ref="eq-trapped-su"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">tan <span data-n="bench.mat-phi@mat=clay">26</span>° = <span data-n="ch05.tan-clay">0.4877</span></span><span class="why">the clay's grip per kilopascal of press</span></li>
+          <li><span class="we-eq">grip, slow = 150 × <span data-n="ch05.tan-clay">0.4877</span> = <span data-n="ch05.tau-slow-kpa">73.2</span> kPa</span><span class="why">drained: the water keeps up, <var>σ′</var> stays at 150</span></li>
+          <li><span class="we-eq">grip, fast = 0.22 × 150 = <span data-n="ch05.su-kpa">33</span> kPa</span><span class="why">undrained: the trapped water takes part of the press</span></li>
+          <li><span class="we-eq"><span data-n="ch05.su-kpa">33</span> ÷ <span data-n="ch05.tau-slow-kpa">73.2</span> = <span data-n="ch05.su-ratio">0.45</span></span><span class="why">the fast grip as a share of the slow</span></li>
+        </ol>
+        <p class="we-ans">Sheared slowly the clay grips with about <span data-n="ch05.tau-slow-kpa">73</span> kPa; sheared fast, with about <span data-n="ch05.su-kpa">33</span> kPa, less than half.</p>
+        <p class="we-check"><b>Check.</b> The undrained grip is what the slow formula gives for a smaller press: <span class="m"><span data-n="ch05.su-kpa">33</span> ÷ <span data-n="ch05.tan-clay">0.4877</span> = <span data-n="ch05.su-sigma-kpa">67.7</span> kPa</span>. So the fast shear behaves as if the trapped water had taken about 80 of the grains' 150 kPa of press. That is a rough reading: the two strengths act on surfaces at different angles, and real clays scatter around 0.22, but the size of the gap is real.</p>
+        <p class="we-means"><b>What it means.</b> The same clay, in the same place, has two strengths, and which one counts depends on how fast it is asked for.</p>
+      </section>
+
+      <p>Clay, loaded fast, can be weaker than the same clay loaded slowly. Of everything in this chapter, that is the sentence the last chapter of the book needs most.</p>
+      <p>Undrained isn't always weaker. A clay that was once pressed harder than it is now, by ice or by soil since worn away, is densely packed for its load, and behaves like dense sand: sheared fast, it tries to swell, its water pressure falls, and for a while it is stronger. The danger then comes later, as water seeps in and the extra strength seeps away. And any clay that has slid a long way along one surface loses more still, because its flakes line up along the slip; the grip left is its <span class="gl" data-term="residual-strength">residual strength</span>.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A dam is raised over a 2 m layer of the example's clay, with sand beneath it, by one metre every month. Is each raise drained or undrained for the clay?</summary>
+        <p>Each raise goes on in days, far quicker than the <span data-n="ch05.t-clay-day@L=2">45</span> days the layer needs, so each starts undrained. But a month is not much shorter than 45 days, so most of each raise's water pressure has seeped away before the next. Over the life of the dam the clay is largely drained; for any one fast event, such as a slip, it is undrained.</p>
+      </details>
+
+      <p class="film-lead" data-lead-for="film-same-sand">The film <i>The same sand, three ways</i> retells Part I, from the beach to this chapter's sandbox, in under nine minutes:</p>
     </div>
 
     <figure class="film wide" id="film-same-sand">
       <div class="sheet-top"><span class="figno"><b data-num></b> · The same sand, three ways</span><span class="scale-note" data-gen="film-len"></span></div>
       <div class="film-before">
         <p class="film-k">Before you watch</p>
-        <p>Watch the orange lines between the grains. Each one joins two grains that press on each other, and the thicker the line, the harder they press. When the box of loose, soaked grains is shaken, what happens to the lines before the house tips?</p>
-        <p class="film-bridge">The film retells the beach, the block on the ramp, the column of sand and the sandbox, in under nine minutes.</p>
+        <p>Near the end, at 7:53, the film shakes its box of soaked grains again, packed densely this time, with the same little house on top. This chapter has shown that dense sand presses harder when it is sheared, and the dense heap of <a data-ref="fig-beach"></a> held when it was jiggled. Does the house on the dense box stay exactly where it is? Watch the orange lines, and how far the house goes compared with the loose box.</p>
+        <p class="film-bridge">The film was made first of the series, so it ends on the question that opens <a data-ref="ch-depth"></a>, which you have answered; this segment stops before it.</p>
       </div>
       <div class="film-stage">
         <video controls preload="none" playsinline poster="video/same-sand.jpg" aria-label="Film: The same sand, three ways"><source src="video/same-sand.mp4" type="video/mp4"><track kind="captions" src="video/same-sand.vtt" srclang="en" label="English"></video>
@@ -51,38 +348,86 @@
         <li><button type="button" data-t="31">0:31</button> <span class="fm-l">Three kinds of beach sand</span> <a data-ref="fig-beach"></a></li>
         <li><button type="button" data-t="115.3">1:55</button> <span class="fm-l">A block on a tilting plank</span> <a data-ref="fig-block"></a></li>
         <li><button type="button" data-t="177.3">2:57</button> <span class="fm-l">A cushion of water under the block</span> <a data-ref="pr-cushion">your guess</a></li>
-        <li><button type="button" data-t="223.6">3:43</button> <span class="fm-l">Every contact a tiny block</span> <a data-ref="eq-grip-sigma"></a></li>
         <li><button type="button" data-t="280.9">4:40</button> <span class="fm-l">Ten metres of sand, soaked</span> <a data-ref="fig-column"></a></li>
-        <li><button type="button" data-t="348.2">5:48</button> <span class="fm-l">Damp sand pulls</span> <a data-ref="s-trapped-suction"></a></li>
-        <li><button type="button" data-t="428.9">7:08</button> <span class="fm-l">Loose and dense, shaken</span> <a data-ref="fig-grains"></a></li>
+        <li><button type="button" data-t="351.1">5:51</button> <span class="fm-l">The castle's pull</span> <a data-ref="s-trapped-suction"></a></li>
+        <li><button type="button" data-t="428.9">7:08</button> <span class="fm-l">Loose grains, shaken</span> <a data-ref="fig-grains"></a></li>
+        <li><button type="button" data-t="473.3">7:53</button> <span class="fm-l">Dense grains, shaken</span> <a data-ref="fig-trapped-feet"></a></li>
       </ol>
       <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
       <figcaption>
-        <details class="film-after"><summary>After you watch: the answer</summary><p>The lines fade. The trapped water takes over the weight the grains were carrying, and grains that press less grip less. In the dense box the grains have to climb over each other to move, the water is pulled thin, and the lines grow thicker. <a data-ref="fig-grains"></a> runs the same box, and <a data-ref="fig-block"></a> is the same rule with one contact in place of thousands. <button type="button" class="set-fig" data-set='{"fig":"fig-grains","click":["[data-exp=liq]"]}'>Set the figure</button></p></details>
+        <details class="film-after"><summary>After you watch: the answer</summary><p>The house sinks, but only a fraction as far as on the loose box. Dense grains shaken back and forth still shuffle a little, so the house settles some way. But every shuffle that would open the pack needs water that can't arrive in time; the water is pulled thin, the grains grip harder, and the orange lines stay thick. Dense sand is far safer than loose, and not immune. Two of the film's phrasings are looser than this book's. At 4:08 it says the water pushes neighbouring grains apart; <a data-ref="ch-grip"></a> put it more exactly: the water presses equally on every grain round a gap, and takes part of the load the grains carried between them. At 6:30 its "few hundred kilograms on a square metre" is the suction in the castle's rings; the grip that suction adds is smaller, the 0.6 kPa of <a data-ref="ex-trapped-castle"></a>, because the rings wet only part of each grain and grip is only a fraction, tan 34°, of a press. The film ends Part I with the sentence on the title page, adding the castle's part: water pressure in the gaps takes some of the grains' press away, and suction can add some back. Run Experiment 3 in <a data-ref="fig-grains"></a>, then press the hint's "Same, dense sand" to see both boxes; <a data-ref="fig-block"></a> is the same rule with one contact in place of thousands. <button type="button" class="set-fig" data-set='{"fig":"fig-grains","click":["[data-exp=liq]"]}'>Set the figure</button></p></details>
       </figcaption>
     </figure>
 
     <div class="col" id="trapped-comes-back">
-      <h3 id="s-trapped-back">Where this comes back</h3>
-      <p>Soil is strong because its grains press on each other, and water pressure in the gaps pushes them apart. You will meet that pair again in every chapter that follows.</p>
+      <h3 id="s-trapped-back">Where Part I comes back</h3>
+      <p>Soil holds as well as its grains press on one another, and water in the gaps, pushing or pulling, changes that press. Every later chapter leans on that pair:</p>
+      <ul class="t5-back">
+        <li><a data-ref="ch-two-dams"></a> · <b>A lake can't lose strength. Tailings can.</b> A water dam holds a liquid; a tailings dam holds a loose, saturated deposit that can liquefy.</li>
+        <li><a data-ref="ch-concrete"></a> · <b>A concrete dam is the block on the cushion.</b> Water under its base carries part of its weight, and the friction that stops it sliding goes with it.</li>
+        <li><a data-ref="ch-raising"></a> · <b>An upstream raise stands on tailings.</b> If the tailings under it liquefy, the raise has nothing left to stand on.</li>
+        <li><a data-ref="ch-zones"></a> · <b>The core takes the head so the downstream shell keeps its grip.</b> Low water pressure behind the core means a high effective stress and a strong downstream slope. The upstream shell stays soaked, so it relies on draining freely.</li>
+        <li><a data-ref="ch-seepage"></a> · <b>Drains put the press back.</b> Lowering the water inside a dam lowers the pore pressure, so the grains press harder.</li>
+        <li><a data-ref="ch-erosion"></a> · <b>Sand boils: water flowing up can lift the grains.</b> When its push on them equals their weight under water, the effective stress is zero and the sand boils.</li>
+        <li><a data-ref="ch-slope"></a> · <b>A slope's water can't always leave as fast as the reservoir does.</b> Let a reservoir down quickly and the upstream shell's water pressure lags behind, with nothing outside to balance it.</li>
+        <li><a data-ref="ch-build"></a> · <b>Your design is judged on this.</b> The stability check weighs the friction the grains can supply against what's needed, using the water pressures from the seepage calculation.</li>
+      </ul>
     </div>
-    <div class="col">
-      <div class="ideas">
-        <a data-ref="ch-two-dams"><span><span data-ref="ch-two-dams"></span> · Two dams, two jobs</span><b>A lake can't lose strength. Tailings can.</b><em>A water dam holds a liquid. A tailings dam holds a loose, saturated deposit that can liquefy.</em></a>
-        <a data-ref="ch-concrete"><span><span data-ref="ch-concrete"></span> · Uplift</span><b>A concrete dam is the block on the cushion.</b><em>Water under the base carries part of the dam's weight, and the friction that stops it sliding goes with it.</em></a>
-        <a data-ref="ch-raising"><span><span data-ref="ch-raising"></span> · Raising methods</span><b>An upstream raise stands on tailings.</b><em>If the tailings under it liquefy, the raise has nothing left to stand on.</em></a>
-        <a data-ref="ch-zones"><span><span data-ref="ch-zones"></span> · Dam zones</span><b>The core takes the head so the downstream shell keeps its strength.</b><em>Low water pressure behind the core means a high effective stress and a strong downstream slope. The upstream shell stays soaked, so it relies on draining freely.</em></a>
-        <a data-ref="ch-seepage"><span><span data-ref="ch-seepage"></span> · Drains</span><b>Drains put strength back.</b><em>Lowering the water level inside a dam lowers the pore pressure, so the grains press harder.</em></a>
-        <a data-ref="ch-erosion"><span><span data-ref="ch-erosion"></span> · Sand boils</span><b>Water flowing up can lift the grains.</b><em>When its push on the grains equals their weight, the effective stress is zero and the sand boils.</em></a>
-        <a data-ref="ch-build"><span><span data-ref="ch-build"></span> · Build your own</span><b>Your design is judged on this.</b><em>The stability check weighs the friction the grains can supply against what's needed, using the water pressures from the seepage calculation.</em></a>
-      </div>
-    </div>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.6): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>Water can pull as well as push. In damp sand its rings press the grains together, but only with a fraction of a kilopascal: enough for a wall a quarter of a metre tall, never one of thirty.</li>
+        <li>Sheared, densely packed grains must swell and loosely packed grains must shrink. Where the water can't follow, the dense sand's water is pulled thin and its grains press harder; the loose sand's water takes their weight and they press less.</li>
+        <li>Whether the water follows is a race between the load and the drainage time, <span class="m"><var>t</var> ≈ <var>L</var>²/<var>c</var><sub>v</sub></span>: seconds to minutes for sand, months to years for clay. Drained if the water wins, undrained if the load does.</li>
+        <li>Liquefaction is the loose case taken to its end: loose, saturated and loaded faster than it can drain, the grains stop pressing on one another and the soil flows.</li>
+        <li>Clay, loaded fast, can be weaker than the same clay loaded slowly.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-trapped-feet" data-tag="check" data-level="1">
+          <p>Explain, in the terms of this chapter, why the firm sand goes pale under one foot while the sand at the water's edge swallows the other.</p>
+          <details class="q-hint"><summary>Hint</summary><p>Which sand is dense and which loose? What must each do when it is sheared, and what does the water do meanwhile?</p></details>
+          <div class="q-answer"><p>The firm sand is dense. Sheared by the foot it must swell, and the water it needs is drawn in from the surface, which sinks below the top grains and leaves them dry for a moment; meanwhile the stretched water pulls the grains together and the sand stiffens. The sand at the edge is loose. Wiggled, its grains try to drop into the gaps, the trapped water's pressure rises and takes their weight, they press less and grip less, and the foot sinks.</p></div>
+        </li>
+        <li class="q" id="q-trapped-exp4" data-tag="explore" data-level="2">
+          <p>Run Experiment 4: dense, saturated sand, drain shut, sheared. Why does the grain stress rise with the drain shut, and stay level when you run it again with the drain open? And why does the extra water pressure stop falling where it does?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-grains","click":["[data-exp=suction]"]}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Dense sand must swell to shear. Where does the water to fill the new space come from in each case? Then read the model's lowest allowed water pressure in the caption.</p></details>
+          <div class="q-answer"><p>With the drain shut no water can get in, so the water already there is stretched, Δ<var>u</var> falls below zero and <span class="m"><var>σ′</var> = <var>σ</var> − Δ<var>u</var></span> rises above the load. With the drain open water flows in as the sample swells, Δ<var>u</var> stays near zero, and the grain stress stays near the load. The fall stops at <span data-n="grains.cav-kpa">−100</span> kPa*, the model's stand-in for cavitation: real water lowered to about zero absolute pressure, roughly −100 kPa gauge, breaks into bubbles of vapour and air, so trapped water can only pull so hard. After that, as the result line says, a little swelling gets through.</p></div>
+        </li>
+        <li class="q" id="q-trapped-exp3" data-tag="explore" data-level="2">
+          <p>Run Experiment 3, the house on loose saturated sand with the drain shut. On the chart, does the grain stress fall all at once or a little with each shake? Then open the drain and shake again: what changes, and does the house still settle?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-grains","click":["[data-exp=liq]"]}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Each shake lets a few grains drop toward the gaps. With the drain shut, where does the water they displace go? With it open?</p></details>
+          <div class="q-answer"><p>Shut, it falls in steps, a little with each shake, as the extra water pressure ratchets up toward the load, until after a few shakes the grains hardly press and the house tips. Open, the displaced water leaves through the drain, Δ<var>u</var> stays small and the grains keep pressing; the loose sand still compacts, so the house still settles a little, but it does not sink and tip. Read the trend, not the model's numbers.</p></div>
+        </li>
+        <li class="q" id="q-trapped-clocks" data-tag="reckon" data-level="2">
+          <p>Using the illustrative soils of <a data-ref="ex-trapped-time"></a>: is a 3 m layer of sand, draining through one face, drained during 15 seconds of earthquake shaking? Is a 5 m layer of clay drained under a dam raised 5 m in a year?</p>
+          <details class="q-hint"><summary>Hint</summary><p><span class="m"><var>t</var> = <var>L</var>² ÷ <var>c</var><sub>v</sub></span>, with <var>c</var><sub>v</sub> = <span data-n="ch05.cv-sand">0.20387</span> m²/s for the sand and <span data-n="ch05.cv-clay-day">0.08807</span> m² a day for the clay.</p></details>
+          <div class="q-answer"><p>Sand: <span class="m">3² ÷ <span data-n="ch05.cv-sand">0.20387</span> = <span data-n="ch05.t-sand-s@L=3">44.1</span> s</span>, three times the shaking, so it is undrained while the ground shakes. Clay: <span class="m">5² ÷ <span data-n="ch05.cv-clay-day">0.08807</span> = <span data-n="ch05.t-clay-day@L=5">283.9</span> days</span>, and <span class="m"><span data-n="ch05.t-clay-day@L=5">283.9</span> ÷ 365.25 = <span data-n="ch05.t-clay-yr@L=5">0.78</span> years</span>: about as long as the raise itself, so the clay is partly drained as the dam grows, carrying a good part of each raise in its water for months. If it starts to slide, in minutes, it is undrained.</p></div>
+        </li>
+        <li class="q" id="q-trapped-lsfd" data-tag="case" data-level="2">
+          <p>Lower San Fernando was a water dam, yet in 1971 its upstream slope failed the way loose mine waste fails. What did it have in common with tailings, and why did 15 seconds of shaking matter?</p>
+          <details class="q-hint"><summary>Hint</summary><p>How was its fill placed, and how would that fill have been packed? Compare 15 s with the drainage time of a few metres of sand.</p></details>
+          <div class="q-answer"><p>Its fill was hydraulic fill, sluiced into place with water, like tailings: loose and saturated. Fifteen seconds is shorter than the time water needs to leave even 2 m of sand (about <span data-n="ch05.t-sand-s@L=2">20</span> s in <a data-ref="ex-trapped-time"></a>), so every shake was undrained, the water pressure in the loose fill ratcheted up, and the fill near the base of the upstream slope liquefied. Coquitlam Dam in British Columbia, a hydraulic fill dam of the same era, is in <a data-ref="ch-raising"></a>.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="johansson2000"></cite> <span class="level">gentle</span> A plain-language tour of liquefaction: what it is, the earthquakes that taught engineers about it, why loose saturated sand is the culprit (with Casagrande's critical void ratio), and what can be done about it.</li>
+        <li><cite data-cite="terzaghi-peck-mesri1996"></cite> <span class="level">serious</span> The working engineer's textbook, begun by the man who founded the subject. Read its treatment of consolidation, and of the strength of sands and clays under drained and undrained loading, for the full versions of this chapter's two rough sums.</li>
+        <li><cite data-cite="reynolds1885"></cite> <span class="level">primary source</span> Thirteen pages that named dilatancy: the sealed rubber bag of shot and water that goes rigid, and the pale footprint on p. 475 (p. 209 of the 1901 reprint, free online), where "the sand is full of water".</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">A reservoir of water has no strength to lose: it is a liquid already. Some dams hold back loose, saturated, ground-up rock that does have strength, and can lose it in seconds. What changes when the thing behind the dam can lose its own strength?</p></nav>
   </section>
 </section>

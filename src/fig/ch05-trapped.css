@@ -1,0 +1,23 @@
+/* Chapter 5's static figures (book/SPEC.md F.10): two wet sands under a foot, and the two clocks.
+   Label sizes go through --fs so the floor in styles-book.css can lift them on a phone. */
+#fig-trapped-feet .t5-panels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 24px; max-width: 860px; margin-inline: auto; }
+#fig-trapped-feet svg.dwg { display: block; width: 100%; height: auto; }
+#fig-trapped-feet svg.dwg text { --fs: 12px; }
+#fig-trapped-feet svg.dwg .lbl-s { --fs: 11px; }
+@media screen and (max-width: 599px) { #fig-trapped-feet .t5-panels { grid-template-columns: minmax(0, 1fr); } }
+.t5-g { fill: var(--m-fill); stroke: var(--grain); stroke-width: 0.9; }
+.t5-g-dry { fill: #f3ead3; stroke: var(--grain); stroke-width: 0.9; } /* pale, dried-looking sand in both themes */
+.t5-chain { stroke: var(--grain); stroke-linecap: round; fill: none; opacity: 0.9; }
+.t5-water-hi { fill: var(--water); opacity: 0.5; }
+.t5-wl { stroke-dasharray: 5 3; }
+.t5-foot { fill: var(--ink-2); stroke: var(--ink); stroke-width: 0.8; }
+#fig-trapped-clock svg.dwg { display: block; width: 100%; max-width: 640px; height: auto; margin-inline: auto; }
+#fig-trapped-clock svg.dwg text { --fs: 12px; }
+#fig-trapped-clock svg.dwg .lbl-s { --fs: 11.5px; }
+.t5-load { stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 4 3; fill: none; }
+.t5-bar { stroke: var(--water); stroke-width: 5; stroke-linecap: butt; fill: none; opacity: 0.55; }
+.t5-dot { fill: var(--water); }
+/* Where Part I comes back: a short list of cross-references */
+#trapped-comes-back ul.t5-back { list-style: none; padding: 0; margin: 0.6rem 0 1.4rem; border-top: 1px solid var(--rule); }
+#trapped-comes-back ul.t5-back li { padding: 8px 0 9px; border-bottom: 1px solid var(--rule); line-height: 1.5; }
+#trapped-comes-back ul.t5-back li > a.xref:first-child { font-family: var(--f-label); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); text-decoration: none; }

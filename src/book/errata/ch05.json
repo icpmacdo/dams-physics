@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2026-10-24",
+    "where": "Where Part I comes back",
+    "ref": "trapped-comes-back",
+    "was": "Soil is strong because its grains press on each other, and water pressure in the gaps pushes them apart.",
+    "now": "Soil holds as well as its grains press on one another, and water in the gaps, pushing or pulling, changes that press.",
+    "why": "Water pressure acts equally on every grain round a gap; it takes part of the load the grains carry between them rather than pushing them apart."
+  },
+  {
+    "date": "2026-10-24",
+    "where": "Grain sandbox, the house experiment",
+    "ref": "pr-grains-house",
+    "was": "With nothing pressing the grains together, friction between them vanishes",
+    "now": "Grains that hardly press can hardly grip",
+    "why": "The grains still touch and still press a little; their grip falls with the press, toward zero, rather than vanishing outright."
+  }
+]

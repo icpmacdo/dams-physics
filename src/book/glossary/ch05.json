@@ -1,0 +1,54 @@
+{
+  "consolidation": [
+    "Consolidation",
+    "The slow squeezing of a saturated soil as water flows out of it under a new load, handing the load from the water to the grains. Sand consolidates in seconds or minutes; a layer of clay can take months or years, roughly L²/c_v."
+  ],
+  "excess-pore-pressure": [
+    "Excess pore pressure",
+    "The water pressure in soil above or below what still groundwater would have at that depth, written Δu. It appears when soil is loaded or sheared faster than its water can flow out or in, and fades as the water does. Negative excess pore pressure is a pull below the still-water value."
+  ],
+  "undrained-strength": [
+    "Undrained strength",
+    "The strength of a saturated soil, usually a clay, sheared too fast for its water to flow in or out, written s_u. A soft clay tries to contract as it shears, its trapped water takes part of the press, and its undrained strength can be less than half its slow, drained grip."
+  ],
+  "cavitation": [
+    "Cavitation",
+    "Water breaking into bubbles of vapour and gas when it is pulled to a low enough pressure, about zero absolute (roughly −100 kPa gauge). It sets a limit on how hard trapped water can pull on the grains around it."
+  ],
+  "clay": [
+    "Clay",
+    "Soil made of mineral flakes too small to see, a few thousandths of a millimetre across or less. Water passes through it very slowly, so it drains in months or years, and its flakes grip less than sand grains do."
+  ],
+  "residual-strength": [
+    "Residual strength",
+    "The grip left in a soil after it has slid a long way. In clay the flakes line up along the slip and the grip falls well below its peak; liquefied sand keeps only a small residual strength as it flows."
+  ],
+  "suction": {
+    "replace": true,
+    "entry": [
+      "Suction",
+      "Water pressure below the pressure of the air, in soil that is damp but not saturated: curved rings of water where the grains touch pull them together. It is why a sandcastle wall stands. Not to be confused with the negative excess pore pressure of dense saturated sand sheared faster than water can flow in."
+    ]
+  },
+  "drained": {
+    "replace": true,
+    "entry": [
+      "Drained",
+      "Loaded slowly enough, or in soil open enough, that water flows in or out as the grains move, so the water pressure stays at its still-water value. Whether a loading is drained depends on how its length compares with the soil's drainage time."
+    ]
+  },
+  "undrained": {
+    "replace": true,
+    "entry": [
+      "Undrained",
+      "Loaded or sheared too fast for the water to flow in or out, so the soil can't change its volume and the water pressure changes instead: up in loose soil, down in dense soil."
+    ]
+  },
+  "liquefaction": {
+    "replace": true,
+    "entry": [
+      "Liquefaction",
+      "Loose, saturated soil sheared or shaken faster than its water can leave tries to pack tighter; the trapped water takes the load until the grains barely press on one another, and the soil flows like a heavy liquid. An earthquake is one trigger; any fast enough loading will do."
+    ]
+  }
+}

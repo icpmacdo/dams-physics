@@ -1026,12 +1026,12 @@ function showResult(o) { result.textContent = o ? 'Measured: ' + outcomeText(o) 
 
 /* ---------- experiments ---------- */
 const EXPS = {
-  castle: { pack: 'dense', water: 'damp', top: 'none', go: 'wall', hint: 'Damp sand. Tiny bridges of water between grains pull them together. Watch the cut face when the wall comes away.', next: ['Now try it dry', 'castle-dry'] },
+  castle: { pack: 'dense', water: 'damp', top: 'none', go: 'wall', hint: 'Damp sand. Tiny rings of water where the grains touch pull them together. Watch the cut face when the wall comes away.', next: ['Now try it dry', 'castle-dry'] },
   'castle-dry': { pack: 'dense', water: 'dry', top: 'none', go: 'wall', hint: 'The same sand, dry. Nothing holds the grains together except friction.', next: ['Damp again', 'castle'] },
   shear: { pack: 'dense', water: 'dry', top: 'platen', load: 40, go: 'shear', hint: 'Dense sand under a fixed load, sheared sideways. Watch the platen: the grains have to climb over each other to move.', next: ['Now loose sand', 'shear-loose'] },
   'shear-loose': { pack: 'loose', water: 'dry', top: 'platen', load: 40, go: 'shear', hint: 'Loose sand, same load, same shear. The grains fall into the gaps as they move.', next: ['Dense again', 'shear'] },
   liq: { pack: 'loose', water: 'sat', drain: 'shut', top: 'house', go: 'shake', hint: 'Loose sand full of water, a house on top, and the water can’t get out in time. Watch the water pressure (blue) and the force chains under the house.', next: ['Same, dense sand', 'liq-dense'] },
-  'liq-dense': { pack: 'dense', water: 'sat', drain: 'shut', top: 'house', go: 'shake', hint: 'Dense sand, same water, same shaking.', next: ['Loose again', 'liq'] },
+  'liq-dense': { pack: 'dense', water: 'sat', drain: 'shut', top: 'house', go: 'shake', hint: 'Dense sand, same water, same shaking. Watch the house, and compare it with the loose box.', next: ['Loose again', 'liq'] },
   suction: { pack: 'dense', water: 'sat', drain: 'shut', top: 'platen', load: 40, go: 'shear', hint: 'Dense sand full of water, drain shut, sheared. Dense sand wants to swell, but the water can’t get in. Watch Δu go below zero: the water pressure falls below its still-water value.', next: ['Same with the drain open', 'suction-open'] },
   'suction-open': { pack: 'dense', water: 'sat', drain: 'open', top: 'platen', load: 40, go: 'shear', hint: 'The same dense sand with the drain open. Water flows in as it swells, so the water pressure stays at its still-water value.', next: ['Drain shut again', 'suction'] },
 };
