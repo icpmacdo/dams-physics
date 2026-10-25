@@ -232,8 +232,8 @@ tests/pins/<key>.js                  per-unit text pins (moved from test-figures
 ```
 
 `body-ground.html`, `body-grains.html` and `body-build.html` are dissolved into the chapter files in
-stage D, except `body-grains.html`, which stays as an include (`<!-- @include body-grains.html -->`)
-inside `ch05-trapped.html` so the sandbox markup stays in one place.
+stage D. `body-grains.html` stayed an include until stage C, when Chapter 5 took the sandbox markup
+inline (ids unchanged) so it could own the caption and the predict box's place; the file is deleted.
 
 ### A.2 What the build does, in order
 
@@ -429,7 +429,7 @@ before the punctuation that follows a reference.
 - **Added in review round 1.** `build.py` writes `<!doctype html>` at the top of the root
   `index.html` too (in quirks mode ids match case-insensitively: `#dp-h` found `#dp-H`) and strips
   HTML and CSS comments from the shipped page (`build/book.html` keeps them). `test-book.js` checks
-  both pages start with a doctype, that no comment ships, a 450 kB gzip budget for
+  both pages start with a doctype, that no comment ships, a 650 kB gzip budget (450 kB until A.12) for
   `docs/index.html`, and a path grammar on every static `<path d>` (each command a whole number of
   argument sets; Chrome stops drawing at the first bad number). `test-setfig.js` checks that a prose
   link to a predict-locked figure reaches its predict box, that no in-page link points into a hidden
@@ -548,8 +548,8 @@ before the punctuation that follows a reference.
   for `gr-top` pressed before the sample has settled did not take. **Fixed in the machinery pass
   (2026-10-24):** a top chosen while the sample is poured or cured is kept (`S.pendingTop`) and placed
   when it is ready, and one chosen while it is being placed re-places it (`test-setfig.js` checks it).
-  Gating the idle preparation is now possible if the load needs trimming; the 450 kB gzip budget in
-  `test-book.js` stays the hard gate.
+  Gating the idle preparation is now possible if the load needs trimming; the gzip budget in
+  `test-book.js` (650 kB since A.12) stays the hard gate.
 
 ### A.11 What the film stage built (F.13, as implemented)
 
@@ -589,6 +589,53 @@ before the punctuation that follows a reference.
   that starting one film pauses another.
 
 ---
+
+### A.12 What the chapter writers delivered (stage C, as implemented)
+
+Twelve writers wrote Chapters 3–13 and the Epilogue in parallel; the integrator applied their shared
+requests. What later stages (review, back matter) can rely on:
+
+- **Films.** Each poster question in `book.json` now matches its chapter's Before box (F.13), because
+  the chapters answer the old questions before the film plays: Ch 5, 7, 9, 11, 12 and 13 changed. Ch 13's
+  wording avoids every guarded word. The After notes correct film lines that cannot be re-rendered
+  ("pushes them apart" in five films, against G.2; "more dams than floods" in The sand that boils;
+  Mount Polley "wasn't raised the upstream way" in Never finished, where the panel says the as-built
+  raises shifted upstream, p. 55 and p. 69).
+- **Build.** A figure without a figcaption is now an error (Ch 9 gave `fig-zones` its caption).
+  `test-book.js`'s typed-number check skips Source notes and `<cite>`, as the build does, so a note may
+  name a source's own "Table 3".
+- **Set the figure.** A click target that is disabled (the workbench's Test while a solve is in flight)
+  counts as done, not as missing; the workbench re-tests after any change once it has been tested.
+- **Links in tables** are ink, like links in prose (blue means water).
+- **Display strings (no physics):** `fig-hydro`'s heel label reads "0.87 MPa, 89 m deep" (it was clipped);
+  `fig-uplift`'s rock labels take the `on-rock` halo and its heel head label sits clear of the grout
+  curtain.
+- **Brief values that changed** (the code wins; each chapter's text and keys match the code):
+  Ch 3 uses `race.bar-km` (11.7 km) rather than a duplicate `ch03.clay-bar-km`. Ch 5's castle wall is
+  0.24 m (sourced cohesion and friction, not the brief's 0.43 m), the clay times 45 days and 3.1 years,
+  the undrained ratio 0.22 (Mesri). Ch 9's field test gives RC 96.8%, just failing Bennett's 98%. Ch 10's
+  flow net was computed (Laplace on a 5 cm grid) and the caption says so, not "sketched by hand". Ch 11's
+  filter opening is 0.11 × D15 (FEMA 2011, after Sherard), key `ch11.open-mm`, not D15F/5. Ch 13's
+  `ex-build-polley` uses `ch13.tan@a=28` (there is no `ch05.tan28`).
+- **Case index (A.7, for the back-matter stage).** `tbl-two-dams-cases` rows carry `data-case` and
+  `data-year` (El Cobre 1965, Stava 1985, Merriespruit 1994, Mount Polley 2014, Fundão 2015, Feijão Dam I
+  Brumadinho 2019); Ch 6 also marks `span.case-ref` for Feijão Dam I and Oroville. `fill_cases` in
+  `tools/bookbuild.py` reads neither yet. Mount Polley's row must use "See Chapter 13".
+- **Physics findings left alone** (reported, not errors in the shipped numbers): the uplift figure counts
+  only the tailwater's horizontal push (slightly conservative); the seepage lab compares a sloping-face
+  exit gradient with i_c ≈ 1 and its toe gradients depend on its 1 m grid (both captioned);
+  `analyzeDam`'s drawdown case subtracts reservoir head under the downstream slope too, which lowers the
+  stored upstream `psi` there but no quoted factor of safety; upstream rockfill alone lowers the
+  downstream factor of safety (1.116 to 1.026), which Ch 13 uses to motivate the combined design.
+- **Page weight.** The written chapters took the page from 271 kB to 525 kB gzipped, nearly all of it
+  prose. The user chose to raise the budget to 650 kB (24 October 2026), which leaves room for the back
+  matter; nothing was cut and nothing is loaded lazily.
+- **Open for review:**
+  case plates whose fact list is taller than the drawing leave a gap at ≥1100 px (Ch 8 fixed its own
+  plate in `src/fig/ch08-raising.css`; a shared rule needs a look at every plate's structure, since
+  Testalinden's has two drawings); `fig-column` and `fig-block` draw effective stress and available
+  friction in brick, against F.15's colour roles (captions name them by role, so nothing reads wrong);
+  `fig-darcy`'s drawing uses about 300 of its 480 viewBox units at the default pipe.
 
 ## B. `src/book.json`
 
@@ -763,7 +810,7 @@ figure, ctl = controls inside the figure (listed so nothing is lost; they move w
    P "Put a negative u…", P "Dry the sand…" (suction). **edit**: typed "Fig. 1.1" → `data-ref`.
 2. H "Loose, dense, and the liquid beach", P "One beach state is left…", P "When grains are pushed…",
    P "Whether that matters depends on time…" (drained/undrained), P "In the sandbox below…".
-3. `<!-- @include body-grains.html -->`: pr `pr-grains-house`; fig `fig-grains` — `gr-exps`
+3. (inline in `ch05-trapped.html` since stage C; was `<!-- @include body-grains.html -->`): pr `pr-grains-house`; fig `fig-grains` — `gr-exps`
    (`[data-exp]` castle, shear, liq, suction), `gr-hint`, `cv-grains`, readouts `gr-sig`, `gr-u`,
    `gr-se`, `gr-se2`, `gr-e`, `gr-e2`, `gr-tau`, `gr-tau2`, `cv-grains-chart`, `gr-result`, ctl
    `gr-pack`, `gr-water`, `gr-drain`, `gr-top`, `gr-load`, `gr-load-o`, `gr-shear`, `gr-shake`,
@@ -2708,7 +2755,14 @@ A reviewer ticks every box. Any unticked box means the chapter is not done.
 
 ## Appendix 1. Canonical bibliography keys
 
-Copy entries verbatim into your `bib/<key>.json`. Entries marked `verify` must be checked against the
+After stage C the per-unit files `src/book/bib/*.json` are the checked record: where this table and a
+bib file differ, the bib file wins, and a key defined in two files must match byte for byte (the build
+fails otherwise). Keys added in stage C live only in their unit's bib file: `simmons2008`, `turner1993`,
+`freeze-cherry1979`, `iapws2008` (ch03); `bromwell1966` (ch04); `stava-elcobre`, `stava-fundao`,
+`adamo2020`, `bchydro-peace2020` (ch06); `dupuit1863`, `houben2025`, `hebert1934`, `usbr-wmm2001` (ch10);
+`usbr-ds13-ch8` (ch11, ch13); `petterson1955`, `massarsch-fellenius2012`, `stark1987` (ch12);
+`asdso-testalinden`, `tannant2015`, `bc-mem2016` (epi). `foster2000`'s shares are cited "as tabulated
+by" `adamo2020` (the paper itself was paywalled). Copy entries verbatim into your `bib/<key>.json`. Entries marked `verify` must be checked against the
 source and completed before they are cited; null fields stay null until you have a source for them.
 DOIs are given only where the planning dossier recorded them.
 
@@ -2726,7 +2780,7 @@ DOIs are given only where the planning dossier recorded them.
 | `duncan2014` | Duncan, Wright & Brandon (2014) | Duncan, J.M., Wright, S.G., Brandon, T.L. (2014). Soil Strength and Slope Stability, 2nd ed. Hoboken: Wiley. |
 | `lambe-whitman1969` | Lambe & Whitman (1969) | Lambe, T.W., Whitman, R.V. (1969). Soil Mechanics. New York: Wiley. |
 | `stevin1586` | Stevin (1586) | Stevin, S. (1586). De Beghinselen des Waterwichts. Leiden. **verify** |
-| `hvorslev1951` | Hvorslev (1951) | Hvorslev, M.J. (1951). Time Lag and Soil Permeability in Ground-Water Observations. US Army Corps of Engineers Waterways Experiment Station, Bulletin 36. **verify** |
+| `hvorslev1951` | Hvorslev (1951) | Hvorslev, M.J. (1951). Time Lag and Soil Permeability in Ground-Water Observations. US Army Corps of Engineers Waterways Experiment Station, Bulletin 36. |
 
 **papers**
 
@@ -2735,28 +2789,28 @@ DOIs are given only where the planning dossier recorded them.
 | `coulomb1773` | Coulomb (1776) | Coulomb, C.-A. (1776). Essai sur une application des règles de maximis et minimis à quelques problèmes de statique, relatifs à l'architecture. Mémoires de mathématique et de physique, Académie Royale des Sciences 7: 343–382 (read 1773). **verify** |
 | `foster2000` | Foster, Fell & Spannagle (2000) | Foster, M., Fell, R., Spannagle, M. (2000). The statistics of embankment dam failures and accidents. Canadian Geotechnical Journal 37(5): 1000–1024. doi:10.1139/t00-030 |
 | `terzaghi1922` | Terzaghi (1922) | Terzaghi, K. (1922). Der Grundbruch an Stauwerken und seine Verhütung. Die Wasserkraft 17: 445–449. **verify** |
-| `terzaghi1929` | Terzaghi (1929) | Terzaghi, K. (1929). Effect of minor geologic details on the safety of dams. American Institute of Mining and Metallurgical Engineers, Technical Publication 215: 31–44. |
-| `casagrande1936` | Casagrande (1936) | Casagrande, A. (1936). Characteristics of cohesionless soils affecting the stability of slopes and earth fills. Journal of the Boston Society of Civil Engineers 23(1): 13–32. **verify** |
-| `casagrande1937` | Casagrande (1937) | Casagrande, A. (1937). Seepage through dams. Journal of the New England Water Works Association 51(2): 131–172. **verify** |
+| `terzaghi1929` | Terzaghi (1929) | Terzaghi, K. (1929). Effect of minor geologic details on the safety of dams. American Institute of Mining and Metallurgical Engineers, Technical Publication 215, February 1929 (pages not verified, so left out). |
+| `casagrande1936` | Casagrande (1936) | Casagrande, A. (1936). Characteristics of cohesionless soils affecting the stability of slopes and earth fills. Journal of the Boston Society of Civil Engineers 23(1): 13–32. |
+| `casagrande1937` | Casagrande (1937) | Casagrande, A. (1937). Seepage through dams. Journal of the New England Water Works Association 51(2): 131–172. |
 | `casagrande1961` | Casagrande (1961) | Casagrande, A. (1961). Control of seepage through foundations and abutments of dams. Géotechnique 11(3): 161–182. doi:10.1680/geot.1961.11.3.161 |
 | `peck1969` | Peck (1969) | Peck, R.B. (1969). Advantages and limitations of the observational method in applied soil mechanics. Géotechnique 19(2): 171–187. doi:10.1680/geot.1969.19.2.171 |
-| `bishop1955` | Bishop (1955) | Bishop, A.W. (1955). The use of the slip circle in the stability analysis of slopes. Géotechnique 5(1): 7–17. **verify** |
-| `bishop-morgenstern1960` | Bishop & Morgenstern (1960) | Bishop, A.W., Morgenstern, N. (1960). Stability coefficients for earth slopes. Géotechnique 10(4): 129–150. **verify** |
-| `spencer1967` | Spencer (1967) | Spencer, E. (1967). A method of analysis of the stability of embankments assuming parallel inter-slice forces. Géotechnique 17(1): 11–26. **verify** |
-| `lane1935` | Lane (1935) | Lane, E.W. (1935). Security from under-seepage: masonry dams on earth foundations. Transactions of the American Society of Civil Engineers 100: 1235–1272. **verify** |
+| `bishop1955` | Bishop (1955) | Bishop, A.W. (1955). The use of the slip circle in the stability analysis of slopes. Géotechnique 5(1): 7–17. doi:10.1680/geot.1955.5.1.7 |
+| `bishop-morgenstern1960` | Bishop & Morgenstern (1960) | Bishop, A.W., Morgenstern, N. (1960). Stability coefficients for earth slopes. Géotechnique 10(4): 129–153. doi:10.1680/geot.1960.10.4.129 |
+| `spencer1967` | Spencer (1967) | Spencer, E. (1967). A method of analysis of the stability of embankments assuming parallel inter-slice forces. Géotechnique 17(1): 11–26. doi:10.1680/geot.1967.17.1.11 |
+| `lane1935` | Lane (1935) | Lane, E.W. (1935). Security from under-seepage: masonry dams on earth foundations. Transactions of the American Society of Civil Engineers 100 (pages not verified, so left out). |
 | `proctor1933` | Proctor (1933) | Proctor, R.R. (1933). Fundamental principles of soil compaction. Engineering News-Record 111(9). **verify** |
-| `sherard-dunnigan1989` | Sherard & Dunnigan (1989) | Sherard, J.L., Dunnigan, L.P. (1989). Critical filters for impervious soils. Journal of Geotechnical Engineering 115(7): 927–947. **verify** pages |
+| `sherard-dunnigan1989` | Sherard & Dunnigan (1989) | Sherard, J.L., Dunnigan, L.P. (1989). Critical filters for impervious soils. Journal of Geotechnical Engineering 115(7): 927–947. doi:10.1061/(ASCE)0733-9410(1989)115:7(927) |
 | `cooke-sherard1987` | Cooke & Sherard (1987) | Cooke, J.B., Sherard, J.L. (1987). Concrete-face rockfill dam: II. Design. Journal of Geotechnical Engineering 113(10): 1113–1132. **verify** pages |
 | `fannin2008` | Fannin (2008) | Fannin, J. (2008). Karl Terzaghi: from theory to practice in geotechnical filter design. Journal of Geotechnical and Geoenvironmental Engineering 134(3): 267–276. **verify** |
 | `horn-deere1962` | Horn & Deere (1962) | Horn, H.M., Deere, D.U. (1962). Frictional characteristics of minerals. Géotechnique 12(4): 319–335. **verify** |
-| `reynolds1885` | Reynolds (1885) | Reynolds, O. (1885). On the dilatancy of media composed of rigid particles in contact. Philosophical Magazine, Series 5, 20(127): 469–481. **verify** |
+| `reynolds1885` | Reynolds (1885) | Reynolds, O. (1885). On the dilatancy of media composed of rigid particles in contact. Philosophical Magazine, Series 5, 20(127): 469–481. |
 | `hornbaker1997` | Hornbaker et al. (1997) | Hornbaker, D.J., Albert, R., Albert, I., Barabási, A.-L., Schiffer, P. (1997). What keeps sandcastles standing? Nature 387: 765. **verify** |
 | `pakpour2012` | Pakpour et al. (2012) | Pakpour, M., Habibi, M., Møller, P., Bonn, D. (2012). How to construct the perfect sandcastle. Scientific Reports 2: 549. **verify** |
 | `majmudar-behringer2005` | Majmudar & Behringer (2005) | Majmudar, T.S., Behringer, R.P. (2005). Contact force measurements and stress-induced anisotropy in granular materials. Nature 435: 1079–1082. **verify** |
-| `seed1975` | Seed et al. (1975) | Seed, H.B., Lee, K.L., Idriss, I.M., Makdisi, F.I. (1975). The slides in the San Fernando dams during the earthquake of February 9, 1971. Journal of the Geotechnical Engineering Division, ASCE 101(GT7): 651–688. **verify** |
-| `fourie2001` | Fourie, Blight & Papageorgiou (2001) | Fourie, A.B., Blight, G.E., Papageorgiou, G. (2001). Static liquefaction as a possible explanation for the Merriespruit tailings dam failure. Canadian Geotechnical Journal 38(4): 707–719. **verify** |
+| `seed1975` | Seed et al. (1975) | Seed, H.B., Lee, K.L., Idriss, I.M., Makdisi, F.I. (1975). The slides in the San Fernando dams during the earthquake of February 9, 1971. Journal of the Geotechnical Engineering Division, ASCE 101(GT7): 651–688. doi:10.1061/AJGEB6.0000178 |
+| `fourie2001` | Fourie, Blight & Papageorgiou (2001) | Fourie, A.B., Blight, G.E., Papageorgiou, G. (2001). Static liquefaction as a possible explanation for the Merriespruit tailings dam failure. Canadian Geotechnical Journal 38(4): 707–719. |
 | `santamarina2019` | Santamarina, Torres-Cruz & Bachus (2019) | Santamarina, J.C., Torres-Cruz, L.A., Bachus, R.C. (2019). Why coal ash and tailings dam disasters occur. Science 364(6440): 526–528. doi:10.1126/science.aax1009 |
-| `franks2021` | Franks et al. (2021) | Franks, D.M., et al. (2021). Tailings facility disclosures reveal stability risks. Scientific Reports 11: 5353. **verify** (source of the 1,743 facilities and 44.5 billion m³) |
+| `franks2021` | Franks et al. (2021) | Franks, D.M., et al. (2021). Tailings facility disclosures reveal stability risks. Scientific Reports 11: 5353. |
 | `coquitlam-asce2008` | ASCE (2008) | Seismic Deformation Analyses of the New Coquitlam Dam. Geotechnical Earthquake Engineering and Soil Dynamics IV, ASCE Geotechnical Special Publication 181. doi:10.1061/40975(318)180. **verify** authors |
 | `fredlund2012` | Fredlund, Rahardjo & Fredlund (2012) | Fredlund, D.G., Rahardjo, H., Fredlund, M.D. (2012). Unsaturated Soil Mechanics in Engineering Practice. Hoboken: Wiley. **verify** |
 | `hazen1892` | Hazen (1892) | Hazen, A. (1892). [report on sand filtration, Massachusetts State Board of Health]. **verify** before citing; omit if unverified |
@@ -2768,10 +2822,10 @@ DOIs are given only where the planning dossier recorded them.
 | `polley2015` | Mount Polley Review Panel (2015) | Independent Expert Engineering Investigation and Review Panel (2015). Report on Mount Polley Tailings Storage Facility Breach. Province of British Columbia, January 2015. https://www.mountpolleyreviewpanel.ca/sites/default/files/report/ReportonMountPolleyTailingsStorageFacilityBreach.pdf |
 | `polley-cim2015` | Chief Inspector of Mines (2015) | Chief Inspector of Mines (2015). Mount Polley Mine Tailings Storage Facility Breach, August 4, 2014: Investigation Report of the Chief Inspector of Mines. BC Ministry of Energy and Mines, 30 November 2015. **verify** title and URL |
 | `teton1976` | Teton Panel (1976) | Independent Panel to Review Cause of Teton Dam Failure (1976). Report to U.S. Department of the Interior and State of Idaho on Failure of Teton Dam. December 1976. https://damfailures.org/sites/default/files/wp-pdf/IR_Independent-Investigation_Teton.pdf |
-| `fundao2016` | Fundão Review Panel (2016) | Fundão Tailings Dam Review Panel (2016). Report on the Immediate Causes of the Failure of the Fundão Dam. 25 August 2016. https://www.fundaoinvestigation.com/ **verify** |
+| `fundao2016` | Fundão Review Panel (2016) | Fundão Tailings Dam Review Panel (2016). Report on the Immediate Causes of the Failure of the Fundão Dam. 25 August 2016. https://www.fundaoinvestigation.com/ |
 | `feijao2019` | Robertson et al. (2019) | Robertson, P.K., de Melo, L., Williams, D.J., Wilson, G.W. (2019). Report of the Expert Panel on the Technical Causes of the Failure of Feijão Dam I. 12 December 2019. https://damfailures.org/sites/default/files/wp-pdf/IR_Feijao-Dam.pdf |
 | `oroville2018` | Oroville Independent Forensic Team (2018) | Independent Forensic Team (2018). Independent Forensic Team Report: Oroville Dam Spillway Incident. 5 January 2018. https://damfailures.org/sites/default/files/wp-pdf/IR_IFT_Oroville.pdf |
-| `testalinden2010` | Testalinden review (2010) | Testalinden Dam failure review, July 2010. https://damfailures.org/sites/default/files/wp-pdf/testalinden_slide_failure_review.pdf **verify** author and title |
+| `testalinden2010` | Testalinden review (2010) | Morhart, D. (2010). Review of the Testalinden Dam Failure. Deputy Solicitor General, 13 July 2010. https://damfailures.org/sites/default/files/wp-pdf/testalinden_slide_failure_review.pdf |
 | `bennett-eep2012` | BC Hydro expert panel (2012) | BC Hydro, Expert Engineering Panel report on W.A.C. Bennett Dam (2012). **verify** title, date and URL |
 | `stewart1998` | Stewart (1998) | Stewart, R.A. (1998). [account of the W.A.C. Bennett Dam sinkholes]. **verify** title and venue (an ANCOLD paper is referenced in the dossier) |
 | `bchydro-coquitlam2008` | BC Hydro (2008) | BC Hydro news release on completion of the Coquitlam Dam seismic upgrade, 3 October 2008. **verify** |
@@ -2784,22 +2838,22 @@ DOIs are given only where the planning dossier recorded them.
 | `usbr1987` | USBR (1987) | U.S. Bureau of Reclamation (1987). Design of Small Dams, 3rd ed. Denver. https://www.usbr.gov/tsc/techreferences/mands/mands-pdfs/SmallDams.pdf |
 | `usbr1976-gravity` | USBR (1976) | U.S. Bureau of Reclamation (1976). Design of Gravity Dams. Denver. **verify** |
 | `usbr-ds13-ch8` | USBR DS-13 ch. 8 | U.S. Bureau of Reclamation. Design Standards No. 13: Embankment Dams, Chapter 8: Seepage. **verify** revision year (the page cites 2014) |
-| `usace-em1901` | USACE EM 1110-2-1901 | US Army Corps of Engineers. EM 1110-2-1901, Seepage Analysis and Control for Dams. **verify** year |
+| `usace-em1901` | USACE EM 1110-2-1901 | US Army Corps of Engineers (1986). EM 1110-2-1901, Seepage Analysis and Control for Dams (Change 1, 30 April 1993). |
 | `usace-em1902` | USACE EM 1110-2-1902 | US Army Corps of Engineers (2003). EM 1110-2-1902, Slope Stability. **verify** |
-| `usace-em2200` | USACE EM 1110-2-2200 | US Army Corps of Engineers (1995). EM 1110-2-2200, Gravity Dam Design. **verify** |
+| `usace-em2200` | USACE EM 1110-2-2200 | US Army Corps of Engineers (1995). EM 1110-2-2200, Gravity Dam Design. 30 June 1995. |
 | `fema2011-filters` | FEMA (2011) | FEMA (2011). Filters for Embankment Dams: Best Practices for Design and Construction. **verify** |
 | `icold164` | ICOLD Bulletin 164 | ICOLD. Bulletin 164: Internal Erosion of Existing Dams, Levees and Dikes, and their Foundations. **verify** year |
 | `cda2013` | CDA (2013) | Canadian Dam Association (2013). Dam Safety Guidelines 2007 (2013 edition). |
-| `cda2019-mining` | CDA (2019) | Canadian Dam Association (2019). Technical Bulletin: Application of Dam Safety Guidelines to Mining Dams. **verify** |
+| `cda2019-mining` | CDA (2019) | Canadian Dam Association (2019). Technical Bulletin: Application of Dam Safety Guidelines to Mining Dams. |
 | `gistm2020` | GISTM (2020) | Global Industry Standard on Tailings Management (2020). International Council on Mining and Metals, United Nations Environment Programme and Principles for Responsible Investment. August 2020. |
 
 **bc-law**
 
 | Key | short | Entry |
 |---|---|---|
-| `bc-dsr2016` | Dam Safety Regulation (2016) | Dam Safety Regulation, B.C. Reg. 40/2016, under the Water Sustainability Act. https://www.bclaws.gov.bc.ca/ **verify** URL |
-| `bc-hsrc-part10` | Mines Code, Part 10 | Health, Safety and Reclamation Code for Mines in British Columbia, Part 10. **verify** edition |
-| `egbc2016` | EGBC (2016) | Engineers and Geoscientists British Columbia (2016). Site Characterization for Dam Foundations in BC. **verify** title |
+| `bc-dsr2016` | Dam Safety Regulation (2016) | Dam Safety Regulation, B.C. Reg. 40/2016, under the Water Sustainability Act. https://www.bclaws.gov.bc.ca/ |
+| `bc-hsrc-part10` | Mines Code, Part 10 | Health, Safety and Reclamation Code for Mines in British Columbia, Part 10. |
+| `egbc2016` | EGBC (2016) | Engineers and Geoscientists British Columbia (2016). Professional Practice Guidelines: Site Characterization for Dam Foundations in BC, V1.2. October 2016. |
 | `brazil-lei14066` | Lei 14.066 (2020) | Brazil. Lei nº 14.066, de 30 de setembro de 2020. **verify** |
 | `chile-ds86` | Chile DS 86 (1970) | Chile. Decreto Supremo nº 86 (1970), Reglamento de construcción y operación de tranques de relaves. **verify** |
 

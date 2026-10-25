@@ -27,7 +27,7 @@
     "group": "papers", "short": "Sherard & Dunnigan (1989)",
     "authors": "Sherard, J.L., Dunnigan, L.P.", "year": "1989",
     "title": "Critical filters for impervious soils",
-    "container": "Journal of Geotechnical Engineering 115(7)", "doi": null, "url": null
+    "container": "Journal of Geotechnical Engineering 115(7): 927–947", "doi": "10.1061/(ASCE)0733-9410(1989)115:7(927)", "url": null
   },
   "usbr1987": {
     "group": "standards", "short": "USBR (1987)",
@@ -37,9 +37,9 @@
   },
   "usace-em2200": {
     "group": "standards", "short": "USACE EM 1110-2-2200",
-    "authors": "US Army Corps of Engineers", "year": null,
+    "authors": "US Army Corps of Engineers", "year": "1995",
     "title": "EM 1110-2-2200, Gravity Dam Design",
-    "container": null, "doi": null, "url": null
+    "container": "30 June 1995", "doi": null, "url": null
   },
   "gistm2020": {
     "group": "standards", "short": "GISTM (2020)",

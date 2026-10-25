@@ -414,7 +414,8 @@ function setFigure(spec) {
   }
   for (const sel of spec.click || []) {
     const b = fig.querySelector(sel);
-    if (b && !b.disabled) { b.click(); hls.push(b); } else errors.push('no ' + sel + ' in #' + spec.fig);
+    // a disabled button (the workbench's Test while a solve is in flight) is already doing its job
+    if (b) { if (!b.disabled) b.click(); hls.push(b); } else errors.push('no ' + sel + ' in #' + spec.fig);
   }
   return { ok: !errors.length, errors, hls };
 }

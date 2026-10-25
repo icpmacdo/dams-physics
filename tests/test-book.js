@@ -173,7 +173,21 @@ check(!broken.length, `all ${links.length} links inside the page land on an id` 
 for (const [id, r] of Object.entries(data.refs)) if (!idSet.has(id)) check(false, `book-data names #${id}, which is not on the page`);
 check(Object.values(data.refs).every(r => r.label && r.unit), `every numbered target has a label and a unit (${Object.keys(data.refs).length})`);
 // no typed numbers left in the page's prose: every figure label the reader sees came from the build
-const typed = (plainText(html).match(/\b(?:Fig\.|Film|Table|Example|Eq\.|Chapter) \d+(?:\.\d+)?/g) || []);
+// (Source notes and <cite> name a source's own tables and figures, as the build's own check allows: A.10)
+function dropSources(h) {
+  h = h.replace(/<cite\b[^>]*>[\s\S]*?<\/cite>/g, '');
+  const open = /<span\b[^>]*\bclass="marginnote"[^>]*\bdata-kind="source"[^>]*>/g;
+  let out = '', at = 0, m;
+  while ((m = open.exec(h))) {
+    out += h.slice(at, m.index);
+    const tag = /<(\/?)span\b[^>]*>/g; tag.lastIndex = m.index + m[0].length;
+    let depth = 1, t;
+    while (depth && (t = tag.exec(h))) depth += t[1] ? -1 : 1;
+    at = t ? tag.lastIndex : h.length; open.lastIndex = at;
+  }
+  return out + h.slice(at);
+}
+const typed = (plainText(dropSources(html)).match(/\b(?:Fig\.|Film|Table|Example|Eq\.|Chapter) \d+(?:\.\d+)?/g) || []);
 const labels = new Set(Object.values(data.refs).map(r => r.label));
 const unknownLabels = [...new Set(typed.filter(t => !labels.has(t) && !/^Chapter \d+$/.test(t)))];
 check(!unknownLabels.length, 'every "Fig. n.n" the reader sees is the number of a real figure' + (unknownLabels.length ? ': ' + unknownLabels.join(', ') : ''));
@@ -430,10 +444,11 @@ console.log('\nLayout and furniture (book/SPEC.md F)');
   // both pages run in standards mode: in quirks mode ids match case-insensitively, and #dp-h finds #dp-H
   const rootPage = fs.readFileSync(path.join(book().out, 'index.html'), 'utf8');
   check(/^<!doctype html>/i.test(page) && /^<!doctype html>/i.test(rootPage), 'docs/index.html and the root index.html both start with <!doctype html>');
-  // the shipped page carries no source comments, and stays inside its weight budget
+  // the shipped page carries no source comments, and stays inside its weight budget (650 kB since the
+  // chapters were written in full: the text itself is most of it; book/SPEC.md A.12)
   const gz = require('zlib').gzipSync(page).length;
   check(!/<!--/.test(page.replace(/<script[\s\S]*?<\/script>/g, '')) && !/\/\*/.test((page.match(/<style>([\s\S]*?)<\/style>/) || ['', ''])[1]), 'no HTML or CSS comments are shipped to readers');
-  check(gz < 450 * 1024, `docs/index.html is ${(gz / 1024).toFixed(0)} kB gzipped, under the 450 kB budget (${(page.length / 1024).toFixed(0)} kB raw)`);
+  check(gz < 650 * 1024, `docs/index.html is ${(gz / 1024).toFixed(0)} kB gzipped, under the 650 kB budget (${(page.length / 1024).toFixed(0)} kB raw)`);
   // every SVG path in the markup is well formed: each command has a whole number of argument sets
   // (Chrome stops drawing a path at the first bad number and logs an error)
   const ARITY = { m: 2, l: 2, h: 1, v: 1, c: 6, s: 4, q: 4, t: 2, a: 7, z: 0 };

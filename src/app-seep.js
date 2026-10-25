@@ -502,9 +502,9 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
   const drainX = E('path', { style: 'stroke:var(--bad);stroke-width:2;fill:none' }, g);
   const forces = E('g', null, g);
   const lbls = E('g', null, g);
-  T(lbls, M.X(-100), M.Z(-33), 'Rock foundation', 'lbl-s halo');
-  leader(lbls, M.X(-2.5), M.Z(-24), M.X(-22), M.Z(-24)); T(lbls, M.X(-23), M.Z(-24) + 4, 'Grout curtain', 'lbl-s halo', { 'text-anchor': 'end' });
-  const drainLbl = T(lbls, M.X(9), M.Z(-31), 'Drains', 'lbl-s halo');
+  T(lbls, M.X(-100), M.Z(-33), 'Rock foundation', 'lbl-s halo on-rock');
+  leader(lbls, M.X(-2.5), M.Z(-24), M.X(-22), M.Z(-24)); T(lbls, M.X(-23), M.Z(-24) + 4, 'Grout curtain', 'lbl-s halo on-rock', { 'text-anchor': 'end' });
+  const drainLbl = T(lbls, M.X(9), M.Z(-31), 'Drains', 'lbl-s halo on-rock');
   const hwEl = $('#up-hw');
   let drains = true, HW = HW0, uDrain = TW + (HW - TW) / 3, shownUD = uDrain, anim = null;
   segGroup($('#up-drains'), v => { drains = v === '1'; go(); });
@@ -536,7 +536,7 @@ function labPiping(ex) { // max exit gradient and safety against piping, from th
       if (hd * ku < 1.6) continue;
       E('path', { d: M.D([[x, -ku * hd], [x, -0.4]]), style: 'stroke:var(--accent);stroke-width:1;fill:none', 'marker-end': 'url(#arr-acc)' }, upl);
     }
-    T(upl, M.X(0) - 4, M.Z(-ku * HW) + 4, Math.round(HW) + ' m', 'lbl-s lbl-acc halo', { 'text-anchor': 'end' });
+    T(upl, M.X(0) - 10, M.Z(-ku * HW) + 4, Math.round(HW) + ' m', 'lbl-s lbl-acc halo', { 'text-anchor': 'end' });
     if (drains || anim) T(upl, M.X(XD) + 5, M.Z(-ku * shownUD) + 13, n1(shownUD) + ' m', 'lbl-s lbl-acc halo');
     T(upl, M.X(B) + 4, M.Z(-ku * TW) + 4, TW + ' m', 'lbl-s lbl-acc halo');
     leader(upl, M.X(44), M.Z(-1.5), M.X(58), M.Z(-9));

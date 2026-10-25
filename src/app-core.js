@@ -280,7 +280,7 @@ function leader(g, x1, y1, x2, y2) { return E('path', { d: `M${x1},${y1} L${x2},
       E('path', { d: `M${200 - len},${y} L198,${y}`, style: 'stroke:var(--accent);stroke-width:1;fill:none', 'marker-end': 'url(#arr-acc)' }, presArrows);
     }
     presLbl.setAttribute('x', 200 - w - 6); presLbl.setAttribute('y', 252);
-    presLbl2.setAttribute('x', 200 - w - 6); presLbl2.setAttribute('y', 265); presLbl2.textContent = pMPa.toFixed(2) + ' MPa at heel, ' + Math.round(c.depth) + ' m deep';
+    presLbl2.setAttribute('x', 200 - w - 6); presLbl2.setAttribute('y', 265); presLbl2.textContent = pMPa.toFixed(2) + ' MPa, ' + Math.round(c.depth) + ' m deep';
     dimLine.setAttribute('d', `M462,${wl + 1} L462,${TWY - 1}`);
     extUp.setAttribute('d', `M226,${wl} L470,${wl}`);
     dimLbl.setAttribute('y', (wl + TWY) / 2 + 4); dimLbl.setAttribute('x', 468);

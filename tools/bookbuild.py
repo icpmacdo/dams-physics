@@ -1001,7 +1001,7 @@ class Book:
                 self.error('data-n="%s": its text "%s" is not a number' % (e.get('data-n'), t))
         for e in self.doc.find_all(lambda e: e.tag == 'figure' and self.kind_of(e) in ('fig', 'film') and e.closest(lambda a: a.hascls('defs')) is None):
             if e.find(lambda x: x.tag == 'figcaption') is None:
-                self.warn('figure #%s has no figcaption' % e.id)
+                self.error('figure #%s has no figcaption' % e.id)
         self.polley_guard()
         page_text = ''.join(t.text for t in self.doc.texts())
         for m in STUB_WORDS.finditer(page_text):

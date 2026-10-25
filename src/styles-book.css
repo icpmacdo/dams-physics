@@ -49,10 +49,10 @@ var { font-style: italic; font-family: var(--f-body); }
 .predict-key { font-family: var(--f-label); }
 /* links are ink with a quiet underline that warms on hover: blue means water and nothing else (Plate 0's
    colour key), so neither links nor the book's furniture (Check yourself, Hint, film times) use it */
-.page p a, .page li a, .page dd a, .page summary a, .page .epigraph a, .case a, figcaption a, .sidenote a, .marginnote a {
+.page p a, .page li a, .page dd a, .page td a, .page th a, .page summary a, .page .epigraph a, .case a, figcaption a, .sidenote a, .marginnote a {
   color: var(--ink); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
   text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
-.page p a:hover, .page li a:hover, .page dd a:hover, .page summary a:hover, .page .epigraph a:hover, .case a:hover, figcaption a:hover,
+.page p a:hover, .page li a:hover, .page dd a:hover, .page td a:hover, .page th a:hover, .page summary a:hover, .page .epigraph a:hover, .case a:hover, figcaption a:hover,
 .sidenote a:hover, .marginnote a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 /* a link that is itself furniture keeps its own look */
 .page nav#toc a, .page ol.course a, .page .topics a, .page nav.next-card a, .page ol.film-marks a.xref { text-decoration-line: none; }
