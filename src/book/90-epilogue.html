@@ -1,4 +1,285 @@
-<section class="epilogue" id="epilogue" data-stub>
-  <!-- Epilogue · The dam after the drawings (book/SPEC.md H.15). Remove data-stub when written. -->
-  <header class="opener" data-gen="opener"></header>
+<section class="epilogue" id="epilogue">
+  <!-- Epilogue · The dam after the drawings (book/SPEC.md H.15). Facts: Testalinden from the Deputy Solicitor
+       General's review (testalinden2010, page numbers as printed) and the ASDSO case study (asdso-testalinden,
+       which quotes Tannant 2015 for the field investigation); BC law from the Dam Safety Regulation and the
+       Mines Code as revised June 2026 (section numbers as printed); Mount Polley from the panel (polley2015,
+       printed page numbers: the observational method and the instruments pp. 77–80, the verdict p. 107, the
+       slope p. iii). The worked example's numbers are in tests/numbers/epi.js. This unit comes after
+       Chapter 13, so the Polley guard (G.4) does not bind its prose; its glossary entries never name Polley. -->
+  <header class="opener" data-gen="opener">
+    <p class="so-far"><b>So far.</b> Every number in this book has been a calculation: a pressure, a leak, a grip, a factor of safety, each worked out for a dam whose soil you chose. <a data-ref="ch-build"></a> ended on a dam that passed its calculation and failed anyway. Real dams are also watched and governed by law, and some fail in ways no calculation in this book would catch.</p>
+  </header>
+
+  <div class="col">
+    <p class="cold"><span class="newthought">On Friday 11 June 2010</span> a hiker on Mount Kobau, high above the Okanagan valley south of Oliver, British Columbia, found a small lake full to the brim and running over a dirt road, fast enough to cut a channel across it. He reported it at the tourist booth in Osoyoos. The message passed from the booth to the police, and from the police to the Ministry of Forests, where it ended as a voice mail about a washout on a minor road. Nobody heard it until it was too late.<label for="mn-epilogue-hiker" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-hiker" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="testalinden2010"></a>, p. 10, the province's review by its Deputy Solicitor General.</span></p>
+    <p>The road ran along the crest of a dam. Testalinden Dam was a bank of silty sand and glacial till about 2.5 m high, finished in 1937 to store irrigation water, built with horses and a horse-drawn scraper to no engineer's design. That spring a deep snowpack was melting in the year's first hot spell. On the afternoon of Sunday 13 June, the water flowing over the bank cut through it. The lake ran down a steep, narrow gully toward the valley floor 1,500 m below and arrived as a mudflow at least ten times the volume of the water that started it. It destroyed or badly damaged five homes and buried 200 m of Highway 97. Nobody was hurt.<label for="mn-epilogue-dam" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-dam" class="margin-toggle"><span class="marginnote" data-kind="source">The dam, the snowmelt and the mudflow: <a data-cite="asdso-testalinden"></a>, quoting the field investigation in <a data-cite="tannant2015"></a>, which found no rain recorded in the three days before (the province's review, written a month after, spoke of heavy rain). The date, the year built, the toll: <a data-cite="testalinden2010"></a>, pp. 7, 11 and 12.</span></p>
+    <p>None of it surprised the people whose job was to know. The province's files record water seeping near its outlet pipe as early as 1942. By 1960 a road had been built across it, and its spillway, the channel that lets a flood past (<a data-ref="ch-two-dams"></a>), had been filled with earth and a pipe laid through it. In 1977 an inspector wrote that "the dam is in deplorable condition and should, in my (the inspector) opinion, be breached or rebuilt." In 1988 another inspector added, "No attempt has been made to carry out our instructions." The review found warnings going back to the 1960s, and no sign that the repairs were made or that anyone held the owner to them.<label for="mn-epilogue-history" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-history" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="testalinden2010"></a>, pp. 3 and 7–9; the quotations are from the inspections of 1977 and 1988.</span></p>
+    <p>Every fault on that list is in this book: water seeping along a pipe, a spillway too small for a flood, a freeboard of a foot or less. Nothing in the dam's calculations was wrong, because it never had any. What failed was the arrangement around it: inspections and letters, with nobody made to act on them. That arrangement is part of the dam. Here is the dam, and the fall below it, each drawn to its own scale:<label for="mn-epilogue-foot" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-foot" class="margin-toggle"><span class="marginnote" data-kind="source">The foot of freeboard and the 12-inch spillway pipe: <a data-cite="testalinden2010"></a>, p. 8, the letter of 1978.</span></p>
+  </div>
+
+  <figure class="case-plate wide" id="case-testalinden"
+          data-case="Testalinden Dam" data-year="2010" data-where="Testalinden Creek, near Oliver, British Columbia"
+          data-type="Earthfill, 2.5 m" data-mechanism="Overtopping: snowmelt flowed over a crest with almost no freeboard and a spillway reduced to a small pipe, after decades of unheeded repair orders" data-bc="true">
+    <div class="sheet-top"><span class="figno"><b data-num></b> · Case file: Testalinden Dam, 2010</span><span class="scale-note">A: heights to scale, widths schematic · B: heights to scale, distance not to scale</span></div>
+    <div class="case-body">
+      <div class="epi-case-panels">
+        <svg class="dwg" viewBox="0 0 300 204" role="img" aria-label="Panel A: a section through the dam, heights to scale and widths schematic. A low earth bank 2.5 metres high, with a road on its crest, holds a small lake on the left. A dashed line a foot below the crest marks the high water noted in 1978. On 13 June 2010 the lake stands just above the crest and a thin sheet of water runs over the top and down the downstream face. Below the drawing, a circle 30 centimetres across shows the spillway pipe at the same scale.">
+          <text x="6" y="14" class="lbl">A · The dam</text>
+          <polygon points="0,56 115,56 115,60 40,160 0,160" class="water"/>
+          <polygon points="115,56 167,56 165,60 115,60" class="water"/>
+          <path d="M0,56 H167" class="water-line"/>
+          <polygon points="40,160 115,60 165,60 255,160" fill="url(#p-fill)" class="edge"/>
+          <rect x="0" y="160" width="300" height="10" fill="url(#p-alluv)" class="edge"/>
+          <path d="M0,72.2 H105.9" class="water-line" style="stroke-dasharray:4 3"/>
+          <text x="6" y="88" class="lbl-s halo on-water">high water, 1978</text>
+          <path d="M170,63 C190,84 205,104 228,128" class="epi-out" marker-end="url(#arr-acc)"/>
+          <text x="186" y="30" class="lbl-s halo lbl-acc">13 June 2010:</text>
+          <text x="186" y="42" class="lbl-s halo lbl-acc">water over the crest</text>
+          <text x="140" y="30" class="lbl-s halo" text-anchor="middle">crest, a road</text>
+          <path d="M140,34 V55" class="lead"/>
+          <path d="M276,60 V160 M272,60 H280 M272,160 H280" class="dim"/>
+          <text x="290" y="110" class="lbl halo" text-anchor="middle" transform="rotate(-90 290 110)">2.5 m</text>
+          <path d="M12,120 V160 M8,120 H16 M8,160 H16" class="dim"/>
+          <text x="20" y="144" class="lbl-s halo on-water">1 m</text>
+          <circle cx="56" cy="187" r="6.1" class="epi-pipe"/>
+          <text x="70" y="191" class="lbl-s halo">the spillway pipe, 30 cm, same scale</text>
+        </svg>
+        <svg class="dwg" viewBox="0 0 300 204" role="img" aria-label="Panel B: the hillside below the dam, heights to scale and distance not to scale. The dam sits near the summit of Mount Kobau at 1,810 metres; a steep gully falls about 1,500 metres to the floor of the Okanagan valley, where orchards and Highway 97 lie. A red arrow follows the mudflow down the gully. A scale bar shows 500 metres of height.">
+          <text x="6" y="14" class="lbl">B · The fall</text>
+          <path d="M0,28 L24,30 C70,40 110,120 170,165 C200,178 230,180 300,180 L300,196 L0,196 Z" fill="url(#p-fill)" class="edge"/>
+          <path d="M28,26 C74,36 112,112 172,158 C200,170 228,172 258,172" class="epi-out" marker-end="url(#arr-acc)" style="stroke-dasharray:5 3"/>
+          <path d="M27,27 L56,30" class="lead"/>
+          <text x="60" y="34" class="lbl-s halo">the dam, El. 1,810 m</text>
+          <text x="60" y="46" class="lbl-s halo epi-wide-only">2.5 m high: too small to</text>
+          <text x="60" y="58" class="lbl-s halo epi-wide-only">draw at this scale</text>
+          <text x="128" y="104" class="lbl-s halo lbl-acc">the mudflow</text>
+          <path d="M282,64 V114 M278,64 H286 M278,114 H286" class="dim"/>
+          <text x="276" y="92" class="lbl-s halo" text-anchor="end">500 m</text>
+          <text x="296" y="136" class="lbl-s halo" text-anchor="end">about 1,500 m lower:</text>
+          <text x="296" y="148" class="lbl-s halo" text-anchor="end">the valley floor, orchards</text>
+          <text x="296" y="160" class="lbl-s halo" text-anchor="end">and Highway 97</text>
+        </svg>
+      </div>
+      <dl class="case-facts">
+        <dt>Dam</dt><dd>Testalinden Dam, on the upper south fork of Testalinden Creek, Mount Kobau, above the Okanagan valley south of Oliver, British Columbia. Privately owned.</dd>
+        <dt>Built</dt><dd>Finished in 1937 to store irrigation water. A road was built across the dam by 1960, when the spillway was filled with earth and a pipe laid through it.</dd>
+        <dt>Height</dt><dd>About 2.5 m, at El. 1,810 m, about 1,500 m above the valley floor. Full to the crest it held about 29 acre-feet, <span data-n="epi.res-m3" data-n-sig="2">36,000</span> m³.</dd>
+        <dt>Type</dt><dd>Earthfill of silty sand and glacial till, built with horses and a horse-drawn scraper, with no engineering design.</dd>
+        <dt>What happened</dt><dd>On 11 June 2010 a hiker reported the lake running over the road on the crest; the message never reached anyone who knew the road was a dam. On 13 June, at about 2:15 pm, snowmelt flowing over the crest cut through the bank, and the release grew into a mudflow at least ten times its volume.</dd>
+        <dt>Toll</dt><dd>No one hurt. Five homes destroyed or badly damaged, 200 m of Highway 97 buried, about 25 homes evacuated; losses over C$20 million.</dd>
+        <dt>Sources</dt><dd><a data-cite="testalinden2010"></a>, pp. 7–12 and 15; <a data-cite="asdso-testalinden"></a> (height, materials, elevations, volume, how it failed, losses), quoting <a data-cite="tannant2015"></a>. The spillway pipe and the high water of 1978: <a data-cite="testalinden2010"></a>, p. 8.</dd>
+      </dl>
+    </div>
+    <figcaption>
+      <p class="cap"><b>A bank no taller than a room, perched 1,500 m above a valley, failed when the lake ran over its top, after decades of warnings on file.</b> Panel A cuts across the dam with heights to scale and widths drawn for illustration, since its slopes were never published: the lake on the left, the bank with a road along its crest, the dashed high-water line an inspector recorded in 1978, and the <span class="k-acc">brick-red</span> arrow of water running over the crest on 13 June 2010. The circle below is the spillway pipe at the same scale. Panel B draws the hillside below with its heights to scale and its length shortened: at that scale the dam itself would be far thinner than the line of the ground. <span class="cap-n">The numbers to remember: a dam 2.5 m high, and a fall of 1,500 m below it.</span></p>
+      <p class="case-explains"><b>What this chapter explains.</b> A dam's calculations hold it up only while someone keeps it the dam that was calculated. Testalinden had no calculations to keep, and it failed in the half of failures this book has hardly touched: water over the top.</p>
+      <ul class="try">
+        <li>Use panel A's scale bar to read how much freeboard the 1978 high water left. How many spillway pipes, stacked, would reach from the ground to the crest?</li>
+      </ul>
+      <details class="try-ans"><summary>Answers</summary><p>About 0.3 m, a foot. About eight pipes: 2.5 ÷ 0.3 = 8.3.</p></details>
+    </figcaption>
+  </figure>
+
+  <div class="col">
+    <p>Notice how close the dashed line sits to the crest: in 1978 the lake already stood within a foot of the road. Notice too the spillway pipe, a circle you could cover with two hands. The lake was small, about <span data-n="epi.res-m3" data-n-sig="2">36,000</span> m³ full to the crest;<label for="sn-epilogue-acre" class="sn-ref"></label><input type="checkbox" id="sn-epilogue-acre" class="margin-toggle"><span class="sidenote" data-kind="units">An acre-foot is the water that would cover an acre, 4,047 m², one foot deep: 1,233.5 m³. Testalinden held about 29 of them (<a data-cite="asdso-testalinden"></a>).</span> Mount Polley released some <span data-n="epi.polley-ratio" data-n-sig="1">600</span> times as much, at the low estimate. What made it dangerous was the 1,500 m below it.<label for="mn-epilogue-polley" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-polley" class="margin-toggle"><span class="marginnote" data-kind="source">Mount Polley released 21 to 25 million m³: <a data-cite="polley-cim2015"></a>, p. 13.</span></p>
+
+    <h3 id="s-epilogue-half">The other half</h3>
+    <p>Testalinden failed in the commonest way an embankment dam fails: water came over the top. <a data-ref="ch-two-dams"></a> counted the record. Of the large embankment dams that failed in service up to 1986, about a third failed because water poured over the crest, and about half once the failed spillways and gates are counted in.<label for="mn-epilogue-foster" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-foster" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="foster2000"></a>, its table 3, failures in operation: overtopping 34.2%, with spillway and gate failures 47.0%.</span> This book has spent its chapters on the other half, and the title page gives it one sentence:</p>
+    <p class="spine"><i>Soil holds only as well as its grains press on one another, and the water between them can take that press away.</i></p>
+    <p>It carried us from the beach to the workbench, but it does not reach Testalinden. Water running over a crest does not need to take the grains' press away: it drags them off the surface, and each one it takes uncovers the next. So the sentence needs an honest second half:</p>
+    <p class="spine"><i>And water that pours over the top can wash the whole heap away, however hard its grains press.</i></p>
+    <p>Other omissions deserve a line each. Earthquakes do more than liquefy loose sand: shaking can crack a core and settle a crest. The flood a spillway must pass comes from rain and snowmelt records that a changing climate makes harder to trust; one lesson drawn from Testalinden is to recheck the spillways of dams built before those records existed. Arch dams, gates and chutes have mechanics of their own.<label for="mn-epilogue-lessons" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-lessons" class="margin-toggle"><span class="marginnote" data-kind="source">The lessons on floods and old spillways: <a data-cite="asdso-testalinden"></a>.</span></p>
+
+    <h3 id="s-epilogue-watch">Watching the water you painted</h3>
+    <p>For the half this book does cover, the calculation is where a dam's life starts. A real dam's fill is never quite what was sampled, the ground under it was seen only down a few boreholes, and drains silt up over the decades. So engineers build instruments into a dam, and each measures a quantity you have already computed. Here they are on our dam, the workbench's <span data-n="epi.crest-m">24</span> m section on clay with the chimney and blanket drain that <a data-ref="ch-slope"></a> used to dry it; the water level inside it and the slip circle are the solver's:</p>
+  </div>
+
+  <figure class="fig wide" id="fig-epilogue-instruments">
+    <div class="sheet-top"><span class="figno"><b data-num></b> · What a dam's instruments read</span><span class="scale-note">Section to scale · instruments schematic</span></div>
+    <svg class="dwg epi-inst" viewBox="0 44 720 238" role="img" aria-label="Our 24 metre embankment on a clay foundation, drawn to scale, with the reservoir on the left 20.4 metres deep. A chimney drain stands just downstream of the crest and joins a blanket drain along the base to the downstream toe. The dashed water level inside the dam falls from the reservoir into the chimney. A dashed grey arc marks the critical slip surface through the downstream slope. Six numbered instruments: 1, a gauge post in the reservoir; 2, a standpipe piezometer in the upstream half, its water standing below the dashed water level above its tip; 3, survey markers on the crest and the downstream slope; 4, a piezometer in the downstream half just below the slip surface, dry; 5, an inclinometer tube from the downstream slope down through the dam into the foundation, crossing the slip arc; 6, a measuring weir where the blanket drain comes out at the toe.">
+      <rect x="0" y="215" width="720" height="47" fill="url(#p-clay)" class="edge"/>
+      <polygon points="0,113 309,113 105,215 0,215" class="water"/>
+      <path d="M0,113 H309" class="water-line"/>
+      <polygon points="105,215 345,95 375,95 615,215" fill="url(#p-fill)" class="edge"/>
+      <!-- the drain as the solver's cells place it: chimney x 4 to 6 m up to 20 m, blanket 2 m thick to the toe -->
+      <polygon points="380,115 390,115 390,205 595,205 615,215 380,215" fill="url(#p-filter)" class="edge-l"/>
+      <!-- the water level inside the dam, from the solver (bench, preset drained) -->
+      <path d="M309,113 L312.5,120.1 L317.5,125 L322.5,129.6 L327.5,134 L332.5,138.4 L337.5,142.6 L343.7,147.5 L349.7,152.5 L355.5,157.5 L361,162.5 L366.2,167.5 L371.3,172.5 L377.5,179.1" class="phreatic"/>
+      <!-- the critical downstream slip circle, from the solver: centre (57.4, 79.8) m, radius 79.9 m -->
+      <path d="M361.3,95 A399.4,399.4 0 0 0 613,214" class="epi-slip"/>
+      <!-- 1 reservoir gauge post -->
+      <path d="M282,100 V150" class="epi-staff"/>
+      <path d="M282,106 h5 M282,114 h5 M282,122 h5 M282,130 h5 M282,138 h5" class="epi-tick"/>
+      <!-- 2 piezometer A, upstream half: tip 4 m up at x = -8 m; its water at the head there -->
+      <path d="M320,107.5 V194" class="epi-pz"/>
+      <rect x="317" y="193" width="6" height="7" class="epi-tip"/>
+      <path d="M314,152.5 H326" class="water-line"/>
+      <!-- 3 survey markers on the crest and the downstream slope -->
+      <polygon points="360,94 355,86 365,86" class="epi-mon"/>
+      <polygon points="460,136.5 455,128.5 465,128.5" class="epi-mon"/>
+      <polygon points="560,186.5 555,178.5 565,178.5" class="epi-mon"/>
+      <!-- 4 piezometer B, downstream half, tip just below the slip at x = 22 m: dry -->
+      <path d="M470,142.5 V174" class="epi-pz"/>
+      <rect x="467" y="173" width="6" height="7" class="epi-tip"/>
+      <!-- 5 inclinometer casing from the downstream slope into the foundation, at x = 34 m -->
+      <path d="M528,174 V258 M532,172 V258 M528,258 H532" class="epi-incl"/>
+      <!-- 6 measuring weir at the toe, fed by the blanket drain -->
+      <path d="M615,212 H630" class="water-line"/>
+      <polygon points="630,205 662,205 662,215 630,215" class="epi-weirbox"/>
+      <path d="M638,205 L646,213 L654,205" class="epi-notch"/>
+      <polygon points="642,209 646,213 650,209" class="water"/>
+      <!-- numbered marks, with leaders -->
+      <path d="M270,96 L281,104" class="lead"/>
+      <g class="epi-num"><circle cx="262" cy="90" r="9"/><text x="262" y="90" text-anchor="middle" dominant-baseline="central">1</text></g>
+      <path d="M319,73 L320,106" class="lead"/>
+      <g class="epi-num"><circle cx="318" cy="64" r="9"/><text x="318" y="64" text-anchor="middle" dominant-baseline="central">2</text></g>
+      <path d="M386,76 L364,86" class="lead"/>
+      <g class="epi-num"><circle cx="394" cy="72" r="9"/><text x="394" y="72" text-anchor="middle" dominant-baseline="central">3</text></g>
+      <path d="M482,131 L472,142" class="lead"/>
+      <g class="epi-num"><circle cx="488" cy="124" r="9"/><text x="488" y="124" text-anchor="middle" dominant-baseline="central">4</text></g>
+      <path d="M548,158 L533,172" class="lead"/>
+      <g class="epi-num"><circle cx="556" cy="151" r="9"/><text x="556" y="151" text-anchor="middle" dominant-baseline="central">5</text></g>
+      <path d="M676,198 L662,206" class="lead"/>
+      <g class="epi-num"><circle cx="684" cy="192" r="9"/><text x="684" y="192" text-anchor="middle" dominant-baseline="central">6</text></g>
+      <!-- labels, on wide screens only (the key below names them everywhere) -->
+      <text x="250" y="94" class="lbl halo epi-wide-only" text-anchor="end">reservoir level · Ch <tspan data-ref="ch-depth" data-form="num"></tspan></text>
+      <text x="306" y="68" class="lbl halo epi-wide-only" text-anchor="end">piezometer A · Ch <tspan data-ref="ch-head" data-form="num"></tspan></text>
+      <text x="406" y="76" class="lbl halo epi-wide-only">survey markers · Ch <tspan data-ref="ch-trapped" data-form="num"></tspan></text>
+      <text x="500" y="128" class="lbl halo epi-wide-only">piezometer B · Ch <tspan data-ref="ch-slope" data-form="num"></tspan></text>
+      <text x="568" y="155" class="lbl halo epi-wide-only">inclinometer · Ch <tspan data-ref="ch-slope" data-form="num"></tspan></text>
+      <text x="714" y="178" class="lbl halo epi-wide-only" text-anchor="end">weir · Ch <tspan data-ref="ch-seepage" data-form="num"></tspan></text>
+      <text x="8" y="132" class="lbl-s halo on-water lbl-w">reservoir</text>
+      <text x="40" y="244" class="lbl-s halo on-fill">clay foundation</text>
+      <path d="M612,274 H662 M612,270 V278 M662,270 V278" class="dim"/>
+      <text x="606" y="278" class="lbl-s halo" text-anchor="end">10 m</text>
+    </svg>
+    <ol class="epi-key">
+      <li><b>Reservoir level.</b> The depth of water that loads everything else (<a data-ref="ch-depth"></a>). Every other reading is judged against it.</li>
+      <li><b>Piezometer A</b>, in the upstream half. The head at its tip, the level water would climb to in a straw (<a data-ref="ch-head"></a>).</li>
+      <li><b>Survey markers</b> on the crest and slope. How far the surface settles and moves as water leaves the fill and the clay below (<a data-ref="ch-trapped"></a>).</li>
+      <li><b>Piezometer B</b>, a little below the slip surface. The water pressure there, the <var>u</var> in the factor of safety (<a data-ref="ch-slope"></a>). Dry while the drain works.</li>
+      <li><b>Inclinometer.</b> Sideways movement at each depth, so where a slip is running and how fast (<a data-ref="ch-slope"></a>).</li>
+      <li><b>Measuring weir.</b> The leak <var>q</var> (<a data-ref="ch-seepage"></a>), and whether it runs clear (<a data-ref="ch-erosion"></a>).</li>
+    </ol>
+    <figcaption>
+      <p class="cap"><b>Each instrument reads one quantity this book has computed; none reads the factor of safety.</b> The section is the workbench's dam on its clay foundation, to scale, with a chimney drain close downstream of the crest joined to a blanket drain along the base. The dashed <span class="k-water">blue</span> line is the water level inside the dam as the seepage solver finds it, falling from the reservoir into the chimney; the dashed arc is the critical slip circle the stability check finds. The numbered marks are the instruments, named in the key; in a standpipe the short <span class="k-water">blue</span> tick is the level of the water inside it, and piezometer B has none. <span class="cap-n">The number to remember: a rise of <span data-n="epi.rise-m">1.57</span> m in the piezometers along our dam's slip costs it <span data-n="epi.dfs">0.177</span> of its factor of safety (<a data-ref="ex-epilogue-ru"></a>).</span></p>
+      <ul class="try">
+        <li>Piezometer A's water stands below the dashed water level above its tip. Why?</li>
+        <li>Use the scale bar on the inclinometer. How far below the slope's surface would a kink show if the slope began to slide along the arc?</li>
+      </ul>
+      <details class="try-ans"><summary>Answers</summary><p>Here the water flows down toward the drain, losing head as it goes, so the head at A's tip, <span data-n="epi.head-a-m">12.5</span> m above the base, is lower than the water level above it, <span data-n="epi.ph-a-m">17.1</span> m: a piezometer reads the head at its tip, not the water level overhead (<a data-ref="ch-head"></a>). The kink would show where the tube crosses the arc, about <span data-n="epi.incl-depth-m">5.1</span> m below the surface.</p></details>
+    </figcaption>
+  </figure>
+
+  <div class="col">
+    <p>Notice that each instrument reads an ingredient of a calculation. A <span class="gl" data-term="piezometer">piezometer</span> is the straw of <a data-ref="fig-head-straws"></a> made permanent: it reads the water pressure <var>u</var> at one point, as the bars along the slip surface did in <a data-ref="fig-build"></a>. The <span class="gl" data-term="measuring-weir">measuring weir</span> reads the leak of <a data-ref="fig-lab"></a>. The <span class="gl" data-term="inclinometer">inclinometer</span>, a grooved tube down which a probe measures the tilt, shows where the ground is moving sideways, and at what depth. No instrument reads the factor of safety: it exists only in the calculation, and the readings are what engineers feed it.</p>
+    <p>So the question an engineer asks of a rising piezometer is how much safety it costs. For our dam, <a data-ref="ch-slope"></a> has supplied what is needed: on its critical circle the factor of safety is <span data-n="bench.fos">1.116</span>, the water carries <span data-n="bench.ru">0.353</span> of the slices' weight (the ratio engineers call <var>r</var><sub>u</sub>), and the same circle without water stands at <span data-n="bench.fos-nowater">1.741</span>. In 1960 Alan Bishop and Norbert Morgenstern showed that for a given slope the factor of safety falls very nearly in a straight line as <var>r</var><sub>u</sub> grows:<label for="sn-epilogue-morgenstern" class="sn-ref"></label><input type="checkbox" id="sn-epilogue-morgenstern" class="margin-toggle"><span class="sidenote" data-kind="history">The Morgenstern of that paper (<a data-cite="bishop-morgenstern1960"></a>) is Norbert Morgenstern, who fifty-five years later chaired the panel that investigated Mount Polley (<a data-cite="polley2015"></a>, p. i).</span></p>
+    <div class="eq" id="eq-epilogue-ru"><span class="eq-body"><var>FS</var> ≈ <var>FS</var><sub>0</sub> − <var>n</var> · <var>r</var><sub>u</sub></span><span class="eq-no" data-num></span></div>
+    <p class="eq-where"><var>FS</var><sub>0</sub> the factor of safety with no water pressure · <var>r</var><sub>u</sub> the share of the slices' weight the water carries, Σ<var>u</var>·<var>b</var> ÷ Σ<var>W</var> · <var>n</var> the safety each unit of <var>r</var><sub>u</sub> costs, set by the slope's shape and soil<label for="sn-epilogue-line" class="sn-ref"></label><input type="checkbox" id="sn-epilogue-line" class="margin-toggle"><span class="sidenote" data-kind="curious">Why nearly straight: in Bishop's sum the water enters only by taking <var>u</var>·<var>b</var> off each slice's weight before friction acts. If every slice lost the same share of its weight, the grip, and with it the factor of safety, would fall in a straight line as that share grew, except that the factor of safety also sits inside each slice's <var>m</var><sub>α</sub>. That small feedback bends the line slightly.</span></p>
+
+    <section class="we" id="ex-epilogue-ru">
+      <header class="we-head">
+        <p class="we-k" data-num></p>
+        <p class="we-t">What a rising piezometer costs (illustrative)</p>
+      </header>
+      <dl class="we-gf">
+        <dt>Given</dt><dd>Our dam on clay, as <a data-ref="ch-slope"></a> left it: <var>FS</var> = <span data-n="bench.fos">1.116</span> with <var>r</var><sub>u</sub> = <span data-n="bench.ru">0.353</span>, and <var>FS</var><sub>0</sub> = <span data-n="bench.fos-nowater">1.741</span> on the same circle with no water. The slices on that circle weigh, on average, <span data-n="epi.wb-kpa">154.1</span> kN for each square metre of their bases. A metre of water in a piezometer is <span data-n="const.gw">9.81</span> kPa.</dd>
+        <dt>Find</dt><dd>The safety lost for each 0.1 added to <var>r</var><sub>u</sub>, and the rise in the piezometers along the slip that adds it.</dd>
+        <dt>The idea</dt><dd>Draw the line of <a data-ref="eq-epilogue-ru"></a> through the two points. Raising the water pressure on every slice by the same amount adds that amount, divided by the slices' weight per square metre, to <var>r</var><sub>u</sub>.</dd>
+      </dl>
+      <ol class="we-steps">
+        <li><span class="we-eq"><span data-n="bench.fos-nowater">1.741</span> − <span data-n="bench.fos">1.116</span> = <span data-n="epi.fs-drop">0.625</span></span><span class="why">the safety the water takes, at <var>r</var><sub>u</sub> = <span data-n="bench.ru">0.353</span></span></li>
+        <li><span class="we-eq"><var>n</var> = <span data-n="epi.fs-drop">0.625</span> ÷ <span data-n="bench.ru">0.353</span> = <span data-n="epi.n">1.77</span></span><span class="why">the slope of the line: safety lost per unit of <var>r</var><sub>u</sub></span></li>
+        <li><span class="we-eq"><span data-n="epi.n">1.77</span> × 0.1 = <span data-n="epi.dfs">0.177</span></span><span class="why">lost when <var>r</var><sub>u</sub> rises by a tenth</span></li>
+        <li><span class="we-eq">Δ<var>u</var> = 0.1 × <span data-n="epi.wb-kpa">154.1</span> = <span data-n="epi.du-kpa">15.41</span> kPa</span><span class="why">the extra water pressure that carries another tenth of the slices' weight</span></li>
+        <li><span class="we-eq"><span data-n="epi.du-kpa">15.41</span> ÷ <span data-n="const.gw">9.81</span> = <span data-n="epi.rise-m">1.57</span> m</span><span class="why">the same rise as a height of water in a piezometer</span></li>
+      </ol>
+      <p class="we-ans">A rise of about <span data-n="epi.rise-m">1.6</span> m in the piezometers along the slip costs our dam about <span data-n="epi.dfs">0.18</span> of its factor of safety.</p>
+      <p class="we-check"><b>Check.</b> Do it without the straight line. Rerun Bishop's sum on the same circle with every slice's water pressure <span data-n="epi.du-kpa">15.41</span> kPa higher: the solver's slices give <span data-n="epi.fs-rise">0.943</span>, against <span class="m"><span data-n="bench.fos">1.116</span> − <span data-n="epi.dfs">0.177</span> = <span data-n="epi.fs-line">0.939</span></span> from the line. The two agree to the second decimal.</p>
+      <p class="we-means"><b>What it means.</b> A dam like ours designed to 1.5 holds 0.5 above failure, and a season's rise of a metre and a half in its piezometers would spend more than a third of that. Our dam, at <span data-n="bench.fos">1.116</span>, would go below 1. So an engineer watches each piezometer's trend against the reservoir, and decides in advance the reading at which something must be done.</p>
+      <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"free","bd-presets":"homogeneous","bd-found":"clay","bd-cut":"none","bd-slope":"2","bd-res":85}}'>Set the figure</button> Then press <b>Test my dam</b>.</p>
+    </section>
+
+    <details class="check">
+      <summary><span class="check-k">Check yourself</span> Over a summer the reservoir behind our drained dam rises 3 m, and piezometer B stays dry. Good news or bad?</summary>
+      <p>Good news. The drain is carrying the extra water away before it can build pressure in the downstream half. Water appearing in B, and climbing with the reservoir, would mean the drain was not keeping up.</p>
+    </details>
+
+    <h3 id="s-epilogue-peck">Peck's bargain</h3>
+    <p>Most people take a dam that has stood for decades as proof that it is safe. Testalinden stood for seventy-three years and Mount Polley for eighteen, and both failed. Instruments let an engineer do better than wait. Ralph Peck, Terzaghi's co-author, set out the approach in his Rankine Lecture of 1969: the <span class="gl" data-term="observational-method">observational method</span>. You design for the ground you think most likely, and before you build you decide what you will measure, what readings would mean the ground is worse than you assumed, and what you will do then. It is a bargain with ignorance: you need not know everything about the ground at the start, provided it tells you in time and you have a response ready.<label for="mn-epilogue-peck" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-peck" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="peck1969"></a>; the method as the tailings standard defines it, citing Peck: <a data-cite="gistm2020"></a>, glossary. Peck and Terzaghi wrote <a data-cite="terzaghi-peck-mesri1996"></a> together.</span></p>
+    <p>Both conditions failed at Mount Polley, though its designers had invoked the method from the start. Its few instruments stood beyond the toe, because the steep slope could not be reached, and too far apart to cover the place where it broke. More fundamentally, as the panel wrote, "piezometers cannot measure pore pressures induced by undrained shearing because the location of the failure surface on which to measure them cannot be known in advance." Had they warned, there was no way to build a buttress in time. With the undrained failure never recognized, the panel concluded, the method had been reduced to "mere trial and error".<label for="mn-epilogue-panel" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-panel" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, p. 77 (the method, the instruments' reach, the quotation, no time to respond), p. 80 (no instruments near the breach) and p. 107 (trial and error).</span></p>
+    <p>The lesson is now in the international standard for tailings facilities, published in 2020. It asks for the observational method in full for failures that are not brittle, and adds: "Brittle failure modes are addressed by conservative design criteria." A brittle failure, like that of Mount Polley's clay sheared too fast for its water to get out (<a data-ref="ch-trapped"></a>), gives little warning: the soil loses strength once it starts to move. Against it, the only defence is margin built in before anyone is watching.<label for="mn-epilogue-gistm" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-gistm" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="gistm2020"></a>, Requirement 7.2.</span></p>
+
+    <details class="check">
+      <summary><span class="check-k">Check yourself</span> Why would even a piezometer on the slip surface give little warning of an undrained failure?</summary>
+      <p>The pressure that weakens the soil appears only as it shears. By the time the piezometer reads it, the slip is already under way, and a soil that loses strength as it moves leaves no time to respond.</p>
+    </details>
+
+    <h3 id="s-epilogue-law">The law around the dam</h3>
+    <p>An instrument nobody reads, or a reading nobody acts on, does nothing, and Testalinden had warnings on file for decades. Closing that gap is what regulation is for. In British Columbia a water dam answers to the Dam Safety Regulation, and a dam on a mine to Part 10 of the Health, Safety and Reclamation Code for Mines. Both have been rewritten since these two failures.</p>
+    <p>In 2010 Testalinden was rated "Low", which meant an audit about once in ten years; within two weeks of the failure the province had assessed 628 dams. The regulation of 2016 sorts dams into the Canadian Dam Association's five <span class="gl" data-term="consequence-class">consequence classes</span>, from low to extreme, by what a failure would do downstream, to lives, property and the environment. The class, not the dam's height, sets the duties. A dam of high consequence or above is checked on site weekly unless its manual says otherwise, inspected formally at least once a year, run from a written manual with an emergency plan, and given a <span class="gl" data-term="dam-safety-review">dam safety review</span> by an engineer every seven or ten years. Under today's scale Testalinden would have been significant, not low.<label for="mn-epilogue-dsr" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-dsr" class="margin-toggle"><span class="marginnote" data-kind="source">The rating and the 628 dams: <a data-cite="testalinden2010"></a>, p. 15. The class today, and the match with the Canadian Dam Association: <a data-cite="asdso-testalinden"></a>. The classes and duties: <a data-cite="bc-dsr2016"></a>, Schedules 1 and 2, ss. 8, 9 and 20.</span></p>
+    <p>Mount Polley rewrote the mining code. In July 2016 the province announced limits on the steepness of a tailings dam's downstream slope, a minimum factor of safety, flood and earthquake criteria, and an independent review board for every mine with a tailings facility. Every tailings facility and dam on a mine has an <span class="gl" data-term="engineer-of-record">engineer of record</span>, and if that engineer reports a safety problem the mine leaves unfixed, the manager must tell the chief inspector within 72 hours, or the engineer must. Some rules read like the panel's findings turned round. A downstream slope steeper than 2H:1V (two across for every one up) needs the engineer of record's justification and the regulator's approval; Mount Polley's stood at 1.3H:1V, and the panel found that a 2:1 slope would have avoided the failure. The factor of safety in operation must be at least 1.5. And the facility's manual must say what is to be done as readings worsen, where the piezometers of Mount Polley's failed embankment had no trigger levels at all.<label for="mn-epilogue-code" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-code" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="bc-mem2016"></a>; <a data-cite="bc-hsrc-part10"></a>, ss. 10.4.1, 10.4.3, 10.4.4, 10.5.8, 10.5.9 and its table 10-5, and 10.6.6. The slope: <a data-cite="polley2015"></a>, p. iii; no trigger levels, p. 79.</span></p>
+    <p>The same ideas now cross borders. The Global Industry Standard on Tailings Management of August 2020 asks every operator that adopts it for an engineer of record, an accountable executive answering to the chief executive and, where a failure would be very high or extreme in consequence, an independent tailings review board. None of it makes a dam safe by itself. It puts named people and outside reviewers where Testalinden had letters in a file.<label for="mn-epilogue-gistm2" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-epilogue-gistm2" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="gistm2020"></a>, Requirements 8.4, 8.7 and 9.1.</span></p>
+
+    <details class="check">
+      <summary><span class="check-k">Check yourself</span> Two earth dams are each 10 m high. One holds a farm pond above an empty valley; the other holds the same pond above a town. Which needs the more frequent review?</summary>
+      <p>The one above the town. The consequence class, which sets how often a dam is inspected and reviewed, follows what its failure would do downstream, not its size.</p>
+    </details>
+  </div>
+
+  <section class="ch-end col" aria-label="End of the Epilogue">
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>Grains pressing on one another, and the water between them taking that press away, explain about half the ways embankment dams fail. Water pouring over the top explains most of the other half.</li>
+        <li>Instruments read the ingredients of the calculation: piezometers read <var>u</var>, weirs read <var>q</var>, inclinometers find the slip. Nothing reads the factor of safety itself.</li>
+        <li>For our dam each tenth added to <var>r</var><sub>u</sub>, about a metre and a half of water in the piezometers along the slip, costs about <span data-n="epi.dfs">0.18</span> of the factor of safety.</li>
+        <li>The observational method works when a failure gives warning and there is time to act. An undrained, brittle failure gives neither, so it must be met with margin in the design.</li>
+        <li>Regulation is part of the dam: a class set by what lies downstream, a named engineer, reviews, and readings with actions attached to them.</li>
+      </ul>
+    </div>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-epilogue-testalinden" data-tag="case" data-level="2">
+          <p>Inspectors visited Testalinden in 1961, 1977, 1978, 1985, 1988 and 1992. List what they found. Which of those faults would a yearly walk along the crest still have shown in 2010, and what would it have taken to prevent the failure?</p>
+          <details class="q-hint"><summary>Hint</summary><p>The opening pages and the case file name most of the faults. Then ask what the inspections lacked, not what they missed.</p></details>
+          <div class="q-answer"><p>A spillway reduced to a 12-inch pipe under a road; water rising to within a foot of the crest, so almost no freeboard; seepage near the outlet pipe; an outlet valve nobody could reach, so the lake could not be let down. A walk along the crest would have shown nearly all of them, as the inspections did. What was missing was action: an owner obliged to repair the dam, lower the lake or breach the bank as the letter of 1978 asked, and a regulator able to make that happen; a rating that matched what lay below; and a sign on the dam, so the hiker's report would have said "dam" and not "road". The review's twelve recommendations included the signs and a stronger regulation (<a data-cite="testalinden2010"></a>, pp. 4–5 and 7–8).</p></div>
+        </li>
+        <li class="q" id="q-epilogue-code" data-tag="case" data-level="2">
+          <p>Name three things British Columbia's mining code requires today, and for each say which part of the Mount Polley failure it answers.</p>
+          <details class="q-hint"><summary>Hint</summary><p><a data-ref="ch-build"></a> found a layer nobody had looked for, a steep downstream face and a design checked only against slow loading. Add what the instruments lacked.</p></details>
+          <div class="q-answer"><p>Any three of these. A downstream slope steeper than 2H:1V needs the engineer of record's justification and approval before it is built: Mount Polley's face stood at 1.3H:1V, and the panel found 2:1 would have held. A minimum factor of safety of 1.5 in operation: the design target had been 1.3. An operating manual with trigger levels and the actions they call for: the failed embankment's piezometers had none. An engineer of record who must report unfixed safety problems, reaching the chief inspector within 72 hours. An independent review board, and an independent dam safety review every five years. The guidelines for investigating the ground under tailings dams, published alongside the code changes in 2016, answer the layer nobody found (<a data-cite="bc-mem2016"></a>; <a data-cite="bc-hsrc-part10"></a>; <a data-cite="polley2015"></a>, pp. iii, 64 and 79).</p></div>
+        </li>
+        <li class="q" id="q-epilogue-alarm" data-tag="reckon" data-level="3">
+          <p>The drained version of our dam (Fill + drain in <a data-ref="fig-build"></a>) stands at <span data-n="bench.fos@preset=drained">1.628</span>. Its engineer of record wants an alarm before it falls to 1.5. Using the straight line with our dam's <var>n</var> = <span data-n="epi.n">1.77</span>, and the drained circle's average weight of <span data-n="epi.wb-kpa@preset=drained">83.4</span> kN per square metre of base, how far may the piezometers along its slip rise?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Run <a data-ref="ex-epilogue-ru"></a> backwards: margin, then <var>r</var><sub>u</sub>, then kPa, then metres of water.</p></details>
+          <div class="q-answer"><p>The margin is <span class="m"><span data-n="bench.fos@preset=drained">1.628</span> − 1.5 = <span data-n="epi.alarm-dfs">0.128</span></span>. As <var>r</var><sub>u</sub>: <span class="m"><span data-n="epi.alarm-dfs">0.128</span> ÷ <span data-n="epi.n">1.77</span> = <span data-n="epi.alarm-dru">0.0723</span></span>. As water pressure: <span class="m"><span data-n="epi.alarm-dru">0.0723</span> × <span data-n="epi.wb-kpa@preset=drained">83.4</span> = <span data-n="epi.alarm-du">6.03</span> kPa</span>. As head: <span class="m"><span data-n="epi.alarm-du">6.03</span> ÷ <span data-n="const.gw">9.81</span> = <span data-n="epi.alarm-m">0.61</span> m</span>. Bishop's full sum on the drained circle gives <span data-n="epi.alarm-m-full">0.64</span> m. The alarm sits about two-thirds of a metre above today's reading. The drained dam's critical circle is shallower than the homogeneous dam's, so the same metre of water carries a larger share of its slices' weight.</p></div>
+        </li>
+        <li class="q" id="q-epilogue-wet" data-tag="explore" data-level="2">
+          <p>A wet spring fills our dam's reservoir from 85% to 95% of its height. Set the workbench to the homogeneous dam on clay at 95% and test it. How far up the downstream slope does the water break out, how much does the dam leak, and what is its factor of safety? Which instruments in <a data-ref="fig-epilogue-instruments"></a> would show the change?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"free","bd-presets":"homogeneous","bd-found":"clay","bd-cut":"none","bd-slope":"2","bd-res":95}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>At 85% the water breaks out <span data-n="bench.face-m">8</span> m up, the dam leaks <span data-n="bench.q-lday">44.4</span> L/day per metre, and its factor of safety is <span data-n="bench.fos">1.12</span>.</p></details>
+          <div class="q-answer"><p>With <span data-n="lab.res-m@res=0.95">22.8</span> m of water the seepage breaks out <span data-n="bench.face-m@res=0.95">11</span> m up the slope instead of <span data-n="bench.face-m">8</span>, the leak rises from <span data-n="bench.q-lday">44.4</span> to <span data-n="bench.q-lday@res=0.95">58.1</span> L/day per metre, and the factor of safety falls from <span data-n="bench.fos">1.12</span> to <span data-n="bench.fos@res=0.95">1.02</span>. Piezometers in the downstream half would rise, the weir would read more, and anyone walking the slope would see the wet patch climb. Each change is read against the reservoir gauge, which is how an engineer tells a dam obeying Darcy's law from a dam whose drains are failing.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="testalinden2010"></cite> <span class="level">gentle</span> Eighteen pages: the dam's history from 1937 in the inspectors' own words, the warning that went to the wrong office, and twelve recommendations, almost all about people and paper rather than soil.</li>
+        <li><cite data-cite="polley2015"></cite> <span class="level">serious</span> Section 5.5 and the pages before it: what the instruments at Mount Polley could and could not see, and why the panel judged that the observational method had failed there. Free from the panel's website.</li>
+        <li><cite data-cite="peck1969"></cite> <span class="level">primary source</span> Peck's Rankine Lecture on the observational method: what it needs to work and, as its title promises, its limits as well as its advantages. Free to read from the Institution of Civil Engineers.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"></nav>
+  </section>
+
+  <div class="col epi-last">
+    <p><span class="newthought">Go back to the beach</span> where this book began, on an evening when the tide is coming in. The sea covers the firm, dark middle of the beach, and the sand there, already full of water, hardly changes. Then it reaches the castle you built from damp sand, whose walls stood straight up, held by the water clinging where the grains touch (<a data-ref="ch-beach"></a>). The first wave fills every gap, the pull is gone, and the walls slump into a low heap. The grains are the same grains; only the water has changed.</p>
+    <p>Pick up a handful before the next wave comes in: grains pressing on one another, and the water between them. Every earth dam in this book was made of that, and so is the ground under every dam you will ever stand on.</p>
+  </div>
 </section>

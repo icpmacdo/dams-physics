@@ -1,0 +1,138 @@
+{
+  "testalinden2010": {
+    "group": "reports",
+    "short": "Morhart (2010)",
+    "authors": "Morhart, D.",
+    "year": "2010",
+    "title": "Review of the Testalinden Dam Failure",
+    "container": "Victoria: Province of British Columbia, Deputy Solicitor General, 13 July 2010",
+    "doi": null,
+    "url": "https://damfailures.org/sites/default/files/wp-pdf/testalinden_slide_failure_review.pdf",
+    "note": "Pp. 7–9: the dam’s history from 1937 and the warnings; p. 10: the hiker’s report; pp. 11–12: the breach and the response; pp. 14–15: BC’s dam safety program and the dam’s Low rating; pp. 4–5: twelve recommendations."
+  },
+  "asdso-testalinden": {
+    "group": "web",
+    "short": "ASDSO, Testalinden case study",
+    "authors": "Association of State Dam Safety Officials",
+    "year": null,
+    "title": "Testalinden Dam (British Columbia, 2010)",
+    "container": "Case study, Lessons Learned from Dam Incidents and Failures (damfailures.org); peer-reviewed by M. Noseworthy, BC Ministry of Forests, Lands, Natural Resource Operations and Rural Development",
+    "doi": null,
+    "url": "https://damfailures.org/case-study/testalinden-dam-british-columbia-2010/",
+    "note": "Height 2.5 m, silty sand and glacial till built with horses and a Fresno scraper, no engineering design; El. 1,810 m, about 1,500 m above the valley; about 29 acre-feet at the top of the crest; snowmelt overflow scoured through the crest (quoting Tannant 2015); mudflow at least an order of magnitude larger than the water released; losses over C$20 million; 1,132 of 1,900 registered dams assessed; Low in 2010, Significant under the regulation as amended in 2021."
+  },
+  "tannant2015": {
+    "group": "papers",
+    "short": "Tannant (2015)",
+    "authors": "Tannant, D.D.",
+    "year": "2015",
+    "title": "Changes to dam safety management in British Columbia triggered by failure of a small earth dam",
+    "container": "Georisk: Assessment and Management of Risk for Engineered Systems and Geohazards 9(3): 148–157",
+    "doi": "10.1080/17499518.2015.1055278",
+    "url": null,
+    "note": "Cited here for its field investigation of the breach, as quoted in the ASDSO case study."
+  },
+  "peck1969": {
+    "group": "papers",
+    "short": "Peck (1969)",
+    "authors": "Peck, R.B.",
+    "year": "1969",
+    "title": "Advantages and limitations of the observational method in applied soil mechanics",
+    "container": "Géotechnique 19(2): 171–187",
+    "doi": "10.1680/geot.1969.19.2.171",
+    "url": null
+  },
+  "bc-mem2016": {
+    "group": "bc-law",
+    "short": "BC Ministry of Energy and Mines (2016)",
+    "authors": "British Columbia, Ministry of Energy and Mines",
+    "year": "2016",
+    "title": "B.C. completes implementation of all independent panel recommendations",
+    "container": "News release 2016MEM0017-001317, 20 July 2016",
+    "doi": null,
+    "url": "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/mineral-exploration-mining/documents/health-and-safety/code-review/2016mem0017-001317.pdf",
+    "note": "The mining code changes after Mount Polley: downstream slope steepness, minimum static factor of safety, seismic and flood criteria, water balance and water management plans, Independent Tailings Review Boards; APEGBC site characterization guidelines for tailings dams."
+  },
+  "polley2015": {
+    "group": "reports",
+    "short": "Mount Polley Review Panel (2015)",
+    "authors": "Independent Expert Engineering Investigation and Review Panel",
+    "year": "2015",
+    "title": "Report on Mount Polley Tailings Storage Facility Breach",
+    "container": "Province of British Columbia, January 2015",
+    "doi": null,
+    "url": "https://www.mountpolleyreviewpanel.ca/sites/default/files/report/ReportonMountPolleyTailingsStorageFacilityBreach.pdf"
+  },
+  "foster2000": {
+    "group": "papers",
+    "short": "Foster, Fell & Spannagle (2000)",
+    "authors": "Foster, M., Fell, R., Spannagle, M.",
+    "year": "2000",
+    "title": "The statistics of embankment dam failures and accidents",
+    "container": "Canadian Geotechnical Journal 37(5): 1000–1024",
+    "doi": "10.1139/t00-030",
+    "url": null
+  },
+  "terzaghi-peck-mesri1996": {
+    "group": "books",
+    "short": "Terzaghi, Peck & Mesri (1996)",
+    "authors": "Terzaghi, K., Peck, R.B., Mesri, G.",
+    "year": "1996",
+    "title": "Soil Mechanics in Engineering Practice, 3rd ed.",
+    "container": "New York: Wiley",
+    "doi": null,
+    "url": null
+  },
+  "gistm2020": {
+    "group": "standards",
+    "short": "GISTM (2020)",
+    "authors": "International Council on Mining and Metals, United Nations Environment Programme and Principles for Responsible Investment",
+    "year": "2020",
+    "title": "Global Industry Standard on Tailings Management",
+    "container": "August 2020",
+    "doi": null,
+    "url": null
+  },
+  "bc-dsr2016": {
+    "group": "bc-law",
+    "short": "Dam Safety Regulation (2016)",
+    "authors": "British Columbia",
+    "year": "2016",
+    "title": "Dam Safety Regulation, B.C. Reg. 40/2016",
+    "container": "Under the Water Sustainability Act; deposited and effective 29 February 2016",
+    "doi": null,
+    "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/40_2016",
+    "note": "Applies to dams that store or divert water; dams under 7.5 m high holding no more than 10,000 m³ are excluded unless ordered otherwise."
+  },
+  "bc-hsrc-part10": {
+    "group": "bc-law",
+    "short": "Mines Code, Part 10",
+    "authors": "British Columbia, Ministry of Mining and Critical Minerals",
+    "year": "2026",
+    "title": "Health, Safety and Reclamation Code for Mines in British Columbia, Part 10: Permitting, Reclamation and Closure",
+    "container": "Victoria, revised June 2026",
+    "doi": null,
+    "url": "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/mineral-exploration-mining/documents/health-and-safety/code-review/minescode_june_2026.pdf",
+    "note": "Section 10.4.1: an engineer of record for each tailings storage facility and dam. Section 10.4.3: an Independent Tailings Review Board for a mine with one or more tailings storage facilities, unless the chief inspector exempts it."
+  },
+  "bishop-morgenstern1960": {
+    "group": "papers",
+    "short": "Bishop & Morgenstern (1960)",
+    "authors": "Bishop, A.W., Morgenstern, N.",
+    "year": "1960",
+    "title": "Stability coefficients for earth slopes",
+    "container": "Géotechnique 10(4): 129–153",
+    "doi": "10.1680/geot.1960.10.4.129",
+    "url": null
+  },
+  "polley-cim2015": {
+    "group": "reports",
+    "short": "Chief Inspector of Mines (2015)",
+    "authors": "Chief Inspector of Mines",
+    "year": "2015",
+    "title": "Mount Polley Mine Tailings Storage Facility Breach, August 4, 2014: Investigation Report of the Chief Inspector of Mines",
+    "container": "BC Ministry of Energy and Mines, 30 November 2015",
+    "doi": null,
+    "url": "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/mineral-exploration-mining/documents/directives-alerts-incidents/chief-inspector-s-report-page/m-200_mount_polley_2015-11-30_ci_investigation_report.pdf"
+  }
+}

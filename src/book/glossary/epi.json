@@ -1,0 +1,33 @@
+{
+  "observational-method": [
+    "Observational method",
+    "A way of building on ground that cannot be fully known in advance: design for the most probable conditions, decide beforehand what to measure, what readings would mean the ground is worse than assumed and what to do then, and change the work as the readings come in. It suits failures that give warning in time to act, not sudden, brittle ones."
+  ],
+  "engineer-of-record": [
+    "Engineer of record",
+    "The professional engineer who answers for a dam's design and performance: who confirms it is built and behaves as designed, and who must report safety problems the owner leaves unfixed. British Columbia's mining code requires one for every tailings facility and dam on a mine."
+  ],
+  "consequence-class": [
+    "Consequence class",
+    "A dam's rating by what its failure would do downstream, to lives, property and the environment, not by its size. British Columbia's water dams are sorted into five classes, from low to extreme, and the class sets how often a dam is inspected and reviewed."
+  ],
+  "dam-safety-review": [
+    "Dam safety review",
+    "A periodic, systematic check of an existing dam by an engineer: its design, condition, records and instruments, and what its failure would do, judged against today's standards. Required every five to ten years for the dams whose failure would matter most."
+  ],
+  "inclinometer": [
+    "Inclinometer",
+    "A grooved tube set in a borehole through a dam or slope into firm ground, down which a probe is lowered to measure the tube's tilt at depth after depth. Added up, the tilts give the tube's shape, and a kink that grows shows where, and how fast, the ground is moving sideways."
+  ],
+  "measuring-weir": [
+    "Measuring weir",
+    "A plate with a notch, often a V, set across a channel that collects a dam's seepage. The depth of water over the notch gives the flow, so one reading of a ruler becomes litres a second."
+  ],
+  "piezometer": {
+    "replace": true,
+    "entry": [
+      "Piezometer",
+      "An instrument sealed at one point in the ground or in a dam that reads the water pressure there, and so the head. The simplest is an open tube, a standpipe, in which water rises to the head at its tip; most dams now also use electric sensors that read the pressure directly."
+    ]
+  }
+}

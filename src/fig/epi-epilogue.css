@@ -1,0 +1,56 @@
+/* The Epilogue's static figures (book/SPEC.md F.10, F.12). Label sizes go through --fs so the floor in
+   styles-book.css can lift them on a phone; narrow-screen rules are screen-only so paper keeps the laptop
+   layout (A.10). */
+#epilogue p.spine { font-family: var(--f-body); font-size: 1.12em; line-height: 1.45; margin: 1.1em 0 1.2em; padding-left: 1em; border-left: 2px solid var(--rule); color: var(--ink); }
+
+/* the case plate: two panels side by side, stacked on a phone */
+#case-testalinden .epi-case-panels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 18px; }
+#case-testalinden svg.dwg { display: block; width: 100%; height: auto; }
+#case-testalinden svg.dwg text { --fs: 12px; }
+#case-testalinden svg.dwg .lbl-s { --fs: 11px; }
+.dwg .epi-out { stroke: var(--accent); stroke-width: 1.6; fill: none; }
+.dwg .epi-pipe { fill: none; stroke: var(--ink); stroke-width: 1.2; }
+@media screen and (max-width: 599px) {
+  #case-testalinden .epi-case-panels { grid-template-columns: minmax(0, 1fr); }
+}
+/* on a laptop the fact block is taller than the drawing: let the caption rise beside it (as Coquitlam's) */
+@media screen and (min-width: 1100px) {
+  #case-testalinden { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); column-gap: var(--gap); grid-template-rows: auto auto 1fr; align-items: start; }
+  #case-testalinden > .sheet-top { grid-column: 1 / -1; }
+  #case-testalinden > .case-body { display: contents; }
+  #case-testalinden > .case-body > .epi-case-panels { grid-column: 1; grid-row: 2; }
+  #case-testalinden > .case-body > dl.case-facts { grid-column: 2; grid-row: 2 / span 2; }
+  #case-testalinden > figcaption { grid-column: 1; grid-row: 3; }
+}
+
+/* the instruments: the section, the numbered marks, then the key */
+#fig-epilogue-instruments svg.dwg { display: block; width: 100%; max-width: 900px; height: auto; margin-inline: auto; }
+#fig-epilogue-instruments svg.dwg text { --fs: 12.5px; }
+#fig-epilogue-instruments svg.dwg .lbl-s { --fs: 11px; }
+.dwg .epi-slip { stroke: var(--ink-3); stroke-width: 1.4; stroke-dasharray: 6 4; fill: none; }
+.dwg .epi-pz { stroke: var(--ink); stroke-width: 2.2; fill: none; }
+.dwg .epi-tip { fill: var(--ink); }
+.dwg .epi-staff { stroke: var(--ink); stroke-width: 2; fill: none; }
+.dwg .epi-tick { stroke: var(--ink); stroke-width: 1; fill: none; }
+.dwg .epi-mon { fill: var(--ink); }
+.dwg .epi-incl { stroke: var(--ink); stroke-width: 1.4; fill: none; }
+.dwg .epi-weirbox { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+.dwg .epi-notch { stroke: var(--ink); stroke-width: 1.2; fill: none; }
+.dwg .epi-num circle { fill: var(--paper); stroke: var(--ink); stroke-width: 1.2; }
+#fig-epilogue-instruments svg.dwg .epi-num text { --fs: 12px; font-family: var(--f-label); font-weight: 700; fill: var(--ink); }
+#fig-epilogue-instruments ol.epi-key { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 26px; max-width: 900px; margin: 10px auto 0; padding-left: 1.6em;
+  font-family: var(--f-label); font-size: 0.82rem; line-height: 1.4; color: var(--ink-2); }
+#fig-epilogue-instruments ol.epi-key li { padding-left: 0.2em; }
+#fig-epilogue-instruments ol.epi-key b { color: var(--ink); font-weight: 600; }
+@media screen and (max-width: 759px) {
+  .dwg .epi-wide-only { display: none; }
+  .dwg .epi-num circle { r: 15px; }
+  #fig-epilogue-instruments svg.dwg .epi-num text { --fs: 20px; }
+  #fig-epilogue-instruments ol.epi-key { grid-template-columns: minmax(0, 1fr); }
+}
+@media screen and (max-width: 599px) {
+  #case-testalinden svg.dwg .epi-wide-only { display: none; }
+}
+
+/* the last page: the beach, set a little apart */
+#epilogue .epi-last { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
