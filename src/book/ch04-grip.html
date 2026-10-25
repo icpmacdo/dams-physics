@@ -1,26 +1,47 @@
 <section class="chapter" id="ch-grip">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.5): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <blockquote class="epigraph">
+      <p>All the measurable effects of a change of the stress, such as compression, distortion and a change of the shearing resistance are exclusively due to changes in the effective stresses.</p>
+      <footer>Karl Terzaghi, <a data-cite="terzaghi1936">The shearing resistance of saturated soils</a>, 1936</footer>
+    </blockquote>
+    <p class="so-far"><b>So far.</b> Still water presses harder the deeper you go, and water in the ground flows from high head to low, dragging on the grains it passes. <a data-ref="ch-head"></a> ended on a cubic metre of soaked sand that flowing water could nearly float. This chapter puts the water and the grains together.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>work out the factor of safety of a block on a ramp, with and without water under it;</li>
+        <li>apply σ′ = σ − u to a column of soil, and say why a lake on top changes nothing;</li>
+        <li>derive the critical gradient, and the steepest face a sand can hold dry, under still water and with water seeping out of it.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.5): the misconception that water makes sand slippery, and two refutations. -->
-    </div>
+
     <div class="col">
-      <p>This chapter explains the three kinds of sand on the beach, and with them almost every way a dam can fail. The idea comes from Karl Terzaghi, the engineer who founded soil mechanics in the 1920s, and it starts with something simpler than soil.</p>
-      
+      <p class="cold"><span class="newthought">A wet floor is slippery.</span> So is a wet road, a wet rock in a stream, a wet bar of soap. Everyone learns from the soles of their feet that water greases things. Most people say the same of sand: wet sand is slippery sand, and a bank that slumps after rain has been greased.</p>
+      <p><a data-ref="ch-beach"></a> asked you to keep that answer in mind, and it is already in trouble. The damp castle has water in it and stands with upright walls, steeper than the dry heap beside it. If water greased the grains, the castle would be the first to fall.</p>
+      <p>There is also a direct test. In 1962 two engineers, H. M. Horn and Don Deere, slid polished pieces of minerals over one another, first oven-dried and then soaked in water. Clear quartz, the commonest mineral in sand, gripped with a friction of 0.10 dry and 0.23 wet: more than twice as hard with water on it.<label for="mn-grip-hd" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-grip-hd" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="horn-deere1962"></a>, their friction coefficients for three surface-moisture conditions: clear quartz 0.10 oven-dried, 0.10 air-dried, 0.23 saturated.</span><label for="sn-grip-mica" class="sn-ref"></label><input type="checkbox" id="sn-grip-mica" class="margin-toggle"><span class="sidenote" data-kind="curious">Not every mineral behaves like quartz. In the same tests the flaky sheet minerals went the other way: muscovite mica fell from about 0.43 dry to 0.23 soaked, and chlorite from 0.53 to 0.22 (<a data-cite="horn-deere1962"></a>). Clay is made of flakes of this family, which is one reason clay comes back later in this book as a different kind of soil.</span></p>
+      <p>So water isn't greasing the grains. What it does instead was worked out by Karl Terzaghi, the engineer who founded soil mechanics in the 1920s, and the rest of this book stands on it. By the end of this chapter it explains why water can make the castle stronger, why a heap under still water keeps its slope, the 19° face that <a data-ref="ch-beach"></a> left unexplained, and the number every later chapter uses to say whether a slope will stand. To see it, start with something simpler than sand.</p>
+
       <h3 id="s-grip-friction">Friction comes from pressing</h3>
-      <p>Put a book on a plank and slowly tilt the plank. The book stays put until the slope gets steep, then it slides. Friction holds it, and friction comes from the book pressing on the plank. Press twice as hard and it takes twice the force to slide it. The friction on offer is always a fixed fraction of the press.</p>
-      <p>That fraction sets a steepest angle for each pair of surfaces. Tilt beyond it and the block slides, whatever it weighs. Engineers call it the <span class="gl" data-term="friction-angle">friction angle</span>, written φ. For sand as a whole it is about <span data-n="block.phi-deg">34</span>°, the same angle as the dry heap in <a data-ref="ch-beach"></a>, because the surface of a heap is a ramp of sand resting on sand. A single grain sliding on another grips far less. Most of sand's <span data-n="block.phi-deg">34</span>° comes from the grains interlocking: to move, they have to roll up and over one another.</p>
-      
+      <p>Put a book on a plank and slowly tilt the plank. The book stays put until the slope gets steep, then it slides. Friction holds it, and friction comes from the book pressing on the plank. Press twice as hard and it takes twice the force to slide it. The friction on offer is always a fixed fraction of the press, and that fraction is what Horn and Deere measured.</p>
+      <p>The fraction sets a steepest angle for each pair of surfaces. Tilt beyond it and the book slides, whatever it weighs. Engineers call it the <span class="gl" data-term="friction-angle">friction angle</span>, written <var>φ</var>, and the fraction is its tangent, tan <var>φ</var>. For sand as a whole it is about <span data-n="block.phi-deg">34</span>°, the same angle as the dry heap in <a data-ref="fig-beach"></a>, because the surface of a heap is a ramp of sand resting on sand. Polished quartz grips far less than that: at Horn and Deere's dry 0.10, a polished block would slide off a polished ramp tilted past about 6°.<label for="mn-grip-polished" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-grip-polished" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="horn-deere1962"></a>, clear quartz oven-dried; the angle whose tangent is 0.10 is 5.7°.</span><label for="sn-grip-clean" class="sn-ref"></label><input type="checkbox" id="sn-grip-clean" class="margin-toggle"><span class="sidenote" data-kind="curious">That dry 0.10 says as much about the surface as about the mineral. Later tests at MIT, in a vacuum chamber, found smooth quartz gripping with anything from about 0.1 to 1.0 depending on how clean its surface was, while rough surfaces varied much less (<a data-cite="bromwell1966"></a>). None of the tests found water making quartz slippery.</span> Real grains are rougher than a polished block, and they also interlock: to move, they have to roll up and over one another. Both lift sand to its <span data-n="block.phi-deg">34</span>°.</p>
+      <p>The weight drops out of that angle, and a block on a ramp shows why. Put a block of weight <var>W</var> on a ramp tilted at an angle <var>a</var>. Gravity pulls it straight down, and the ramp feels that pull in two parts. The part pressing straight into the ramp is <span class="m"><var>W</var> cos <var>a</var></span>, and the part pulling the block down the slope is <span class="m"><var>W</var> sin <var>a</var></span>. Friction can offer up to the press times tan <var>φ</var>. So the block holds as long as <span class="m"><var>W</var> cos <var>a</var> · tan <var>φ</var></span> is at least <span class="m"><var>W</var> sin <var>a</var></span>. The weight is on both sides and cancels: the block holds while tan <var>a</var> is less than tan <var>φ</var>, and slides when the ramp passes <var>φ</var>, heavy or light. That is why the dry heap of <a data-ref="ch-beach"></a> keeps one slope however much sand you pour on it.</p>
+      <p>A designer needs more than "holds" or "slides". The dam in <a data-ref="prologue"></a> had been checked and found to hold; how comfortably it held was a number, and that number is the <span class="gl" data-term="factor-of-safety">factor of safety</span>, the friction available divided by the friction needed:</p>
+      <div class="eq" id="eq-grip-fs">
+        <span class="eq-body"><var>FS</var> = <var>N</var>′ · tan <var>φ</var> ÷ (<var>W</var> · sin <var>a</var>)</span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>N</var>′ the press left between the block and the ramp (kN) · tan <var>φ</var> the friction fraction · <var>W</var> sin <var>a</var> the pull down the ramp (kN). For a dry block <span class="m"><var>N</var>′ = <var>W</var> cos <var>a</var></span>, and the factor of safety is tan <var>φ</var> ÷ tan <var>a</var>.</p>
+      <p>Above 1 the block holds. Below 1 it slides. At 1.5 the ground could lose a third of its grip before anything moved, and about 1.5 is what dams are designed to, to leave room for everything nobody can measure exactly.<label for="mn-grip-fs" class="mn-ref" aria-label="Units"></label><input type="checkbox" id="mn-grip-fs" class="margin-toggle"><span class="marginnote" data-kind="units">1.5 is a convention, not a law of nature. The US Army Corps of Engineers asks a new embankment dam for 1.5 under steady seepage with the reservoir full, 1.3 at the end of construction, and 1.1 to 1.3 right after a fast drawdown of the reservoir; it says such values "continue to be based on experience" (<a data-cite="usace-em1902"></a>, p. 3-1 and its table of minimum factors on p. 3-2). The lower values are for conditions that last a short time.</span> Every later chapter of this book uses the same definition, applied to a dam's slope instead of a block.</p>
+      <p>Now slip a thin cushion of water under the block's base. Make a guess before you see it:</p>
+
       <div class="predict" data-answer="b" id="pr-cushion" data-unlocks="#fig-block">
         <p class="predict-q">A block rests on a ramp tilted to 25°, holding comfortably. A thin water cushion sits under its base. You pump up the water pressure in the cushion. The block's weight, shape and surface stay exactly the same. What happens?</p>
         <div class="predict-opts"><button data-v="a">Nothing. It weighs the same, so it holds the same.</button><button data-v="b">It slides. The water carries part of its weight, so it presses on the ramp less.</button><button data-v="c">It holds better. The water pushes up, which helps support it.</button></div>
-        <div class="predict-reveal" hidden><p>The water carries part of the block's weight, so less weight is left pressing the block onto the ramp. Friction comes from that press, so it shrinks too, while gravity pulls the block down the slope as hard as ever. Try it below.</p></div>
+        <div class="predict-reveal" hidden><p>It slides. The water carries part of the block's weight, so less weight is left pressing the block onto the ramp. Friction comes from that press, so it shrinks too, while gravity pulls the block down the slope as hard as ever. Try it below.</p></div>
       </div>
+
+      <p>To decide, tilt the ramp and pump up the cushion in the figure below:</p>
     </div>
 
     <figure class="sheet wide g-fig" id="fig-block" hidden>
@@ -50,20 +71,59 @@
           </div>
         </div>
       </div>
-      <figcaption>Raise the water pressure at 25° and watch the friction bar shrink while the needed bar stays put. The block slides when the factor of safety drops below 1. Then try a gentler ramp: with enough water pressure, even 10° is too steep.</figcaption>
+      <figcaption>
+        <p class="cap"><b>Water in the cushion takes away part of the block's press on the ramp and none of its pull down it, so a block that held dry slides once the water pressure is high enough.</b> The block weighs 20 kN on a base of 1 m², so each kilopascal in the cushion takes 1 kN off its press on the ramp. The straight-down arrow is its weight and the dashed arrow its pull down the ramp. The arrow along the base, pointing up the ramp, is the friction available, and the <span class="k-water">blue</span> arrow under the block is the water pushing up from the cushion. The two bars compare the friction available with the friction needed to hold; when the first falls short of the second the block slides, and Put the block back returns it. <span class="cap-n">The number to remember: at <span data-n="block.a-deg">25</span>° the block slides once the water carries <span data-n="block.slide-pct">31</span>% of its press, <span data-n="block.u-slide-kpa">5.6</span> kPa.</span></p>
+        <ul class="try">
+          <li>At 25°, raise the Water pressure slider one step at a time. At which setting does the block start to slide?</li>
+          <li>Set the Ramp angle to 10°. Does any water pressure the slider offers slide the block?</li>
+          <li>With no water, raise the Ramp angle until the block slides. Compare the angle with the heap of <a data-ref="fig-beach"></a>.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>At 25° it holds at 5.5 kPa, with a factor of safety of <span data-n="ch04.fs-at@u=5.5">1.01</span>, and slides at 6.0 kPa (<span data-n="ch04.fs-at@u=6">0.97</span>). At 10° it takes <span data-n="block.u-slide-kpa@a=10">14.5</span> kPa: it holds at 14.5 and slides at 15.0. Dry, it slides when the ramp reaches <span data-n="block.phi-deg">34</span>°, the angle of the dry heap, where the friction available equals the pull exactly.</p></details>
+      </figcaption>
     </figure>
 
     <div class="col">
-      <p>Engineers compare the two forces with one number, the <span class="gl" data-term="factor-of-safety">factor of safety</span>: friction available divided by friction needed. Above 1 the block holds. Below 1 it slides. Dams are designed to keep it well above 1, often about 1.5, to leave room for everything nobody can measure exactly.</p>
-      <p>Each kilopascal of pressure in the cushion cancels a kilopascal of the block's press on the ramp. At <span data-n="block.a-deg">25</span>° the block slides once the water carries <span data-n="block.slide-pct">31</span>% of that press, just under a third. The block itself never changed.</p>
-      
+      <p>Start with the dry block, before any water. Notice that its two bars stand in the ratio of the factor of safety: <span data-n="block.Fa-kn">12.2</span> kN of friction available against <span data-n="block.Fn-kn">8.5</span> kN needed, so <span data-n="block.fs">1.45</span>. Then notice what the water touches. As the cushion's pressure rises, the press left over falls and the friction bar shrinks with it, kilonewton for kilonewton times tan 34°. The bar for the friction needed doesn't move at all, because the water pushes straight up from the ramp and has no part along it. The block slides when the two bars meet, though its weight, its shape and its surface never changed. Here are the readouts by hand:</p>
+
+      <section class="we" id="ex-grip-block">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">How much water slides the block?</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>A block weighing <span class="m"><var>W</var> = <span data-n="block.W-kn">20</span> kN</span> on a base of 1 m², on a ramp at <span class="m"><var>a</var> = <span data-n="block.a-deg">25</span>°</span>. Friction angle <span class="m"><var>φ</var> = <span data-n="block.phi-deg">34</span>°</span>, so <span class="m">tan <var>φ</var> = <span data-n="block.tanphi">0.6745</span></span>.</dd>
+          <dt>Find</dt><dd>The factor of safety with no water, and the cushion pressure that slides the block.</dd>
+          <dt>The idea</dt><dd>Friction works only with the press left over; the water takes its pressure, times the base area, off the press and leaves the pull alone (<a data-ref="eq-grip-fs"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>N</var> = 20 × cos 25° = 20 × <span data-n="ch04.cos">0.9063</span> = <span data-n="block.N-kn">18.13</span> kN</span><span class="why">the part of the weight pressing into the ramp</span></li>
+          <li><span class="we-eq">Pull = 20 × sin 25° = 20 × <span data-n="ch04.sin">0.4226</span> = <span data-n="block.Fn-kn">8.45</span> kN</span><span class="why">the part pulling it down the slope</span></li>
+          <li><span class="we-eq">Friction available = <span data-n="block.N-kn">18.13</span> × <span data-n="block.tanphi">0.6745</span> = <span data-n="block.Fa-kn">12.23</span> kN</span><span class="why">the press times the friction fraction</span></li>
+          <li><span class="we-eq"><var>FS</var> = <span data-n="block.Fa-kn">12.23</span> ÷ <span data-n="block.Fn-kn">8.45</span> = <span data-n="block.fs">1.45</span></span><span class="why">available over needed, with no water</span></li>
+          <li><span class="we-eq">Press that barely holds: <span data-n="block.Fn-kn">8.45</span> ÷ <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.ne-slide-kn">12.53</span> kN</span><span class="why">at <var>FS</var> = 1 the friction available equals the pull</span></li>
+          <li><span class="we-eq">Water must carry <span data-n="block.N-kn">18.13</span> − <span data-n="ch04.ne-slide-kn">12.53</span> = <span data-n="block.u-slide-kpa">5.60</span> kN, so <span class="m"><var>u</var> = <span data-n="block.u-slide-kpa">5.60</span> kPa</span></span><span class="why">spread over the 1 m² base, a kilonewton per square metre is a kilopascal</span></li>
+          <li><span class="we-eq"><span data-n="block.u-slide-kpa">5.60</span> ÷ <span data-n="block.N-kn">18.13</span> = <span data-n="ch04.slide-frac">0.309</span></span><span class="why">that pressure as a share of the press</span></li>
+        </ol>
+        <p class="we-ans">Dry, the block holds with <var>FS</var> = <span data-n="block.fs">1.45</span>. It slides when the cushion reaches <span data-n="block.u-slide-kpa">5.6</span> kPa, when the water carries <span data-n="block.slide-pct">30.9</span>% of its press: a little under a third.</p>
+        <p class="we-check"><b>Check.</b> There is a shortcut. The block slides when the press left is the pull divided by tan 34°, so the share the water must take is <span class="m">1 − tan 25° ÷ tan 34°</span> = 1 − <span data-n="ch04.tan">0.4663</span> ÷ <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.shortcut-frac">0.309</span>, the same. On a gentler ramp the water needs more: at 10° the share is 1 − <span data-n="ch04.tan@a=10">0.1763</span> ÷ <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.shortcut-frac@a=10">0.7386</span> of a press of 20 × <span data-n="ch04.cos@a=10">0.9848</span> = <span data-n="block.N-kn@a=10">19.70</span> kN, and <span data-n="ch04.shortcut-frac@a=10">0.7386</span> × <span data-n="block.N-kn@a=10">19.70</span> = <span data-n="block.u-slide-kpa@a=10">14.55</span> kPa.</p>
+        <p class="we-means"><b>What it means.</b> Nothing about the block got weaker. The water took a third of its press away and left the pull alone, and a third was all the margin the block had. The steeper the ramp, the less water it takes.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-block","set":{"bk-a":25,"bk-u":5.5}}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Two dry blocks sit on the same 25° ramp, one twice as heavy as the other. Which has the larger factor of safety?</summary>
+        <p>Neither. Doubling the weight doubles the press and the pull alike, and a dry block's factor of safety, tan 34° ÷ tan 25° = <span data-n="ch04.fs-dry">1.45</span>, has no weight in it.</p>
+      </details>
+
       <h3 id="s-grip-blocks">Soil is thousands of little blocks</h3>
-      <p>Now shrink the block down to a grain of sand. A handful of soil is a crowd of grains, each resting on its neighbours at a few points of contact. Every contact is a tiny block on a tiny ramp, held by friction, and that friction comes from how hard the grains press on each other. The strength of soil is the friction of all those contacts added up.</p>
-      <p>When the gaps are full of water, the water pushes on every grain from all sides, like the cushion under the block. It carries part of the load, and the grains press on each other less. Terzaghi saw that the strength of soil follows only the press left over between the grains. He called it the <span class="gl" data-term="effective-stress">effective stress</span>, and it is the press of everything above (the <span class="gl" data-term="total-stress">total stress</span>) minus the pore pressure:</p>
+      <p>Now shrink the block down to a grain of sand. A handful of soil is a crowd of grains, each resting on its neighbours at a few points of contact. Every contact is a tiny block on a tiny ramp, held by friction, and that friction comes from how hard the grains press on each other. The strength of soil is the friction of all those contacts added up.<label for="sn-grip-chains" class="sn-ref"></label><input type="checkbox" id="sn-grip-chains" class="margin-toggle"><span class="sidenote" data-kind="curious">The press is not shared evenly. In experiments with a layer of plastic disks that glow between polarizing filters where they are squeezed, the load travels along branching chains of disks while their neighbours carry much less, and when the pile is sheared the chains line up with the push (<a data-cite="majmudar-behringer2005"></a>). Soil mechanics works with the average over many grains, which is what σ′ is.</span></p>
+      <p>But fill the gaps with water and something has to carry the water's pressure. To see where it goes, picture a level surface one metre square, deep in soaked sand, that threads its way through the gaps and crosses the grains only where they touch. Everything above that surface, grains and water together, presses down across it. That is the <span class="gl" data-term="total-stress">total stress</span>, written <var>σ</var>. The contacts between grains are tiny, so the water in the gaps meets almost all of the surface, and it presses on all of it with its own <span class="gl" data-term="pore-pressure">pore pressure</span>, <var>u</var>. The water therefore carries <var>u</var> of each square metre's <var>σ</var>, and only the rest is left for the grains to carry, through their contacts, by pressing on one another. Terzaghi called that rest the <span class="gl" data-term="effective-stress">effective stress</span>:<label for="sn-grip-terzaghi" class="sn-ref"></label><input type="checkbox" id="sn-grip-terzaghi" class="margin-toggle"><span class="sidenote" data-kind="history">Karl Terzaghi, an Austrian engineer, worked the idea out while teaching at Robert College in Constantinople (now Istanbul), in a laboratory he built partly from cigar boxes and kitchenware, and published it in <i>Erdbaumechanik</i> in 1925 (<a data-cite="bennett-geoinstitute2023"></a>; <a data-cite="terzaghi1925"></a>). At the first international conference on soil mechanics, at Harvard in 1936, he put it in the sentence that heads this chapter (<a data-cite="terzaghi1936"></a>, p. 54).</span></p>
       <div class="eq" id="eq-grip-sigma"><span class="eq-body"><var>σ′</var> = <var>σ</var> − <var>u</var></span><span class="eq-no" data-num></span></div>
-      <div class="eq" id="eq-grip-strength"><span class="eq-body">strength = <var>σ′</var> · tan <var>φ</var></span><span class="eq-no" data-num></span></div>
-      <p class="eq-where"><var>σ</var> total stress: the weight of everything above, per square metre (kPa) · <var>u</var> pore pressure (kPa) · <var>σ′</var> effective stress: how hard the grains press on each other · tan <var>φ</var> the friction fraction from the ramp, about <span data-n="block.tanphi">0.67</span> for sand (φ = <span data-n="block.phi-deg">34</span>°)</p>
-      <p>The total stress at some depth is the weight of everything above that point: soil, water, and anything built on top. Damp sand weighs about <span data-n="column.gd-kn">18</span> kN per cubic metre. Soaked, it weighs about <span data-n="column.gs-kn">20</span>, because water has filled the gaps. Raise the water table in the column below and watch the three lines.</p>
+      <p>Friction comes from pressing, so the most shear stress the grains can resist, their strength, is that press times the friction fraction:</p>
+      <div class="eq" id="eq-grip-strength"><span class="eq-body"><var>τ</var> = <var>σ′</var> · tan <var>φ′</var></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>σ</var> total stress, the weight of everything above, per square metre (kPa) · <var>u</var> pore pressure (kPa) · <var>σ′</var> effective stress, how hard the grains press on one another (kPa) · <var>τ</var> shear strength, the most shear stress the soil can carry on a plane (kPa) · <var>φ′</var> the soil's friction angle, with a prime because it goes with the effective stress; <span data-n="block.phi-deg">34</span>° for this sand, tan <var>φ′</var> = <span data-n="block.tanphi">0.6745</span></p>
+      <p>The water does to the grains exactly what the cushion did to the block: it takes over part of the load they would otherwise carry by pressing on one another, and it adds no grip of its own.</p>
+      <p>To use the rule you need <var>σ</var> at a depth, the weight of everything above it, and for that you need the soil's <span class="gl" data-term="unit-weight">unit weight</span>, the weight of one cubic metre. Damp sand weighs about <span data-n="column.gd-kn">18</span> kN per cubic metre. Soaked, it weighs about <span data-n="column.gs-kn">20</span>, because water has filled the gaps that air held. Below the water table the water in the gaps joins up like a lake, so in still groundwater <var>u</var> grows by <span data-n="const.gw">9.81</span> kPa for every metre below the water table, the rule of <a data-ref="eq-depth-p"></a>. The figure below stacks ten metres of this sand and lets you move the water table, from below the column to three metres above the ground:</p>
     </div>
 
     <figure class="sheet wide g-fig" id="fig-column">
@@ -81,7 +141,7 @@
             <div class="ro"><span>Total stress <i class="g-sym">σ</i></span><b id="gc-s">192 kPa</b><small>at 10 m depth</small></div>
             <div class="ro"><span>Pore pressure <i class="g-sym">u</i></span><b id="gc-u">59 kPa</b><small id="gc-u2">water 6.0 m above this point</small></div>
             <div class="ro"><span>Effective stress <i class="g-sym">σ′</i></span><b id="gc-e">133 kPa</b><small>σ − u</small></div>
-            <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>compared with damp sand above the water table</small></div>
+            <div class="ro"><span>Strength left</span><b id="gc-str">74%</b><small>against the water table below the column</small></div>
           </div>
           <div class="legend g-legend">
             <span><i class="g-l-tot"></i>Total stress σ</span>
@@ -90,25 +150,344 @@
           </div>
         </div>
       </div>
-      <figcaption>Drag the water table up to the ground, then above it. The space between the total-stress line (σ) and the pore-pressure line (u) is the effective stress, the press the grains still have. The soil gets <strong>heavier</strong> as it soaks, yet <strong>weaker</strong>, because the pore pressure rises faster than the weight.</figcaption>
+      <figcaption>
+        <p class="cap"><b>As the water table rises the sand gets heavier, and its grains press on one another less.</b> On the left is a column of sand 10 m deep, damp above the water table and soaked, shaded, below it; drag the water line or use the Water table slider. On the right, stress is plotted against depth: the thin total-stress line <var>σ</var>, the <span class="k-water">blue</span> pore-pressure line <var>u</var>, and the heavy effective-stress line <var>σ′</var>, which plots the shaded gap between the other two. The readouts are at the column's foot, 10 m down; Strength left compares its effective stress with the column's when the water table is below it, <span data-n="ch04.dry-e-kpa">180</span> kPa. <span class="cap-n">The number to remember: flooded to the surface, the column is heavier than it was damp, yet its grains at 10 m press with <span data-n="column.e-kpa@wt=0">102</span> of their <span data-n="ch04.dry-e-kpa">180</span> kPa, <span data-n="ch04.flood-loss-pct">43</span>% less.</span></p>
+        <ul class="try">
+          <li>Drag the water table up to the ground. Read the three stresses and Strength left.</li>
+          <li>Keep going, three metres above the ground. Which readouts change, and which one doesn't?</li>
+          <li>Drag the water table all the way down, below the column. What does the pore-pressure line do?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>At the ground: <span data-n="column.s-kpa@wt=0">200</span>, <span data-n="column.u-kpa@wt=0">98.1</span> and <span data-n="column.e-kpa@wt=0">101.9</span> kPa, with <span data-n="column.str-pct@wt=0">57</span>% of the strength left. With 3 m of water on top, <var>σ</var> and <var>u</var> both rise to <span data-n="column.s-kpa@wt=-3">229</span> and <span data-n="column.u-kpa@wt=-3">128</span> kPa, and <var>σ′</var> stays at <span data-n="column.e-kpa@wt=-3">101.9</span>. Below the column there is no pore pressure at 10 m, and all <span data-n="ch04.dry-e-kpa">180</span> kPa of the weight is pressed grain on grain.</p></details>
+      </figcaption>
     </figure>
 
     <div class="col">
-      <p>Two things to notice. First, flooding the column from damp to soaked cuts the effective stress at 10 m from <span data-n="column.e-kpa@wt=10">180</span> to about <span data-n="column.e-kpa@wt=0">102</span> kPa. That is more than 40% of the soil's strength gone, though no grain has to move. Second, once the water rises above the ground, every extra metre adds the same <span data-n="const.gw">9.81</span> kPa to the total stress and to the pore pressure, so the effective stress stops changing. A lake sitting on top of soil doesn't press its grains together any harder.</p>
-      
-      <p>That accounts for soaked sand. It also explains a surprise in <a data-ref="fig-beach"></a>: a heap under still water stands about as steep as a dry one. The water carries part of each grain's weight, so the grains press on each other less, but the same buoyancy lightens their pull down the slope by the same share, and the angle depends only on the ratio of the two. The heap slumps to about <span data-n="beach.drain-deg">19</span>° only where water drains out through its face, because the flowing water drags the grains downhill as well.</p>
+      <p>Notice first what happens as the water table rises from below the column to the ground. The sand gets heavier, because water is replacing air in its gaps, yet the effective stress at 10 m falls from <span data-n="ch04.dry-e-kpa">180</span> to about <span data-n="column.e-kpa@wt=0">102</span> kPa. That is <span data-n="ch04.flood-loss-pct">43</span>% of the soil's strength gone, and no grain had to move. Below the water table each extra metre of sand adds <span data-n="column.gs-kn">20</span> kPa to the total stress and <span data-n="const.gw">9.81</span> to the pore pressure, so the grains feel only the difference, <span data-n="beach.gprime">10.19</span> kPa a metre: the sand's <span class="gl" data-term="buoyant-unit-weight">buoyant unit weight</span>, written <var>γ′</var>. Above the water table they feel all <span data-n="column.gd-kn">18</span>.</p>
+      <p>Notice second what happens once the water rises above the ground. Every extra metre of lake adds the same <span data-n="const.gw">9.81</span> kPa to the total stress and to the pore pressure, so the effective-stress line stops moving. A lake sitting on soil doesn't press its grains together any harder, however deep it is. Here are the numbers:</p>
+
+      <section class="we" id="ex-grip-column">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Ten metres of sand, three water tables</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>A column of sand 10 m deep: <span data-n="column.gd-kn">18</span> kN/m³ above the water table, <span data-n="column.gs-kn">20</span> kN/m³ below it; water <span data-n="const.gw">9.81</span> kN/m³.</dd>
+          <dt>Find</dt><dd><var>σ</var>, <var>u</var> and <var>σ′</var> at the foot with the water table 4 m down, at the ground, and under 3 m of lake.</dd>
+          <dt>The idea</dt><dd><var>σ</var> is the weight of everything above; <var>u</var> is the depth below the water surface times 9.81; the grains get the difference (<a data-ref="eq-grip-sigma"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">4 m down: <span class="m"><var>σ</var> = 18 × 4 + 20 × 6 = <span data-n="column.s-kpa@wt=4">192</span> kPa</span></span><span class="why">4 m of damp sand on 6 m of soaked</span></li>
+          <li><span class="we-eq"><var>u</var> = 9.81 × 6 = <span data-n="column.u-kpa@wt=4">58.86</span> kPa</span><span class="why">the foot is 6 m below the water table</span></li>
+          <li><span class="we-eq"><var>σ′</var> = <span data-n="column.s-kpa@wt=4">192</span> − <span data-n="column.u-kpa@wt=4">58.86</span> = <span data-n="column.e-kpa@wt=4">133.14</span> kPa</span><span class="why">what the grains press with</span></li>
+          <li><span class="we-eq">At the ground: <var>σ</var> = 20 × 10 = <span data-n="column.s-kpa@wt=0">200</span>, <var>u</var> = 9.81 × 10 = <span data-n="column.u-kpa@wt=0">98.1</span>, <var>σ′</var> = <span data-n="column.e-kpa@wt=0">101.9</span> kPa</span><span class="why">all ten metres soaked</span></li>
+          <li><span class="we-eq"><span data-n="column.e-kpa@wt=0">101.9</span> ÷ <span data-n="ch04.dry-e-kpa">180</span> = <span data-n="ch04.flood-left-frac">0.566</span></span><span class="why">against 18 × 10 = 180 kPa with the water table below the column</span></li>
+          <li><span class="we-eq">3 m of lake: <var>σ</var> = 9.81 × 3 + 200 = <span data-n="column.s-kpa@wt=-3">229.43</span>, <var>u</var> = 9.81 × 13 = <span data-n="column.u-kpa@wt=-3">127.53</span> kPa</span><span class="why">the lake's weight is added to both; the foot is now 13 m below the water's surface</span></li>
+          <li><span class="we-eq"><var>σ′</var> = <span data-n="column.s-kpa@wt=-3">229.43</span> − <span data-n="column.u-kpa@wt=-3">127.53</span> = <span data-n="column.e-kpa@wt=-3">101.9</span> kPa</span><span class="why">unchanged by the lake</span></li>
+        </ol>
+        <p class="we-ans">With the water table 4 m down the grains at the foot press with <span data-n="column.e-kpa@wt=4">133.1</span> kPa. Flooded to the ground they press with <span data-n="column.e-kpa@wt=0">101.9</span> kPa, <span data-n="ch04.flood-loss-pct">43</span>% less than with the water table below the column, and 3 m of lake on top leaves that at <span data-n="column.e-kpa@wt=-3">101.9</span>.</p>
+        <p class="we-check"><b>Check.</b> Count the grains' press metre by metre: 18 kPa for each damp metre and the buoyant <span data-n="beach.gprime">10.19</span> for each soaked one. With the water table 4 m down, 72 + 6 × 10.19 = <span data-n="column.e-kpa@wt=4">133.14</span> kPa, the same as step 3.</p>
+        <p class="we-means"><b>What it means.</b> Water in the ground weakens soil by taking over part of the grains' press. Raising a reservoir over a sand bed adds to <var>σ</var> and <var>u</var> alike and leaves the bed's grains exactly as they were; what does change the press is water that flows, which comes next.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-column","set":{"gc-wt":0}}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Wells pump the water table down from the ground surface to 4 m below it. Is the sand at 10 m now heavier or lighter, and stronger or weaker?</summary>
+        <p>Lighter and stronger. <var>σ</var> falls from <span data-n="column.s-kpa@wt=0">200</span> to <span data-n="column.s-kpa@wt=4">192</span> kPa, but <var>u</var> falls further, from <span data-n="column.u-kpa@wt=0">98.1</span> to <span data-n="column.u-kpa@wt=4">58.9</span>, so the grains press with <span data-n="column.e-kpa@wt=4">133.1</span> kPa instead of <span data-n="column.e-kpa@wt=0">101.9</span>.</p>
+      </details>
+
+      <h3 id="s-grip-line">One line for the strength</h3>
+      <p>Every strength in this chapter so far has been a press times the same fraction. So if you plot strength against effective stress, every state of this sand, wet or dry, deep or shallow, lands on one straight line through zero, rising at the friction angle:</p>
     </div>
-    <div class="col" data-stub>
-      <!-- New (H.5): eq-grip-fs, eq-grip-sigma, eq-grip-strength, the critical gradient (eq-grip-ic),
-           the beach face derived (eq-grip-face, fig-grip-face), the strength line (fig-grip-envelope),
-           and the earned moment: the title page sentence, now provable. -->
+
+    <figure class="fig wide" id="fig-grip-envelope">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · The strength of one sand at any press</span><span class="scale-note">Both axes in kPa, to the same scale</span></div>
+        <svg class="dwg" viewBox="0 0 560 336" role="img" aria-label="A chart of shear strength against effective stress. A straight line rises from the origin at 34 degrees: the strength of the sand at any press. The region above it is shaded and marked out of reach. Four points lie on it: the block on its ramp, at 18 kilopascals of press and 12 of friction; the foot of the ten-metre column with the water table below it, at 180 and 121; with the water table 4 metres down, at 133 and 90; and flooded to the surface, at 102 and 69. An arrow along the line shows flooding moving the column's point down the line.">
+        <polygon points="64,292 64,8.5 484.3,8.5" style="fill:var(--accent-soft)"/>
+        <path d="M169,292 V8.5" style="stroke:var(--rule);stroke-width:0.7"/>
+        <text x="169" y="307" class="lbl-s" text-anchor="middle">50</text>
+        <path d="M274,292 V8.5" style="stroke:var(--rule);stroke-width:0.7"/>
+        <text x="274" y="307" class="lbl-s" text-anchor="middle">100</text>
+        <path d="M379,292 V8.5" style="stroke:var(--rule);stroke-width:0.7"/>
+        <text x="379" y="307" class="lbl-s" text-anchor="middle">150</text>
+        <path d="M484,292 V8.5" style="stroke:var(--rule);stroke-width:0.7"/>
+        <text x="484" y="307" class="lbl-s" text-anchor="middle">200</text>
+        <path d="M64,187 H494.5" style="stroke:var(--rule);stroke-width:0.7"/>
+        <text x="58" y="191" class="lbl-s" text-anchor="end">50</text>
+        <path d="M64,82 H494.5" style="stroke:var(--rule);stroke-width:0.7"/>
+        <text x="58" y="86" class="lbl-s" text-anchor="end">100</text>
+        <text x="58" y="296" class="lbl-s" text-anchor="end">0</text>
+        <path d="M64,8.5 V292 M64,292 H494.5" style="stroke:var(--ink);stroke-width:1;fill:none"/>
+        <text x="494.5" y="326" class="lbl" text-anchor="end">effective stress <tspan font-style="italic">σ′</tspan> (kPa)</text>
+        <text x="70" y="12.5" class="lbl">shear strength <tspan font-style="italic">τ</tspan> (kPa)</text>
+        <path d="M64,292 L484,8.7" style="stroke:var(--grain);stroke-width:2.4;fill:none"/>
+        <text x="139.6" y="234" class="lbl halo" style="fill:var(--grain)" text-anchor="start" transform="rotate(-34 139.6 234)">τ = σ′ tan 34°</text>
+        <text x="74.5" y="78" class="lbl-s halo" style="fill:var(--accent)">out of reach</text>
+        <text x="484" y="245.8" class="lbl-s halo" style="fill:var(--ok)" text-anchor="end">below the line: it holds</text>
+        <circle cx="102.1" cy="266.3" r="4.5" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.5"/>
+        <text x="114.1" y="268" class="lbl-s halo" text-anchor="start">the block at 25°</text>
+        <text x="114.1" y="287" class="lbl-s halo" text-anchor="start">(<tspan data-n="block.Ne-kn">18.1</tspan>, <tspan data-n="block.Fa-kn">12.2</tspan>)</text>
+        <circle cx="278" cy="147.7" r="4.5" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.5"/>
+        <text x="288" y="163.7" class="lbl-s halo" text-anchor="start">column flooded</text>
+        <text x="288" y="182.7" class="lbl-s halo" text-anchor="start">(<tspan data-n="column.e-kpa@wt=0">101.9</tspan>, <tspan data-n="ch04.tau-kpa@wt=0">68.7</tspan>)</text>
+        <circle cx="343.6" cy="103.4" r="4.5" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.5"/>
+        <text x="353.6" y="119.4" class="lbl-s halo" text-anchor="start">water table 4 m down</text>
+        <text x="353.6" y="138.4" class="lbl-s halo" text-anchor="start">(<tspan data-n="column.e-kpa@wt=4">133.1</tspan>, <tspan data-n="ch04.tau-kpa@wt=4">89.8</tspan>)</text>
+        <circle cx="442" cy="37" r="4.5" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.5"/>
+        <text x="554" y="56" class="lbl-s halo" text-anchor="end">water below</text>
+        <text x="554" y="75" class="lbl-s halo" text-anchor="end">the column</text>
+        <text x="554" y="94" class="lbl-s halo" text-anchor="end">(<tspan data-n="ch04.dry-e-kpa">180</tspan>, <tspan data-n="ch04.tau-kpa@wt=dry">121.4</tspan>)</text>
+        <path d="M414,31.8 L283.8,119.6" style="stroke:var(--water);stroke-width:1.6;fill:none" marker-end="url(#arr-w)"/>
+        <text x="340.9" y="71.7" class="lbl-s lbl-w halo" text-anchor="end">flooding</text>
+        </svg>
+      <figcaption>
+        <p class="cap"><b>Every state of this sand, wet or dry, lies on one straight line through zero: strength is the grains' press times tan 34°.</b> Across is the effective stress <var>σ′</var>, how hard the grains press; up is the shear strength <var>τ</var>, the most shear stress they can carry. Both axes have the same scale, so the line rises at the friction angle itself. Below the line the soil holds; the shaded region above it is out of reach, because the grains of this sand can never carry more shear than their press allows. The open dots are the block of <a data-ref="fig-block"></a>, given sand's friction angle, and the foot of the column of <a data-ref="fig-column"></a> at three water tables; the <span class="k-water">blue</span> arrow is the column being flooded. <span class="cap-n">The number to remember: flooding takes the column's foot from <span data-n="ch04.tau-kpa@wt=dry">121.4</span> to <span data-n="ch04.tau-kpa@wt=0">68.7</span> kPa of strength, without changing the line.</span></p>
+        <ul class="try">
+          <li>Divide the strength of any dot by its effective stress. What do you get each time?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>The same fraction every time, tan 34°: <span data-n="ch04.tau-kpa@wt=dry">121.41</span> ÷ <span data-n="ch04.dry-e-kpa">180</span> = <span data-n="block.tanphi">0.6745</span>, and <span data-n="ch04.tau-kpa@wt=0">68.73</span> ÷ <span data-n="column.e-kpa@wt=0">101.9</span> = <span data-n="block.tanphi">0.6745</span>.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the water never moves the line. Flooding slides the column's point down along it, to a smaller press and so a smaller strength; the sand's friction angle is the same throughout. That is the whole effect of still water on sand. Engineers call this line the <span class="gl" data-term="strength-envelope">strength envelope</span>. Some soils, clays among them, keep a little strength even when the grains are barely pressed, called <span class="gl" data-term="cohesion">cohesion</span> and written <var>c′</var>; their line starts at <var>c′</var> instead of zero, <span class="m"><var>τ</var> = <var>c′</var> + <var>σ′</var> tan <var>φ′</var></span>. Clean sand has none.</p>
+
+      <section class="we" id="ex-grip-envelope">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Reading strength off the line</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The effective stress at the column's foot from <a data-ref="ex-grip-column"></a>: <span data-n="ch04.dry-e-kpa">180</span> kPa with the water table below the column, <span data-n="column.e-kpa@wt=4">133.14</span> kPa with it 4 m down, <span data-n="column.e-kpa@wt=0">101.9</span> kPa flooded. tan <var>φ′</var> = <span data-n="block.tanphi">0.6745</span>.</dd>
+          <dt>Find</dt><dd>The shear strength of the sand at the foot in each case.</dd>
+          <dt>The idea</dt><dd>Strength is the press times the friction fraction (<a data-ref="eq-grip-strength"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Below the column: 180 × <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.tau-kpa@wt=dry">121.41</span> kPa</span><span class="why">the most strength the foot has</span></li>
+          <li><span class="we-eq">4 m down: <span data-n="column.e-kpa@wt=4">133.14</span> × <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.tau-kpa@wt=4">89.80</span> kPa</span><span class="why">the figure's opening state</span></li>
+          <li><span class="we-eq">Flooded: <span data-n="column.e-kpa@wt=0">101.9</span> × <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.tau-kpa@wt=0">68.73</span> kPa</span><span class="why">the same line, further down it</span></li>
+        </ol>
+        <p class="we-ans">The foot can resist <span data-n="ch04.tau-kpa@wt=dry">121.4</span>, <span data-n="ch04.tau-kpa@wt=4">89.8</span> and <span data-n="ch04.tau-kpa@wt=0">68.7</span> kPa of shear in the three cases.</p>
+        <p class="we-check"><b>Check.</b> The flooded strength over the dry one should be the flooded press over the dry press, since the fraction is the same: <span data-n="ch04.tau-kpa@wt=0">68.73</span> ÷ <span data-n="ch04.tau-kpa@wt=dry">121.41</span> = <span data-n="ch04.flood-left-frac">0.566</span>, as in <a data-ref="ex-grip-column"></a>.</p>
+        <p class="we-means"><b>What it means.</b> These are strengths, not loads: the grains at the foot of a level column are not being sheared at all. A slope shears them, and <a data-ref="ch-slope"></a> sets the shear a slope asks for against this line, all along a curved slip surface.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-column","set":{"gc-wt":-10}}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-grip-up">Water that flows up</h3>
+      <p>Still water, however deep, only takes away the press that its own pressure accounts for. But <a data-ref="ch-head"></a> ended with water that flows, and flowing water drags on the grains it passes: water losing <var>i</var> metres of head for every metre it travels pushes on the grains in each cubic metre with <span class="m"><var>i</var> × <span data-n="const.gw">9.81</span></span> kN, in the direction it flows.</p>
+      <p>Turn that flow upward, as it does where water that has passed under a dam comes up again on the far side. Soaked sand presses down with its buoyant unit weight, <span data-n="beach.gprime">10.19</span> kN per cubic metre. The water flowing up through it pushes up with <span class="m"><var>i</var> × 9.81</span>. Raise the gradient and the upward drag eats into the downward press, until at one gradient they cancel. There the grains still touch but no longer press on one another, the effective stress is zero, and the sand has no grip at all. That gradient is the <span class="gl" data-term="critical-gradient">critical gradient</span>:</p>
+      <div class="eq" id="eq-grip-ic">
+        <span class="eq-body"><var>i</var><sub>c</sub> = <var>γ′</var> ÷ <var>γ</var><sub>w</sub> = (<var>γ</var><sub>sat</sub> − <var>γ</var><sub>w</sub>) ÷ <var>γ</var><sub>w</sub></span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>γ</var><sub>sat</sub> unit weight of the soaked soil (kN/m³) · <var>γ</var><sub>w</sub> unit weight of water, <span data-n="const.gw">9.81</span> kN/m³ · <var>γ′</var> buoyant unit weight, <var>γ</var><sub>sat</sub> − <var>γ</var><sub>w</sub></p>
+
+      <section class="we" id="ex-grip-ic">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The gradient that floats the grains</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Soaked sand of <span data-n="column.gs-kn">20</span> kN/m³, the column's; water <span data-n="const.gw">9.81</span> kN/m³, flowing straight up through it. For the second route, typical quartz sand: grains <span data-n="ch04.gs">2.65</span> times as heavy as water, and <span data-n="ch04.e">0.65</span> m³ of gap for every cubic metre of grain.</dd>
+          <dt>Find</dt><dd>The upward gradient at which the grains stop pressing on one another.</dd>
+          <dt>The idea</dt><dd>The water's upward drag, <var>i</var> × 9.81 per cubic metre, against the grains' buoyant weight (<a data-ref="eq-grip-ic"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>γ′</var> = 20 − 9.81 = <span data-n="beach.gprime">10.19</span> kN/m³</span><span class="why">the press of each soaked cubic metre on the grains below</span></li>
+          <li><span class="we-eq"><var>i</var><sub>c</sub> = <span data-n="beach.gprime">10.19</span> ÷ <span data-n="const.gw">9.81</span> = <span data-n="ch04.ic">1.04</span></span><span class="why">upward drag equals that press</span></li>
+          <li><span class="we-eq">From the grains: <var>γ</var><sub>sat</sub> = <span data-n="ch04.gs-e">3.30</span> ÷ <span data-n="ch04.one-e">1.65</span> × 9.81 = <span data-n="ch04.gsat-ge">19.62</span> kN/m³</span><span class="why">a cubic metre of grain weighs as much as 2.65 m³ of water, and its gaps hold 0.65 m³ more: <span class="m">2.65 + 0.65 = 3.30</span> cubic metres' worth of water's weight in 1.65 m³</span></li>
+          <li><span class="we-eq"><var>i</var><sub>c</sub> = (2.65 − 1) ÷ (1 + 0.65) = <span data-n="ch04.gs-1">1.65</span> ÷ <span data-n="ch04.one-e">1.65</span> = <span data-n="ch04.ic-ge">1.00</span></span><span class="why">the same rule, <var>γ′</var> ÷ <var>γ</var><sub>w</sub>, written with the grains' numbers</span></li>
+        </ol>
+        <p class="we-ans">Sand floats when the water flowing up through it loses about a metre of head for every metre it climbs: <span data-n="ch04.ic">1.04</span> for the column's sand, <span data-n="ch04.ic-ge">1.00</span> for the typical one.</p>
+        <p class="we-check"><b>Check.</b> The two routes differ only because the second sand is a little lighter, <span data-n="ch04.gsat-ge">19.62</span> kN/m³ against <span data-n="column.gs-kn">20</span>. A soaked sand weighs about twice as much as water, so its buoyant weight is about one water's worth, and a gradient of about 1 lifts it.</p>
+        <p class="we-means"><b>What it means.</b> No sand anywhere is much stronger than this against water rising through it. Where seepage comes up at the downstream foot of a dam, a gradient near 1 makes the ground <span class="gl" data-term="heave">heave</span> or boil, and <a data-ref="ch-erosion"></a> follows what happens next.</p>
+      </section>
+
+      <h3 id="s-grip-face">The beach face, worked out</h3>
+      <p>Everything so far has been level ground. A slope adds a pull, and that brings back the two wet heaps of <a data-ref="fig-beach"></a>. A heap under still water stands about as steep as a dry one. The water carries part of each grain's weight, so the grains press on each other less, but the same buoyancy lightens their pull down the slope by the same share, and the angle depends only on the ratio of the two. The heap slumps to about <span data-n="beach.drain-deg">19</span>° only where water drains out through its face, because the flowing water drags the grains downhill as well, the drag of <a data-ref="ch-head"></a>. <a data-ref="ch-beach"></a> promised the sum that turns that drag into degrees.</p>
+      <p>It needs one more idea. A beach face, or the long face of a dam, is so long and even that every patch of it is like every other. Engineers call it an <span class="gl" data-term="infinite-slope">infinite slope</span>, and its great convenience is that one grain on the face, or one cubic metre of it, stands for the whole. Take that grain as a block on a ramp of sand and draw its forces in the three states:</p>
     </div>
+
+    <figure class="fig wide" id="fig-grip-face">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · One grain on the face of a heap, three ways</span><span class="scale-note">Schematic · arrows to scale within each panel</span></div>
+      <div class="grip-panels">
+            <svg class="dwg" viewBox="0 0 260 300" role="img" aria-label="Panel A: dry sand, the face at 34 degrees. A grain on the face: its weight splits into a press into the face and a pull down it; the friction the press makes just matches the pull.">
+            <defs><marker id="grip-arr-grain" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--grain)"/></marker><marker id="grip-arr-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ok)"/></marker></defs>
+            <polygon points="20.1,22 260,183.8 260,272 0,272 0,22 20.1,22" fill="url(#p-cyclone)" class="edge"/>
+            <path d="M20.1,22 L260,183.8" class="edge"/>
+            <path d="M251.3,177.9 H199.3" style="stroke:var(--ink-3);stroke-width:0.8;stroke-dasharray:3 3;fill:none"/>
+            <path d="M225.3,177.9 A26,26 0 0 1 229.7,163.4" style="stroke:var(--ink-2);stroke-width:1;fill:none"/>
+            <text x="221.3" y="172.9" class="lbl halo on-fill" text-anchor="end"><tspan data-n="beach.repose-deg">34</tspan>°</text>
+            <path d="M117.6,75.7 V235.7" style="stroke:var(--ink);stroke-width:1.6;fill:none" marker-end="url(#arr)"/>
+            <path d="M117.6,75.7 L43.4,185.7" style="stroke:var(--grain);stroke-width:2.2;fill:none" marker-end="url(#grip-arr-grain)"/>
+            <path d="M126.5,62.4 L200.7,112.5" style="stroke:var(--accent);stroke-width:2.2;fill:none" marker-end="url(#arr-acc)"/>
+            <path d="M113.4,81.9 L39.2,31.9" style="stroke:var(--ok);stroke-width:2.2;fill:none" marker-end="url(#grip-arr-ok)"/>
+            <circle cx="117.6" cy="75.7" r="10" style="fill:var(--grain-soft);stroke:var(--grain);stroke-width:1.4"/>
+            <text x="123.6" y="231.7" class="lbl-s halo on-fill">weight</text>
+            <text x="40.4" y="189.7" class="lbl-s halo on-fill" style="fill:var(--grain)" text-anchor="end">press</text>
+            <text x="168.7" y="80" class="lbl-s lbl-acc halo" text-anchor="middle">pull</text>
+            <text x="76.5" y="47.8" class="lbl-s halo" style="fill:var(--ok)" text-anchor="middle">friction</text>
+            <text x="4" y="294" class="lbl">A · Dry</text>
+            </svg>
+            <svg class="dwg" viewBox="0 0 260 300" role="img" aria-label="Panel B: the same face under still water, still at 34 degrees. The grain weighs less in water, so its press and its pull are both smaller in the same proportion, and the friction still just matches the pull.">
+            <polygon points="0,14 260,14 260,272 260,183.8 20.1,22 0,22" class="water"/>
+            <path d="M0,14 H260" class="water-line"/>
+            <polygon points="20.1,22 260,183.8 260,272 0,272 0,22 20.1,22" fill="url(#p-cyclone)" class="edge"/>
+            <polygon points="20.1,22 260,183.8 260,272 0,272 0,22 20.1,22" fill="url(#p-sat)"/>
+            <path d="M20.1,22 L260,183.8" class="edge"/>
+            <path d="M251.3,177.9 H199.3" style="stroke:var(--ink-3);stroke-width:0.8;stroke-dasharray:3 3;fill:none"/>
+            <path d="M225.3,177.9 A26,26 0 0 1 229.7,163.4" style="stroke:var(--ink-2);stroke-width:1;fill:none"/>
+            <text x="221.3" y="172.9" class="lbl halo on-fill" text-anchor="end"><tspan data-n="beach.repose-deg">34</tspan>°</text>
+            <path d="M117.6,75.7 V157.2" style="stroke:var(--ink);stroke-width:1.6;fill:none" marker-end="url(#arr)"/>
+            <path d="M117.6,75.7 L79.8,131.7" style="stroke:var(--grain);stroke-width:2.2;fill:none" marker-end="url(#grip-arr-grain)"/>
+            <path d="M126.5,62.4 L164.3,87.9" style="stroke:var(--accent);stroke-width:2.2;fill:none" marker-end="url(#arr-acc)"/>
+            <path d="M113.4,81.9 L75.6,56.4" style="stroke:var(--ok);stroke-width:2.2;fill:none" marker-end="url(#grip-arr-ok)"/>
+            <circle cx="117.6" cy="75.7" r="10" style="fill:var(--grain-soft);stroke:var(--grain);stroke-width:1.4"/>
+            <text x="123.6" y="153.2" class="lbl-s halo on-fill">weight in water</text>
+            <text x="76.8" y="135.7" class="lbl-s halo on-fill" style="fill:var(--grain)" text-anchor="end">press</text>
+            <text x="150.5" y="67.7" class="lbl-s lbl-acc halo on-water" text-anchor="middle">pull</text>
+            <text x="94.7" y="60.1" class="lbl-s halo on-water" style="fill:var(--ok)" text-anchor="middle">friction</text>
+            <text x="4" y="294" class="lbl">B · Under still water</text>
+            </svg>
+            <svg class="dwg" viewBox="0 0 260 300" role="img" aria-label="Panel C: water seeping out of the face, parallel to it, and the face at 19 degrees. The grain weighs as little as under still water, but the flowing water drags it down the face as well, so the pull nearly doubles while the press does not; the face holds only at 19 degrees.">
+            <polygon points="0,45.5 260,134.9 260,272 0,272 0,45.5" fill="url(#p-cyclone)" class="edge"/>
+            <polygon points="0,45.5 260,134.9 260,272 0,272 0,45.5" fill="url(#p-sat)"/>
+            <path d="M0,45.5 L260,134.9" class="edge"/>
+            <path d="M38.7,82.1 L72.7,93.8" class="water-line" marker-end="url(#arr-w)"/>
+            <path d="M59.9,112.6 L93.9,124.3" class="water-line" marker-end="url(#arr-w)"/>
+            <path d="M0.7,115.5 L34.8,127.2" class="water-line" marker-end="url(#arr-w)"/>
+            <path d="M253.9,132.8 H201.9" style="stroke:var(--ink-3);stroke-width:0.8;stroke-dasharray:3 3;fill:none"/>
+            <path d="M227.9,132.8 A26,26 0 0 1 229.3,124.3" style="stroke:var(--ink-2);stroke-width:1;fill:none"/>
+            <text x="223.9" y="127.8" class="lbl halo on-fill" text-anchor="end"><tspan data-n="beach.drain-deg">19.0</tspan>°</text>
+            <path d="M115.3,74.5 V156.1" style="stroke:var(--ink);stroke-width:1.6;fill:none" marker-end="url(#arr)"/>
+            <path d="M115.3,74.5 L90.2,147.5" style="stroke:var(--grain);stroke-width:2.2;fill:none" marker-end="url(#grip-arr-grain)"/>
+            <path d="M120.5,59.4 L145.5,68" style="stroke:var(--accent);stroke-width:2.2;fill:none" marker-end="url(#arr-acc)"/>
+            <path d="M146.9,68.5 L169.6,76.3" style="stroke:var(--water);stroke-width:2.2;fill:none" marker-end="url(#arr-w)"/>
+            <path d="M112.8,81.6 L63.6,64.7" style="stroke:var(--ok);stroke-width:2.2;fill:none" marker-end="url(#grip-arr-ok)"/>
+            <circle cx="115.3" cy="74.5" r="10" style="fill:var(--grain-soft);stroke:var(--grain);stroke-width:1.4"/>
+            <text x="121.3" y="152.1" class="lbl-s halo on-fill">weight in water</text>
+            <text x="87.2" y="151.5" class="lbl-s halo on-fill" style="fill:var(--grain)" text-anchor="end">press</text>
+            <text x="135.9" y="55.2" class="lbl-s lbl-acc halo" text-anchor="middle">pull</text>
+            <text x="172.8" y="79.5" class="lbl-s lbl-w halo">drag of the</text>
+            <text x="172.8" y="91.5" class="lbl-s lbl-w halo">seeping water</text>
+            <text x="85.8" y="62.8" class="lbl-s halo" style="fill:var(--ok)" text-anchor="middle">friction</text>
+            <text x="4" y="294" class="lbl">C · Water seeping out</text>
+            </svg>
+      </div>
+      <figcaption>
+        <p class="cap"><b>Water seeping out of a face adds to the pull on its grains and not to their press, so the face can stand only about half as steep, measured as rise over run.</b> Each panel is a section through the face of a long heap of the same sand, at the steepest angle it holds, with one grain drawn large. The weight (straight down) splits into a press into the face (ochre) and a pull down it (<span class="k-acc">brick red</span>); the press makes the friction available (<span class="k-ok">green</span>), which exactly matches the pull in all three. Under water the grain weighs less, so every arrow in B is shorter than in A by the same share. In C the <span class="k-water">blue</span> arrows inside the face are the water seeping out parallel to it, and the blue arrow added to the pull is their drag. <span class="cap-n">The numbers to remember: <span data-n="beach.repose-deg">34</span>° dry, <span data-n="beach.repose-deg">34</span>° under still water, <span data-n="beach.drain-deg">19.0</span>° with water seeping out.</span></p>
+        <ul class="try">
+          <li>In panel C, lay a ruler along the pull and the drag together and compare them with the pull alone.</li>
+          <li>Set <a data-ref="fig-beach"></a> to Water draining out and compare its face with panel C.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>The drag is nearly as long as the pull, so together they come to about twice it: the drag is <span data-n="ch04.drag-share-pct">49</span>% of the whole pull, <var>γ</var><sub>w</sub> ÷ <var>γ</var><sub>sat</sub>. The heap in <a data-ref="fig-beach"></a> stands at the same <span data-n="beach.drain-deg">19</span>°.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that panels A and B have the same shape. Under still water every arrow shrinks by the same share, because buoyancy takes the same fraction off the grain's weight wherever it points, and so the angle stays at 34°. Notice then what is new in C. The grain weighs what it did in B, and its press into the face is no bigger, but a second arrow has joined the pull: the drag of the water flowing past it. Friction comes only from the press, so the face must flatten until the press's friction catches up. Here is the sum <a data-ref="ch-beach"></a> promised:</p>
+      <div class="eq" id="eq-grip-face">
+        <span class="eq-body">tan <var>β</var> = (<var>γ′</var> ÷ <var>γ</var><sub>sat</sub>) · tan <var>φ′</var></span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>β</var> the steepest angle of a face with water seeping out of it, parallel to the face, in sand with no cohesion · <var>γ′</var> buoyant unit weight · <var>γ</var><sub>sat</sub> soaked unit weight · <var>φ′</var> the sand's friction angle. Dry or under still water, tan <var>β</var> = tan <var>φ′</var>.</p>
+
+      <section class="we" id="ex-grip-face">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Why the draining face stands at 19°</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The beach sand of <a data-ref="fig-beach"></a>: soaked, <span class="m"><var>γ</var><sub>sat</sub> = <span data-n="beach.gsat">20</span> kN/m³</span>; water <span class="m"><span data-n="const.gw">9.81</span> kN/m³</span>; <span class="m"><var>φ′</var> = <span data-n="beach.repose-deg">34</span>°</span>, <span class="m">tan <var>φ′</var> = <span data-n="block.tanphi">0.6745</span></span>. Water seeps out through the face, flowing parallel to it.</dd>
+          <dt>Find</dt><dd>The steepest angle <var>β</var> the face can stand at.</dd>
+          <dt>The idea</dt><dd>Treat one cubic metre of the face as the block on its ramp (<a data-ref="ex-grip-block"></a>), and add the drag of the flowing water to its pull.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Press into the face: <span class="m"><span data-n="beach.gprime">10.19</span> cos <var>β</var></span> kN</span><span class="why">the grains' weight in water, <span class="m">20 − 9.81</span>, split as on the ramp</span></li>
+          <li><span class="we-eq">Gradient along the flow: <span class="m"><var>i</var> = sin <var>β</var></span></span><span class="why">flowing parallel to the face, the water stays at one depth and one pressure, so the head it loses equals the height it drops: sin <var>β</var> per metre</span></li>
+          <li><span class="we-eq">Pull: <span class="m"><span data-n="beach.gprime">10.19</span> sin <var>β</var> + <span data-n="const.gw">9.81</span> sin <var>β</var> = <span data-n="beach.gsat">20</span> sin <var>β</var></span> kN</span><span class="why">the weight's pull plus the drag, <var>i</var> × 9.81</span></li>
+          <li><span class="we-eq">On the point of sliding: <span class="m">20 sin <var>β</var> = 10.19 cos <var>β</var> × tan 34°</span></span><span class="why">friction available equals the pull, <var>FS</var> = 1; dividing by cos <var>β</var> gives <a data-ref="eq-grip-face"></a></span></li>
+          <li><span class="we-eq"><span data-n="beach.gprime">10.19</span> ÷ <span data-n="beach.gsat">20</span> = <span data-n="ch04.gratio">0.5095</span></span><span class="why"><var>γ′</var> ÷ <var>γ</var><sub>sat</sub></span></li>
+          <li><span class="we-eq">tan <var>β</var> = <span data-n="ch04.gratio">0.5095</span> × <span data-n="block.tanphi">0.6745</span> = <span data-n="beach.tan-drain">0.3437</span></span><span class="why">a little over half of tan 34°</span></li>
+          <li><span class="we-eq"><var>β</var> = arctan <span data-n="beach.tan-drain">0.3437</span> = <span data-n="beach.drain-deg">19.0</span>°</span><span class="why">the angle whose tangent that is</span></li>
+        </ol>
+        <p class="we-ans">The face stands at <span data-n="beach.drain-deg">19.0</span>°, <span data-n="ch04.face-loss-deg">15.0</span>° flatter than the dry heap's <span data-n="beach.repose-deg">34</span>°.</p>
+        <p class="we-check"><b>Check.</b> Take the drag away and the pull is <span class="m">10.19 sin <var>β</var></span>, the same weight as the press: the 10.19 cancels and tan <var>β</var> = tan 34°, the heap under still water. And at 19.0° the face is in balance: the press is <span data-n="ch04.press-kn">9.637</span> kN, which gives <span data-n="ch04.press-kn">9.637</span> × <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.fric-kn">6.500</span> kN of friction, against a pull of <span data-n="ch04.pull-kn">3.312</span> + <span data-n="ch04.seep-drag-kn">3.188</span> = <span data-n="ch04.fric-kn">6.500</span> kN.</p>
+        <p class="we-means"><b>What it means.</b> The 19° in <a data-ref="fig-beach"></a> was right; <a data-ref="ch-beach"></a> only couldn't say why yet. Soaked sand weighs about twice as much as water, so water seeping out of a face roughly doubles the pull on its grains and roughly halves the tangent of the steepest slope. The downstream face of an earth dam, where seepage comes out, is this face at the scale of a hill, and the drains of <a data-ref="ch-zones"></a> are there to keep the water from reaching it.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-beach","set":{"bc-state":"drain"}}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Water seeps out of the face of a sand with heavier grains, soaked at 22 kN/m³ instead of 20, with the same friction angle. Does its face stand steeper or flatter than 19°?</summary>
+        <p>Steeper. Its buoyant weight is a larger share of its soaked weight: <var>γ′</var> ÷ <var>γ</var><sub>sat</sub> = 12.19 ÷ 22 = <span data-n="ch04.gratio-at@gsat=22">0.554</span>, so tan <var>β</var> = <span data-n="ch04.gratio-at@gsat=22">0.554</span> × <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.tan-face@gsat=22">0.374</span> and <var>β</var> = <span data-n="ch04.face-deg@gsat=22">20.5</span>°. The heavier the grains against the water, the less the water's drag counts.</p>
+      </details>
+
+      <h3 id="s-grip-proof">The sentence, proved</h3>
+      <p>Turn back to the title page and read the sentence there. You can now prove it:</p>
+      <p class="spine"><i>Soil holds only as well as its grains press on one another, and the water between them can take that press away.</i></p>
+      <p>The first half is <a data-ref="eq-grip-strength"></a>: strength is the grains' press times a fixed fraction, and nothing else. The second half is <a data-ref="eq-grip-sigma"></a>: whatever pressure the water has, it subtracts from that press. Every result in this chapter is one of the two halves at work. Water in the cushion took <span data-n="block.slide-pct">31</span>% of the block's press and slid it. Flooding the column took <span data-n="ch04.flood-loss-pct">43</span>% of the grains' press. Water flowing up at a gradient of about 1 takes all of it. Water seeping out of a face adds a pull and no press, and the face falls from 34° to 19°.</p>
+      <p>The castle of <a data-ref="ch-beach"></a> seemed to contradict the sentence, because there the water makes the sand stronger. It obeys it too. In damp sand the water hangs in small rings between the grains, and the curved skin of each ring pulls, so the water's pressure is below the air's: <var>u</var> is negative. Subtract a negative and <span class="m"><var>σ′</var> = <var>σ</var> − <var>u</var></span> is larger than <var>σ</var>. The water adds to the press instead of taking it away, by the same rule with the sign turned over (in damp sand only part of that pull counts, because the water touches only part of each grain). <a data-ref="ch-trapped"></a> puts a number on that pull and shows why it can hold up a wall a few tens of centimetres tall and never a 30 m one.</p>
+      <p>The sentence doesn't cover everything. Water that pours over the top of a dam washes it away whatever its grains are doing, and <a data-ref="ch-two-dams"></a> takes up that story. But for what soil does with the water inside it, this is the rule the rest of the book applies.</p>
+    </div>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.5): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>Friction comes from pressing: the grains' strength is their press times tan <var>φ′</var>, and the factor of safety is the friction available over the friction needed. A dry block, or a dry heap, slides at <var>φ</var> whatever it weighs.</li>
+        <li>Water pressure takes part of the grains' press and none of the pull: <span class="m"><var>σ′</var> = <var>σ</var> − <var>u</var></span>. Under the 25° block, <span data-n="block.slide-pct">31</span>% was enough to slide it.</li>
+        <li>A rising water table makes soil heavier and its grains press less; a lake on top adds to <var>σ</var> and <var>u</var> alike and changes nothing.</li>
+        <li>Water flowing up at the critical gradient, about 1, takes the grains' whole press away.</li>
+        <li>Water seeping out of a face adds a pull and no press, so the steepest face falls to tan <var>β</var> = (<var>γ′</var>/<var>γ</var><sub>sat</sub>) tan <var>φ′</var>: <span data-n="beach.drain-deg">19.0</span>° for the beach.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-grip-ramp30" data-tag="explore" data-level="2">
+          <p>Set the ramp in <a data-ref="fig-block"></a> to 30°, with no water. What is the block's factor of safety, and what cushion pressure slides it?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-block","set":{"bk-a":30,"bk-u":0}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Use the shortcut of <a data-ref="ex-grip-block"></a>: the share of the press the water must carry is 1 − tan 30° ÷ tan 34°.</p></details>
+          <div class="q-answer"><p><var>FS</var> = <span data-n="block.tanphi">0.6745</span> ÷ <span data-n="ch04.tan@a=30">0.5774</span> = <span data-n="block.fs@a=30">1.17</span>. The water must carry 1 − <span data-n="ch04.tan@a=30">0.5774</span> ÷ <span data-n="block.tanphi">0.6745</span> = <span data-n="ch04.shortcut-frac@a=30">0.144</span> of a press of <span data-n="block.N-kn@a=30">17.32</span> kN, and <span data-n="ch04.shortcut-frac@a=30">0.144</span> × <span data-n="block.N-kn@a=30">17.32</span> = <span data-n="block.u-slide-kpa@a=30">2.49</span> kPa: only <span data-n="block.slide-pct@a=30">14</span>% of the press. In the figure it holds at 2.0 kPa and slides at 2.5. The steeper the ramp, the less margin it has to lose.</p></div>
+        </li>
+        <li class="q" id="q-grip-heavier" data-tag="check" data-level="1">
+          <p>A block twice as heavy as the one in <a data-ref="fig-block"></a>, with the same base, sits on the same 25° ramp with the same 5 kPa of water in its cushion. Is it more or less likely to slide than the lighter block?</p>
+          <details class="q-hint"><summary>Hint</summary><p>The water carries the same number of kilonewtons under each block. What share of each block's press is that?</p></details>
+          <div class="q-answer"><p>Less likely. The same 5 kPa over the same 1 m² takes 5 kN off each block's press, but the heavier block presses with twice as much, so it loses a smaller share of its grip. With no water the weight cancels out of the factor of safety; water pressure is what makes weight matter.</p></div>
+        </li>
+        <li class="q" id="q-grip-table" data-tag="explore" data-level="2">
+          <p>Put the water table in <a data-ref="fig-column"></a> 2 m below the ground. What are <var>σ</var>, <var>u</var> and <var>σ′</var> at 10 m, and how much of the strength is left?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-column","set":{"gc-wt":-2}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Two metres of damp sand on eight of soaked; the foot is 8 m below the water table.</p></details>
+          <div class="q-answer"><p><var>σ</var> = 18 × 2 + 20 × 8 = <span data-n="column.s-kpa@wt=2">196</span> kPa; <var>u</var> = 9.81 × 8 = <span data-n="column.u-kpa@wt=2">78.48</span> kPa; <var>σ′</var> = <span data-n="column.e-kpa@wt=2">117.52</span> kPa, which is <span data-n="column.str-pct@wt=2">65</span>% of the <span data-n="ch04.dry-e-kpa">180</span> kPa the grains press with when the water table is below the column.</p></div>
+        </li>
+        <li class="q" id="q-grip-reservoir" data-tag="case" data-level="2">
+          <p>A reservoir is filled 20 m deeper over a bed of sand that it has covered for years, and nothing flows through the bed. Is the sand under the lake weaker than before?</p>
+          <details class="q-hint"><summary>Hint</summary><p>What do 20 m of extra water add to <var>σ</var>, and what do they add to <var>u</var>?</p></details>
+          <div class="q-answer"><p>No. The extra water adds 9.81 × 20 = <span data-n="ch04.lake-kpa@d=20">196.2</span> kPa to the total stress and the same to the pore pressure, so <var>σ′</var> and the strength are unchanged, as the lake on the column showed. The danger from a deeper reservoir is elsewhere: more head drives more water under the dam, and where it comes up again on the downstream side the upward gradient takes away the press (<a data-ref="eq-grip-ic"></a>). <a data-ref="ch-erosion"></a> follows it there.</p></div>
+        </li>
+        <li class="q" id="q-grip-rise" data-tag="reckon" data-level="2">
+          <p>Below the downstream foot of a dam, water rises through the sand of the column (<span data-n="column.gs-kn">20</span> kN/m³), losing 0.6 m of head for every metre it climbs. What share of the grains' press is left?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Each cubic metre presses down with its buoyant weight and is pushed up by <var>i</var> × 9.81.</p></details>
+          <div class="q-answer"><p>The drag is 0.6 × 9.81 = <span data-n="ch04.drag-kn">5.89</span> kN per cubic metre against a buoyant weight of <span data-n="beach.gprime">10.19</span>, which leaves <span data-n="ch04.up-left-kn">4.30</span> kN, and <span data-n="ch04.up-left-kn">4.30</span> ÷ <span data-n="beach.gprime">10.19</span> = <span data-n="ch04.up-left-frac">0.422</span>: about <span data-n="ch04.up-left-pct">42</span>% of the press, and of the strength, is left. The gradient is under the critical <span data-n="ch04.ic">1.04</span>, but more than half the grip has gone.</p></div>
+        </li>
+        <li class="q" id="q-grip-phi30" data-tag="reckon" data-level="3">
+          <p>A beach of sand with <var>φ′</var> = 30° and the same unit weights has water draining out of its face. What is the steepest face it can hold?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Use <a data-ref="eq-grip-face"></a> with tan 30° in place of tan 34°.</p></details>
+          <div class="q-answer"><p>tan <var>β</var> = <span data-n="ch04.gratio">0.5095</span> × <span data-n="ch04.tan@a=30">0.5774</span> = <span data-n="ch04.tan-face@phi=30">0.2942</span>, so <var>β</var> = <span data-n="ch04.face-deg@phi=30">16.4</span>°. Dry, the same sand would stand at 30°.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="bennett-geoinstitute2023"></cite> <span class="level">gentle</span> A short, free account of Terzaghi's years in Constantinople and the book of 1925 that came out of them.</li>
+        <li><cite data-cite="holtz2011"></cite> <span class="level">serious</span> A standard first course in soil mechanics; its chapters on effective stress and on shear strength take this chapter's two equations further, with laboratory tests and worked problems.</li>
+        <li><cite data-cite="terzaghi1936"></cite> <span class="level">primary source</span> Three pages, free from the ISSMGE library. The first paragraph states the principle of effective stress, under the name Terzaghi used then, the "neutral stress" for <var>u</var>.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">Everything in this chapter let the water come and go as it pleased: it rose in the column, seeped out of the face, flowed up through the sand. What happens to the grains' press when the water in the gaps can't get out in time?</p></nav>
   </section>
 </section>

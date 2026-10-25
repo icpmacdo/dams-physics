@@ -1,0 +1,13 @@
+/* Chapter 4's static figures (book/SPEC.md F.10) and the book's sentence, set apart as in Chapter 1.
+   Label sizes go through --fs so the floor in styles-book.css can lift them on a phone. */
+#fig-grip-face .grip-panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 18px; max-width: 820px; margin: 0 auto; }
+#fig-grip-face svg.dwg { display: block; width: 100%; height: auto; }
+#fig-grip-face svg.dwg text { --fs: 12.5px; }
+#fig-grip-face svg.dwg .lbl-s { --fs: 11.5px; }
+#fig-grip-envelope svg.dwg { display: block; width: 100%; max-width: 620px; height: auto; margin: 0 auto; }
+#fig-grip-envelope svg.dwg text { --fs: 12.5px; }
+#fig-grip-envelope svg.dwg .lbl-s { --fs: 11.5px; }
+@media screen and (max-width: 699px) {
+  #fig-grip-face .grip-panels { grid-template-columns: minmax(0, 1fr); max-width: 360px; }
+}
+#ch-grip p.spine { font-family: var(--f-body); font-size: 1.12em; line-height: 1.45; margin: 1.1em 0 1.2em; padding-left: 1em; border-left: 2px solid var(--rule); color: var(--ink); }

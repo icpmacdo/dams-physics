@@ -1,0 +1,88 @@
+{
+  "horn-deere1962": {
+    "group": "papers",
+    "short": "Horn & Deere (1962)",
+    "authors": "Horn, H.M., Deere, D.U.",
+    "year": "1962",
+    "title": "Frictional characteristics of minerals",
+    "container": "Géotechnique 12(4): 319–335",
+    "doi": null,
+    "url": null,
+    "note": "Friction coefficients of polished mineral surfaces oven-dried, air-equilibrated and saturated: clear quartz 0.10, 0.10, 0.23; muscovite (Pennsylvania) 0.43, 0.30, 0.23; chlorite 0.53, 0.35, 0.22. Checked against the table as reproduced in Rocscience's RocFall reference tables."
+  },
+  "terzaghi1925": {
+    "group": "books",
+    "short": "Terzaghi (1925)",
+    "authors": "Terzaghi, K.",
+    "year": "1925",
+    "title": "Erdbaumechanik auf bodenphysikalischer Grundlage",
+    "container": "Leipzig and Vienna: Franz Deuticke",
+    "doi": null,
+    "url": null
+  },
+  "terzaghi1936": {
+    "group": "papers",
+    "short": "Terzaghi (1936)",
+    "authors": "Terzaghi, K.",
+    "year": "1936",
+    "title": "The shearing resistance of saturated soils and the angle between the planes of shear",
+    "container": "Proceedings of the First International Conference on Soil Mechanics and Foundation Engineering, Cambridge, Massachusetts, vol. 1: 54–56",
+    "doi": null,
+    "url": "https://www.issmge.org/uploads/publications/1/44/1936_01_0017.pdf",
+    "note": "Paper D-7. The principle of effective stress is stated on p. 54, where the pore pressure is called the neutral stress."
+  },
+  "bennett-geoinstitute2023": {
+    "group": "web",
+    "short": "Bennett (2023)",
+    "authors": "Bennett, M.",
+    "year": "2023",
+    "title": "Review of Modern Conceptions Concerning Foundation Engineering (Terzaghi, 1925)",
+    "container": "Geo-Institute of the American Society of Civil Engineers",
+    "doi": null,
+    "url": "https://www.geoinstitute.org/news/review-modern-conceptions-concerning-foundation-engineering-terzaghi-1925",
+    "note": "Terzaghi at Robert College, Constantinople, after 1918; his laboratory built from scavenged materials such as cigar boxes and kitchenware; Erdbaumechanik published early in 1925."
+  },
+  "majmudar-behringer2005": {
+    "group": "papers",
+    "short": "Majmudar & Behringer (2005)",
+    "authors": "Majmudar, T.S., Behringer, R.P.",
+    "year": "2005",
+    "title": "Contact force measurements and stress-induced anisotropy in granular materials",
+    "container": "Nature 435: 1079–1082",
+    "doi": "10.1038/nature03805",
+    "url": null,
+    "note": "Photoelastic disks in two dimensions, sheared and isotropically compressed: force chains, and their alignment with the direction of shear."
+  },
+  "usace-em1902": {
+    "group": "standards",
+    "short": "USACE EM 1110-2-1902",
+    "authors": "US Army Corps of Engineers",
+    "year": "2003",
+    "title": "EM 1110-2-1902, Slope Stability",
+    "container": "Washington, DC: Department of the Army, 31 October 2003",
+    "doi": null,
+    "url": "https://damtoolbox.org/wiki/Slope_Stability_(EM_1110-2-1902)",
+    "note": "Table 3-1 (p. 3-2), minimum required factors of safety for new earth and rock-fill dams: end of construction 1.3; long-term steady seepage 1.5; maximum surcharge pool 1.4; rapid drawdown 1.1–1.3. P. 3-1: required factors of safety 'continue to be based on experience'."
+  },
+  "holtz2011": {
+    "group": "books",
+    "short": "Holtz, Kovacs & Sheahan (2011)",
+    "authors": "Holtz, R.D., Kovacs, W.D., Sheahan, T.C.",
+    "year": "2011",
+    "title": "An Introduction to Geotechnical Engineering, 2nd ed.",
+    "container": "Upper Saddle River: Pearson",
+    "doi": null,
+    "url": null
+  },
+  "bromwell1966": {
+    "group": "reports",
+    "short": "Bromwell (1966)",
+    "authors": "Bromwell, L.G.",
+    "year": "1966",
+    "title": "The friction of quartz in high vacuum",
+    "container": "Research Report R66-18, Department of Civil Engineering, Massachusetts Institute of Technology. 119 pp.",
+    "doi": null,
+    "url": "https://trid.trb.org/View/118131",
+    "note": "From the abstract (TRID record 00228847): the friction coefficient of smooth quartz varied from about 0.1 to 1.0 depending on surface cleanliness; rough surfaces varied much less. The year is read from the report number, R66-18."
+  }
+}

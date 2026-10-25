@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2026-10-24",
+    "where": "The opening of the chapter",
+    "ref": "ch-grip",
+    "was": "This step explains the three kinds of sand on the beach, and with them almost every way a dam can fail.",
+    "now": "What water does instead was worked out by Karl Terzaghi. By the end of this chapter it explains why water can make the castle stronger, why a heap under still water keeps its slope, the 19° face the beach chapter left unexplained, and the number every later chapter uses to say whether a slope will stand.",
+    "why": "Overclaim: effective stress does not explain dams that fail by overtopping, which the book treats separately."
+  },
+  {
+    "date": "2026-10-24",
+    "where": "The paragraph introducing effective stress",
+    "ref": "eq-grip-sigma",
+    "was": "When the gaps are full of water, the water pushes on every grain from all sides, like the cushion under the block.",
+    "now": "The water in the gaps meets almost all of the surface, and it presses on all of it with its own pore pressure; the water therefore carries u of each square metre's σ, and only the rest is left for the grains to carry.",
+    "why": "Pore pressure does not push grains apart or outward; it carries part of the load the grains would otherwise carry between them."
+  }
+]
