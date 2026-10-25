@@ -1,0 +1,121 @@
+{
+  "teton1976": {
+    "group": "reports",
+    "short": "Teton Panel (1976)",
+    "authors": "Independent Panel to Review Cause of Teton Dam Failure",
+    "year": "1976",
+    "title": "Report to U.S. Department of the Interior and State of Idaho on Failure of Teton Dam",
+    "container": "December 1976",
+    "doi": null,
+    "url": "https://damfailures.org/sites/default/files/wp-pdf/IR_Independent-Investigation_Teton.pdf",
+    "note": "Summary and conclusions, pp. iii–ix (the deaths and the dam's height, p. v; conclusions 3, 4 and 7–9, p. viii; 13, p. ix); the dam, p. 1-1; the key trenches, p. 8-3; the chronology of 3–5 June, Chapter 2 and p. 12-1; the section at station 15+00, p. 12-11; the contract drawing with the zones, p. 1-3."
+  },
+  "stene1996": {
+    "group": "reports",
+    "short": "Stene (1996)",
+    "authors": "Stene, E.A.",
+    "year": "1996",
+    "title": "The Teton Basin Project",
+    "container": "U.S. Bureau of Reclamation, Denver",
+    "doi": null,
+    "url": "https://www.usbr.gov/pn/snakeriver/dams/uppersnake/teton/projhistory.pdf",
+    "note": "P. 1: eleven lives attributed to the failure."
+  },
+  "bennett-eep2012": {
+    "group": "reports",
+    "short": "BC Hydro expert panel (2012)",
+    "authors": "Hoeg, K., Fell, R., Bridle, R.",
+    "year": "2012",
+    "title": "WAC Bennett Dam: Expert Engineering Panel Report, Volume 1",
+    "container": "BC Hydro, Report No. N3405, 13 August 2012",
+    "doi": null,
+    "url": "https://www.bchydro.com/content/dam/BCHydro/customer-portal/documents/projects/gm-shrum/EEP%20report_V1.pdf",
+    "note": "Pages 1–2 give the dam's height, length and fill volume; the table of zones (pp. 3–4) lists them and how each was placed; p. 5 the Lugeon; p. 9 the core's permeability against its placement water; Section 6.5 (p. 37 on) the filter system."
+  },
+  "bennett-eep2012-v2": {
+    "group": "reports",
+    "short": "BC Hydro expert panel (2012), vol. 2",
+    "authors": "Hoeg, K., Fell, R., Bridle, R.",
+    "year": "2012",
+    "title": "WAC Bennett Dam: Expert Engineering Panel Report, Volume 2 (appendices)",
+    "container": "BC Hydro, Report No. N3405, August 2012",
+    "doi": null,
+    "url": "https://www.bchydro.com/content/dam/BCHydro/customer-portal/documents/projects/gm-shrum/EEP-report-volume2.pdf",
+    "note": "Appendix C: the design section (figure 7-1 of the design report), p. C-4; the slopes, p. C-5 and p. C-10; the core, transition, filter and drain widths, p. C-7."
+  },
+  "stewart1998": {
+    "group": "papers",
+    "short": "Stewart (1998)",
+    "authors": "Stewart, R.A.",
+    "year": "1998",
+    "title": "WAC Bennett Dam: the sinkhole crisis",
+    "container": "Australian National Committee on Large Dams (ANCOLD), paper",
+    "doi": null,
+    "url": "https://ancold.org.au/?p=25173",
+    "note": "The crest collapse of 17 June 1996 while a pothole was being investigated; repair by compaction grouting, completed by 1997."
+  },
+  "usbr-ds13-ch8": {
+    "group": "standards",
+    "short": "USBR DS-13 ch. 8",
+    "authors": "U.S. Bureau of Reclamation",
+    "year": "2014",
+    "title": "Design Standards No. 13: Embankment Dams, Chapter 8: Seepage, Phase 4 (Final), DS-13(8)-4.1",
+    "container": "Denver: Bureau of Reclamation, January 2014",
+    "doi": null,
+    "url": "https://damtoolbox.org/images/b/bb/DS13-8.pdf",
+    "note": "Section 8.2.2.2, p. 8-7: recommended factors of safety against heave of 4.0 for a new dam and 3.0 for an existing dam; on the order of 2.0 to 2.5 where foundation properties are well understood and piezometers are adequate."
+  },
+  "icold164": {
+    "group": "standards",
+    "short": "ICOLD Bulletin 164",
+    "authors": "International Commission on Large Dams",
+    "year": "2017",
+    "title": "Bulletin 164: Internal Erosion of Existing Dams, Levees and Dikes, and their Foundations",
+    "container": "Paris: ICOLD, two volumes",
+    "doi": null,
+    "url": "https://damsafety.org/content/internal-erosion-existing-dams-levees-and-dikes-and-their-foundations",
+    "note": "Volume 1: internal erosion processes and engineering assessment; the four mechanisms by which internal erosion initiates (concentrated leak, backward erosion, contact erosion, suffusion)."
+  },
+  "terzaghi1922": {
+    "group": "papers",
+    "short": "Terzaghi (1922)",
+    "authors": "Terzaghi, K.",
+    "year": "1922",
+    "title": "Der Grundbruch an Stauwerken und seine Verhütung",
+    "container": "Die Wasserkraft 17(24): 445–449",
+    "doi": null,
+    "url": null,
+    "note": "In German: the failure of dam foundations by piping, and how to prevent it. Cited from the reference list of Fannin (2008)."
+  },
+  "fannin2008": {
+    "group": "papers",
+    "short": "Fannin (2008)",
+    "authors": "Fannin, J.",
+    "year": "2008",
+    "title": "Karl Terzaghi: from theory to practice in geotechnical filter design",
+    "container": "Journal of Geotechnical and Geoenvironmental Engineering 134(3): 267–276",
+    "doi": "10.1061/(ASCE)1090-0241(2008)134:3(267)",
+    "url": null
+  },
+  "fema2011-filters": {
+    "group": "standards",
+    "short": "FEMA (2011)",
+    "authors": "Federal Emergency Management Agency",
+    "year": "2011",
+    "title": "Filters for Embankment Dams: Best Practices for Design and Construction",
+    "container": "Washington, DC, October 2011",
+    "doi": null,
+    "url": "https://fema.gov/sites/default/files/2020-08/filters_embankment_dams_update.pdf",
+    "note": "Dispersive clays, p. 78; base soil categories, table 5-1, p. 83; filtering criteria, table 5-2, p. 84; the permeability rule, p. 84; permeability as the square of D15, p. 88; piping at low gradients, pp. 109–110; the effective opening of a filter, about 0.11 × D15, and the filter cake, pp. 275–276."
+  },
+  "sherard1976-pinhole": {
+    "group": "papers",
+    "short": "Sherard et al. (1976)",
+    "authors": "Sherard, J.L., Dunnigan, L.P., Decker, R.S., Steele, E.F.",
+    "year": "1976",
+    "title": "Pinhole test for identifying dispersive soils",
+    "container": "Journal of the Geotechnical Engineering Division, ASCE 102(1): 69–85",
+    "doi": "10.1061/AJGEB6.0000236",
+    "url": null
+  }
+}

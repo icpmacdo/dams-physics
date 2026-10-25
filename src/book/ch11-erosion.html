@@ -1,19 +1,164 @@
 <section class="chapter" id="ch-erosion">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.12): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <blockquote class="epigraph">
+      <p>The Panel considers that too much was expected of the grout curtain, and that the design should have provided measures to render the inevitable leakage harmless.</p>
+      <footer>Independent Panel to Review Cause of Teton Dam Failure, <a data-cite="teton1976">Report on Failure of Teton Dam</a>, 1976</footer>
+    </blockquote>
+    <p class="so-far"><b>So far.</b> Every dam leaks, and <a data-ref="ch-seepage"></a> followed the water through ours: where it gets in, which way it goes, where it comes out, and how drains and cutoffs decide all three. At the toe of our dam on sand and gravel, the water left the ground with a gradient of <span data-n="lab.i-exit">0.79</span>. This chapter asks what that water does to the grains it leaves behind.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>explain a sand boil as the block of <a data-ref="ch-grip"></a> floating, and judge an exit gradient against the margin engineers want;</li>
+        <li>name the four ways water carries soil out of a dam, place a real failure in one of them, and say why a pipe, once started, speeds up;</li>
+        <li>size a sand filter for a sand, and say why a clay core needs a different rule.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.12): Teton, 5 June 1976. -->
-    </div>
+
     <div class="col">
-      <h3 id="s-erosion-piping">When seepage carries soil: piping</h3>
-      <p>At the toe, the foot of the downstream slope, water seeping under a dam comes up out of the ground and pushes on the sand grains it passes. When the upward gradient reaches the <span class="gl" data-term="critical-gradient">critical gradient</span>, the water carries the full weight of the soil, the <span class="gl" data-term="effective-stress">effective stress</span> drops to zero, and the sand boils. It's the block from <a data-ref="fig-block"></a> with so much water pressure under it that it floats:</p>
-      <div class="formula"><b>i<sub>c</sub></b> = (G<sub>s</sub> − 1) / (1 + e) ≈ (2.65 − 1) / (1 + 0.65) ≈ <b>1.0</b><small>Gs specific gravity of the grains · e void ratio · safety factor against heave = i_c / i_exit; designers want at least 3 at an unfiltered exit of an existing dam, and 4 for a new dam or a repair, or about 2 to 2.5 where the soil and the water pressures are well measured (US Bureau of Reclamation). It flags sand boils, not every kind of internal erosion</small></div>
-      <p>A boil at the toe is where <strong>backward erosion <span class="gl" data-term="piping">piping</span></strong> begins. Grains wash out, a small channel forms, and the channel eats its way <em>upstream</em> under the dam. Erosion inside a dam, of this kind and others (engineers group them as <span class="gl" data-term="internal-erosion">internal erosion</span>), is one of the two big killers of embankment dams. Foster, Fell and Spannagle's 2000 study of 124 embankment-dam failures up to 1986 counted every kind as "piping": through the embankment, through the foundation, or from one into the other. It caused about as many failures as overtopping: 47% against 48% once spillway and gate failures are counted with overtopping. That is more than overtopping alone (34%). Some failures had more than one cause, so the shares add up to a little over 100%. Teton Dam in Idaho failed by a different kind of internal erosion on its first filling in 1976: water carried soil from its core into open joints in the rock, deep in a trench cut for the core.</p>
+      <p class="cold"><span class="newthought">On the morning of Saturday, 5 June 1976,</span> the reservoir behind Teton Dam in eastern Idaho was nearly full for the first time. The dam was new: an earth embankment <span data-n="ch11.ft-m@ft=305">93</span> m high (305 ft above the riverbed) across a canyon of hard volcanic rock, finished the November before and filling since October. Two days earlier, springs of clear water had appeared in the rock of the canyon wall, about 400 m downstream. The engineer in charge took them for a good sign: the ground around the reservoir was filling up as it should.<label for="mn-erosion-teton1" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-teton1" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="teton1976"></a>: the dam, p. v and p. 1-1; the springs of 3 June, 1,300 and 1,500 ft downstream, p. 12-1, and the project engineer's testimony, p. 2-1.</span></p>
+      <p>Shortly after seven o'clock, the first people to arrive for work found muddy water running out of the rubble at the foot of the right <span class="gl" data-term="abutment">abutment</span>, where the dam met the canyon wall, at 20 to 30 cubic feet a second (<span data-n="ch11.cfs-m3s@q=20">0.57</span> to <span data-n="ch11.cfs-m3s@q=30">0.85</span> m³ a second), and a trickle of cloudy water higher up the same junction. Both grew all morning. At about half past ten, with a loud burst, a large new leak broke out of the downstream face, from a tunnel about <span data-n="ch11.ft-m@ft=6">1.8</span> m across, and the water began cutting a gully back up the face. At eleven a whirlpool opened in the reservoir, above the upstream slope. At 11:55 the crest began to fall in between the whirlpool and the head of the gully, and the reservoir went through. Eleven people died in the flood, by the count of the Bureau of Reclamation, which built the dam; the panel that investigated the failure associated fourteen deaths with it, directly or indirectly.<label for="mn-erosion-teton2" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-teton2" class="margin-toggle"><span class="marginnote" data-kind="source">The morning: <a data-cite="teton1976"></a>, p. 12-1, pieced together by the panel from sworn testimony and photographs (pp. 2-1 to 2-15). Eleven deaths: <a data-cite="stene1996"></a>, p. 1. Fourteen: <a data-cite="teton1976"></a>, p. v and p. 1-1.</span></p>
+      <p>Teton leaked through its core. So, twenty years later, did the W.A.C. Bennett Dam on the Peace River in British Columbia, the dam whose zones opened <a data-ref="ch-zones"></a>. In June 1996 a hole opened in its crest, and the investigation that followed, reviewed by a panel of experts in 2012, found that seepage had carried part of its core away. Bennett is still holding back its reservoir. In both dams water found a way through the core and picked up soil on the way. The difference lay in where it could take that soil, and that difference is what this chapter is about.</p>
+
+      <h3 id="s-erosion-boil">Sand that floats</h3>
+      <p>Start at the beach. <a data-ref="ch-beach"></a> met the soft sand at the water's edge as loose sand that a wiggle shakes into soup. As the tide goes out there is a second reason for it. The water held in the beach seeps back out at the foot of the face, and where it flows upward through the sand it takes part of the grains' press away. Push it up harder and it takes all of it.</p>
+      <p><a data-ref="ch-grip"></a> put numbers on that. Water that loses <var>i</var> metres of head for every metre it travels drags on the grains in each cubic metre with <span class="m"><var>i</var> × <span data-n="const.gw">9.81</span> kN</span>, in the direction it flows. A cubic metre of soaked sand presses down on the grains below it with its <span class="gl" data-term="buoyant-unit-weight">buoyant weight</span>, about one water's worth. Turn the flow upward, raise the gradient, and the drag eats into that press until, at the <span class="gl" data-term="critical-gradient">critical gradient</span>, the two cancel. The grains still touch, but they no longer press on one another, the <span class="gl" data-term="effective-stress">effective stress</span> is zero, and the sand has no grip at all. It is the block on the ramp of <a data-ref="fig-block"></a> with so much water under it that it floats. For a typical quartz sand, grains <span data-n="ch11.gs">2.65</span> times as heavy as water with <span data-n="ch11.e">0.65</span> m³ of gap for every cubic metre of grain, <a data-ref="ex-grip-ic"></a> worked it out from the grains: <span class="m">(<span data-n="ch11.gs">2.65</span> − 1) ÷ (1 + <span data-n="ch11.e">0.65</span>) = <span data-n="ch11.ic">1.00</span></span>.</p>
+      <p>That is easy to see in a tube. Fill it with a metre of that sand, feed it water from below out of a tank, and let the water spill out of a spout at the top of the sand. Then raise the tank:</p>
+
+      <figure class="fig wide" id="fig-erosion-tube">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · A metre of sand, fed with water from below</span><span class="scale-note">Schematic · arrows to scale with each other</span></div>
+        <svg class="dwg" viewBox="0 0 720 312" role="img" aria-label="Three upright tubes each hold one metre of the same sand, fed with water from below by a tank beside them. In A the tank stands level with the outlet at the top of the sand and nothing flows. In B the tank stands half a metre higher; water rises through the sand and its upward drag, a blue arrow, is half as long as the grains&#8217; weight under water, an ochre arrow. In C the tank stands a metre higher, the two arrows are equal, the grains no longer press on one another and the bed boils."><defs><marker id="ero-arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--grain)"/></marker></defs>
+<rect x="14" y="40" width="34" height="232" class="water" style="fill:none"/>
+<rect x="14" y="158" width="34" height="114" class="water"/>
+<path d="M14,40 V272 H48 V40" class="edge" style="fill:none"/>
+<path d="M14,158 H48" class="water-line"/>
+<rect x="48" y="266" width="80" height="8" class="water"/>
+<path d="M48,266 H112 M48,274 H128" class="edge"/>
+<rect x="112" y="158" width="56" height="116" class="water"/>
+<rect x="112" y="162" width="56" height="100" fill="url(#p-alluv)"/>
+<rect x="112" y="262" width="56" height="8" fill="url(#p-drain)"/>
+<path d="M112,140 V274 H168 V140" class="edge" style="fill:none"/>
+<path d="M168,162 H184" class="edge"/><path d="M168,158 H184" class="water-line"/>
+<path d="M184,160 q8,0 10,14" class="water-line" marker-end="url(#arr-w)"/>
+<text x="56" y="142" class="lbl-s halo">tank level</text>
+<text x="56" y="154" class="lbl-s halo">with the outlet</text>
+<path d="M198,162 V262 M194,162 H202 M194,262 H202" class="dim"/>
+<text x="204" y="210" class="lbl-s halo">1 m</text>
+<text x="204" y="222" class="lbl-s halo">of sand</text>
+<path d="M130,184 V244" style="stroke:var(--grain);stroke-width:2.2;fill:none" marker-end="url(#ero-arr-g)"/>
+<text x="14" y="18" class="lbl"><tspan font-weight="700">A</tspan> · <tspan font-style="italic">i</tspan> = <tspan data-n="ch11.dh-m@i=0">0</tspan></text>
+<text x="14" y="292" class="lbl-s">grains press with</text><text x="14" y="306" class="lbl-s"><tspan data-n="ch11.left-kn@i=0">9.81</tspan> kN per m³</text>
+<rect x="254" y="40" width="34" height="232" class="water" style="fill:none"/>
+<rect x="254" y="108" width="34" height="164" class="water"/>
+<path d="M254,40 V272 H288 V40" class="edge" style="fill:none"/>
+<path d="M254,108 H288" class="water-line"/>
+<rect x="288" y="266" width="80" height="8" class="water"/>
+<path d="M288,266 H352 M288,274 H368" class="edge"/>
+<rect x="352" y="158" width="56" height="116" class="water"/>
+<rect x="352" y="162" width="56" height="100" fill="url(#p-alluv)"/>
+<rect x="352" y="262" width="56" height="8" fill="url(#p-drain)"/>
+<path d="M352,140 V274 H408 V140" class="edge" style="fill:none"/>
+<path d="M408,162 H424" class="edge"/><path d="M408,158 H424" class="water-line"/>
+<path d="M424,160 q8,0 10,14" class="water-line" marker-end="url(#arr-w)"/>
+<path d="M288,158 H352" style="stroke:var(--ink-2);stroke-width:0.8;stroke-dasharray:3 3"/>
+<path d="M302,108 V158 M298,108 H306 M298,158 H306" class="dim"/>
+<text x="308" y="131" class="lbl-s halo">tank <tspan data-n="ch11.dh-m@i=0.5">0.5</tspan> m</text>
+<text x="308" y="144" class="lbl-s halo">higher</text>
+<path d="M438,162 V262 M434,162 H442 M434,262 H442" class="dim"/>
+<path d="M370,184 V244" style="stroke:var(--grain);stroke-width:2.2;fill:none" marker-end="url(#ero-arr-g)"/>
+<path d="M390,244 V214" style="stroke:var(--water);stroke-width:2.2;fill:none" marker-end="url(#arr-w)"/>
+<text x="254" y="18" class="lbl"><tspan font-weight="700">B</tspan> · <tspan font-style="italic">i</tspan> = <tspan data-n="ch11.dh-m@i=0.5">0.5</tspan></text>
+<text x="254" y="292" class="lbl-s">grains press with</text><text x="254" y="306" class="lbl-s"><tspan data-n="ch11.left-kn@i=0.5">4.9</tspan> kN per m³</text>
+<rect x="494" y="40" width="34" height="232" class="water" style="fill:none"/>
+<rect x="494" y="58" width="34" height="214" class="water"/>
+<path d="M494,40 V272 H528 V40" class="edge" style="fill:none"/>
+<path d="M494,58 H528" class="water-line"/>
+<rect x="528" y="266" width="80" height="8" class="water"/>
+<path d="M528,266 H592 M528,274 H608" class="edge"/>
+<rect x="592" y="158" width="56" height="116" class="water"/>
+<rect x="592" y="156" width="56" height="106" fill="url(#p-alluv)"/>
+<rect x="592" y="262" width="56" height="8" fill="url(#p-drain)"/>
+<path d="M592,140 V274 H648 V140" class="edge" style="fill:none"/>
+<path d="M648,162 H664" class="edge"/><path d="M648,158 H664" class="water-line"/>
+<path d="M664,160 q8,0 10,14" class="water-line" marker-end="url(#arr-w)"/>
+<circle cx="602" cy="150" r="1.8" style="fill:var(--m-alluv);stroke:var(--ink-2);stroke-width:0.5"/>
+<circle cx="614" cy="144" r="1.8" style="fill:var(--m-alluv);stroke:var(--ink-2);stroke-width:0.5"/>
+<circle cx="626" cy="152" r="1.8" style="fill:var(--m-alluv);stroke:var(--ink-2);stroke-width:0.5"/>
+<circle cx="637" cy="146" r="1.8" style="fill:var(--m-alluv);stroke:var(--ink-2);stroke-width:0.5"/>
+<circle cx="608" cy="138" r="1.8" style="fill:var(--m-alluv);stroke:var(--ink-2);stroke-width:0.5"/>
+<circle cx="632" cy="136" r="1.8" style="fill:var(--m-alluv);stroke:var(--ink-2);stroke-width:0.5"/>
+<circle cx="620" cy="132" r="1.8" style="fill:var(--m-alluv);stroke:var(--ink-2);stroke-width:0.5"/>
+<path d="M592,156 q7,-8 14,0 q7,-8 14,0 q7,-8 14,0 q7,-8 14,0" class="edge" style="fill:none;stroke-width:0.8"/>
+<path d="M528,158 H592" style="stroke:var(--ink-2);stroke-width:0.8;stroke-dasharray:3 3"/>
+<path d="M542,58 V158 M538,58 H546 M538,158 H546" class="dim"/>
+<text x="548" y="106" class="lbl-s halo">tank <tspan data-n="ch11.dh-m@i=1">1.0</tspan> m</text>
+<text x="548" y="119" class="lbl-s halo">higher</text>
+<path d="M678,162 V262 M674,162 H682 M674,262 H682" class="dim"/>
+<path d="M610,184 V244" style="stroke:var(--grain);stroke-width:2.2;fill:none" marker-end="url(#ero-arr-g)"/>
+<path d="M630,244 V184" style="stroke:var(--water);stroke-width:2.2;fill:none" marker-end="url(#arr-w)"/>
+<text x="494" y="18" class="lbl"><tspan font-weight="700">C</tspan> · <tspan font-style="italic">i</tspan> = <tspan data-n="ch11.dh-m@i=1">1.0</tspan></text>
+<text x="494" y="292" class="lbl-s">grains press with</text><text x="494" y="306" class="lbl-s"><tspan data-n="ch11.left-kn@i=1">0</tspan> kN per m³</text>
+<text x="620" y="132" class="lbl-s lbl-acc halo" text-anchor="middle">the bed boils</text>
+</svg>
+        <figcaption>
+          <p class="cap"><b>Raise the tank until the water loses a metre of head through each metre of sand, and the sand floats.</b> Each tube holds the same metre of soaked sand on a gravel screen, with a spout at the top of the sand that sets the level the water leaves at. The tank beside it stands level with the spout in A, half a metre above it in B and a metre above it in C. Inside the sand, the <span class="k-grain">ochre</span> arrow is the weight of each cubic metre of grains under water, <span data-n="ch11.gprime">9.81</span> kN, and the <span class="k-water">blue</span> arrow the upward drag of the water flowing through it; the press the grains have left is the difference, written under each tube. <span class="cap-n">The number to remember: this sand boils at a gradient of <span data-n="ch11.ic">1.00</span>.</span></p>
+          <ul class="try">
+            <li>Measure the two arrows in B with a ruler. What share of the grains' press has the water taken?</li>
+          </ul>
+          <details class="try-ans"><summary>Answers</summary><p>Half: the blue arrow is half the length of the ochre one, so the grains press with <span data-n="ch11.left-kn@i=0.5">4.9</span> kN in each cubic metre instead of <span data-n="ch11.gprime">9.81</span>, <span data-n="ch11.left-pct@i=0.5">50</span>% of their press.</p></details>
+        </figcaption>
+      </figure>
+
+      <p>Notice that nothing about the sand changes from one tube to the next. The grains, the gaps and the water in them are the same; only the tank moves. In A the water stands still and the grains carry their whole weight under water. In B the water climbs through the sand, losing half a metre of head over its metre, and its drag takes half the grains' press. In C the drag matches the grains' weight, and the top of the bed lifts and churns. That is a <span class="gl" data-term="sand-boil">sand boil</span>, and it is what an engineer fears to find beyond the <span class="gl" data-term="toe">toe</span> of a dam, where water that has passed under it rises out of the ground.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A looser sand of the same grains has <span data-n="ch11.e@e=0.8">0.8</span> m³ of gap for each cubic metre of grain. Does it boil at a lower or a higher gradient?</summary>
+        <p>Lower. Its critical gradient is <span class="m">(<span data-n="ch11.gs">2.65</span> − 1) ÷ (1 + <span data-n="ch11.e@e=0.8">0.8</span>) = <span data-n="ch11.ic@e=0.8">0.92</span></span>: more of each cubic metre is water, so the grains weigh less under it and take less drag to float.</p>
+      </details>
+
+      <p>The gradient where seepage leaves the ground is the <span class="gl" data-term="exit-gradient">exit gradient</span>, and engineers judge it against the critical gradient by a ratio, their margin against <span class="gl" data-term="heave">heave</span>:</p>
+      <div class="eq" id="eq-erosion-heave">
+        <span class="eq-body"><var>FS</var><sub>heave</sub> = <var>i</var><sub>c</sub> / <var>i</var><sub>exit</sub></span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>i</var><sub>c</sub> critical gradient, about 1 for sand · <var>i</var><sub>exit</sub> the upward gradient where seepage leaves the ground</p>
+      <p>A slope in <a data-ref="ch-grip"></a> was judged at a factor of safety of 1.5. For an exit, the Bureau of Reclamation's design standard asks for at least 3 at an unfiltered exit of an existing dam, and 4 for a new dam or a repair, or about 2 to 2.5 where the soil and the water pressures are well measured.<label for="mn-erosion-ds13" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-ds13" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usbr-ds13-ch8"></a>, section 8.2.2.2, pp. 8-5 to 8-7, which also gives the warning about internal erosion quoted in the next paragraph.</span> The margin is high because the number it divides by is shaky. Right at the toe the gradient has no settled value: the closer you look, the steeper it gets, so a computed exit gradient depends on how finely the ground was divided.<label for="sn-erosion-corner" class="sn-ref"></label><input type="checkbox" id="sn-erosion-corner" class="margin-toggle"><span class="sidenote" data-kind="curious">Water flowing under a dam's base turns a sharp corner to come up beside the toe, and in the mathematics of a flow net the gradient at such a corner grows without limit. A grid of cells smooths the corner over one cell, so its answer depends on the cell's size. The seepage lab reads its exit gradient over the last half metre of ground.</span> Natural ground is never as even as a model of it, and a lens of fine sand can sit where the model has gravel. And in fine sand under a roof, grains can be carried along at far gentler gradients than the one that floats them, as the next section shows.</p>
+      <p>The standard also says what the ratio does not measure: it flags sand boils, not every kind of internal erosion. Its own words are that it "is not a factor of safety against the initiation of internal erosion". A dam can boil without failing, and fail with no boil at all, as Teton did. For now, here is the ratio at work on our dam:</p>
+
+      <section class="we" id="ex-erosion-exit">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The margin at our dam's toe</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Our dam of one fill on sand and gravel, as the seepage lab of <a data-ref="fig-lab"></a> opens: reservoir <span data-n="lab.res-m">20.4</span> m deep, no drain, no cutoff. The lab's largest exit gradient is <span data-n="lab.i-exit">0.786</span>, in the ground right beyond the toe, and it takes <span class="m"><var>i</var><sub>c</sub> = <span data-n="ch11.ic-lab">1.0</span></span>, a round value for sand.</dd>
+          <dt>Find</dt><dd>The margin against heave at the toe; the exit gradient a new dam would need; what a cutoff halfway down the gravel does.</dd>
+          <dt>The idea</dt><dd>Divide the critical gradient by the exit gradient (<a data-ref="eq-erosion-heave"></a>), and turn the target margin round to find the gradient it allows.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>FS</var> = <span data-n="ch11.ic-lab">1.0</span> ÷ <span data-n="lab.i-exit">0.786</span> <span class="m">= <span data-n="lab.fs">1.27</span></span></span><span class="why">the margin as the lab opens; its readout says the same</span></li>
+          <li><span class="we-eq">For a margin of 3: <var>i</var><sub>exit</sub> ≤ <span data-n="ch11.ic-lab">1.0</span> ÷ 3 <span class="m">= <span data-n="ch11.i-max@fs=3">0.33</span></span></span><span class="why">the most an existing dam's exit may have</span></li>
+          <li><span class="we-eq">For a margin of 4: <var>i</var><sub>exit</sub> ≤ <span data-n="ch11.ic-lab">1.0</span> ÷ 4 <span class="m">= <span data-n="ch11.i-max@fs=4">0.25</span></span></span><span class="why">the most a new dam's exit may have</span></li>
+          <li><span class="we-eq"><span data-n="lab.i-exit">0.786</span> ÷ <span data-n="ch11.i-max@fs=4">0.25</span> <span class="m">= <span data-n="ch11.cut-factor">3.1</span></span></span><span class="why">how many times gentler the exit would have to become</span></li>
+          <li><span class="we-eq">Half-depth cutoff: <var>FS</var> = <span data-n="ch11.ic-lab">1.0</span> ÷ <span data-n="lab.i-exit@cut=partial">0.682</span> <span class="m">= <span data-n="lab.fs@cut=partial">1.47</span></span></span><span class="why">the lab's exit gradient with the wall in place</span></li>
+        </ol>
+        <p class="we-ans">The toe has a margin of <span data-n="lab.fs">1.27</span> against heave. A new dam would need its exit gradient cut about <span data-n="ch11.cut-factor">3.1</span> times, to <span data-n="ch11.i-max@fs=4">0.25</span>; a cutoff halfway down the gravel takes the margin only to <span data-n="lab.fs@cut=partial">1.47</span>.</p>
+        <p class="we-check"><b>Check.</b> The margin times the exit gradient should give back the critical gradient: <span class="m"><span data-n="lab.fs">1.27</span> × <span data-n="lab.i-exit">0.786</span> = <span data-n="ch11.ic-lab">1.0</span></span>. And the answer sits where <a data-ref="fig-erosion-tube"></a> says it should: an exit gradient of <span data-n="lab.i-exit">0.79</span> leaves the grains at the toe about a fifth of their press, <span data-n="ch11.toe-left-pct">21</span>%, against the half that tube B keeps.</p>
+        <p class="we-means"><b>What it means.</b> The sand at our toe is not boiling, but its margin is a third of what a designer would accept. Stopping the water is hard: the wall halfway down barely helped, because the water goes under it. The defences of <a data-ref="fig-seepage-defences"></a> offer another way, at the exit itself, and the rest of this chapter comes to it.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"homogeneous","lab-drain":"none","lab-cut":"partial","lab-found":"pervious","lab-res":85}}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-erosion-piping">A pipe that feeds itself</h3>
+      <p>A boil is a warning, and grains are only part of what it carries. Each grain that comes up with the water leaves a hole the size of a grain behind it. The question is what that hole does next. Make a guess before you read on:</p>
+
+      <div class="predict" data-answer="c" id="pr-erosion-pipe">
+        <p class="predict-q">Water rising beyond the toe of a dam on sand has started to carry grains out, and a small hollow has opened under the edge of the dam. As the hollow works its way back under the dam, does it get easier or harder for the water to carry more sand away?</p>
+        <div class="predict-opts"><button type="button" data-v="a">Harder: the further it goes, the more sand it has to move</button><button type="button" data-v="b">About the same all the way</button><button type="button" data-v="c">Easier: every metre it gains makes the next one easier</button></div>
+        <div class="predict-reveal" hidden><p>Easier. The water in an open hollow flows almost freely and loses almost none of its head there, so all the head between the reservoir and the toe has to be lost in the sand still ahead of the hollow. The longer the hollow, the shorter that stretch of sand, the steeper the gradient across it, and the harder the water pulls grains from its tip. The hollow becomes a pipe that feeds itself, and nothing in the sand slows it down.</p></div>
+      </div>
+
+      <p>To decide, count the head the water has to lose, and the distance it has to lose it over. Under the intact dam the water loses its whole head along the full path from the reservoir floor to the toe. What happens next depends on what holds the hollow open. The dam above it holds up its roof, so it stays open; water in it moves freely, and the hollow can grow back toward the reservoir, against the flow. Engineers call this <span class="gl" data-term="backward-erosion-piping">backward erosion piping</span>: it starts at the exit and travels upstream. The figure plays it from the first boil to the breach:</p>
     </div>
 
     <figure class="sheet wide" id="fig-pipe">
@@ -28,44 +173,395 @@
         <div class="ctl"><span>Toe</span><div class="seg" id="pp-filter"><button type="button" data-v="0" aria-pressed="true">Unprotected</button><button type="button" data-v="1" aria-pressed="false">Filter + weighting berm</button></div></div>
       </div>
       <div class="svgwrap"><svg class="dwg" id="svg-pipe" viewBox="0 0 1000 330" role="img" aria-label="Animated sequence: seepage under a dam on sand exits at the toe, forms a sand boil, a pipe erodes backward under the dam to the reservoir, enlarges, and the dam breaches. With a filter at the toe, the process stops at the first stage."></svg></div>
-      <figcaption>Each stage feeds the next. The longer the pipe grows, the shorter the path left for the water to seep through, so the gradient steepens and erosion speeds up. With a <strong>filter and weighting berm</strong> (a mound of extra fill) at the toe, the water still comes out but the sand can't, and the chain never starts. That is why dam inspectors walk the toe looking for boils, cloudy (turbid) seepage and sinkholes.</figcaption>
+      <figcaption>
+        <p class="cap"><b>Once grains wash out at the toe, the hole they leave works back under the dam, and each metre it gains steepens the push at its tip.</b> The section is a dam on sand, with the reservoir on the left; the stage line under the slider names each step, from steady seepage through the boil, the pipe working back, the pipe reaching the reservoir and widening, to the breach. The Toe switch puts a <span class="gl" data-term="filter">filter</span> and a weighting berm, a mound of extra fill, where the water comes out: the water still leaves, the sand cannot, and the chain never starts. That is why dam inspectors walk the toe looking for boils, cloudy (turbid) seepage and <span class="gl" data-term="sinkhole">sinkholes</span>. <span class="cap-n">The number to remember: our dam spends <span data-n="ch11.head-m">20.4</span> m of head over a <span data-n="ch11.path-m">102</span> m path, an average gradient of <span data-n="ch11.i-avg">0.20</span>; with half the path eaten it is <span data-n="ch11.i-avg@eaten=50">0.39</span>.</span></p>
+        <ul class="try">
+          <li>Press Play with the toe Unprotected and watch where the pipe starts and which way it grows.</li>
+          <li>Switch the Toe to Filter + weighting berm and play it again. At which stage does it stop?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>Unprotected, the pipe starts at the toe and grows toward the reservoir, against the flow. With the filter and berm the sequence stops at its first stage, steady seepage: the water comes out and the sand stays.</p></details>
+      </figcaption>
     </figure>
 
     <div class="col">
+      <p>Notice which way the pipe grows. The water flows from the reservoir to the toe, and the pipe grows from the toe to the reservoir. It does its damage out of sight, under the dam, and the only sign above ground is at the exit: a boil, a cone of sand round a spring, water that runs cloudy. By the time the pipe reaches the reservoir, the water has a tunnel straight through, and the tunnel widens until its roof falls in. The arithmetic of a pipe that feeds itself is short:</p>
+
+      <section class="we" id="ex-erosion-pipe">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">A head budget for a growing pipe</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Our dam on sand and gravel: <span data-n="ch11.head-m">20.4</span> m of head between the reservoir and the toe, spent along a path <span data-n="ch11.path-m">102</span> m long under the dam's base. The lab's exit gradient at the toe, <span data-n="lab.i-exit">0.786</span>. An open pipe that loses no head along its length (illustrative: a real pipe loses a little).</dd>
+          <dt>Find</dt><dd>The average gradient on the path the water has left to cross, before the pipe and as it grows; and roughly what the water does at the pipe's tip.</dd>
+          <dt>The idea</dt><dd>The head is fixed by the reservoir. Whatever length of sand is left has to lose all of it (gradient = head lost ÷ distance, as in <a data-ref="ch-head"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>i</var> = <span data-n="ch11.head-m">20.4</span> ÷ <span data-n="ch11.path-m">102</span> <span class="m">= <span data-n="ch11.i-avg">0.20</span></span></span><span class="why">the average gradient under the intact dam</span></li>
+          <li><span class="we-eq"><span data-n="lab.i-exit">0.786</span> ÷ <span data-n="ch11.i-avg">0.20</span> <span class="m">= <span data-n="ch11.crowd">3.9</span></span></span><span class="why">how much steeper the water runs where its paths crowd together at the exit</span></li>
+          <li><span class="we-eq">Pipe 50 m back: <span data-n="ch11.head-m">20.4</span> ÷ <span data-n="ch11.path-m@eaten=50">52</span> <span class="m">= <span data-n="ch11.i-avg@eaten=50">0.39</span></span></span><span class="why">the same head over the sand that is left</span></li>
+          <li><span class="we-eq">At its tip: <span data-n="ch11.i-avg@eaten=50">0.39</span> × <span data-n="ch11.crowd">3.9</span> <span class="m">= <span data-n="ch11.tip@eaten=50">1.5</span></span></span><span class="why">if the water crowds into the tip as it crowded into the toe: past the critical gradient</span></li>
+          <li><span class="we-eq">Pipe 90 m back: <span data-n="ch11.head-m">20.4</span> ÷ <span data-n="ch11.path-m@eaten=90">12</span> <span class="m">= <span data-n="ch11.i-avg@eaten=90">1.7</span></span></span><span class="why">now even the average floats the sand</span></li>
+        </ol>
+        <p class="we-ans">Halfway under the dam the average gradient has doubled, to <span data-n="ch11.i-avg@eaten=50">0.39</span>, and the push at the pipe's tip is past the critical gradient. With 12 m of sand left, the average alone is <span data-n="ch11.i-avg@eaten=90">1.7</span>.</p>
+        <p class="we-check"><b>Check.</b> The average gradient reaches 1 when the sand left is as long as the head is high, <span data-n="ch11.head-m">20.4</span> m: a pipe <span data-n="ch11.eaten-at-1">81.6</span> m back, four fifths of the way under. Roughly halving the path roughly doubles the gradient, as step 3 found.</p>
+        <p class="we-means"><b>What it means.</b> These numbers sketch a head budget and leave out how fast sand erodes, but the direction is certain: every grain that leaves makes it easier for the next one to leave. A pipe that has started will not stop by itself. The place to stop it is the exit, before it starts.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-pipe","set":{"pp-filter":"0","pp-t":2.5}}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A pipe has eaten 70 m back under our dam. What average gradient is the water spending on the sand that is left?</summary>
+        <p><span class="m"><span data-n="ch11.head-m">20.4</span> ÷ <span data-n="ch11.path-m@eaten=70">32</span> = <span data-n="ch11.i-avg@eaten=70">0.64</span></span>, more than three times the <span data-n="ch11.i-avg">0.20</span> under the intact dam.</p>
+      </details>
+
+      <p>How fast this happens depends on the sand. Fine, uniform sand pipes most easily: in laboratory tests on fine sands under a roof, grains began to move at average gradients as low as 0.08.<label for="mn-erosion-low" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-low" class="margin-toggle"><span class="marginnote" data-kind="source">Schmertmann's tests, and a gradient of about 0.08 back-calculated from piping at A. V. Watkins Dam: <a data-cite="fema2011-filters"></a>, pp. 109–110.</span> A well-graded sand, with a spread of sizes, resists, because its larger grains hold the smaller ones back. The figure's scale note says hours to decades, and both ends are real.<label for="sn-erosion-hours" class="sn-ref"></label><input type="checkbox" id="sn-erosion-hours" class="margin-toggle"><span class="sidenote" data-kind="curious">Teton went from the first muddy water to the breach in about five hours. At the other end, the panel that reviewed Bennett Dam notes that a sinkhole forming over erosion deep in a dam is often slow, and may take years to show at the crest (<a data-cite="bennett-eep2012"></a>, p. 62).</span></p>
+
+      <h3 id="s-erosion-modes">Four ways water carries soil</h3>
+      <p>A boil at the toe is one way in. Teton showed nothing at its toe until its last morning; its trouble started deep inside, in the core. Engineers now sort the ways that erosion inside a dam can begin into four. The International Commission on Large Dams names them, and the panel that reviewed Bennett used the same four: concentrated leak, backward erosion, suffusion and contact erosion.<label for="mn-erosion-icold" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-icold" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="icold164"></a>; the four, with their definitions, in the terminology of <a data-cite="bennett-eep2012"></a>, pp. 60–62.</span> Here they are, each drawn on our dam at one scale:</p>
+
+      <figure class="fig wide" id="fig-erosion-modes">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · Four ways erosion starts inside a dam</span><span class="scale-note">Sections to one scale · circles magnify grains · schematic</span></div>
+        <div class="ch11-modes">
+          <svg class="dwg" viewBox="0 0 340 180" role="img" aria-label="A, concentrated leak: our dam with a clay core, cracked across; water runs through the crack from the reservoir and carries core grains out of its walls into the downstream fill. Teton, 1976, and Bennett, 1996.">
+<polygon points="0,63 141.5,63 43.6,112 0,112" class="water"/><path d="M0,63 H141.5" class="water-line"/>
+<rect x="0" y="112" width="340" height="28" fill="url(#p-bedrock)" class="edge"/>
+<polygon points="43.6,112 158.8,54.4 173.2,54.4 288.4,112" fill="url(#p-fill)" class="edge"/>
+<polygon points="132.4,112 158.8,59.2 173.2,59.2 199.6,112" fill="url(#p-clay)" class="edge"/>
+<path d="M144.4,90.4 L151.6,91.4 L158.8,89.4 L166,91.8 L173.2,89.9 L180.4,91.6 L187.6,90.4" style="stroke:var(--accent);stroke-width:2.6;fill:none;stroke-linejoin:round"/>
+<path d="M84.4,90.4 L137.2,90.4" style="stroke:var(--water);stroke-width:1.4;fill:none" marker-end="url(#arr-w)"/>
+<circle cx="194.8" cy="91.6" r="1.7" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.6"/>
+<circle cx="202" cy="89.4" r="1.7" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.6"/>
+<circle cx="209.2" cy="92.3" r="1.7" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.6"/>
+<circle cx="216.4" cy="90.4" r="1.7" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.6"/>
+<circle cx="223.6" cy="91.8" r="1.7" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.6"/>
+<text x="4" y="16" class="lbl"><tspan font-weight="700">A · Concentrated leak</tspan></text><text x="4" y="157" class="lbl-s">a crack through the core</text><text x="4" y="173" class="lbl-s" font-style="italic">Teton, 1976 · Bennett, 1996</text>
+</svg>
+<svg class="dwg" viewBox="0 0 340 180" role="img" aria-label="B, backward erosion: our dam of one fill on sand and gravel; a boil of sand has formed at the downstream toe and a pipe works back under the dam toward the reservoir.">
+<polygon points="0,63 141.5,63 43.6,112 0,112" class="water"/><path d="M0,63 H141.5" class="water-line"/>
+<rect x="0" y="112" width="340" height="19.2" fill="url(#p-alluv)" class="edge"/>
+<rect x="0" y="131.2" width="340" height="8.8" fill="url(#p-bedrock)" class="edge"/>
+<polygon points="43.6,112 158.8,54.4 173.2,54.4 288.4,112" fill="url(#p-fill)" class="edge"/>
+<path d="M290.8,112 L262,113.7 L228.4,114.4 L199.6,114.6" style="stroke:var(--accent);stroke-width:3.2;fill:none;stroke-linecap:round"/>
+<path d="M293.2,112 q4,-8 9,-8 q5,0 9,8 z" style="fill:var(--m-alluv);stroke:var(--ink);stroke-width:0.8"/>
+<path d="M190,114.6 L151.6,114.6" style="stroke:var(--accent);stroke-width:1.3;fill:none" marker-end="url(#arr-acc)"/>
+<text x="4" y="16" class="lbl"><tspan font-weight="700">B · Backward erosion</tspan></text><text x="4" y="157" class="lbl-s">a pipe works back from a boil at the toe</text><text x="4" y="173" class="lbl-s" font-style="italic">our dam on sand and gravel</text>
+</svg>
+<svg class="dwg" viewBox="0 0 340 180" role="img" aria-label="C, suffusion: our dam with a core and a coarse transition downstream of it; a magnified circle shows water washing fine grains out through the gaps between coarse ones, which stay in place. Parts of Bennett&#8217;s transition.">
+<polygon points="0,63 141.5,63 43.6,112 0,112" class="water"/><path d="M0,63 H141.5" class="water-line"/>
+<rect x="0" y="112" width="340" height="28" fill="url(#p-bedrock)" class="edge"/>
+<polygon points="43.6,112 158.8,54.4 173.2,54.4 288.4,112" fill="url(#p-fill)" class="edge"/>
+<polygon points="132.4,112 158.8,59.2 173.2,59.2 199.6,112" fill="url(#p-clay)" class="edge"/>
+<polygon points="199.6,112 173.2,59.2 182.8,59.2 214,112" fill="url(#p-trans)" class="edge"/>
+<path d="M199.6,90.4 L261.1,67" class="lead"/>
+<clipPath id="ero-clip-c"><circle cx="290" cy="50" r="34"/></clipPath><circle cx="290" cy="50" r="34" style="fill:var(--sheet)"/><g clip-path="url(#ero-clip-c)"><circle cx="274" cy="34" r="10" style="fill:var(--m-trans);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="296" cy="28" r="9" style="fill:var(--m-trans);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="312" cy="46" r="10" style="fill:var(--m-trans);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="270" cy="60" r="9" style="fill:var(--m-trans);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="292" cy="52" r="10" style="fill:var(--m-trans);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="286" cy="74" r="8" style="fill:var(--m-trans);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="310" cy="70" r="8" style="fill:var(--m-trans);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="284" cy="44" r="1.8" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><circle cx="304" cy="38" r="1.8" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><circle cx="278" cy="72" r="1.8" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><circle cx="302" cy="62" r="1.8" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><circle cx="320" cy="62" r="1.8" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><path d="M260,24 L316,76" style="stroke:var(--water);stroke-width:1.4;fill:none" marker-end="url(#arr-w)"/></g><circle cx="290" cy="50" r="34" style="fill:none;stroke:var(--ink);stroke-width:1"/>
+<text x="4" y="16" class="lbl"><tspan font-weight="700">C · Suffusion</tspan></text><text x="4" y="157" class="lbl-s">circle: fine grains wash out between coarse ones</text><text x="4" y="173" class="lbl-s" font-style="italic">parts of Bennett&#8217;s transition</text>
+</svg>
+<svg class="dwg" viewBox="0 0 340 180" role="img" aria-label="D, contact erosion: our dam on a layer of fine soil lying on open gravel; water flowing along the gravel scours fine grains from the underside of the layer, as a magnified circle shows.">
+<polygon points="0,63 141.5,63 43.6,112 0,112" class="water"/><path d="M0,63 H141.5" class="water-line"/>
+<rect x="0" y="112" width="340" height="9.6" fill="url(#p-clay)" class="edge"/>
+<rect x="0" y="121.6" width="340" height="14.4" fill="url(#p-drain)" class="edge"/>
+<rect x="0" y="136" width="340" height="4" fill="url(#p-bedrock)" class="edge"/>
+<polygon points="43.6,112 158.8,54.4 173.2,54.4 288.4,112" fill="url(#p-fill)" class="edge"/>
+<path d="M41.2,128.8 L98.8,128.8" style="stroke:var(--water);stroke-width:1.4;fill:none" marker-end="url(#arr-w)"/>
+<path d="M137.2,128.8 L194.8,128.8" style="stroke:var(--water);stroke-width:1.4;fill:none" marker-end="url(#arr-w)"/>
+<path d="M233.2,128.8 L290.8,128.8" style="stroke:var(--water);stroke-width:1.4;fill:none" marker-end="url(#arr-w)"/>
+<path d="M262,121.6 L273,79.6" class="lead"/>
+<clipPath id="ero-clip-d"><circle cx="290" cy="50" r="34"/></clipPath><circle cx="290" cy="50" r="34" style="fill:var(--sheet)"/><g clip-path="url(#ero-clip-d)"><rect x="256" y="16" width="68" height="34" fill="url(#p-clay)"/><circle cx="270" cy="62" r="10" style="fill:var(--m-drain);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="292" cy="64" r="10" style="fill:var(--m-drain);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="314" cy="62" r="9" style="fill:var(--m-drain);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="280" cy="80" r="9" style="fill:var(--m-drain);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="304" cy="80" r="9" style="fill:var(--m-drain);stroke:var(--ink-2);stroke-width:0.7"/><circle cx="278" cy="54" r="1.6" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><circle cx="286" cy="56" r="1.6" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><circle cx="298" cy="53" r="1.6" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><circle cx="306" cy="56" r="1.6" style="fill:var(--m-clay);stroke:var(--ink);stroke-width:0.5"/><path d="M262,72 L318,72" style="stroke:var(--water);stroke-width:1.4;fill:none" marker-end="url(#arr-w)"/></g><circle cx="290" cy="50" r="34" style="fill:none;stroke:var(--ink);stroke-width:1"/>
+<text x="4" y="16" class="lbl"><tspan font-weight="700">D · Contact erosion</tspan></text><text x="4" y="157" class="lbl-s">circle: the underside of the fine layer</text><text x="4" y="173" class="lbl-s" font-style="italic">fine soil laid on open gravel</text>
+</svg>
+        </div>
+        <figcaption>
+          <p class="cap"><b>Water can start carrying soil out of a dam through a crack, from an exit, between coarse grains, or along a boundary between two soils.</b> Each panel is our 24 m dam with the reservoir on the left. In A a crack crosses the clay core and the water in it scours its walls; in B a pipe works back from a boil at the toe; in C, inside a coarse zone, fine grains wash out through the gaps between coarse ones, which stay put; in D water running along open gravel under a layer of fine soil scours the underside of the layer. <span class="k-water">Blue</span> arrows are flowing water and the <span class="k-acc">brick-red</span> lines are where soil is being lost; the circles in C and D are grain-scale close-ups. The line under each panel says where this book meets that way in. <span class="cap-n">The number to remember: four ways in, and in every one of them the soil has to have somewhere to go.</span></p>
+          <ul class="try">
+            <li>For each panel, put your finger where the lost soil ends up. Which panels give it an exit you could see from outside the dam?</li>
+          </ul>
+          <details class="try-ans"><summary>Answers</summary><p>A sends the core's grains into the downstream fill, B up through the boil at the toe, C downstream through the coarse zone and D along the gravel and out beyond the toe. Only B shows at the surface from the start; the others show only when enough soil has gone for the ground above to sink, or the seepage to turn cloudy.</p></details>
+        </figcaption>
+      </figure>
+
+      <p>Notice that only one of the four needs an exit at the ground surface. A <span class="gl" data-term="concentrated-leak">concentrated leak</span> (A) is water running through an opening that is already there: a crack, a gap beside a pipe through the dam, a loose layer, or open joints in the rock under a core. Its walls are scoured from the inside, and the opening widens. Backward erosion (B) is the pipe of the last section. <span class="gl" data-term="suffusion">Suffusion</span> (C) happens in a soil whose grain sizes have a gap, coarse grains and fine ones with few in between: the coarse grains carry the load, the fine ones sit loose in their gaps, and seepage can wash the fine ones out and leave the skeleton standing. <span class="gl" data-term="contact-erosion">Contact erosion</span> (D) happens where a fine soil lies against a coarse one and water runs along the boundary, as in a dam built on a layer of silt over open gravel.</p>
+      <p>A concentrated leak needs a crack, and a core is compacted precisely so that it has none. But a crack can open after the core is built. A core that settles more over a deep part of the valley than over a shallow one stretches, and the stretched part can crack. And water can open one by itself. Where something holds part of the core up, as the steep walls of a narrow trench can, the soil below is pressed together less than its depth would suggest. Teton's core was carried down into the rock of its abutments in such a trench, a <span class="gl" data-term="key-trench">key trench</span>. If the water pressure in the soil rises above the least of those presses, the water can split the soil apart, the way a wedge splits wood. That is <span class="gl" data-term="hydraulic-fracture">hydraulic fracture</span>, and the panels that investigated both Teton and Bennett found it a likely way their cores first opened.</p>
+      <p>All four end the same way if nothing stops them: soil carried out of the dam, and a channel that grows. The statistics count them together, under an older name. Engineers often call every kind of internal erosion <span class="gl" data-term="piping">piping</span>, though strictly the word means the backward erosion of the last section. Foster, Fell and Spannagle's 2000 study of 124 embankment-dam failures up to 1986 counted every kind as piping, through the embankment, through the foundation, or from one into the other.<label for="mn-erosion-foster" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-foster" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="foster2000"></a>, their table 3: failures to 1986, excluding failures during construction.</span> <span class="gl" data-term="internal-erosion">Internal erosion</span> of all kinds caused about as many failures as overtopping: 47% against 48% once spillway and gate failures are counted with overtopping. That is more than overtopping alone (34%). Some failures had more than one cause, so the shares add up to a little over 100%. Water pouring over the top of a dam is the other half of the story, the one <a data-ref="ch-two-dams"></a> told. The rest of this chapter is about the half that starts inside.<label for="sn-erosion-dispersive" class="sn-ref"></label><input type="checkbox" id="sn-erosion-dispersive" class="margin-toggle"><span class="sidenote" data-kind="curious">Most clays resist erosion far better than sand, because their tiny flakes cling together: in laboratory tests a sand moves at an upward gradient of about 1, a clay often not until tens or hundreds (<a data-cite="usbr-ds13-ch8"></a>, p. 8-6). A few clays come apart into separate flakes in fresh water instead (<a data-cite="fema2011-filters"></a>, p. 78), and such a <span class="gl" data-term="dispersive-clay">dispersive clay</span> loses that defence. The pinhole test finds them: water is forced through a fine hole punched through a sample, and a dispersive clay turns it cloudy (<a data-cite="sherard1976-pinhole"></a>).</span></p>
+
       <h3 id="s-erosion-filter">Why a filter works</h3>
-      <p>In most embankments the most important zone is a few metres of carefully graded sand. Water leaving the core pushes on every grain it passes. If the next material has big gaps, as rockfill does, core grains are carried into them, and that is the start of <strong>internal erosion</strong>. A filter's gaps are smaller than the larger core grains, so those grains lodge at the boundary and form a stable layer that holds back the finer grains behind them. The water still gets through.</p>
-      <div class="formula">Retention:&nbsp;&nbsp;&nbsp;&nbsp;<b>D15</b>(filter) ≤ 4–5 × <b>D85</b>(soil)<br>Permeability: <b>D15</b>(filter) ≥ 4–5 × <b>D15</b>(soil)<small>Terzaghi's criteria. Dx = the grain size that x% of the material (by weight) is finer than. A filter's pore throats are roughly a fifth of its D15. Sherard &amp; Dunnigan (1989) refined the rules for clay cores.</small></div>
+      <p>The first cure anyone reaches for is to stop the water. <a data-ref="ex-erosion-exit"></a> showed how hard that is under our dam, and Teton's designers tried it with a <span class="gl" data-term="grout-curtain">grout curtain</span>, cement grout pumped into the joints of the rock under the core. Karl Terzaghi had proposed the opposite half a century earlier: let the water out, and keep the soil in.<label for="sn-erosion-terzaghi" class="sn-ref"></label><input type="checkbox" id="sn-erosion-terzaghi" class="margin-toggle"><span class="sidenote" data-kind="history">Teaching in Istanbul in the early 1920s, Terzaghi showed in simple laboratory tests that a layer of coarser sand with weight on top of it stops a fine sand from boiling, and patented the idea. He wrote about piping under dams and how to prevent it in 1922 (<a data-cite="terzaghi1922"></a>). The grain-size rules grew out of his consulting on small weirs in Europe; <a data-cite="fannin2008"></a> traces the story.</span> A layer of the right sand where the water leaves the soil passes the water and holds the grains. A <span class="gl" data-term="filter">filter</span> stops soil, not water.</p>
+      <p>How can anything let water through and not sand? The figure shows it at the scale of grains: on the left the grains of a core meet rockfill, on the right a filter of sand:</p>
     </div>
+
     <figure class="sheet wide" id="fig-filter">
       <div class="sheet-top">
         <span class="figno"><b data-num></b> · Core grains meeting rockfill vs a filter</span>
         <span class="scale-note">Grain scale · schematic</span>
       </div>
-      <div class="svgwrap"><canvas class="filtercv" id="cv-filter" width="1100" height="300" role="img" aria-label="Left: fine core particles carried by seepage pass straight through the large voids in rockfill. Right: the same particles reach a sand filter, lodge at the interface and stop, while water continues through."></canvas></div>
-      <figcaption><strong>Left:</strong> seepage carries fine core particles through the large voids of rockfill, and the core erodes. <strong>Right:</strong> the same particles reach a sand filter. The pores are too small, the particles jam at the interface, and only water passes.</figcaption>
+      <div class="svgwrap"><canvas class="filtercv" id="cv-filter" width="1100" height="300" role="img" aria-label="Left: fine core particles carried by seepage pass straight through the large voids in rockfill. Right: the same particles reach a sand filter and stop at the interface, building up there, while water continues through."></canvas></div>
+      <figcaption>
+        <p class="cap"><b>Against rockfill the core's grains wash into the big voids; against a filter of sand the coarsest of them lodge at its face and hold back the finer ones behind.</b> In each panel the core is on the left of the dashed line and seepage, the <span class="k-water">blue</span> streaks, runs left to right. On the left the voids between the rockfill's blocks are many times the size of the core's grains, and the counter of grains lost keeps climbing. On the right the filter's gaps are smaller than the core's coarser grains: those stop at the face, and the finer grains pile up behind them, so the water passes and the counter stays at zero. The drawing simplifies: it stops every grain at the filter's face by rule. In a real filter only grains bigger than its openings stop there, and the layer they build holds back the rest. <span class="cap-n">The number to remember: a graded sand filter passes particles smaller than about <span data-n="ch11.open-frac">0.11</span> of its own 15% size, and holds anything larger.</span></p>
+        <ul class="try">
+          <li>Watch the two counters for half a minute. Then find, on the right, the layer of core grains building up at the filter's face.</li>
+        </ul>
+      </figcaption>
     </figure>
 
-    <div class="col" data-stub>
-      <!-- New (H.12): the four kinds of internal erosion (fig-erosion-modes), the critical gradient in a
-           tube (fig-erosion-tube, eq-erosion-ic), filter rules (eq-erosion-filter); case-teton;
-           ex-erosion-exit, ex-erosion-pipe, ex-erosion-filter. -->
-    </div>
-    <div class="col cases">
-      <div class="case-grid">
-        <article class="case" id="case-bennett">
-          <p class="case-k">W.A.C. Bennett Dam, Peace River · 1996</p>
-          <h4>A sinkhole on the crest</h4>
-          <p>In June 1996, crews checking a small pothole on the crest of BC Hydro's 183 m earthfill dam found a much larger hole beneath it. A second sinkhole turned up during the drilling that followed. Both were in the core, each around a survey casing installed during construction. BC Hydro's 2012 expert panel found that loose core soil around the first casing had settled when it got wet, and that seepage had also washed some of the core's fine grains away (internal erosion); the second may have been the settling alone. Engineers lowered the reservoir and filled the voids by compaction grouting, carefully, so the injected grout wouldn't crack the core. R.A. Stewart's 1998 account of the crisis ranks it as the gravest dam safety concern in BC Hydro's history.</p>
-        </article>
+    <div class="col">
+      <p>Notice that the filter does not need gaps smaller than every grain of the core. It needs gaps smaller than the core's coarsest grains. Those lodge in the filter's face, their own gaps are smaller still and catch the next size down, and so on: the soil builds its own filter against the real one, and the water goes on through.<label for="sn-erosion-spheres" class="sn-ref"></label><input type="checkbox" id="sn-erosion-spheres" class="margin-toggle"><span class="sidenote" data-kind="curious">Three equal balls touching leave a gap through which a ball only <span data-n="ch11.gap3">0.155</span> of their diameter can pass, about a sixth. A real filter has grains of many sizes, the small ones sit in the gaps of the large, and laboratory tests by Sherard and his colleagues found it acts like a sieve whose openings are about 0.11 times its 15% size (<a data-cite="fema2011-filters"></a>, pp. 275–276).</span> A filter that does this is designed by grain size, and grain size is read off a curve.</p>
+      <p>Pour a soil through a stack of sieves, finest at the bottom, and weigh what each sieve holds. The <span class="gl" data-term="grain-size">grain-size</span> curve plots, for each size, the share of the soil by weight that is finer. Engineers then name the soil by points on that curve: <var>D</var><sub>15</sub> is the size that 15% of the soil is finer than, <var>D</var><sub>85</sub> the size that 85% is finer than. <var>D</var><sub>85</sub> stands for the coarse grains that have to stop at the filter's face; <var>D</var><sub>15</sub>, for the fine grains that decide how easily water passes. Here are a fine sand and a filter for it:</p>
+
+      <figure class="fig wide" id="fig-erosion-grading">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · A sand and its filter, as grain-size curves</span><span class="scale-note">Illustrative soils · sizes on a ten-fold scale</span></div>
+        <svg class="dwg" viewBox="0 0 580 290" role="img" aria-label="Grain-size curves for a sand and its filter, with grain size on a scale where each step is ten times coarser and the share of the soil finer than each size up the side. The sand&#8217;s 15 per cent size is 0.20 mm and its 85 per cent size 0.45 mm. Four times these give 0.8 and 1.8 mm, the two ends of a green band at the 15 per cent line where the filter&#8217;s own 15 per cent size must fall. The filter&#8217;s curve crosses 15 per cent at 1.2 mm, inside the band."><defs><marker id="ero-arr-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ok)"/></marker></defs>
+<path d="M70,48 V248" style="stroke:var(--rule);stroke-width:0.8"/>
+<text x="70" y="264" class="lbl-s" text-anchor="middle">0.01</text>
+<path d="M190,48 V248" style="stroke:var(--rule);stroke-width:0.8"/>
+<text x="190" y="264" class="lbl-s" text-anchor="middle">0.1</text>
+<path d="M310,48 V248" style="stroke:var(--rule);stroke-width:0.8"/>
+<text x="310" y="264" class="lbl-s" text-anchor="middle">1</text>
+<path d="M430,48 V248" style="stroke:var(--rule);stroke-width:0.8"/>
+<text x="430" y="264" class="lbl-s" text-anchor="middle">10</text>
+<path d="M550,48 V248" style="stroke:var(--rule);stroke-width:0.8"/>
+<text x="550" y="264" class="lbl-s" text-anchor="middle">100</text>
+<path d="M106.1,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M127.3,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M142.2,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M153.9,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M163.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M171.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M178.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M184.5,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M226.1,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M247.3,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M262.2,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M273.9,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M283.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M291.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M298.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M304.5,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M346.1,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M367.3,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M382.2,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M393.9,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M403.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M411.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M418.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M424.5,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M466.1,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M487.3,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M502.2,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M513.9,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M523.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M531.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M538.4,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M544.5,244 V248" style="stroke:var(--ink-3);stroke-width:0.6"/>
+<path d="M70,248 H550" style="stroke:var(--rule);stroke-width:0.8"/>
+<text x="64" y="252" class="lbl-s" text-anchor="end">0%</text>
+<path d="M70,218 H550" style="stroke:var(--rule);stroke-width:0.8;stroke-dasharray:3 3"/>
+<text x="64" y="222" class="lbl-s" text-anchor="end">15%</text>
+<path d="M70,148 H550" style="stroke:var(--rule);stroke-width:0.8"/>
+<text x="64" y="152" class="lbl-s" text-anchor="end">50%</text>
+<path d="M70,78 H550" style="stroke:var(--rule);stroke-width:0.8;stroke-dasharray:3 3"/>
+<text x="64" y="82" class="lbl-s" text-anchor="end">85%</text>
+<path d="M70,48 H550" style="stroke:var(--rule);stroke-width:0.8"/>
+<text x="64" y="52" class="lbl-s" text-anchor="end">100%</text>
+<path d="M70,48 V248 H550" class="edge" style="fill:none"/>
+<text x="310" y="282" class="lbl-s" text-anchor="middle">grain size, mm (each step to the right is ten times coarser)</text>
+<text x="14" y="148" class="lbl-s" text-anchor="middle" transform="rotate(-90 14 148)">% by weight finer</text>
+<path d="M175,48 V248" style="stroke:var(--ink-3);stroke-width:0.9;stroke-dasharray:2 3"/>
+<text x="171" y="62" class="lbl-s halo" text-anchor="end">silt and clay</text>
+<text x="179" y="62" class="lbl-s halo">sand</text>
+<rect x="298.4" y="212" width="42.3" height="12" style="fill:var(--ok);opacity:0.18"/>
+<path d="M298.4,218 H340.6" style="stroke:var(--ok);stroke-width:2.2"/>
+<path d="M190,248 L192.6,246.3 L195.3,244.7 L197.9,243.1 L200.6,241.4 L203.2,239.8 L205.8,238 L208.5,236.1 L211.1,234 L213,232.4 L214.9,230.9 L216.8,229.2 L218.6,227.4 L220.5,225.4 L222.4,223.2 L224.2,220.8 L226.1,218 L227.6,215.4 L229,212.2 L230.5,208.6 L231.9,204.5 L233.4,200.1 L234.8,195.5 L236.3,190.8 L237.8,186 L238.9,181.9 L240.1,177.4 L241.3,172.7 L242.5,167.7 L243.7,162.7 L244.9,157.7 L246.1,152.7 L247.3,148 L248.4,143.3 L249.6,138.7 L250.8,134 L252,129.3 L253.2,124.8 L254.4,120.3 L255.6,116.1 L256.8,112 L258.2,107.2 L259.7,102.3 L261.1,97.6 L262.6,93.1 L264,88.7 L265.5,84.7 L266.9,81.1 L268.4,78 L270.3,74.4 L272.1,70.9 L274,67.7 L275.9,64.8 L277.8,62.1 L279.6,59.7 L281.5,57.7 L283.4,56 L285.3,54.6 L287.1,53.5 L289,52.5 L290.9,51.5 L292.7,50.7 L294.6,49.8 L296.5,48.9 L298.4,48" style="stroke:var(--grain);stroke-width:2;fill:none"/>
+<path d="M273.9,248 L276.9,246.5 L280,245.2 L283.1,243.8 L286.1,242.4 L289.2,241 L292.2,239.5 L295.3,237.8 L298.4,236 L301,234.3 L303.7,232.5 L306.3,230.5 L308.9,228.4 L311.6,226.1 L314.2,223.6 L316.9,220.9 L319.5,218 L321.8,215.1 L324,211.7 L326.3,207.9 L328.6,203.7 L330.8,199.4 L333.1,194.9 L335.4,190.4 L337.7,186 L339.9,181.6 L342.1,177.1 L344.4,172.5 L346.6,167.8 L348.9,162.9 L351.1,158 L353.4,153.1 L355.6,148 L357.1,144.7 L358.5,141.3 L360,137.9 L361.4,134.5 L362.9,130.9 L364.3,127.4 L365.8,123.7 L367.3,120 L369.1,114.8 L371,109.2 L372.9,103.2 L374.8,97.3 L376.6,91.5 L378.5,86.2 L380.4,81.7 L382.2,78 L384.9,73.8 L387.5,69.8 L390.2,66.1 L392.8,62.8 L395.5,59.9 L398.1,57.5 L400.7,55.5 L403.4,54 L406,52.9 L408.7,52 L411.3,51.2 L413.9,50.6 L416.6,49.9 L419.2,49.3 L421.9,48.7 L424.5,48" style="stroke:var(--ink);stroke-width:2;fill:none"/>
+<circle cx="226.1" cy="218" r="3.2" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.2"/>
+<text x="220.1" y="222" class="lbl-s halo" text-anchor="end"><tspan data-n="ch11.b-d15">0.20</tspan> mm</text>
+<circle cx="268.4" cy="78" r="3.2" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.2"/>
+<text x="262.4" y="74" class="lbl-s halo" text-anchor="end"><tspan data-n="ch11.b-d85">0.45</tspan> mm</text>
+<circle cx="319.5" cy="218" r="3.2" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.2"/>
+<text x="325.5" y="234" class="lbl-s halo"><tspan data-n="ch11.d15f">1.2</tspan> mm</text>
+<path d="M232.1,211 H297.4" style="stroke:var(--ok);stroke-width:1.2;fill:none" marker-end="url(#ero-arr-ok)"/>
+<text x="268.2" y="206" class="lbl-s halo" style="fill:var(--ok)" text-anchor="middle">× <tspan data-n="ch11.k4">4</tspan></text>
+<path d="M273.4,78 C327.5,78 340.6,138 340.6,210" style="stroke:var(--ok);stroke-width:1.2;fill:none" marker-end="url(#ero-arr-ok)"/>
+<text x="321.6" y="72" class="lbl-s halo" style="fill:var(--ok)">× <tspan data-n="ch11.k4">4</tspan></text>
+<text x="295.4" y="234" class="lbl-s halo" style="fill:var(--ok)" text-anchor="end"><tspan data-n="ch11.d15f-min">0.8</tspan></text>
+<text x="344.6" y="212" class="lbl-s halo" style="fill:var(--ok)"><tspan data-n="ch11.d15f-max">1.8</tspan></text>
+<text x="199.5" y="164" class="lbl halo k-grain-t">the sand</text>
+<text x="378.2" y="136" class="lbl halo">its filter</text>
+</svg>
+        <figcaption>
+          <p class="cap"><b>A filter is chosen by its fine grains: its 15% size must fall between four times the sand's 15% size and four times the sand's 85% size.</b> Each curve rises from the soil's finest grains on the left to its coarsest on the right; a step to the right is ten times coarser. The <span class="k-grain">ochre</span> curve is the sand to be protected, the curve in ink its filter; the dashed lines mark 15% and 85%, and the dotted one the 0.075 mm sieve that divides sand from silt and clay. The <span class="k-ok">green</span> arrows multiply the sand's two sizes by four and land on the ends of the green band where the filter's 15% size is allowed. <span class="cap-n">The number to remember: for this sand the filter's 15% size must lie between <span data-n="ch11.d15f-min">0.8</span> and <span data-n="ch11.d15f-max">1.8</span> mm.</span></p>
+          <ul class="try">
+            <li>Read the filter's 85% size off its curve, and the sand's 50% size off its curve.</li>
+          </ul>
+          <details class="try-ans"><summary>Answers</summary><p>The filter's 85% size is <span data-n="ch11.f-d85">4.0</span> mm; the sand's 50% size is <span data-n="ch11.b-d50">0.30</span> mm, a fine-to-medium sand.</p></details>
+        </figcaption>
+      </figure>
+
+      <p>Notice that the filter's curve lies almost wholly to the right of the sand's: nearly all its grains are coarser than nearly all of the sand. That looks as if the sand could slip through, and it would, if the filter's openings were as wide as its grains. They are about a ninth of its <var>D</var><sub>15</sub>. Terzaghi's two rules put the filter in its band:</p>
+      <div class="eq" id="eq-erosion-filter">
+        <span class="eq-body"><var>D</var><sub>15F</sub> ≤ 4 · <var>D</var><sub>85B</sub>&emsp;and&emsp;<var>D</var><sub>15F</sub> ≥ 4 · <var>D</var><sub>15B</sub></span>
+        <span class="eq-no" data-num></span>
       </div>
-      <p class="case-src">Sources: R.A. Stewart (1998) and BC Hydro's expert engineering panel (2012) on the Bennett Dam sinkholes.</p>
+      <p class="eq-where"><var>D</var><sub>15F</sub> the filter's 15% size · <var>D</var><sub>85B</sub>, <var>D</var><sub>15B</sub> the base soil's 85% and 15% sizes (mm); the base is the soil the filter protects</p>
+      <p>The first rule keeps the soil in. A filter whose <var>D</var><sub>15</sub> is at most four times the sand's <var>D</var><sub>85</sub> has openings at most <span class="m"><span data-n="ch11.open-frac">0.11</span> × <span data-n="ch11.k4">4</span> = <span data-n="ch11.open-ratio-max">0.44</span></span> of the sand's <var>D</var><sub>85</sub>, so at least the coarsest 15% of the sand cannot get in, and the layer those grains build holds back the rest. The second rule lets the water out. Water passes a sand roughly in proportion to the square of its fine grains' size (its <var>D</var><sub>15</sub>), so a filter whose fine grains are several times coarser passes water many times more easily, and the water leaves the soil without building up pressure in the filter. The agencies that design dams use these rules for sands and gravels, with 4 in the first and 3 to 5 in the second.<label for="mn-erosion-rules" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-rules" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="fema2011-filters"></a>, table 5-2 (p. 84) for the retention rule by soil category; p. 84 for the permeability rule as the Bureau of Reclamation, the Corps of Engineers and the Natural Resources Conservation Service each write it; p. 88 for the square of <var>D</var><sub>15</sub>.</span></p>
+
+      <section class="we" id="ex-erosion-filter">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">A filter for a fine sand</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The sand of <a data-ref="fig-erosion-grading"></a> (illustrative): <span class="m"><var>D</var><sub>15</sub> = <span data-n="ch11.b-d15">0.20</span> mm</span>, <span class="m"><var>D</var><sub>85</sub> = <span data-n="ch11.b-d85">0.45</span> mm</span>. A graded filter's openings are about <span data-n="ch11.open-frac">0.11</span> of its <var>D</var><sub>15</sub>.</dd>
+          <dt>Find</dt><dd>The range of <var>D</var><sub>15</sub> a filter may have; how its openings compare with the sand's coarse grains; how much more easily it passes water.</dd>
+          <dt>The idea</dt><dd>Apply both rules of <a data-ref="eq-erosion-filter"></a>, choose inside the band, then check the openings against the grains they must stop.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Largest <var>D</var><sub>15F</sub>: <span data-n="ch11.k4">4</span> × <span data-n="ch11.b-d85">0.45</span> <span class="m">= <span data-n="ch11.d15f-max">1.8</span> mm</span></span><span class="why">keep the soil in</span></li>
+          <li><span class="we-eq">Smallest <var>D</var><sub>15F</sub>: <span data-n="ch11.k4">4</span> × <span data-n="ch11.b-d15">0.20</span> <span class="m">= <span data-n="ch11.d15f-min">0.8</span> mm</span></span><span class="why">let the water out</span></li>
+          <li><span class="we-eq">Choose <span class="m"><var>D</var><sub>15F</sub> = <span data-n="ch11.d15f">1.2</span> mm</span></span><span class="why">inside the band, clear of both ends, since no pit delivers a curve exactly</span></li>
+          <li><span class="we-eq">Openings: <span data-n="ch11.open-frac">0.11</span> × <span data-n="ch11.d15f">1.2</span> <span class="m">= <span data-n="ch11.open-mm">0.13</span> mm</span></span><span class="why">the smallest particle the filter stops</span></li>
+          <li><span class="we-eq"><span data-n="ch11.open-mm">0.13</span> ÷ <span data-n="ch11.b-d85">0.45</span> <span class="m">= <span data-n="ch11.open-ratio">0.29</span></span></span><span class="why">openings against the sand's coarse grains</span></li>
+          <li><span class="we-eq"><span data-n="ch11.d15f">1.2</span> ÷ <span data-n="ch11.b-d15">0.20</span> <span class="m">= <span data-n="ch11.d-ratio">6</span></span></span><span class="why">the filter's fine grains against the sand's</span></li>
+          <li><span class="we-eq"><span data-n="ch11.d-ratio">6</span> × <span data-n="ch11.d-ratio">6</span> <span class="m">= <span data-n="ch11.k-ratio">36</span></span></span><span class="why">water passes a sand roughly as the square of its fine grains' size</span></li>
+        </ol>
+        <p class="we-ans">Any filter with <var>D</var><sub>15</sub> between <span data-n="ch11.d15f-min">0.8</span> and <span data-n="ch11.d15f-max">1.8</span> mm will do. One at <span data-n="ch11.d15f">1.2</span> mm has openings under a third of the sand's coarse grains and passes water about <span data-n="ch11.k-ratio">36</span> times as easily as the sand.</p>
+        <p class="we-check"><b>Check.</b> Even at the coarse end of the band the openings are <span class="m"><span data-n="ch11.open-frac">0.11</span> × <span data-n="ch11.d15f-max">1.8</span> = <span data-n="ch11.open-mm@d15=1.8">0.20</span> mm</span>, under half the sand's <span data-n="ch11.b-d85">0.45</span> mm: the rule keeps a margin. And the band is <span class="m"><span data-n="ch11.d15f-max">1.8</span> ÷ <span data-n="ch11.d15f-min">0.8</span> = <span data-n="ch11.band-ratio">2.25</span></span> times wide, which is the sand's own <var>D</var><sub>85</sub> over its <var>D</var><sub>15</sub>: a sand with a wider spread of sizes leaves a wider choice, and a uniform sand a narrow one.</p>
+        <p class="we-means"><b>What it means.</b> A filter works by grain size alone. Nothing in it is tight, and water passes it more easily than the soil it protects; it holds the grains because its coarse grains bridge the gaps and the soil's own coarse grains bridge the rest. Where water leaves a soil through such a layer, the grains at the exit keep pressing on one another.</p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Would rockfill with a <var>D</var><sub>15</sub> of <span data-n="ch11.rock-d15">30</span> mm hold the sand of <a data-ref="ex-erosion-filter"></a>?</summary>
+        <p>No. Its openings are about <span class="m"><span data-n="ch11.open-frac">0.11</span> × <span data-n="ch11.rock-d15">30</span> = <span data-n="ch11.rock-open">3.3</span> mm</span>, <span data-n="ch11.rock-open-ratio">7.3</span> times the sand's coarse grains, so the sand washes straight in: the left-hand panel of <a data-ref="fig-filter"></a>. A dam steps the size up through a sand filter and a coarser <span class="gl" data-term="transition">transition</span> before the rockfill.</p>
+      </details>
+
+      <p>A clay core needs a different rule. Its <var>D</var><sub>85</sub> may be a few hundredths of a millimetre, and four times that would ask for a filter of very fine sand or silt, which would drain poorly. But clay does not wash out grain by grain from a sound core; it erodes from the walls of a crack, and what the filter must do is catch what comes out of the crack and seal it. James Sherard and Lorn Dunnigan tested filters in the laboratory against many core soils with a leak forced through them, in the 1980s, and found that ordinary filters of clean sand reliably stop erosion from concentrated leaks in fine silts and clays, while broadly graded glacial soils need a relatively fine one.<label for="mn-erosion-sherard" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-sherard" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="sherard-dunnigan1989"></a>; the rules as the agencies now write them in <a data-cite="fema2011-filters"></a>, table 5-2, p. 84, and the cake on the filter's face, pp. 275–276.</span> The rules the agencies use today come from that work, sorted by how much of the core is finer than 0.075 mm: for a core more than 85% that fine, the filter's <var>D</var><sub>15</sub> may be up to nine times the core's <var>D</var><sub>85</sub>; for one 40 to 85% that fine, it must be no more than 0.7 mm whatever the core. The eroded clay builds a thin cake on the face of such a filter, finer as it builds, and the crack stops leaking soil.</p>
+
+      <h3 id="s-erosion-two">Two cores, two endings</h3>
+      <p>Now Teton and Bennett can be set side by side. Here is Teton's core where it failed, on the right abutment, drawn to scale from the review panel's own section:</p>
+
+      <figure class="case-plate wide" id="case-teton"
+              data-case="Teton Dam" data-year="1976" data-where="Teton River, Idaho"
+              data-type="Zoned earthfill, 93 m" data-mechanism="Internal erosion of a windblown-silt core into open rock joints, across the base of a key trench, on first filling" data-bc="false">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · Case file: Teton Dam, 1976</span><span class="scale-note">Section to scale · traced from the review panel</span></div>
+        <div class="case-body">
+          <svg class="dwg" viewBox="0 0 720 280" role="img" aria-label="Section to scale across Teton Dam on its right abutment at station 15+00, traced from the review panel&#8217;s drawing. A core of windblown silt, Zone 1, fills a steep-sided key trench cut into jointed volcanic rock, with a grout curtain below the trench. The reservoir stands at its level on the morning of the failure, 5,301.7 feet. A dashed blue line shows water leaking through the rock under the grout cap into the base of the trench; a red bar marks an erosion tunnel across the base of the trench fill, and a dashed red line the eroded silt leaving along the rock downstream.">
+<polygon points="6,65.6 333.8,65.6 36,192 6,192" class="water"/>
+<path d="M6,65.6 H333.8" class="water-line"/>
+<polygon points="6,192 36,192 106,192.9 152.6,191 180,186.4 240.4,183.6 296.1,185.9 347.4,212.9 363.8,245.5 396.2,245.5 414.7,212.9 428.7,202.7 465.9,202.7 477.2,195.6 498.2,182.6 544.9,165.4 565.9,149.2 609.8,136.2 657.3,133.9 687.3,133.9 687.3,270.1 6,270.1" fill="url(#p-bedrock)" class="edge"/>
+<polygon points="36,192 419.4,29.3 447.2,29.3 657.3,133.9 609.8,136.2 565.9,149.2 544.9,165.4 498.2,182.6 477.2,195.6 465.9,202.7 428.7,202.7 414.7,212.9 396.2,245.5 363.8,245.5 347.4,212.9 296.1,185.9 240.4,183.6 180,186.4 152.6,191 106,192.9" fill="url(#p-trans)" class="edge"/>
+<polygon points="447.2,29.3 600.3,139 609.8,136.2 657.3,133.9" fill="url(#p-fill)" class="edge-l"/>
+<polygon points="461.8,36.6 657.3,133.9 642.1,134.6 446.5,36.6" fill="url(#p-rock)" class="edge-l"/>
+<polygon points="184.5,186.2 419.4,29.3 447.2,29.3 566.4,149 565.9,149.2 544.9,165.4 498.2,182.6 477.2,195.6 465.9,202.7 428.7,202.7 414.7,212.9 396.2,245.5 363.8,245.5 347.4,212.9 296.1,185.9 240.4,183.6" fill="url(#p-clay)" class="edge"/>
+<rect x="378" y="245.5" width="4" height="24.7" fill="url(#p-grout)" style="stroke:var(--ink-2);stroke-width:0.6"/>
+<path d="M296.1,204.3 L325.4,239.1" style="stroke:var(--ink);stroke-width:1.1;fill:none"/>
+<path d="M316.3,193.3 L345.5,229.9" style="stroke:var(--ink);stroke-width:1.1;fill:none"/>
+<path d="M378.4,251.9 L405.9,264.7" style="stroke:var(--ink);stroke-width:1.1;fill:none"/>
+<path d="M415,220.8 L446.1,251.9" style="stroke:var(--ink);stroke-width:1.1;fill:none"/>
+<path d="M442.5,208 L475.4,239.1" style="stroke:var(--ink);stroke-width:1.1;fill:none"/>
+<path d="M488.2,195.2 L521.1,228.1" style="stroke:var(--ink);stroke-width:1.1;fill:none"/>
+<path d="M334.6,246.4 L354.7,262.8" style="stroke:var(--ink);stroke-width:1.1;fill:none"/>
+<path d="M204.7,187.8 L277.9,215.3 L330.9,253.7 L369.3,252.8" style="stroke:var(--water);stroke-width:1.6;fill:none;stroke-dasharray:5 3" marker-end="url(#arr-w)"/>
+<path d="M365.6,243.2 L394.9,243.2" style="stroke:var(--accent);stroke-width:4;fill:none;stroke-linecap:round"/>
+<path d="M400.4,240.9 L424.2,229.9 L460.7,218.9 L515.6,186 L570.5,162.2" style="stroke:var(--accent);stroke-width:1.6;fill:none;stroke-dasharray:5 3" marker-end="url(#arr-acc)"/>
+<text x="10" y="59.6" class="lbl-s lbl-w halo on-water">reservoir at failure, El. 5,301.7 ft</text>
+<text x="427.8" y="133" class="lbl-s halo on-fill" text-anchor="middle">Zone 1: windblown silt</text>
+<text x="204.7" y="151.3" class="lbl-s halo" text-anchor="middle">Zone 2</text>
+<text x="543" y="112.9" class="lbl-s halo" text-anchor="middle">Zone 3</text>
+<text x="607" y="99.2" class="lbl-s halo" text-anchor="start">Zone 5 rockfill</text>
+<path d="M588.8,122 L612.5,101.9" class="lead"/>
+<text x="58.4" y="224.4" class="lbl-s halo on-rock">jointed rhyolite</text>
+<path d="M380.3,246.4 L396.7,261" class="lead"/><text x="400.4" y="262.8" class="lbl-s lbl-acc halo on-rock">erosion tunnel</text>
+<text x="374.8" y="261" class="lbl-s halo on-rock" text-anchor="end">grout curtain</text>
+<text x="159" y="204.3" class="lbl-s lbl-w halo on-rock">leak under the grout cap</text>
+<text x="521.1" y="189.7" class="lbl-s lbl-acc halo on-rock">out along the rock</text>
+<text x="433.3" y="23.3" class="lbl-s halo" text-anchor="middle">crest El. 5,332 ft</text>
+<path d="M588.8,67.1 h120 M588.8,64.1 v6 M648.8,64.1 v6 M708.8,64.1 v6" class="dim"/>
+<text x="588.8" y="60.1" class="lbl-s" text-anchor="middle">0</text><text x="648.8" y="60.1" class="lbl-s" text-anchor="middle">20</text><text x="708.8" y="60.1" class="lbl-s" text-anchor="middle">40 m</text>
+</svg>
+          <dl class="case-facts">
+            <dt>Dam</dt><dd>Teton Dam, on the Teton River near Newdale, Idaho; built by the U.S. Bureau of Reclamation.</dd>
+            <dt>Built</dt><dd>February 1972 to November 1975; filling from 3 October 1975.</dd>
+            <dt>Height</dt><dd>305 ft (<span data-n="ch11.ft-m@ft=305">93</span> m) above the riverbed, 405 ft (<span data-n="ch11.ft-m@ft=405">123</span> m) above the lowest point of its foundation; crest about 3,100 ft (<span data-n="ch11.ft-m@ft=3100">945</span> m) long.</dd>
+            <dt>Type</dt><dd>Zoned earthfill with a wide central core of windblown silt (Zone 1). On the abutments the core was carried down a key trench 70 ft (<span data-n="ch11.ft-m@ft=70">21</span> m) deep, with steep sides and a grout curtain beneath it.</dd>
+            <dt>What happened</dt><dd>On first filling, 5 June 1976, with the reservoir 3.3 ft below the spillway sill: leaks from about 7 a.m., a tunnel through the downstream face at 10:30, the crest collapsing from 11:55. The panel found that water through open joints under the grout cap eroded a tunnel across the base of the key-trench fill.</dd>
+            <dt>Toll</dt><dd>Eleven deaths in the Bureau of Reclamation's count; the panel associated fourteen with the failure, directly or indirectly. Damage estimated at $400 million to $1 billion.</dd>
+            <dt>Sources</dt><dd><a data-cite="teton1976"></a>, pp. iii, v, viii–ix, 1-1, 8-3 and 12-1; the section at station 15+00, p. 12-11; the zones from the contract drawing, p. 1-3. <a data-cite="stene1996"></a>, p. 1.</dd>
+          </dl>
+        </div>
+        <figcaption>
+          <p class="cap"><b>Teton's core of easily eroded silt was packed into a trench cut in open-jointed rock, with nothing between the silt and the joints.</b> The section crosses the dam at station 15+00 on the right abutment, near where the first leaks appeared, with the reservoir at its level on the morning of the failure. The core, Zone 1, fills a key trench cut down through the most broken rock to rock that could be grouted; below the trench a grout curtain was meant to seal the deeper joints. The panel's tests found the rock immediately under the grout cap poorly sealed. Water reached the base of the trench through it, the dashed <span class="k-water">blue</span> line; in the silt it eroded a tunnel across the trench, the <span class="k-acc">brick-red</span> bar; and the eroded silt found its way out along the contact between the core and the open-jointed rock downstream, the dashed <span class="k-acc">brick-red</span> line. The panel also found that the trench's steep walls held up part of the fill's weight, so that the silt at its base was pressed together weakly enough for the water to split it. Only the main zones are drawn; the rock's joints are schematic.</p>
+          <p class="case-explains"><b>What this chapter explains.</b> A concentrated leak (<a data-ref="fig-erosion-modes"></a>, A), possibly opened by hydraulic fracture, in a soil that erodes easily, with an open way out for its grains: no filter stood between the core and the rock.</p>
+          <ul class="try">
+            <li>With the scale bar, measure how far the water had to travel through the core, across the bottom of the key trench, compared with across the whole core higher up.</li>
+          </ul>
+          <details class="try-ans"><summary>Answers</summary><p>About 10 m across the floor of the trench, against well over 100 m through the core a little above the original ground. Water in the joints of the rock had only the width of the trench's floor of silt to cross, the narrowest place in the whole core.</p></details>
+        </figcaption>
+      </figure>
+
+      <p>Notice how little stands between the core and the rock. The silt of Zone 1 lies straight against the walls and floor of the trench, and the rock there is full of open joints, gaps wide enough to take silt. The panel called this choice of material a major factor in the failure: wind-deposited silt, it found, is highly erodible, and putting it against heavily jointed rock gave the water both something to carry and somewhere to carry it.<label for="mn-erosion-tetonfind" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-tetonfind" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="teton1976"></a>, pp. viii–ix, conclusions 3, 4, 7, 8, 9 and 13.</span> Its closing judgment is the epigraph of this chapter: too much was expected of the grout curtain, and the design should have made the inevitable leakage harmless. A filter between the silt and the rock would have done that.</p>
+      <p>Here is Bennett, at its highest, drawn to scale from the dimensions its designers published:</p>
+
+      <figure class="case-plate wide" id="case-bennett"
+              data-case="W.A.C. Bennett Dam" data-year="1996" data-where="Peace River, British Columbia"
+              data-type="Zoned earthfill, 183 m" data-mechanism="Internal erosion of the core around a survey benchmark casing; caught by the transition zone" data-bc="true">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · Case file: W.A.C. Bennett Dam, 1996</span><span class="scale-note">Section to scale · from the design dimensions</span></div>
+        <div class="case-body">
+          <svg class="dwg" viewBox="0 0 720 290" role="img" aria-label="Section to scale through the highest part of the W.A.C. Bennett Dam, 183 metres tall, drawn from its published design dimensions. A wide core of glacial soil stands just upstream of the dam&#8217;s axis; downstream of it lie a transition, a narrow filter and a drain that turns into a blanket along the base, all inside two broad shells. A thin red column in the core below the crest shows the depth, about 80 metres, of the loosened core found under the first sinkhole of 1996, which lay in a lower section near the right canyon wall.">
+<polygon points="30,100.8 388.2,100.8 361.4,114.2 46.8,240 30,240" class="water"/>
+<path d="M30,100.8 H388.2" class="water-line"/>
+<rect x="30" y="240" width="696" height="18" fill="url(#p-bedrock)" class="edge"/>
+<polygon points="46.8,240 361.4,114.2 402.3,93.7 409.7,93.7 440.3,111.7 696.9,240" fill="url(#p-fill)" class="edge"/>
+<polygon points="445.2,240 421.6,111.7 427.4,111.7 450,234.1 690.5,234.1 690.5,240" fill="url(#p-drain)" class="edge-l"/>
+<polygon points="442.3,240 417.3,104.4 420.2,104.4 445.2,240" fill="url(#p-filter)" class="edge-l"/>
+<polygon points="422.8,240 409.3,104.4 408.4,95.9 413.2,95.9 417.3,104.4 442.3,240" fill="url(#p-trans)" class="edge-l"/>
+<polygon points="283.6,240 312.4,208 341.2,176 370,144 398.8,112 404.6,105.6 403.6,95.9 408.4,95.9 409.4,105.6 410,112 413.2,144 416.4,176 419.6,208 422.8,240" fill="url(#p-clay)" class="edge"/>
+<rect x="403.2" y="93.7" width="5.6" height="64" style="fill:var(--accent-soft);stroke:none"/>
+<rect x="404.8" y="93.7" width="2.4" height="64" style="fill:var(--accent)"/>
+<text x="38" y="95.8" class="lbl-s lbl-w halo on-water">reservoir at its normal maximum</text>
+<text x="246" y="208" class="lbl-s halo on-fill" text-anchor="middle">shell</text>
+<text x="574" y="208" class="lbl-s halo on-fill" text-anchor="middle">shell</text>
+<text x="358" y="184" class="lbl-s halo on-fill" text-anchor="middle">core</text>
+<path d="M419.8,150.4 L470,98" class="lead"/>
+<text x="471.6" y="102" class="lbl-s halo">transition</text>
+<path d="M427.2,150.4 L470,114" class="lead"/>
+<text x="471.6" y="118" class="lbl-s halo">filter</text>
+<path d="M431.6,150.4 L470,130" class="lead"/>
+<text x="471.6" y="134" class="lbl-s halo">drain</text>
+<path d="M407.2,125.7 L454,79.7" class="lead"/>
+<text x="455.6" y="81.7" class="lbl-s lbl-acc halo">sinkhole 1, about 80 m deep</text>
+<path d="M718,93.7 V240 M714.8,93.7 H721.2 M714.8,240 H721.2" class="dim"/>
+<text x="714.8" y="166.8" class="lbl-s halo" text-anchor="end"><tspan data-n="ch11.ft-m@ft=600">183</tspan> m</text>
+<path d="M54,274 h160 M54,271 v6 M134,271 v6 M214,271 v6" class="dim"/>
+<text x="54" y="288" class="lbl-s" text-anchor="middle">0</text><text x="134" y="288" class="lbl-s" text-anchor="middle">100</text><text x="214" y="288" class="lbl-s" text-anchor="middle">200 m</text>
+</svg>
+          <dl class="case-facts">
+            <dt>Dam</dt><dd>W.A.C. Bennett Dam, on the Peace River in northern British Columbia; owned by BC Hydro.</dd>
+            <dt>Built</dt><dd>1964 to 1967; filling from November 1967, full by the summer of 1970.</dd>
+            <dt>Height</dt><dd>600 ft (<span data-n="ch11.ft-m@ft=600">183</span> m); 6,700 ft (<span data-n="ch11.ft-m@ft=6700">2,042</span> m) long.</dd>
+            <dt>Type</dt><dd>Zoned earthfill. A core of glacial soil as wide as the water is deep; downstream of it a transition 80 ft (<span data-n="ch11.ft-m@ft=80">24</span> m) wide at the base and 33 ft (<span data-n="ch11.ft-m@ft=33">10</span> m) near the top, a filter 12 ft (<span data-n="ch11.ft-m@ft=12">3.7</span> m) wide and a drain 24 ft (<span data-n="ch11.ft-m@ft=24">7.3</span> m) wide. Slopes 2.5:1 upstream and 2:1 downstream, steeper near the crest.</dd>
+            <dt>What happened</dt><dd>On 14 June 1996 a pothole on the crest turned out to sit over a survey benchmark casing left off the design drawings; drilling around it on 17 June set off a collapse of 21 ft (6.4 m). Below lay a column of badly disturbed core 2.5 to 3 m wide, in a disturbed zone 6 to 8 m across, about 80 m deep. A second, smaller sinkhole over another casing was found in September 1996. Both were repaired by compaction grouting.</dd>
+            <dt>Toll</dt><dd>None. The dam stayed in service.</dd>
+            <dt>Sources</dt><dd><a data-cite="bennett-eep2012"></a>, pp. 1–2, 15, 35–37, 47–48; <a data-cite="bennett-eep2012-v2"></a>, pp. C-4, C-5, C-7 and C-10; the collapse of 17 June: <a data-cite="stewart1998"></a>. The section takes the foundation as level at the dam's greatest height; the drain's blanket is drawn as thick as the drain is wide.</dd>
+          </dl>
+        </div>
+        <figcaption>
+          <p class="cap"><b>Bennett's core leaked into a transition built to catch what the leak carried, and the transition did.</b> The section is the dam at its full height, with the reservoir at its normal maximum on the left. Downstream of the wide core stand the transition, the filter and the drain, each coarser than the one before, the drain turning into a blanket along the base; the shells carry the weight. The <span class="k-acc">brick-red</span> column below the crest shows how deep the loosened core under the first sinkhole went, about 80 m. That sinkhole lay in a lower part of the dam, near the right canyon wall; it is drawn here at the dam's axis, at its own depth, for scale. <span class="cap-n">The number to remember: about 80 m of loosened core, and no breach.</span></p>
+          <p class="case-explains"><b>What this chapter explains.</b> A concentrated leak (<a data-ref="fig-erosion-modes"></a>, A), opened most likely by hydraulic fracture where the core was pressed together weakly beside a casing and near the canyon wall, which washed some of the core into the transition until the transition stopped it.</p>
+          <ul class="try">
+            <li>With the scale bar, measure the width of the transition near the base and near the top, and compare them with the filter's width.</li>
+          </ul>
+          <details class="try-ans"><summary>Answers</summary><p>About 24 m near the base and about 10 m near the top, against a filter about 3.7 m wide throughout: the transition is the wide first line of defence, the filter a narrow second one.</p></details>
+        </figcaption>
+      </figure>
+
+      <p>Notice the transition, the zone <a data-ref="ch-zones"></a> asked you to keep an eye on. It is many times wider than the filter and sits right against the core. The panel that reviewed Bennett in 2012 concluded that the settling of loosely packed core around the casing, as it got wet, could not by itself explain how far the first sinkhole had sunk: some of the core must have been carried away. The likeliest route was concentrated leaks through cracks opened by hydraulic fracture, where the casing and the nearby canyon wall left the core weakly pressed. The eroded core went into the transition, and the erosion probably went on only for a short time before the transition stopped it. The panel judged the transition, filter and drain together a good filter system, one that might let a little core erode at their boundary but would prevent ongoing erosion.<label for="mn-erosion-bennettfind" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-erosion-bennettfind" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="bennett-eep2012"></a>, pp. 35–37 (the two mechanisms and the cracks), 47 (the sinkholes) and 48 (the filter system).</span> The holes were filled by <span class="gl" data-term="compaction-grouting">compaction grouting</span>, and the dam went on working.</p>
+      <p>That answers this chapter's question. Teton and Bennett both leaked through their cores, and in both the water carried core soil with it. At Teton the soil went into open joints in the rock, nothing stopped it, and in five hours the tunnel had taken the dam. At Bennett the soil went into a transition graded to hold it, and the leak sealed itself against the transition's grains. The water at Bennett went on through, as water in every dam does; the soil stopped, and the grains of the core went on pressing on one another.</p>
+      <p class="film-lead" data-lead-for="film-sand-that-boils">The film <i>The sand that boils</i> retells the chapter, from the tube of sand to Bennett:</p>
     </div>
 
     <figure class="film wide" id="film-sand-that-boils">
       <div class="sheet-top"><span class="figno"><b data-num></b> · The sand that boils</span><span class="scale-note" data-gen="film-len"></span></div>
       <div class="film-before">
         <p class="film-k">Before you watch</p>
-        <p>Guess where a pipe under a dam starts: at the reservoir, where the water goes into the ground, or at the toe, where it comes out?</p>
+        <p>At 7:29 the film gives Terzaghi's second rule, that a filter's small grains must be at least four times the size of the sand's small grains, and a few seconds later it says the water then passes through the filter at least sixteen times as easily as through the sand. Where does sixteen come from? <a data-ref="ex-erosion-filter"></a> has everything you need.</p>
         <p class="film-bridge">This film was made after <a data-ref="film-every-dam-leaks"></a>, which closes the next chapter. When the narrator says “the last episode”, that's the one.</p>
       </div>
       <div class="film-stage">
@@ -73,26 +569,74 @@
       </div>
       <p class="film-k film-marks-k">In this film</p>
       <ol class="film-marks">
-        <li><button type="button" data-t="87.5">1:27</button> <span class="fm-l">A metre of sand in a tube</span> <a data-ref="s-erosion-piping"></a></li>
-        <li><button type="button" data-t="166.1">2:46</button> <span class="fm-l">The dam on sand and gravel</span> <a data-ref="fig-lab"></a></li>
+        <li><button type="button" data-t="87.5">1:27</button> <span class="fm-l">A metre of sand in a tube</span> <a data-ref="fig-erosion-tube"></a></li>
+        <li><button type="button" data-t="166.1">2:46</button> <span class="fm-l">Our dam on sand and gravel</span> <a data-ref="ex-erosion-exit"></a></li>
         <li><button type="button" data-t="227.5">3:47</button> <span class="fm-l">A pipe that feeds itself</span> <a data-ref="fig-pipe"></a></li>
-        <li><button type="button" data-t="301.4">5:01</button> <span class="fm-l">Teton, 1976</span></li>
-        <li><button type="button" data-t="349">5:49</button> <span class="fm-l">A wall halfway down</span></li>
-        <li><button type="button" data-t="372.8">6:12</button> <span class="fm-l">A filter at the toe</span> <a data-ref="s-erosion-filter"></a></li>
+        <li><button type="button" data-t="301.4">5:01</button> <span class="fm-l">Teton, 1976</span> <a data-ref="case-teton"></a></li>
+        <li><button type="button" data-t="349">5:49</button> <span class="fm-l">A wall halfway down</span> <a data-ref="fig-lab"></a></li>
+        <li><button type="button" data-t="372.8">6:12</button> <span class="fm-l">A filter at the toe</span> <a data-ref="fig-seepage-defences"></a></li>
         <li><button type="button" data-t="407.7">6:47</button> <span class="fm-l">How a filter holds sand back</span> <a data-ref="fig-filter"></a></li>
-        <li><button type="button" data-t="471.7">7:51</button> <span class="fm-l">Bennett Dam, 1996</span> <a data-ref="case-bennett">the case file</a></li>
+        <li><button type="button" data-t="471.7">7:51</button> <span class="fm-l">Bennett Dam, 1996</span> <a data-ref="case-bennett"></a></li>
       </ol>
       <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
       <figcaption>
-        <details class="film-after"><summary>After you watch: the answer</summary><p>At the toe. The pipe starts where the water comes out and works back toward the lake, and each metre it gains makes the next one easier, as <a data-ref="fig-pipe"></a> shows. A filter stops it by holding the grains and letting the water go. One line in the film needs a qualifier. It says erosion has brought down more earth dams than floods pouring over the top. In the study it draws on, by <a data-cite="foster2000"></a>, internal erosion caused 47% of failures and overtopping 34%; count failed spillways and gates with the floods and they reach 48%, so the two come out about level. The film stops here, before a closing question about tailings dams that <a data-ref="ch-raising"></a> answered.</p></details>
+        <details class="film-after"><summary>After you watch: the answer</summary><p>Four times four. Water passes a sand roughly in proportion to the square of its small grains' size, so a filter whose 15% size is four times the sand's passes water about 4 × 4 = 16 times as easily, and one at five times about 25 times (<a data-cite="fema2011-filters"></a>, p. 88); <a data-ref="ex-erosion-filter"></a> made the same step with a ratio of six and got <span data-n="ch11.k-ratio">36</span>. The rest of the film retells this chapter, and a few of its lines need a qualifier. At 0:45 it has the water in the gaps pushing the grains apart; more exactly, it carries part of the load the grains would otherwise carry between them, so they press on one another less (<a data-ref="ch-grip"></a>). At 4:11 its pipe grows in a teaching model made for the film, which this book does not hold; <a data-ref="ex-erosion-pipe"></a> makes the same argument with a head budget you can check. At 5:39 it gives Teton's toll as eleven, the Bureau of Reclamation's count; the review panel associated fourteen deaths with the failure. At 5:41 it says that water carrying soil out has brought down more dams than floods pouring over the top. In the study it draws on, by <a data-cite="foster2000"></a>, internal erosion caused 47% of the failures and overtopping 34%; count failed spillways and gates with the floods and they reach 48%, so the two come out about level. At 6:21 its filter at the toe raises our dam's margin against piping to about thirteen, while the leak rises about a tenth: in the lab the toe drain gives <span data-n="lab.fs@drain=toe">12.8</span> and <span data-n="lab.q-lday@drain=toe">2,647</span> L/day per metre against <span data-n="lab.q-lday">2,366</span>. At 6:57 it puts a filter's openings at about a fifth of its small grains, an older and rougher figure than the 0.11 measured since. The film stops here, before a closing question about tailings dams that <a data-ref="ch-raising"></a> answered.</p></details>
       </figcaption>
     </figure>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.12): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>Water rising through sand drags its grains upward. At the critical gradient, about 1, the drag matches the grains' weight under water, they stop pressing on one another, and the sand boils. Designers want an unfiltered exit at a third or a quarter of that.</li>
+        <li>Grains washed out at an exit leave a hollow that works back toward the reservoir, and every metre it gains shortens the path and steepens the push at its tip: a pipe feeds itself.</li>
+        <li>Water starts carrying soil out of a dam in four ways: a concentrated leak through a crack, backward erosion from an exit, suffusion of fine grains through coarse ones, and contact erosion along a boundary between soils.</li>
+        <li>A filter stops soil, not water. Its 15% size is at most four times the protected soil's 85% size, so the coarsest grains lodge at its face and hold back the rest, and at least about four times the soil's 15% size, so water leaves freely. Clay cores need the finer, tested rules of Sherard and Dunnigan.</li>
+        <li>Teton's leak met open rock and Bennett's met a transition. In both the water went on through; only at Bennett did the soil stay, and the grains of the core keep pressing on one another.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-erosion-speed" data-tag="check" data-level="2">
+          <p>Once a pipe has started under a dam, why does it speed up instead of slowing down?</p>
+          <details class="q-hint"><summary>Hint</summary><p>The reservoir fixes the head. Over what length of sand does the water have to lose it once the pipe is open?</p></details>
+          <div class="q-answer"><p>Water in the open pipe loses almost no head, so the whole head between the reservoir and the toe is spent on the sand still ahead of the pipe. As the pipe grows that stretch shortens and the gradient across it steepens: under our dam the average goes from <span data-n="ch11.i-avg">0.20</span> with no pipe to <span data-n="ch11.i-avg@eaten=50">0.39</span> with half the path eaten and <span data-n="ch11.i-avg@eaten=90">1.7</span> with 12 m left (<a data-ref="ex-erosion-pipe"></a>). A steeper push carries grains away faster, which lengthens the pipe faster.</p></div>
+        </li>
+        <li class="q" id="q-erosion-filter2" data-tag="reckon" data-level="2">
+          <p>A sand to be protected has <span class="m"><var>D</var><sub>15</sub> = <span data-n="ch11.q2-d15">0.15</span> mm</span> and <span class="m"><var>D</var><sub>85</sub> = <span data-n="ch11.q2-d85">0.6</span> mm</span>. Between what limits must its filter's <var>D</var><sub>15</sub> lie?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Use both rules of <a data-ref="eq-erosion-filter"></a>, with a factor of 4 in each.</p></details>
+          <div class="q-answer"><p>Retention: <span class="m"><var>D</var><sub>15F</sub> ≤ 4 × <span data-n="ch11.q2-d85">0.6</span> = <span data-n="ch11.q2-max">2.4</span> mm</span>. Permeability: <span class="m"><var>D</var><sub>15F</sub> ≥ 4 × <span data-n="ch11.q2-d15">0.15</span> = <span data-n="ch11.q2-min">0.6</span> mm</span>. So <span class="m"><span data-n="ch11.q2-min">0.6</span> mm ≤ <var>D</var><sub>15F</sub> ≤ <span data-n="ch11.q2-max">2.4</span> mm</span>; a filter near the middle of the band, about 1.2 mm, leaves room for the variation of a real pit.</p></div>
+        </li>
+        <li class="q" id="q-erosion-modes" data-tag="check" data-level="2">
+          <p>Which of the four ways of <a data-ref="fig-erosion-modes"></a> began the boil in <a data-ref="fig-pipe"></a>, the failure of Teton, and the first sinkhole at Bennett?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Ask where each began: at an exit in the ground, or in an opening inside the dam?</p></details>
+          <div class="q-answer"><p>The boil is backward erosion: it begins at the exit beyond the toe and works back. Teton and Bennett were both concentrated leaks: water running through openings inside the core, at Teton along the base of the key trench and into open joints, at Bennett most likely through cracks opened by hydraulic fracture. At Bennett some of the transition was also prone to suffusion, which the panel thought let a little core erode before the transition held.</p></div>
+        </li>
+        <li class="q" id="q-erosion-cases" data-tag="case" data-level="2">
+          <p>Bennett and Teton both leaked through their cores into something coarser. Why did one survive?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Compare the gaps in what each core leaked into with the size of the core's grains.</p></details>
+          <div class="q-answer"><p>Teton's silt leaked into open joints in volcanic rock, gaps far larger than its grains, so nothing stopped the eroded silt and the tunnel grew to a breach in hours (<a data-ref="case-teton"></a>). Bennett's core leaked into its transition, a soil graded to act as a filter for the core: the eroded grains lodged in it and the erosion stopped (<a data-ref="case-bennett"></a>). Both leaked water; only Teton let the soil go.</p></div>
+        </li>
+        <li class="q" id="q-erosion-berm" data-tag="explore" data-level="1">
+          <p>In <a data-ref="fig-pipe"></a>, switch the toe to Filter + weighting berm and play the sequence. What does the filter stop, and what does it let through? What is the berm's weight for?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-pipe","set":{"pp-filter":"1"},"click":["#pp-play"]}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Think of the tube of <a data-ref="fig-erosion-tube"></a>: what would a weight on top of the sand do to the press between its grains?</p></details>
+          <div class="q-answer"><p>It stops the sand and lets the water through: the sequence never gets past steady seepage. The berm's weight presses down on the ground at the exit, so the grains there press on one another harder, and the upward drag of the rising water has more press to overcome before the sand can heave. It is Terzaghi's first filter: sand with weight on top.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="stene1996"></cite> <span class="level">gentle</span> The Bureau of Reclamation's own history of the Teton project, from the first surveys through its building, the failure and what came after. Short, plain and free.</li>
+        <li><cite data-cite="fema2011-filters"></cite> <span class="level">serious</span> The standard practical guide in the United States. Its first chapter explains how filters work and how internal erosion starts; its fifth works the design rules step by step; an appendix tells the history, from Terzaghi to Sherard and Dunnigan. Free from FEMA.</li>
+        <li><cite data-cite="teton1976"></cite> <span class="level">primary source</span> The independent panel's report. Its summary and conclusions take a few pages and are a model of plain engineering judgment; the second chapter rebuilds the morning of 5 June from the witnesses' own words.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">Teton and Bennett were stories of water that moved too hard through the soil and tried to take it along. A dam can lose its grip without losing a grain. With all that water inside it, carrying part of the load its grains would otherwise carry between them, will its slope stand?</p></nav>
   </section>
 </section>

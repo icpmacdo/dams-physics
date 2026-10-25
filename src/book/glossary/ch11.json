@@ -1,0 +1,67 @@
+{
+ "backward-erosion-piping": [
+  "Backward erosion piping",
+  "Erosion that starts where seepage leaves the ground, at a boil beyond a dam's toe or on its downstream face, and works back toward the reservoir under a roof that holds it open. Each metre it gains shortens the water's path and steepens the gradient at its tip, so once started it speeds up."
+ ],
+ "concentrated-leak": [
+  "Concentrated leak",
+  "Water flowing through an opening that is already there, such as a crack in a core, a gap beside a pipe or a casing, a loose layer, or open joints in rock, and scouring soil from the opening's walls."
+ ],
+ "suffusion": [
+  "Suffusion",
+  "Internal erosion in which seepage washes the fine grains of a soil out through the gaps between its coarse grains, leaving the coarse skeleton in place. Soils with a gap in their grain sizes are prone to it."
+ ],
+ "contact-erosion": [
+  "Contact erosion",
+  "Internal erosion where a fine soil lies against a coarse one and water flowing along the coarse layer scours fine grains from the boundary."
+ ],
+ "hydraulic-fracture": [
+  "Hydraulic fracture",
+  "A crack opened in soil, or rock, by water pressure that exceeds the least stress pressing the material together. In a dam's core it happens where the core is pressed together weakly, as beside the steep walls of a trench."
+ ],
+ "dispersive-clay": [
+  "Dispersive clay",
+  "A clay whose flakes separate in fresh water instead of clinging together, so that it erodes far more easily than an ordinary clay. Laboratory tests such as the pinhole test identify it."
+ ],
+ "sand-boil": [
+  "Sand boil",
+  "A spring of water rising through sand with enough upward gradient to lift the grains, so the sand churns at the surface and often builds a small cone round the spring. Beyond the toe of a dam it is a warning of backward erosion."
+ ],
+ "sinkhole": [
+  "Sinkhole",
+  "A hollow at the surface, on a dam's crest or slopes, left where soil below has been carried away by erosion or has settled into a cavity."
+ ],
+ "grain-size": [
+  "Grain size",
+  "The sizes of the grains in a soil, found by sieving and plotted as a curve of the share by weight finer than each size. D15 and D85 are the sizes that 15% and 85% of the soil is finer than."
+ ],
+ "key-trench": [
+  "Key trench",
+  "A trench dug into the foundation under a dam's core and filled with core material, to cut the water's way through the upper, more broken ground and to seat the core on firmer ground."
+ ],
+ "compaction-grouting": [
+  "Compaction grouting",
+  "Injecting a stiff grout under pressure so that it forms a growing bulb that pushes the surrounding soil aside and packs it denser, instead of soaking into it. Used to fill and densify loosened ground."
+ ],
+ "piping": {
+  "replace": true,
+  "entry": [
+   "Piping",
+   "Two senses. In failure statistics, any internal erosion that carries soil out of a dam or its foundation. Strictly, backward erosion piping: seepage carries grains out at an exit and a pipe-like channel works backward toward the reservoir."
+  ]
+ },
+ "internal-erosion": {
+  "replace": true,
+  "entry": [
+   "Internal erosion",
+   "Seepage carrying soil out of a dam or its foundation. It starts in one of four ways: a concentrated leak through an opening, backward erosion from an exit, suffusion of fine grains through coarse ones, or contact erosion along the boundary between two soils."
+  ]
+ },
+ "exit-gradient": {
+  "replace": true,
+  "entry": [
+   "Exit gradient",
+   "The hydraulic gradient where seepage leaves the ground or a slope. Rising through level sand at about 1.0 it floats the grains and the sand boils; on a sloping face, where gravity also pulls the grains downhill, a gentler gradient moves them."
+  ]
+ }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2026-10-24",
+    "where": "Caption of the figure of core grains meeting rockfill and a filter",
+    "ref": "fig-filter",
+    "was": "The pores are too small, the particles jam at the interface, and only water passes.",
+    "now": "The filter's gaps are smaller than the core's coarser grains: those stop at the face, and the finer grains pile up behind them, so the water passes. The drawing stops every grain at the face by rule; in a real filter only grains bigger than its openings stop there, and the layer they build holds back the rest.",
+    "why": "A filter's gaps are larger than the core's fine grains; it holds them because the coarse grains bridge its openings and build their own filter. The caption also disagreed with the drawing's own label."
+  },
+  {
+    "date": "2026-10-24",
+    "where": "The filter rules",
+    "ref": "eq-erosion-filter",
+    "was": "A filter's pore throats are roughly a fifth of its D15.",
+    "now": "A graded filter acts like a sieve with openings about 0.11 times its D15 (FEMA 2011, pp. 275–276, after Sherard and colleagues' tests).",
+    "why": "A fifth is an old, rough estimate; the measured effective opening of a graded filter is about a ninth of its D15."
+  },
+  {
+    "date": "2026-10-24",
+    "where": "The Bennett Dam case",
+    "ref": "case-bennett",
+    "was": "Engineers lowered the reservoir and filled the voids by compaction grouting … R.A. Stewart's 1998 account of the crisis ranks it as the gravest dam safety concern in BC Hydro's history.",
+    "now": "Both sinkholes were repaired by compaction grouting (the lowering of the reservoir and the ranking are left out).",
+    "why": "Neither the lowering of the reservoir nor the ranking could be found in the sources available; the panel's report and Stewart's abstract support the repair and its dates."
+  }
+]
