@@ -1,17 +1,108 @@
 <section class="chapter" id="ch-zones">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.10): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <blockquote class="epigraph">
+      <p>The voids are the channels of flow for percolating water.</p>
+      <footer>R. R. Proctor, <a data-cite="proctor1933">Fundamental principles of soil compaction</a>, 1933</footer>
+    </blockquote>
+    <p class="so-far"><b>So far.</b> <a data-ref="ch-raising"></a> ended inside a tailings dam raised downstream, which can carry a core and drains up with it, like a dam built to hold water. Part III opens that kind of dam properly: the embankment, a heap of earth and rock, and the different soils it is built from.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>name each zone of an embankment and its job, and say what goes wrong if it is missing;</li>
+        <li>explain why the upstream shell can be soaked and still strong, and what one event makes it dangerous;</li>
+        <li>say how loose earth is made into dense fill, and check a rolled layer with a field test.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.10): "From the highway, W.A.C. Bennett Dam looks like a long grassy hill." -->
-    </div>
+
     <div class="col">
-      <p>A large embankment dam is rarely made of one material. It is <strong>zoned</strong>: built from several soils and rocks, each placed where it does one job. A zone holds water back, or lets water out without letting soil out, or adds weight. The clay <span class="gl" data-term="core">core</span> is the clay plug from <a data-ref="ch-head"></a>, taking almost the whole drop in head. <span class="gl" data-term="filter">Filters</span> and <span class="gl" data-term="drain">drains</span> let the water that gets through escape, so the pressure downstream of the core stays low. That leaves the downstream <span class="gl" data-term="shell">shell</span> fairly dry, its grains pressing hard on each other, which is where its grip comes from (<a data-ref="ch-grip"></a>). The upstream shell sits under the reservoir and stays soaked, but it is free-draining, so its water pressure is only what the reservoir puts there. Read any section from the middle outward and you'll find the same order: tight in the centre, coarser and more free-draining toward the faces.</p>
-      <p>Pick a dam type, then click any zone (or its chip) to see what it's made of and what it's for. <strong>Build</strong> replays the construction sequence; <strong>Explode</strong> pulls the zones apart.</p>
+      <p class="cold"><span class="newthought">Between 1964 and 1967,</span> in the canyon of the Peace River in northern British Columbia, crews built a hill one layer at a time. Each layer of its middle was spread no more than 10 inches thick (6 inches from late August 1965), scratched up on top so the next would bond to it, and rolled four times by a 90-ton compactor on rubber tyres. Each layer was meant to come out at least 98 per cent as dense as the same soil packed in a standard laboratory test. When they stopped, the W.A.C. Bennett Dam stood <span data-n="ch09.bennett-h-m">183</span> m high and ran <span data-n="ch09.bennett-l-km">2.0</span> km across the canyon and the terraces on either side, about <span data-n="ch09.bennett-fill-mm3">44</span> million cubic metres of earth and rock.<label for="mn-zones-bennett" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-zones-bennett" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="bennett-eep2012"></a>, pp. 1–3: 600 ft high, 6,700 ft long, 57.5 million cubic yards of fill, built 1964 to 1967; the rules for placing the core are in its table of zones, p. 3.</span><label for="sn-zones-tallest" class="sn-ref"></label><input type="checkbox" id="sn-zones-tallest" class="margin-toggle"><span class="sidenote" data-kind="curious">Bennett is far from the tallest dam of its kind. Shuangjiangkou, in China, a rockfill dam built round a core of gravelly soil, is 315 m high. It began storing water in May 2025 and connected its first generator to the grid in June 2026 (<a data-cite="waterpower2025"></a>; <a data-cite="cpnn2026"></a>). It is reported as the world's tallest dam, a title it is expected to hold until Rogun, in Tajikistan, reaches its planned 335 m, which was projected for 2033.</span></p>
+      <p>From outside, a dam like this is one long slope of earth. Cut it across and it is seven materials. The panel of engineers that reviewed Bennett in 2012 lists them as <span class="gl" data-term="zone">zones</span>, from the middle outward. Zone 1 is the <span class="gl" data-term="core">core</span>, there to hold the reservoir back. Zones 2 and 3, a <span class="gl" data-term="transition">transition</span> and a <span class="gl" data-term="filter">filter</span>, are each described as a filter to the core. Zone 4 is a <span class="gl" data-term="drain">drain</span>. Zone 5 is a bedding layer for the <span class="gl" data-term="riprap">riprap</span>, the armour of large rocks on the upstream face. Zone 6, the random <span class="gl" data-term="shell">shell</span>, "provides the weight for the stability of the dam". Each went in by its own rules: the core in the thinnest layers at a water content held close to one chosen value, the transition and filter in thicker layers under a vibrating roller, the shell with coarser streaks allowed because they help water out.<label for="mn-zones-table" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-zones-table" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="bennett-eep2012"></a>, the table of zones, pp. 3–4, quoted for Zone 6.</span></p>
+      <p>Keep an eye on Zone 2, the transition. It sits between the core and everything coarser, and of all the zones its job is the hardest to see in a drawing. <a data-ref="ch-erosion"></a> is where it earns its keep.</p>
+      <p>Why go to that trouble? The canyon had plenty of soil. Why not build the whole hill out of the tightest soil in it?</p>
+
+      <h3 id="s-zones-wall">One soil, or several?</h3>
+      <p><a data-ref="ch-head"></a> gave half an answer: a short plug of clay in a pipe of sand takes nearly the whole drop in head. The film at the end of <a data-ref="ch-concrete"></a> asked the other half: how can a wall of dirt hold back a lake at all, when water passes through dirt? Most people say the wall must be made watertight. Build it of clay, the tightest soil there is, and the water stays out. Test that before you read on:</p>
+
+      <div class="predict" data-answer="b" id="pr-zones-clay">
+        <p class="predict-q">The same 24 m dam is built twice on solid rock: once all of silt, and once all of clay, a hundred times tighter. In the silt dam, water seeping through breaks out of the back slope well above the ground. Once the water has had time to soak into the clay dam, where does it stand inside it?</p>
+        <div class="predict-opts"><button type="button" data-v="a">Far lower: the back slope stays dry</button><button type="button" data-v="b">Where it stood in the silt dam</button><button type="button" data-v="c">Higher, because clay holds on to water</button></div>
+        <div class="predict-reveal" hidden><p>Where it stood in the silt dam. Through any one material the head falls steadily from the lake side to the far side, however tight the material is: that is Darcy's pipe from <a data-ref="ch-head"></a> with nothing but clay in it. Making the whole dam a hundred times tighter cuts the leak a hundredfold and makes the water take far longer to arrive. Once it has arrived, it stands in the same place, and the back slope is as wet as before. How tight the soil is sets how much water gets through; where the water ends up standing is set by the dam's shape and the lake's level.</p></div>
+      </div>
+
+      <p>The film below runs that experiment, and then a third dam built of both soils.</p>
+      <p class="film-lead" data-lead-for="film-wall-of-dirt">Its first few minutes retell the race and Darcy's pipe from <a data-ref="ch-head"></a>, as a reminder; then it looks inside a dam:</p>
+    </div>
+
+    <figure class="film wide" id="film-wall-of-dirt">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · A wall made of dirt</span><span class="scale-note" data-gen="film-len"></span></div>
+      <div class="film-before">
+        <p class="film-k">Before you watch</p>
+        <p>The film's third dam puts a core of clay, about a fifth of the dam's width, inside the silt. Before you watch, decide two things. Does it leak more or less than the dam built all of clay? And which of the two would you rather live below?</p>
+        <p class="film-bridge">The film was made for a series that had not yet come to filters. The job it promises to "come to later" is the subject of <a data-ref="ch-erosion"></a>.</p>
+      </div>
+      <div class="film-stage">
+        <video controls preload="none" playsinline poster="video/wall-of-dirt.jpg" aria-label="Film: A wall made of dirt"><source src="video/wall-of-dirt.mp4" type="video/mp4"><track kind="captions" src="video/wall-of-dirt.vtt" srclang="en" label="English"></video>
+      </div>
+      <p class="film-k film-marks-k">In this film</p>
+      <ol class="film-marks">
+        <li><button type="button" data-t="52.6">0:52</button> <span class="fm-l">The permeability race</span> <a data-ref="fig-race"></a></li>
+        <li><button type="button" data-t="102">1:42</button> <span class="fm-l">A straw in the beach: head</span> <a data-ref="ch-head"></a></li>
+        <li><button type="button" data-t="134.5">2:14</button> <span class="fm-l">A dam of one soil</span></li>
+        <li><button type="button" data-t="179.5">2:59</button> <span class="fm-l">The same dam, all of clay</span> <a data-ref="pr-zones-clay">the question above</a></li>
+        <li><button type="button" data-t="206.2">3:26</button> <span class="fm-l">Darcy's pipe</span> <a data-ref="fig-darcy"></a></li>
+        <li><button type="button" data-t="261.5">4:21</button> <span class="fm-l">A plug of clay in the pipe</span> <a data-ref="fig-darcy"></a></li>
+        <li><button type="button" data-t="296.7">4:56</button> <span class="fm-l">The plug inside the dam</span> <a data-ref="ex-zones-core"></a></li>
+        <li><button type="button" data-t="355.9">5:55</button> <span class="fm-l">Real zoned dams</span> <a data-ref="fig-zones"></a></li>
+      </ol>
+      <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
+      <figcaption>
+        <details class="film-after"><summary>After you watch: the answer</summary><p>It leaks more, and it is the one to live below. A little over a litre a day passes each metre of the cored dam, about four times as much as the all-clay dam lets through, because its clay is only a fifth as wide. But the core takes all but half a metre of the twenty metres of head, so the back half of the dam is left with almost no water in it. At the foot of the one-soil dam's back slope the water carries about two fifths of the soil's weight; behind the core it carries almost none, and the grains there press on one another with nearly their whole weight. The film's own summary is the line to keep: "A dam doesn't have to be watertight. It has to keep the water pressure out of the part that holds it up." <a data-ref="ex-zones-core"></a> measures the same thing in our dam. The film's last question, where the leak goes, opens <a data-ref="ch-seepage"></a>.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>The film puts its answer in one line: a dam does not have to be watertight; it has to keep the water pressure out of the part that holds it up. Every zone in this chapter serves that idea. <a data-ref="ch-grip"></a> showed that soil holds only as well as its grains press on one another, and that water in the gaps takes part of that press away. The part of an embankment that holds it up against the lake is the downstream half. So the first question about any design is where the water will stand inside it, and only the second is how much of it will get through.</p>
+      <p>To put numbers on it, take the one dam this book keeps coming back to, <i>our dam</i>: the 24 m embankment with 2:1 faces (the notation of <a data-ref="ex-beach-slope"></a>) drawn in <a data-ref="fig-plate-0"></a>, whose water the seepage lab computes in <a data-ref="ch-seepage"></a> and whose slopes the workbench tests in <a data-ref="ch-slope,ch-build"></a>. The lab can build it of a single fill or with a clay core between shells of sand and gravel, on a foundation of gravel or of clay. Here it is both ways, on clay:</p>
+
+      <section class="we" id="ex-zones-core">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The plug inside our dam</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Our dam holding water <span data-n="lab.res-m">20.4</span> m deep, on the seepage lab's clay foundation, built two ways: all of one fill (<span class="m"><var>k</var> = <span data-n="ch09.k-fill">10⁻⁷</span> m/s</span>), or with a clay core (<span data-n="ch09.k-core">10⁻⁹</span> m/s, <span data-n="ch09.core-top-w-m">3</span> m wide at the top and <span data-n="ch09.core-base-w-m">21.4</span> m at the base) between shells of sand and gravel (<span data-n="ch09.k-shell">10⁻⁴</span> m/s). The lab computes where the water stands.</dd>
+          <dt>Find</dt><dd>How high the water stands in the downstream half each way, how much of the head the core takes, and how much each version leaks.</dd>
+          <dt>The idea</dt><dd>The same flow passes every zone in turn, so the tightest one takes nearly the whole drop in head, as the clay plug did in Darcy's pipe (<a data-ref="fig-darcy"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">One fill: water breaks out of the downstream face <span data-n="lab.face-m@found=tight">8</span> m above the ground</span><span class="why">the highest point where water seeps out of the face, read from the lab</span></li>
+          <li><span class="we-eq">With the core: the water behind it stands <span data-n="ch09.core-ds-m">0.65</span> m above the ground</span><span class="why">the phreatic surface close behind the core</span></li>
+          <li><span class="we-eq">Head the core takes: <span data-n="lab.res-m">20.4</span> − <span data-n="ch09.core-ds-m">0.65</span> <span class="m">= <span data-n="ch09.core-dh-m">19.75</span> m</span></span><span class="why">from the lake's level down to the water behind the core</span></li>
+          <li><span class="we-eq"><span data-n="ch09.core-dh-m">19.75</span> ÷ <span data-n="lab.res-m">20.4</span> = <span data-n="ch09.core-share">0.968</span>, so <span data-n="ch09.core-share-pct">96.8</span>%</span><span class="why">the core's share of the drop</span></li>
+          <li><span class="we-eq">Leak: <span data-n="lab.q-lday@found=tight">44.4</span> L/day per metre with one fill, <span data-n="lab.q-lday@dam=cored,found=tight">37.2</span> with the core</span><span class="why">the lab's Seepage readout, both ways</span></li>
+        </ol>
+        <p class="we-ans">The core takes <span data-n="ch09.core-share-pct">96.8</span>% of the head. The water in the downstream half drops from <span data-n="lab.face-m@found=tight">8</span> m up the face to <span data-n="ch09.core-ds-m">0.65</span> m above the ground, while the leak falls by only about a sixth.</p>
+        <p class="we-check"><b>Check.</b> Estimate the flow through the core by hand with Darcy's law. Ten metres up, the core is <span data-n="ch09.core-w-m">13.4</span> m wide, so the water crossing it loses head at about <span data-n="ch09.core-dh-m">19.75</span> ÷ <span data-n="ch09.core-w-m">13.4</span> = <span data-n="ch09.core-i">1.47</span> metres per metre. At <span data-n="ch09.k-core">10⁻⁹</span> m/s over a wet height of about <span data-n="ch09.core-wet-m">20</span> m, that is about <span data-n="ch09.core-hand-lday">2.5</span> litres a day through each metre of dam. The lab with a full cutoff under the core, so that the core is the only way through, gives <span data-n="lab.q-lday@dam=cored,found=tight,cut=full">2.1</span>: the hand sum is within a fifth of it. The rest of the <span data-n="lab.q-lday@dam=cored,found=tight">37.2</span> goes under the core, through the clay foundation, where <a data-ref="ch-seepage"></a> follows it.</p>
+        <p class="we-means"><b>What it means.</b> A core works by where it puts the water, far more than by how much water it stops. The leak changed by a sixth; the water level in the downstream half fell by more than seven metres, and with it the water pressure under the grains that hold the dam up.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"cored","lab-drain":"none","lab-cut":"none","lab-found":"tight","lab-res":85}}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-zones-jobs">Four jobs</h3>
+      <p>A core alone does not make a dam, because the water it lets through has to go somewhere and the core has to be held in place. Every embankment with a core hands out the same four jobs to different soils.</p>
+      <p><b>Hold the water back.</b> That is the core's job: compacted clay, or glacial till, the unsorted mix of clay, silt, sand and stones that a glacier leaves behind. Bennett's core is glacial soil of that kind, a non-plastic mix of silt, sand and gravel.<label for="mn-zones-core" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-zones-core" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="bennett-eep2012"></a>, p. 31 ("non-plastic silt sand gravel", and a glacial soil tested as similar to it) and p. 48 (the moraine materials used in the core).</span> Where the ground beneath is gravel or cracked rock, the barrier has to go down into it too. A <span class="gl" data-term="cutoff">cutoff</span> trench carries the core down through loose river deposits to rock, and under the trench a grout curtain, lines of holes drilled into the rock and pumped full of cement grout, closes the rock's cracks.<label for="mn-zones-lugeon" class="mn-ref" aria-label="Units"></label><input type="checkbox" id="mn-zones-lugeon" class="margin-toggle"><span class="marginnote" data-kind="units">Rock is tested for grouting by pumping water into a section of a drill hole. One Lugeon is an inflow of one litre a minute into each metre of hole at a pressure of 1,000 kPa, equivalent to a rock permeability of about 1.3 × 10⁻⁷ m/s (<a data-cite="bennett-eep2012"></a>, p. 5).</span></p>
+      <p><b>Let the water out.</b> Whatever gets through the core must leave the dam without building up pressure in the part that holds it up. Drains of clean sand and gravel do that: a <span class="gl" data-term="chimney-drain">chimney drain</span> standing against the downstream side of the core, a blanket along the base, and a toe drain that carries the water out to where it can be measured.</p>
+      <p><b>Stop the soil.</b> But water leaving fine grains for coarse ones carries the fine grains with it, so a drain laid straight against a core would slowly wash the core away. Filters and transitions sit between them and step the grain size up gradually, each zone fine enough that the grains of the zone inside it cannot wash into its gaps, and coarse enough to let the water through. This is the thinnest zone in the dam, and its job is the subtlest; <a data-ref="ch-erosion"></a> is about it.</p>
+      <p><b>Add weight.</b> The shells of rockfill or sand and gravel are most of the dam. They hold the core in place against the push of the reservoir and hold themselves up by friction, which is to say by the press of their grains on one another. Over the upstream shell goes riprap, against waves and ice; along the top, the crest carries a road and stands high enough above the highest flood to leave some <span class="gl" data-term="freeboard">freeboard</span>.</p>
+      <p>Read a cored dam from the middle outward and you meet the jobs in the same order every time: tight in the centre, coarser and freer-draining toward the faces. Each zone is coarser than the one inside it, so the water can get out, and fine enough to hold that zone's grains in. Engineers number the zones in that order too. Zone 1 is the barrier, Zone 2 the filters and transitions under or beside it, Zone 3 the main rockfill, though each dam adapts the scheme: Bennett's run from 1 to 6, core outward.<label for="mn-zones-numbers" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-zones-numbers" class="margin-toggle"><span class="marginnote" data-kind="source">The convention, as Cooke and Sherard set it out and Cruz quotes it: <a data-cite="cruz2008"></a>, p. 57.</span></p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Rockfill drains freely and is strong. Why not pile it directly against the core?</summary>
+        <p>Water leaving the core would carry its fine grains into the big gaps between the rocks, and the core would wash away from the inside. The filter and the transition step the grain size up so that no zone can wash into the next.</p>
+      </details>
+
+      <p>Below, a 60 m earth–rockfill dam is drawn to scale with all its zones in place, beside three other kinds of dam. Click a zone, or its chip, to read what it is made of, how easily water passes through it, its job, and what happens if it fails. <b>Build</b> shows the order in which the dam goes up, and <b>Explode</b> pulls the zones apart:</p>
     </div>
 
     <figure class="sheet full" id="fig-zones">
@@ -31,44 +122,240 @@
         <div class="chips" id="zn-chips" aria-label="Zones"></div>
         <div class="zone-info" id="zn-info" aria-live="polite"></div>
       </div>
-    </figure>
-
-    <div class="col" data-stub>
-      <!-- New (H.10): four jobs, zone numbers, the rule broken on purpose (CFRD, gravity, tailings),
-           tbl-zones-earth, compaction ("How a heap becomes fill"), "our dam" named;
-           ex-zones-compaction, ex-zones-shell; the Polley clue after the zones (G.4). -->
-    </div>
-    <figure class="film wide" id="film-wall-of-dirt">
-      <div class="sheet-top"><span class="figno"><b data-num></b> · A wall made of dirt</span><span class="scale-note" data-gen="film-len"></span></div>
-      <div class="film-before">
-        <p class="film-k">Before you watch</p>
-        <p>The dam at the start of the film has clear tubes in it that show how high the water stands inside: high on the lake side, nothing at the back. Somewhere between them the water loses twenty metres of height. Where would you put that drop, and why there?</p>
-      </div>
-      <div class="film-stage">
-        <video controls preload="none" playsinline poster="video/wall-of-dirt.jpg" aria-label="Film: A wall made of dirt"><source src="video/wall-of-dirt.mp4" type="video/mp4"><track kind="captions" src="video/wall-of-dirt.vtt" srclang="en" label="English"></video>
-      </div>
-      <p class="film-k film-marks-k">In this film</p>
-      <ol class="film-marks">
-        <li><button type="button" data-t="52.6">0:52</button> <span class="fm-l">The permeability race</span> <a data-ref="fig-race"></a></li>
-        <li><button type="button" data-t="102">1:42</button> <span class="fm-l">A straw in the beach: head</span> <a data-ref="eq-head-darcy"></a></li>
-        <li><button type="button" data-t="134.5">2:14</button> <span class="fm-l">A dam of one soil</span></li>
-        <li><button type="button" data-t="179.5">2:59</button> <span class="fm-l">All clay, and no drier</span> <a data-ref="pr-clay">your guess</a></li>
-        <li><button type="button" data-t="206.2">3:26</button> <span class="fm-l">Darcy's pipe</span> <a data-ref="fig-darcy"></a></li>
-        <li><button type="button" data-t="261.5">4:21</button> <span class="fm-l">A plug of clay in the pipe</span> <a data-ref="fig-darcy"></a></li>
-        <li><button type="button" data-t="296.7">4:56</button> <span class="fm-l">The plug inside the dam</span> <a data-ref="fig-zones"></a></li>
-        <li><button type="button" data-t="355.9">5:55</button> <span class="fm-l">Real zoned dams</span> <a data-ref="fig-zones"></a></li>
-      </ol>
-      <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
       <figcaption>
-        <details class="film-after"><summary>After you watch: the answer</summary><p>In the core. The same flow has to pass every part of the dam, and clay needs a steep drop in head to push it through, so the core takes almost all of it. The back half of the dam is left with little water pressure, and its grains press hard and grip. The film says the sand beside the core has a job you'll come to later: that is the filter, in <a data-ref="ch-erosion"></a>. Its last question, where the leak goes, opens <a data-ref="ch-seepage"></a>.</p></details>
+        <p class="cap"><b>An earth–rockfill dam is tight in the middle and coarser toward its faces, and each zone has its own material and its own job.</b> The section opens finished and drawn to scale; each hatch is a material, as in <a data-ref="fig-plate-0"></a>, and each code a zone: 1 the core, 2A and 2B the filters and transitions either side of it, 3U and 3D the upstream and downstream shells, 4 the riprap and CR the crest; beneath them the cutoff trench (1T) cuts through the river deposits (AL) to the rock (BR), with the grout curtain (GC) below it, and behind them lie the filter blanket (BF) and the toe drain (TD). The line labelled Phreatic surface is the top of the water inside the dam: it holds the reservoir's level through the upstream shell, falls through the core and runs out low along the base. <b>Build</b> replays the construction stage by stage. The other tabs show a concrete-face rockfill dam, a concrete gravity dam and a tailings dam raised on its centreline, each to its own scale. <span class="cap-n">The number to remember: the core passes water about a million times less easily than the shells beside it, about 10⁻⁹ m/s against 10⁻³ m/s or more.</span></p>
+        <ul class="try">
+          <li>On the Earth–rockfill tab, press <b>Build</b>. Which zones rise together, in the same stage?</li>
+          <li>Press <b>Explode</b> and count the zones between the core and the downstream shell.</li>
+          <li>Open the Concrete-face rockfill tab. Where is its barrier, and where does its phreatic surface run?</li>
+          <li>Open the Tailings tab and click CS. What is this dam built of?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>The core, both filters, both transitions, both shells, the blanket and the toe drain rise together in compacted layers: none of them can be added afterwards. Two zones lie between the core and the downstream shell, the fine filter 2A and the transition 2B. The concrete-face dam's barrier is the concrete slab on its upstream face, and its phreatic surface stays at the base. The tailings dam is built of cycloned sand, the coarse part of the tailings themselves (<a data-ref="ch-raising"></a>).</p></details>
       </figcaption>
     </figure>
-  <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.10): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+
+    <div class="col">
+      <p>Notice that the phreatic surface stays at the reservoir's level all the way through the upstream shell and only drops inside the core: the upstream shell is soaked. Notice too how thin the filters and transitions are, a few metres wide in a dam more than 250 m across at its base, and that Build places them in the same stage as the core, layer by layer, since they could never be slipped in later. The cards are easier to compare side by side, so here they are for the earth–rockfill section:</p>
+
+      <figure class="table wide" id="tbl-zones-earth">
+        <figcaption class="tbl-cap"><b data-num></b> · The zones of an earth–rockfill dam, from the middle outward</figcaption>
+        <div class="tablewrap">
+          <table class="cmp zones-tbl">
+            <thead><tr><th>Zone</th><th>Made of</th><th>Permeability, m/s</th><th>Job</th><th>If it fails</th></tr></thead>
+            <tbody>
+              <tr><th>1 Core</th><td>Clay or glacial till, compacted slightly wet of its optimum water content</td><td>about 10⁻⁹</td><td>The barrier: almost all of the head is lost across it</td><td>A crack or a wet seam opens a leak; the filters decide whether a leak becomes a failure</td></tr>
+              <tr><th>1T Cutoff trench</th><td>Core soil compacted in a trench dug through the river deposits to rock</td><td>about 10⁻⁹</td><td>Carries the barrier down to rock</td><td>A badly cleaned rock surface lets core soil wash into the rock's cracks</td></tr>
+              <tr><th>GC Grout curtain</th><td>Cement grout pumped under pressure into rows of drill holes</td><td>brings rock toward 10⁻⁷</td><td>Seals cracks in the rock beneath the core</td><td>Gaps between holes leave windows for water</td></tr>
+              <tr><th>2A Fine filter</th><td>Processed clean sand, graded to suit the core</td><td>about 10⁻⁵</td><td>Lets water out of the core and keeps every core grain in; downstream, it is also the chimney drain</td><td>A cracked core with no filter behind it can erode and fail in hours</td></tr>
+              <tr><th>2B Transition</th><td>Sandy gravel or crushed rock, a few metres wide</td><td>about 10⁻³</td><td>Steps the grain size up from filter sand to rockfill</td><td>The filter sand washes into the rockfill and the core is left unprotected</td></tr>
+              <tr><th>3U Upstream shell</th><td>Rockfill or sand and gravel, in layers 1–2 m thick</td><td>10⁻¹ to 10⁻³</td><td>Weight; soaked by the reservoir, it holds the core in place</td><td>If it drains slowly when the reservoir is lowered fast, the water left in it can slide the upstream slope</td></tr>
+              <tr><th>3D Downstream shell</th><td>Rockfill, in layers 1–2 m thick</td><td>10⁻¹ to 10⁻³</td><td>Weight; kept drained, so it is strong and can stand steeper</td><td>If the drains clog, it fills with water and loses much of its margin against sliding</td></tr>
+              <tr><th>BF Filter blanket</th><td>Sand filter spread over the river deposits under the downstream shell</td><td>about 10⁻⁵</td><td>Lets water rising from the foundation into the shell without its sand</td><td>Rising water carries foundation sand into the rockfill and undermines the toe</td></tr>
+              <tr><th>TD Toe drain</th><td>Coarse gravel round a perforated pipe, wrapped in filter</td><td>drains freely</td><td>Collects the seepage and leads it to a measuring weir</td><td>Flow that rises with no rise in the reservoir, or turns cloudy, warns that soil is moving</td></tr>
+              <tr><th>4 Riprap</th><td>Large, durable rock, 0.5–1.5 m, on a gravel bedding layer</td><td>drains freely</td><td>Armours the upstream face against waves and ice</td><td>Waves pluck out the shell beneath and steepen the face</td></tr>
+              <tr><th>CR Crest</th><td>A road on a capping layer that protects the top of the core</td><td>–</td><td>Access, freeboard above the highest flood, and extra height for settlement</td><td>Too little freeboard invites overtopping</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tbl-note">Condensed from the zone cards of <a data-ref="fig-zones"></a>; the full cards also cover the river deposits and the rock beneath. Permeabilities are typical values for each material, not measurements of one dam.</p>
+      </figure>
+
+      <p>Tailings dams can be zoned the same way. Mount Polley's, in British Columbia, was: the review panel's section through it shows a core of till, a filter and a transition downstream of the core, rockfill supporting them, and a zone of tailings or rockfill on the pond side. The panel found the filter thin and much of it more poorly graded than a filter should be, and still found no evidence that the breach was caused by water eroding the core.<label for="mn-zones-polley" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-zones-polley" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, pp. 7–8 (the zones and their duties) and pp. 11–12 (the filter, and the finding on erosion of the core).</span> Its zones are not where its answer lies.</p>
+
+      <h3 id="s-zones-shells">Two shells, one soaked</h3>
+      <p>The two shells look alike in a drawing, and they lead different lives. The downstream shell is the part the core protects. Behind our dam's core the water stood <span data-n="ch09.core-ds-m">0.65</span> m deep, so above that the gaps in the downstream shell hold air, the water pressure in them is zero, and the grains press on one another with their whole weight.</p>
+      <p>The upstream shell gets no such protection. It sits under the reservoir, and every gap in it is full of water at whatever pressure the lake's depth puts there. One could assume that a soaked shell must be a weak one, since water in the gaps takes part of the grains' press away. It does take part of it, and the grains grip one another less for that; but as long as the water is still, the shell is no less safe. Buoyancy lightens each grain's press on the grains below it, and it lightens the pull that tries to slide the grains down the slope by exactly the same share. <a data-ref="ch-grip"></a> showed the result for a heap of sand: under still water it stands as steeply as it does dry. Here are the numbers for the shells of <a data-ref="fig-zones"></a>, made of the workbench's rockfill:</p>
+
+      <section class="we" id="ex-zones-shell">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Soaked, and still the safer face</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Rockfill weighing <span data-n="bench.mat-gs@mat=rock">22</span> kN/m³ soaked and <span data-n="bench.mat-gm@mat=rock">20</span> kN/m³ moist, friction angle <span class="m"><var>φ′</var> = <span data-n="bench.mat-phi@mat=rock">42</span>°</span>, no cohesion; water <span data-n="const.gw">9.81</span> kN/m³. The upstream face slopes at <span data-n="ch09.zn-up-slope">2.2</span>:1, the downstream face at <span data-n="ch09.zn-down-slope">1.9</span>:1. The upstream shell lies under still water; the downstream one is dry.</dd>
+          <dt>Find</dt><dd>How hard the grains press 20 m below the surface of each shell, and the factor of safety of each face treated as a long, straight slope; then the upstream face's if the water in it were trapped and seeping out.</dd>
+          <dt>The idea</dt><dd>Under still water the grains press with their buoyant weight, soaked weight less water. For a long slope of cohesionless grains, FS = tan <var>φ′</var> ÷ tan <var>β</var>, the same dry or under still water; with water seeping out parallel to the face it falls in the ratio of buoyant to soaked weight (<a data-ref="ch-grip"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Buoyant weight: <span data-n="bench.mat-gs@mat=rock">22</span> − <span data-n="const.gw">9.81</span> <span class="m">= <span data-n="ch09.gprime-rock">12.19</span> kN/m³</span></span><span class="why">each cubic metre's weight less the water it pushes aside</span></li>
+          <li><span class="we-eq">Upstream, 20 m down: <span data-n="ch09.gprime-rock">12.19</span> × 20 = <span data-n="ch09.sv-up-kpa">243.8</span> kPa</span><span class="why">the press of the grains on the grains below</span></li>
+          <li><span class="we-eq">Downstream, 20 m down: <span data-n="bench.mat-gm@mat=rock">20</span> × 20 = <span data-n="ch09.sv-down-kpa">400</span> kPa</span><span class="why">no water in the gaps, so the whole weight presses</span></li>
+          <li><span class="we-eq"><span data-n="ch09.sv-up-kpa">243.8</span> ÷ <span data-n="ch09.sv-down-kpa">400</span> = <span data-n="ch09.press-ratio">0.61</span></span><span class="why">the soaked grains press <span data-n="ch09.press-pct">61</span>% as hard</span></li>
+          <li><span class="we-eq">Upstream face: tan 42° × 2.2 = <span data-n="ch09.tan-phi-rock">0.9004</span> × 2.2 = <span data-n="ch09.fs-up-still">1.98</span></span><span class="why">tan <var>β</var> = 1 ÷ 2.2; the still water lightens the press and the pull alike</span></li>
+          <li><span class="we-eq">Downstream face: <span data-n="ch09.tan-phi-rock">0.9004</span> × 1.9 = <span data-n="ch09.fs-down-dry">1.71</span></span><span class="why">steeper, at tan <var>β</var> = 1 ÷ 1.9</span></li>
+          <li><span class="we-eq">Upstream, water trapped: <span data-n="ch09.fs-up-still">1.98</span> × <span data-n="ch09.gprime-rock">12.19</span> ÷ <span data-n="bench.mat-gs@mat=rock">22</span> = <span data-n="ch09.fs-up-trapped">1.10</span></span><span class="why">water seeping out through the face, as at the foot of a beach at low tide</span></li>
+        </ol>
+        <p class="we-ans">Soaked, the upstream shell's grains press only <span data-n="ch09.press-ratio">0.61</span> times as hard as the dry shell's, and yet its face is the safer of the two, <span data-n="ch09.fs-up-still">1.98</span> against <span data-n="ch09.fs-down-dry">1.71</span>, as long as its water is still. Trap the water and the upstream face falls to <span data-n="ch09.fs-up-trapped">1.10</span>.</p>
+        <p class="we-check"><b>Check.</b> The two faces are the same rockfill at different slopes, so their factors should differ only by the ratio of the slopes: <span data-n="ch09.fs-up-still">1.98</span> × 1.9 ÷ 2.2 = <span data-n="ch09.fs-down-dry">1.71</span>. And at a 1:1 face, 45°, the dry rockfill would have FS = tan 42° = <span data-n="ch09.tan-phi-rock">0.90</span>: no heap of this rockfill stands that steep.</p>
+        <p class="we-means"><b>What it means.</b> A soaked shell is safe while its water can come and go with the lake. Rockfill, at 10⁻¹ to 10⁻³ m/s, drains as fast as any reservoir can be lowered; a shell of fine fill would not, and its face would fall toward the trapped case. These are long, straight slopes; real slips are curved and run deeper, and <a data-ref="ch-slope"></a> checks them on our dam.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-zones","set":{"zn-tabs":"0"}}'>Set the figure</button></p>
+      </section>
+
+      <p>That trapped case has a name. Lowering a reservoir faster than its water can leave the upstream shell is <span class="gl" data-term="rapid-drawdown">rapid drawdown</span>: the water that pressed on the face from outside is gone, the water inside is still there, and it pushes outward through the slope. It is the one event that turns a soaked shell from safe to dangerous. It is why designers prize an upstream shell that drains freely, and one reason the earth–rockfill section's upstream face is the flatter of the two.</p>
+
+      <h3 id="s-zones-rule">Where the rule breaks</h3>
+      <p>"Tight in the middle, coarse outside" is the rule for a dam with a core. The other three tabs of <a data-ref="fig-zones"></a> break it, each for a reason.</p>
+      <p>The <span class="gl" data-term="concrete-face-rockfill-dam">concrete-face rockfill dam</span> has no core. Its barrier is a slab of reinforced concrete laid over the upstream face, joined to the rock around its edges by a concrete plinth, with the grout curtain drilled from the plinth. Behind the slab the whole dam is rockfill, rolled hard so that it settles little and the slab does not crack. Its finest zones are directly under the slab, not in the middle: a cushion of crushed rock and sand gives the slab a firm, smooth bed and limits the leak if a crack opens. Water that passes the slab drops through the rockfill to the base and runs out, and the rockfill needs no filter against the slab because it has no fine grains to lose. The leaks it can take are large. At two big dams of this kind in Brazil, Barra Grande and Campos Novos, leaks of 1,000 to 3,000 litres a second were measured with no sign of trouble in the downstream slope.<label for="mn-zones-cfrd" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-zones-cfrd" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="cruz2008"></a>, pp. 60–61, reviewing <a data-cite="cooke-sherard1987"></a>.</span></p>
+      <p>The concrete gravity dam has zones only in a looser sense: a richer, frost-resistant concrete on its faces, a lean mass concrete inside so that the heat of setting stays low, and drains and a gallery near the upstream face. None of them is there to stop water carrying grains away, because concrete has no loose grains. Its danger, as <a data-ref="ch-concrete"></a> showed, is the water underneath it.</p>
+      <p>The tailings dam is built of its own waste. In the centreline dam on the last tab, sand split from the tailings by cyclones is spread and compacted on the downstream slope, a chimney drain keeps that sand from filling with water, and the finest waste settles out by the pond, on the upstream side, as far from the slope as it can be (<a data-ref="ch-raising"></a> showed how such a dam rises). The materials are the mine's, and the aim is the cored dam's: keep the water away from the part that holds the dam up.</p>
+      <p>So "tight in the middle" is one way of doing something every dam on the four tabs does. Each decides where the water will stand, and keeps it out of the part that carries the load.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A crack opens in a concrete-face rockfill dam's slab and the leak through the dam rises tenfold. Why would its engineers worry less than about a crack in a clay core?</summary>
+        <p>The water that passes the slab falls into rockfill with no fine grains to lose, and drains out at the base without raising the water pressure in the dam. Water through a crack in a core can carry the core itself away, which is why a core needs filters and a slab does not.</p>
+      </details>
+
+      <h3 id="s-zones-fill">How a heap becomes fill</h3>
+      <p>So far every zone has been described by what it is made of. How it is put in place matters as much. Soil dug from a <span class="gl" data-term="borrow">borrow</span> pit and tipped into a heap is loose, the loose sand of <a data-ref="ch-trapped"></a>: wide gaps, ready to settle when it is wetted or shaken, and inclined to shrink when it is sheared, handing its load to the water in its gaps. A dam of loose soil would settle unevenly and crack, and a soaked shell of it could lose its grip altogether. So every zone goes in as thin layers, each squeezed dense by rollers before the next is spread. That squeezing is <span class="gl" data-term="compaction">compaction</span>, and it is why Bennett's core went in no more than 10 inches at a time.</p>
+      <p>How dense can a soil be made? In 1933 R. R. Proctor, a field engineer with the water department of Los Angeles, published a way to find out.<label for="sn-zones-proctor" class="sn-ref"></label><input type="checkbox" id="sn-zones-proctor" class="margin-toggle"><span class="sidenote" data-kind="history">Proctor's first article (<a data-cite="proctor1933"></a>) rested on laboratory tests of more than 200 soils, checked in the field on four dams his bureau had built in the two years before. He explained the dry side much as this chapter does below: in a very dry soil, films of water where the grains touch draw them firmly together, and a little more water releases that pull. Past that point he wrote of the water as having "an effect similar to that of lubrication".</span> Pack a sample of the soil into a mould with a set number of blows from a standard hammer. Weigh it, dry it in an oven, and weigh it again. Then add a little water to the soil and repeat. A cubic metre of the packed sample weighs its bulk unit weight <var>γ</var>, grains and water together; its water content <var>w</var> is the weight of the water as a fraction of the weight of the grains. Take the water out and what is left is the weight of grain in each cubic metre, the dry unit weight:</p>
+      <div class="eq" id="eq-zones-dry"><span class="eq-body"><var>γ</var><sub>d</sub> = <var>γ</var> / (1 + <var>w</var>)</span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>γ</var><sub>d</sub> dry unit weight, the grains in each cubic metre (kN/m³) · <var>γ</var> bulk unit weight, grains and water (kN/m³) · <var>w</var> water content, weight of water ÷ weight of grains</p>
+      <p>The more grain packed into each cubic metre, the denser the fill. Plotted against the water content, Proctor's dry unit weights climb, reach a peak and fall again, here for an illustrative soil:</p>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <figure class="fig wide" id="fig-zones-proctor">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Packing the same soil with more and more water</span><span class="scale-note">Illustrative soil · grains of specific gravity 2.65</span></div>
+      <svg class="dwg" viewBox="0 0 560 300" role="img" aria-label="A graph of dry unit weight against water content for one soil rolled the same way each time. The compaction curve rises from 17.6 kilonewtons per cubic metre at 7 per cent water to a peak of 19.0 at 12 per cent, the optimum, then falls to 17.4 at 17 per cent. A dashed line above it, falling from left to right, marks zero air voids, the most a soil could weigh with every gap full of water. A dotted level line marks 98 per cent of the peak. An open circle below that line at 12 per cent marks a field test of 18.4.">
+        <g style="stroke:var(--rule);stroke-width:1;fill:none">
+          <path d="M70,222.5 H530 M70,167.5 H530 M70,112.5 H530 M70,57.5 H530"/>
+        </g>
+        <path d="M70,30 V250 H530" style="stroke:var(--ink);stroke-width:1.2;fill:none"/>
+        <g style="stroke:var(--ink);stroke-width:1;fill:none">
+          <path d="M70,250 v5 M135.7,250 v5 M201.4,250 v5 M267.1,250 v5 M332.9,250 v5 M398.6,250 v5 M464.3,250 v5 M530,250 v5"/>
+          <path d="M65,222.5 h5 M65,167.5 h5 M65,112.5 h5 M65,57.5 h5"/>
+        </g>
+        <g class="lbl-s" text-anchor="middle">
+          <text x="70" y="269">6</text><text x="135.7" y="269">8</text><text x="201.4" y="269">10</text><text x="267.1" y="269">12</text><text x="332.9" y="269">14</text><text x="398.6" y="269">16</text><text x="464.3" y="269">18</text><text x="530" y="269">20</text>
+        </g>
+        <g class="lbl-s" text-anchor="end">
+          <text x="60" y="226.5">17</text><text x="60" y="171.5">18</text><text x="60" y="116.5">19</text><text x="60" y="61.5">20</text>
+        </g>
+        <text x="300" y="292" class="lbl" text-anchor="middle">water content, <tspan font-style="italic">w</tspan> (%)</text>
+        <text x="18" y="140" class="lbl" text-anchor="middle" transform="rotate(-90 18 140)">dry unit weight (kN/m³)</text>
+        <path d="M208.0,31.9 L221.1,41.2 L234.3,50.4 L247.4,59.4 L260.6,68.3 L273.7,77.0 L286.9,85.6 L300.0,94.1 L313.1,102.4 L326.3,110.6 L339.4,118.6 L352.6,126.6 L365.7,134.4 L378.9,142.1 L392.0,149.7 L405.1,157.1 L418.3,164.5 L431.4,171.8 L444.6,178.9 L457.7,186.0 L470.9,192.9 L484.0,199.8 L497.1,206.5 L510.3,213.2 L523.4,219.7" style="stroke:var(--water);stroke-width:1.4;stroke-dasharray:6 4;fill:none"/>
+        <text x="336" y="68" class="lbl-s halo" text-anchor="start">zero air voids:</text>
+        <text x="336" y="82" class="lbl-s halo" text-anchor="start">every gap full of water</text>
+        <path d="M70,133.4 H530" style="stroke:var(--ok);stroke-width:1.2;stroke-dasharray:2 3;fill:none"/>
+        <text x="526" y="128" class="lbl-s halo" text-anchor="end" style="fill:var(--ok)">98% of the peak</text>
+        <path d="M102.9,192.2 C108.3,188.6 124.8,177.6 135.7,170.3 C146.7,162.9 157.6,155.1 168.6,148.2 C179.5,141.4 190.5,134.3 201.4,129.0 C212.4,123.7 223.3,119.1 234.3,116.4 C245.2,113.6 256.2,112.0 267.1,112.5 C278.1,113.0 289.0,115.4 300.0,119.1 C311.0,122.8 321.9,128.4 332.9,134.5 C343.8,140.5 354.8,148.1 365.7,155.4 C376.7,162.7 387.6,171.0 398.6,178.5 C409.5,186.0 426.0,196.8 431.4,200.5" style="stroke:var(--ink);stroke-width:2;fill:none"/>
+        <path d="M267.1,112.5 V250" style="stroke:var(--ink-3);stroke-width:1;stroke-dasharray:3 3;fill:none"/>
+        <circle cx="267.1" cy="112.5" r="3.6" style="fill:var(--ink)"/>
+        <text x="258" y="86" class="lbl halo" text-anchor="end">optimum: <tspan data-n="ch09.gdmax">19.0</tspan> kN/m³</text>
+        <text x="258" y="101" class="lbl-s halo" text-anchor="end">at <tspan data-n="ch09.wopt-pct">12</tspan>% water</text>
+        <circle cx="267.1" cy="145.9" r="4.2" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.6"/>
+        <text x="276" y="166" class="lbl-s halo">field test: <tspan data-n="ch09.gd">18.4</tspan></text>
+        <text x="110" y="216" class="lbl-s halo" text-anchor="middle">dry of</text>
+        <text x="110" y="230" class="lbl-s halo" text-anchor="middle">optimum</text>
+        <text x="455" y="222" class="lbl-s halo" text-anchor="middle">wet of optimum</text>
+      </svg>
+      <figcaption>
+        <p class="cap"><b>Rolled with the same effort, a soil packs densest at one water content, its optimum; drier or wetter, it ends up looser.</b> The solid curve is a compaction test of one illustrative soil: each point is a sample packed the same way at a different water content, plotted by the weight of grain in each cubic metre. The dashed line falling across the top is zero air voids, the weight the soil would reach with every gap full of water and no air at all; no compacted sample can sit above it. The dotted level line is 98 per cent of the peak, the share Bennett's specification asked of its core. The filled dot is the peak, with a thin dashed drop line to its water content, and the open circle is the field test of <a data-ref="ex-zones-compaction"></a>. <span class="cap-n">The number to remember: the peak, <span data-n="ch09.gdmax">19.0</span> kN/m³ at <span data-n="ch09.wopt-pct">12</span>% water.</span></p>
+        <ul class="try">
+          <li>Read the curve at 10% and at 14% water. Which side of the optimum loses more for two points of water?</li>
+          <li>Divide the field test's <span data-n="ch09.gd">18.393</span> by the peak's <span data-n="ch09.gdmax">19.0</span>. Does the open circle pass the dotted line?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p><span data-n="ch09.curve@w=10">18.70</span> at 10% and <span data-n="ch09.curve@w=14">18.60</span> at 14%: on this soil the wet side drops a little faster. <span data-n="ch09.gd">18.393</span> ÷ <span data-n="ch09.gdmax">19.0</span> = <span data-n="ch09.rc">0.968</span>, short of 0.98, so the circle sits below the line and the layer fails a 98% specification.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the curve has a single peak and falls away on both sides. On the dry side, the castle's grip from <a data-ref="ch-beach"></a> works against the roller: rings of water where the grains touch bind them into crumbs that resist being pushed into one another's gaps, and a little more water weakens the rings and lets the grains pack closer. On the wet side, water fills nearly every gap, and in the moment a roller takes to pass it cannot get out: the water carries the roller's press, as it carried the load in the undrained tests of <a data-ref="ch-trapped"></a>, and the grains are pushed no closer. The peak is the <span class="gl" data-term="optimum-water-content">optimum water content</span>, and the peak's weight is the most this effort can achieve with this soil. A heavier roller, or more blows, gives a higher peak at a little less water.</p>
+      <p>A specification asks for a share of that peak. Its <span class="gl" data-term="relative-compaction">relative compaction</span> is the dry unit weight reached on site divided by the laboratory maximum:</p>
+      <div class="eq" id="eq-zones-rc"><span class="eq-body"><var>RC</var> = <var>γ</var><sub>d</sub> / <var>γ</var><sub>d,max</sub></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>RC</var> relative compaction, usually given as a percentage · <var>γ</var><sub>d,max</sub> the peak of the laboratory curve for the same soil (kN/m³)</p>
+      <p>Bennett's core had to reach 98 per cent, at a water content between 2 per cent below the optimum and 1 per cent above it.<label for="mn-zones-spec" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-zones-spec" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="bennett-eep2012"></a>, the table of zones, p. 3 (the specification) and p. 9 (permeability against the water content at placing).</span> The water content matters for more than density. The panel found that the same core soil, placed drier, with less of its gaps filled with water, let water through 60 to 140 times more easily once soaked than when it was placed wetter. The core's card in <a data-ref="fig-zones"></a> gives a second reason to keep a core near its optimum or a little wet of it: there the soil bends as the dam settles, where a drier, stiffer one would crack.</p>
+      <p>On site an inspector checks each layer: dig a small hole, weigh what comes out, measure the hole's volume (by filling it with sand of known density, for instance), and dry a sample for its water content. Those two numbers give <var>γ</var> and <var>w</var>, and with them the gaps. A cubic metre of solid grain would weigh <var>G</var><sub>s</sub> <var>γ</var><sub>w</sub>, where <var>G</var><sub>s</sub>, about 2.65 for quartz sand, is how many times denser the grain is than water (<a data-ref="ch-trapped"></a>). So the volume that one unit of grain takes up, gaps included, is <var>G</var><sub>s</sub> <var>γ</var><sub>w</sub> / <var>γ</var><sub>d</sub>, and the gaps alone, the <span class="gl" data-term="void-ratio">void ratio</span>, are that less one:</p>
+      <div class="eq" id="eq-zones-e"><span class="eq-body"><var>e</var> = <var>G</var><sub>s</sub> · <var>γ</var><sub>w</sub> / <var>γ</var><sub>d</sub> − 1</span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>e</var> void ratio, volume of gaps ÷ volume of grains · <var>G</var><sub>s</sub> specific gravity of the grains · <var>γ</var><sub>w</sub> unit weight of water, <span data-n="const.gw">9.81</span> kN/m³</p>
+
+      <section class="we" id="ex-zones-compaction">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Does the layer pass?</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>An illustrative field test on a freshly rolled layer: bulk unit weight <span data-n="ch09.test-gamma">20.6</span> kN/m³, water content <span data-n="ch09.test-w-pct">12</span>%. The laboratory peak for this soil is <span data-n="ch09.gdmax">19.0</span> kN/m³, and its grains have <var>G</var><sub>s</sub> = <span data-n="ch09.gs">2.65</span>. The specification asks for 98%, as Bennett's did.</dd>
+          <dt>Find</dt><dd>The dry unit weight, the relative compaction, the void ratio and the gap fraction; and whether the layer passes.</dd>
+          <dt>The idea</dt><dd>Take out the water's weight (<a data-ref="eq-zones-dry"></a>), compare with the laboratory peak (<a data-ref="eq-zones-rc"></a>), then count the gaps from the room the grains take (<a data-ref="eq-zones-e"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>γ</var><sub>d</sub> = <span data-n="ch09.test-gamma">20.6</span> ÷ 1.12 = <span data-n="ch09.gd">18.393</span> kN/m³</span><span class="why">1 + <var>w</var> = 1.12: each kilonewton of grain carries 0.12 kN of water</span></li>
+          <li><span class="we-eq"><var>RC</var> = <span data-n="ch09.gd">18.393</span> ÷ <span data-n="ch09.gdmax">19.0</span> = <span data-n="ch09.rc">0.968</span>, so <span data-n="ch09.rc-pct">96.8</span>%</span><span class="why">the share of the laboratory's best</span></li>
+          <li><span class="we-eq"><span data-n="ch09.gs">2.65</span> × <span data-n="const.gw">9.81</span> ÷ <span data-n="ch09.gd">18.393</span> = <span data-n="ch09.e-ratio">1.413</span></span><span class="why">room taken by one unit of grain, gaps included</span></li>
+          <li><span class="we-eq"><var>e</var> = <span data-n="ch09.e-ratio">1.413</span> − 1 <span class="m">= <span data-n="ch09.e">0.413</span></span></span><span class="why">the gaps alone</span></li>
+          <li><span class="we-eq"><span data-n="ch09.e">0.413</span> ÷ <span data-n="ch09.e-ratio">1.413</span> = <span data-n="ch09.n">0.29</span></span><span class="why">gaps as a share of the whole volume</span></li>
+        </ol>
+        <p class="we-ans">The layer reaches <span data-n="ch09.rc-pct">96.8</span>% of the laboratory peak, with a void ratio of <span data-n="ch09.e">0.413</span>. It is dense, and it fails a 98% specification: it falls short of what Bennett's core was meant to reach.</p>
+        <p class="we-check"><b>Check.</b> The water must fit in the gaps. The share of the gaps it fills is <var>w</var> × <var>G</var><sub>s</sub> ÷ <var>e</var> = 0.12 × <span data-n="ch09.gs">2.65</span> ÷ <span data-n="ch09.e">0.413</span> = <span data-n="ch09.sr">0.77</span>, less than 1, so air fills the rest. The open circle in <a data-ref="fig-zones-proctor"></a> must then sit below the zero-air-voids line at 12%, which is <span data-n="ch09.gs">2.65</span> × <span data-n="const.gw">9.81</span> ÷ 1.318 = <span data-n="ch09.zav@w=12">19.72</span>; at <span data-n="ch09.gd">18.393</span>, it does.</p>
+        <p class="we-means"><b>What it means.</b> Gaps that fill <span data-n="ch09.n">0.29</span> of the volume are fewer than the third of the volume that <a data-ref="ch-head"></a> allowed soaked soil. Sand packed this dense swells when it is sheared and draws water in (<a data-ref="ch-trapped"></a>), so it holds. Compaction turns a loose heap that would hand its load to the water into fill that keeps it on the grains.</p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A layer tests at 95% and well wet of the optimum. The contractor offers to roll it a few more times. Will that help much?</summary>
+        <p>Not much. Wet of the optimum the gaps are nearly full of water, which cannot get out while a roller passes, so the water takes the extra press and the grains move little closer. Drying the soil toward the optimum, or digging the layer out, does more.</p>
+      </details>
+
+      <p>Each zone, then, is a soil chosen for one job, packed by rules written for that job, and set where its designers expected the water to be. The core expects the water to stop at it, the filter expects to meet whatever gets through, and the drain expects to carry it off.</p>
+    </div>
+
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>A dam need not be watertight. It has to keep the water pressure out of the part that holds it up, so that the grains there press on one another with nearly their whole weight. In our dam a clay core takes <span data-n="ch09.core-share-pct">96.8</span>% of the head and the leak barely changes.</li>
+        <li>Four jobs, middle outward: hold the water back (core, cutoff, grout curtain), let it out (drains), stop the soil moving with it (filters and transitions), and add weight (shells). Each zone is coarser than the one inside it.</li>
+        <li>The downstream shell is kept nearly dry. The upstream shell is soaked and still strong, because still water lightens the grains' press and the pull on them alike, and rockfill drains as fast as the lake falls. Rapid drawdown of a shell that drains slowly is its danger.</li>
+        <li>"Tight in the middle" is the cored dam's way. A concrete-face rockfill dam puts its barrier on the face, a gravity dam is its own barrier, and a tailings dam builds itself from its waste, all to keep water away from what carries the load.</li>
+        <li>Compaction packs loose fill dense, so that it keeps its load on its grains. Each soil packs densest at its optimum water content, and relative compaction measures a layer against that laboratory best.</li>
+      </ul>
+    </div>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-zones-soaked" data-tag="check" data-level="1">
+          <p>Why can the upstream shell be soaked and still strong, and what one event makes it dangerous?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Compare what still water does to the press of a grain on the grains below it and to the pull that tries to slide it downhill. Then ask what happens if the water cannot leave.</p></details>
+          <div class="q-answer"><p>Under still water, buoyancy lightens the grains' press and the pull down the slope by the same share, so the face is as safe as when dry: <span data-n="ch09.fs-up-still">1.98</span> for the rockfill face of <a data-ref="ex-zones-shell"></a>. Rockfill drains as fast as the lake falls, so its water stays still. The danger is rapid drawdown of a shell that drains slowly: the water left inside seeps out through the face, and the same face falls to about <span data-n="ch09.fs-up-trapped">1.10</span>.</p></div>
+        </li>
+        <li class="q" id="q-zones-cfrd" data-tag="check" data-level="2">
+          <p>A concrete-face rockfill dam has no core. Where is its barrier, and why does its main rockfill need no filter against the slab?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Ask what a filter is for, and whether the rockfill has anything a leak could carry away.</p></details>
+          <div class="q-answer"><p>The barrier is the concrete slab on the upstream face, sealed to the rock by the plinth, with a grout curtain drilled from the plinth into the rock below. Water through a crack in the slab enters rockfill that has no fine grains to lose and drains straight out at the base. A cushion of crushed rock and sand under the slab limits the leak, and a fine transition under the joint between slab and plinth catches silt washed into a gap there and seals it (the cards of <a data-ref="fig-zones"></a>).</p></div>
+        </li>
+        <li class="q" id="q-zones-build" data-tag="explore" data-level="1">
+          <p>Press Build on each tab of <a data-ref="fig-zones"></a>. Which dam puts its watertight element in only after the body of the dam is built, and what does that mean for inspecting it?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-zones","set":{"zn-tabs":"1"},"click":["#zn-build"]}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Watch the stage in which the barrier appears, and whether anything is built over it afterwards.</p></details>
+          <div class="q-answer"><p>The concrete-face rockfill dam: its slab goes on in the fourth of seven stages, once the rockfill is in place, and it stays on the face, where it can be seen and repaired whenever the reservoir is drawn down. An earth core rises with the shells, layer by layer, and is buried for good; its condition can be read only from instruments inside it and the water that seeps out of the dam.</p></div>
+        </li>
+        <li class="q" id="q-zones-filter" data-tag="check" data-level="2">
+          <p>The earth–rockfill dam has filters on both sides of its core. Why does the downstream one matter more?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Which way does the water cross the core, most of the time?</p></details>
+          <div class="q-answer"><p>Seepage crosses the core from the reservoir side to the downstream side, so the grains it could carry leave through the core's downstream face; the downstream filter keeps them in, and doubles as the chimney drain. The upstream filter matters when the flow turns round, as it can after a fast drawdown, when water in the core flows back toward the lowered reservoir.</p></div>
+        </li>
+        <li class="q" id="q-zones-field" data-tag="reckon" data-level="2">
+          <p>An illustrative field test on a rolled layer gives a bulk unit weight of <span data-n="ch09.q2-gamma">21.0</span> kN/m³ at <span data-n="ch09.q2-w-pct">14</span>% water. The laboratory peak for the soil is <span data-n="ch09.q2-gdmax">18.9</span> kN/m³. What is the relative compaction, and does the layer pass a 98% specification?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Take the water out first with <a data-ref="eq-zones-dry"></a>, then divide by the peak.</p></details>
+          <div class="q-answer"><p><var>γ</var><sub>d</sub> = <span data-n="ch09.q2-gamma">21.0</span> ÷ 1.14 = <span data-n="ch09.gd2">18.421</span> kN/m³, and <span data-n="ch09.gd2">18.421</span> ÷ <span data-n="ch09.q2-gdmax">18.9</span> = <span data-n="ch09.rc2">0.975</span>, a relative compaction of <span data-n="ch09.rc2-pct">97.5</span>%. It fails 98%, narrowly; it would pass a 95% specification.</p></div>
+        </li>
+        <li class="q" id="q-zones-bennett" data-tag="case" data-level="2">
+          <p>Bennett's core had to reach 98% of the laboratory peak and be placed between 2% below and 1% above its optimum water content (<a data-cite="bennett-eep2012"></a>, p. 3). Why specify the water content as well as the density?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Two layers with the same density can still differ in how they behave once the reservoir soaks them.</p></details>
+          <div class="q-answer"><p>Because density alone does not decide how a core behaves when soaked. Bennett's panel found that core soil placed drier let water through 60 to 140 times more easily, once soaked, than the same soil placed wetter, and a dry, stiff core cracks more readily as the dam settles. Proctor showed the same thing in 1933: one soil packed to the same density at 6.2% and at 22% water was very hard in the first case and like soft putty in the second, and could become like the second once it soaked up water (<a data-cite="proctor1933"></a>). Too wet, on the other hand, and the soil cannot be packed dense at all, which is the wet side of <a data-ref="fig-zones-proctor"></a>.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="usbr1987"></cite> <span class="level">serious</span> Its chapter on earthfill dams explains how a section is zoned and why, with many drawn examples; the next chapter does the same for rockfill dams, and an appendix covers how embankments are built. Free from the Bureau of Reclamation.</li>
+        <li><cite data-cite="bennett-eep2012"></cite> <span class="level">primary source</span> Its table of zones lists the rules each was placed by, and its section on the filter system judges how well the transition, filter and drain do their job. <a data-ref="ch-erosion"></a> comes back to this dam.</li>
+        <li><cite data-cite="proctor1933"></cite> <span class="level">primary source</span> The first of four short articles in which Proctor set out the test later named after him, with the first published compaction curves. Readable in an afternoon.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">Every zone in this chapter was placed on a guess about where the water would go: the core to take the head, the filter to catch whatever gets through, the drain to carry it off. Water does not read drawings. Where does it actually go, and how much of it?</p></nav>
   </section>
 </section>

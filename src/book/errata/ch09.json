@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2026-10-24",
+    "where": "The paragraph on zones",
+    "ref": "ch-zones",
+    "was": "Read any section from the middle outward and you'll find the same order: tight in the centre, coarser and more free-draining toward the faces.",
+    "now": "The order (tight in the centre, coarser toward the faces) is stated for dams with a core; the chapter then shows the concrete-face rockfill, gravity and tailings dams breaking it.",
+    "why": "Three of the four sections in the figure right below the sentence contradicted it."
+  },
+  {
+    "date": "2026-10-24",
+    "where": "Concrete-face rockfill dam, face slab card",
+    "ref": "fig-zones",
+    "was": "Reinforced concrete, about 0.3 m plus 0.002–0.003 × depth … Leakage of hundreds of litres per second has been recorded at large CFRDs.",
+    "now": "Reinforced concrete, about 0.3 m thick near the crest and thicker with depth … Leaks of 1,000 to 3,000 litres a second have been measured at large CFRDs, and the rockfill passed them without harm.",
+    "why": "The thickness rule could not be checked against a source; the measured leaks at Barra Grande and Campos Novos are reported by Cruz (2008)."
+  },
+  {
+    "date": "2026-10-24",
+    "where": "Film: A wall made of dirt, marks",
+    "ref": "film-wall-of-dirt",
+    "was": "2:59 All clay, and no drier, linked to the question about a metre of clay",
+    "now": "2:59 The same dam, all of clay, linked to the question this chapter asks about it",
+    "why": "The mark pointed to a question about travel time, and its label gave away the answer to the question placed before the film."
+  }
+]

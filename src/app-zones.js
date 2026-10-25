@@ -88,7 +88,7 @@
         { id: '2A', name: 'Special fine transition', fill: 'p-filter', parts: [{ poly: [[-87.6, 0.2], [-80, -0.5], [-73, -0.5], [-79.5, 5.2], [-84.6, 2.3]], mark: [-60, -12], anchor: [-79, 1.5], dx: -12 }], step: 2,
           info: { mat: 'Fine, well-graded sandy gravel placed under the perimetric joint.', k: '≈10⁻⁵ m/s', job: 'If the perimetric joint opens, silt washed in from 1A is caught here and seals the leak.', risk: 'The perimetric joint carries the largest movements in the dam; this zone is its backup.' } },
         { id: 'F', name: 'Face slab', fill: 'p-conc', parts: [{ poly: Z(z => uf(z) - 0.5, z => uf(z) + 1.8, 0.3, 56.6), mark: [-58, 46], anchor: [uf(36) + 0.9, 36], dx: -16 }], step: 3, mode: 'rise',
-          info: { mat: 'Reinforced concrete, about 0.3 m plus 0.002–0.003 × depth, slip-formed up the slope in vertical strips 12–18 m wide.', k: 'Concrete ≈10⁻¹⁰ m/s; leakage is through cracks and joints', job: 'The only water barrier. Copper and PVC waterstops seal the joints between strips.', risk: 'Rockfill settlement cracks the slab or opens joints. Leakage of hundreds of litres per second has been recorded at large CFRDs.' } },
+          info: { mat: 'Reinforced concrete, about 0.3 m thick near the crest and thicker with depth, slip-formed up the slope in vertical strips 12–18 m wide.', k: 'Concrete ≈10⁻¹⁰ m/s; leakage is through cracks and joints', job: 'The only water barrier. Copper and PVC waterstops seal the joints between strips.', risk: 'Rockfill settlement cracks the slab or opens joints. Leaks of 1,000 to 3,000 litres a second have been measured at large CFRDs, and the rockfill passed them without harm.' } },
         { id: 'P', name: 'Plinth', fill: 'p-conc', parts: [{ poly: [[-96, -3], [-80, -3], [-80, -0.6], [-87.6, 0.2], [-96, 0]], mark: [-108, -10], anchor: [-92, -1.5], dx: -16, dy: -3 }], step: 0,
           info: { mat: 'Reinforced concrete toe slab anchored to sound rock around the whole upstream perimeter.', k: '–', job: 'Connects the face slab to the foundation through the perimetric joint; the grout curtain is drilled from it.', risk: 'Founded on poor rock, it can let water under the barrier.' } },
         { id: '1A', name: 'Impervious fill', fill: 'p-clay', parts: [{ poly: [[-87.6, 0], [-68.4, 14], [-74.4, 14], [-95, 0]], mark: [-112, 24], anchor: [-80, 6], dx: -20 }], step: 4, mode: 'fade',
@@ -360,7 +360,7 @@
     if (els.extra) els.extra.style.opacity = full || b > 1 ? (exploded ? 0 : 1) : 0;
     if (!full) {
       const si = Math.min(n - 1, Math.floor(b));
-      stepEl.innerHTML = `<b>Step ${si + 1} of ${n}</b> · ${steps[si].label}`;
+      stepEl.innerHTML = `<b>Stage ${si + 1} of ${n}</b> · ${steps[si].label}`;
     }
   }
   function startBuild() {

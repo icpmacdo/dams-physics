@@ -1,0 +1,66 @@
+{
+  "zone": [
+    "Zone",
+    "A part of an embankment dam built of one chosen soil or rock, placed to its own specification, to do one job: hold the water back, let it out, stop soil moving, or add weight."
+  ],
+  "transition": [
+    "Transition",
+    "A zone of graded sand and gravel between a fine filter and coarse rockfill (or between a core and a filter), so that no zone's grains can wash into the gaps of the next."
+  ],
+  "riprap": [
+    "Riprap",
+    "An armour of large, durable rocks over the upstream face of an embankment, laid on a bedding layer of gravel, to stop waves and ice eating into the slope."
+  ],
+  "concrete-face-rockfill-dam": [
+    "Concrete-face rockfill dam",
+    "A rockfill embankment with no core: its barrier is a reinforced-concrete slab over the upstream face, joined to the rock by a concrete plinth. Water that passes the slab drains through the rockfill. Often shortened to CFRD."
+  ],
+  "compaction": [
+    "Compaction",
+    "Packing soil denser by rolling or ramming it in thin layers, which squeezes air out of its gaps. Compacted fill is dense, so it settles little and swells rather than shrinks when it is sheared."
+  ],
+  "optimum-water-content": [
+    "Optimum water content",
+    "The water content at which a soil, compacted with a given effort, packs to its greatest dry unit weight. Drier, the grains resist being pushed together; wetter, water fills the gaps and takes the roller's press."
+  ],
+  "relative-compaction": [
+    "Relative compaction",
+    "The dry unit weight of fill measured on site, as a percentage of the greatest dry unit weight the same soil reached in the standard laboratory (Proctor) test. A specification sets a minimum for each zone."
+  ],
+  "chimney-drain": [
+    "Chimney drain",
+    "An upright zone of clean sand or gravel inside an embankment, against the downstream side of the core (or near the middle of a one-soil dam), that collects the water seeping through and leads it down to drains at the base, keeping the downstream part of the dam dry."
+  ],
+  "borrow": [
+    "Borrow",
+    "Soil or rock dug from a pit or quarry near a dam site (a borrow area) to build the dam."
+  ],
+  "shell": {
+    "replace": true,
+    "entry": [
+      "Shell",
+      "The outer zones of an embankment, usually rockfill or sand and gravel, which give the dam its weight. The downstream shell is kept nearly dry by the core and drains; the upstream shell is soaked by the reservoir, and stays strong because it drains freely when the water level falls."
+    ]
+  },
+  "core": {
+    "replace": true,
+    "entry": [
+      "Core",
+      "The low-permeability zone in the middle of an embankment dam, usually compacted clay or glacial till. It takes almost all of the drop in head between the reservoir and the downstream side."
+    ]
+  },
+  "filter": {
+    "replace": true,
+    "entry": [
+      "Filter",
+      "A zone of carefully graded sand (or sand and gravel) that lets water out of a finer soil, such as a core, but stops that soil's grains from being carried with it."
+    ]
+  },
+  "drain": {
+    "replace": true,
+    "entry": [
+      "Drain",
+      "A zone of free-draining sand or gravel that collects seepage and leads it out of the dam, keeping the water pressure low in the part of the dam that needs its strength."
+    ]
+  }
+}

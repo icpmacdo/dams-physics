@@ -1,0 +1,39 @@
+{
+  "bennett-eep2012": {
+    "group": "reports", "short": "BC Hydro expert panel (2012)",
+    "authors": "Hoeg, K., Fell, R., Bridle, R.", "year": "2012",
+    "title": "WAC Bennett Dam: Expert Engineering Panel Report, Volume 1",
+    "container": "BC Hydro, Report No. N3405, 13 August 2012", "doi": null,
+    "url": "https://www.bchydro.com/content/dam/BCHydro/customer-portal/documents/projects/gm-shrum/EEP%20report_V1.pdf",
+    "note": "Pages 1–2 give the dam's height, length and fill volume; the table of zones (pp. 3–4) lists them and how each was placed; p. 5 the Lugeon; p. 9 the core's permeability against its placement water; Section 6.5 (p. 37 on) the filter system."
+  },
+  "proctor1933": {
+    "group": "papers", "short": "Proctor (1933)",
+    "authors": "Proctor, R.R.", "year": "1933",
+    "title": "Fundamental principles of soil compaction",
+    "container": "Engineering News-Record 111(9), 31 August 1933, beginning p. 245", "doi": null, "url": null,
+    "note": "The first of four articles on the design and construction of rolled-earth dams, by a field engineer of the Bureau of Waterworks and Supply, Los Angeles."
+  },
+  "cruz2008": {
+    "group": "papers", "short": "Cruz (2008)",
+    "authors": "Cruz, P.T.", "year": "2008",
+    "title": "A partial review of Barry Cooke and James Sherard 1987 papers on concrete face rockfill dams (CFRD)",
+    "container": "Soils and Rocks 31(2): 57–66", "doi": "10.28927/sr.312057",
+    "url": "https://soilsandrocks.com/sr-312057",
+    "note": "Quotes Cooke and Sherard's zone numbering (p. 57) and their view of leakage through the rockfill, with the leaks measured at Barra Grande and Campos Novos (pp. 60–61)."
+  },
+  "waterpower2025": {
+    "group": "web", "short": "International Water Power (2025)",
+    "authors": "International Water Power", "year": "2025",
+    "title": "China's Shuangjiangkou dam begins water storage, set to become tallest – for now",
+    "container": "waterpowermagazine.com, 14 May 2025", "doi": null,
+    "url": "https://www.waterpowermagazine.com/news/chinas-shuangjiangkou-dam-begins-water-storage-set-to-become-tallest-for-now/"
+  },
+  "cpnn2026": {
+    "group": "web", "short": "China Power News Network (2026)",
+    "authors": "China Power News Network", "year": "2026",
+    "title": "Shuangjiangkou Hydropower Station starts first power unit",
+    "container": "CPNN International, 2 July 2026", "doi": null,
+    "url": "https://cpnn.com.cn/waiwenwangzhan/wwwznews/202607/t20260702_1899420.html"
+  }
+}
