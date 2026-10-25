@@ -1,41 +1,396 @@
 <section class="chapter" id="ch-slope">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.13): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <p class="so-far"><b>So far.</b> <a data-ref="ch-grip"></a> gave a block on a ramp a score, the factor of safety, and showed that water seeping out of a sand face roughly halves the steepest slope it can hold, measured as rise over run. <a data-ref="ch-seepage"></a> followed the water through our dam, and <a data-ref="ch-erosion"></a> what it does where it comes out. One question is left to ask of any dam with water inside it: will its slope stand, and by how much?</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>work out the factor of safety of a long, straight slope, dry and with water seeping out of it;</li>
+        <li>work one slice of Bishop's method by hand, say why the method has to go round in a loop, and add up a whole slip circle;</li>
+        <li>explain why emptying a reservoir quickly can bring down its upstream slope, and say what a factor of safety of 1.5 does and does not promise.</li>
+      </ul>
     </div>
   </header>
+
     <div class="col">
+      <p class="cold"><span class="newthought">An earth dam rarely announces</span> that it is in trouble. The first sign is often a strip of its downstream face that stays green through a dry summer, or a band of dark, soft ground a few metres up the slope where water seeps out into the light. Walk our dam, the 24 m embankment of the last three chapters, built all of one compacted soil on clay ground, and you would find that band <span data-n="bench.face-m">8</span> m up its downstream face, exactly where the seepage lab of <a data-ref="ch-seepage"></a> said the water would come out. Nothing is moving, and the crest road is level.</p>
+      <p>The engineer who checks the slope gets a single number back, a factor of safety of <span data-n="bench.fos">1.12</span>. Above 1 the slope stands, so this one stands, with <span data-n="ch12.spare-pct">12</span>% to spare. The owner has money for one fix. Make a choice before you read on:</p>
+
       <div class="predict" data-answer="b" id="pr-build">
         <p class="predict-q">A dam made all of compacted fill has a factor of safety of <span data-n="bench.fos">1.12</span>, with water breaking out <span data-n="bench.face-m">8</span> m up its downstream slope. Which change helps it most?</p>
         <div class="predict-opts"><button data-v="a">Flatten the downstream slope from 2:1 to 2.5:1 (<span data-n="ch12.fill-25-pct">11</span>% more fill)</button><button data-v="b">Paint a sand drain inside the downstream half (about <span data-n="ch12.drain-pct" data-n-sig="1">10</span>% of the dam)</button><button data-v="c">Add a cutoff wall through the foundation under the dam</button></div>
-        <div class="predict-reveal" hidden><p>The drain does the most: the factor of safety goes from <span data-n="bench.fos">1.12</span> to about <span data-n="bench.fos@preset=drained">1.6</span>. The flatter slope reaches only about <span data-n="bench.fos@slope=2.5">1.27</span>, and the cutoff about <span data-n="bench.fos@cut=full">1.14</span>. The fill is strong enough when it is dry. Its trouble is the water in it: on the critical slip surface, water pressure carries about a third of the soil's weight, so the grains press together with only two-thirds of it. A drain lets that water out before it reaches the downstream slope. You'll paint that drain yourself in <a data-ref="ch-build"></a>.</p></div>
+        <div class="predict-reveal" hidden><p>The drain does the most: the factor of safety goes from <span data-n="bench.fos">1.12</span> to about <span data-n="bench.fos@preset=drained">1.6</span>. The flatter slope reaches only about <span data-n="bench.fos@slope=2.5">1.27</span>, and the cutoff about <span data-n="bench.fos@cut=full">1.14</span>. The fill is strong enough when it is dry. Its trouble is the water in it: on the critical slip surface, water pressure carries about a third of the soil's weight (<span data-n="bench.ru">0.35</span> of it), so the grains press together with only two-thirds of it. A drain lets that water out before it reaches the downstream slope. You'll paint that drain yourself in <a data-ref="ch-build"></a>.</p></div>
       </div>
+
+      <p>Whatever you chose, the choice rests on a number, and a number is only worth what you know about how it was made. To judge the fixes we need to make that number ourselves, starting where <a data-ref="ch-grip"></a> left off: with a slope so long and even that one small piece of it stands for the whole.</p>
+
+      <h3 id="s-slope-ramp">The long slope, scored</h3>
+      <p><a data-ref="ch-grip"></a> found the steepest face a sand can hold by treating one patch of the face as the block on its ramp. A designer doesn't build at the steepest face; she builds flatter and asks how much flatter. So ask the same patch a different question: how much grip does it have, against how much it needs? That ratio is the <span class="gl" data-term="factor-of-safety">factor of safety</span>, and for a long, even slope of grains with no glue between them, the slope <a data-ref="ch-grip"></a> called an <span class="gl" data-term="infinite-slope">infinite slope</span>, it takes one line.</p>
+      <p>On a dry slope at angle <var>β</var>, a slab of soil parallel to the face presses into the slope below it with its weight times cos <var>β</var>, and is pulled down it by its weight times sin <var>β</var>. Friction offers tan <var>φ′</var> times the press. The weight cancels, as it did for the block:</p>
+      <div class="eq" id="eq-slope-infinite"><span class="eq-body"><var>FS</var> = tan <var>φ′</var> ÷ tan <var>β</var></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>φ′</var> the soil's <span class="gl" data-term="friction-angle">friction angle</span> · <var>β</var> the slope's angle; a slope of <var>n</var>:1 has tan <var>β</var> = 1/<var>n</var>, so <span class="m"><var>FS</var> = <var>n</var> · tan <var>φ′</var></span>. It holds dry, and it holds under still water, where buoyancy lightens the press and the pull alike.</p>
+      <p>The formula hides a pleasant fact: the factor of safety grows in proportion to how flat the slope is. Make a 2:1 slope into a 3:1 slope and its safety rises by half. But the water has its own say. Where water seeps out of the face, parallel to it, its drag adds to the pull and nothing to the press, and <a data-ref="ex-grip-face"></a> showed what that costs: the grip falls in the ratio of the soil's weight in water, its <span class="gl" data-term="buoyant-unit-weight">buoyant unit weight</span> <var>γ′</var>, to its soaked weight <var>γ</var><sub>sat</sub>:</p>
+      <div class="eq" id="eq-slope-seep"><span class="eq-body"><var>FS</var> = (<var>γ′</var> ÷ <var>γ</var><sub>sat</sub>) · tan <var>φ′</var> ÷ tan <var>β</var></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>γ′</var> = <var>γ</var><sub>sat</sub> − <var>γ</var><sub>w</sub>, the soaked weight less the water's, <span data-n="const.gw">9.81</span> kN/m³. For most soils <var>γ′</var>/<var>γ</var><sub>sat</sub> is close to one half.</p>
+      <p>Here are both rules drawn for two materials of the workbench in <a data-ref="ch-build"></a>, the tailings sand and the rockfill, with two results from the full slope check marked beside them:</p>
     </div>
-    <div class="col" data-stub>
-      <h3 id="s-slope-ramp">A slice is a block on a curved ramp</h3>
-      <!-- The infinite slope (fig-slope-infinite, eq-slope-infinite, eq-slope-seep), ex-slope-infinite;
-           slip circles (Petterson and Fellenius, verify). -->
-    </div>
-    <div class="col" data-stub>
-      <h3 id="s-slope-slice">One slice by hand</h3>
-      <!-- fig-slope-slice, eq-slope-bishop, ex-slope-slice (slice 13 of 40), ex-slope-dry. -->
-    </div>
+
+    <figure class="fig wide" id="fig-slope-infinite">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · The long-slope rule, and the solver beside it</span><span class="scale-note">Chart · factor of safety against slope</span></div>
+      <svg class="dwg" viewBox="0 0 640 340" role="img" aria-label="A chart of factor of safety against how flat a long slope is, from one across for one up to four across for one up. Three straight lines rise from the left: dry rockfill, the steepest; dry tailings sand; and tailings sand with water seeping out of its face, about half as high. A dashed line marks 1, below which the slope slides, and another marks 1.5, the usual target. At our dam's 2 to 1 slope the dry sand scores 1.299 and the seeping sand 0.645; an open ring beside the seeping point marks the solver's 0.637 for a whole dam of tailings sand, and another beside the rockfill point marks the solver's 1.814 for a rockfill dam's upstream slope after a fast drawdown.">
+      <path d="M72,300 v5" class="ch12-axis"/>
+      <path d="M143.3,300 v5" class="ch12-axis"/>
+      <path d="M214.7,300 v5" class="ch12-axis"/>
+      <path d="M286,300 v5" class="ch12-axis"/>
+      <path d="M357.3,300 v5" class="ch12-axis"/>
+      <path d="M428.7,300 v5" class="ch12-axis"/>
+      <path d="M500,300 v5" class="ch12-axis"/>
+      <path d="M67,300 h5" class="ch12-axis"/>
+      <path d="M67,251.8 h5" class="ch12-axis"/>
+      <path d="M67,203.6 h5" class="ch12-axis"/>
+      <path d="M67,155.4 h5" class="ch12-axis"/>
+      <path d="M67,107.1 h5" class="ch12-axis"/>
+      <path d="M67,58.9 h5" class="ch12-axis"/>
+      <path d="M72,30 V300 H500" class="ch12-axis"/>
+      <path d="M72,203.6 H500" class="ch12-ref-acc"/>
+      <path d="M72,155.4 H500" class="ch12-ref-ok"/>
+      <path d="M214.7,30 V300" class="ch12-ref-ink"/>
+      <path d="M72,213.2 L373,30" class="ch12-l-rock"/>
+      <path d="M72,237.4 L500,49.5" class="ch12-l-dry"/>
+      <path d="M72,268.9 L500,175.5" class="ch12-l-seep"/>
+      <circle cx="214.7" cy="126.4" r="3.5" class="ch12-d-rock"/>
+      <circle cx="214.7" cy="174.8" r="3.5" class="ch12-d-dry"/>
+      <circle cx="214.7" cy="237.8" r="3.5" class="ch12-d-seep"/>
+      <circle cx="214.7" cy="238.6" r="6.5" class="ch12-ring"/>
+      <circle cx="214.7" cy="125" r="6.5" class="ch12-ring"/>
+      <text x="62" y="304" class="lbl-s" text-anchor="end">0</text>
+      <text x="62" y="255.8" class="lbl-s" text-anchor="end">0.5</text>
+      <text x="62" y="207.6" class="lbl-s" text-anchor="end">1</text>
+      <text x="62" y="159.4" class="lbl-s" text-anchor="end">1.5</text>
+      <text x="62" y="111.1" class="lbl-s" text-anchor="end">2</text>
+      <text x="62" y="62.9" class="lbl-s" text-anchor="end">2.5</text>
+      <text x="72" y="320" class="lbl-s" text-anchor="middle">1:1</text>
+      <text x="143.3" y="320" class="lbl-s" text-anchor="middle">1.5:1</text>
+      <text x="214.7" y="320" class="lbl-s" text-anchor="middle">2:1</text>
+      <text x="286" y="320" class="lbl-s" text-anchor="middle">2.5:1</text>
+      <text x="357.3" y="320" class="lbl-s" text-anchor="middle">3:1</text>
+      <text x="428.7" y="320" class="lbl-s" text-anchor="middle">3.5:1</text>
+      <text x="500" y="320" class="lbl-s" text-anchor="middle">4:1</text>
+      <text x="286" y="337" class="lbl-s" text-anchor="middle">flatter →  across for every 1 up</text>
+      <text x="18" y="165" class="lbl-s" text-anchor="middle" transform="rotate(-90 18 165)">factor of safety</text>
+      <text x="78" y="198" class="lbl-s lbl-acc halo">below 1, it slides</text>
+      <text x="78" y="150" class="lbl-s lbl-ok halo">target 1.5</text>
+      <text x="219" y="24" class="lbl-s halo">our dam’s 2:1</text>
+      <text x="380" y="36" class="lbl-s halo">rockfill, dry</text>
+      <text x="506" y="46" class="lbl-s halo">tailings sand,</text>
+      <text x="506" y="60" class="lbl-s halo">dry</text>
+      <text x="506" y="172" class="lbl-s lbl-w halo">tailings sand,</text>
+      <text x="506" y="187" class="lbl-s lbl-w halo">water seeping</text>
+      <text x="506" y="202" class="lbl-s lbl-w halo">out of the face</text>
+      <text x="224" y="190" class="lbl-s halo"><tspan data-n="ch12.inf-dry">1.299</tspan></text>
+      <text x="224" y="254" class="lbl-s lbl-w halo"><tspan data-n="ch12.inf-seep">0.645</tspan></text>
+      <text x="224" y="142" class="lbl-s halo"><tspan data-n="ch12.inf-rock">1.801</tspan></text>
+      <text x="205" y="274" class="lbl-s halo" text-anchor="end">solver: <tspan data-n="bench.fos@preset=tailings">0.637</tspan></text>
+      <text x="205" y="112" class="lbl-s halo" text-anchor="end">solver: <tspan data-n="bench.fos-up@preset=leaky,found=gravel">1.814</tspan></text>
+      </svg>
+      <figcaption>
+        <p class="cap"><b>For a long slope of grains without cohesion the factor of safety rises in a straight line as the slope flattens, and water seeping out of the face halves it.</b> Each line is <a data-ref="eq-slope-infinite"></a> or <a data-ref="eq-slope-seep"></a> for one material: the top line for dry rockfill (<var>φ′</var> = <span data-n="bench.mat-phi@mat=rock">42</span>°), the middle line for dry tailings sand (<span data-n="bench.mat-phi@mat=tsand">33</span>°), and the bottom line for the same sand with water seeping out of its face. The dashed level lines mark 1, where the slope slides, and 1.5, the usual target with a full reservoir; the dotted upright marks the 2:1 slopes of our dam. The two open rings are not from the formula: they are the workbench's full search of curved slip surfaces through a whole dam, one built all of tailings sand (left lower ring) and one built all of rockfill, checked right after its reservoir was emptied (upper ring). <span class="cap-n">The number to remember: at 2:1 the tailings sand scores <span data-n="ch12.inf-dry">1.30</span> dry and <span data-n="ch12.inf-seep">0.645</span> with water seeping out.</span></p>
+        <ul class="try">
+          <li>Read off how flat a dry tailings-sand slope must be to reach 1.5, then how flat the seeping one must be.</li>
+          <li>Compare each open ring with the point on the line beside it.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>Dry, about 2.3:1 (1.5 ÷ <span data-n="ch12.tan-phi-mat">0.6494</span> = <span data-n="ch12.inf-dry-n15">2.31</span>); seeping, about <span data-n="ch12.seep-n15">4.6</span>:1, off the right of the chart. The rings sit almost on the lines: the solver's <span data-n="bench.fos@preset=tailings">0.637</span> against <span data-n="ch12.inf-seep">0.645</span>, and <span data-n="bench.fos-up@preset=leaky,found=gravel">1.814</span> against <span data-n="ch12.inf-rock">1.801</span>.</p></details>
+      </figcaption>
+    </figure>
+
     <div class="col">
-      <h3 id="s-slope-check">What the check does, and what it leaves out</h3>
-      <p>For circular slip surfaces the page uses Bishop's simplified method, the standard hand-and-computer method since 1955. It cuts the sliding mass into 40 vertical slices, works out how hard each slice presses on its base after taking away the water pressure there, and balances the turning effect of the whole mass about the circle's centre. On the weak-layer foundation it also tries sliding blocks with a flat base along the layer, using Spencer's method, which balances forces and turning effects together.</p>
-      <p>Water pressure on each slice comes straight from the seepage solution. Suction above the water level is ignored, as is usual practice, because it can vanish in a wet spell. For the upstream check the reservoir is emptied quickly: the free-draining materials (anything that passes water at 10⁻⁵ m/s or faster: rockfill, filter sand, tailings sand and the sand &amp; gravel foundation) drain with it, while clay and fill keep their water pressure for a while (the classic <span class="gl" data-term="rapid-drawdown">rapid drawdown</span> case). Designers accept a lower factor of safety for that short-lived condition, about 1.2. The workbench in <a data-ref="ch-build"></a> fixes the upstream slope at 2:1, which is steep for an earth dam; real ones are often flatter for exactly this reason.</p>
+      <p>Notice that the seeping line is the dry line pressed down to half its height, everywhere: <var>γ′</var>/<var>γ</var><sub>sat</sub> does not depend on the slope. Notice too the two rings. The workbench knows nothing about long slopes. It searches thousands of curved surfaces through a whole section, with the water pressures its seepage solver computes, and for these two dams it lands within about 1% of a one-line formula. The example says why:</p>
+
+      <section class="we" id="ex-slope-infinite">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">A tailings-sand slope, dry and seeping</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The workbench's tailings sand: <span class="m"><var>φ′</var> = <span data-n="bench.mat-phi@mat=tsand">33</span>°</span>, no cohesion, soaked <span class="m"><var>γ</var><sub>sat</sub> = <span data-n="bench.mat-gs@mat=tsand">19.5</span> kN/m³</span>; rockfill <span class="m"><var>φ′</var> = <span data-n="bench.mat-phi@mat=rock">42</span>°</span>; water <span data-n="const.gw">9.81</span> kN/m³. Both slopes at 2:1, so tan <var>β</var> = 0.5.</dd>
+          <dt>Find</dt><dd>The factor of safety of a long slope of tailings sand, dry and with water seeping out parallel to its face, and of a long dry slope of rockfill.</dd>
+          <dt>The idea</dt><dd>One slab parallel to the face stands for the whole slope (<a data-ref="eq-slope-infinite"></a>); seeping water adds a pull and no press (<a data-ref="eq-slope-seep"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Dry sand: <span class="m">tan 33° ÷ 0.5</span> <span class="m">= <span data-n="ch12.tan-phi-mat">0.6494</span> ÷ 0.5</span> <span class="m">= <span data-n="ch12.inf-dry">1.299</span></span></span><span class="why">grip over pull for one slab; the weight cancels</span></li>
+          <li><span class="we-eq"><span class="m"><var>γ′</var> = <span data-n="bench.mat-gs@mat=tsand">19.5</span> − <span data-n="const.gw">9.81</span> = <span data-n="ch12.gsub-tsand">9.69</span></span> kN/m³</span><span class="why">the sand's weight in water</span></li>
+          <li><span class="we-eq"><span class="m"><span data-n="ch12.gsub-tsand">9.69</span> ÷ <span data-n="bench.mat-gs@mat=tsand">19.5</span> = <span data-n="ch12.gratio">0.4969</span></span></span><span class="why">the share of the pull that comes with a press</span></li>
+          <li><span class="we-eq">Seeping sand: <span class="m"><span data-n="ch12.inf-dry">1.299</span> × <span data-n="ch12.gratio">0.4969</span> = <span data-n="ch12.inf-seep">0.645</span></span></span><span class="why">the drag of the leaving water adds pull and no press</span></li>
+          <li><span class="we-eq">Dry rockfill: <span class="m">tan 42° ÷ 0.5</span> <span class="m">= <span data-n="ch12.tan-phi-mat@mat=rock">0.9004</span> ÷ 0.5</span> <span class="m">= <span data-n="ch12.inf-rock">1.801</span></span></span><span class="why">rougher, more angular grains, the same rule</span></li>
+        </ol>
+        <p class="we-ans">Dry, a 2:1 slope of tailings sand scores <span data-n="ch12.inf-dry">1.30</span>; with water seeping out of it, <span data-n="ch12.inf-seep">0.645</span>, and it slides. Dry rockfill at 2:1 scores <span data-n="ch12.inf-rock">1.80</span>.</p>
+        <p class="we-check"><b>Check.</b> The workbench's whole dam of tailings sand on clay scores <span data-n="bench.fos@preset=tailings">0.637</span>, and its worst surface is a skin <span data-n="bench.crit-depth-m@preset=tailings">2.0</span> m deep, the shallowest the check counts: nearly a slab parallel to the face, the very thing the formula assumes. Its rockfill dam, right after its reservoir has been emptied, scores <span data-n="bench.fos-up@preset=leaky,found=gravel">1.814</span> on a skin <span data-n="ch12.up-depth-m@preset=leaky,found=gravel">2.0</span> m deep. The ratio of the two sand answers, <span class="m"><span data-n="ch12.inf-seep">0.645</span> ÷ <span data-n="ch12.inf-dry">1.299</span> = <span data-n="ch12.gratio">0.497</span></span>, is <var>γ′</var>/<var>γ</var><sub>sat</sub> and nothing else.</p>
+        <p class="we-means"><b>What it means.</b> Water seeping out of a face halves its safety. A slope that grips well enough dry can slide with water coming out of it, without a grain changing; only the water moved.</p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A long dry rockfill slope is built at 1.5:1, steeper than our dam's. What is its factor of safety?</summary>
+        <p><span class="m">1.5 × tan 42°</span> <span class="m">= 1.5 × <span data-n="ch12.tan-phi-mat@mat=rock">0.9004</span></span> <span class="m">= <span data-n="ch12.inf-rock@n=1.5">1.351</span></span>: it stands, with a third to spare, as long as it stays dry. Rockfill dams are often built that steep.</p>
+      </details>
+
+      <h3 id="s-slope-circle">Slopes slide on curves</h3>
+      <p>One could assume that every slope fails the way the long-slope rule pictures it, a thin skin peeling off its face like snow off a roof. Clean sand and rockfill do fail that way, which is why the rule and the solver agreed. Our dam's fill does not. It has a little <span class="gl" data-term="cohesion">cohesion</span>, <var>c′</var> = <span data-n="bench.mat-c@mat=fill">10</span> kPa, a grip that doesn't depend on how hard its grains are pressed, and a thin skin has too little weight for its friction to matter and plenty of cohesion for its size. A deep slip is the cheaper failure: it has more weight pulling, through soil that is wetter and so presses less.</p>
+      <p>The shape engineers give a deep slip comes from Sweden. In March 1916, a year after it was built, the Stigberg Quay in Gothenburg harbour slid, and a committee was set up to find out why.<label for="sn-slope-gothenburg" class="sn-ref"></label><input type="checkbox" id="sn-slope-gothenburg" class="margin-toggle"><span class="sidenote" data-kind="history">Petterson told the story himself in English, nearly forty years later (<a data-cite="petterson1955"></a>). Wolmar Fellenius, who chaired Sweden's state geotechnical commission, extended the method to soils with both friction and cohesion in the 1920s and defined the factor of safety for a slope as the ratio of the moments holding it to those turning it (<a data-cite="massarsch-fellenius2012"></a>). The commission's final report of 1922 is the first publication known to use the word "geotechnical".</span> The committee's analysis used a method worked out by Knut Petterson, an engineer with the harbour, and Sven Hultin, a professor at Chalmers: take the surface the ground slides on to be an arc of a circle. A circle has a convenient property: a mass sliding on one turns about the circle's centre as a solid piece, so its balance can be checked with one sum of turning effects. The Swedish engineers cut the sliding mass into upright slices and added them up. Most checks of an embankment slope still start there.</p>
+      <p>Look at one slice and you have met it before. It is <a data-ref="ch-grip"></a>'s block on a ramp, except that its ramp is a short stretch of the circle, tilted at an angle <var>α</var> that changes from slice to slice: steep under the crest, nearly level near the bottom of the circle, tilted the other way where the circle climbs back out beyond the toe. Each slice's weight <var>W</var> pulls it down its stretch with <span class="m"><var>W</var> sin <var>α</var></span>; the soil under it grips back with cohesion over the length of the base, <var>l</var>, plus friction from the grains' press on it, <var>N′</var>. This is the <span class="gl" data-term="slice-method">method of slices</span>. The <span class="gl" data-term="slip-surface">slip surface</span>'s factor of safety is the grip of all the slices over the pull of all of them:</p>
+      <div class="eq" id="eq-slope-sum"><span class="eq-body"><var>FS</var> = Σ (<var>c′</var>·<var>l</var> + <var>N′</var>·tan <var>φ′</var>) ÷ Σ <var>W</var>·sin <var>α</var></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where">Σ the sum over every slice · <var>c′</var>·<var>l</var> + <var>N′</var>·tan <var>φ′</var> the grip on a slice's base (kN per metre of dam) · <var>W</var>·sin <var>α</var> its pull. The ratio comes from balancing turning effects about the circle's centre: each slice's weight acts at a lever arm of <var>R</var> sin <var>α</var> from it, each grip at <var>R</var>, the presses on the bases point at the centre and turn nothing, and the radius cancels.</p>
+      <p>The pull is easy: weights and angles, measured off the drawing. All the difficulty is in <var>N′</var>, how hard the grains on each base press, and that is where the water comes in.</p>
+
+      <h3 id="s-slope-slice">One slice by hand</h3>
+      <p>The water in the gaps pushes on the base of a slice with its pressure <var>u</var> over the base's length, <span class="m"><var>u</var>·<var>l</var></span>, and whatever part of the slice's load the water carries, the grains don't. The earliest method of slices took the press on the base to be the part of the weight at right angles to it, less the water: <span class="m"><var>N′</var> = <var>W</var> cos <var>α</var> − <var>u</var>·<var>l</var></span>. That treats each slice as if its neighbours weren't there. But they are, and they push on it.</p>
+      <p>Alan Bishop's step, published in 1955, was to let them push, but only sideways, and to balance each slice up and down.<label for="sn-slope-bishop" class="sn-ref"></label><input type="checkbox" id="sn-slope-bishop" class="margin-toggle"><span class="sidenote" data-kind="history">Bishop, at Imperial College London, published the method in <a data-cite="bishop1955"></a>. Taking the slices' pushes on each other as horizontal is why it is called his "simplified" method; his paper also gave a fuller version that keeps their upright parts, which matter little on a circle. E. Spencer's method of 1967 (<a data-cite="spencer1967"></a>) balances the forces and the turning effects together, taking the pushes as parallel, and works on surfaces of any shape.</span> Sideways pushes have no upright part, so they drop out of that balance. What holds the slice up is then the water and the grains pressing on its base, both at right angles to it, and the grip along the base, which at the point of balance is the grip available divided by the factor of safety. Solve that balance for <var>N′</var> and you get <span class="gl" data-term="bishop-method">Bishop's method</span>:</p>
+      <div class="eq" id="eq-slope-bishop"><span class="eq-body"><var>N′</var> = (<var>W</var> − <var>u</var>·<var>b</var> − <var>c′</var>·<var>b</var>·tan <var>α</var> ÷ <var>FS</var>) ÷ <var>m</var><sub>α</sub>,&ensp;&ensp;<var>m</var><sub>α</sub> = cos <var>α</var> + sin <var>α</var> · tan <var>φ′</var> ÷ <var>FS</var></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>b</var> the slice's width (m) · <var>u</var>·<var>b</var> the upright part of the water's push on the base · <var>c′</var>·<var>b</var>·tan <var>α</var> ÷ <var>FS</var> the upright part of the cohesion's share of the grip · <var>m</var><sub>α</sub> the factor that turns what is left into a press at right angles to the base.</p>
+      <p>Look where <var>FS</var> is: on the right-hand side. To know how hard each slice presses, you must already know the factor of safety, and to know the factor of safety you must know how hard every slice presses. The way out is to guess, work every slice with the guess, add them up with <a data-ref="eq-slope-sum"></a>, and use the answer as the next guess. Here is the critical circle of our dam, the worst of the <span data-n="bench.tried" data-n-sig="1">2,000</span> or so the workbench tried, with one of its slices drawn large:</p>
     </div>
-    <div class="col" data-stub>
-      <!-- New (H.13): ex-slope-drawdown; what 1.5 means (usace-em1902); the soft Polley clue (G.4). -->
+
+    <figure class="fig wide" id="fig-slope-slice">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Our dam's worst slip circle, and one of its forty slices</span><span class="scale-note">A to scale, from the solver · B to scale, forces to scale with each other</span></div>
+      <div class="ch12-panels">
+      <svg class="dwg" viewBox="0 0 640 420" role="img" aria-label="Panel A: our dam, all compacted fill on clay ground, cut across, its downstream half to scale. The reservoir stands 20.4 metres deep against the upstream face; a dashed line, the water level inside the dam, falls through it and meets the downstream face 8 metres up, where the water breaks out. A slip circle 42.9 metres in radius, centred high above the downstream slope, runs from the crest down through the fill and just into the clay ground beyond the toe. The soil above it is cut into 40 upright slices, and the thirteenth from the top is shaded.">
+      <rect x="0" y="364" width="640" height="56" fill="url(#p-clay)" class="edge"/>
+      <polygon points="0,364 0,220 96,172 144,172 528,364" fill="url(#p-fill)" class="edge"/>
+      <polygon points="0,364 0,220 38.4,200.8 44,206.8 52,209.4 60,211.8 68,214.6 76,217 84,218.9 92,221.1 100,223.6 108,225.4 116,227.1 124,229.2 132,231.5 140,233.3 148,234.9 156,236.9 164,239 172,240.9 180,242.5 188,244.4 196,246.6 204,248.6 212,250.2 220,252.1 228,254.3 236,256.4 244,258.1 252,259.9 260,262.2 268,264.4 276,266.1 284,268.1 292,270.5 300,272.7 308,274.5 316,276.7 324,279.3 332,281.4 340,283.4 348,285.9 356,288.5 364,290.4 372,292.7 388,297.7 400,300 528,364" fill="url(#p-sat)"/>
+      <polygon points="0,200.8 38.4,200.8 0,220" class="water"/>
+      <path d="M0,200.8 H38.4" class="water-line"/>
+      <path d="M38.4,200.8 L44,206.8 L52,209.4 L60,211.8 L68,214.6 L76,217 L84,218.9 L92,221.1 L100,223.6 L108,225.4 L116,227.1 L124,229.2 L132,231.5 L140,233.3 L148,234.9 L156,236.9 L164,239 L172,240.9 L180,242.5 L188,244.4 L196,246.6 L204,248.6 L212,250.2 L220,252.1 L228,254.3 L236,256.4 L244,258.1 L252,259.9 L260,262.2 L268,264.4 L276,266.1 L284,268.1 L292,270.5 L300,272.7 L308,274.5 L316,276.7 L324,279.3 L332,281.4 L340,283.4 L348,285.9 L356,288.5 L364,290.4 L372,292.7 L388,297.7 L400,300" class="ch12-phreatic"/>
+      <path d="M400,300 L528,364" class="ch12-face"/>
+      <polygon points="272.6,236.3 283.5,241.8 283.5,336.1 272.6,329.3" class="ch12-s13"/>
+      <path d="M153.1,176.5 L153.1,195.8 M163.9,182 L163.9,215.8 M174.8,187.4 L174.8,233 M185.7,192.8 L185.7,248.3 M196.6,198.3 L196.6,261.9 M207.4,203.7 L207.4,274.3 M218.3,209.1 L218.3,285.6 M229.2,214.6 L229.2,295.8 M240,220 L240,305.3 M250.9,225.5 L250.9,314 M261.8,230.9 L261.8,322 M272.6,236.3 L272.6,329.3 M283.5,241.8 L283.5,336.1 M294.4,247.2 L294.4,342.3 M305.3,252.6 L305.3,348.1 M316.1,258.1 L316.1,353.3 M327,263.5 L327,358.1 M337.9,268.9 L337.9,362.4 M348.7,274.4 L348.7,366.3 M359.6,279.8 L359.6,369.8 M370.5,285.2 L370.5,372.9 M381.3,290.7 L381.3,375.7 M392.2,296.1 L392.2,378 M403.1,301.5 L403.1,380 M414,307 L414,381.7 M424.8,312.4 L424.8,383 M435.7,317.8 L435.7,383.9 M446.6,323.3 L446.6,384.5 M457.4,328.7 L457.4,384.7 M468.3,334.2 L468.3,384.6 M479.2,339.6 L479.2,384.2 M490,345 L490,383.4 M500.9,350.5 L500.9,382.2 M511.8,355.9 L511.8,380.7 M522.6,361.3 L522.6,378.9 M533.5,364 L533.5,376.7 M544.4,364 L544.4,374.1 M555.3,364 L555.3,371.1 M566.1,364 L566.1,367.8" class="ch12-slices"/>
+      <path d="M142.2,172 A343.1,343.1 0 0 0 577,364" class="ch12-circle"/>
+      <circle cx="459.6" cy="41.6" r="3" class="ch12-centre"/>
+      <path d="M459.6,41.6 L278.1,332.8" class="ch12-radius"/>
+      <path d="M459.6,41.6 V153.6" class="ch12-vert"/>
+      <path d="M459.6,113.6 A72,72 0 0 1 421.5,102.7" class="ch12-ang"/>
+      <text x="4" y="166" class="lbl-s lbl-w halo">reservoir, <tspan data-n="lab.res-m">20.4</tspan> m</text>
+      <path d="M20,169 L20,198" class="lead"/>
+      <text x="8" y="345" class="lbl-s halo on-fill">compacted fill</text>
+      <text x="8" y="398" class="lbl-s halo on-fill">clay ground</text>
+      <text x="44" y="262" class="lbl-s lbl-w halo on-fill">water level</text>
+      <text x="44" y="276" class="lbl-s lbl-w halo on-fill">inside the dam</text>
+      <path d="M70,250 L76,219" class="lead"/>
+      <text x="200" y="190" class="lbl-s halo" text-anchor="middle">40 slices</text>
+      <text x="292" y="214" class="lbl lbl-grain halo">slice 13</text>
+      <path d="M290,218 L281,236" class="lead"/>
+      <text x="430" y="286" class="lbl-s lbl-acc halo">water breaks out,</text>
+      <text x="430" y="300" class="lbl-s lbl-acc halo"><tspan data-n="bench.face-m">8</tspan> m up the face</text>
+      <text x="468" y="38" class="lbl-s halo">centre of the circle</text>
+      <text x="376" y="184" class="lbl-s halo"><tspan font-style="italic">R</tspan> = <tspan data-n="bench.crit-r-m">42.9</tspan> m</text>
+      <text x="436" y="134" class="lbl halo" text-anchor="end">α</text>
+      <text x="560" y="338" class="lbl-s lbl-acc halo">worst circle,</text>
+      <text x="560" y="352" class="lbl-s lbl-acc halo"><tspan font-style="italic">FS</tspan> = <tspan data-n="bench.fos">1.116</tspan></text>
+      <text x="8" y="22" class="lbl">A · The critical circle</text>
+      </svg>
+      <svg class="dwg ch12-fb" viewBox="0 0 300 420" role="img" aria-label="Panel B: slice 13 drawn larger, with its forces to scale with one another. Its weight, 319 kilonewtons, acts straight down. On its base, which slopes down toward the toe at 31.9 degrees, the water presses with 122.3 kilonewtons and the grains with 181.3, both at right angles to the base. Along the base the grip of 129.3 kilonewtons acts uphill, against a pull of 168.8 kilonewtons downhill, the part of the weight along the base. The neighbouring slices push on its sides horizontally.">
+      <defs><marker id="ch12-arr-grain" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--grain)"/></marker><marker id="ch12-arr-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ok)"/></marker></defs>
+      <text x="8" y="22" class="lbl">B · Slice 13, enlarged</text>
+      <text x="8" y="40" class="lbl-s">forces to scale with one another</text>
+      <polygon points="138.5,113 161.5,124.6 161.5,325.1 138.5,310.6" class="ch12-s13 edge"/>
+      <path d="M150,218.4 V361.9" class="ch12-f-w" marker-end="url(#arr)"/>
+      <path d="M115.8,361.5 L144.9,314.8" class="ch12-f-u" marker-end="url(#arr-w)"/>
+      <path d="M111.9,390.4 L155.1,321.2" class="ch12-f-n" marker-end="url(#ch12-arr-grain)"/>
+      <path d="M148.4,320.5 L99,289.8" class="ch12-f-g" marker-end="url(#ch12-arr-ok)"/>
+      <path d="M148.4,320.5 L212.9,360.7" class="ch12-f-p" marker-end="url(#arr-acc)"/>
+      <path d="M104.5,211.8 H136.5" class="ch12-f-side" marker-end="url(#arr)"/>
+      <path d="M195.5,224.8 H163.5" class="ch12-f-side" marker-end="url(#arr)"/>
+      <path d="M136.5,310.6 H198.5" class="ch12-vert"/>
+      <path d="M182.5,310.6 A44,44 0 0 1 175.8,333.9" class="ch12-ang"/>
+      <path d="M138.5,310.6 L204,351.5" class="ch12-baseline"/>
+      <text x="172" y="176" class="lbl-s halo">weight <tspan font-style="italic">W</tspan></text>
+      <text x="172" y="190" class="lbl-s halo"><tspan data-n="bench.slice-w-kn@i=12">319.0</tspan> kN</text>
+      <text x="200" y="242" class="lbl-s halo">neighbours push</text>
+      <text x="200" y="256" class="lbl-s halo">sideways only</text>
+      <text x="94" y="276" class="lbl-s lbl-ok halo" text-anchor="end">grip</text>
+      <text x="94" y="290" class="lbl-s lbl-ok halo" text-anchor="end"><tspan data-n="ch12.grip">129.3</tspan> kN</text>
+      <text x="190" y="324" class="lbl halo">α</text>
+      <text x="200" y="384" class="lbl-s lbl-acc halo">pull, <tspan font-style="italic">W</tspan> sin α</text>
+      <text x="200" y="398" class="lbl-s lbl-acc halo"><tspan data-n="ch12.pull">168.8</tspan> kN</text>
+      <text x="110" y="366" class="lbl-s lbl-w halo" text-anchor="end">water, <tspan font-style="italic">u</tspan>·<tspan font-style="italic">l</tspan></text>
+      <text x="110" y="380" class="lbl-s lbl-w halo" text-anchor="end"><tspan data-n="ch12.oms-ul">122.3</tspan> kN</text>
+      <text x="106" y="400" class="lbl-s lbl-grain halo" text-anchor="end">grains, <tspan font-style="italic">N′</tspan></text>
+      <text x="106" y="414" class="lbl-s lbl-grain halo" text-anchor="end"><tspan data-n="ch12.n-eff">181.3</tspan> kN</text>
+      </svg>
+      </div>
+      <figcaption>
+        <p class="cap"><b>The weakest surface through our dam is a circle that cuts deep, through the soaked fill and a little way into the clay beyond the toe, and slice 13 of its forty is a block on a ramp tilted at 31.9°.</b> In A the dashed line is the water level inside the dam, from the reservoir down to where it breaks out of the downstream face (the heavy <span class="k-acc">brick-red</span> stretch); below it the fill is soaked. The <span class="k-acc">brick-red</span> arc is the slip circle the solver found, with its centre high above the slope; the thin uprights cut the soil above it into 40 slices of equal width. The angle <var>α</var> between the circle's radius and the vertical is the tilt of the slice's base. In B, slice 13 carries its weight straight down; on its base the water (<var>u</var>·<var>l</var>, <span class="k-water">blue</span>) and the grains (<var>N′</var>, <span class="k-grain">ochre</span>) press at right angles, the grip (<span class="k-ok">green</span>) acts uphill along it, and the dashed arrow is the pull, the part of the weight along the base. The dashed side arrows are the neighbours' pushes. <span class="cap-n">The number to remember: <span data-n="bench.fos">1.116</span>, the whole circle's grip over its pull.</span></p>
+        <ul class="try">
+          <li>In A, measure the circle's depth below the face at its deepest, with the slices' uprights as a ruler: each is <span data-n="bench.slice-b@i=12">1.36</span> m wide.</li>
+          <li>In B, compare the grip with the pull. Is slice 13 holding itself up?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>About <span data-n="bench.crit-depth-m">12</span> m. Slice 13 is not: its grip is only <span data-n="ch12.slice-ratio">0.77</span> of its pull (<span class="m"><span data-n="ch12.grip">129.3</span> ÷ <span data-n="ch12.pull">168.8</span> = <span data-n="ch12.slice-ratio">0.77</span></span>), and the slices lower down make up the difference.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the circle goes deep: about <span data-n="bench.crit-depth-m">12</span> m below the face, far below any skin, and out <span data-n="ch12.exit-beyond-m">6</span> m beyond the toe. Notice also that most of it runs below the dashed line, in soaked fill. Now take slice 13, the thirteenth from the top, and work it the way the solver does, with the factor of safety the loop ends on:</p>
+
+      <section class="we" id="ex-slope-slice">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Slice 13 of 40, by hand</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>From the solver, per metre length of dam: width <span class="m"><var>b</var> = <span data-n="bench.slice-b@i=12">1.359</span> m</span>, weight <span class="m"><var>W</var> = <span data-n="bench.slice-w-kn@i=12">319.0</span> kN</span>, water pressure on its base <span class="m"><var>u</var> = <span data-n="bench.slice-u-kpa@i=12">76.40</span> kPa</span>, base tilted at <span class="m"><var>α</var> = <span data-n="bench.slice-alpha-deg@i=12">31.94</span>°</span> (sin <span data-n="ch12.sin-a">0.5291</span>, cos <span data-n="ch12.cos-a">0.8486</span>, tan <span data-n="ch12.tan-a">0.6235</span>). The fill: <span class="m"><var>c′</var> = <span data-n="bench.mat-c@mat=fill">10</span> kPa</span>, <span class="m"><var>φ′</var> = <span data-n="bench.mat-phi@mat=fill">32</span>°</span>, tan <var>φ′</var> = <span data-n="ch12.tan-phi">0.6249</span>. The loop's answer, <span class="m"><var>FS</var> = <span data-n="bench.fos">1.116</span></span>.</dd>
+          <dt>Find</dt><dd>The grains' press on the base, <var>N′</var>; the grip on the base; the pull along it.</dd>
+          <dt>The idea</dt><dd>Balance the slice up and down (<a data-ref="eq-slope-bishop"></a>), then grip = cohesion along the base plus friction from the press (<a data-ref="eq-slope-sum"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><span class="m"><var>u</var>·<var>b</var> = <span data-n="bench.slice-u-kpa@i=12">76.40</span> × <span data-n="bench.slice-b@i=12">1.359</span></span> <span class="m">= <span data-n="ch12.ub">103.8</span> kN</span></span><span class="why">the water's push up on the base</span></li>
+          <li><span class="we-eq"><span class="m"><var>W</var> − <var>u</var>·<var>b</var></span> <span class="m">= <span data-n="bench.slice-w-kn@i=12">319.0</span> − <span data-n="ch12.ub">103.8</span></span> <span class="m">= <span data-n="ch12.w-ub">215.2</span> kN</span></span><span class="why">the weight the water leaves for the grains</span></li>
+          <li><span class="we-eq"><span class="m"><var>c′</var>·<var>b</var>·tan <var>α</var> ÷ <var>FS</var></span> <span class="m">= 10 × <span data-n="bench.slice-b@i=12">1.359</span> × <span data-n="ch12.tan-a">0.6235</span></span> <span class="m">÷ <span data-n="bench.fos">1.116</span> = <span data-n="ch12.c-term">7.59</span> kN</span></span><span class="why">the cohesion along the tilted base also holds the slice up a little</span></li>
+          <li><span class="we-eq"><span class="m"><var>m</var><sub>α</sub> = <span data-n="ch12.cos-a">0.8486</span> + <span data-n="ch12.sin-a">0.5291</span></span> <span class="m">× <span data-n="ch12.tan-phi">0.6249</span> ÷ <span data-n="bench.fos">1.116</span></span> <span class="m">= <span data-n="ch12.m-alpha">1.1449</span></span></span><span class="why">the factor that turns an upright load into a press at right angles to the base</span></li>
+          <li><span class="we-eq"><span class="m"><var>N′</var> = (<span data-n="ch12.w-ub">215.2</span> − <span data-n="ch12.c-term">7.59</span>)</span> <span class="m">÷ <span data-n="ch12.m-alpha">1.1449</span></span> <span class="m">= <span data-n="ch12.n-num">207.6</span> ÷ <span data-n="ch12.m-alpha">1.1449</span></span> <span class="m">= <span data-n="ch12.n-eff">181.3</span> kN</span></span><span class="why">the grains' press on the base, <a data-ref="eq-slope-bishop"></a></span></li>
+          <li><span class="we-eq"><span class="m"><var>l</var> = <span data-n="bench.slice-b@i=12">1.359</span> ÷ <span data-n="ch12.cos-a">0.8486</span> = <span data-n="ch12.l-m">1.601</span> m</span></span><span class="why">the tilted base is longer than the slice is wide</span></li>
+          <li><span class="we-eq">Grip: <span class="m">10 × <span data-n="ch12.l-m">1.601</span></span> <span class="m">+ <span data-n="ch12.n-eff">181.3</span> × <span data-n="ch12.tan-phi">0.6249</span></span> <span class="m">= <span data-n="ch12.grip">129.3</span> kN</span></span><span class="why">cohesion over the base's length, plus friction from the press</span></li>
+          <li><span class="we-eq">Pull: <span class="m"><span data-n="bench.slice-w-kn@i=12">319.0</span> × <span data-n="ch12.sin-a">0.5291</span> = <span data-n="ch12.pull">168.8</span> kN</span></span><span class="why">the part of the weight along the base, <var>W</var> sin <var>α</var></span></li>
+        </ol>
+        <p class="we-ans">The grains press on slice 13's base with <span data-n="ch12.n-eff">181.3</span> kN, giving a grip of <span data-n="ch12.grip">129.3</span> kN against a pull of <span data-n="ch12.pull">168.8</span> kN.</p>
+        <p class="we-check"><b>Check.</b> The water carries <span data-n="ch12.ub">103.8</span> of the slice's <span data-n="bench.slice-w-kn@i=12">319.0</span> kN, about a third, close to the share it carries on the whole circle (<span data-n="bench.ru">0.35</span>). The solver, which carries every digit, gets <span data-n="ch12.n-eff-exact">181.38</span> and <span data-n="ch12.grip-exact">129.35</span> kN: the rounding on this page costs less than a tenth of a kilonewton.</p>
+        <p class="we-means"><b>What it means.</b> On its own, slice 13 would slide: its grip is <span data-n="ch12.slice-ratio">0.77</span> of its pull. A slip circle stands or falls as a whole, and a third of this slice's weight is carried by water, not grains.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"free","bd-found":"clay","bd-cut":"none","bd-slope":"2","bd-res":85,"bd-side":"downstream","bd-presets":"homogeneous"}}'>Set the figure</button> <span class=\"set-note\">then press Test in the workbench</span></p>
+      </section>
+
+      <p>Do the same for all forty slices and add up. The grips come to <span data-n="ch12.sum-grip">3,473.6</span> kN and the pulls to <span data-n="ch12.sum-pull">3,111.8</span> kN, and <span class="m"><span data-n="ch12.sum-grip">3,473.6</span> ÷ <span data-n="ch12.sum-pull">3,111.8</span></span> <span class="m">= <span data-n="bench.fos">1.1163</span></span>, the readout's <span data-n="bench.fos">1.12</span>. The sum gives back the factor of safety the slices were worked with, which is how you know the loop has finished. Start it where the solver does, at 1.5, and the forty slices return <span data-n="ch12.iter@k=1">1.181</span>; feed that back and they return <span data-n="ch12.iter@k=2">1.129</span>, then <span data-n="ch12.iter@k=3">1.119</span>, <span data-n="ch12.iter@k=4">1.117</span> and <span data-n="ch12.iter@k=5">1.116</span>, and after that the third decimal stops moving.</p>
+      <p>The slices that save slice 13 are the ones near the bottom of the circle. Where the circle climbs back up toward the toe, a slice's base tilts the other way, and its weight pushes back against the slide instead of driving it; <span data-n="ch12.up-slices">11</span> of the forty are like that. Their grip counts in full, and their pull is negative: it takes away from the total. The older method that ignored the neighbours scores this same circle at <span data-n="ch12.oms">0.978</span>: it says the dam should already have slid. It errs on the safe side, by a lot when the water pressure is high, and that is what Bishop's sideways pushes fixed.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> If you started Bishop's loop at a guess of 1.0 instead of 1.5, would it end somewhere else?</summary>
+        <p>No. The guess only sets the starting point; the loop keeps going until the slices return the number they were worked with, and only one number does that, <span data-n="bench.fos">1.116</span>. From 1.0 it climbs to it instead of falling.</p>
+      </details>
+
+      <h3 id="s-slope-water">What the water costs</h3>
+      <p>Slice 13 lost about a third of its weight to the water. So did the whole circle, and that is the number that explains the fixes. Bishop and Morgenstern, writing in 1960, put a slope's water into a single ratio, the <span class="gl" data-term="pore-pressure-ratio">pore-pressure ratio</span> <var>r</var><sub>u</sub>, the share of the soil's weight that the water pressure carries.<label for="sn-slope-ru" class="sn-ref"></label><input type="checkbox" id="sn-slope-ru" class="margin-toggle"><span class="sidenote" data-kind="curious">In <a data-cite="bishop-morgenstern1960"></a> <var>r</var><sub>u</sub> is the pore pressure at a point divided by the weight of soil above it, and the paper's charts give a slope's factor of safety as a straight line falling with <var>r</var><sub>u</sub>. The workbench reports one value for a whole surface, the slices' <span class="m">Σ <var>u</var>·<var>b</var> ÷ Σ <var>W</var></span>. The paper's second author, Norbert Morgenstern, is the engineer the Prologue met at the head of a review panel.</span> Work it out for our circle and then take the water away:</p>
+
+      <section class="we" id="ex-slope-dry">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The same circle without its water, and the three fixes</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The critical circle of <a data-ref="fig-slope-slice"></a>, <span class="m"><var>FS</var> = <span data-n="bench.fos">1.116</span></span>; its slices weigh <span data-n="ch12.sum-w">8,375.9</span> kN in all, and the water pushes up on their bases with <span class="m">Σ <var>u</var>·<var>b</var> = <span data-n="ch12.sum-ub">2,955.1</span> kN</span>. The dam is <span data-n="bench.cells">1,296</span> cells of 1 m² in section. The workbench's results for each fix.</dd>
+          <dt>Find</dt><dd>How much of the weight the water carries, what the circle would score without it, and what each fix buys for what it costs.</dd>
+          <dt>The idea</dt><dd>A fix works by adding grip, adding weight where it resists, or taking the water away. Compare them on one scale.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><span class="m"><var>r</var><sub>u</sub> = <span data-n="ch12.sum-ub">2,955.1</span> ÷ <span data-n="ch12.sum-w">8,375.9</span></span> <span class="m">= <span data-n="bench.ru">0.3528</span></span></span><span class="why">the share of the weight the water carries</span></li>
+          <li><span class="we-eq">With <span class="m"><var>u</var> = 0</span> on the same circle: <span class="m"><var>FS</var> = <span data-n="bench.fos-nowater">1.741</span></span></span><span class="why">the same slices, weights and angles, the water pressure set to zero</span></li>
+          <li><span class="we-eq"><span class="m"><span data-n="bench.fos-nowater">1.741</span> ÷ <span data-n="bench.fos">1.116</span> = <span data-n="ch12.nowater-ratio">1.560</span></span></span><span class="why">the water costs the circle more than a third of its score</span></li>
+          <li><span class="we-eq">Flatter, 2.5:1: <span class="m"><span data-n="bench.cells@slope=2.5">1,440</span> ÷ <span data-n="bench.cells">1,296</span> = <span data-n="ch12.cells-ratio">1.111</span></span>; <span class="m"><var>FS</var> = <span data-n="bench.fos@slope=2.5">1.273</span></span></span><span class="why"><span data-n="ch12.fill-25-pct">11.1</span>% more fill</span></li>
+          <li><span class="we-eq">Flatter, 3:1: <span class="m"><span data-n="bench.cells@slope=3">1,596</span> ÷ <span data-n="bench.cells">1,296</span> = <span data-n="ch12.cells-ratio@slope=3">1.231</span></span>; <span class="m"><var>FS</var> = <span data-n="bench.fos@slope=3">1.418</span></span></span><span class="why"><span data-n="ch12.fill-3-pct">23.1</span>% more fill, still short of 1.5</span></li>
+          <li><span class="we-eq">Cutoff wall under the dam: <span class="m"><var>FS</var> = <span data-n="bench.fos@cut=full">1.142</span></span></span><span class="why">the leak falls from <span data-n="bench.q-lday">44.4</span> to <span data-n="bench.q-lday@cut=full">40.4</span> L/day per metre</span></li>
+          <li><span class="we-eq">Drain: <span class="m"><span data-n="bench.drain-cells@preset=drained">126</span> ÷ <span data-n="bench.cells">1,296</span> = <span data-n="ch12.drain-frac">0.097</span></span>; <span class="m"><var>FS</var> = <span data-n="bench.fos@preset=drained">1.628</span></span></span><span class="why">filter sand in place of <span data-n="ch12.drain-pct">9.7</span>% of the fill, no soil added</span></li>
+        </ol>
+        <p class="we-ans">The water carries <span data-n="bench.ru">0.35</span> of the circle's weight. Without it, the same circle would score <span data-n="bench.fos-nowater">1.74</span>. The drain reaches <span data-n="bench.fos@preset=drained">1.63</span> without adding any soil; the flatter slopes reach <span data-n="bench.fos@slope=2.5">1.27</span> and <span data-n="bench.fos@slope=3">1.42</span> for <span data-n="ch12.fill-25-pct">11</span>% and <span data-n="ch12.fill-3-pct">23</span>% more fill; the cutoff barely moves it.</p>
+        <p class="we-check"><b>Check.</b> Why does flattening help so little? The water still breaks out <span data-n="bench.face-m@slope=3">8</span> m up the face at 3:1, as at 2:1, and the share of weight it carries on the critical circle grows, to <span data-n="bench.ru@slope=2.5">0.380</span> at 2.5:1 and <span data-n="bench.ru@slope=3">0.412</span> at 3:1: the extra fill sits in the wet part of the slope. The US Bureau of Reclamation's design manual says it plainly: in a dam of one soil, seepage will reach the downstream slope "regardless of its flatness".<label for="mn-slope-usbr" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-slope-usbr" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usbr1987"></a>, p. 190, on the homogeneous section, which it says has been replaced in practice by one with "small amounts of carefully placed pervious materials" to control the seepage.</span></p>
+        <p class="we-means"><b>What it means.</b> The fill was strong enough all along; its water was taking the grip. A fix that removes the water does more than one that adds soil, and the cutoff, which stops a little water going under the dam, leaves the water in the dam where it was.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"free","bd-found":"clay","bd-cut":"none","bd-slope":"2","bd-res":85,"bd-side":"downstream","bd-presets":"drained"}}'>Set the figure</button> <span class=\"set-note\">then press Test in the workbench</span></p>
+      </section>
+
+      <p>Notice what the drain does to the leak: the drained dam lets through <span data-n="bench.q-lday@preset=drained">109.7</span> L/day per metre, <span data-n="ch12.leak-ratio">2.47</span> times as much as without it. It is safer because it leaks more, through a path the engineer chose, the trade <a data-ref="ex-seepage-drains"></a> found for piping. A slope feels the water's pressure; how much water passes never enters its sum.</p>
+
+      <h3 id="s-slope-drawdown">Emptying the reservoir</h3>
+      <p>So far the reservoir has been full and the danger on the downstream side, where the water comes out. The upstream face lives the other way round. A full reservoir is good for it: <a data-ref="ex-depth-sloping"></a> showed that water standing on a sloping face presses it down harder than it pushes it across, and under still water the grains of the upstream shell lose their press and their pull in the same proportion. The danger comes when the reservoir is let down fast, to reach a damaged outlet, to take the load off a dam in trouble, or because the water is needed downstream.</p>
+      <p>Emptying a reservoir takes days or weeks. Draining the water out of compacted fill takes far longer: at <span data-n="bench.mat-k@mat=fill">10⁻⁷</span> m/s, the fill passes water a hundred times more slowly than the tailings sand and ten thousand times more slowly than the filter sand of a drain, and <a data-ref="ch-trapped"></a> showed that the time a layer takes to drain grows with the square of its thickness. So the fill's water stays in while the reservoir's water goes. The water inside still has pressure, now with nothing outside to balance it; it seeps out through the face, and its drag pulls the face's grains downhill, exactly as on the beach face of <a data-ref="fig-grip-face"></a>. Here is the upstream half of our dam before and after:</p>
+    </div>
+
+    <figure class="fig wide" id="fig-slope-drawdown">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · The upstream slope, before and after a fast drawdown</span><span class="scale-note">To scale, from the solver · upstream half of our dam</span></div>
+      <div class="ch12-panels">
+      <svg class="dwg" viewBox="0 0 340 168" role="img" aria-label="Panel A: the upstream half of our dam with the reservoir full, 20.4 metres deep. The reservoir presses on the upstream face at right angles, harder with depth. The fill is soaked below a dashed water level that starts at the reservoir's surface and falls gently through the dam.">
+      <rect x="0" y="136" width="340" height="32" fill="url(#p-clay)" class="edge"/>
+      <polygon points="39,136 279,16 309,16 334,28.5 334,136" fill="url(#p-fill)" class="edge"/>
+      <polygon points="39,136 243,34 246.5,37.8 251.5,39.4 256.5,40.9 261.5,42.6 266.5,44.1 271.5,45.3 276.5,46.7 281.5,48.2 286.5,49.4 291.5,50.5 296.5,51.8 301.5,53.2 306.5,54.3 311.5,55.3 316.5,56.5 321.5,57.9 326.5,59.1 331.5,60.1 334,136" fill="url(#p-sat)"/>
+      <path d="M243,34 L246.5,37.8 L251.5,39.4 L256.5,40.9 L261.5,42.6 L266.5,44.1 L271.5,45.3 L276.5,46.7 L281.5,48.2 L286.5,49.4 L291.5,50.5 L296.5,51.8 L301.5,53.2 L306.5,54.3 L311.5,55.3 L316.5,56.5 L321.5,57.9 L326.5,59.1 L331.5,60.1" class="ch12-phreatic"/>
+      <polygon points="0,136 0,34 243,34 39,136" class="water"/>
+      <path d="M0,34 H243" class="water-line"/>
+      <path d="M54.8,80.1 L73.3,117.2" class="ch12-press" marker-end="url(#arr-acc)"/>
+      <path d="M115.8,64.7 L128.3,89.7" class="ch12-press" marker-end="url(#arr-acc)"/>
+      <path d="M176.9,49.2 L183.3,62.2" class="ch12-press" marker-end="url(#arr-acc)"/>
+      <text x="6" y="28" class="lbl-s lbl-w halo">reservoir, <tspan data-n="lab.res-m">20.4</tspan> m</text>
+      <text x="200" y="118" class="lbl-s halo on-fill">soaked fill</text>
+      <text x="6" y="160" class="lbl halo on-rock">A · Reservoir full</text>
+      </svg>
+      <svg class="dwg" viewBox="0 0 340 168" role="img" aria-label="Panel B: the same half of the dam moments after the reservoir has been emptied. The fill is still soaked below the same dashed line, and its water now seeps out through the upstream face. A slip circle runs from just below the crest down through the soaked fill and out beyond the upstream toe, with a factor of safety of 0.94.">
+      <rect x="0" y="136" width="340" height="32" fill="url(#p-clay)" class="edge"/>
+      <polygon points="39,136 279,16 309,16 334,28.5 334,136" fill="url(#p-fill)" class="edge"/>
+      <polygon points="39,136 243,34 246.5,37.8 251.5,39.4 256.5,40.9 261.5,42.6 266.5,44.1 271.5,45.3 276.5,46.7 281.5,48.2 286.5,49.4 291.5,50.5 296.5,51.8 301.5,53.2 306.5,54.3 311.5,55.3 316.5,56.5 321.5,57.9 326.5,59.1 331.5,60.1 334,136" fill="url(#p-sat)"/>
+      <path d="M243,34 L246.5,37.8 L251.5,39.4 L256.5,40.9 L261.5,42.6 L266.5,44.1 L271.5,45.3 L276.5,46.7 L281.5,48.2 L286.5,49.4 L291.5,50.5 L296.5,51.8 L301.5,53.2 L306.5,54.3 L311.5,55.3 L316.5,56.5 L321.5,57.9 L326.5,59.1 L331.5,60.1" class="ch12-phreatic"/>
+      <path d="M0,136 H39" class="edge"/>
+      <path d="M83,124 L75,108" class="ch12-out" marker-end="url(#arr-w)"/>
+      <path d="M133,99 L125,83" class="ch12-out" marker-end="url(#arr-w)"/>
+      <path d="M183,74 L175,58" class="ch12-out" marker-end="url(#arr-w)"/>
+      <path d="M255.5,27.8 A201.7,201.7 0 0 1 29.9,136" class="ch12-circle"/>
+      <text x="6" y="104" class="lbl-s halo">reservoir gone</text>
+      <text x="200" y="118" class="lbl-s halo on-fill">still soaked</text>
+      <text x="104" y="44" class="lbl-s lbl-acc halo">worst circle, <tspan font-style="italic">FS</tspan> = <tspan data-n="bench.fos-up">0.94</tspan></text>
+      <text x="6" y="160" class="lbl halo on-rock">B · Emptied fast</text>
+      </svg>
+      </div>
+      <figcaption>
+        <p class="cap"><b>Empty the reservoir fast and the fill keeps its water, so the upstream slope loses the reservoir's support while the water inside still presses.</b> Both panels show the upstream half of our dam, all compacted fill on clay. In A the reservoir stands <span data-n="lab.res-m">20.4</span> m deep and presses on the face at right angles (the <span class="k-acc">brick-red</span> arrows, longer with depth); the fill below the dashed water level is soaked. In B the reservoir has gone but the fill is soaked to the same line, and its water seeps out through the face (the short <span class="k-water">blue</span> arrows crossing it). The <span class="k-acc">brick-red</span> arc is the worst slip surface the workbench finds on this side once the reservoir is gone. <span class="cap-n">The number to remember: <span data-n="bench.fos-up">0.94</span>, below 1: this slope would slide.</span></p>
+        <ul class="try">
+          <li>Find the deepest arrow in A. How hard does the reservoir press on the foot of the face? (Depth times <span data-n="const.gw">9.81</span>.)</li>
+          <li>In B, find where the slip circle comes out. Is it inside the dam?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>The reservoir presses on the foot of the face with <span class="m"><span data-n="lab.res-m">20.4</span> × <span data-n="const.gw">9.81</span> = <span data-n="ch12.res-kpa">200.1</span> kPa</span>, all of it gone in B. The circle comes out on the reservoir floor <span data-n="ch12.up-exit-beyond-m">1.8</span> m beyond the upstream toe, through the clay ground.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the water inside the dam is the same in both panels, below the same line. Its pressure has fallen only by the weight of the water taken off above it, while the reservoir that pressed on the face from outside has gone altogether. In <a data-ref="ch-grip"></a>'s terms, the upstream slope went from a heap under still water to a heap with water seeping out of its face. Engineers call this <span class="gl" data-term="rapid-drawdown">rapid drawdown</span>, and the workbench checks it the classic way: water pressure on each slice comes straight from the seepage solution; the free-draining materials (anything that passes water at 10⁻⁵ m/s or faster: rockfill, filter sand, tailings sand and the sand &amp; gravel foundation) drain with the reservoir, while clay and fill keep their water pressure, less only the weight of the water taken off above them. The reservoir is taken all the way down at once, and the fill is given no time at all to drain: a deliberately pessimistic picture of a drawdown that in life takes days or weeks.</p>
+
+      <section class="we" id="ex-slope-drawdown">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Four dams, emptied fast</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Our dam's section with its <span data-n="lab.res-m">20.4</span> m reservoir emptied at once to the original ground, four ways of building it: all compacted fill on clay; the same with the downstream drain; a clay core between rockfill shells, on clay; all rockfill, on sand and gravel. The workbench's upstream check for each.</dd>
+          <dt>Find</dt><dd>Which upstream slopes stand, and why.</dd>
+          <dt>The idea</dt><dd>Only material that can drain as fast as the reservoir falls gets its grip back as the water goes. Compare each result with the long-slope rule.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">All fill: <span class="m"><var>FS</var> = <span data-n="bench.fos-up">0.940</span></span>, <span class="m"><var>r</var><sub>u</sub> = <span data-n="ch12.up-ru">0.441</span></span></span><span class="why">the trapped water carries more of the weight than at full reservoir downstream (<span data-n="bench.ru">0.353</span>)</span></li>
+          <li><span class="we-eq">Same circle, water pressure set to zero: <span data-n="ch12.up-nowater">1.705</span></span><span class="why">the soil itself is strong enough</span></li>
+          <li><span class="we-eq">With the downstream drain: <span class="m"><var>FS</var> = <span data-n="bench.fos-up@preset=drained">1.045</span></span></span><span class="why">a drain on the far side does little for this face</span></li>
+          <li><span class="we-eq">Clay core, rockfill shells: <span class="m"><var>FS</var> = <span data-n="bench.fos-up@preset=cored">1.094</span></span></span><span class="why">this core is wide, and the circle still cuts its clay</span></li>
+          <li><span class="we-eq">All rockfill: <span class="m"><var>FS</var> = <span data-n="bench.fos-up@preset=leaky,found=gravel">1.814</span></span>, against the long-slope <span data-n="ch12.inf-rock">1.801</span></span><span class="why">the rockfill drains as the reservoir falls: a dry slope</span></li>
+        </ol>
+        <p class="we-ans">The fill slope slides at <span data-n="bench.fos-up">0.94</span>; the drain and the core leave it near 1.0 to 1.1; all rockfill stands at <span data-n="bench.fos-up@preset=leaky,found=gravel">1.81</span>, the score of a dry slope.</p>
+        <p class="we-check"><b>Check.</b> The rockfill dam's worst surface is a skin <span data-n="ch12.up-depth-m@preset=leaky,found=gravel">2.0</span> m deep, a long slope in all but name, and its <span data-n="bench.fos-up@preset=leaky,found=gravel">1.814</span> is within 1% of <span class="m">tan 42° × 2 = <span data-n="ch12.inf-rock">1.801</span></span>. The fill dam's surface is a circle <span data-n="ch12.up-depth-m">9.3</span> m deep: its cohesion pushes the slip deep, into the water.</p>
+        <p class="we-means"><b>What it means.</b> A dam that must be emptied quickly needs a free-draining upstream shell, thick enough that the slip cannot run behind it through wet fill. <a data-ref="ex-zones-shell"></a> made the same point with a long slope; the workbench's "Empty it fast" mission in <a data-ref="ch-build"></a> asks you to design one.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"free","bd-found":"clay","bd-cut":"none","bd-slope":"2","bd-res":85,"bd-presets":"homogeneous","bd-side":"upstream"}}'>Set the figure</button> <span class=\"set-note\">then press Test in the workbench</span></p>
+      </section>
+
+      <p>Real reservoirs have done this. San Luis Dam, a large earth dam in California whose reservoir is filled and drawn down as water is stored and released, was found on 14 September 1981 to have slid along its upstream slope, after an unprecedented drawdown of its reservoir, by about 55 m in 120 days.<label for="mn-slope-sanluis" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-slope-sanluis" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="stark1987"></a>, abstract: the slide's discovery on 14 September 1981, the drawdown of about 55 m (180 ft) in 120 days, and seven earlier drawdown cycles. US Bureau of Reclamation measurements at Alcova Dam, Wyoming, lowered 120 ft in 40 days, showed "appreciable pore water pressures" left in the embankment afterwards: <a data-cite="usbr1987"></a>, p. 242.</span> It had been drawn down seven times before, some of them nearly as far. The investigation found clayey soil under the slope that had softened over fourteen years of the reservoir rising and falling, so the grip the slope had on the day was less than the grip it had been built with.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A reservoir is lowered by the same 20 m over a year instead of a week. Is the upstream fill slope in the same danger?</summary>
+        <p>Much less. The fill's water has time to leave as the level falls, so its pressure follows the reservoir down, and the slope passes through a series of nearly steady states. Rapid drawdown is a matter of time, like drained and undrained loading in <a data-ref="ch-trapped"></a>.</p>
+      </details>
+
+      <h3 id="s-slope-check">What the check does, and what it leaves out</h3>
+      <p>For circular slip surfaces the workbench uses Bishop's simplified method, the standard hand-and-computer method since 1955. It cuts the sliding mass into 40 vertical slices, works out how hard each slice presses on its base after taking away the water pressure there, and balances the turning effect of the whole mass about the circle's centre. It tries more than two thousand circles, from many entry and exit points and radii, then searches around the worst few, and keeps the lowest score.<label for="sn-slope-mindepth" class="sn-ref"></label><input type="checkbox" id="sn-slope-mindepth" class="margin-toggle"><span class="sidenote" data-kind="curious">It ignores any slip shallower than <span data-n="bench.min-depth-m">2</span> m. On a face of clean sand or rockfill the long-slope rule gives every depth the same score, so a search left to itself drifts to the thinnest skin it may, a few grains deep. Grains rolling off a face are called ravelling, and mending them is a maintenance job; the dam itself has not moved.</span> On the weak-layer foundation it also tries sliding blocks with a flat base along the layer, using <span class="gl" data-term="spencer-method">Spencer's method</span>, which balances forces and turning effects together and so works on surfaces that are not circles.</p>
+      <p>Suction above the water level is ignored, as is usual practice, because it can vanish in a wet spell. Each set of conditions a slope is checked for is a <span class="gl" data-term="load-case">load case</span>, and the workbench checks two: the downstream slope with the reservoir full and the seepage steady, and the upstream slope after a rapid drawdown. It leaves out the others a designer must run: the <span class="gl" data-term="end-of-construction">end of construction</span>, when the fill has only now been placed and the water squeezed into it by the weight of the layers above has not yet drained; an earthquake; a flood that raises the reservoir above its normal level. The workbench in <a data-ref="ch-build"></a> fixes the upstream slope at 2:1, which is steep for an earth dam; real ones are often flatter because of rapid drawdown.</p>
+
+      <h3 id="s-slope-target">What 1.5 means</h3>
+      <p>Each load case comes with a target. The US Army Corps of Engineers, whose manual on slope stability is a common reference, asks a new earth or rockfill dam for 1.5 under long-term steady seepage, 1.3 at the end of construction, and 1.1 to 1.3 right after a rapid drawdown.<label for="mn-slope-usace" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-slope-usace" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usace-em1902"></a>, p. 3-2, its table of minimum factors of safety for new earth and rock-fill dams; 1.1 for drawdown from the maximum surcharge pool, 1.3 from the maximum storage pool. The manual says on p. 3-1 that the values "continue to be based on experience".</span> The workbench's missions use 1.5 and, for the drawdown, <span data-n="bench.goal@mission=drawdown,goal=minFoSUp">1.2</span>.</p>
+      <p>A factor of safety of 1.5 means the grip available on the worst surface is one and a half times the grip needed to hold it. Turned round, the soil could lose a third of its strength before that surface moved. Nobody derived 1.5 from physics, and it says nothing about the chance of a failure. It is a margin chosen by experience to cover what nobody can measure exactly: the strength of soil that was sampled in a few places and tested in a few small pieces, water pressures that piezometers read at a few points, and a model that is only a model. Designers accept less for the short-lived cases partly because they last days or weeks rather than the life of the dam, and partly because the way they are checked is already pessimistic, as the workbench's instant, total drawdown is.</p>
+      <p>The margin covers ordinary uncertainty. It cannot cover a wrong input. The pull in <a data-ref="eq-slope-sum"></a> is weights and angles, and those are hard to get badly wrong. The grip depends on the strength you feed it, <var>c′</var> and <var>φ′</var>, and a factor of safety is only as good as that strength. <a data-ref="ch-trapped"></a> showed that strength depends on how fast the soil is loaded: given time, the water in a soil leaves as the load comes on and the grains take the press; loaded fast, the water cannot leave, and in a soil whose grains want to pack closer it takes part of the press itself. A calculation fed the slow strength scores a slow loading. It says nothing about a fast one.</p>
+      <p class="film-lead" data-lead-for="film-every-dam-leaks">The film <i>Every dam leaks</i> retells the opening question of this chapter, from the dam at 1.12 to the drain:</p>
     </div>
 
     <figure class="film wide" id="film-every-dam-leaks">
       <div class="sheet-top"><span class="figno"><b data-num></b> · Every dam leaks</span><span class="scale-note" data-gen="film-len"></span></div>
       <div class="film-before">
         <p class="film-k">Before you watch</p>
-        <p>Three fixes, money for one: make the dam fatter, drive a wall into the ground under it, or bury a strip of sand inside it. Which would you buy? You made a first guess at <a data-ref="pr-build">the top of this chapter</a>.</p>
+        <p>This chapter scored the drained dam at <span data-n="bench.fos@preset=drained">1.63</span> and stopped there. With the drain in, the circle of <a data-ref="fig-slope-slice"></a> is no longer the worst one; the solver finds a different curve. Where would you expect the new worst curve to run, and how much of its weight will the water carry? The film shows it at 4:34.</p>
+        <p class="film-bridge">This film was made before <i>The sand that boils</i> (<a data-ref="film-sand-that-boils"></a>), which calls it "the last episode". Its closing question is the one <a data-ref="ch-erosion"></a> answered.</p>
       </div>
       <div class="film-stage">
         <video controls preload="none" playsinline poster="video/every-dam-leaks.jpg" aria-label="Film: Every dam leaks"><source src="video/every-dam-leaks.mp4" type="video/mp4"><track kind="captions" src="video/every-dam-leaks.vtt" srclang="en" label="English"></video>
@@ -43,25 +398,78 @@
       <p class="film-k film-marks-k">In this film</p>
       <ol class="film-marks">
         <li><button type="button" data-t="4.1">0:04</button> <span class="fm-l">A dam at <span data-n="bench.fos">1.12</span></span> <a data-ref="pr-build">the question</a></li>
-        <li><button type="button" data-t="63.1">1:03</button> <span class="fm-l">Where the water comes out</span> <a data-ref="fig-lab"></a></li>
-        <li><button type="button" data-t="113.6">1:53</button> <span class="fm-l">Bishop's forty slices</span> <a data-ref="s-slope-check"></a></li>
-        <li><button type="button" data-t="163.8">2:43</button> <span class="fm-l">Fix one: a fatter dam</span></li>
-        <li><button type="button" data-t="198.1">3:18</button> <span class="fm-l">Fix two: a wall underneath</span></li>
-        <li><button type="button" data-t="229.8">3:49</button> <span class="fm-l">Fix three: a strip of sand</span></li>
-        <li><button type="button" data-t="274.9">4:34</button> <span class="fm-l">Why the drain wins</span> <a data-ref="fig-build"></a></li>
+        <li><button type="button" data-t="63.1">1:03</button> <span class="fm-l">Where the water comes out</span> <a data-ref="fig-slope-slice"></a></li>
+        <li><button type="button" data-t="113.6">1:53</button> <span class="fm-l">Bishop's forty slices</span> <a data-ref="ex-slope-slice"></a></li>
+        <li><button type="button" data-t="163.8">2:43</button> <span class="fm-l">Fix one: a fatter dam</span> <a data-ref="ex-slope-dry"></a></li>
+        <li><button type="button" data-t="198.1">3:18</button> <span class="fm-l">Fix two: a wall underneath</span> <a data-ref="ex-slope-dry"></a></li>
+        <li><button type="button" data-t="229.8">3:49</button> <span class="fm-l">Fix three: a strip of sand</span> <a data-ref="fig-build"></a></li>
+        <li><button type="button" data-t="274.9">4:34</button> <span class="fm-l">The new worst curve</span></li>
         <li><button type="button" data-t="323.7">5:23</button> <span class="fm-l">Controlling seepage</span> <a data-ref="s-seepage-defences"></a></li>
       </ol>
       <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
       <figcaption>
-        <details class="film-after"><summary>After you watch: the answer</summary><p>The strip of sand, a drain. The soil was strong enough all along; the water in it was taking the grip. On the worst slip circle of the dam at <span data-n="bench.fos">1.12</span>, the same soil with the water pressure taken out scores <span data-n="bench.fos-nowater">1.74</span>. Flattening the slope fights that water with more dirt, and a wall underneath does little on clay ground, where most of the water was going through the dam anyway. You can paint the drain yourself in <a data-ref="fig-build"></a>. The film ends on a question <a data-ref="ch-erosion"></a> has answered: water leaving the ground can carry the grains with it, unless a filter holds them.</p></details>
+        <details class="film-after"><summary>After you watch: the answer</summary><p>Shallower, and almost dry. The drained dam's worst surface runs from the crest to the toe at most <span data-n="bench.crit-depth-m@preset=drained">6.3</span> m deep, against <span data-n="bench.crit-depth-m">11.9</span> m for the circle of <a data-ref="fig-slope-slice"></a>, and the water carries less than a thousandth of its slices' weight (<var>r</var><sub>u</sub> = <span data-n="bench.ru@preset=drained">0.0007</span>, against <span data-n="bench.ru">0.353</span>). The drain empties the downstream half of water pressure, so every surface the solver tries runs through soil gripping with its full weight, and the best it can find scores <span data-n="bench.fos@preset=drained">1.63</span>. Two of the film's phrasings deserve a note. It says the water in the gaps "pushes them apart"; the careful version, from <a data-ref="ch-grip"></a>, is that the water carries part of the load the grains would otherwise carry between them, so they press on one another less. And its line that design has moved from stopping seepage to controlling it is the Bureau of Reclamation's own history: its manual records the dam of one soil giving way to one with carefully placed drains. You can paint the drain yourself in <a data-ref="fig-build"></a>. The film ends on the question <a data-ref="ch-erosion"></a> answered: water leaving the ground can carry the grains with it, unless a filter holds them.</p></details>
       </figcaption>
     </figure>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.13): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>A slope's factor of safety is its grip over its pull. For a long slope of clean grains it is <span class="m"><var>n</var> · tan <var>φ′</var></span> for an <var>n</var>:1 slope, and water seeping out of the face multiplies it by <var>γ′</var>/<var>γ</var><sub>sat</sub>, about a half: the water adds pull and no press.</li>
+        <li>Real embankments slide on deep curves. Cut the mass into slices, each a block on a curved ramp, and add up their grips and pulls. Bishop's method balances each slice up and down, so the factor of safety sits on both sides of the sum and must be found by going round a loop.</li>
+        <li>On our dam's worst circle the water carries <span data-n="bench.ru">0.35</span> of the slices' weight, and costs the slope a third of its score. A drain that takes the water away does more than a quarter more fill.</li>
+        <li>Rapid drawdown takes the reservoir's help away from the upstream face and leaves the fill's water in it. Only a free-draining shell gets its grip back as fast as the water falls.</li>
+        <li>1.5 is a margin chosen by experience for what nobody can measure exactly. The number is only as good as the strength fed to it, and a soil's strength depends on how fast it is loaded.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-slope-drain" data-tag="check" data-level="2">
+          <p>With the drain in, our dam leaks <span data-n="ch12.leak-ratio">2.47</span> times as much water as without it, and its factor of safety rises from <span data-n="bench.fos">1.12</span> to <span data-n="bench.fos@preset=drained">1.63</span>. How can more water make it safer?</p>
+          <details class="q-hint"><summary>Hint</summary><p>What does the slope check use: how much water passes, or its pressure on the slices' bases?</p></details>
+          <div class="q-answer"><p>The slope check never asks how much water passes; it asks how hard the water presses where the soil might slip. Without the drain the water rises through the downstream half and breaks out <span data-n="bench.face-m">8</span> m up the face, and on the worst circle it carries <span data-n="bench.ru">0.35</span> of the slices' weight. The drain gives it an easy path down and out: it flows faster, <span data-n="bench.q-lday@preset=drained">109.7</span> L/day per metre against <span data-n="bench.q-lday">44.4</span>, but it no longer presses in the downstream half, so the grains there press with their full weight. <a data-ref="ex-seepage-drains"></a> found the same trade for piping.</p></div>
+        </li>
+        <li class="q" id="q-slope-sand3" data-tag="reckon" data-level="2">
+          <p>A long slope of the tailings sand of <a data-ref="ex-slope-infinite"></a> is built at 3:1, with water seeping out of its face parallel to it. Will it stand?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Use <a data-ref="eq-slope-seep"></a> with tan <var>β</var> = 1/3.</p></details>
+          <div class="q-answer"><p>No. <span class="m"><var>FS</var> = <span data-n="ch12.tan-phi-mat">0.6494</span> × 3 × <span data-n="ch12.gratio">0.4969</span> = <span data-n="ch12.inf-seep@n=3">0.968</span></span>, a little below 1. With water seeping out of it, this sand stands only at about <span data-n="ch12.seep-n">3.1</span>:1 or flatter, where <span class="m"><var>FS</var> = 1</span>; to reach 1.5 it needs about <span data-n="ch12.seep-n15">4.6</span>:1, or a drain to keep the water from reaching the face.</p></div>
+        </li>
+        <li class="q" id="q-slope-oms" data-tag="reckon" data-level="3">
+          <p>The earliest method of slices ignored the neighbours' pushes, taking the press on a base as <span class="m"><var>N′</var> = <var>W</var> cos <var>α</var> − <var>u</var>·<var>l</var></span>. Work slice 13 that way, with the numbers of <a data-ref="ex-slope-slice"></a>. Does it give the slice more grip than Bishop's method, or less, and what does that do to the dam's score?</p>
+          <details class="q-hint"><summary>Hint</summary><p>You need <span class="m"><var>l</var> = <span data-n="ch12.l-m">1.601</span> m</span> from the example; nothing in this formula depends on the factor of safety.</p></details>
+          <div class="q-answer"><p><span class="m"><var>W</var> cos <var>α</var> = <span data-n="bench.slice-w-kn@i=12">319.0</span> × <span data-n="ch12.cos-a">0.8486</span> = <span data-n="ch12.oms-wcos">270.7</span> kN</span>; <span class="m"><var>u</var>·<var>l</var> = <span data-n="bench.slice-u-kpa@i=12">76.40</span> × <span data-n="ch12.l-m">1.601</span> = <span data-n="ch12.oms-ul">122.3</span> kN</span>; <span class="m"><var>N′</var> = <span data-n="ch12.oms-wcos">270.7</span> − <span data-n="ch12.oms-ul">122.3</span> = <span data-n="ch12.oms-n">148.4</span> kN</span>; grip <span class="m">= 10 × <span data-n="ch12.l-m">1.601</span></span> <span class="m">+ <span data-n="ch12.oms-n">148.4</span> × <span data-n="ch12.tan-phi">0.6249</span></span> <span class="m">= <span data-n="ch12.oms-grip">108.7</span> kN</span>, against Bishop's <span data-n="ch12.grip">129.3</span>. Less grip: the old method takes the water's push on the whole tilted base off the press, and lets no neighbour help. Over all forty slices it scores the circle <span data-n="ch12.oms">0.978</span>, against Bishop's <span data-n="bench.fos">1.116</span>.</p></div>
+        </li>
+        <li class="q" id="q-slope-target" data-tag="check" data-level="2">
+          <p>Why do designers accept about <span data-n="bench.goal@mission=drawdown,goal=minFoSUp">1.2</span> for an upstream slope right after a rapid drawdown, but want 1.5 for the downstream slope with the reservoir full?</p>
+          <details class="q-hint"><summary>Hint</summary><p>How long does each condition last, and how was each one checked?</p></details>
+          <div class="q-answer"><p>A full reservoir with steady seepage is the dam's everyday state for decades, so it gets the full margin. A rapid drawdown lasts days or weeks before the water drains out of the fill, it happens rarely, and the check for it already leans toward the worst: the reservoir falls all the way at once and the fill gets no time to drain. The manual's own range for it is 1.1 to 1.3 (<a data-cite="usace-em1902"></a>, in its table of minimum factors).</p></div>
+        </li>
+        <li class="q" id="q-slope-pass" data-tag="case" data-level="3">
+          <p>Name one way a dam could pass its slope check at 1.5 and still fail.</p>
+          <details class="q-hint"><summary>Hint</summary><p>A factor of safety is a calculation. What goes into it?</p></details>
+          <div class="q-answer"><p>Any wrong input. The strength fed to the check may be the wrong one: a slow, drained strength for a soil that is loaded fast (<a data-ref="ch-trapped"></a>). The water pressures may be higher than the model's, because a drain clogs or the soil is more layered than drawn. The load may be one the check left out, such as an earthquake or a flood over the crest. Or the slip may run where nobody looked. <a data-ref="ch-build"></a> follows one real case.</p></div>
+        </li>
+        <li class="q" id="q-slope-flat" data-tag="explore" data-level="2">
+          <p>In the workbench, start from the homogeneous dam, set the downstream slope to 3:1 and test it. What is its factor of safety, and where does the water come out? Then try the drain at 2:1.</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"free","bd-found":"clay","bd-cut":"none","bd-res":85,"bd-side":"downstream","bd-presets":"homogeneous","bd-slope":"3"}}'>Set the figure</button> <span class=\"set-note\">then press Test in the workbench</span></p>
+          <details class="q-hint"><summary>Hint</summary><p>Read the downstream slope's factor of safety, and look for the seepage face on the downstream slope.</p></details>
+          <div class="q-answer"><p>At 3:1 it scores <span data-n="bench.fos@slope=3">1.418</span> for <span data-n="ch12.fill-3-pct">23.1</span>% more fill, and the water still breaks out <span data-n="bench.face-m@slope=3">8</span> m up the face. The drain at 2:1 reaches <span data-n="bench.fos@preset=drained">1.628</span> with no fill added, and no water comes out of the face at all.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="usbr1987"></cite> <span class="level">gentle</span> Its chapter on earthfill dams explains in plain words why the dam of one soil weeps from its face, why drains replaced it, and why a dam that may be emptied fast needs a flatter or free-draining upstream slope, with the pore pressures measured at Alcova Dam after a drawdown. Free from the Bureau of Reclamation.</li>
+        <li><cite data-cite="duncan2014"></cite> <span class="level">serious</span> The standard modern account of what this chapter did by hand: soil strength for stability work, the methods of slices from the ordinary method through Bishop's and Spencer's, and how to analyze rapid drawdown properly.</li>
+        <li><cite data-cite="bishop1955"></cite> <span class="level">primary source</span> Eleven pages that set the method every dam engineer learned for the next half century. The derivation is the one in <a data-ref="eq-slope-bishop"></a>, with the side forces kept.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">You can now score a slope, and you know what the score leaves out. Can you build a dam that passes the leak, the boil and the slip all at once, and what would the checks miss in a dam that passed them?</p></nav>
   </section>
 </section>
