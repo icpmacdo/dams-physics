@@ -1,0 +1,214 @@
+{
+ "feijao2019": {
+  "group": "reports",
+  "short": "Robertson et al. (2019)",
+  "authors": "Robertson, P.K., de Melo, L., Williams, D.J., Wilson, G.W.",
+  "year": "2019",
+  "title": "Report of the Expert Panel on the Technical Causes of the Failure of Feijão Dam I",
+  "container": "12 December 2019",
+  "doi": null,
+  "url": "https://damfailures.org/sites/default/files/wp-pdf/IR_Feijao-Dam.pdf"
+ },
+ "polley2015": {
+  "group": "reports",
+  "short": "Mount Polley Review Panel (2015)",
+  "authors": "Independent Expert Engineering Investigation and Review Panel",
+  "year": "2015",
+  "title": "Report on Mount Polley Tailings Storage Facility Breach",
+  "container": "Province of British Columbia, January 2015",
+  "doi": null,
+  "url": "https://www.mountpolleyreviewpanel.ca/sites/default/files/report/ReportonMountPolleyTailingsStorageFacilityBreach.pdf"
+ },
+ "polley-cim2015": {
+  "group": "reports",
+  "short": "Chief Inspector of Mines (2015)",
+  "authors": "Chief Inspector of Mines",
+  "year": "2015",
+  "title": "Mount Polley Mine Tailings Storage Facility Breach, August 4, 2014: Investigation Report of the Chief Inspector of Mines",
+  "container": "BC Ministry of Energy and Mines, 30 November 2015",
+  "doi": null,
+  "url": "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/mineral-exploration-mining/documents/directives-alerts-incidents/chief-inspector-s-report-page/m-200_mount_polley_2015-11-30_ci_investigation_report.pdf"
+ },
+ "luino2012": {
+  "group": "papers",
+  "short": "Luino & De Graff (2012)",
+  "authors": "Luino, F., De Graff, J.V.",
+  "year": "2012",
+  "title": "The Stava mudflow of 19 July 1985 (Northern Italy): a disaster that effective regulation might have prevented",
+  "container": "Natural Hazards and Earth System Sciences 12: 1029–1044",
+  "doi": "10.5194/nhess-12-1029-2012",
+  "url": "https://nhess.copernicus.org/articles/12/1029/2012/",
+  "note": "Abstract: the upper dam burst on 19 July 1985, the mudflow (180,000 m³) ran more than 4.2 km, 268 died; foremost among the causes, the mistaken assumption that the tailings would consolidate fairly quickly. The text describes the upper basin as raised by the upstream method and the mud pouring from the upper into the lower impoundment."
+ },
+ "foster2000": {
+  "group": "papers",
+  "short": "Foster, Fell & Spannagle (2000)",
+  "authors": "Foster, M., Fell, R., Spannagle, M.",
+  "year": "2000",
+  "title": "The statistics of embankment dam failures and accidents",
+  "container": "Canadian Geotechnical Journal 37(5): 1000–1024",
+  "doi": "10.1139/t00-030",
+  "url": null
+ },
+ "gistm2020": {
+  "group": "standards",
+  "short": "GISTM (2020)",
+  "authors": "International Council on Mining and Metals, United Nations Environment Programme and Principles for Responsible Investment",
+  "year": "2020",
+  "title": "Global Industry Standard on Tailings Management",
+  "container": "August 2020",
+  "doi": null,
+  "url": null
+ },
+ "usbr1987": {
+  "group": "standards",
+  "short": "USBR (1987)",
+  "authors": "U.S. Bureau of Reclamation",
+  "year": "1987",
+  "title": "Design of Small Dams, 3rd ed.",
+  "container": "Denver",
+  "doi": null,
+  "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-pdfs/SmallDams.pdf"
+ },
+ "oroville2018": {
+  "group": "reports",
+  "short": "Oroville Independent Forensic Team (2018)",
+  "authors": "Independent Forensic Team",
+  "year": "2018",
+  "title": "Independent Forensic Team Report: Oroville Dam Spillway Incident",
+  "container": "5 January 2018",
+  "doi": null,
+  "url": "https://damfailures.org/sites/default/files/wp-pdf/IR_IFT_Oroville.pdf"
+ },
+ "bchydro-cbrac2016": {
+  "group": "reports",
+  "short": "BC Hydro (2016)",
+  "authors": "BC Hydro",
+  "year": "2016",
+  "title": "Virtual tour of Revelstoke and Mica",
+  "container": "Presentation to the Columbia Basin Regional Advisory Committee, October 2016",
+  "doi": null,
+  "url": "https://engage.gov.bc.ca/app/uploads/sites/6/2017/01/Virtual-tour-of-Revelstoke-and-Mica-CBRAC-presentation-Oct-2016.pdf",
+  "note": "Revelstoke's concrete dam: 470 m long, 126 m thick at the base, 9 m at the crest; it 'relies on its massive weight and resultant friction to hold back the reservoir'."
+ },
+ "franks2021": {
+  "group": "papers",
+  "short": "Franks et al. (2021)",
+  "authors": "Franks, D.M., Stringer, M., Torres-Cruz, L.A., Baker, E., Valenta, R., Thygesen, K., Matthews, A., Howchin, J., Barrie, S.",
+  "year": "2021",
+  "title": "Tailings facility disclosures reveal stability risks",
+  "container": "Scientific Reports 11: 5353",
+  "doi": "10.1038/s41598-021-84897-0",
+  "url": null,
+  "note": "p. 1: Brumadinho, 259 deaths and a further 11 people missing; the investors' disclosure request of 5 April 2019, answered by 107 companies. pp. 1–2: 1,743 facilities, 44.5 billion m³ stored, 750 m deep over Manhattan; about 2.5 billion m³ a year expected for 2019–2023."
+ },
+ "fourie2001": {
+  "group": "papers",
+  "short": "Fourie, Blight & Papageorgiou (2001)",
+  "authors": "Fourie, A.B., Blight, G.E., Papageorgiou, G.",
+  "year": "2001",
+  "title": "Static liquefaction as a possible explanation for the Merriespruit tailings dam failure",
+  "container": "Canadian Geotechnical Journal 38(4): 707–719",
+  "doi": "10.1139/t00-112",
+  "url": null,
+  "note": "p. 707 (abstract): 17 deaths; insufficient freeboard provision and often poor pool control; overtopping and erosion exposed metastable tailings, which liquefied. p. 708: a 31 m gold tailings dam, February 1994, about 50 mm of rain, about 600,000 m³ flowed about 3 km; upstream (daywall paddock) construction; water flowed over the crest for 1 to 2 hours."
+ },
+ "fundao2016": {
+  "group": "reports",
+  "short": "Fundão Review Panel (2016)",
+  "authors": "Fundão Tailings Dam Review Panel: Morgenstern, N.R. (chair), Vick, S.G., Viotti, C.B., Watts, B.D.",
+  "year": "2016",
+  "title": "Report on the Immediate Causes of the Failure of the Fundão Dam",
+  "container": "25 August 2016",
+  "doi": null,
+  "url": null,
+  "note": "p. i: a liquefaction flowslide on 5 November 2015, beginning at the left abutment; the dam was raised by the upstream method. p. ii: three small seismic shocks about 90 minutes earlier likely accelerated a failure already well advanced. p. 18: 32 million m³ of tailings lost, 61% of the contents."
+ },
+ "stava-elcobre": {
+  "group": "web",
+  "short": "Fondazione Stava 1985, El Cobre",
+  "authors": "Fondazione Stava 1985",
+  "year": null,
+  "title": "The El Cobre tailings dam failure, 1965",
+  "container": "Fondazione Stava 1985 Onlus, Tesero",
+  "doi": null,
+  "url": "https://stava1985.it/the-el-cobre-disaster-chile/?lang=en",
+  "note": "28 March 1965, a copper mine in the El Cobre district, Chile; a dyke built by upstream hydraulic filling, 35 m high; set off by an earthquake and ascribed to liquefaction; 1.9 million m³ of 4.25 million m³ stored ran 12 km; over 200 deaths. Its own sources: Dobry and Alvarez (1967) and the WISE chronology."
+ },
+ "stava-fundao": {
+  "group": "web",
+  "short": "Fondazione Stava 1985, Fundão",
+  "authors": "Fondazione Stava 1985",
+  "year": null,
+  "title": "The Fundão tailings dams failure, 2015",
+  "container": "Fondazione Stava 1985 Onlus, Tesero",
+  "doi": null,
+  "url": "https://www.stava1985.it/der-einsturz-der-deponie-fundao-2015/?lang=en",
+  "note": "17 confirmed deaths and two people missing; a mudflow of more than 30 million m³; over 660 km down three rivers to the Atlantic."
+ },
+ "adamo2020": {
+  "group": "papers",
+  "short": "Adamo et al. (2020)",
+  "authors": "Adamo, N., Al-Ansari, N., Sissakian, V., Laue, J., Knutsson, S.",
+  "year": "2020",
+  "title": "Dam safety problems related to seepage",
+  "container": "Journal of Earth Sciences and Geotechnical Engineering 10(6): 191–239",
+  "doi": null,
+  "url": "https://www.diva-portal.org/smash/get/diva2:1444095/FULLTEXT01.pdf",
+  "note": "pp. 194–195 and Table 1: Foster, Fell and Spannagle's statistics of large embankment dam failures to 1986, from a database of 11,192 dams; 136 failures in all, 124 in operation, with the counts and shares by mode."
+ },
+ "bc-dsr2016": {
+  "group": "bc-law",
+  "short": "Dam Safety Regulation (2016)",
+  "authors": "British Columbia",
+  "year": "2016",
+  "title": "Dam Safety Regulation, B.C. Reg. 40/2016",
+  "container": "Under the Water Sustainability Act; deposited and effective 29 February 2016",
+  "doi": null,
+  "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/40_2016",
+  "note": "Applies to dams that store or divert water; dams under 7.5 m high holding no more than 10,000 m³ are excluded unless ordered otherwise."
+ },
+ "bc-hsrc-part10": {
+  "group": "bc-law",
+  "short": "Mines Code, Part 10",
+  "authors": "British Columbia, Ministry of Mining and Critical Minerals",
+  "year": "2026",
+  "title": "Health, Safety and Reclamation Code for Mines in British Columbia, Part 10: Permitting, Reclamation and Closure",
+  "container": "Victoria, revised June 2026",
+  "doi": null,
+  "url": "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/mineral-exploration-mining/documents/health-and-safety/code-review/minescode_june_2026.pdf",
+  "note": "Section 10.4.1: an engineer of record for each tailings storage facility and dam. Section 10.4.3: an Independent Tailings Review Board for a mine with one or more tailings storage facilities, unless the chief inspector exempts it."
+ },
+ "cda2013": {
+  "group": "standards",
+  "short": "CDA (2013)",
+  "authors": "Canadian Dam Association",
+  "year": "2013",
+  "title": "Dam Safety Guidelines 2007 (2013 edition)",
+  "container": null,
+  "doi": null,
+  "url": null
+ },
+ "cda2019-mining": {
+  "group": "standards",
+  "short": "CDA (2019)",
+  "authors": "Canadian Dam Association",
+  "year": "2019",
+  "title": "Technical Bulletin: Application of Dam Safety Guidelines to Mining Dams",
+  "container": "2019 edition (first published 2014)",
+  "doi": null,
+  "url": "https://cda.ca/publications/cda-guidance-documents/dam-safety-publications",
+  "note": "Complements the 2013 Dam Safety Guidelines with how they apply to mining dams, many of which must function indefinitely."
+ },
+ "bchydro-peace2020": {
+  "group": "web",
+  "short": "BC Hydro (2020)",
+  "authors": "BC Hydro",
+  "year": "2020",
+  "title": "Peace River System Dam Safety: BC Hydro Projects Update",
+  "container": "June 2020",
+  "doi": null,
+  "url": "https://www.bchydro.com/content/dam/BCHydro/customer-portal/documents/projects/gm-shrum/gms-pcn-dam-safety-projects-update-16.pdf",
+  "note": "W.A.C. Bennett Dam is an earthfill embankment dam, 2,040 m across the top, 183 m high and 800 m thick at its base."
+ }
+}

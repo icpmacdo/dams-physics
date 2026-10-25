@@ -1,17 +1,26 @@
 <section class="chapter" id="ch-two-dams">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.7): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <p class="so-far"><b>So far.</b> Part I built one idea from a beach, a bucket and a block on a ramp: soil holds only as well as its grains press on one another, and the water between them can take that press away, all at once when it cannot get out in time (<a data-ref="ch-trapped"></a>). Part II puts the idea to work on real dams, starting with two that look alike in section and do opposite jobs.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>set a water dam beside a tailings dam and say how they differ in what they hold, how long they must last and how they have failed;</li>
+        <li>work out the power of a hydro plant and the load on its dam, and tell the depth that loads a dam from the head that drives its turbines;</li>
+        <li>explain why a tailings beach sorts its own grains, and why every dam must pass its flood with metres to spare.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.7): Brumadinho, 25 January 2019 (verify against feijao2019). -->
-    </div>
+
     <div class="col">
+      <p class="cold"><span class="newthought">At 12:28 in the afternoon</span> on 25 January 2019, a video camera above an iron mine near Brumadinho, in the Brazilian state of Minas Gerais, was looking across the valley at the face of a dam.<span class="case-ref" data-case="Feijão Dam I, Brumadinho"></span> Dam I held about 12.7 million cubic metres of waste from the mine, the Córrego do Feijão, and nothing had been added to it for two and a half years. A drone had filmed it seven days before and seen nothing wrong. Its instruments had recorded nothing that mattered either: survey markers on the crest, tubes that measure movement deep inside it, radar watching the face, and gauges reading the water pressure within it.<label for="mn-two-dams-feijao" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-feijao" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="feijao2019"></a>, pp. i–ii (the time, the drone, the instruments, deposition ending July 2016), p. 5 (the camera) and p. 12 (the volume stored).</span></p>
+      <p>In the footage the <span class="gl" data-term="crest">crest</span> sags first, along most of the dam's length. A fifth of a second later the face bulges outward, low down, just above the <span class="gl" data-term="toe">toe</span>. Five seconds in, water spurts out near the toe. In under ten seconds the whole slope has collapsed, and what was a slope is a heavy liquid, moving. Within five minutes 9.7 million m³ of tailings, three quarters of everything the dam held, had poured out. The flow ran through the mine's canteen and offices, through houses and farms, and on down the valley to the Paraopeba River. It killed 270 people; 11 of them were never found.<label for="mn-two-dams-toll" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-toll" class="margin-toggle"><span class="marginnote" data-kind="source">The sequence, the volume and the flow's path: <a data-cite="feijao2019"></a>, pp. i, 3, 5–6. The toll, 259 deaths and 11 people missing: <a data-cite="franks2021"></a>, p. 1.</span></p>
+      <p>When a water dam fails, water escapes. Here the dam itself went liquid. The ground-up rock behind its face had stood as a slope for decades, firm enough to walk on, and in seconds it had no grip left. A lake has no grip to lose; it is a liquid already. That difference is this chapter's question: what changes when the thing behind the dam can lose its own strength?</p>
+
+      <h3 id="s-two-dams-jobs">Two jobs</h3>
       <p>A hydroelectric dam holds back water, and the water is the product. Its height above the turbines is stored energy, released on demand. A tailings dam holds back mine waste, called <span class="gl" data-term="tailings">tailings</span>: rock ground to sand, silt and finer, pumped out of the mill as a slurry with the water used to process it. Nobody wants it back. The job is to keep it in place, forever.</p>
-      <p>Both dams face the physics of <a data-ref="ch-depth,ch-head"></a>. Water pressure grows by about <span data-n="const.gw">9.8</span> kPa for every metre of depth (<span class="term">p = ρgh</span>), which comes to nearly <span data-n="depth.pb-kpa@H=100" data-n-sig="1">1,000</span> kPa, or <span data-n="depth.pb-mpa@H=100" data-n-sig="1">1</span> MPa, at the foot of a 100 m reservoir. And water seeps through anything that isn't perfectly tight.</p>
+      <p>There is a great deal of it. In April 2019, after Brumadinho, a group of investors asked the world's listed mining companies to describe their tailings facilities. The 107 companies that replied listed 1,743 of them, holding 44.5 billion m³; spread evenly over Manhattan, the authors worked out, that would stand 750 m deep. The same companies expected to add about 2.5 billion m³ a year.<label for="mn-two-dams-franks" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-franks" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="franks2021"></a>, pp. 1–2.</span></p>
+      <p>Both kinds of dam face the physics of <a data-ref="ch-depth,ch-head"></a>. Water pressure grows by <span data-n="const.gw">9.81</span> kPa for every metre of depth, which comes to nearly <span data-n="depth.pb-kpa@H=100" data-n-sig="1">1,000</span> kPa, or <span data-n="depth.pb-mpa@H=100" data-n-sig="1">1</span> MPa, at the foot of a 100 m reservoir, and water seeps through anything that isn't perfectly tight. Below, one of each is drawn in section, side by side:</p>
     </div>
 
     <figure class="sheet wide" id="fig-types">
@@ -22,7 +31,7 @@
       <div class="pair">
         <div>
           <p class="panel-title">Concrete gravity dam with powerhouse <small>hydroelectric</small></p>
-          <div class="svgwrap"><svg class="dwg" id="svg-hydro" viewBox="0 0 560 340" role="img" aria-label="A concrete gravity dam holding a reservoir. Water enters an intake, drops through a penstock to a turbine in the powerhouse at the toe, and leaves through the tailrace. Water pressure on the upstream face grows with depth."></svg></div>
+          <div class="svgwrap"><svg class="dwg" id="svg-hydro" viewBox="0 0 560 340" role="img" aria-label="A concrete gravity dam holding a reservoir. Water enters an intake, drops through a penstock to a turbine in the powerhouse at the toe, and leaves through the tailrace. The head H is the drop from the reservoir surface to the tailwater. Water pressure on the upstream face grows with depth all the way down to the heel, a few metres below the tailwater."></svg></div>
           <div class="controls">
             <div class="range"><label for="hy-level">Reservoir level</label><input type="range" id="hy-level" min="0" max="100" value="80"><output id="hy-level-o">H = 85 m</output></div>
             <div class="range"><label for="hy-flow">Turbine flow</label><input type="range" id="hy-flow" min="10" max="300" value="150"><output id="hy-flow-o">150 m³/s</output></div>
@@ -35,14 +44,116 @@
         <div>
           <p class="panel-title">Tailings storage facility <small>mine waste</small></p>
           <div class="svgwrap"><svg class="dwg" id="svg-tail" viewBox="0 0 560 340" role="img" aria-label="A tailings dam. Slurry from the mill is discharged from spigots on the crest. Coarse sand settles first, forming a beach; fine slimes travel on to the pond at the back. A barge reclaims pond water for the mill."></svg></div>
-          <p class="note" style="margin-top:10px">Watch the grains as the slurry leaves the pipes on the crest (the spigots). Coarse sand drops out first and builds a sloping <span class="gl" data-term="beach">beach</span>; the finest particles ride the water out to the pond. That sorting decides how strong, and how wet, the tailings next to the dam will be.</p>
         </div>
       </div>
-      <figcaption><strong>Left:</strong> the head <em>H</em>, the drop from the reservoir to the tailwater, drives the turbines. The load on the dam comes from the water's full depth at the heel, a few metres more than <em>H</em>. Drag the sliders to change the power output and the water pressure on the heel. <strong>Right:</strong> the tailings deposit is the dam's main load, and much of the dam is eventually built on top of it or out of it.</figcaption>
+      <figcaption>
+        <p class="cap"><b>A water dam turns the drop of its water into power; a tailings dam holds a deposit that sorts itself by grain size as it settles.</b> Left: a concrete dam with its powerhouse at the toe. Water enters the intake, falls through the <span class="gl" data-term="penstock">penstock</span> to the turbine and leaves by the <span class="gl" data-term="tailrace">tailrace</span>. The head <var>H</var>, dimensioned on the right, is the drop from the reservoir to the <span class="gl" data-term="tailwater">tailwater</span>, and it drives the turbines. The <span class="k-acc">brick-red</span> triangle is the water's pressure on the upstream face; it comes from the full depth of water at the <span class="gl" data-term="heel">heel</span>, a few metres more than <var>H</var>. Moving dashes show the water in the penstock and the tailrace, whose speed follows the flow, and the power leaving along the line, whose speed follows the flow times the head. Right: a tailings dam raised in stages from a starter dam. Slurry pours from pipes on the crest, the <span class="gl" data-term="spigot">spigots</span>. Watch the grains: the coarse sand drops out first and builds a sloping <span class="gl" data-term="beach">tailings beach</span>, while the finest grains, the <span class="gl" data-term="slimes">slimes</span>, ride the water out to the pond, where a barge pumps water back to the mill. The dashed line labelled Phreatic surface is the top of the water inside the deposit, the <span class="gl" data-term="phreatic-surface">phreatic surface</span>; the finer dashes in the embankment mark the stages it was raised in, and the underdrain at its base lets water out. The sorting decides how strong, and how wet, the tailings next to the dam will be. <span class="cap-n">The numbers to remember: at its opening settings the plant makes <span data-n="hydro.P-mw">112</span> MW from 150 m³/s falling <span data-n="hydro.H-m">84.8</span> m, and the water presses on the heel with <span data-n="hydro.p-mpa">0.87</span> MPa.</span></p>
+        <ul class="try">
+          <li>Set Reservoir level to its lowest. Read <var>H</var>, then the depth at the heel under Pressure at the heel. What is the difference?</li>
+          <li>Halve the Turbine flow. Which readouts change, and which stay where they were?</li>
+          <li>Watch where the smallest grains on the right come to rest.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p><var>H</var> = <span data-n="hydro.H-m@level=0">56</span> m and the heel is <span data-n="hydro.depth-m@level=0">60</span> m deep: the <span data-n="ch06.tw-m">4</span> m of tailwater over the base, the same at every level. Halving the flow to 75 m³/s halves the power, to <span data-n="hydro.P-mw@Q=75">56.2</span> MW; the pressure and the load at the heel do not move, because they come from the depth of the water, not from how much of it is flowing. The smallest grains settle in the pond, far from the dam.</p></details>
+      </figcaption>
     </figure>
 
     <div class="col">
+      <p>Notice that on the left the dimension <var>H</var> stops at the tailwater, while the pressure triangle on the dam's face runs on down to the heel. Notice too, on the right, that the pond lies at the far end of the beach, as far from the dam as the deposit allows. The rest of the chapter takes those two details in turn.</p>
+
+      <h3 id="s-two-dams-power">Head drives the turbines, depth loads the dam</h3>
+      <p>Start with the water dam, because its sums are short. A cubic metre of water weighs <span data-n="const.gw">9.81</span> kN. Let it fall <var>H</var> metres and gravity does <span class="m"><span data-n="const.gw">9.81</span> × <var>H</var></span> kilojoules of work on it, since a kilojoule is a kilonewton moved through a metre. The turbine catches as much of that as it can. Send <var>Q</var> cubic metres through every second and the power is the energy each cubic metre gives up, times the cubic metres per second, less what the machines lose:</p>
+      <div class="eq" id="eq-two-dams-power"><span class="eq-body"><var>P</var> = <var>η</var> · <var>ρ</var> · <var>g</var> · <var>Q</var> · <var>H</var></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>P</var> power (W, watts; a megawatt, MW, is a million watts) · <var>η</var> efficiency, the share of the falling water's energy that the turbine and generator turn into electricity · <var>ρ</var> 1,000 kg/m³ · <var>g</var> <span data-n="const.gw">9.81</span> m/s² · <var>Q</var> flow through the turbines (m³/s) · <var>H</var> head, the drop from the reservoir surface to the tailwater, strictly the <span class="gl" data-term="gross-head">gross head</span> (m)</p>
+      <p>The figure takes <var>η</var> = <span data-n="ch06.eta">0.90</span> for the turbine and generator together.<label for="sn-two-dams-head" class="sn-ref"></label><input type="checkbox" id="sn-two-dams-head" class="margin-toggle"><span class="sidenote" data-kind="units"><var>H</var> here is the gross head, surface to surface. Part of it is spent pushing the water through the intake and the penstock, so the turbine itself works on a little less, the net head. The figure uses the gross head, and folds the losses on the way into one efficiency.</span> At its opening settings:</p>
+
+      <section class="we" id="ex-two-dams-power">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The power of a drop</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>A turbine flow <var>Q</var> = 150 m³/s falling a head <var>H</var> = <span data-n="hydro.H-m">84.8</span> m (the figure rounds it to 85); efficiency <var>η</var> = <span data-n="ch06.eta">0.90</span>; water weighs <span data-n="const.gw">9.81</span> kN/m³. At the highest reservoir level the head is <span data-n="hydro.H-m@level=100">92</span> m.</dd>
+          <dt>Find</dt><dd>The power, and the flow that would give 200 MW at the highest level.</dd>
+          <dt>The idea</dt><dd>Energy per cubic metre, times cubic metres per second, times the share the machines keep (<a data-ref="eq-two-dams-power"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Each m³: <span data-n="const.gw">9.81</span> × <span data-n="hydro.H-m">84.8</span> = <span data-n="ch06.kj-m3">831.888</span> kJ</span><span class="why">its weight times the drop; a kilonewton through a metre is a kilojoule</span></li>
+          <li><span class="we-eq">Each second: <span data-n="ch06.kj-m3">831.888</span> × 150 = <span data-n="ch06.kw-gross">124,783</span> kW</span><span class="why">150 cubic metres every second; a kilojoule each second is a kilowatt</span></li>
+          <li><span class="we-eq">Kept: <span data-n="ch06.eta">0.9</span> × <span data-n="ch06.kw-gross">124,783</span> = <span data-n="ch06.kw">112,305</span> kW <span class="m">= <span data-n="hydro.P-mw">112.3</span> MW</span></span><span class="why">the turbine and generator keep 90%; a megawatt is 1,000 kW</span></li>
+          <li><span class="we-eq">At 92 m, per m³/s: <span data-n="ch06.eta">0.9</span> × <span data-n="const.gw">9.81</span> × <span data-n="hydro.H-m@level=100">92</span> = <span data-n="ch06.kw-per-q">812.268</span> kW</span><span class="why">the same three steps with one cubic metre a second</span></li>
+          <li><span class="we-eq"><var>Q</var> = 200,000 ÷ <span data-n="ch06.kw-per-q">812.268</span> = <span data-n="hydro.q-for-mw@P=200,level=100">246.2</span> m³/s</span><span class="why">200 MW is 200,000 kW</span></li>
+        </ol>
+        <p class="we-ans">The plant makes <span data-n="hydro.P-mw">112</span> MW, the figure's readout. With the reservoir at its highest, 200 MW takes <span data-n="hydro.q-for-mw@P=200,level=100">246</span> m³/s, inside the Turbine flow slider's range.</p>
+        <p class="we-check"><b>Check.</b> Power is proportional to flow, so each cubic metre a second is worth <span data-n="ch06.kw">112,305</span> ÷ 150 = <span data-n="ch06.kw-per-q@level=80">748.7</span> kW at this head, and doubling the flow to 300 m³/s should double the power: the figure gives <span data-n="hydro.P-mw@Q=300">224.6</span> MW.</p>
+        <p class="we-means"><b>What it means.</b> A hydro plant sells head and flow in equal measure. The height of its water is what it earns from, and, as the next example shows, it is also what the dam has to hold.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-types","set":{"hy-level":80,"hy-flow":150}}'>Set the figure</button></p>
+      </section>
+
+      <p>The turbine in the figure turns at the same speed whatever the flow, and that is deliberate.<label for="sn-two-dams-speed" class="sn-ref"></label><input type="checkbox" id="sn-two-dams-speed" class="margin-toggle"><span class="sidenote" data-kind="curious">Every generator on a grid has to keep step with the grid's alternating current, 60 cycles a second in North America, so it turns at one fixed speed; the rotors at Mica and Revelstoke turn at 112.5 revolutions a minute (<a data-cite="bchydro-cbrac2016"></a>). Open the gates wider and the water pushes the runner harder, so the generator delivers more power at the same speed.</span> More flow means more push on the runner at the same speed.</p>
+      <p>One could assume that the <var>H</var> that drives the turbines is also the depth that loads the dam. But look at the left drawing again: <var>H</var> ends at the tailwater, and the dam's upstream face goes on below it, down to the heel on the rock. The water against the dam is deeper than the drop it makes past it. The figure's readouts use the depth, and a reader who checks them with <var>H</var> gets the wrong answer:</p>
+
+      <section class="we" id="ex-two-dams-heel">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Depth, not head</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The figure at its opening settings: the water is <span data-n="hydro.depth-m">88.8</span> m deep at the heel and the head is <span data-n="hydro.H-m">84.8</span> m. Water weighs <span data-n="const.gw">9.81</span> kN/m³.</dd>
+          <dt>Find</dt><dd>The pressure at the heel, the push of the water on each metre of dam and the height it acts at; then the same two numbers worked, wrongly, from <var>H</var>.</dd>
+          <dt>The idea</dt><dd>The load is the pressure triangle on the whole wet face (<a data-ref="eq-depth-p,eq-depth-push"></a>), and the face is wet all the way down to the heel.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>p</var> = <span data-n="const.gw">9.81</span> × <span data-n="hydro.depth-m">88.8</span> = <span data-n="ch06.heel-kpa">871.1</span> kPa <span class="m">= <span data-n="hydro.p-mpa">0.87</span> MPa</span></span><span class="why">the pressure at the bottom of the wet face</span></li>
+          <li><span class="we-eq"><var>F</var> = ½ × <span data-n="const.gw">9.81</span> × <span data-n="hydro.depth-m">88.8</span>² = <span data-n="ch06.heel-kn">38,678</span> kN</span><span class="why">the area of the triangle, per metre length of dam</span></li>
+          <li><span class="we-eq">Height: <span data-n="hydro.depth-m">88.8</span> ÷ 3 = <span data-n="hydro.arm-m">29.6</span> m above the base</span><span class="why">the triangle's centre, a third of the way up</span></li>
+          <li><span class="we-eq">From <var>H</var>: <span data-n="const.gw">9.81</span> × <span data-n="hydro.H-m">84.8</span> = <span data-n="ch06.p-h-kpa">831.9</span> kPa</span><span class="why">a pressure taken at the tailwater, 4 m too high</span></li>
+          <li><span class="we-eq">½ × <span data-n="const.gw">9.81</span> × <span data-n="hydro.H-m">84.8</span>² = <span data-n="ch06.f-h-kn">35,272</span> kN</span><span class="why">the push on a face that stopped at the tailwater</span></li>
+        </ol>
+        <p class="we-ans">The heel feels <span data-n="hydro.p-mpa">0.87</span> MPa and each metre of dam carries <span data-n="hydro.F-mn">38.7</span> MN, acting <span data-n="hydro.arm-m">29.6</span> m up: the figure's 0.87 MPa and 39 MN. Worked from <var>H</var>, the load comes out <span data-n="ch06.under-pct">8.8</span>% short.</p>
+        <p class="we-check"><b>Check.</b> The two depths differ by <span data-n="ch06.tw-m">4</span> m, the tailwater over the base, so the two pressures should differ by <span data-n="const.gw">9.81</span> × 4 = <span data-n="ch06.tw-kpa">39.24</span> kPa, and <span data-n="ch06.heel-kpa">871.1</span> − <span data-n="ch06.p-h-kpa">831.9</span> = <span data-n="ch06.tw-kpa">39.2</span>.</p>
+        <p class="we-means"><b>What it means.</b> The depth of water at the dam sets its load; the drop to the tailwater sets its power. The tailwater also pushes back on the downstream face, a push this figure leaves out; <a data-ref="ch-concrete"></a> adds it, and the water underneath the dam.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-types","set":{"hy-level":80,"hy-flow":150}}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> With the reservoir held where it is, the turbines are opened from 150 to 300 m³/s. What happens to the water load on the dam?</summary>
+        <p>Nothing. The load comes from the depth at the heel, still <span data-n="hydro.depth-m">88.8</span> m. Only the power changes: it doubles, to <span data-n="hydro.P-mw@Q=300">224.6</span> MW.</p>
+      </details>
+
+      <p>The drawing shows a concrete dam, but a water dam need not be concrete, and in British Columbia most of the big ones are not. Mica, on the Columbia, is an earthfill dam 244 m high, the tallest in the province, and W.A.C. Bennett on the Peace, the dam <a data-ref="ch-zones"></a> opens with, is earthfill 183 m high. Revelstoke, downstream of Mica, has the concrete dam <a data-ref="ch-depth"></a> measured.<label for="mn-two-dams-bc" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-bc" class="margin-toggle"><span class="marginnote" data-kind="source">Mica and Revelstoke: <a data-cite="bchydro-cbrac2016"></a>. Bennett: <a data-cite="bchydro-peace2020"></a>.</span> A dam is a water dam because of what it holds back.</p>
+
+      <h3 id="s-two-dams-beach">A beach that sorts itself</h3>
+      <p>The other half of the figure works differently. The mill sends its tailings out as slurry, and from the spigots along the crest it pours onto the deposit and runs downhill toward the pond. As the flow spreads and slows it drops what it carries, and it drops the biggest grains first. The coarse sand settles close to the spigots and builds the tailings beach, sloping gently away from the dam. The finest grains stay in suspension far longer and settle in the pond at the far end. A mine builds a beach, as the sea does, and sorts it the way a river sorts its bed. Why the sizes part so cleanly takes one new fact, about how grains sink; why it matters to the dam takes Darcy's law from <a data-ref="ch-head"></a>. The numbers below are illustrative, chosen to be typical:</p>
+
+      <section class="we" id="ex-two-dams-sorting">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Why the beach sorts, and why that helps</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Illustrative grains: fine sand <span data-n="ch06.d-sand-mm">0.1</span> mm across, slime <span data-n="ch06.d-slime-mm">0.01</span> mm. For grains this small, the speed at which a grain sinks through still water grows with the square of its size. Permeability: tailings sand <span data-n="bench.mat-k@mat=tsand">10⁻⁵</span> m/s (the workbench's, in <a data-ref="ch-build"></a>), slimes an illustrative <span data-n="ch06.k-slimes">10⁻⁸</span> m/s; gap fraction <span data-n="ch06.n">0.4</span> for both.</dd>
+          <dt>Find</dt><dd>How much faster the sand settles out, and how long water takes to cross a metre of each.</dd>
+          <dt>The idea</dt><dd>Settling sorts the grains; Darcy's law then says how fast each kind drains. The crossing time is <a data-ref="fig-race"></a>'s: gap fraction ÷ (<var>k</var> × gradient), here with a gradient of 1.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Size: <span data-n="ch06.d-sand-mm">0.1</span> ÷ <span data-n="ch06.d-slime-mm">0.01</span> = <span data-n="ch06.d-ratio">10</span></span><span class="why">the sand grain is ten times wider</span></li>
+          <li><span class="we-eq">Sinking speed: <span data-n="ch06.d-ratio">10</span> × <span data-n="ch06.d-ratio">10</span> = <span data-n="ch06.settle-ratio">100</span></span><span class="why">speed grows with the square of the size</span></li>
+          <li><span class="we-eq">Permeability: <span data-n="bench.mat-k@mat=tsand">10⁻⁵</span> ÷ <span data-n="ch06.k-slimes">10⁻⁸</span> = <span data-n="ch06.k-ratio">1,000</span></span><span class="why">how much more easily water passes the sand</span></li>
+          <li><span class="we-eq">Sand: <span data-n="ch06.n">0.4</span> ÷ <span data-n="bench.mat-k@mat=tsand">10⁻⁵</span> = <span data-n="ch06.t-sand-s">40,000</span> s <span class="m">= <span data-n="ch06.t-sand-h">11.1</span> h</span></span><span class="why">a metre of sand, at a gradient of 1</span></li>
+          <li><span class="we-eq">Slimes: <span data-n="ch06.n">0.4</span> ÷ <span data-n="ch06.k-slimes">10⁻⁸</span> = <span data-n="ch06.t-slimes-s">4 × 10⁷</span> s <span class="m">= <span data-n="ch06.t-slimes-day">463</span> days</span></span><span class="why">the same metre of slimes</span></li>
+        </ol>
+        <p class="we-ans">The sand sinks out of the slurry about <span data-n="ch06.settle-ratio">100</span> times faster than the slimes, so it settles by the dam, and it passes water <span data-n="ch06.k-ratio">1,000</span> times as easily: water crosses a metre of it in about half a day, and a metre of slimes in more than a year.</p>
+        <p class="we-check"><b>Check.</b> <a data-ref="fig-race"></a> gave <span data-n="race.t-day@mat=silt">46.3</span> days for silt with <var>k</var> = <span data-n="race.k@mat=silt">10⁻⁷</span> m/s and the same gap fraction. A <var>k</var> ten times smaller should take ten times as long: 10 × <span data-n="race.t-day@mat=silt">46.3</span> = <span data-n="ch06.t-slimes-day">463</span> days.</p>
+        <p class="we-means"><b>What it means.</b> The sorting does the dam a favour. It puts coarse sand that drains in hours next to the dam, where the deposit must be firm, and keeps the wet, slow slimes far away. The favour holds only while the pond stays at the far end of the beach.</p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A mine lets its pond spread until the water lies against the crest. What now sits against the dam?</summary>
+        <p>Water, and the slimes that settle out of it: the finest, wettest, slowest-draining tailings, where the dam most needs firm, drained ground. That is why tailings rules keep the pond far from the crest (<a data-ref="ch-raising"></a>).</p>
+      </details>
+
       <h3 id="s-two-dams-differs">What differs is almost everything else</h3>
+      <p>The physics of the two dams is the same: pressure that grows with depth, and water that seeps from high head to low. Almost everything else about them differs:</p>
       <figure class="table wide" id="tbl-two-dams-compare">
         <figcaption class="tbl-cap"><b data-num></b> · A water dam and a tailings dam, side by side</figcaption>
         <div class="tablewrap">
@@ -51,36 +162,222 @@
         <tbody>
           <tr><th>Holds back</th><td>Water, released through turbines on demand</td><td>Ground rock (silt to fine sand size) and process water, settling into a soft deposit</td></tr>
           <tr><th>Built</th><td>Usually to full height in one campaign, before the reservoir fills</td><td>Raised in stages for the life of the mine, often for decades, while tailings keep arriving</td></tr>
-          <tr><th>Made of</th><td>Concrete, or earth and rockfill from quarries and borrow pits, specified and tested</td><td>Often the tailings themselves (cycloned sand), mine waste rock and soil dug nearby (borrow)</td></tr>
-          <tr><th>Floods</th><td>A spillway passes the design flood past the dam</td><td>Often stores the flood in the impoundment; pond water is reclaimed to the mill</td></tr>
-          <tr><th>Design life</th><td>Decades to a century of operation; can be decommissioned and removed</td><td>Must stay stable in perpetuity after the mine closes</td></tr>
+          <tr><th>Made of</th><td>Concrete, or earth and rockfill from quarries and borrow pits, specified and tested</td><td>Often the tailings themselves (sand separated from the slurry), mine waste rock and soil dug nearby</td></tr>
+          <tr><th>Floods</th><td>A spillway passes the design flood past the dam</td><td>Often no spillway: the pond stores the flood, so the dam must keep room for it; pond water is pumped back to the mill</td></tr>
+          <tr><th>Design life</th><td>Decades to a century of operation; it can be taken out of service and removed</td><td>Must stay stable indefinitely, long after the mine has closed</td></tr>
           <tr><th>If it fails</th><td>A flood wave of water</td><td>A flow of liquefied tailings: denser than water, sometimes toxic, able to run tens to hundreds of kilometres</td></tr>
-          <tr><th>Rules</th><td>National dam-safety regulators, ICOLD guidance</td><td>Mining regulators and, since 2020, the Global Industry Standard on Tailings Management (GISTM)</td></tr>
+          <tr><th>Rules</th><td>National dam-safety regulators; guidance from the International Commission on Large Dams (ICOLD)</td><td>Mining regulators and, since 2020, the Global Industry Standard on Tailings Management (GISTM)</td></tr>
+          <tr><th>In British Columbia</th><td>The Dam Safety Regulation under the Water Sustainability Act, and the Canadian Dam Association's Dam Safety Guidelines</td><td>Part 10 of the province's mines code, which requires an Engineer of Record for every tailings facility and an Independent Tailings Review Board at every mine with one; the Canadian Dam Association's bulletin on mining dams</td></tr>
         </tbody>
       </table>
     </div>
+        <p class="tbl-note">Sources for the last two rows: <a data-cite="gistm2020"></a>; <a data-cite="bc-dsr2016"></a>; <a data-cite="bc-hsrc-part10"></a>, sections 10.4.1 and 10.4.3; <a data-cite="cda2013"></a>; <a data-cite="cda2019-mining"></a>.</p>
       </figure>
+      <p>Notice the two rows that decide most of what follows. A water dam is built once and then watched; a tailings dam is raised for as long as the mine runs and then has to stand indefinitely after it, earning nothing.<label for="sn-two-dams-gistm" class="sn-ref"></label><input type="checkbox" id="sn-two-dams-gistm" class="margin-toggle"><span class="sidenote" data-kind="history">The Global Industry Standard on Tailings Management was published in August 2020 by a review that the International Council on Mining and Metals, the United Nations Environment Programme and the Principles for Responsible Investment set up after Brumadinho (<a data-cite="gistm2020"></a>). It is the first standard meant to apply to tailings facilities anywhere, new or old.</span> And when a water dam fails it lets out water, while a tailings dam lets out a deposit that may itself have turned to liquid.</p>
+
       <h3 id="s-two-dams-fail">Why tailings dams fail differently</h3>
-      <p>Water has no strength to lose. A deposit of loose, saturated tailings has some, and can lose nearly all of it at once: it is the liquid beach from <a data-ref="ch-trapped"></a> at the scale of a mine. Sheared, the loose grains try to pack tighter, the trapped water takes over their load, and the deposit flows like a heavy fluid. That is <span class="gl" data-term="liquefaction">liquefaction</span>. An earthquake can set it off. So can something much quieter, with no shaking at all (<span class="gl" data-term="static-liquefaction">static liquefaction</span>): a rising water table, slow creep, or a small movement of the slope.</p>
-      <ul class="timeline">
-        <li><span class="yr">1985</span>Stava, Italy. Two upstream-raised fluorite tailings dams collapsed one into the other; 268 people killed.</li>
-        <li><span class="yr">1994</span>Merriespruit, South Africa. An upstream-raised gold tailings dam overtopped after heavy rain and breached; the tailings flowed into a town, a flow one later study attributes to static liquefaction. 17 killed.</li>
-        <li><span class="yr">2014</span>Mount Polley, British Columbia, Canada. A tailings dam raised by the modified centreline method breached in the night, releasing 21 to 25 million m³ of tailings and water.<label for="mn-two-dams-polley" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-polley" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley-cim2015"></a>, p. 13; the range is the mine owner's estimate.</span> It was not a liquefaction of the tailings. Its cause is the subject of <a data-ref="ch-build"></a>. No deaths.</li>
-        <li><span class="yr">2015</span>Fundão, Mariana, Brazil. An upstream-raised dam liquefied; 19 killed. Tailings travelled 663 km down the Gualaxo do Norte, Carmo and Doce rivers to the Atlantic.</li>
-        <li><span class="yr">2019</span>Brumadinho, Brazil. Dam I, upstream-raised, failed by static liquefaction in seconds; 270 killed. The disaster led to the GISTM and to Brazil banning upstream dams.</li>
+      <p>Water has no strength to lose. A deposit of loose, saturated tailings has some, and can lose nearly all of it at once: it is the liquid beach from <a data-ref="ch-trapped"></a> at the scale of a mine. Sheared, the loose grains try to pack tighter, the trapped water takes over their load, and the deposit flows like a heavy fluid. That is <span class="gl" data-term="liquefaction">liquefaction</span>. An earthquake can set it off. So can something much quieter, with no shaking at all (<span class="gl" data-term="static-liquefaction">static liquefaction</span>): a rising water table, slow creep, or a small movement of the slope. It does not lose quite all: a liquefied deposit keeps a small <span class="gl" data-term="residual-strength">residual strength</span>, and what is left of its grip decides how far it runs before it stops.</p>
+      <p>Six failures show the range. For each, the table gives what the mine produced, how the dam was raised, what set it off, and what happened:</p>
+      <figure class="table wide" id="tbl-two-dams-cases">
+        <figcaption class="tbl-cap"><b data-num></b> · Six tailings-dam failures: how each dam was raised, what set it off, and what failed</figcaption>
+        <div class="tablewrap">
+      <table class="cmp ch06-cases">
+        <thead><tr><th>Year</th><th>Dam</th><th>Ore</th><th>Raised</th><th>Trigger</th><th>What happened</th><th>Killed</th><th>Released</th></tr></thead>
+        <tbody>
+          <tr data-case="El Cobre" data-year="1965"><td data-l="Year">1965</td><th data-l="Dam">El Cobre, Chile</th><td data-l="Ore">Copper</td><td data-l="Raised">Upstream</td><td data-l="Trigger">An earthquake</td><td data-l="What happened">The tailings liquefied and ran 12 km down the valley, burying the village of El Cobre</td><td data-l="Killed">More than 200</td><td data-l="Released">1.9 million m³</td></tr>
+          <tr data-case="Stava" data-year="1985"><td data-l="Year">1985</td><th data-l="Dam">Stava, Italy</th><td data-l="Ore">Fluorite</td><td data-l="Raised">Upstream, and still being raised</td><td data-l="Trigger">None from outside: no earthquake, no flood</td><td data-l="What happened">The upper of two dams burst; its mud broke the lower one and ran more than 4.2 km through two villages</td><td data-l="Killed">268</td><td data-l="Released">180,000 m³</td></tr>
+          <tr data-case="Merriespruit" data-year="1994"><td data-l="Year">1994</td><th data-l="Dam">Merriespruit, South Africa</th><td data-l="Ore">Gold</td><td data-l="Raised">Upstream</td><td data-l="Trigger">About 50 mm of rain; water then flowed over the crest for one to two hours</td><td data-l="What happened">The water washed away the outer wall; the loose tailings behind it flowed about 3 km into a suburb, by static liquefaction in a later study's analysis</td><td data-l="Killed">17</td><td data-l="Released">About 600,000 m³</td></tr>
+          <tr data-case="Mount Polley" data-year="2014"><td data-l="Year">2014</td><th data-l="Dam">Mount Polley, British Columbia</th><td data-l="Ore">Copper and gold</td><td data-l="Raised">Modified centreline</td><td data-l="Trigger">None seen that night</td><td data-l="What happened">Not a liquefaction of the tailings; see <a data-ref="ch-build"></a></td><td data-l="Killed">None</td><td data-l="Released">21 to 25 million m³ of tailings and water</td></tr>
+          <tr data-case="Fundão" data-year="2015"><td data-l="Year">2015</td><th data-l="Dam">Fundão, Mariana, Brazil</th><td data-l="Ore">Iron</td><td data-l="Raised">Upstream</td><td data-l="Trigger">Three small earthquakes 90 minutes earlier hastened a failure already well under way</td><td data-l="What happened">A liquefaction flowslide; the tailings travelled down three rivers, more than 660 km, to the Atlantic</td><td data-l="Killed">19, two never found</td><td data-l="Released">32 million m³</td></tr>
+          <tr data-case="Feijão Dam I, Brumadinho" data-year="2019"><td data-l="Year">2019</td><th data-l="Dam">Feijão Dam I, Brumadinho, Brazil</th><td data-l="Ore">Iron</td><td data-l="Raised">Upstream</td><td data-l="Trigger">None from outside: slow creep, and suction lost after heavy rain</td><td data-l="What happened">Static liquefaction; the slope collapsed in under 10 seconds</td><td data-l="Killed">270, eleven never found</td><td data-l="Released">9.7 million m³</td></tr>
+        </tbody>
+      </table>
+    </div>
+        <p class="tbl-note">Sources: El Cobre, <a data-cite="stava-elcobre"></a>; Stava, <a data-cite="luino2012"></a>; Merriespruit, <a data-cite="fourie2001"></a>, pp. 707–708; Mount Polley, <a data-cite="polley2015"></a>, p. 8 (the method) and <a data-cite="polley-cim2015"></a>, p. 13 (the volume, the mine owner's estimate); Fundão, <a data-cite="fundao2016"></a>, pp. i–ii and 18, and <a data-cite="stava-fundao"></a> (the toll and the distance); Brumadinho, <a data-cite="feijao2019"></a>, pp. i–ii, and <a data-cite="franks2021"></a>, p. 1 (the toll).</p>
+      </figure>
+      <p>Notice that every dam in the table that killed people was raised the same way. Upstream means that each new wall was built out over the tailings already in place, so that the dam stands partly on its own loose, wet waste; <a data-ref="ch-raising"></a> shows what that means and why some countries now forbid it. Notice too the trigger column. At Stava and at Brumadinho nothing came from outside at all, and at Fundão three small tremors only hastened a failure already well under way. A deposit that is loose and saturated can be brought down by a small push, or by none that anyone saw.</p>
+      <p>Two rows do not fit. Mount Polley, in British Columbia, the dam of the Prologue, was raised by a variant of the centreline method that <a data-ref="ch-raising"></a> describes, and nobody died. It was not a liquefaction of the tailings. Its cause is the subject of <a data-ref="ch-build"></a>, and the chapters between here and there collect what you need to follow it.</p>
+      <p>Merriespruit is the other. Its tailings probably did liquefy, as a later study argued, but only after water had poured over the crest for an hour or two and washed away the wall in front of them. What failed first was not the grip between grains at all. That failure belongs to a different story from the one this book mostly tells, and it is the commonest single way an embankment dam dies.</p>
+
+      <h3 id="s-two-dams-door">Every dam needs a door</h3>
+      <p>Most people picture a dam failing because the water pushes it over or bursts through it. For embankment dams the commonest single way is simpler: the water goes over the top, which engineers call <span class="gl" data-term="overtopping">overtopping</span>. Foster, Fell and Spannagle went through the record of large embankment dams built up to 1986 and sorted the failures that happened in service by how each one began:</p>
+      <figure class="table wide" id="tbl-two-dams-modes">
+        <figcaption class="tbl-cap"><b data-num></b> · How large embankment dams failed in service, up to 1986</figcaption>
+        <div class="tablewrap">
+      <table class="cmp ch06-modes">
+        <thead><tr><th>How the failure began</th><th>Failures</th><th>Share of those with a known cause</th></tr></thead>
+        <tbody>
+          <tr><th>Water over the crest (overtopping)</th><td>40</td><td>34.2%</td></tr>
+          <tr><th>A spillway or its gates failed</th><td>15</td><td>12.8%</td></tr>
+          <tr class="ch06-sub"><th>Over the top or past the spillway</th><td>55</td><td>47.0%</td></tr>
+          <tr><th>Internal erosion through the embankment</th><td>38</td><td>32.5%</td></tr>
+          <tr><th>Internal erosion through the foundation</th><td>18</td><td>15.4%</td></tr>
+          <tr><th>Internal erosion from embankment into foundation</th><td>2</td><td>1.7%</td></tr>
+          <tr class="ch06-sub"><th>Water inside carrying soil away</th><td>57</td><td>48.7%</td></tr>
+          <tr><th>Slides</th><td>5</td><td>4.3%</td></tr>
+          <tr><th>Earthquake and liquefaction</th><td>2</td><td>1.7%</td></tr>
+          <tr><th>Not known</th><td>7</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+        <p class="tbl-note">124 failures in all. Source: <a data-cite="foster2000"></a>, as tabulated by <a data-cite="adamo2020"></a>.</p>
+      </figure>
+      <p>Notice that the shares add to more than 100%. Of the 124 failures, 117 have a known cause, and the counts in the main rows add to 119, because two failures were filed under two headings. Statistics like these are counts of messy events sorted into boxes that overlap, and nobody should read the decimals as exact. Two things are plain all the same. About a third of these failures began with water over the crest, and about half did once the failed spillways and gates are added. Most of the other half is water inside the dam carrying its soil away, which <a data-ref="ch-erosion"></a> takes up.<label for="mn-two-dams-foster" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-foster" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="foster2000"></a>, failures in operation; the counts as reproduced in <a data-cite="adamo2020"></a>, which also gives the size of the record, 11,192 dams.</span></p>
+      <p>The sentence on this book's title page does not reach those overtopping failures. A flood pouring over an embankment does not need water in the gaps to take the grains' press away. It runs down the outer face fast, drags the grains off the surface and carries them away, and each grain it takes uncovers the next. A heap of earth can be cut through in a few hours; at Merriespruit an hour or two of water over the crest was enough. A concrete gravity dam can be built with its own crest as the spillway; an embankment cannot.<label for="mn-two-dams-ogee" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-ogee" class="margin-toggle"><span class="marginnote" data-kind="source">Merriespruit: <a data-cite="fourie2001"></a>, p. 708. An overflow crest "may make up an entire gravity dam": <a data-cite="usbr1987"></a>, §9.8(c).</span> So every dam needs a door, a way to let a flood past that is not over the crest.</p>
+      <p>The door is a <span class="gl" data-term="spillway">spillway</span>: a channel past the dam, usually at one end of it, with a crest, the sill the water pours over, set lower than the crest of the dam. In ordinary times the lake is kept at or below the spillway's crest. When a flood comes in faster than the turbines and outlets can pass it, the lake rises and begins to pour over the sill, and the higher it rises, the faster it pours. It goes on rising until the spillway passes water as fast as the flood brings it. The designer's job is to make sure that happens with the lake still below the dam's crest, by a margin called the <span class="gl" data-term="freeboard">freeboard</span>. Here are both, to scale, for an illustrative embankment <span data-n="ch06.lvl-crest">30</span> m high:</p>
+    </div>
+
+    <figure class="fig wide" id="fig-two-dams-spillway">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · The levels of a reservoir in flood, and the spillway that sets them</span><span class="scale-note">Each section to scale · illustrative dam</span></div>
+      <div class="ch06-panels">
+        <svg class="dwg" viewBox="0 0 660 214" role="img" aria-label="Panel A: a section through an earth embankment 30 metres high with faces sloping two across for every one up, holding a reservoir at its normal level of 25 metres. A lighter band shows the lake risen 3 metres in the design flood, to 28 metres, and a dotted line carries the crest level, 30 metres, out over the reservoir. Dimensions mark the 3 metre flood rise and the 2 metres of freeboard left above it.">
+          <text x="6" y="18" class="lbl">A · Through the dam</text>
+          <polygon points="0,66 328,66 304,78 0,78" class="water" style="opacity:.5"/>
+          <polygon points="0,78 304,78 104,178 0,178" class="water"/>
+          <path d="M0,78 H304" class="water-line"/>
+          <path d="M0,66 H328" class="water-line" style="stroke-dasharray:6 4"/>
+          <path d="M0,58 H344" style="stroke:var(--ink-3);stroke-width:1;stroke-dasharray:2 3;fill:none"/>
+          <polygon points="104,178 344,58 376,58 616,178" fill="url(#p-fill)" class="edge"/>
+          <rect x="0" y="178" width="660" height="12" fill="url(#p-bedrock)" class="edge"/>
+          <path d="M262,66 V78 M258,66 H266 M258,78 H266" class="dim"/>
+          <path d="M262,58 V66 M258,58 H266" class="dim"/>
+          <text x="256" y="52" class="lbl-s halo" text-anchor="end">freeboard <tspan data-n="ch06.fb-min">2</tspan> m</text>
+          <text x="256" y="93" class="lbl-s halo on-water" text-anchor="end">flood rise <tspan data-n="ch06.weir-h">3</tspan> m</text>
+          <text x="360" y="48" class="lbl halo" text-anchor="middle">Dam crest, <tspan data-n="ch06.lvl-crest">30</tspan> m</text>
+          <text x="10" y="36" class="lbl halo">Design-flood level, <tspan data-n="ch06.lvl-flood">28</tspan> m</text>
+          <path d="M100,40 L110,64" class="lead"/>
+          <text x="10" y="54" class="lbl-s halo">crest level</text>
+          <text x="10" y="102" class="lbl halo on-water">Normal level, <tspan data-n="ch06.lvl-spill">25</tspan> m:</text>
+          <text x="10" y="117" class="lbl-s halo on-water">the spillway's crest</text>
+          <text x="450" y="160" class="lbl-s halo on-fill" text-anchor="middle">earth embankment, faces 2:1</text>
+          <path d="M530,204 H570 M530,200 V208 M570,200 V208" class="dim"/>
+          <text x="576" y="208" class="lbl-s">10 m</text>
+        </svg>
+        <svg class="dwg" viewBox="0 0 660 244" role="img" aria-label="Panel B: a section through the spillway beside the dam, at a larger scale. The reservoir stands at its design-flood level of 28 metres, 3 metres above the rounded concrete crest of the spillway at 25 metres, which is also the reservoir's normal level. The water draws down as it pours over the crest and runs down a concrete chute. A dotted line marks the dam's crest at 30 metres, 2 metres above the flood level. A label gives the flow: 520 cubic metres a second over 50 metres of crest.">
+          <text x="6" y="18" class="lbl">B · Through the spillway</text>
+          <path d="M0,38 H660" style="stroke:var(--ink-3);stroke-width:1;stroke-dasharray:2 3;fill:none"/>
+          <text x="652" y="31" class="lbl-s halo" text-anchor="end">dam crest, beside the spillway, <tspan data-n="ch06.lvl-crest">30</tspan> m</text>
+          <polygon points="0,66 130,66 158,67.1 179,70.9 200,77.2 214,86.3 228,96.8 242,108.7 256,123.8 270,136.7 284,150.3 298,154.4 312,156.5 340,160.7 396,169.1 480,181.7 564,194.3 660,208.7 660,222.7 298.8,168.5 293.2,167.6 287.6,165.9 282,163.4 276.4,159.9 270.8,155.6 242,129 238.5,125.9 235,123 231.5,120.3 228,117.9 224.5,115.7 221,113.8 217.5,112.2 214,110.8 210.5,109.6 207,108.8 203.5,108.2 200,108 195.8,108.4 191.6,110.1 188.1,113.3 188.1,164 0,164" class="water"/>
+          <path d="M0,66 L130,66 L158,67.1 L179,70.9 L200,77.2 L214,86.3 L228,96.8 L242,108.7 L256,123.8 L270,136.7 L284,150.3 L298,154.4 L312,156.5 L340,160.7 L396,169.1 L480,181.7 L564,194.3 L660,208.7" class="water-line"/>
+          <rect x="0" y="164" width="188.1" height="76" fill="url(#p-bedrock)" class="edge"/>
+          <polygon points="188.1,164 188.1,113.3 191.6,110.1 195.8,108.4 200,108 203.5,108.2 207,108.8 210.5,109.6 214,110.8 217.5,112.2 221,113.8 224.5,115.7 228,117.9 231.5,120.3 235,123 238.5,125.9 242,129 270.8,155.6 276.4,159.9 282,163.4 287.6,165.9 293.2,167.6 298.8,168.5 660,222.7 660,240 188.1,240" style="fill:var(--m-conc)" class="edge"/>
+          <path d="M74,108 H196" style="stroke:var(--ink-2);stroke-width:1;stroke-dasharray:4 3;fill:none"/>
+          <path d="M74,66 V108 M70,66 H78 M70,108 H78" class="dim"/>
+          <path d="M74,38 V66 M70,38 H78" class="dim"/>
+          <text x="80" y="91" class="lbl halo on-water"><tspan font-style="italic">h</tspan> = <tspan data-n="ch06.weir-h">3</tspan> m</text>
+          <text x="80" y="56" class="lbl-s halo">freeboard <tspan data-n="ch06.fb-min">2</tspan> m</text>
+          <text x="6" y="140" class="lbl-s halo on-water">reservoir at the</text>
+          <text x="6" y="154" class="lbl-s halo on-water">design flood, <tspan data-n="ch06.lvl-flood">28</tspan> m</text>
+          <path d="M201,110 L236,184" class="lead"/>
+          <text x="236" y="198" class="lbl-s halo on-conc">spillway crest, <tspan data-n="ch06.lvl-spill">25</tspan> m:</text>
+          <text x="236" y="212" class="lbl-s halo on-conc">the normal level</text>
+          <path d="M316,163 L414,178" style="stroke:var(--water);stroke-width:1.6;fill:none" marker-end="url(#arr-w)"/>
+          <text x="420" y="124" class="lbl halo">flood flow <tspan data-n="ch06.weir-q">520</tspan> m³/s</text>
+          <text x="420" y="139" class="lbl-s halo">over <tspan data-n="ch06.weir-l">50</tspan> m of spillway crest</text>
+          <text x="40" y="206" class="lbl-s halo on-rock">rock</text>
+          <path d="M560,92 H630 M560,88 V96 M630,88 V96" class="dim"/>
+          <text x="595" y="84" class="lbl-s" text-anchor="middle">5 m</text>
+        </svg>
+      </div>
+      <figcaption>
+        <p class="cap"><b>A flood lifts the lake above its normal level until the spillway passes the flood as fast as it arrives, and the freeboard is what is left above that.</b> In A, a section through the dam, the darker water is the lake at its normal level, the same height as the spillway's crest; the paler band above it is the lake in the design flood; the dotted line carries the dam's crest level out over the water. In B, a section through the spillway at a larger scale, the same flood stands <var>h</var> metres over the rounded concrete crest, draws down as it pours over it, and runs away down the chute; the shape of the falling sheet is sketched. The dimensions in each panel are measured from those levels, and each panel has its own scale bar. The levels and the flow are illustrative, worked out in <a data-ref="ex-two-dams-spillway"></a>. <span class="cap-n">The numbers to remember: a flood <span data-n="ch06.weir-h">3</span> m deep over <span data-n="ch06.weir-l">50</span> m of crest passes <span data-n="ch06.weir-q">520</span> m³/s, with <span data-n="ch06.fb-min">2</span> m of freeboard left.</span></p>
+        <ul class="try">
+          <li>With panel A's scale bar, measure the height of the dam's crest above the normal level, then above the flood level.</li>
+          <li>With panel B's scale bar, check that the lake stands 3 m over the spillway's crest.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p><span data-n="ch06.fb-norm">5</span> m above the normal level, <span data-n="ch06.fb-min">2</span> m above the flood: the flood has used <span data-n="ch06.weir-h">3</span> m of the margin. In B, the bar is 5 m long and the dimension <var>h</var> is three fifths of it.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the freeboard is measured from the flood level, not from the normal one. The 5 m between the lake's everyday level and the crest is not all margin: the flood spends 3 m of it just to make the spillway pass the water.</p>
+      <p>How much a spillway passes depends on how deep the lake stands over its crest. The sheet of water pouring over is a fixed share of that height, <var>h</var>, deep (about two thirds of it, over a broad crest), and it moves at a speed that grows with the square root of <var>h</var>, so the flow over each metre of crest grows as <span class="m"><var>h</var> × √<var>h</var></span>, which is <var>h</var> to the power 3/2:</p>
+      <div class="eq" id="eq-two-dams-weir"><span class="eq-body"><var>Q</var> = <var>C</var> · <var>L</var> · <var>h</var><sup>3/2</sup></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>Q</var> flow over the spillway (m³/s) · <var>L</var> length of its crest, across the flow (m) · <var>h</var> height of the lake above the crest, measured upstream where the water is still level (m) · <var>C</var> a coefficient set by the shape of the crest (m<sup>½</sup>/s)</p>
+      <p>For a flat, broad crest, theory gives <var>C</var> = (2/3)<sup>3/2</sup> × √<var>g</var> = <span data-n="ch06.c-broad-theory">1.70</span> m<sup>½</sup>/s, which is the 3.087 that the Bureau of Reclamation's <i>Design of Small Dams</i> gives in feet. A rounded crest shaped to fit the falling water, over a deep approach, does better: the same book takes 4.0 in feet, <span data-n="ch06.c-ogee-si">2.21</span> m<sup>½</sup>/s.<label for="mn-two-dams-weir" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-weir" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usbr1987"></a>, §9.10, equation (3) (p. 365), §9.12(a) for 3.087 (p. 369) and §9.12(d) for 4.0 (p. 370). A coefficient in feet becomes one in metres on multiplying by √0.3048: 3.087 gives <span data-n="ch06.c-broad-si">1.70</span>.</span> The example takes a round value between the two:</p>
+
+      <section class="we" id="ex-two-dams-spillway">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The flood a spillway passes</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The illustrative dam of <a data-ref="fig-two-dams-spillway"></a>: spillway crest, and normal level, at <span data-n="ch06.lvl-spill">25</span> m; dam crest at <span data-n="ch06.lvl-crest">30</span> m. A design flood raises the lake to <span data-n="ch06.lvl-flood">28</span> m, so <var>h</var> = <span data-n="ch06.weir-h">3</span> m. The spillway's crest is <var>L</var> = <span data-n="ch06.weir-l">50</span> m long with <var>C</var> = <span data-n="ch06.weir-c">2.0</span> m<sup>½</sup>/s.</dd>
+          <dt>Find</dt><dd>The flow the spillway passes at that level, and the freeboard left.</dd>
+          <dt>The idea</dt><dd><a data-ref="eq-two-dams-weir"></a>, then the crest minus the flood level.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">√<span data-n="ch06.weir-h">3</span> = <span data-n="ch06.root-h">1.732</span></span><span class="why">the square root of the height over the crest</span></li>
+          <li><span class="we-eq"><var>h</var><sup>3/2</sup> = <span data-n="ch06.weir-h">3</span> × <span data-n="ch06.root-h">1.732</span> = <span data-n="ch06.h15">5.196</span></span><span class="why">depth times the square root of depth</span></li>
+          <li><span class="we-eq"><var>Q</var> = <span data-n="ch06.weir-c">2.0</span> × <span data-n="ch06.weir-l">50</span> × <span data-n="ch06.h15">5.196</span> = <span data-n="ch06.weir-q">519.6</span> m³/s</span><span class="why">times the coefficient and the length of crest</span></li>
+          <li><span class="we-eq">Freeboard: <span data-n="ch06.lvl-crest">30</span> − <span data-n="ch06.lvl-flood">28</span> = <span data-n="ch06.fb-min">2</span> m</span><span class="why">what is left between the flood and the crest</span></li>
+        </ol>
+        <p class="we-ans">The spillway passes about <span data-n="ch06.weir-q">520</span> m³/s with the lake <span data-n="ch06.weir-h">3</span> m over its crest, leaving <span data-n="ch06.fb-min">2</span> m of freeboard.</p>
+        <p class="we-check"><b>Check.</b> The units come out right: m<sup>½</sup>/s × m × m<sup>3/2</sup> is m³/s. And each metre of crest carries <span data-n="ch06.weir-q">519.6</span> ÷ <span data-n="ch06.weir-l">50</span> = <span data-n="ch06.weir-q-per-m">10.4</span> m³/s, about what a sheet of water a couple of metres deep carries at five metres a second.</p>
+        <p class="we-means"><b>What it means.</b> The margin is counted in metres of water, and every metre of flood rise is a metre of freeboard spent. Because the flow grows faster than the rise, a bigger flood costs less extra height than you might fear; a flood the spillway was never designed for can still spend the rest.</p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> The flood turns out 10% bigger than the one the spillway was designed for. Does the lake rise 10% higher over the crest?</summary>
+        <p>Less. With <var>Q</var> growing as <var>h</var><sup>3/2</sup>, <var>h</var> grows as <var>Q</var><sup>2/3</sup>: 1.1<sup>2/3</sup> = <span data-n="ch06.r-110">1.066</span>, so <var>h</var> goes from 3 m to <span data-n="ch06.h-110">3.20</span> m, only <span data-n="ch06.h-110-pct">6.6</span>% higher, and <span data-n="ch06.fb-110">1.80</span> m of freeboard is left.</p>
+      </details>
+
+      <p>Spillways can fail too, and when one does, the freeboard is tested in earnest.<label for="sn-two-dams-oroville" class="sn-ref"></label><input type="checkbox" id="sn-two-dams-oroville" class="margin-toggle"><span class="sidenote" data-kind="history">On 7 February 2017 the concrete chute of the main spillway at Oroville Dam, California, broke up while carrying a flood: water forced through cracks and joints lifted a section of the slab, and the weak rock beneath it washed out. With the main spillway damaged, the lake rose over the emergency spillway's weir for the first time in the dam's history, and the ground below the weir eroded so fast that about 188,000 people downstream were ordered to leave. The dam itself, an embankment 770 feet (235 m) high and the tallest in the United States, held (<a data-cite="oroville2018"></a>, pp. S-1, 7 and 26). Why water under a slab lifts it is a subject of <a data-ref="ch-concrete"></a>.</span><span class="case-ref" data-case="Oroville Dam"></span> A tailings dam usually has no spillway at all. It stores the flood in its pond and pumps the water back to the mill, which works only if the pond has room. Suppose, for illustration, that a design flood brings <span data-n="ch06.pond-v-mm3">3</span> million m³ into a pond of <span data-n="ch06.pond-a-km2">2</span> km²: the pond rises <span class="m">3,000,000 ÷ 2,000,000 = <span data-n="ch06.pond-rise-m">1.5</span> m</span>. That <span data-n="ch06.pond-rise-m">1.5</span> m, plus room for waves, has to be kept empty below the crest all year round, and kept while the dam is raised and the deposit climbs. Merriespruit's history records too little freeboard and often poor control of its pond.<label for="mn-two-dams-merri" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-two-dams-merri" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="fourie2001"></a>, p. 707: "insufficient freeboard provision and often poor pool control".</span> Water over the top of a tailings dam does what it does to any embankment, and then it uncovers what lies behind the wall: tailings that may be loose, saturated, and ready to flow.</p>
+    </div>
+
+  <section class="ch-end col" aria-label="End of chapter">
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>A water dam holds a liquid, which has no grip to lose. A tailings dam holds loose, saturated ground rock whose grains grip only while they press on one another, and the water in its gaps can take that press away in seconds.</li>
+        <li>The head <var>H</var>, reservoir to tailwater, drives the turbines: <var>P</var> = <var>η</var>·<var>ρ</var>·<var>g</var>·<var>Q</var>·<var>H</var>, <span data-n="hydro.P-mw">112</span> MW in the figure. The depth of water at the heel, a few metres more, sets the load on the dam: <span data-n="hydro.F-mn">38.7</span> MN on each metre.</li>
+        <li>Slurry sorts itself: coarse sand settles by the dam and drains fast, so its grains press firmly on one another; the slimes settle by the pond and drain about a thousand times more slowly. The sorting helps only while the pond is kept away from the dam.</li>
+        <li>Every deadly failure in the case table was of a dam raised upstream, standing partly on its own loose, wet waste, and twice nothing from outside set it off at all.</li>
+        <li>Water over the crest, with failed spillways and gates, began about half the failures of large embankment dams, and it washes grains away however hard they press. Every dam needs a spillway, and freeboard above the flood.</li>
       </ul>
     </div>
-    <div class="col" data-stub>
-      <!-- New (H.7): the scale of tailings, "Every dam needs a door" (spillways, freeboard, overtopping;
-           fig-two-dams-spillway, eq-two-dams-weir), the case table tbl-two-dams-cases from the timeline,
-           worked examples ex-two-dams-power, ex-two-dams-heel, ex-two-dams-sorting, ex-two-dams-spillway. -->
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-two-dams-factors" data-tag="explore" data-level="2">
+          <p>At a turbine flow of 150 m³/s, drag Reservoir level from its lowest to its highest. By what factor does the power grow, and by what factor the water load on the dam? Why are they different?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-types","set":{"hy-flow":150,"hy-level":0}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>The power follows the head <var>H</var>; the load follows the square of the depth at the heel.</p></details>
+          <div class="q-answer"><p>The power goes from <span data-n="hydro.P-mw@level=0">74.2</span> to <span data-n="hydro.P-mw@level=100">121.8</span> MW, a factor of <span data-n="ch06.power-factor">1.64</span>, because <var>H</var> goes from <span data-n="hydro.H-m@level=0">56</span> to <span data-n="hydro.H-m@level=100">92</span> m. The load goes from <span data-n="hydro.F-mn@level=0">17.7</span> to <span data-n="hydro.F-mn@level=100">45.2</span> MN per metre, a factor of <span data-n="ch06.load-factor">2.56</span>: the depth at the heel goes from <span data-n="hydro.depth-m@level=0">60</span> to <span data-n="hydro.depth-m@level=100">96</span> m, <span data-n="ch06.depth-ratio">1.6</span> times, and the load grows with its square, 1.6 × 1.6 = <span data-n="ch06.load-factor">2.56</span>. The last metres of water earn the least and cost the most.</p></div>
+        </li>
+        <li class="q" id="q-two-dams-heel" data-tag="check" data-level="1">
+          <p>The figure's drawing says <var>H</var> = 85 m, and 9.81 × 85 is about 834 kPa, yet the heel readout says 0.87 MPa. Which is wrong?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Where does <var>H</var> end, and where does the dam's wet face end?</p></details>
+          <div class="q-answer"><p>Neither. <var>H</var> is measured to the tailwater; the heel is <span data-n="ch06.tw-m">4</span> m lower, <span data-n="hydro.depth-m">88.8</span> m below the surface, and <span data-n="const.gw">9.81</span> × <span data-n="hydro.depth-m">88.8</span> = <span data-n="ch06.heel-kpa">871.1</span> kPa (<a data-ref="ex-two-dams-heel"></a>).</p></div>
+        </li>
+        <li class="q" id="q-two-dams-mechanism" data-tag="case" data-level="2">
+          <p>Which failures in the case table of this chapter did not begin as a liquefaction of the stored tailings?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Read the Trigger column for water that came over the top, and the What happened column for a row that says what the failure was not.</p></details>
+          <div class="q-answer"><p>Merriespruit began as overtopping: water flowed over the crest for one to two hours and washed away the outer wall, and only then did the loose tailings behind it liquefy and flow. Mount Polley was not a liquefaction of the tailings at all; what it was is the subject of <a data-ref="ch-build"></a>. The other four were liquefaction of the tailings, set off by an earthquake at El Cobre, hastened by small ones at Fundão, and with nothing from outside at Stava and Brumadinho.</p></div>
+        </li>
+        <li class="q" id="q-two-dams-residual" data-tag="check" data-level="2">
+          <p>"Water has no strength to lose." A liquefied deposit has lost nearly all of its strength. What does it keep, and why does that matter once it is moving?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Nearly all is not all. What stops a flow?</p></details>
+          <div class="q-answer"><p>It keeps a small residual strength, the grip left between grains that still touch while the deposit flows. That remainder slows the flow and decides where it stops, so it sets how far the tailings run and what they reach.</p></div>
+        </li>
+        <li class="q" id="q-two-dams-double" data-tag="reckon" data-level="2">
+          <p>With the illustrative spillway of <a data-ref="ex-two-dams-spillway"></a>, how high over its crest must the lake rise to pass twice the design flow, and how much freeboard is left?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Twice the flow needs twice <var>h</var><sup>3/2</sup>. Then <var>h</var> is that number to the power 2/3.</p></details>
+          <div class="q-answer"><p>Twice the flow, <span data-n="ch06.weir-q2">1,039</span> m³/s, needs <var>h</var><sup>3/2</sup> = 2 × <span data-n="ch06.h15">5.196</span> = <span data-n="ch06.weir-h15-2">10.392</span>, so <var>h</var> = 10.392<sup>2/3</sup> = <span data-n="ch06.weir-h2">4.76</span> m: <span data-n="ch06.weir-h2-ratio">1.59</span> times the design rise, not twice. The lake stands at <span data-n="ch06.lvl-flood2">29.76</span> m, only <span data-n="ch06.fb-left-m">0.24</span> m below the crest: almost all of the 5 m between the normal level and the crest is gone.</p></div>
+        </li>
+      </ol>
     </div>
-  <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.7): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="franks2021"></cite> <span class="level">gentle</span> The survey behind this chapter's 1,743 facilities, open to read: how the world's tailings dams are built, how much they hold, and which kinds most often report stability problems (upstream dams, by a clear margin).</li>
+        <li><cite data-cite="usbr1987"></cite> <span class="level">serious</span> Its chapter on spillways sets out how a crest is shaped, where the coefficients of <a data-ref="eq-two-dams-weir"></a> come from, and how a chute carries the flood away. Free from the Bureau of Reclamation.</li>
+        <li><cite data-cite="feijao2019"></cite> <span class="level">primary source</span> The expert panel's report on Dam I. Its executive summary, a few pages long, tells the story of the cold open in the panel's own words and explains how loose, wet tailings with no sign of distress could collapse in seconds.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">Before we watch a tailings dam grow, look at the simplest dam of all, the left half of this chapter's figure: a block of concrete that holds its lake by weight alone, pressing on the rock. <a data-ref="ch-grip"></a> showed what water underneath a block on a ramp does to that press. Can the lake get under a concrete dam, and what is left of its grip when it does?</p></nav>
   </section>
 </section>

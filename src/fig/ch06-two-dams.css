@@ -1,0 +1,41 @@
+/* Chapter 6's static figure and tables (book/SPEC.md F.10, F.11). Label sizes go through --fs so the
+   floor in styles-book.css can lift them on a phone. */
+#fig-two-dams-spillway .ch06-panels { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; max-width: 720px; margin-inline: auto; }
+#fig-two-dams-spillway svg.dwg { display: block; width: 100%; height: auto; }
+#fig-two-dams-spillway svg.dwg text { --fs: 13px; }
+#fig-two-dams-spillway svg.dwg .lbl-s { --fs: 12px; }
+
+/* the case table: eight short columns on a laptop */
+table.ch06-cases { font-size: 0.86rem; }
+table.ch06-cases td, table.ch06-cases th { width: auto; }
+table.ch06-cases tbody th { width: 8.5em; text-transform: none; letter-spacing: 0; font-size: 0.86rem; color: var(--ink); }
+table.ch06-cases td[data-l="What happened"], table.ch06-cases td[data-l="Trigger"] { min-width: 10em; }
+table.ch06-cases td[data-l="Year"] { font-variant-numeric: tabular-nums; }
+/* the failure-mode table: counts and shares right-aligned, subtotals ruled */
+table.ch06-modes td { width: 7em; text-align: right; font-variant-numeric: tabular-nums; }
+table.ch06-modes tbody th { width: auto; text-transform: none; letter-spacing: 0; font-size: 0.9rem; color: var(--ink); }
+table.ch06-modes thead th:not(:first-child) { text-align: right; font-size: 0.9rem; }
+table.ch06-modes tr.ch06-sub > * { font-weight: 700; border-top: 1px solid var(--ink-3); }
+
+/* a cross-reference inside the case table: ink with a quiet underline, like links in the prose */
+table.ch06-cases a { color: var(--ink); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+table.ch06-cases a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+/* on a phone the case table becomes one block per failure: the year as a kicker, then each cell labelled */
+@media screen and (max-width: 759px) {
+  table.ch06-cases { min-width: 0; }
+  table.ch06-cases thead { display: none; }
+  table.ch06-cases, table.ch06-cases tbody, table.ch06-cases tr { display: block; width: 100%; }
+  table.ch06-cases tr { padding: 10px 0 12px; border-bottom: 1px solid var(--rule); }
+  table.ch06-cases tbody tr:last-child { border-bottom: 0; }
+  table.ch06-cases td, table.ch06-cases th { display: block; position: relative; width: auto; min-width: 0; padding: 2px 0 2px 7.2em; border: 0; }
+  table.ch06-cases td::before, table.ch06-cases th::before { content: attr(data-l); position: absolute; left: 0; top: 4px; width: 6.8em;
+    font-family: var(--f-label); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+  table.ch06-cases td[data-l="Year"] { padding-left: 0; font-family: var(--f-label); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.04em; }
+  table.ch06-cases td[data-l="Year"]::before { content: none; }
+  table.ch06-cases tbody th { width: auto; padding: 0 0 2px; font-size: 1rem; }
+  table.ch06-cases tbody th::before { content: none; }
+  table.ch06-modes { min-width: 0; }
+  table.ch06-modes td { width: 4.5em; }
+}

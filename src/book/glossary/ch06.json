@@ -1,0 +1,11 @@
+{
+  "spillway": ["Spillway", "A channel that lets a flood past a dam without going over the dam's own crest. Its crest, the sill the water pours over, is set below the dam's crest, and the higher the lake rises above that sill, the faster the water pours."],
+  "overtopping": ["Overtopping", "Water flowing over the crest of a dam. Running fast down the outer face, it drags soil off an embankment grain by grain and can cut through it in hours; with failed spillways and gates it began about half the recorded failures of large embankment dams."],
+  "penstock": ["Penstock", "The pipe or tunnel that carries water from a reservoir's intake down to the turbines of a hydro plant."],
+  "tailrace": ["Tailrace", "The channel that carries water away from the turbines of a hydro plant, back to the river below the dam."],
+  "slimes": ["Slimes", "The finest part of mine tailings, silt- and clay-sized grains that stay in suspension longest and settle in the pond, far from the spigots. They drain very slowly and stay soft and wet."],
+  "spigot": ["Spigot", "One of the outlets along a tailings dam's crest through which the slurry from the mill is let out onto the deposit. Moving the spigots moves where the coarse sand builds the beach."],
+  "gross-head": ["Gross head", "The full drop of the water past a hydro plant, from the reservoir surface to the tailwater. Friction in the intake and penstock uses up part of it; what reaches the turbine is the net head."],
+  "beach": { "replace": true, "entry": ["Tailings beach", "The gently sloping deposit of tailings sand between a tailings dam's crest and its pond, built by slurry poured from spigots on the crest. The coarse sand settles near the spigots and the fine slimes run on to the pond, so the beach drains best next to the dam."] },
+  "tailings": { "replace": true, "entry": ["Tailings", "The waste left after a mill extracts metal from ore: rock ground to sand, silt and finer, pumped out as a slurry with water and stored behind a tailings dam. Laid down loose and kept wet, it can liquefy."] }
+}
