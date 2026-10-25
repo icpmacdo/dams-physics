@@ -1,4 +1,15 @@
 {
+ "usbr-ie2010": {
+  "group": "standards",
+  "short": "Reclamation, Internal Erosion (2010)",
+  "authors": "U.S. Bureau of Reclamation",
+  "year": "2010",
+  "title": "Internal Erosion (Dam Safety Risk Analysis Best Practices presentation, last modified 7 April 2010)",
+  "container": "Hosted by the Federal Energy Regulatory Commission",
+  "doi": null,
+  "url": "https://ferc.gov/sites/default/files/2020-06/internal-erosion.pdf",
+  "note": "Slide 4 reproduces the UNSW table of 124 embankment dam failures (excluding during construction) to 1986: overtopping 34.2%, spillway/gate 12.8%, total overtopping and appurtenant works 48.4%, total piping 46.9%."
+ },
  "feijao2019": {
   "group": "reports",
   "short": "Robertson et al. (2019)",
