@@ -1,24 +1,38 @@
 <section class="chapter" id="ch-build">
   <header class="opener" data-gen="opener">
-    <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.14): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <!-- The build writes the kicker, title, question and meta line here from src/book.json.
+         Mount Polley facts: the Review Panel's report (polley2015) and the Chief Inspector of Mines' report
+         (polley-cim2015), page numbers as printed. This is the chapter that answers the Prologue (G.4). -->
+    <blockquote class="epigraph">
+      <p>Effect of minor geologic details on the safety of dams</p>
+      <footer>The title of a paper by Karl Terzaghi, <a data-cite="terzaghi1929">1929</a></footer>
+    </blockquote>
+    <p class="so-far"><b>So far.</b> Part I was the ground: grains that grip only as hard as they press, and water in their gaps that takes part of that press away, in seconds in sand and over years in clay. Part II set the dam that holds by its weight beside the dam that holds by friction, and the tailings dam that is never finished. Part III gave the embankment its zones and followed the water through them and out at the toe. <a data-ref="ch-slope"></a> turned all of it into one number for a slope. Now you design the dam.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>design a section that passes the leak, piping and slope checks, on both of its faces;</li>
+        <li>weigh what each fix costs, in fill, clay or water, against the safety it buys;</li>
+        <li>say what the slope check leaves out, and why a dam can pass it and still fail.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.14): back to the Prologue (verify the design check before saying so). -->
-    </div>
+
     <div class="col">
-      <p>You now know enough to design an embankment yourself. Paint the inside of a 24 m dam with five materials, choose the ground it sits on, and fill the reservoir. Then the page tests your design with two calculations.</p>
-      <p>The first is the seepage solver from the seepage lab in <a data-ref="fig-lab"></a>. It finds where the water inside your dam settles, how much leaks through, and how hard it pushes on the soil where it comes out.</p>
-      <p>The second asks whether the downstream slope would slide. It tries more than two thousand curved surfaces through the slope (1,960 on a grid, then a few hundred more homing in on the weakest), each a possible <span class="gl" data-term="slip-surface">slip surface</span>. Along each one it weighs the grip the soil can offer (friction, plus a little stickiness called <span class="gl" data-term="cohesion">cohesion</span>) against the pull of the soil's weight trying to slide it downhill. Friction depends on how hard the grains press together, so wherever the seepage solution puts water pressure on a surface, the grip there drops.</p>
-      <p>Grip divided by pull is the <span class="gl" data-term="factor-of-safety">factor of safety</span>. Below 1 the slope slides. Dam engineers usually want 1.5 or more with the reservoir full, to cover what they can't know about the soil.</p>
+      <p class="cold"><span class="newthought">When the review panel opened</span> Mount Polley's design files, it found that the side of the dam that later failed had been checked the way <a data-ref="ch-slope"></a> checks a slope. Trial slip surfaces were drawn through it, the grip the ground could offer along each was set against the weight trying to slide it, and the weakest surface gave a factor of safety. During the raise of 2007 to 2011 that number was 1.7, where the designers required 1.3. The Chief Inspector of Mines found that, on the engineers' understanding of the ground, the calculated factor of safety of that embankment was 1.5 or more.<label for="mn-build-fs" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-fs" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, p. 64 (1.7 against 1.3); <a data-cite="polley-cim2015"></a>, p. 2 (1.5 or greater).</span> By the rules of the trade the dam was safe, and on the night of 4 August 2014 it gave way (<a data-ref="prologue"></a>).</p>
+      <p>Before finding out what that number missed, design a dam yourself and run the same kind of check on it. This chapter hands you a workbench wired to the tools of the last four chapters, and five missions, each a brief of the kind engineers are given. The last is Mount Polley, rebuilt, and your check will pass it too.</p>
+
+      <h3 id="s-build-bench">A workbench with three checks</h3>
+      <p>The workbench is our dam, the 24 m embankment of <a data-ref="fig-plate-0"></a>, drawn on a grid of 1 m cells. You paint the cells with five materials, choose the ground it sits on, and set the reservoir. Then the page tests your design with two calculations.</p>
+      <p>The first is the seepage solver of the lab in <a data-ref="fig-lab"></a>. It finds where the water inside your dam settles, how much leaks through, and how hard it pushes on the soil where it comes out.</p>
+      <p>The second asks whether the downstream slope would slide. It tries more than two thousand curved surfaces through the slope (1,960 on a grid, then a few hundred more homing in on the weakest), each a possible <span class="gl" data-term="slip-surface">slip surface</span>, and on a foundation with a weak layer it also tries flat-bottomed blocks that slide along the layer. On each it adds up, slice by slice as in <a data-ref="ch-slope"></a>, the grip the soil can offer (friction, plus the <span class="gl" data-term="cohesion">cohesion</span> of a clayey fill) against the pull of the soil's weight trying to slide it downhill. Friction depends on how hard the grains press together, so wherever the seepage solution puts water pressure on a surface, the grip there drops.</p>
+      <p>Grip divided by pull is the <span class="gl" data-term="factor-of-safety">factor of safety</span>, the number of the block on the ramp in <a data-ref="ch-grip"></a> and of the slices in <a data-ref="ch-slope"></a>. Below 1 the slope slides. With the reservoir full, dam engineers usually want 1.5 or more, to cover what they can't know about the soil.<label for="mn-build-usace" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-usace" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usace-em1902"></a>, table 3-1, p. 3-2: 1.5 for long-term steady seepage in a new earth or rockfill dam; 1.1 to 1.3 after a rapid drawdown.</span> A third verdict, the upstream slope after the reservoir is emptied fast, waits for the fourth mission. The page reports the three checks in the language of the chapters that built them:</p>
       <div class="three">
-        <div><h4>Leaks</h4><p>Seepage in litres per day for each metre of dam. Some is normal. A lot means lost water, or polluted water for a tailings dam.</p></div>
-        <div><h4>Pipes</h4><p>Where water leaves unprotected soil, it pushes on the grains. Rising out of level ground it lifts them; out of a slope it drags them along the face, and the same number is a guide to how hard. Safety against <span class="gl" data-term="piping">piping</span> is the push that would float sand away divided by the push it gets. For water rising out of level ground the US Bureau of Reclamation wants at least 3 for an existing dam and 4 for a new one (about 2 to 2.5 where the soil is well measured); the missions here ask for 3 at every exit. The number warns of sand boils; it can't see every kind of internal erosion.</p></div>
-        <div><h4>Slides</h4><p>The lowest factor of safety of any slip surface at least <span data-n="bench.min-depth-m">2</span> m deep. Shallower slips are surface damage that maintenance fixes.</p></div>
+        <div><h4>Leaks</h4><p>Seepage in litres per day for each metre of dam, the flow of <a data-ref="ch-seepage"></a>. Some is normal. A lot means lost water, or polluted water for a tailings dam.</p></div>
+        <div><h4>Pipes</h4><p>Where water leaves unprotected soil, it pushes on the grains, as in <a data-ref="ch-erosion"></a>. Rising out of level ground it lifts them; out of a slope it drags them along the face, and the same number is a guide to how hard. Safety against <span class="gl" data-term="piping">piping</span> is the push that would float sand away divided by the push it gets. For water rising out of level ground the US Bureau of Reclamation wants at least 3 for an existing dam and 4 for a new one (about 2 to 2.5 where the soil is well measured); the missions here ask for 3 at every exit.<label for="mn-build-ds13" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-ds13" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usbr-ds13-ch8"></a>, section 8.2.2.2, p. 8-7.</span> The number warns of sand boils; it can't see every kind of internal erosion.</p></div>
+        <div><h4>Slides</h4><p>The lowest factor of safety of any slip surface at least <span data-n="bench.min-depth-m">2</span> m deep, as in <a data-ref="ch-slope"></a>. Shallower slips are surface damage that maintenance fixes.</p></div>
       </div>
+      <p>Here is the workbench. It opens on a dam of compacted fill, untested; the tabs above the drawing hold the five missions, each with a brief, targets and hints:</p>
     </div>
 
     <figure class="sheet full" id="fig-build">
@@ -80,59 +94,428 @@
         <span><i class="bd-sw-slip"></i>Critical slip surface and the soil that would slide</span>
         <span><i class="bd-sw-bar"></i>Water pressure on the slip surface, as the height it would push water up a tube</span>
       </div>
-      <figcaption>Things to try. <strong>Homogeneous fill:</strong> test it, then paint a strip of sand filter just downstream of the crest and a layer along the base out to the toe. Watch the water level drop and the factor of safety climb. <strong>Steep and wet:</strong> the classic slide of a steep, saturated slope. <strong>Clay core + rockfill on sand &amp; gravel:</strong> the core stops water through the dam, but not under it; add a cutoff. The reservoir sits at the level you set; the ground beyond the toe is drained at its surface.</figcaption>
+      <figcaption>
+        <p class="cap"><b>Paint a dam and test it: the drawing shows where the water sits inside it, and which slip surface that water weakens most.</b> The section is to scale on 1 m cells, with the reservoir on the left. After a test the <span class="k-water">blue</span> tint is the water pressure in the soil, darker where it is higher; the dashed line is the water level inside the dam, the <span class="gl" data-term="phreatic-surface">phreatic surface</span>; thin lines with moving dots are the paths the water takes. A thick <span class="k-acc">brick-red</span> stroke on the downstream face marks the <span class="gl" data-term="seepage-face">seepage face</span>, where water breaks out, and a ringed dot the steepest unfiltered exit. The heavy line is the weakest slip surface, a circle or a block, with the soil above it tinted by its verdict: <span class="k-ok">green</span> stable, amber low margin, red sliding. The short bars standing on it are the water pressure there, drawn as the height it would push water up a tube. Show the check for switches to the upstream slope after the reservoir is emptied fast. A mission fixes some controls. <span class="cap-n">The number to remember: the dam of fill scores <span data-n="bench.fos">1.12</span>; a drain inside its downstream half lifts it to <span data-n="bench.fos@preset=drained">1.63</span>.</span></p>
+        <ul class="try">
+          <li>Start from Homogeneous fill and test it. Then paint a strip of sand filter about 2 m wide standing immediately downstream of the crest, joined at its foot to a 2 m layer along the base out to the toe. Watch the dashed line drop and the bars on the slip surface shrink.</li>
+          <li>Start from Clay core + rockfill, set the foundation to Sand &amp; gravel and test; then set the cutoff to Full. Read in the verdict where the water was going.</li>
+          <li>Start from Homogeneous fill and switch Show the check for to the upstream slope. Then start from Leaky, which is all rockfill.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>A drain like the one in the preset Fill + drain takes the factor of safety from <span data-n="bench.fos">1.12</span> to <span data-n="bench.fos@preset=drained">1.63</span>. The cored dam leaks <span data-n="bench.q-lday@preset=cored,found=gravel">5,434</span> L/day per metre, <span data-n="ch13.split-pct@preset=cored,found=gravel,way=under">99.98</span>% of it under the dam; the cutoff brings it to <span data-n="bench.q-lday@preset=cored,found=gravel,cut=full">2.18</span>. Upstream, after the reservoir is emptied fast, the fill scores <span data-n="bench.fos-up">0.94</span> and the rockfill <span data-n="bench.fos-up@preset=leaky">1.41</span>.</p></details>
+      </figcaption>
     </figure>
 
     <div class="col">
-      <p>Material strengths and permeabilities are typical values, not design values. The sandbox does not check earthquakes, the <span class="gl" data-term="liquefaction">liquefaction</span> of loose saturated sand (<a data-ref="ch-trapped"></a>), or whether each zone is a proper filter for the one beside it. In a real dam, clay painted straight against rockfill would wash into it, which is why real cores have filters.</p>
-    </div>
-    <div class="col" data-stub>
-      <!-- New (H.14): "What the number can't see": the reader rebuilds Polley and passes at 3:1, then the
-           turn (drained against undrained, fig-build-strengths); case-polley replaces the card below;
-           ex-build-fatter, ex-build-hold, ex-build-polley, ex-build-breakout. -->
-    </div>
-    <div class="col cases">
-      <div class="case-grid">
-        <article class="case" id="case-polley">
-          <p class="case-k">Mount Polley tailings dam · 2014</p>
-          <h4>The layer nobody found</h4>
-          <p>About 8–10 m below the original ground surface was a layer of clay, laid down in a glacial lake, that the site investigations had missed. The investigation panel found that the dam's weight went on slowly enough for the water in that clay to seep away, for the most part, as it was squeezed (<span class="gl" data-term="drained">drained</span> loading). But the dam had pressed the clay harder than anything in its past, and clay in that state tries to pack tighter when it is sheared. Once it began to slide, its water couldn't get out of the way. The water pressure rose, and the clay's grip fell well below the slow, drained strength the design relied on (<span class="gl" data-term="undrained">undrained</span> failure). A steep rockfill slope on top, 1.3 m across for every 1 m up (1.3H:1V), supplied the push. The dam slid on the clay and released about 25 million m³ of tailings and water. The panel put it in an image of its own: building on the clay unknowingly, without recognizing that it could fail undrained, loaded the gun, and building a slope that steep on top of it pulled the trigger.</p>
-        </article>
+      <p>Notice that the slip surface and the water belong together. Test the dam of fill and the blue bars stand tallest where the surface runs lowest under the dashed line; that is where the water carries most of the soil's weight, and where the grip is thinnest. Every mission below is, one way or another, about putting the water where it can do no harm.</p>
+
+      <h3 id="s-build-dry">Mission 1: dry the slope</h3>
+      <p>The first brief is the dam that opened <a data-ref="ch-slope"></a>: compacted fill on clay, standing at <span data-n="bench.fos">1.12</span> with water breaking out <span data-n="bench.face-m">8</span> m up its downstream face. There you chose a fix on paper. Here you paint it. Before you do, it is worth asking whether you could have known where the water would come out without any solver at all. Dam designers had a rule of thumb for it long before computers:<label for="mn-build-third" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-third" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usbr1987"></a>, section 6.3(c), p. 190, after Justin, Hinds and Creager: in a completely homogeneous dam, seepage "will emerge on the downstream slope regardless of its flatness", to "roughly one-third the depth of the reservoir pool".</span> in a dam of one material, water held long enough behind it will break out on the downstream slope at about a third of the reservoir's depth, however flat that slope is.</p>
+      <div class="eq" id="eq-build-third">
+        <span class="eq-body"><var>h</var><sub>out</sub> ≈ <var>H</var> / 3</span>
+        <span class="eq-no" data-num></span>
       </div>
-      <p class="case-src">Sources: Mount Polley Independent Expert Engineering Investigation and Review Panel (2015).</p>
+      <p class="eq-where"><var>h</var><sub>out</sub> height above the base at which water breaks out on the downstream face of a homogeneous dam (m) · <var>H</var> depth of the reservoir (m)</p>
+
+      <section class="we" id="ex-build-breakout">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">A rule of thumb against the solver</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Our dam built of fill alone, with the reservoir <span data-n="lab.res-m">20.4</span> m deep. The solver's answer: water breaks out <span data-n="bench.face-m">8</span> m up the downstream slope.</dd>
+          <dt>Find</dt><dd>Where the one-third rule puts the breakout, and how well it agrees with the solver at three slopes.</dd>
+          <dt>The idea</dt><dd>A third of the depth (<a data-ref="eq-build-third"></a>), whatever the slope.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>h</var><sub>out</sub> ≈ 20.4 ÷ 3 = <span data-n="ch13.third-m">6.8</span> m</span><span class="why">the rule</span></li>
+          <li><span class="we-eq">Solver: <span data-n="bench.face-m">8</span> ÷ 20.4 = <span data-n="ch13.face-ratio">0.392</span> of the depth</span><span class="why">the solver's breakout as a share of the reservoir</span></li>
+          <li><span class="we-eq">At 2.5:1 and 3:1: <span data-n="bench.face-m@slope=2.5">8</span> m and <span data-n="bench.face-m@slope=3">8</span> m</span><span class="why">a flatter face moves the toe out but not the breakout up or down</span></li>
+        </ol>
+        <p class="we-ans">The rule says <span data-n="ch13.third-m">6.8</span> m and the solver <span data-n="bench.face-m">8</span> m, at every slope the workbench offers.</p>
+        <p class="we-check"><b>Check.</b> The rule is rough in both directions. Lower the reservoir to 60%, <span data-n="lab.res-m@res=0.6">14.4</span> m: the rule gives 14.4 ÷ 3 = <span data-n="ch13.third-m@r=0.6">4.8</span> m and the solver <span data-n="bench.face-m@res=0.6">3</span> m. The solver works in 1 m cells, so its breakout is good to about a metre.</p>
+        <p class="we-means"><b>What it means.</b> Flattening a dam of one material keeps its face wet; the water comes out at the same height and has further to go to the toe. That is why the Bureau of Reclamation's manual says the fully homogeneous section "should seldom be used" (<a data-cite="usbr1987"></a>, p. 190), and why the first fix to try is a drain.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"dry"},"click":["#bd-test"]}'>Set the figure</button></p>
+      </section>
+
+      <p>Mission 1 holds the slope at 2:1 and asks for a factor of safety of <span data-n="bench.goal@mission=dry,goal=minFoS">1.5</span> with a piping safety of <span data-n="bench.goal@mission=dry,goal=minPipe">3</span>. <a data-ref="pr-build">The question that opened the last chapter</a> already told you which fix wins, and the workbench agrees: paint the drain and the dam scores <span data-n="bench.fos@preset=drained">1.63</span>. But a designer has to pay for a fix, and the three fixes cost different things. Put them side by side as cubic metres changed against safety gained:</p>
+    </div>
+
+    <figure class="fig wide" id="fig-build-cost">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · What each fix buys, per cubic metre</span><span class="scale-note">From the workbench's solver · per metre length of dam</span></div>
+      <svg class="dwg" viewBox="0 0 560 300" role="img" aria-label="A chart of factor of safety against the cubic metres of the section changed, for the dam of fill and three fixes. The dam as built sits at 0 cubic metres and 1.12. Flattening the downstream slope to 2.5 to 1 adds 144 cubic metres of fill and reaches 1.27; flattening to 3 to 1 adds 300 and reaches 1.42, still below the dashed target line at 1.5. The drain swaps 126 cubic metres of fill for filter sand and reaches 1.63, above the target. Lines from the as-built point to each fix show how much safety each cubic metre buys: the drain's line is about four times as steep.">
+        <path d="M64,262 H484" style="stroke:var(--ink);stroke-width:1;fill:none"/>
+        <path d="M64,24 V262" style="stroke:var(--ink);stroke-width:1;fill:none"/>
+        <path d="M64,194 H484 M64,126 H484 M64,58 H484" style="stroke:var(--rule);stroke-width:0.7;fill:none"/>
+        <path d="M195.3,262 V24 M326.5,262 V24 M457.8,262 V24" style="stroke:var(--rule);stroke-width:0.7;fill:none"/>
+        <text x="58" y="266" class="lbl-s" text-anchor="end">1.0</text>
+        <text x="58" y="198" class="lbl-s" text-anchor="end">1.2</text>
+        <text x="58" y="130" class="lbl-s" text-anchor="end">1.4</text>
+        <text x="58" y="62" class="lbl-s" text-anchor="end">1.6</text>
+        <text x="64" y="279" class="lbl-s" text-anchor="middle">0</text>
+        <text x="195.3" y="279" class="lbl-s" text-anchor="middle">100</text>
+        <text x="326.5" y="279" class="lbl-s" text-anchor="middle">200</text>
+        <text x="457.8" y="279" class="lbl-s" text-anchor="middle">300</text>
+        <text x="484" y="296" class="lbl" text-anchor="end">m³ of the section added or swapped, per metre of dam</text>
+        <text x="70" y="16" class="lbl">factor of safety, downstream</text>
+        <path d="M64,92 H484" style="stroke:var(--ok);stroke-width:1.4;stroke-dasharray:6 4;fill:none"/>
+        <text x="72" y="86" class="lbl-s halo" style="fill:var(--ok)">target 1.5</text>
+        <path d="M64,222.6 L253,169.3 M64,222.6 L457.8,119.8" style="stroke:var(--ink-2);stroke-width:1.6;fill:none"/>
+        <path d="M64,222.6 L229.4,48.3" style="stroke:var(--ok);stroke-width:2.2;fill:none"/>
+        <circle cx="64" cy="222.6" r="5" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.6"/>
+        <circle cx="253" cy="169.3" r="5" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.6"/>
+        <circle cx="457.8" cy="119.8" r="5" style="fill:var(--sheet);stroke:var(--ink);stroke-width:1.6"/>
+        <circle cx="229.4" cy="48.3" r="5.5" style="fill:var(--ok);stroke:var(--sheet);stroke-width:1.5"/>
+        <text x="74" y="244" class="lbl-s halo">as built, <tspan data-n="bench.fos">1.12</tspan></text>
+        <text x="262" y="186" class="lbl-s halo">2.5:1, +<tspan data-n="ch13.changed-m3">144</tspan> m³ fill: <tspan data-n="bench.fos@slope=2.5">1.27</tspan></text>
+        <text x="470" y="108" class="lbl-s halo" text-anchor="end">3:1, +<tspan data-n="ch13.changed-m3@fix=s3">300</tspan> m³ fill: <tspan data-n="bench.fos@slope=3">1.42</tspan></text>
+        <text x="240" y="44" class="lbl-s halo" style="fill:var(--ok)">drain, <tspan data-n="ch13.changed-m3@fix=drain">126</tspan> m³ swapped: <tspan data-n="bench.fos@preset=drained">1.63</tspan></text>
+      </svg>
+      <figcaption>
+        <p class="cap"><b>A drain buys about four times as much safety per cubic metre as a flatter slope, and only the drain reaches the target.</b> Across is how much of the section each fix changes, per metre length of dam: the extra fill a flatter downstream slope needs, or the fill the drain replaces with filter sand. Up is the downstream factor of safety the workbench computes. Each line runs from the dam as built to a fix, so its steepness is the safety each cubic metre buys; the dashed <span class="k-ok">green</span> line is the target. <span class="cap-n">The number to remember: <span data-n="ch13.per100@fix=drain">0.41</span> of factor of safety per 100 m³ for the drain, against <span data-n="ch13.per100">0.11</span> for the first flattening.</span></p>
+        <ul class="try">
+          <li>Measure the steepness of the two fill lines in factor of safety per 100 m³. Does the second 156 m³ of fill buy as much as the first 144?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p><span data-n="ch13.per100">0.1085</span> per 100 m³ to 2.5:1 and <span data-n="ch13.per100@fix=s3">0.1007</span> to 3:1, averaged from the start. The second step alone adds <span data-n="ch13.step-m3">156</span> m³ and gains <span data-n="ch13.step-gain">0.1458</span>: 0.1458 ÷ 156 × 100 = <span data-n="ch13.per100-step">0.0935</span>, less than the first. Flattening gives diminishing returns.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the two fill lines nearly lie on one another: a flatter slope buys safety at roughly the same, low rate however far you take it, and stops short of 1.5 at 3:1. The drain's line is in a different class. Here is the arithmetic behind the drawing:</p>
+
+      <section class="we" id="ex-build-fatter">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The price of a point of safety</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The dam of fill at 2:1, <span data-n="bench.cells">1,296</span> m³ per metre, factor of safety <span data-n="bench.fos">1.1163</span>. Flattened to 2.5:1 it holds <span data-n="bench.cells@slope=2.5">1,440</span> m³ and scores <span data-n="bench.fos@slope=2.5">1.2726</span>; to 3:1, <span data-n="bench.cells@slope=3">1,596</span> m³ and <span data-n="bench.fos@slope=3">1.4184</span>. The drain swaps <span data-n="ch13.changed-m3@fix=drain">126</span> m³ of fill for filter sand and scores <span data-n="bench.fos@preset=drained">1.6285</span>.</dd>
+          <dt>Find</dt><dd>The safety each fix buys for every 100 m³ of the section it changes.</dd>
+          <dt>The idea</dt><dd>Divide what each fix gains by what it changes. Fill added and fill swapped both cost money; the drain's sand must also be graded to the fill, as <a data-ref="ch-erosion"></a> requires.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">2.5:1: <span data-n="bench.cells@slope=2.5">1,440</span> − <span data-n="bench.cells">1,296</span> = <span data-n="ch13.changed-m3">144</span> m³; gain <span data-n="bench.fos@slope=2.5">1.2726</span> − <span data-n="bench.fos">1.1163</span> = <span data-n="ch13.gain">0.1563</span></span><span class="why">the extra downstream wedge, and what it buys</span></li>
+          <li><span class="we-eq">0.1563 ÷ 144 × 100 = <span data-n="ch13.per100">0.1085</span> per 100 m³</span><span class="why">the rate for the first flattening</span></li>
+          <li><span class="we-eq">3:1: <span data-n="ch13.changed-m3@fix=s3">300</span> m³; 0.3021 ÷ 300 × 100 = <span data-n="ch13.per100@fix=s3">0.1007</span></span><span class="why">gain <span data-n="bench.fos@slope=3">1.4184</span> − <span data-n="bench.fos">1.1163</span> = <span data-n="ch13.gain@fix=s3">0.3021</span></span></li>
+          <li><span class="we-eq">Drain: 0.5122 ÷ 126 × 100 = <span data-n="ch13.per100@fix=drain">0.4065</span></span><span class="why">gain <span data-n="bench.fos@preset=drained">1.6285</span> − <span data-n="bench.fos">1.1163</span> = <span data-n="ch13.gain@fix=drain">0.5122</span>, for sand swapped in, not added</span></li>
+          <li><span class="we-eq">0.4065 ÷ 0.1085 = <span data-n="ch13.per100-ratio">3.7</span></span><span class="why">the drain's rate over the flatter slope's</span></li>
+        </ol>
+        <p class="we-ans">Cubic metre for cubic metre the drain buys about <span data-n="ch13.per100-ratio">3.7</span> times as much safety as fill, and it alone passes 1.5.</p>
+        <p class="we-check"><b>Check.</b> The flatter slope adds weight on the toe and lengthens the slip, but the water still breaks out <span data-n="bench.face-m@slope=3">8</span> m up the face (<a data-ref="ex-build-breakout"></a>) and still carries part of the weight on the slip surface. The drain removes that water instead, and on the dam as built the water carried <span data-n="bench.ru">0.353</span> of the weight of the soil on the weakest slip.</p>
+        <p class="we-means"><b>What it means.</b> No fix is free. The drain's cost is paid in water: it collects what reaches it, so the dam now leaks <span data-n="ch13.drain-leak-ratio">2.47</span> times as much, <span data-n="bench.q-lday@preset=drained">110</span> L/day per metre against <span data-n="bench.q-lday">44.4</span>, and leads it away where it can do no harm.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"free","bd-presets":"drained"},"click":["#bd-test"]}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> You paint a block of filter sand inside the downstream half of the fill, but not joined to the toe. Will it help as a drain does?</summary>
+        <p>Barely. Water that collects in a drain has to leave it; a patch with no way out fills up, and the water in it sits at the same pressure as the fill around it. The workbench treats such a patch as permeable soil, and drains only sand joined to the toe along the base.</p>
+      </details>
+
+      <h3 id="s-build-hold">Mission 2: hold the water</h3>
+      <p>The second brief is the opposite problem. A dam of rockfill on sand and gravel stands well but leaks like a sieve: <span data-n="bench.q-lday@preset=leaky,found=gravel">32,490</span> L/day for each metre, <span data-n="ch13.split-pct@preset=leaky,found=gravel">93</span>% of it through the dam itself. The brief asks for <span data-n="bench.goal@mission=hold,goal=maxQ">100</span> L/day or less without losing the slope or the piping safety, and with no more than <span data-n="bench.goal@mission=hold,goal=maxClay">350</span> m³ of clay per metre. One could assume that a clay <span class="gl" data-term="core">core</span>, the watertight wall of <a data-ref="ch-zones"></a>, settles it. Here is what happens when you paint one:</p>
+
+      <section class="we" id="ex-build-hold">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Where the water goes when you block one path</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>All rockfill on sand and gravel: <span data-n="bench.q-lday@preset=leaky,found=gravel">32,490</span> L/day per metre. Clay passes water at <span data-n="bench.mat-k@mat=clay">10⁻⁹</span> m/s, rockfill at <span data-n="bench.mat-k@mat=rock">10⁻⁴</span> m/s. The preset clay core is <span data-n="ch13.core-w-m">21.4</span> m wide at the base and <span data-n="ch13.core-w-m@z=23">3</span> m at its top, <span data-n="ch13.core-h-m">23</span> m up.</dd>
+          <dt>Find</dt><dd>The leak with the core, the leak with the core and a full cutoff, and the clay it takes.</dd>
+          <dt>The idea</dt><dd>Water takes every path open to it (<a data-ref="ch-seepage"></a>). A core closes the path through the dam; a <span class="gl" data-term="cutoff">cutoff</span> closes the path under it.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Core alone: <span data-n="bench.q-lday@preset=cored,found=gravel">5,434</span> ÷ <span data-n="bench.q-lday@preset=leaky,found=gravel">32,490</span> = <span data-n="ch13.core-frac">0.167</span></span><span class="why">the leak falls to a sixth</span></li>
+          <li><span class="we-eq">Core and full cutoff: <span data-n="bench.q-lday@preset=cored,found=gravel,cut=full">2.18</span> ÷ <span data-n="bench.q-lday@preset=cored,found=gravel">5,434</span> = <span data-n="ch13.cut-frac">0.0004</span></span><span class="why">so <span data-n="ch13.cut-under-pct">99.96</span>% of the core's leak was going under it</span></li>
+          <li><span class="we-eq">Mean core width: (21.4 + 3.0) ÷ 2 = <span data-n="ch13.core-mean-m">12.2</span> m</span><span class="why">the core is a trapezoid</span></li>
+          <li><span class="we-eq">Clay: 12.2 × 23 = <span data-n="ch13.core-m3">280.6</span> m³ per metre</span><span class="why">mean width times height; the workbench counts whole cells, <span data-n="bench.clay-m3@preset=cored,found=gravel">286</span></span></li>
+        </ol>
+        <p class="we-ans">Core and cutoff together leak <span data-n="bench.q-lday@preset=cored,found=gravel,cut=full">2.18</span> L/day per metre, with <span data-n="bench.clay-m3@preset=cored,found=gravel">286</span> m³ of clay, a factor of safety of <span data-n="bench.fos@preset=cored,found=gravel,cut=full">1.81</span>, and every exit far from piping.</p>
+        <p class="we-check"><b>Check.</b> The core passes water a hundred thousand times more slowly than the rockfill it replaces (<span data-n="bench.mat-k@mat=clay">10⁻⁹</span> against <span data-n="bench.mat-k@mat=rock">10⁻⁴</span> m/s), yet the leak fell only sixfold. A mismatch that large means the water had another way round, and the workbench's verdict names it: of the cored dam's leak, <span data-n="ch13.split-pct@preset=cored,found=gravel,way=under">99.98</span>% passes under the dam, through the gravel.</p>
+        <p class="we-means"><b>What it means.</b> Before choosing a fix, find where the water goes. The cutoff is useless on its own (the water would still pour through the rockfill) and nearly everything once the core is in.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"hold","bd-presets":"cored","bd-cut":"full"},"click":["#bd-test"]}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-build-tailings">Mission 3: tailings on a budget</h3>
+      <p>The third brief comes from a mine. It wants at least <span data-n="ch13.goal-pct">70</span>% of the dam built of <span class="gl" data-term="cyclone-sand">cycloned tailings sand</span>, the coarse part of its own waste (<a data-ref="ch-raising"></a>), because that is far cheaper than hauling fill from a borrow pit. Built of tailings sand alone at 2:1 the dam scores <span data-n="bench.fos@preset=tailings">0.64</span> and slides. The sand has no cohesion, and water seeping out of a slope of it takes about half its grip (<a data-ref="ch-slope"></a>). The answer is the first mission's drain with a flatter face: a chimney and blanket drain inside tailings sand at 2.5:1 scores <span data-n="ch13.tail-fos">1.63</span> with <span data-n="ch13.tail-pct">90</span>% of the dam in sand. Its price is again paid in water, and here it is a large price: the drain collects <span data-n="ch13.tail-q-lday">7,980</span> L/day per metre, polluted water that a real mine must catch below the dam and pump back.</p>
+
+      <h3 id="s-build-drawdown">Mission 4: empty it fast</h3>
+      <p>Every brief so far tested the downstream slope with the reservoir full. The fourth tests the other face. A reservoir sometimes has to be emptied in a hurry, to reach a damaged outlet or to take the load off a dam in trouble, and <a data-ref="ch-slope"></a> showed what that does: while the water stands against the upstream face it presses the slope in place, and when it goes, the water trapped in fill and clay stays, pushing out with nothing pushing back. This is <span class="gl" data-term="rapid-drawdown">rapid drawdown</span>, and for such a short-lived event engineers accept a lower factor of safety, 1.1 to 1.3 depending on the case;<label for="mn-build-dd" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-dd" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usace-em1902"></a>, table 3-1, p. 3-2: 1.1 from maximum surcharge pool, 1.3 from maximum storage pool.</span> the mission asks for <span data-n="bench.goal@mission=drawdown,goal=minFoSUp">1.2</span>. Empty the dam of fill and its upstream slope scores <span data-n="bench.fos-up">0.94</span>.</p>
+      <p>The obvious remedy is a coat of rockfill on the face, since rockfill drains as fast as the reservoir falls. Paint a skin 5 m thick and test: the factor of safety goes down, to <span data-n="ch13.skin-fos-up">0.89</span>. The weakest slip runs deeper instead, behind the skin, through fill that still holds its water. A free-draining zone helps only if the slip cannot get round it. Rockfill over the whole upstream part of the dam, from the face in to 3 m short of the crest, scores <span data-n="bench.fos-up@uprock=-6">1.24</span>; carried in to the crest's edge it scores <span data-n="bench.fos-up@uprock=-3">1.32</span>; stopped 7 m short, <span data-n="bench.fos-up@uprock=-10">1.14</span>, not enough. All rockfill drains best of all, <span data-n="bench.fos-up@preset=leaky">1.41</span>, and leaks <span data-n="bench.q-lday@preset=leaky">29,621</span> L/day per metre, which is why the brief caps the leak at <span data-n="bench.goal@mission=drawdown,goal=maxQ">1,000</span>.</p>
+      <p>Now flip the view back to the downstream slope. The upstream shell has made it worse, <span data-n="bench.fos@uprock=-6">1.03</span> against <span data-n="bench.fos">1.12</span>: the reservoir's water now crosses the rockfill without losing head and reaches the fill with nearly all of it. So the shell solves one problem by handing the next zone a harder one. Combine it with the first mission's drain (start from Fill + drain, then paint the upstream shell) and the dam passes everything at once: downstream <span data-n="bench.fos@preset=drained,uprock=-6">1.63</span>, upstream after a fast drawdown <span data-n="bench.fos-up@preset=drained,uprock=-6">1.30</span>, a leak of <span data-n="bench.q-lday@preset=drained,uprock=-6">240</span> L/day per metre and a piping safety over 50. A free-draining shell upstream, a fill that holds the water in the middle, a drain that catches it downstream: you have rebuilt the zoned dam of <a data-ref="ch-zones"></a> from its jobs.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> The downstream drain does almost nothing for the upstream slope after a drawdown (<span data-n="bench.fos-up@preset=drained">1.05</span> against <span data-n="bench.fos-up">0.94</span>). Why?</summary>
+        <p>A drawdown's danger is the water trapped in the upstream fill once the reservoir has gone. A drain under the downstream half lowers the water there, far from the upstream slip, which still runs through fill that holds its water.</p>
+      </details>
+
+      <h3 id="s-build-polley">Mission 5: Mount Polley</h3>
+      <p>The last brief is the dam of the Prologue, scaled to the workbench: a clay core between rockfill shells, on clay, with a weak layer in the ground below. In the real foundation the weak layer lay 8 to 10 m under a dam almost 40 m high, about a fifth of its height down;<label for="mn-build-scale" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-scale" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, p. 135 (the layer) and p. 75 (the height).</span> the workbench's lies <span data-n="ch13.layer-depth-m">4</span> to <span data-n="ch13.layer-depth-m@edge=bottom">6</span> m under a 24 m dam. The layer has no cohesion and a friction angle of <span data-n="ch13.layer-phi-deg">19</span>°, against <span data-n="ch13.found-phi-deg">28</span>° for the clay around it. The brief asks for a downstream factor of safety of <span data-n="bench.goal@mission=polley,goal=minFoS">1.5</span>. The dam starts at <span data-n="bench.fos@preset=cored,found=weak">1.21</span>. Decide first how you would spend your money:</p>
+
+      <div class="predict" data-answer="c" id="pr-build-polley">
+        <p class="predict-q">In <a data-ref="ch-slope"></a> a drain was the best of three fixes. This dam stands on a weak layer at 1.21. Which change lifts it most?</p>
+        <div class="predict-opts"><button type="button" data-v="a">Filters and drains throughout the downstream half</button><button type="button" data-v="b">A cutoff wall down through the foundation, layer and all</button><button type="button" data-v="c">A flatter downstream slope, 3:1</button></div>
+        <div class="predict-reveal" hidden><p>The flatter slope: <span data-n="bench.fos@preset=cored,found=weak">1.21</span> becomes <span data-n="bench.fos@preset=cored,found=weak,slope=3">1.56</span>. The drains move it to <span data-n="bench.fos@preset=filtered,found=weak">1.215</span>, almost nothing, and the cutoff to <span data-n="bench.fos@preset=cored,found=weak,cut=full">1.28</span>. The layer is weak because of what it is, not because of water a drain could reach: it lies sealed in clay below the dam. What holds the sliding block back is weight bearing on the layer beyond the toe, and a longer stretch of layer to shear, and a flatter slope supplies both.</p></div>
+      </div>
+
+      <p>To see why one answer differs from the others, start with the shape of the slide the check finds. Choose tab 5 and test the dam as it stands.</p>
+
+      <section class="we" id="ex-build-polley">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">A block on a weak layer</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The Mount Polley mission: clay core and rockfill at 2:1, on clay (<var>c′</var> = <span data-n="ch13.found-c-kpa">10</span> kPa, <var>φ′</var> = <span data-n="ch13.found-phi-deg">28</span>°) with a layer <span data-n="ch13.layer-depth-m">4</span> to <span data-n="ch13.layer-depth-m@edge=bottom">6</span> m down (<var>c′</var> = <span data-n="ch13.layer-c-kpa">0</span>, <var>φ′</var> = <span data-n="ch13.layer-phi-deg">19</span>°).</dd>
+          <dt>Find</dt><dd>How much weaker the layer is, what shape of slide it allows, and what it takes to reach 1.5.</dd>
+          <dt>The idea</dt><dd>Friction is press times tan <var>φ′</var> (<a data-ref="eq-grip-strength"></a>), so a smaller angle on a flat, continuous layer offers a flat, weak path.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">tan 19° = <span data-n="ch13.tan">0.3443</span>; tan 28° = <span data-n="ch13.tan@a=28">0.5317</span></span><span class="why">grip per kilopascal of press, layer and clay</span></li>
+          <li><span class="we-eq">0.3443 ÷ 0.5317 = <span data-n="ch13.layer-frac">0.648</span></span><span class="why">the layer grips about <span data-n="ch13.layer-cut-pct">35</span>% less for the same press</span></li>
+          <li><span class="we-eq">Weakest circle <span data-n="ch13.circle-fos@preset=cored,found=weak">1.313</span>; weakest block <span data-n="bench.fos@preset=cored,found=weak">1.209</span></span><span class="why">a block that drops at the crest, slides along the layer and rises beyond the toe; it governs</span></li>
+          <li><span class="we-eq">Filters and drains throughout: <span data-n="bench.fos@preset=filtered,found=weak">1.215</span></span><span class="why">the drains never reach the layer</span></li>
+          <li><span class="we-eq">2.5:1: <span data-n="bench.fos@preset=cored,found=weak,slope=2.5">1.390</span>; 3:1: <span data-n="bench.fos@preset=cored,found=weak,slope=3">1.559</span></span><span class="why">weight on the layer beyond the old toe, and a longer path along it</span></li>
+        </ol>
+        <p class="we-ans">At 3:1, for <span data-n="ch12.fill-3-pct">23</span>% more fill, the section scores <span data-n="bench.fos@preset=cored,found=weak,slope=3">1.56</span> and passes.</p>
+        <p class="we-check"><b>Check.</b> Take the layer away: the same 2:1 dam on plain clay scores <span data-n="bench.fos@preset=cored">1.553</span>. Flattening to 3:1 buys back about what the layer cost, and no more.</p>
+        <p class="we-means"><b>What it means.</b> By the workbench's rules this is a dam you could build, and the real panel's verdict points the same way: had the downstream slope been flattened as the original design proposed, it found, the failure would have been avoided. Hold on to the passing number all the same, and ask which strength it used.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"polley","bd-slope":"3"},"click":["#bd-test"]}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-build-unseen">What the number can't see</h3>
+      <p>Most people would stop here, with a passing number. The workbench gave the layer a <span class="gl" data-term="drained">drained</span> strength, the grip <span class="m"><var>σ′</var> tan <var>φ′</var></span> of a soil whose water keeps pace with the load and leaves as the grains are squeezed. Mount Polley's designers did the same for the clays they knew of under the dam: silts and clays laid down on the bed of a lake fed by melting glaciers, which engineers call <span class="gl" data-term="glaciolacustrine">glaciolacustrine</span>. After a field program in 2011, their checks gave these soils a peak friction angle of 28°, the same angle the workbench gives its clay foundation. The layer that failed, a higher one, was not in the checks of the side that failed at all.<label for="mn-build-28" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-28" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, p. 69 (the 28° peak angle after the 2011 field program) and p. 76 (only the lower of two such units was in the Perimeter Embankment's stability analysis).</span> The workbench's 19° stands in for the layer's weakness. Neither is the strength the layer had on the night it failed.</p>
+      <p>The dam had pressed that clay harder than anything in its past. A clay in that state is loose for its load, like the loose sand of <a data-ref="ch-trapped"></a>, and when it is sheared it tries to contract. Over the years of raising, the load came on slowly enough for its water to seep away, and the panel found the loading had been essentially drained. A slide is fast. In <a data-ref="ch-head"></a> water took <span data-n="race.t-yr@mat=clay">11</span> years to cross a single metre of clay; sheared in minutes, the clay's water could not leave; its pressure rose, the press between the grains fell, and the grip fell with it. That grip is the clay's <span class="gl" data-term="undrained-strength">undrained strength</span>, and <a data-ref="eq-trapped-su"></a> gave its rough size for soft clays. The panel's laboratory tests on samples of the layer measured it directly. On average:<label for="mn-build-su" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-su" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, pp. 76 and 135 (normally consolidated, so contractive, under the dam), p. 101 (a loading path essentially drained), table 5.3.1, p. 49 (peak undrained strength ratio, average 0.24 over all tests), p. 98 (after strain weakening, perhaps 0.13).</span></p>
+      <div class="eq" id="eq-build-su">
+        <span class="eq-body"><var>s</var><sub>u</sub> ≈ 0.24 · <var>σ′</var><sub>v</sub>&ensp;against&ensp;<var>σ′</var><sub>v</sub> tan 28° ≈ <span data-n="ch13.tan@a=28">0.53</span> · <var>σ′</var><sub>v</sub></span>
+        <span class="eq-no" data-num></span>
+      </div>
+      <p class="eq-where"><var>s</var><sub>u</sub> undrained strength of the layer, sheared fast (kPa) · <var>σ′</var><sub>v</sub> the vertical effective stress the dam had pressed it to (kPa), which on a level layer is the press across it · 0.24 the panel's average from its tests · tan 28° the drained grip the design gave such clays</p>
+      <p>Drawn against the press, the two strengths are two straight lines from zero, the strength envelope of <a data-ref="ch-grip"></a> drawn twice:</p>
+    </div>
+
+    <figure class="fig wide" id="fig-build-strengths">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · One clay, two strengths</span><span class="scale-note">Both axes in kPa, to the same scale</span></div>
+      <svg class="dwg" viewBox="0 0 560 330" role="img" aria-label="A chart of shear strength against the effective stress pressing across a level layer, from 0 to 800 kilopascals. Four straight lines rise from zero. The steepest, the slow, drained strength at tan 28 degrees, reaches 319 kilopascals at a press of 600. A dashed line, the workbench's stand-in at tan 19 degrees, reaches 207. The fast, undrained strength, 0.24 times the press, reaches 144. A dotted line, the strength after the clay has moved and weakened, perhaps 0.13 times the press, reaches 78. The band between the drained and undrained lines is shaded.">
+        <polygon points="64,282 484,59.3 484,181.2" style="fill:var(--accent-soft)"/>
+        <path d="M169,282 V30 M274,282 V30 M379,282 V30 M484,282 V30" style="stroke:var(--rule);stroke-width:0.7;fill:none"/>
+        <path d="M64,229.5 H494 M64,177 H494 M64,124.5 H494 M64,72 H494" style="stroke:var(--rule);stroke-width:0.7;fill:none"/>
+        <text x="169" y="297" class="lbl-s" text-anchor="middle">200</text>
+        <text x="274" y="297" class="lbl-s" text-anchor="middle">400</text>
+        <text x="379" y="297" class="lbl-s" text-anchor="middle">600</text>
+        <text x="484" y="297" class="lbl-s" text-anchor="middle">800</text>
+        <text x="58" y="286" class="lbl-s" text-anchor="end">0</text>
+        <text x="58" y="233.5" class="lbl-s" text-anchor="end">100</text>
+        <text x="58" y="181" class="lbl-s" text-anchor="end">200</text>
+        <text x="58" y="128.5" class="lbl-s" text-anchor="end">300</text>
+        <text x="58" y="76" class="lbl-s" text-anchor="end">400</text>
+        <path d="M64,30 V282 H494" style="stroke:var(--ink);stroke-width:1;fill:none"/>
+        <text x="494" y="320" class="lbl" text-anchor="end">effective stress across the layer, <tspan font-style="italic">σ′</tspan><tspan baseline-shift="sub" font-size="75%">v</tspan> (kPa)</text>
+        <text x="70" y="22" class="lbl">shear strength (kPa)</text>
+        <path d="M64,282 L484,59.3" style="stroke:var(--grain);stroke-width:2.4;fill:none"/>
+        <path d="M64,282 L484,137.4" style="stroke:var(--ink-2);stroke-width:1.6;stroke-dasharray:7 4;fill:none"/>
+        <path d="M64,282 L484,181.2" style="stroke:var(--accent);stroke-width:2.4;fill:none"/>
+        <path d="M64,282 L484,227.4" style="stroke:var(--accent);stroke-width:1.8;stroke-dasharray:2 3;fill:none"/>
+        <path d="M379,282 V108" style="stroke:var(--ink-3);stroke-width:1;stroke-dasharray:3 3;fill:none"/>
+        <circle cx="379" cy="114.5" r="4" style="fill:var(--sheet);stroke:var(--grain);stroke-width:1.6"/>
+        <circle cx="379" cy="173.5" r="4" style="fill:var(--sheet);stroke:var(--ink-2);stroke-width:1.6"/>
+        <circle cx="379" cy="206.4" r="4" style="fill:var(--sheet);stroke:var(--accent);stroke-width:1.6"/>
+        <circle cx="379" cy="241" r="4" style="fill:var(--sheet);stroke:var(--accent);stroke-width:1.6"/>
+        <text x="78" y="50" class="lbl-s">at 600 kPa:</text>
+        <path d="M78,64 H104" style="stroke:var(--grain);stroke-width:2.4"/>
+        <text x="110" y="68" class="lbl-s halo" style="fill:var(--grain)">slow, drained, tan 28°: <tspan data-n="ch13.tau-kpa">319</tspan></text>
+        <path d="M78,84 H104" style="stroke:var(--ink-2);stroke-width:1.6;stroke-dasharray:7 4"/>
+        <text x="110" y="88" class="lbl-s halo">workbench stand-in, tan 19°: <tspan data-n="ch13.tau-kpa@line=w">207</tspan></text>
+        <path d="M78,104 H104" style="stroke:var(--accent);stroke-width:2.4"/>
+        <text x="110" y="108" class="lbl-s halo lbl-acc">fast, undrained, 0.24: <tspan data-n="ch13.tau-kpa@line=u">144</tspan></text>
+        <path d="M78,124 H104" style="stroke:var(--accent);stroke-width:1.8;stroke-dasharray:2 3"/>
+        <text x="110" y="128" class="lbl-s halo lbl-acc">after it moved, perhaps 0.13: <tspan data-n="ch13.tau-kpa@line=r">78</tspan></text>
+        <text x="312" y="219" class="lbl-s halo lbl-acc" text-anchor="middle" transform="rotate(-16 312 219)">grip that needs the water to leave</text>
+      </svg>
+      <figcaption>
+        <p class="cap"><b>Sheared slowly the layer's clay grips with about half its press; sheared fast, with about a quarter, and less once it starts to move.</b> Across is the effective stress pressing across a level layer, up the shear strength it can offer; both axes have the same scale. The ochre line is the slow, drained strength the design gave such clays, tan 28° times the press. The dashed line is the workbench's stand-in, tan 19°. The <span class="k-acc">brick-red</span> line is the fast, undrained strength the panel measured, 0.24 times the press, and the dotted one what the clay may have kept once the slide had moved and softened it. The shaded band is grip that existed only if the water could leave. The dots read each line at 600 kPa, one of the presses the panel tested at; the dam put up to about 800 kPa on parts of the layer (<a data-cite="polley-cim2015"></a>, p. 5). <span class="cap-n">The number to remember: fast, the clay offers <span data-n="ch13.ud-frac">0.45</span> of its slow grip, less than half.</span></p>
+        <ul class="try">
+          <li>Read the slow and the fast strengths at 600 kPa and divide the fast one by the slow one.</li>
+          <li>Where does the workbench's stand-in sit between them, and which way does that err?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p><span data-n="ch13.tau-kpa@line=u">144</span> ÷ <span data-n="ch13.tau-kpa">319.0</span> = <span data-n="ch13.ud-frac">0.451</span>. The stand-in, <span data-n="ch13.tau-kpa@line=w">207</span> kPa, is well above the fast strength: it errs on the generous side, so a check that passes with it says nothing about the fast failure.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the gap grows with the press. The higher the dam, the more strength the drained line promises and the more of it vanishes if the clay is sheared fast. The clay was also <span class="gl" data-term="strain-softening">strain-softening</span>: in the panel's tests its grip peaked and then fell as it kept moving, so its <span class="gl" data-term="peak-strength">peak strength</span> held only until it began to move. A slide that starts on such a clay weakens the ground it slides on, which is how a dam that had stood for years could go in a night.<label for="sn-build-why" class="sn-ref"></label><input type="checkbox" id="sn-build-why" class="margin-toggle"><span class="sidenote" data-kind="curious">Why check drained strength at all? Because it is the right check for loads that last: over years a clay's water does leave, and a slope must stand on the strength it has then. The undrained check is a separate calculation, run with the clay's measured strength ratio and its stress history. The two answer different questions, and a design needs both wherever a clay can be sheared fast.</span></p>
+      <p>Your workbench passed the dam at 3:1, and with a flatter slope the real dam would probably have stood. But the number that approved it was computed for a strength the layer did not have when it mattered. The panel was blunt about where the fault lay: "the dominant contribution to the failure resides in the design." Its foundation investigations had not found a continuous layer near the breach, nor recognized that it could fail undrained.<label for="mn-build-design" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-design" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, p. iv and p. 105 (the quotation), p. iv (2H:1V would have avoided the failure).</span></p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> The real layer lay 8 to 10 m under a dam about 40 m high; the workbench's lies 4 to 6 m under 24 m. Is the workbench's at the same share of the height?</summary>
+        <p>Nearly. 8 ÷ 40 = <span data-n="ch13.panel-share">0.20</span> and 10 ÷ 40 = <span data-n="ch13.panel-share@d=10">0.25</span>; 4 ÷ 24 = <span data-n="ch13.layer-share">0.17</span> and 6 ÷ 24 = <span data-n="ch13.layer-share@edge=bottom">0.25</span>. Scaled to its height, the workbench's layer starts a little higher.</p>
+      </details>
+
+      <h3 id="s-build-found">A layer has to be found first</h3>
+      <p>A calculation can only weigh the ground it is told about. Finding out what that ground is, layer by layer and how strong each is, is the work of <span class="gl" data-term="site-investigation">site investigation</span>: mapping the geology, drilling <span class="gl" data-term="borehole">boreholes</span> and testing what comes up. A borehole samples a column of ground about a hand's width across. Under the side of Mount Polley that failed, the panel found the critical soil at depths of about 8 m, and only four locations where holes went deeper than 8 m and the soil was tested. None was where the breach occurred.<label for="mn-build-holes" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-holes" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, pp. 28 and 80. The Chief Inspector counted three deep sampled drillholes along the 2 km of that embankment: <a data-cite="polley-cim2015"></a>, p. 2.</span> The layer was there, a few metres thick, and the drilling passed it by.<label for="sn-build-terzaghi" class="sn-ref"></label><input type="checkbox" id="sn-build-terzaghi" class="margin-toggle"><span class="sidenote" data-kind="history">The epigraph is the title of a paper Karl Terzaghi published in 1929, in a collection on geology and dams issued by the American Institute of Mining and Metallurgical Engineers (<a data-cite="terzaghi1929"></a>). Eighty-five years later, a layer a few metres thick under a 40 m dam was such a detail.</span> After the failure, British Columbia's engineering association wrote guidelines for investigating dam foundations, in answer to one of the panel's recommendations.<label for="mn-build-egbc" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-egbc" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="egbc2016"></a>, preface: written in response to the panel's Recommendation 6, and applying to all dams in the province.</span></p>
+      <p>Then there was the slope on top. The design had called for a downstream slope of 2H:1V, but for years the outer face had been left at the steepest angle tipped rockfill will stand, about 1.3H:1V. (You measured about 1.4 across for 1 up in <a data-ref="fig-prologue-section"></a>, from the crest's edge to the toe; the face itself stood at 1.3H:1V.) The panel put the two causes in one sentence: "If constructing unknowingly on the Upper GLU stratum, and not recognizing the potential undrained failure constituted loading the gun, building with a 1.3H:1V angle of repose slope over this stratum pulled the trigger." Here the Upper GLU is the panel's name for the layer. That night the crest dropped at least 3.3 m, more than the 2.3 m by which it stood above the pond. The pond spilled over the lowered crest and cut the breach.<label for="mn-build-gun" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-gun" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, p. 75 (an unbuttressed 1.3H:1V slope, almost 40 m high), p. 108 (the quotation), p. 137 (the crest's drop and the pond 2.3 m below the core).</span> The Chief Inspector of Mines listed among the causes a "misplaced faith in the Factor of Safety".<label for="mn-build-faith" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-faith" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley-cim2015"></a>, p. 5.</span></p>
+    </div>
+
+    <figure class="case-plate wide" id="case-polley"
+            data-case="Mount Polley tailings dam" data-year="2014" data-where="Near Williams Lake, British Columbia"
+            data-type="Zoned earth and rockfill tailings dam, about 40 m" data-mechanism="Undrained failure of a glaciolacustrine clay and silt layer in the foundation, missed by the site investigation, under a 1.3H:1V downstream slope; the crest dropped below the pond, which overflowed and cut the breach" data-mechanism-safe="See Chapter 13" data-bc="true">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Case file: Mount Polley, 2014</span><span class="scale-note">Section to scale, from the Review Panel</span></div>
+      <div class="case-body">
+        <svg class="dwg" viewBox="-34 0 754 326" role="img" aria-label="A cross-section, to scale, of the side of the Mount Polley tailings dam that failed, as the review panel analysed it. On the left, tailings with a thin pond on top, 2.3 metres below the top of the core. In the middle the embankment: a core of till and a rockfill shell, about 40 metres high, its downstream face steep. Beneath the original ground lie a layer of glacial till about 6 metres thick, then the glaciolacustrine layer of silt and clay, about 3 metres thick, then lower tills. A dashed red slip surface drops through the core, runs flat along the glaciolacustrine layer under the whole downstream half of the dam and rises through the till beyond the toe, where the ground was pushed up about 3 metres. An arrow shows the mass moving about 11 metres downstream.">
+          <rect x="8" y="267.7" width="704" height="29.5" fill="url(#p-alluv)" class="edge-l"/>
+          <rect x="8" y="254.5" width="704" height="13.2" fill="url(#p-clay)" class="edge-l"/>
+          <rect x="8" y="226.8" width="704" height="27.7" fill="url(#p-alluv)" class="edge-l"/>
+          <path class="edge" fill="none" d="M8,226.8 H712"/>
+          <polygon points="8,60.5 190.2,60.5 182.7,226.8 8,226.8" fill="url(#p-slime)" class="edge-l"/>
+          <polygon class="water" points="8,55.9 190.4,55.9 190.2,60.5 8,60.5"/>
+          <path class="water-line" d="M8,55.9 H190.4"/>
+          <polygon points="213.9,46 272,46 289.6,41.1 294.9,41.1 560.6,226.8 360,226.8 272,191.6 250,152 232.4,108" fill="url(#p-rock)" class="edge-l"/>
+          <polygon points="190.6,46 213.9,46 232.4,108 250,152 272,191.6 360,226.8 182.7,226.8 197.2,174 195,108" fill="url(#p-clay)" class="edge-l"/>
+          <path class="edge" fill="none" d="M182.7,226.8 L190.6,46 L272,46 L289.6,41.1 L294.9,41.1 L560.6,226.8"/>
+          <path d="M201.6,46 L208.2,108 L225.8,160.8 L258.8,213.6 L298.4,253.2 L324.8,261 L536,261 L562.4,244.4 L580,226.8" style="stroke:var(--accent);stroke-width:2.6;stroke-dasharray:8 5;fill:none"/>
+          <path d="M568,224 L574,212 L582,224" style="stroke:var(--accent);stroke-width:1.4;fill:none"/>
+          <path d="M430,120 H478" style="stroke:var(--accent);stroke-width:1.8;fill:none" marker-end="url(#arr-acc)"/>
+          <text class="lbl-s halo lbl-acc" x="430" y="112">moved about 11 m</text>
+          <text class="lbl-s halo lbl-acc" x="440" y="290" text-anchor="middle">slip along the layer, analysed by the panel</text>
+          <path class="lead" d="M440,280 V265"/>
+          <path class="dim" d="M190.6,46 H160"/>
+          <path class="dim" d="M166,46 V55.9 M162,46 H170 M162,55.9 H170"/>
+          <text class="lbl-s halo" x="158" y="40" text-anchor="end">2.3 m</text>
+          <text class="lbl-s halo lbl-w c13-wide" x="14" y="50">pond El. 966.8 m</text>
+          <text class="lbl halo on-fill" x="70" y="150">tailings</text>
+          <text class="lbl-s halo" x="242" y="34" text-anchor="middle">core El. 969.1 m</text>
+          <text class="lbl-s halo on-fill c13-wide" x="168" y="206" text-anchor="end">core of till</text>
+          <path class="lead c13-wide" d="M171,202 L204,190"/>
+          <text class="lbl halo on-rock" x="330" y="100">rockfill</text>
+          <text class="lbl-s halo c13-wide" x="492" y="160">face about 1.3H:1V</text>
+          <text class="lbl-s halo on-fill" x="640" y="244" text-anchor="middle">upper till</text>
+          <text class="lbl-s halo on-fill" x="128" y="264.5" text-anchor="middle">glaciolacustrine silt and clay</text>
+          <text class="lbl-s halo on-fill c13-wide" x="640" y="287" text-anchor="middle">lower tills</text>
+          <text class="lbl-s halo c13-wide" x="672" y="221" text-anchor="middle">original ground</text>
+          <path class="dim" d="M294.9,41.1 H620 M616,41.1 V226.8 M612,41.1 H620" stroke-dasharray="2 2"/>
+          <text class="lbl-s halo" x="624" y="136">about 40 m</text>
+          <path class="ink-s" d="M2,42 V262 M-2,42 H2 M-2,130 H2 M-2,218 H2 M-2,262 H2" style="stroke-width:0.8"/>
+          <text class="lbl-s halo" x="-4" y="46" text-anchor="end">970</text>
+          <text class="lbl-s halo" x="-4" y="134" text-anchor="end">950</text>
+          <text class="lbl-s halo" x="-4" y="222" text-anchor="end">930</text>
+          <text class="lbl-s halo c13-wide" x="-4" y="266" text-anchor="end">920</text>
+          <text class="lbl-s halo c13-wide" x="-30" y="22">El. (m)</text>
+          <path class="ink-s" d="M600,312 H688 M600,308 V316 M688,308 V316"/>
+          <text class="lbl-s halo" x="594" y="316" text-anchor="end">0</text>
+          <text class="lbl-s halo" x="694" y="316">20 m</text>
+        </svg>
+        <dl class="case-facts">
+          <dt>Dam</dt><dd>The Perimeter Embankment of the tailings storage facility at the Mount Polley copper and gold mine, about 65 km northeast of Williams Lake, British Columbia.</dd>
+          <dt>Built</dt><dd>From 1995–1996 (the starter dam) in stages, a few metres at a time; the ninth was being finished in 2014.</dd>
+          <dt>Height</dt><dd>Almost 40 m at the breach, with an unbuttressed downstream slope of 1.3H:1V.</dd>
+          <dt>Type</dt><dd>Zoned: a core of compacted glacial till, a filter and a transition each about 1 m wide, a rockfill shell.</dd>
+          <dt>What happened</dt><dd>On the night of 3–4 August 2014 the foundation failed in a layer of glaciolacustrine silt and clay about 8–10 m below the original ground, undrained. The embankment slid about 11 m downstream, its crest dropped at least 3.3 m, and the pond, 2.3 m below the top of the core, spilled over and cut the breach.</dd>
+          <dt>Toll</dt><dd>Nobody was killed. Between 21 and 25 million m³ of water and tailings were released into Polley Lake, Hazeltine Creek and Quesnel Lake.</dd>
+          <dt>Sources</dt><dd>Section traced from <a data-cite="polley2015"></a>, p. 93, with the pond and core levels of p. 6; height, slope and the filter and transition widths p. 75; the layer p. 135; movement and uplift p. 21; the factor of safety at failure p. 92; crest drop p. 137. Location, the starter dam and stages, the till core and the volume: <a data-cite="polley-cim2015"></a>, pp. 1, 3 and 13.</dd>
+        </dl>
+      </div>
+      <figcaption>
+        <p class="cap"><b>The dam slid on a thin layer of lake-bed clay that its site investigation never found, under a downstream slope as steep as rockfill will stand.</b> The section is the panel's own analysis at the breach, as the dam stood in August 2014: tailings and a thin pond on the left, the core and rockfill shell in the middle, and beneath the original ground the upper till, the glaciolacustrine layer and the lower tills. The dashed <span class="k-acc">brick-red</span> line is the slip surface the panel analysed: it drops through the core, runs flat along the layer under the whole downstream half of the dam and rises through the till beyond the toe, where the small caret marks the ground pushed up about 3 m. With the layer's measured undrained strength, the panel's calculations put this surface at a factor of safety of about 1.</p>
+        <p class="case-explains"><b>What this chapter explains.</b> A check of drained strength cannot see a clay that fails undrained, and no check can weigh a layer nobody sampled. A flatter slope would have held, but the number that said so would have been right for the wrong reason.</p>
+        <ul class="try">
+          <li>Use the scale bar to measure how far below the original ground the slip runs along the layer, and compare it with the dam's height.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>About 8 m below the ground, under a dam about 40 m high: about a fifth of the height, <span data-n="ch13.panel-share">0.2</span>, as the workbench's layer is near the top of its 4–6 m.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice how little of the drawing the layer takes up, and how much of the slide runs along it. Everything above the layer is the dam the checks were written for; the layer is the detail they were never shown.</p>
+
+      <h3 id="s-build-leaves">What the check leaves out</h3>
+      <p>The workbench is honest about its own blind spots, and so should you be. Material strengths and permeabilities are typical values, not design values. The sandbox does not check earthquakes, the <span class="gl" data-term="liquefaction">liquefaction</span> of loose saturated sand (<a data-ref="ch-trapped"></a>), or whether each zone is a proper filter for the one beside it. In a real dam, clay painted straight against rockfill would wash into it, which is why real cores have filters.</p>
+      <p>Four more limits matter to anyone who would trust its numbers. It checks no clay for its undrained strength, as Mount Polley shows. It skips the end-of-construction case, when a clay core or foundation is still carrying the weight of fresh fill in its water, for which designers want 1.3.<label for="mn-build-eoc" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-build-eoc" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usace-em1902"></a>, table 3-1, p. 3-2.</span> Its exit gradients right at the toe depend on the 1 m grid, so the piping safety there is a guide. And it shows one cross-section: a real dam is a kilometre or more of sections, each on its own ground, and the weakest may be the one nobody drew.</p>
+      <p class="film-lead" data-lead-for="film-layer-nobody-found">The last film of the book tells Mount Polley's story in nine minutes, with the workbench in it:</p>
     </div>
 
     <figure class="film wide" id="film-layer-nobody-found">
       <div class="sheet-top"><span class="figno"><b data-num></b> · The layer nobody found</span><span class="scale-note" data-gen="film-len"></span></div>
       <div class="film-before">
         <p class="film-k">Before you watch</p>
-        <p>You know the answer now. Watch for two things: the moment the clay's water can't get out of the way, and the steep slope on top that tipped the balance.</p>
+        <p>The workbench stops at 1.5:1, steeper than our dam but not as steep as the 1.3:1 face at Mount Polley. At that slope, what would the check say for the Polley section with the weak layer, and without it? Make a guess; the film runs both at 4:22. Then, near 5:32, watch for the moment the clay's water can't get out of the way.</p>
       </div>
       <div class="film-stage">
         <video controls preload="none" playsinline poster="video/layer-nobody-found.jpg" aria-label="Film: The layer nobody found"><source src="video/layer-nobody-found.mp4" type="video/mp4"><track kind="captions" src="video/layer-nobody-found.vtt" srclang="en" label="English"></video>
       </div>
       <p class="film-k film-marks-k">In this film</p>
       <ol class="film-marks">
-        <li><button type="button" data-t="4.1">0:04</button> <span class="fm-l">One in the morning, August 2014</span> <a data-ref="case-polley">the case file</a></li>
+        <li><button type="button" data-t="4.1">0:04</button> <span class="fm-l">One in the morning, August 2014</span> <a data-ref="prologue"></a></li>
         <li><button type="button" data-t="35.7">0:35</button> <span class="fm-l">It didn't burst</span></li>
-        <li><button type="button" data-t="95">1:35</button> <span class="fm-l">The layer the drilling missed</span></li>
-        <li><button type="button" data-t="137.8">2:17</button> <span class="fm-l">The sandbox: a circle, then a block</span> <a data-ref="fig-build"></a></li>
-        <li><button type="button" data-t="239.3">3:59</button> <span class="fm-l">The trigger: a steep face</span></li>
-        <li><button type="button" data-t="332.4">5:32</button> <span class="fm-l">Slow and fast: why it went in one night</span></li>
-        <li><button type="button" data-t="389.6">6:29</button> <span class="fm-l">What would have held it</span> <a data-ref="fig-build"></a></li>
+        <li><button type="button" data-t="95">1:35</button> <span class="fm-l">The layer the drilling missed</span> <a data-ref="s-build-found">the boreholes</a></li>
+        <li><button type="button" data-t="137.8">2:17</button> <span class="fm-l">The sandbox: a circle, then a block</span> <a data-ref="ex-build-polley"></a></li>
+        <li><button type="button" data-t="239.3">3:59</button> <span class="fm-l">The trigger: a steep face</span> <a data-ref="case-polley"></a></li>
+        <li><button type="button" data-t="332.4">5:32</button> <span class="fm-l">Slow and fast: why it went in one night</span> <a data-ref="fig-build-strengths"></a></li>
+        <li><button type="button" data-t="389.6">6:29</button> <span class="fm-l">What would have held it</span> <a data-ref="pr-build-polley">your guess</a></li>
         <li><button type="button" data-t="496.4">8:16</button> <span class="fm-l">Seven dams, one idea</span></li>
       </ol>
       <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
       <figcaption>
-        <details class="film-after"><summary>After you watch</summary><p>Over seventeen years of raising, the clay had time to drain, and the design checked it against that slow grip. A slide is fast. Sheared quickly, the clay's water was trapped, its pressure rose, and the grip the design had counted on was gone. The film's sandbox is the workbench in <a data-ref="fig-build"></a>: build the section, find the block that slides along the weak layer, then try the panel's fix, a flatter outer slope. The film's last minute is the whole book in one list: keep the water off the top, keep the tailings drained, and pack them dense.</p></details>
+        <details class="film-after"><summary>After you watch: the answer</summary><p>Without the layer the section scores <span data-n="bench.fos@preset=cored,slope=1.5">1.28</span> at 1.5:1; with it, <span data-n="bench.fos@preset=cored,found=weak,slope=1.5">1.01</span>. Each alone leaves a margin, and together they leave almost none: the panel's loaded gun and its trigger, in two numbers. Then the film shows what the workbench cannot, the clay's water trapped by a fast slide, so that a drained check's margin was never really there. One line at 5:17 says the water pressure "pushes" the grains "apart"; read it as <a data-ref="ch-grip"></a> does, as the water taking part of the grains' press away. The film's last minute is the whole book in one list: keep the water off the top, keep the tailings drained, and pack them dense. <button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"polley","bd-slope":"1.5"},"click":["#bd-test"]}'>Set the figure</button></p></details>
       </figcaption>
     </figure>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.14): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>A design is a plan for the water: a core and a cutoff to hold it back, a drain to let it out before it reaches the downstream slope, a free-draining shell where the reservoir may fall away. Each keeps water from taking the grains' press where a slip would run.</li>
+        <li>Every fix costs something, in fill, clay or water. A drain buys safety cheapest because it removes water instead of adding weight, and pays for it in leak.</li>
+        <li>A factor of safety is only as good as the strength fed to it. A drained check assumes the water can leave; a clay sheared fast keeps its water, and Mount Polley's gave less than half its drained grip.</li>
+        <li>No calculation weighs ground nobody sampled. The layer had to be found before any strength could be measured.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-build-pass" data-tag="case" data-level="2">
+          <p>The workbench passes the Mount Polley section at 3:1, with a factor of safety of <span data-n="bench.fos@preset=cored,found=weak,slope=3">1.56</span>. Give two reasons the real dam could still have failed at that number.</p>
+          <details class="q-hint"><summary>Hint</summary><p>Ask which strength the check used, and what the check was told about the ground.</p></details>
+          <div class="q-answer"><p>First, the check uses a drained strength, and the real layer failed undrained: the panel measured an average undrained strength ratio of 0.24 against the drained tan 28° the designers gave such clays (<a data-cite="polley2015"></a>, pp. 49 and 69) = <span data-n="ch13.tan@a=28">0.532</span>, so the fast grip was <span data-n="ch13.ud-frac">0.45</span> of the slow one, and it fell further once the clay moved (strain softening). Second, the check knows only the ground it is given; at Mount Polley the layer had not been found where the breach occurred, so no check, drained or undrained, included it. A third answer is also fair: the workbench's layer angle is a stand-in, and the real layer's properties had never been measured before the failure.</p></div>
+        </li>
+        <li class="q" id="q-build-clay" data-tag="design" data-level="3">
+          <p>Meet Hold the water with the least clay you can. What sets the floor in the workbench, and what would set it in a real dam?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"hold"}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Clay passes water a hundred thousand times more slowly than rockfill, so in the model even a thin wall works if it has no gap. Then think about the gradient across a thin wall.</p></details>
+          <div class="q-answer"><p>In the workbench the floor is continuity: a clay wall 2 m wide from the cutoff to above the water, <span data-n="ch13.thin-clay-m3">46</span> m³ per metre, leaks <span data-n="ch13.thin-q-lday">9.8</span> L/day and passes every goal, with a factor of safety of <span data-n="ch13.thin-fos">1.81</span>; any gap, and the water finds it. In a real dam the floor is set by what the model leaves out. The whole head is lost across the wall, a gradient of about 20.4 ÷ 2 = <span data-n="ch13.thin-i">10.2</span>, which would drive the core's fines into the rockfill without filters on both sides (<a data-ref="ch-erosion"></a>); a thin core also cracks more easily as the shells settle round it. The panel noted that Mount Polley's core had been cut from 8 m to 5 m wide, making it more vulnerable to cracking (<a data-cite="polley2015"></a>, p. 75).</p></div>
+        </li>
+        <li class="q" id="q-build-filter" data-tag="check" data-level="2">
+          <p>The workbench lets you paint clay straight against rockfill. What would really happen, and which chapter said so?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Compare the size of the clay's particles with the gaps between rocks, and think about water crossing the boundary.</p></details>
+          <div class="q-answer"><p>Water leaving the clay would carry its fine particles into the large gaps of the rockfill, and the core would erode from its downstream side, internal erosion of the kind <a data-ref="ch-erosion"></a> describes. Real cores sit between filters and transitions graded so that each zone holds back the one beside it (<a data-ref="ch-zones"></a>). At Mount Polley the filter and transition were each about 1 m wide, and the panel found many samples of the filter too coarse; it did not find that piping or cracking caused the breach (<a data-cite="polley2015"></a>, pp. ii and 75).</p></div>
+        </li>
+        <li class="q" id="q-build-drawdown" data-tag="explore" data-level="2">
+          <p>In Empty it fast, start from Leaky (all rockfill) and test. Why does its upstream slope score so much better than the dam of fill, and why does it still not complete the mission?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-build","set":{"bd-tabs":"drawdown","bd-presets":"leaky"},"click":["#bd-test"]}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>The workbench lets anything that passes water at 10⁻⁵ m/s or faster drain as the reservoir falls.</p></details>
+          <div class="q-answer"><p>It scores <span data-n="bench.fos-up@preset=leaky">1.41</span> against <span data-n="bench.fos-up">0.94</span>. Rockfill drains as fast as the reservoir falls, so no trapped water pushes the slope out after the reservoir's support has gone, and its grains keep their press; fill and clay keep their water. But the dam leaks <span data-n="bench.q-lday@preset=leaky">29,621</span> L/day per metre against the mission's cap of <span data-n="bench.goal@mission=drawdown,goal=maxQ">1,000</span>. (On sand and gravel the same dam scores <span data-n="bench.fos-up@preset=leaky,found=gravel">1.81</span> upstream; the mission fixes the foundation as clay.)</p></div>
+        </li>
+        <li class="q" id="q-build-third" data-tag="reckon" data-level="1">
+          <p>Raise the reservoir of the dam of fill to 95% of its height. Where does the one-third rule say water will break out on the downstream slope? Then test it.</p>
+          <details class="q-hint"><summary>Hint</summary><p>95% of 24 m, then a third of that.</p></details>
+          <div class="q-answer"><p>The reservoir is <span data-n="lab.res-m@res=0.95">22.8</span> m deep, so the rule gives 22.8 ÷ 3 = <span data-n="ch13.third-m@r=0.95">7.6</span> m. The workbench says <span data-n="bench.face-m@res=0.95">11</span> m: the rule is a rough guide, and here it errs low.</p></div>
+        </li>
+        <li class="q" id="q-build-holes" data-tag="design" data-level="3">
+          <p>You may drill four more holes at Mount Polley before the dam is built. Where do you put them, how deep do they go, and what do you do with what comes up?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Where would a weak layer hurt most? How deep can a slip under a 40 m dam reach? What test tells you a clay's fast strength?</p></details>
+          <div class="q-answer"><p>Put them under the planned dam where it will be highest and its slopes steepest, in a line across the footprint from the upstream toe to beyond the downstream toe, because that is where a slip would run along a layer; and space them by the geology, closer where the glacial deposits change from place to place. Take them deeper than any slip the dam could cause, through all the glacial soils to firm ground. Recover undisturbed samples of every fine-grained layer and test them for their stress history and their undrained strength, not only their friction angle. Then run the stability check with that undrained strength as well as the drained one. Four holes cannot cover kilometres of dam; their job is to tell you where the next forty should go.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="polley2015"></cite> <span class="level">primary source</span> Free and clearly written. The executive summary takes two pages; section 5.4 tells the dam's design history raise by raise, and sections 6.2 and 6.5 work the failure through with the undrained strength this chapter quotes.</li>
+        <li><cite data-cite="usbr1987"></cite> <span class="level">gentle</span> Free from the Bureau of Reclamation. Its sixth chapter, on earthfill dams, explains zoning, drains and the one-third rule with drawings of real sections.</li>
+        <li><cite data-cite="duncan2014"></cite> <span class="level">serious</span> The standard text on choosing strengths for slope checks: drained and undrained, peak and softened, and the loading cases of end of construction and rapid drawdown.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">Every number in this chapter was a calculation, and Mount Polley shows how far a calculation can drift from the ground. Real dams are watched. Once the drawings are done, what do engineers measure, and what can a reading tell them that no check could?</p></nav>
   </section>
 </section>

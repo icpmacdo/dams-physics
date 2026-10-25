@@ -1,0 +1,85 @@
+{
+  "polley2015": {
+    "group": "reports",
+    "short": "Mount Polley Review Panel (2015)",
+    "authors": "Independent Expert Engineering Investigation and Review Panel",
+    "year": "2015",
+    "title": "Report on Mount Polley Tailings Storage Facility Breach",
+    "container": "Province of British Columbia, January 2015",
+    "doi": null,
+    "url": "https://www.mountpolleyreviewpanel.ca/sites/default/files/report/ReportonMountPolleyTailingsStorageFacilityBreach.pdf"
+  },
+  "polley-cim2015": {
+    "group": "reports",
+    "short": "Chief Inspector of Mines (2015)",
+    "authors": "Chief Inspector of Mines",
+    "year": "2015",
+    "title": "Mount Polley Mine Tailings Storage Facility Breach, August 4, 2014: Investigation Report of the Chief Inspector of Mines",
+    "container": "BC Ministry of Energy and Mines, 30 November 2015",
+    "doi": null,
+    "url": "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/mineral-exploration-mining/documents/directives-alerts-incidents/chief-inspector-s-report-page/m-200_mount_polley_2015-11-30_ci_investigation_report.pdf"
+  },
+  "usace-em1902": {
+    "group": "standards",
+    "short": "USACE EM 1110-2-1902",
+    "authors": "US Army Corps of Engineers",
+    "year": "2003",
+    "title": "EM 1110-2-1902, Slope Stability",
+    "container": "Washington, DC: Department of the Army, 31 October 2003",
+    "doi": null,
+    "url": "https://damtoolbox.org/wiki/Slope_Stability_(EM_1110-2-1902)",
+    "note": "Table 3-1 (p. 3-2), minimum required factors of safety for new earth and rock-fill dams: end of construction 1.3; long-term steady seepage 1.5; maximum surcharge pool 1.4; rapid drawdown 1.1–1.3. P. 3-1: required factors of safety 'continue to be based on experience'."
+  },
+  "usbr1987": {
+    "group": "standards",
+    "short": "USBR (1987)",
+    "authors": "U.S. Bureau of Reclamation",
+    "year": "1987",
+    "title": "Design of Small Dams, 3rd ed.",
+    "container": "Denver",
+    "doi": null,
+    "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-pdfs/SmallDams.pdf"
+  },
+  "terzaghi1929": {
+    "group": "papers",
+    "short": "Terzaghi (1929)",
+    "authors": "Terzaghi, K.",
+    "year": "1929",
+    "title": "Effect of minor geologic details on the safety of dams",
+    "container": "American Institute of Mining and Metallurgical Engineers, Technical Publication 215, February 1929; also in Geology and Engineering for Dams and Reservoirs (AIME, 1929)",
+    "doi": null,
+    "url": null
+  },
+  "egbc2016": {
+    "group": "bc-law",
+    "short": "EGBC (2016)",
+    "authors": "Engineers and Geoscientists British Columbia (APEGBC)",
+    "year": "2016",
+    "title": "Professional Practice Guidelines: Site Characterization for Dam Foundations in BC, V1.2",
+    "container": "Burnaby: APEGBC, October 2016",
+    "doi": null,
+    "url": "https://egbc.ca/getmedia/13381165-a596-48c2-bc31-2c7f89966d0d/2016_Site-Characterization-for-Dam-Foundations_WEB_V1-2.pdf",
+    "note": "Developed in response to Recommendation 6 of the Mount Polley Review Panel; applies to all dams in British Columbia."
+  },
+  "usbr-ds13-ch8": {
+    "group": "standards",
+    "short": "USBR DS-13 ch. 8",
+    "authors": "U.S. Bureau of Reclamation",
+    "year": "2014",
+    "title": "Design Standards No. 13: Embankment Dams, Chapter 8: Seepage, Phase 4 (Final), DS-13(8)-4.1",
+    "container": "Denver: Bureau of Reclamation, January 2014",
+    "doi": null,
+    "url": "https://damtoolbox.org/images/b/bb/DS13-8.pdf",
+    "note": "Section 8.2.2.2, p. 8-7: recommended factors of safety against heave of 4.0 for a new dam and 3.0 for an existing dam; on the order of 2.0 to 2.5 where foundation properties are well understood and piezometers are adequate."
+  },
+  "duncan2014": {
+    "group": "books",
+    "short": "Duncan, Wright & Brandon (2014)",
+    "authors": "Duncan, J.M., Wright, S.G., Brandon, T.L.",
+    "year": "2014",
+    "title": "Soil Strength and Slope Stability, 2nd ed.",
+    "container": "Hoboken: Wiley",
+    "doi": null,
+    "url": null
+  }
+}

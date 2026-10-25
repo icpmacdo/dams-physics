@@ -1,0 +1,23 @@
+/* Chapter 13's static figures and its case plate (book/SPEC.md F.10, F.12). Label sizes go through --fs so
+   the floor in styles-book.css can lift them on a phone. */
+#fig-build-cost svg.dwg, #fig-build-strengths svg.dwg { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; }
+#fig-build-cost svg.dwg text, #fig-build-strengths svg.dwg text { --fs: 12.5px; }
+#fig-build-cost svg.dwg .lbl-s, #fig-build-strengths svg.dwg .lbl-s { --fs: 11.5px; }
+/* the case plate's section */
+#case-polley svg.dwg { display: block; width: 100%; height: auto; }
+#case-polley svg.dwg text { --fs: 13px; }
+#case-polley svg.dwg .lbl-s { --fs: 12px; }
+/* On a laptop the fact block is much taller than the drawing; the caption rises under the drawing beside
+   the facts (as Chapter 8's case plate does). */
+@media screen and (min-width: 1100px) {
+  #case-polley { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); column-gap: var(--gap); grid-template-rows: auto auto 1fr; align-items: start; }
+  #case-polley > .sheet-top { grid-column: 1 / -1; }
+  #case-polley > .case-body { display: contents; }
+  #case-polley > .case-body > svg.dwg { grid-column: 1; grid-row: 2; }
+  #case-polley > .case-body > dl.case-facts { grid-column: 2; grid-row: 2 / span 2; }
+  #case-polley > figcaption { grid-column: 1; grid-row: 3; }
+}
+/* on a phone the section keeps its main labels; the caption and the facts carry the rest */
+@media screen and (max-width: 599px) {
+  #case-polley svg.dwg .c13-wide { display: none; }
+}

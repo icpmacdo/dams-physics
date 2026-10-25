@@ -1,0 +1,22 @@
+{
+  "glaciolacustrine": [
+    "Glaciolacustrine",
+    "Laid down on the bed of a lake fed by melting glaciers. Glaciolacustrine soils are often fine silts and clays in thin layers, and can be much weaker than the glacial till around them."
+  ],
+  "strain-softening": [
+    "Strain softening",
+    "Losing strength as a soil keeps deforming after it has reached its peak strength; also called strain weakening. A slip on a strain-softening soil can speed up once it starts, because the ground grips less the further it moves."
+  ],
+  "peak-strength": [
+    "Peak strength",
+    "The greatest shear stress a soil can carry, reached after a small movement. A strain-softening soil then falls toward a lower strength as it keeps moving."
+  ],
+  "site-investigation": [
+    "Site investigation",
+    "Finding out what the ground under a planned structure is made of, layer by layer, and how strong and permeable each layer is: by mapping the geology, drilling boreholes, testing in the holes and testing samples in a laboratory."
+  ],
+  "borehole": [
+    "Borehole",
+    "A narrow hole drilled into the ground to see, test and sample what lies below. A borehole tells you only about the ground it passes through."
+  ]
+}

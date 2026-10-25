@@ -63,7 +63,7 @@ function pipeText(iExit, where, pipe) {
   const MISSION_TEXT = {
     dry: {
       title: 'Dry the slope',
-      brief: 'This dam is all compacted fill on clay. Water breaks out 8 m up its downstream slope and its factor of safety is 1.12. Keep the 2:1 slope and the reservoir where they are, and get the factor of safety to 1.5 with a piping safety of 3 or more.',
+      brief: 'This dam is all compacted fill on clay. Water breaks out 8 m up its downstream slope and its factor of safety is 1.12. Keep the 2:1 slope and the reservoir where they are, and get the factor of safety to 1.5 with a piping safety of 3 or more. This mission checks the downstream slope only; Empty it fast checks the upstream one.',
       hints: ['Test it first and follow the dashed line: the water stays high right through the dam and comes out on the downstream slope.',
         'The fill is strong enough when it is dry. Give the water a way out before it reaches the downstream half.',
         'Paint a strip of sand filter about 2 m wide, standing up just downstream of the crest, and join its foot to a 2 m layer of filter along the base out to the toe. A clay core with rockfill shells also works.'],
@@ -71,7 +71,7 @@ function pipeText(iExit, where, pipe) {
     },
     hold: {
       title: 'Hold the water',
-      brief: 'This rockfill dam on sand and gravel leaks like a sieve. Cut the seepage to 100 L/day per metre or less, keep the piping safety at 3 or more and the factor of safety at 1.5, and use no more than 350 m³ of clay per metre of dam.',
+      brief: 'This rockfill dam on sand and gravel leaks like a sieve. Cut the seepage to 100 L/day per metre or less, keep the piping safety at 3 or more and the factor of safety at 1.5, and use no more than 350 m³ of clay per metre of dam. This mission checks the downstream slope only.',
       hints: ['Follow the flow lines: water goes through the rockfill and also under the dam through the gravel.',
         'Rockfill can\'t hold water back by itself. Clay passes water about a hundred thousand times more slowly.',
         'Paint a clay core up the middle, wide at the base and narrow at the top, then close the path underneath with a full cutoff.'],
@@ -79,7 +79,7 @@ function pipeText(iExit, where, pipe) {
     },
     polley: {
       title: 'Mount Polley',
-      brief: 'In 2014 the Mount Polley tailings dam in British Columbia slid on a weak clay layer in its foundation and released about 25 million m³ of water and tailings. The investigation found the design had not allowed for that layer, and a steep downstream slope made it worse. This dam sits on a similar layer 4 m down. Get the factor of safety to 1.5, checked on blocks sliding along the layer as well as on circles. The sandbox checks a slow, drained strength, and the layer\'s 19° friction angle stands in for its weakness. The real layer failed undrained, at a strength well below what a drained check allows, so the first lesson of Polley is finding the layer at all.',
+      brief: 'In 2014 the Mount Polley tailings dam in British Columbia failed and released between 21 and 25 million m³ of water and tailings. The ground beneath it held a weak layer of glacial-lake clay that the site investigations had missed, and a steep downstream slope stood on top. This dam sits on a similar layer 4 m down, at roughly the same share of its height. Get the downstream slope\'s factor of safety to 1.5, checked on blocks sliding along the layer as well as on circles. The sandbox checks a slow, drained strength, and the layer\'s 19° friction angle stands in for its weakness. The real layer failed undrained, at a strength well below what a drained check allows, so the first lesson of Polley is finding the layer at all.',
       hints: ['Test it. The weakest surface is a flat-bottomed block sliding along the weak layer.',
         'Drains barely help here. The layer is weak because of what it is, and it lies sealed in clay below the dam.',
         'Weight pressing down on the layer beyond the toe holds the block back. Flatten the downstream slope.'],
@@ -87,11 +87,11 @@ function pipeText(iExit, where, pipe) {
     },
     tailings: {
       title: 'Tailings on a budget',
-      brief: 'Mines build tailings dams from their own waste because it is far cheaper than hauling borrowed fill. Make at least 70% of this dam from cycloned tailings sand, and get the factor of safety to 1.5 with a piping safety of 3 or more.',
+      brief: 'Mines build tailings dams from their own waste because it is far cheaper than hauling borrowed fill. Make at least 70% of this dam from cycloned tailings sand, and get the factor of safety to 1.5 with a piping safety of 3 or more. This mission checks the downstream slope only.',
       hints: ['Tailings sand has no cohesion. Even dry, a slope of loose grains stands only up to its friction angle, and wet it stands much less.',
         'Keep it dry first: a drain inside the sand lowers the water level.',
         'A chimney and blanket drain plus a 2.5:1 downstream slope does it.'],
-      done: 'Kept dry and laid back at a gentle slope, the sand holds. Downstream-raised tailings dams use drains and flat downstream slopes for this reason. One thing this sandbox cannot show: loose saturated tailings sand can liquefy (' + ref('ch-trapped') + '), so real ones are also compacted.'
+      done: 'Kept dry and laid back at a gentle slope, the sand holds. Look at the leak, though: the drain that dries the sand collects thousands of litres a day for each metre of dam, and from a tailings dam that water is polluted, so a real mine catches it below the dam and pumps it back. Downstream-raised tailings dams use drains and flat downstream slopes for this reason. One thing this sandbox cannot show: loose saturated tailings sand can liquefy (' + ref('ch-trapped') + '), so real ones are also compacted.'
     },
     drawdown: {
       title: 'Empty it fast',
