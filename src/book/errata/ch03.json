@@ -1,0 +1,4 @@
+[
+  { "date": "2026-10-24", "where": "The permeability race, description and caption", "ref": "fig-race", "was": "a wet front moves down each column; gravel is soaked through in seconds", "now": "each column is already soaked, and the shading follows the first water poured on top, as if it were dyed", "why": "The race's times, gap fraction × length ÷ (k × gradient), are how long a drop takes to cross soil that is already full of water. Wetting dry soil from the top is a different process." },
+  { "date": "2026-10-24", "where": "The permeability race, side note", "ref": "fig-race", "was": "time = gap fraction × length ÷ (k × push)", "now": "time = gap fraction × length ÷ (k × gradient)", "why": "The note used a word, push, that the page never defined; the quantity is the hydraulic gradient." }
+]

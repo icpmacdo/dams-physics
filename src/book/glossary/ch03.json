@@ -1,0 +1,8 @@
+{
+  "elevation-head": ["Elevation head", "The height of a point above a chosen fixed level, the datum, written z. Added to the pressure head it gives the total head."],
+  "pressure-head": ["Pressure head", "The height of water column that the water pressure at a point would hold up in a tube: the pressure divided by the unit weight of water, u/γw, about 1 m for every 9.8 kPa."],
+  "seepage-velocity": ["Seepage velocity", "The speed at which water actually moves through the gaps of a soil: the flow through each square metre, k·i, divided by the fraction of the soil that is gaps. It is faster than k·i, because only the gaps carry the water."],
+  "seepage-force": ["Seepage force", "The push that flowing water puts on the grains it passes as it loses head: i·γw on each cubic metre of soil, in the direction the water flows. Flowing up through sand at a gradient near 1, it nearly carries the grains' weight under water."],
+  "hydraulic-head": { "replace": true, "entry": ["Hydraulic head (total head)", "The height water would rise to in a thin tube pushed into the ground at a point, measured from a fixed level: the elevation head plus the pressure head, h = z + u/γw. Water flows from higher head to lower head, which is not always from higher pressure to lower; in still water the head is the same everywhere."] },
+  "permeability": { "replace": true, "entry": ["Permeability", "How easily water flows through a soil, measured as its hydraulic conductivity k in m/s: the flow through each square metre when the head drops one metre for every metre travelled. It ranges from about 10⁻² m/s for gravel to 10⁻⁹ m/s for compacted clay."] }
+}

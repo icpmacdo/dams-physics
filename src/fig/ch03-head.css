@@ -1,0 +1,12 @@
+/* Chapter 3's static figure (book/SPEC.md F.10): two panels side by side, one above the other on a
+   phone. Label sizes go through --fs so the floor in styles-book.css can lift them on a phone. */
+#fig-head-straws .ch03-panels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 22px; max-width: 760px; margin-inline: auto; }
+#fig-head-straws svg.dwg { display: block; width: 100%; height: auto; }
+#fig-head-straws svg.dwg text { --fs: 12px; }
+#fig-head-straws svg.dwg .lbl-s { --fs: 11px; }
+@media screen and (max-width: 599px) {
+  #fig-head-straws .ch03-panels { grid-template-columns: minmax(0, 1fr); }
+}
+/* labels on the sand hatch take a halo of the sand's own colour */
+#fig-head-straws .halo.on-sand { stroke: var(--m-filter); fill: var(--ink); }
+#fig-head-straws svg.dwg .ch03-sub { --fs: 8.5px; }

@@ -1,0 +1,78 @@
+{
+  "darcy1856": {
+    "group": "books",
+    "short": "Darcy (1856)",
+    "authors": "Darcy, H.",
+    "year": "1856",
+    "title": "Les fontaines publiques de la ville de Dijon",
+    "container": "Paris: Victor Dalmont",
+    "doi": null,
+    "url": null,
+    "note": "The sand-column experiments and the law are in Note D, an appendix. English translation: P. Bobeck, The Public Fountains of the City of Dijon (Dubuque: Kendall/Hunt, 2004)."
+  },
+  "simmons2008": {
+    "group": "papers",
+    "short": "Simmons (2008)",
+    "authors": "Simmons, C.T.",
+    "year": "2008",
+    "title": "Henry Darcy (1803–1858): immortalised by his scientific legacy",
+    "container": "Hydrogeology Journal 16: 1023–1038",
+    "doi": "10.1007/s10040-008-0304-3",
+    "url": null,
+    "note": "The Dijon water supply (p. 1025); the column experiments with Charles Ritter, the 2.50 m column and the fountains' water hammer (pp. 1030–1031)."
+  },
+  "turner1993": {
+    "group": "papers",
+    "short": "Turner (1993)",
+    "authors": "Turner, I.",
+    "year": "1993",
+    "title": "Water table outcropping on macro-tidal beaches: a simulation model",
+    "container": "Marine Geology 115(3–4): 227–238",
+    "doi": "10.1016/0025-3227(93)90052-W",
+    "url": null,
+    "note": "As the tide falls, the water table in the beach comes apart from the sea and seeps out over a seepage face; field observations on a macro-tidal beach in North Queensland."
+  },
+  "hvorslev1951": {
+    "group": "books",
+    "short": "Hvorslev (1951)",
+    "authors": "Hvorslev, M.J.",
+    "year": "1951",
+    "title": "Time Lag and Soil Permeability in Ground-Water Observations",
+    "container": "US Army Corps of Engineers Waterways Experiment Station, Bulletin 36",
+    "doi": null,
+    "url": null,
+    "note": "Vicksburg, Mississippi, April 1951. Fig. 14 (p. 36) tabulates approximate time lags for ten kinds of piezometer and pressure cell."
+  },
+  "freeze-cherry1979": {
+    "group": "books",
+    "short": "Freeze & Cherry (1979)",
+    "authors": "Freeze, R.A., Cherry, J.A.",
+    "year": "1979",
+    "title": "Groundwater",
+    "container": "Englewood Cliffs: Prentice-Hall",
+    "doi": null,
+    "url": "https://gw-project.org/books/groundwater/",
+    "note": "Chapter 2: Darcy's law (2.1), hydraulic head (2.2), hydraulic conductivity and permeability (2.3). Free to download from the Groundwater Project."
+  },
+  "iapws2008": {
+    "group": "standards",
+    "short": "IAPWS (2008)",
+    "authors": "International Association for the Properties of Water and Steam",
+    "year": "2008",
+    "title": "Release on the IAPWS Formulation 2008 for the Viscosity of Ordinary Water Substance",
+    "container": "IAPWS R12-08, Berlin, September 2008",
+    "doi": null,
+    "url": "https://iapws.org/documents/release/viscosity",
+    "note": "The values quoted (1.518 mPa·s at 5 °C, 1.002 at 20 °C, near atmospheric pressure) were computed from the release's correlating equation with μ2 = 1, checked against its sample point at 298.15 K."
+  },
+  "cedergren1989": {
+    "group": "books",
+    "short": "Cedergren (1989)",
+    "authors": "Cedergren, H.R.",
+    "year": "1989",
+    "title": "Seepage, Drainage, and Flow Nets, 3rd ed.",
+    "container": "New York: Wiley",
+    "doi": null,
+    "url": null
+  }
+}
