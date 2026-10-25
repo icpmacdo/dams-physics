@@ -1,0 +1,45 @@
+/* Chapter 8's static figures and table (book/SPEC.md F.10, F.11, F.12). Label sizes go through --fs so
+   the floor in styles-book.css can lift them on a phone. */
+#fig-raising-beach .ch08-panels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 22px; max-width: 780px; margin-inline: auto; }
+#fig-raising-beach svg.dwg { display: block; width: 100%; height: auto; }
+#fig-raising-beach svg.dwg text { --fs: 12px; }
+#fig-raising-beach svg.dwg .lbl-s { --fs: 11px; }
+@media screen and (max-width: 599px) {
+  #fig-raising-beach .ch08-panels { grid-template-columns: minmax(0, 1fr); }
+}
+/* a label set on tailings sand is haloed in the sand's own colour */
+.dwg .halo.ch08-on-tsand { stroke: var(--m-tsand); }
+/* the case plate's section */
+#case-coquitlam svg.dwg { display: block; width: 100%; height: auto; }
+#case-coquitlam svg.dwg text { --fs: 13.5px; }
+#case-coquitlam svg.dwg .lbl-s { --fs: 12.5px; }
+/* three method columns: share the width evenly instead of the two-column table's 42% */
+table.ch08-cmp td { width: auto; }
+table.ch08-cmp thead th:not(:first-child) { width: 28%; }
+@media screen and (max-width: 759px) {
+  table.ch08-cmp { font-size: 0.86rem; }
+  table.ch08-cmp tbody th { width: 5.5em; }
+}
+/* On a laptop the fact block is much taller than the drawing; let the caption rise under the drawing
+   beside the facts instead of waiting below them (the plate becomes the grid, the body's two parts its items). */
+@media screen and (min-width: 1100px) {
+  #case-coquitlam { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); column-gap: var(--gap); grid-template-rows: auto auto 1fr; align-items: start; }
+  #case-coquitlam > .sheet-top { grid-column: 1 / -1; }
+  #case-coquitlam > .case-body { display: contents; }
+  #case-coquitlam > .case-body > svg.dwg { grid-column: 1; grid-row: 2; }
+  #case-coquitlam > .case-body > dl.case-facts { grid-column: 2; grid-row: 2 / span 2; }
+  #case-coquitlam > figcaption { grid-column: 1; grid-row: 3; }
+}
+/* on a phone the case section keeps only its main labels; the caption and facts carry the rest */
+@media screen and (max-width: 599px) {
+  #case-coquitlam svg.dwg .ch08-wide-only { display: none; }
+}
+/* the comparison table on a phone: one block per question, each method's answer labelled */
+@media screen and (max-width: 599px) {
+  table.ch08-cmp thead { display: none; }
+  table.ch08-cmp, table.ch08-cmp tbody, table.ch08-cmp tr { display: block; width: 100%; }
+  table.ch08-cmp tbody th { display: block; width: auto; padding: 12px 0 2px; border: 0; }
+  table.ch08-cmp td { display: block; width: auto; padding: 3px 0 3px 7.6em; text-indent: -7.6em; border: 0; }
+  table.ch08-cmp td::before { content: attr(data-m); display: inline-block; width: 7.6em; text-indent: 0; font-family: var(--f-label); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+  table.ch08-cmp tr { border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+}

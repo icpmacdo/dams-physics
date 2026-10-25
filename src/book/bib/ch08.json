@@ -1,0 +1,175 @@
+{
+  "brazil-lei14066": {
+    "group": "bc-law",
+    "short": "Lei 14.066 (2020)",
+    "authors": "Brazil",
+    "year": "2020",
+    "title": "Lei nº 14.066, de 30 de setembro de 2020",
+    "container": "Diário Oficial da União, 1 October 2020, Seção 1, p. 3. Amends Lei nº 12.334 of 20 September 2010 (the national dam safety policy)",
+    "doi": null,
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l14066.htm",
+    "note": "Art. 3 adds Art. 2-A to Law 12.334: the construction or raising of mining dams by the upstream method is prohibited (caput); §1 defines upstream raising as the method in which the containment dykes rest on the tailings themselves or on previously deposited sediment; §2 sets 25 February 2022 for decharacterizing such dams; §3 allows the regulator to extend it where the work is technically unfeasible in time."
+  },
+  "demarest2019": {
+    "group": "web",
+    "short": "Freire (2019)",
+    "authors": "Freire, W.",
+    "year": "2019",
+    "title": "Barragens de Mineração. Resolução ANM nº 04/2019. Perguntas e Respostas",
+    "container": "Demarest Advogados, 19 February 2019",
+    "doi": null,
+    "url": "https://www.demarest.com.br/barragens-de-mineracao-resolucao-anm-no-042019-perguntas-e-respostas/",
+    "note": "A law firm's question-and-answer summary of the National Mining Agency's Resolution 4 of February 2019: it banned building or raising mining dams by the upstream method, with the same definition the 2020 law later used, and required existing upstream dams to be reinforced from downstream, or given a new containment structure downstream, and then decommissioned."
+  },
+  "chile-ds86": {
+    "group": "bc-law",
+    "short": "Chile DS 86 (1970)",
+    "authors": "Chile, Ministerio de Minería",
+    "year": "1970",
+    "title": "Decreto Supremo nº 86. Aprueba Reglamento de construcción y operación de tranques de relaves",
+    "container": "Santiago, 31 July 1970; Diario Oficial, 13 August 1970. Repealed 11 April 2007 by DS 248",
+    "doi": null,
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=193450",
+    "note": "Art. 44 applies the rules to tailings dams with people living within a dangerous distance downstream. Art. 31 keeps the settling pond as far as possible from the sand wall; Art. 30 lets whole tailings be added from the perimeter only where the sand is raised outward, over the crest and onto the outer slope. The decree does not use the words 'aguas arriba'; secondary sources read it as barring upstream construction where people live downstream."
+  },
+  "chile-ds248": {
+    "group": "bc-law",
+    "short": "Chile DS 248 (2007)",
+    "authors": "Chile, Ministerio de Minería",
+    "year": "2007",
+    "title": "Decreto Supremo nº 248. Aprueba Reglamento para la aprobación de proyectos de diseño, construcción, operación y cierre de los depósitos de relaves",
+    "container": "Santiago, 29 December 2006; Diario Oficial, 11 April 2007",
+    "doi": null,
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=259901",
+    "note": "Art. 14(h): for a sand tailings dam the application must state the construction method, centreline or downstream; 'Se prohíbe la utilización del método aguas arriba' (the use of the upstream method is prohibited)."
+  },
+  "feijao2019": {
+    "group": "reports",
+    "short": "Robertson et al. (2019)",
+    "authors": "Robertson, P.K., de Melo, L., Williams, D.J., Wilson, G.W.",
+    "year": "2019",
+    "title": "Report of the Expert Panel on the Technical Causes of the Failure of Feijão Dam I",
+    "container": "12 December 2019",
+    "doi": null,
+    "url": "https://damfailures.org/sites/default/files/wp-pdf/IR_Feijao-Dam.pdf"
+  },
+  "luino2012": {
+    "group": "papers",
+    "short": "Luino & De Graff (2012)",
+    "authors": "Luino, F., De Graff, J.V.",
+    "year": "2012",
+    "title": "The Stava mudflow of 19 July 1985 (Northern Italy): a disaster that effective regulation might have prevented",
+    "container": "Natural Hazards and Earth System Sciences 12: 1029–1044",
+    "doi": "10.5194/nhess-12-1029-2012",
+    "url": "https://nhess.copernicus.org/articles/12/1029/2012/",
+    "note": "Abstract: the upper dam burst on 19 July 1985, the mudflow (180,000 m³) ran more than 4.2 km, 268 died; foremost among the causes, the mistaken assumption that the tailings would consolidate fairly quickly. The text describes the upper basin as raised by the upstream method and the mud pouring from the upper into the lower impoundment."
+  },
+  "sancold2020": {
+    "group": "standards",
+    "short": "SANCOLD (2020)",
+    "authors": "Grant-Stuart, D.J., for the South African National Committee on Large Dams",
+    "year": "2020",
+    "title": "Your Tailings Dam",
+    "container": "Pretoria: SANCOLD, June 2020. ISBN 978-1-990981-73-9",
+    "doi": null,
+    "url": "https://sancold.org.za/wp-content/uploads/2024/05/SANCOLD-Your-Tailings-Dam-2020.pdf",
+    "note": "§4.4.4 (p. 12), cycloning; §4.6 (p. 15): for most upstream, spigotted or paddocked dams the limiting rate of rise is of the order of 2–2½ m a year, cycloned dams up to about 6 m a year, a subjective figure based on experience; §4.8 (p. 18): most South African tailings dams are built upstream, beaches are kept long so the pool stays remote from the walls, and water is decanted off as soon as possible."
+  },
+  "jewell2012": {
+    "group": "papers",
+    "short": "Jewell (2012)",
+    "authors": "Jewell, R.J.",
+    "year": "2012",
+    "title": "Putting beach slope prediction into perspective",
+    "container": "In R.J. Jewell, A.B. Fourie and A. Paterson (eds), Paste 2012. Perth: Australian Centre for Geomechanics, pp. 85–92",
+    "doi": "10.36487/ACG_rep/1263_08_Jewell",
+    "url": "https://papers.acg.uwa.edu.au/p/1263_08_Jewell/",
+    "note": "p. 86: conventional low-density tailings slurries form beaches sloping from around 1% at the point of discharge to near zero at the pond; thickened tailings can be stacked at steeper beach angles."
+  },
+  "polley2015": {
+    "group": "reports",
+    "short": "Mount Polley Review Panel (2015)",
+    "authors": "Independent Expert Engineering Investigation and Review Panel",
+    "year": "2015",
+    "title": "Report on Mount Polley Tailings Storage Facility Breach",
+    "container": "Province of British Columbia, January 2015",
+    "doi": null,
+    "url": "https://www.mountpolleyreviewpanel.ca/sites/default/files/report/ReportonMountPolleyTailingsStorageFacilityBreach.pdf"
+  },
+  "vick1990": {
+    "group": "books",
+    "short": "Vick (1990)",
+    "authors": "Vick, S.G.",
+    "year": "1990",
+    "title": "Planning, Design, and Analysis of Tailings Dams",
+    "container": "Vancouver: BiTech",
+    "doi": null,
+    "url": null
+  },
+  "bchydro-coquitlam2008": {
+    "group": "web",
+    "short": "BC Hydro (2008)",
+    "authors": "BC Hydro",
+    "year": "2008",
+    "title": "BC Hydro completes seismic upgrade of Coquitlam Dam",
+    "container": "News release, 3 October 2008",
+    "doi": null,
+    "url": "https://www.bchydro.com/news/press_centre/news_releases/2008/bc_hydro_completes.html",
+    "note": "A $65 million upgrade; the new earth and rock fill dam, built downstream of the 30 m dam of 1913 (which replaced a 4.5 m dam), is 30 m high and 300 m long."
+  },
+  "rew2008-coquitlam": {
+    "group": "web",
+    "short": "Renewable Energy World (2008)",
+    "authors": "Renewable Energy World",
+    "year": "2008",
+    "title": "Canada utility completes Coquitlam Dam seismic upgrade",
+    "container": "16 October 2008",
+    "doi": null,
+    "url": "https://www.renewableenergyworld.com/hydro-power/dams-civil-structures/canada-utility-completes-coquitlam-dam-seismic-upgrade/",
+    "note": "The backup dam was completed in 2007 and BC Hydro declared the whole project complete in October 2008; the work began when a zone of loose fill in the 1913 earthfill dam was found that could liquefy in a moderate to large earthquake."
+  },
+  "waterpower2001-coquitlam": {
+    "group": "web",
+    "short": "Water Power (2001)",
+    "authors": "International Water Power & Dam Construction",
+    "year": "2001",
+    "title": "Seismic improvements at Coquitlam dam",
+    "container": "13 February 2001",
+    "doi": null,
+    "url": "https://www.waterpowermagazine.com/?p=2935",
+    "note": "The 30 m high, 90-year-old hydraulic fill dam, part of the Coquitlam–Buntzen power project; investigation confirmed a loose zone that could liquefy in moderate or large earthquakes; the reservoir was held below el. 149 m in the meantime."
+  },
+  "coquitlam-asce2008": {
+    "group": "papers",
+    "short": "Yan, Sy & Thavaraj (2008)",
+    "authors": "Yan, L., Sy, A., Thavaraj, T.",
+    "year": "2008",
+    "title": "Seismic deformation analyses of the new Coquitlam Dam",
+    "container": "Geotechnical Earthquake Engineering and Soil Dynamics IV, ASCE Geotechnical Special Publication 181, pp. 1–10",
+    "doi": "10.1061/40975(318)180",
+    "url": null,
+    "note": "Abstract: the 30 m embankment of the early 1910s has a core, shells and part of its foundation judged liquefiable under the design earthquake; the new compacted earth-core rockfill dam at its downstream toe is mostly founded on dense glacial deposits. Authors from the Crossref record."
+  },
+  "bchydro-wup2026": {
+    "group": "web",
+    "short": "BC Hydro (2026)",
+    "authors": "BC Hydro",
+    "year": "2026",
+    "title": "What's WUP? It's about the water",
+    "container": "1 June 2026",
+    "doi": null,
+    "url": "https://www.bchydro.com/news/conservation/2026/water-use-planning.html",
+    "note": "The Coquitlam Lake reservoir supplies about a third of Metro Vancouver's drinking water, unusual among BC Hydro's reservoirs."
+  },
+  "dobry1967": {
+    "group": "papers",
+    "short": "Dobry & Alvarez (1967)",
+    "authors": "Dobry, R., Alvarez, L.",
+    "year": "1967",
+    "title": "Seismic failures of Chilean tailings dams",
+    "container": "Journal of the Soil Mechanics and Foundations Division, ASCE 93(SM6): 237–260",
+    "doi": "10.1061/JSFEAQ.0001054",
+    "url": null,
+    "note": "The March 1965 earthquake in central Chile: of 22 tailings dams inspected at ten sites, 11 were badly cracked or failed, mostly hydraulic-fill dams with the pond close to loose sandy slopes; the El Cobre dams are studied in most detail."
+  }
+}

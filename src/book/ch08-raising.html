@@ -1,21 +1,30 @@
 <section class="chapter" id="ch-raising">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.9): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <p class="so-far"><b>So far.</b> <a data-ref="ch-two-dams"></a> set a tailings dam beside a water dam: what it holds can lose its strength, and the dam keeps growing for as long as the mine runs. <a data-ref="ch-concrete"></a> looked at a dam that is built once, of a material that never goes soft. This chapter watches a tailings dam grow, and asks why the direction it grows in matters so much.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>sketch the three ways to raise a tailings dam, and work out the fill each one needs and where its crest ends up;</li>
+        <li>explain why an upstream raise can fail with no earthquake, years after the last raise was built;</li>
+        <li>estimate how fast a tailings deposit rises, and name the levers that keep it safe (rate of rise, a wide beach, a pond kept away from the crest) and the alternatives to a wet deposit.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.9): Brazil's Lei 14.066 of 2020 and its definition of the upstream method (verify). -->
-    </div>
+
     <div class="col">
-      <p>A tailings dam is never finished while the mine runs. The mill makes tailings every day, so the dam has to grow with them. It begins as a <strong>starter dam</strong> of soil dug from pits nearby (engineers call this borrow), and the tailings are piped out over its crest. When the deposit nears the top, the dam is raised. Each raise can step toward the pond, away from it, or straight up, and that direction names the method:</p>
+      <p class="cold"><span class="newthought">On 30 September 2020 Brazil</span> changed its national law on dam safety. Most laws about building say what a structure must achieve: how strong, how safe, how often inspected. This one did something rarer. It named a way of building and forbade it: no mining dam in Brazil may be built or raised by the upstream method, <i>a montante</i> in Portuguese. Then, so that nobody could argue about what the words meant, the next paragraph defined the method, in translation: a way of building a dam "in which the containment dykes rest on the tailings themselves, or on sediment previously discharged and deposited."<label for="mn-raising-lei" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-lei" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="brazil-lei14066"></a>, Art. 3, adding Art. 2-A to Law 12.334 of 2010. §1 reads: "Entende-se por alteamento a montante a metodologia construtiva de barragem em que os diques de contenção se apoiam sobre o próprio rejeito ou sedimento previamente lançado e depositado." The translation is ours.</span></p>
+      <p>The law gave every mine with such a dam until 25 February 2022 to take it out of service as a dam.<label for="sn-raising-decharacterize" class="sn-ref"></label><input type="checkbox" id="sn-raising-decharacterize" class="margin-toggle"><span class="sidenote" data-kind="curious">The Portuguese word is <i>descaracterização</i>, "decharacterization": draining, reshaping or removing the deposit until it no longer works, or fails, as a dam. The next paragraph lets the regulator extend the deadline where the work cannot technically be finished in time.</span> It was not the first word on the subject. Less than a month after the collapse at Brumadinho in January 2019, Brazil's mining agency had already banned the method by resolution, with the same definition.<label for="mn-raising-anm" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-anm" class="margin-toggle"><span class="marginnote" data-kind="source">The deadline: <a data-cite="brazil-lei14066"></a>, Art. 2-A §2. The resolution: ANM Resolution 4 of February 2019, as summarized by <a data-cite="demarest2019"></a>.</span> Chile had turned against it half a century earlier.</p>
+      <p>A lawmaker does not usually care whether a wall steps one way or the other as it grows. So why would a country write the word "upstream" into its laws? The answer is in what the wall stands on, and to see it we have to watch one grow.</p>
+
+      <h3 id="s-raising-grows">A dam that grows with the mine</h3>
+      <p>A water dam is finished the day it is built. A <span class="gl" data-term="tailings">tailings</span> dam never is while the mine runs. The mill sends out more ground rock and water every day, so the dam has to rise with the deposit behind it. It begins as a <span class="gl" data-term="starter-dam">starter dam</span> of soil and rock dug from pits nearby, and the tailings are piped out over its crest as a slurry. As <a data-ref="ch-two-dams"></a> showed, the slurry sorts itself on the way: the coarse sand settles near the pipes and builds a gently sloping <span class="gl" data-term="beach">beach</span>, while the fine grains and the water run on to a pond. When the deposit nears the top, the dam is raised, and then raised again. Each raise can step toward the pond, away from it, or straight up, and that direction names the method:</p>
       <ul>
-        <li><strong><span class="gl" data-term="upstream-raise">Upstream</span>:</strong> the crest steps toward the pond. Each raise is a small dyke built on the tailings beach.</li>
-        <li><strong>Downstream:</strong> the crest steps away from the pond. Each raise is built over the previous downstream slope, on compacted fill and natural ground.</li>
-        <li><strong>Centreline:</strong> the crest rises vertically. Each raise straddles the beach and the downstream slope.</li>
+        <li><strong><span class="gl" data-term="upstream-raise">Upstream</span>:</strong> the crest steps toward the pond. Each raise is a small dyke built on the tailings beach, often from the beach's own sand.</li>
+        <li><strong><span class="gl" data-term="downstream-raise">Downstream</span>:</strong> the crest steps away from the pond. Each raise is built over the previous outer slope, on compacted fill and natural ground.</li>
+        <li><strong><span class="gl" data-term="centreline-raise">Centreline</span>:</strong> the crest rises straight up. Each raise straddles the top of the beach and the outer slope.</li>
       </ul>
+      <p>Below, three dams are raised side by side from the same starter dam, <span data-n="ch08.h0-m">20</span> m tall, in four raises of <span data-n="ch08.dh-m">12</span> m each, to the same final height. Press Play, or drag the Stage slider:</p>
     </div>
 
     <figure class="sheet full" id="fig-raise">
@@ -38,45 +47,161 @@
         <span><i class="sw" style="background:var(--m-drain)"></i>Drains</span>
         <span><i class="sw" style="background:var(--m-clay)"></i>Low-permeability zone</span>
       </div>
-      <figcaption>All three dams end at the same height above the same starter dam. The fill numbers are cross-section areas, the volume per metre of dam length. Press <strong>Earthquake</strong> to shake all three: the loose, saturated tailings that carry the upstream raises can liquefy, and the raises go with them. Downstream raises rest entirely on compacted, drained fill. Centreline raises put only a small upstream wedge on the beach (<span data-n="raise.ontail-pct@method=centre">9</span>% of the fill here), which must be sandy, drained and compacted.</figcaption>
+      <figcaption>
+        <p class="cap"><b>Raised to the same height from the same starter, the upstream dam needs the least fill and puts most of it on the tailings.</b> Each panel is a section through one dam, pond on the left. The starter is <span data-n="ch08.h0-m">20</span> m tall with an <span data-n="ch08.crest-m">8</span> m crest and faces of 2H:1V, the notation of <a data-ref="ex-beach-slope"></a>; each raise adds <span data-n="ch08.dh-m">12</span> m. The tailings fill the space behind the dam, and the dashed lines in them are old beach surfaces. Over each panel the readouts give the fill (its cross-section area, which is the volume per metre length of dam), how far the crest has moved, and the share of the fill that rests on tailings, which a <span class="k-acc">brick-red</span> line under a raise marks. The dots and the dashed <span class="k-acc">brick-red</span> line trace the crest from stage to stage. The <span class="k-water">blue</span> dashed curve is the phreatic surface, the water table inside the deposit; below it the deposit is hatched as saturated. The downstream dam carries a low-permeability zone and a drain up its inner face, the centreline dam a chimney drain, and both a drain along the base. The beach is drawn at 8% so it can be seen; real beaches slope about 1% where the slurry comes out and flatten toward the pond (<a data-cite="jewell2012"></a>, p. 86). Centreline raises put only a small upstream wedge on the beach (<span data-n="raise.ontail-pct@method=centre">9</span>% of the fill here), which must be sandy, drained and compacted. The <strong>Earthquake</strong> button is a cartoon of a loose deposit; a dense, drained beach would hold. <span class="cap-n">The numbers to remember: <span data-n="raise.fill-m2@method=up">2,496</span> m³ of fill per metre for upstream, <span data-n="raise.fill-m2@method=down">9,792</span> for downstream.</span></p>
+        <ul class="try">
+          <li>Press Play and stop at "Raise 2 · placing fill". Compare how far each crest has moved so far.</li>
+          <li>Drag the Stage slider to the end and divide the downstream fill by the upstream fill.</li>
+          <li>Press Earthquake. Which of the three dams has the brick-red line under every raise?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>At the end, <span data-n="raise.fill-m2@method=down">9,792</span> ÷ <span data-n="raise.fill-m2@method=up">2,496</span> = <span data-n="ch08.down-up">3.92</span>: almost four times the fill. The upstream dam is the one whose every raise rests on tailings, and it is the one that fails.</p></details>
+      </figcaption>
     </figure>
 
-    <div class="wide">
-      <div class="three">
-        <div>
-          <h4>Upstream</h4>
-          <p class="pm">For</p>
-          <ul><li>Least fill by far: each raise is a small dyke. Cheapest and fastest.</li><li>Can be built from the tailings themselves.</li></ul>
-          <p class="pm">Against</p>
-          <ul><li>Each raise rests on loose, saturated tailings that can liquefy, statically or in an earthquake.</li><li>Needs a long dry beach and a pond kept far from the crest to hold the phreatic surface down; raising must be slow.</li><li>Drains can't be extended upward; can't store much water.</li><li>New upstream dams have been barred in Chile since 1970, at first only where people live within reach downstream and under its 2007 rules everywhere, and banned outright in Brazil (since 2019).</li></ul>
-        </div>
-        <div>
-          <h4>Downstream</h4>
-          <p class="pm">For</p>
-          <ul><li>Every raise is founded on compacted fill or natural ground.</li><li>A core and drains can be extended with each raise, like a water dam.</li><li>Best earthquake performance; can store water.</li></ul>
-          <p class="pm">Against</p>
-          <ul><li>Most fill: both faces move out with every raise, so the section grows fastest (<span data-n="raise.fill-m2@method=down">9,792</span> m³ per metre here, against <span data-n="raise.fill-m2@method=centre">6,144</span> for centreline).</li><li>The toe marches outward, so land downstream has to be reserved from the start.</li></ul>
-        </div>
-        <div>
-          <h4>Centreline</h4>
-          <p class="pm">For</p>
-          <ul><li>A middle path on fill volume and footprint.</li><li>The crest stays put, so tailings pipelines and access roads don't move.</li><li>A vertical chimney drain can be raised with every lift.</li></ul>
-          <p class="pm">Against</p>
-          <ul><li>The upstream edge of each raise sits on the beach, so the beach next to the crest must be sandy, drained and compacted.</li></ul>
-        </div>
+    <div class="col">
+      <p>Notice two things. The upstream crest walks a long way toward the pond, <span data-n="raise.shift-m@method=up">−112</span> m by the end, while the downstream crest walks <span data-n="raise.shift-m@method=down">96</span> m the other way. And notice what the fill costs: the downstream dam's numbers climb faster with every raise. You can work out that bill from the shapes alone. A dam section <var>h</var> metres tall with an 8 m crest and faces at 2:1 is a band 8 m wide down the middle and a triangle on each side, each <span class="m">½ × <var>h</var> × 2<var>h</var> = <var>h</var>²</span>. So its area, which is also its volume of fill per metre length of dam, is</p>
+      <div class="eq" id="eq-raising-section">
+        <span class="eq-body"><var>A</var> = 8<var>h</var> + 2<var>h</var>²</span>
+        <span class="eq-no" data-num></span>
       </div>
+      <p class="eq-where"><var>A</var> area of the section, m² (m³ of fill per metre of dam) · <var>h</var> height, m · the 8 is the crest width in metres, and the 2 comes from the two 2:1 faces</p>
+      <p>The first term grows in step with the height; the second with its square. That square is the whole story of the next example:</p>
+
+      <section class="we" id="ex-raising-fill">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The fill bill</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The dams of <a data-ref="fig-raise"></a>: a starter <span data-n="ch08.h0-m">20</span> m tall, four raises of <span data-n="ch08.dh-m">12</span> m to <span data-n="ch08.top-m">68</span> m, a crest <span data-n="ch08.crest-m">8</span> m wide, every face at 2:1.</dd>
+          <dt>Find</dt><dd>The fill in each finished dam, per metre of its length, and how fast the downstream bill grows with height.</dd>
+          <dt>The idea</dt><dd>Every piece of fill is a whole dam section or a part of one, so <a data-ref="eq-raising-section"></a> prices each piece.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Starter: 8 × 20 + 2 × 20² = <span data-n="ch08.a-m2@h=20">960</span> m³</span><span class="why"><a data-ref="eq-raising-section"></a> with <var>h</var> = 20 m; every number here is per metre of dam</span></li>
+          <li><span class="we-eq">One upstream dyke: 8 × 12 + 2 × 12² = <span data-n="ch08.a-m2@h=12">384</span> m³</span><span class="why">a dyke is a small dam of the same shape, 12 m tall</span></li>
+          <li><span class="we-eq">Upstream: 960 + 4 × 384 = <span data-n="raise.fill-m2@method=up">2,496</span> m³</span><span class="why">the starter and four dykes</span></li>
+          <li><span class="we-eq">Downstream: 8 × 68 + 2 × 68² = <span data-n="ch08.a-m2@h=68">9,792</span> m³</span><span class="why">each raise covers the old outer face, so the finished dam is one whole section 68 m tall</span></li>
+          <li><span class="we-eq">Centreline: 68² + 8 × 68 + 20² + 4 × 144 = <span data-n="raise.fill-m2@method=centre">6,144</span> m³</span><span class="why">the outer triangle and the crest band full height; on the pond side, the starter's own triangle and four wedges on the beach, each ½ × 24 × 12</span></li>
+          <li><span class="we-eq">Last downstream raise: 8 × 56 + 2 × 56² = <span data-n="ch08.a-m2@h=56">6,720</span>, and 9,792 − 6,720 = <span data-n="ch08.last-down-m2">3,072</span> m³</span><span class="why">the dam at 68 m less the dam at 56 m</span></li>
+          <li><span class="we-eq">3,072 ÷ 384 = <span data-n="ch08.last-dykes">8</span> dykes</span><span class="why">that raise alone, counted in upstream dykes</span></li>
+          <li><span class="we-eq">At half the height: 8 × 34 + 2 × 34² = <span data-n="ch08.a-m2@h=34">2,584</span>, and 9,792 ÷ 2,584 = <span data-n="ch08.double-factor">3.79</span></span><span class="why">a downstream dam twice as tall</span></li>
+        </ol>
+        <p class="we-ans">Upstream <span data-n="raise.fill-m2@method=up">2,496</span>, centreline <span data-n="raise.fill-m2@method=centre">6,144</span>, downstream <span data-n="raise.fill-m2@method=down">9,792</span> m³ per metre of dam. The last downstream raise takes as much fill as <span data-n="ch08.last-dykes">8</span> upstream dykes, and doubling the height of a downstream dam multiplies its fill by <span data-n="ch08.double-factor">3.79</span>.</p>
+        <p class="we-check"><b>Check.</b> Raising a downstream dam by a little adds a strip of fill as wide as the whole base, because the outer face moves out from top to bottom. Halfway up the last raise, at <span data-n="ch08.mid-last-m">62</span> m, the base is 8 + 4 × 62 = <span data-n="ch08.base-w-m@h=62">256</span> m wide, and 256 × 12 = <span data-n="ch08.last-down-m2">3,072</span> m³, the same as step 6.</p>
+        <p class="we-means"><b>What it means.</b> Fill means trucks, time and money, and a downstream dam pays for each new metre across its whole width while an upstream dam pays for one small dyke. That is the pull toward upstream, and it grows as the dam does.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-raise","set":{"rs-t":10}}'>Set the figure</button></p>
+      </section>
+
+      <p>The cheap dam has a price of its own, and it shows in where each crest ends up and in what each raise stands on:</p>
+
+      <section class="we" id="ex-raising-crest">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Where the crest goes, and what it stands on</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The finished dams of <a data-ref="fig-raise"></a>. Each upstream dyke is <span data-n="ch08.a-m2@h=12">384</span> m³ per metre, all of it on tailings; each centreline raise puts a wedge of <span data-n="ch08.wedge-m2">144</span> m³ on the beach.</dd>
+          <dt>Find</dt><dd>How far each crest moves, and what share of each dam's fill rests on tailings.</dd>
+          <dt>The idea</dt><dd>Each upstream dyke stands with its outer foot on the middle of the crest below, and leans back toward the pond at 2:1.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Upstream, per raise: 2 × 12 + 4 = <span data-n="ch08.up-step-m">28</span> m</span><span class="why">a 2:1 face climbing 12 m runs 24 m back; the foot on the middle of the old crest adds half the crest</span></li>
+          <li><span class="we-eq">Four raises: 4 × 28 = <span data-n="ch08.up-walk-m">112</span> m toward the pond</span><span class="why">the readout's −112</span></li>
+          <li><span class="we-eq">Downstream: 2 × <span data-n="ch08.raised-m">48</span> = <span data-n="raise.shift-m@method=down">96</span> m away from it</span><span class="why">the crest moves 2 m out for every metre of the four raises</span></li>
+          <li><span class="we-eq">Upstream on tailings: 4 × 384 = <span data-n="ch08.up-tail-m2">1,536</span> m³, and 1,536 ÷ 2,496 = <span data-n="ch08.up-share">0.615</span></span><span class="why">four dykes, out of the whole dam</span></li>
+          <li><span class="we-eq">Centreline on the beach: 4 × 144 = <span data-n="ch08.cl-tail-m2">576</span> m³, and 576 ÷ 6,144 = <span data-n="ch08.cl-share">0.094</span></span><span class="why">four wedges, out of the whole dam</span></li>
+        </ol>
+        <p class="we-ans">The upstream crest ends <span data-n="ch08.up-walk-m">112</span> m toward the pond with <span data-n="raise.ontail-pct@method=up">62</span>% of the dam on tailings; the centreline crest stays put with <span data-n="raise.ontail-pct@method=centre">9</span>% on the beach; the downstream crest moves <span data-n="raise.shift-m@method=down">96</span> m away with none.</p>
+        <p class="we-check"><b>Check.</b> The starter's base reaches 2 × 20 + 4 = <span data-n="ch08.starter-reach-m">44</span> m upstream of its crest, so the final upstream crest stands <span data-n="ch08.up-walk-m">112</span> − <span data-n="ch08.starter-reach-m">44</span> = <span data-n="ch08.beyond-m">68</span> m out beyond the starter's inner toe. The whole top of that dam has nothing under it but tailings.</p>
+        <p class="we-means"><b>What it means.</b> Of the three, only the upstream dam has to trust the tailings to carry it. Whether it holds is a question about the beach, and no amount of care with the dykes can answer it.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-raise","set":{"rs-t":10}}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-raising-stands">What the wall stands on</h3>
+      <p>Most people say a dam fails when its wall breaks, so the way to make it safe is to build the wall strong. For an upstream dam that answer looks in the wrong place. Each dyke is compacted fill, small and sound. Under it lies the beach, and the beach was never built at all. It was laid down from a slurry, grain by grain, the way a wave lays down the loose sand at the water's edge in <a data-ref="ch-beach"></a>, and nobody rolled it afterward. Near its surface, in the sun and wind, it drains and can look as firm as the damp sand of a castle. A few metres down it sits below the water table of the deposit, the <span class="gl" data-term="phreatic-surface">phreatic surface</span>, and there every gap is full of water.</p>
+      <p>How high that water stands under the dykes is not fixed. It depends on where the pond is. Here is one upstream dam drawn twice, with the pond kept far from the crest and with the pond close to it:</p>
     </div>
-    <div class="col" data-stub>
-      <!-- New (H.9): the mechanism in prose, rate of rise (ex-raising-rate), modified centreline with the
-           Polley clue (G.4), the alternatives; tbl-raising-compare from the columns above;
-           ex-raising-fill, ex-raising-crest. -->
+
+    <figure class="fig wide" id="fig-raising-beach">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · What an upstream raise stands on</span><span class="scale-note">Schematic · not to scale</span></div>
+      <div class="ch08-panels">
+        <svg class="dwg" viewBox="0 0 340 200" role="img" aria-label="Panel A: an upstream tailings dam, a starter dam on the right and three dykes stepping left onto the tailings. The pond is far to the left at the end of a long beach. The phreatic surface falls steeply from the pond's edge and passes below the bases of all three dykes; the tailings below it are hatched as saturated.">
+          <text x="4" y="16" class="lbl">A · Pond kept far from the crest</text>
+          <polygon points="0,170 0,92 48,74 184,65 240,140 240,170" fill="url(#p-tsand)"/>
+          <polygon points="0,74 48,74 0,92" class="water"/>
+          <path d="M0,74 H48" class="water-line"/>
+          <polygon points="240,170 330,170 292,140 278,140" fill="url(#p-fill)" class="edge"/>
+          <polygon points="226,140 264,140 250,115 240,115" fill="url(#p-fill)" class="edge"/>
+          <polygon points="198,115 236,115 222,90 212,90" fill="url(#p-fill)" class="edge"/>
+          <polygon points="170,90 208,90 194,65 184,65" fill="url(#p-fill)" class="edge"/>
+          <polygon points="284,170 324,170 320,166 284,166" fill="url(#p-drain)" class="edge-l"/>
+          <path d="M228,140 H262 M200,115 H234 M172,90 H206" class="acc-line"/>
+          <path d="M48,74 L184,65" class="edge"/>
+          <polygon points="0,92 48,74 110,92 170,118 220,145 262,160 300,167 324,170 0,170" fill="url(#p-sat)"/>
+          <path d="M48,74 C80,80 110,92 140,104 C170,118 200,136 220,145 C240,153 262,160 300,167" class="phreatic"/>
+          <rect x="0" y="170" width="340" height="12" fill="url(#p-alluv)" class="edge"/>
+          <text x="6" y="88" class="lbl-s lbl-w halo on-water">pond</text>
+          <text x="112" y="60" class="lbl-s halo" text-anchor="middle">long beach</text>
+          <text x="282" y="132" class="lbl-s halo" text-anchor="middle">starter</text>
+          <text x="196" y="52" class="lbl-s halo" text-anchor="middle">dykes on the beach</text>
+          <path d="M196,55 L190,64" class="lead"/>
+          <text x="30" y="150" class="lbl-s halo ch08-on-tsand">tailings,</text>
+          <text x="30" y="163" class="lbl-s halo ch08-on-tsand">loose and soaked</text>
+          <text x="102" y="122" class="lbl-s lbl-w halo ch08-on-tsand" text-anchor="end">phreatic surface</text>
+        </svg>
+        <svg class="dwg" viewBox="0 0 340 200" role="img" aria-label="Panel B: the same dam with the pond reaching almost to the top dyke, so the beach is short. The phreatic surface stays high and runs through the dykes, so all three stand on saturated tailings.">
+          <text x="4" y="16" class="lbl">B · Pond near the crest</text>
+          <polygon points="0,170 0,92 150,68 184,65 240,140 240,170" fill="url(#p-tsand)"/>
+          <polygon points="0,68 150,68 0,92" class="water"/>
+          <path d="M0,68 H150" class="water-line"/>
+          <polygon points="240,170 330,170 292,140 278,140" fill="url(#p-fill)" class="edge"/>
+          <polygon points="226,140 264,140 250,115 240,115" fill="url(#p-fill)" class="edge"/>
+          <polygon points="198,115 236,115 222,90 212,90" fill="url(#p-fill)" class="edge"/>
+          <polygon points="170,90 208,90 194,65 184,65" fill="url(#p-fill)" class="edge"/>
+          <polygon points="284,170 324,170 320,166 284,166" fill="url(#p-drain)" class="edge-l"/>
+          <path d="M228,140 H262 M200,115 H234 M172,90 H206" class="acc-line"/>
+          <path d="M150,68 L184,65" class="edge"/>
+          <polygon points="0,92 150,68 176,74 200,92 222,112 246,134 272,152 300,164 324,170 0,170" fill="url(#p-sat)"/>
+          <path d="M150,68 C162,70 170,72 176,74 C188,82 200,92 211,102 C222,112 234,123 246,134 C258,144 272,152 300,164" class="phreatic"/>
+          <rect x="0" y="170" width="340" height="12" fill="url(#p-alluv)" class="edge"/>
+          <text x="40" y="80" class="lbl-s lbl-w halo on-water">pond</text>
+          <text x="166" y="56" class="lbl-s halo" text-anchor="middle">short beach</text>
+          <path d="M166,59 L166,66" class="lead"/>
+          <text x="282" y="132" class="lbl-s halo" text-anchor="middle">starter</text>
+          <text x="30" y="150" class="lbl-s halo ch08-on-tsand">tailings,</text>
+          <text x="30" y="163" class="lbl-s halo ch08-on-tsand">loose and soaked</text>
+          <text x="196" y="125" class="lbl-s lbl-w halo ch08-on-tsand" text-anchor="end">phreatic surface</text>
+        </svg>
+      </div>
+      <figcaption>
+        <p class="cap"><b>Where the pond sits sets how much of the beach under the dykes is soaked.</b> Both panels show the same upstream dam: a starter on the right, a drain at its base, and three dykes stepping toward the pond, each with a <span class="k-acc">brick-red</span> line where it rests on the tailings. The <span class="k-water">blue</span> dashed curve is the phreatic surface; below it the tailings and the fill are hatched as saturated. In A a long beach keeps the water's edge far from the crest, and the phreatic surface falls well below the dykes before it reaches them. In B the pond reaches almost to the crest, and the phreatic surface runs through the dykes themselves. <span class="cap-n">The thing to remember: the deep tailings are soaked in both panels; the pond decides how close the soaked zone comes to the dykes.</span></p>
+        <ul class="try">
+          <li>In each panel, follow the brick-red line under the top dyke and say whether the beach right beneath it is above or below the phreatic surface.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>In A it is above: the top dyke rests on beach that has drained. In B it is below: the top dyke rests on soaked tailings. The lowest dyke stands on soaked tailings in both.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the only difference between the two panels is the water. The dykes, the beach and the tailings are the same. In B the dykes stand on loose grains with water in every gap, and as <a data-ref="ch-trapped"></a> showed, that is a material whose strength depends on what happens to that water when something pushes on it.</p>
+      <p>Something always does. Each new dyke adds its weight to the beach beneath it. The weight of the sloping dam presses the tailings under it outward, toward its open face. Nobody needs to shake anything. So the question to settle is what loose, soaked grains do under a push that is slow and steady:</p>
+
+      <div class="predict" data-answer="c" id="pr-raising-push">
+        <p class="predict-q">A new dyke is placed, slowly, on a beach of loose tailings with water in every gap. The water can only leave slowly. What happens to the grains under the dyke?</p>
+        <div class="predict-opts"><button type="button" data-v="a">They pack down under the weight and the beach gets firmer, like sand under a footstep.</button><button type="button" data-v="b">Not much: the push is slow, and only shaking upsets loose sand.</button><button type="button" data-v="c">The water takes over the weight, and the grains can stop gripping one another.</button></div>
+        <div class="predict-reveal" hidden><p>The water takes over. Pushed, loose grains try to shuffle into the gaps between them and pack tighter. To do that, the water in those gaps must get out of the way, and here it can't leave fast enough. So the grains cannot move closer, and the weight they were carrying passes to the water. The water pressure rises, the grains press on one another less, and their grip goes with the press, as <a data-ref="ch-trapped"></a> showed in the sandbox. Nothing has to break, and nothing has to shake.</p></div>
+      </div>
+
+      <p class="film-lead" data-lead-for="film-never-finished">The film <i>Dams that are never finished</i> puts the same push on a box of grains, then follows it out into the world:</p>
     </div>
 
     <figure class="film wide" id="film-never-finished">
       <div class="sheet-top"><span class="figno"><b data-num></b> · Dams that are never finished</span><span class="scale-note" data-gen="film-len"></span></div>
       <div class="film-before">
         <p class="film-k">Before you watch</p>
-        <p>The film opens on grains under a dam that someone is pushing slowly sideways. Nobody is shaking them. When the box at 3:34 is pushed with its drain shut, will the loose, soaked grains pack down and hold, the way sand firms up under a footstep, or let go?</p>
+        <p>Brazil and Chile each banned one way of building a tailings dam. The film gives its reason with three boxes of grains, pushed slowly sideways, and only one lets go. You have predicted the first box: loose grains, drain shut. Before you watch, predict the other two, the same loose grains with the drain open and dense grains with the drain shut, and say which way of raising a dam each box stands for.</p>
+        <p class="film-bridge">The film counts fill in round numbers ("about four times"); <a data-ref="ex-raising-fill"></a> has the exact ones.</p>
       </div>
       <div class="film-stage">
         <video controls preload="none" playsinline poster="video/never-finished.jpg" aria-label="Film: Dams that are never finished"><source src="video/never-finished.mp4" type="video/mp4"><track kind="captions" src="video/never-finished.vtt" srclang="en" label="English"></video>
@@ -85,35 +210,219 @@
       <ol class="film-marks">
         <li><button type="button" data-t="4.1">0:04</button> <span class="fm-l">Grains under a dam, fading</span> <a data-ref="fig-grains"></a></li>
         <li><button type="button" data-t="80.9">1:20</button> <span class="fm-l">Never finished: three ways up</span> <a data-ref="fig-raise"></a></li>
-        <li><button type="button" data-t="176.5">2:56</button> <span class="fm-l">What an upstream wall stands on</span></li>
-        <li><button type="button" data-t="214.6">3:34</button> <span class="fm-l">A slow push with the drain shut</span> <a data-ref="fig-grains"></a></li>
-        <li><button type="button" data-t="339.1">5:39</button> <span class="fm-l">El Cobre, Chile, 1965</span></li>
-        <li><button type="button" data-t="366.8">6:06</button> <span class="fm-l">Brumadinho, 2019</span></li>
-        <li><button type="button" data-t="483.3">8:03</button> <span class="fm-l">Coquitlam, a water dam</span> <a data-ref="case-coquitlam">the case file</a></li>
-        <li><button type="button" data-t="529.1">8:49</button> <span class="fm-l">Mount Polley: what gave way?</span></li>
+        <li><button type="button" data-t="176.5">2:56</button> <span class="fm-l">What an upstream wall stands on</span> <a data-ref="fig-raising-beach"></a></li>
+        <li><button type="button" data-t="214.6">3:34</button> <span class="fm-l">A slow push with the drain shut</span> <a data-ref="pr-raising-push">your prediction</a></li>
+        <li><button type="button" data-t="339.1">5:39</button> <span class="fm-l">El Cobre, Chile, 1965</span> <a data-ref="s-raising-slow"></a></li>
+        <li><button type="button" data-t="366.8">6:06</button> <span class="fm-l">Brumadinho, 2019</span> <a data-ref="s-raising-slow"></a></li>
+        <li><button type="button" data-t="483.3">8:03</button> <span class="fm-l">Coquitlam, a water dam</span> <a data-ref="case-coquitlam"></a></li>
+        <li><button type="button" data-t="529.1">8:49</button> <span class="fm-l">Mount Polley: what gave way?</span> <a data-ref="ch-build"></a></li>
       </ol>
       <details class="film-transcript" data-gen="transcript"><summary>Read the transcript</summary></details>
       <figcaption>
-        <details class="film-after"><summary>After you watch: the answer</summary><p>They let go. Pushed, loose grains try to pack tighter; with the drain shut the water in the gaps can't leave, so it takes the weight instead. An upstream raise stands on exactly those grains, the beach of loose, soaked tailings, and a slow push is enough. Count it in <a data-ref="fig-raise"></a>: how much of each dam rests on tailings. The film's last question stays open. Mount Polley was raised another way and failed anyway, and <a data-ref="ch-build"></a> is where you find out why.</p></details>
+        <details class="film-after"><summary>After you watch: the answer</summary><p>Only the loose box with its drain shut lets go, and it stands for an upstream raise on a soaked beach. With the drain open, the water squeezed out of the gaps leaves, so the loose grains settle a little and keep pressing: that is a raise with drains in it. The dense grains, pushed, must climb over one another; the gaps grow, the water in them is pulled tight, and the grains press harder than before: that is compacted fill. A downstream raise is both, dense fill with drains, and stands on it; a centreline raise stands mostly on it. One line in the film needs care: at 1:14 it says water in the gaps "pushes them apart". More exactly, the water carries part of the load the grains would otherwise carry between them, so they press on one another less (<a data-ref="ch-grip"></a>). The film's last question, what gave way at Mount Polley, stays open until <a data-ref="ch-build"></a>.</p></details>
       </figcaption>
     </figure>
 
-    <div class="col cases">
-      <div class="case-grid">
-        <article class="case" id="case-coquitlam">
-          <p class="case-k">Coquitlam Dam · 1913, backed up by a new dam in 2007</p>
-          <h4>A water dam built like a tailings dam</h4>
-          <p>Coquitlam Dam was built by hydraulic fill: soil washed into place with water, which leaves it loose and saturated, much like an upstream tailings raise. Modern investigations found a loose zone that could liquefy in a large earthquake. Rather than repair the old fill, BC Hydro built a new compacted earth-core rockfill dam against its downstream toe, founded mostly on dense glacial soil. The new dam was finished in 2007, and BC Hydro declared the whole seismic upgrade complete in 2008. A dam built to hold water can carry the same risk as a tailings dam: what decides it is whether the fill is loose and wet or dense and drained.</p>
-        </article>
+    <div class="col">
+      <h3 id="s-raising-slow">A slow push is enough</h3>
+      <p>Put the box back into the dam. Below the phreatic surface, the beach under an upstream raise is loose sand and silt with water in every gap; it is <span class="gl" data-term="contractive">contractive</span>, so a push makes it try to pack tighter. Whether the water can get out of the way in time depends on how far it has to go and how easily it moves, and <a data-ref="ch-trapped"></a> put a clock on that: the time grows with the square of the distance (<a data-ref="eq-trapped-time"></a>). A sample in a box drains in seconds. A deposit tens of metres thick, laced with fine silt from the pond, does not drain in the seconds or minutes it takes a slope to start moving. For that moment the tailings are <span class="gl" data-term="undrained">undrained</span>, the water takes the load, and the grains stop gripping. The deposit flows as a heavy liquid, and the dykes on it go with it. That is <span class="gl" data-term="static-liquefaction">static liquefaction</span>: <span class="gl" data-term="liquefaction">liquefaction</span> with no earthquake at all.</p>
+      <p>The trigger can be small, and it can come late. Dam I at the Córrego do Feijão mine near Brumadinho was raised upstream in ten raises over 37 years, to 86 m. Its last raise was built in 2013, and tailings stopped arriving in July 2016. On 25 January 2019, with no sign of trouble on any of its instruments, its slope collapsed in under ten seconds, and about three quarters of its tailings flowed out within five minutes. The expert panel found flow liquefaction of the tailings inside the dam itself. They were loose, saturated and brittle, and the water level in them had stayed high near the toe after deposition stopped. What tipped them was a combination of slow creep and the loss of suction in the drier tailings above the water table after heavy rain at the end of 2018.<label for="mn-raising-feijao" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-feijao" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="feijao2019"></a>, Executive summary, pp. i–ii, and p. 16 (raises, height, dates). The toll is in <a data-ref="ch-two-dams"></a>.</span> The growing had stopped. The loose, soaked tailings were still there.</p>
+      <p>An earthquake is a faster push of the same kind, and Chile, where the ground shakes often, learned it first. After the El Cobre tailings dams failed in an earthquake in 1965 and buried the village below, Chile wrote its first rules for tailings dams, in 1970. They covered dams with people living within reach downstream; among other things they kept the pond as far from the sand wall as possible and had the wall's sand raised outward, over the crest, and they have been read ever since as shutting out the upstream method for those dams. Chile's rules of 2007 say it in one line, which translates as "the use of the upstream method is prohibited."<label for="mn-raising-chile" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-chile" class="margin-toggle"><span class="marginnote" data-kind="source">El Cobre in 1965: <a data-cite="dobry1967"></a>. The rules: <a data-cite="chile-ds86"></a>, Arts. 30, 31 and 44; <a data-cite="chile-ds248"></a>, Art. 14(h).</span> Stava, in Italy, failed with no earthquake at all.<label for="sn-raising-stava" class="sn-ref"></label><input type="checkbox" id="sn-raising-stava" class="margin-toggle"><span class="sidenote" data-kind="history">On 19 July 1985 the upper of two tailings dams above the village of Stava, in the Italian Alps, burst. Its mud poured into the lower basin and on down the valley, about 180,000 m³ of it, and 268 people died. The upper dam was still being raised, by the upstream method. <a data-cite="luino2012">Luino and De Graff</a> put first among the causes the mistaken assumption that the tailings would consolidate fairly quickly.</span></p>
+      <p>That answers the question this chapter opened with. A country writes "upstream" into its law because no rule about the wall can make an upstream dam safe. The danger is in what the wall stands on: loose, saturated tailings that a slow push can turn to liquid, and that stay that way after the raising stops. So the law names the one thing it can name, the place the wall is allowed to stand.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A mine proposes to build its upstream dykes of crushed rock instead of beach sand, so that the dykes themselves are strong. Does that make the dam safe?</summary>
+        <p>No. Stronger dykes still stand on the same loose, soaked beach. If the tailings under them liquefy, rock dykes go down with them as surely as sand ones.</p>
+      </details>
+
+      <h3 id="s-raising-rate">How fast it may rise</h3>
+      <p>Upstream dams are still built where the law allows them; most South African tailings dams, for one, are raised this way. The ones that stand are kept standing by keeping the tailings under them drained. A long beach keeps the pond, and with it the high water, away from the crest, as in panel A of <a data-ref="fig-raising-beach"></a>. The pond itself is kept small: its water is drawn off to a separate dam as soon as it can be, not stored against the tailings.<label for="mn-raising-beachlen" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-beachlen" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="sancold2020"></a>, §4.8, p. 18.</span> The third lever is time: the <span class="gl" data-term="rate-of-rise">rate of rise</span>, how many metres a year the surface of the deposit climbs.</p>
+      <p>Time matters because every metre of new tailings is a load on the tailings below. Below the phreatic surface that load is carried at first by the water, and it passes to the grains only as the water seeps away and the grains settle closer, the slow process <a data-ref="ch-trapped"></a> called consolidation. Rise slowly and each metre has drained and settled before the next arrives. Rise fast and the water pressure builds up from one season to the next, the tailings stay loose, and the phreatic surface climbs with them.</p>
+      <p>So the deposit runs a race between two clocks. One is the time it takes to add a metre. The other is the time the water below takes to get out, and by <a data-ref="eq-trapped-time"></a> that grows with the square of the distance the water must travel, so it grows as the deposit thickens; the fine, silty tailings laid down toward the pond are the slowest of all. Nobody can work out the second clock exactly for a real deposit, layered as it is, so the industry limits the first one instead. South African guidance puts the limit for most upstream dams at about 2 to 2½ m a year, up to about 6 m a year for dams whose outer wall is built of coarse, free-draining sand, and says plainly that the figure is a judgement based on experience.<label for="mn-raising-sancold" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-sancold" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="sancold2020"></a>, §4.6, p. 15.</span> At 2 m a year, each metre has half a year to drain before the next one covers it.</p>
+      <p>The rate of rise itself is plain arithmetic: the volume the mill sends out in a year, spread over the area of the deposit,</p>
+      <div class="eq" id="eq-raising-rise">
+        <span class="eq-body"><var>r</var> = <var>M</var> ⁄ (<var>ρ</var><sub>d</sub> <var>S</var>)</span>
+        <span class="eq-no" data-num></span>
       </div>
-      <p class="case-src">Sources: BC Hydro and ASCE (2008) on the Coquitlam Dam seismic upgrade.</p>
+      <p class="eq-where"><var>r</var> rate of rise, m a year · <var>M</var> dry tailings sent out, tonnes a year · <var>ρ</var><sub>d</sub> tonnes of solids in each cubic metre of settled deposit · <var>S</var> area of the deposit's surface, m²</p>
+      <p>A mine of ordinary size shows how fast that can be:</p>
+
+      <section class="we" id="ex-raising-rate">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">How fast the deposit climbs</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>An illustrative mine that sends out <span data-n="ch08.tpd">50,000</span> tonnes of dry tailings a day. Settled in the deposit they hold 1.4 tonnes of solids in each cubic metre (also illustrative). The deposit covers 2 km², and the dam is raised 12 m at a time.</dd>
+          <dt>Find</dt><dd>How fast the deposit rises, and how often the dam must be raised.</dd>
+          <dt>The idea</dt><dd><a data-ref="eq-raising-rise"></a>, one step at a time: tonnes to cubic metres, a day to a year, then spread over the area. A square kilometre is a million square metres, so millions of cubic metres over square kilometres gives metres.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">50,000 ÷ 1.4 = <span data-n="ch08.m3-day">35,714</span> m³ a day</span><span class="why">tonnes over tonnes per cubic metre</span></li>
+          <li><span class="we-eq">35,714 × 365 ÷ 1,000,000 = <span data-n="ch08.mm3-yr">13.04</span> million m³ a year</span><span class="why">a year of days, counted in millions</span></li>
+          <li><span class="we-eq">13.04 ÷ 2 = <span data-n="ch08.rise-m-yr">6.52</span> m a year</span><span class="why">millions of cubic metres over millions of square metres</span></li>
+          <li><span class="we-eq">12 ÷ 6.52 = <span data-n="ch08.raise-years">1.84</span> years</span><span class="why">between one 12 m raise and the next</span></li>
+          <li><span class="we-eq">13.04 ÷ 2.5 = <span data-n="ch08.area-km2">5.2</span> km²</span><span class="why">the area that would hold the rise to 2½ m a year</span></li>
+        </ol>
+        <p class="we-ans">The deposit climbs <span data-n="ch08.rise-m-yr">6.5</span> m a year, a new raise every <span data-n="ch08.raise-years">1.8</span> years: two to three times the usual limit for an upstream dam. To stay under 2½ m a year it would need about <span data-n="ch08.area-km2">5.2</span> km².</p>
+        <p class="we-check"><b>Check.</b> The order of magnitude: 13 million m³ is a block 1 km by 1 km by 13 m, and spread over two such squares it stands 6½ m deep.</p>
+        <p class="we-means"><b>What it means.</b> The rate of rise is set by the mine's output and the size of the valley, not by the dam engineer. A mine that grows its output, or a deposit that narrows as it climbs, can outrun its own tailings. The engineer's choices are a bigger footprint, a slower mine, or a dam that does not stand on the tailings at all.</p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> The mine of <a data-ref="ex-raising-rate"></a> doubles its output. What happens to the rate of rise, and to the time between raises?</summary>
+        <p>The rate doubles, to <span data-n="ch08.rise-m-yr@tpd=100000">13.04</span> m a year, and a 12 m raise falls due every <span data-n="ch08.raise-months@tpd=100000">11</span> months. An upstream dam on that deposit would be far past any rule of thumb.</p>
+      </details>
+
+      <h3 id="s-raising-away">Raising away from the water</h3>
+      <p>The other two methods do not ask the tailings to carry the dam. A downstream raise stands on compacted fill and on the ground beyond the old toe. Because each raise covers the whole outer face, a sloping core and drains can be carried up with every lift, as in a water dam, and the downstream panel of <a data-ref="fig-raise"></a> draws them. Such a dam can hold back a pond, and it rides out earthquakes best. Its costs are the ones <a data-ref="ex-raising-fill"></a> counted, and land: its toe marches out 4 m for every metre of rise, <span data-n="ch08.toe-walk-m">192</span> m over the four raises of the figure, and that ground has to be set aside from the day the mine opens.</p>
+      <p>A centreline raise splits the difference. Its crest stays put, so pipelines and roads along it never move, and a vertical drain can rise with every lift. A small wedge of each raise rests on the top of the beach, <span data-n="raise.ontail-pct@method=centre">9</span>% of the fill in the figure, so that part of the beach must be sandy, drained and compacted. It can be built of <span class="gl" data-term="cyclone-sand">cyclone sand</span>: the slurry is spun in a hydrocyclone, which flings the coarse grains to its wall and out at the bottom while the fines and most of the water leave at the top.<label for="mn-raising-cyclone" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-cyclone" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="sancold2020"></a>, §4.4.4, p. 12.</span> The coarse sand drains freely and can be compacted, which is what a wall needs.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Tailings behind a downstream dam rise 6 m a year. Is that rate a danger to the dam?</summary>
+        <p>Far less than it would be to an upstream dam. The limit exists because each upstream raise stands on the last few years of tailings. A downstream raise stands on compacted fill and the ground beyond the toe, and the tailings behind it only lean on it, as a heavy liquid would; that is a load it is designed to carry. South African guidance says the rate of rise is not relevant behind a fully engineered earthfill or rockfill wall (<a data-cite="sancold2020"></a>). The wall must still be raised fast enough to stay ahead of the tailings.</p>
+      </details>
+      <p>Between centreline and upstream lies the <span class="gl" data-term="modified-centreline">modified centreline</span> raise. Each raise steps its crest a little toward the pond, so more of it rests on the beach than in a centreline raise, and the core leans slightly upstream, supported on that side by a zone of tailings. Mount Polley, in British Columbia, was designed to be raised this way.<label for="mn-raising-polley" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-polley" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, pp. 8 and 53. The panel adds that as built, one early raise was entirely upstream construction and later ones crept upstream (pp. 55 and 69).</span> Hold that thought; it comes back in <a data-ref="ch-build"></a>.</p>
+      <p>The table gathers the three methods:</p>
+
+      <figure class="table wide" id="tbl-raising-compare">
+        <figcaption class="tbl-cap"><b data-num></b> · Three ways to raise a tailings dam, for and against</figcaption>
+        <div class="tablewrap">
+          <table class="cmp ch08-cmp">
+            <thead><tr><th scope="col"><span class="sr">Question</span></th><th scope="col">Upstream</th><th scope="col">Downstream</th><th scope="col">Centreline</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Each raise rests on</th><td data-m="Upstream">The tailings beach. Each raise is a small dyke, often built from the tailings themselves.</td><td data-m="Downstream">Compacted fill and natural ground.</td><td data-m="Centreline">Fill and the starter, with a small upstream wedge on the beach.</td></tr>
+              <tr><th scope="row">Fill to <span data-n="ch08.top-m">68</span> m</th><td data-m="Upstream">Least by far: <span data-n="raise.fill-m2@method=up">2,496</span> m³ per metre. Cheapest and fastest.</td><td data-m="Downstream">Most: both faces move out with every raise, so the section grows fastest (<span data-n="raise.fill-m2@method=down">9,792</span> m³ per metre here, against <span data-n="raise.fill-m2@method=centre">6,144</span> for centreline).</td><td data-m="Centreline">A middle path on fill and on footprint.</td></tr>
+              <tr><th scope="row">The crest</th><td data-m="Upstream">Walks toward the pond, onto the tailings.</td><td data-m="Downstream">Walks away from the pond; the toe marches out, so land downstream has to be reserved from the start.</td><td data-m="Centreline">Stays put, so pipelines and roads don't move.</td></tr>
+              <tr><th scope="row">Drains and core</th><td data-m="Upstream">Can't be extended upward.</td><td data-m="Downstream">Raised with every lift, as in a water dam.</td><td data-m="Centreline">A vertical chimney drain raised with every lift.</td></tr>
+              <tr><th scope="row">Water and earthquakes</th><td data-m="Upstream">Can't store much water: the pond must stay far from the crest. Rests on loose, saturated tailings that can liquefy, with or without an earthquake.</td><td data-m="Downstream">Can store water. Best in earthquakes.</td><td data-m="Centreline">Good, if the beach next to the crest is sandy, drained and compacted.</td></tr>
+              <tr><th scope="row">Rules</th><td data-m="Upstream">New upstream dams have been barred in Chile since 1970, at first only where people live within reach downstream and under its 2007 rules everywhere, and banned outright in Brazil (since 2019).</td><td data-m="Downstream">None special.</td><td data-m="Centreline">None special.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tbl-note">Fill from <a data-ref="fig-raise"></a> and <a data-ref="ex-raising-fill"></a>. Rules: <a data-cite="chile-ds86"></a>, <a data-cite="chile-ds248"></a>, <a data-cite="demarest2019"></a>, <a data-cite="brazil-lei14066"></a>.</p>
+      </figure>
+
+      <h3 id="s-raising-water">Less water in the deposit</h3>
+      <p>Every method so far stores the tailings wet and builds a wall to hold them. The other road is to take the water out. Thickened tailings leave the mill with less water and stand on steeper beaches than a thin slurry does (<a data-cite="jewell2012"></a>). Filtered tailings, sometimes called dry stack, go further: filters take out enough water that the tailings can be carried by truck or conveyor and spread and compacted like earthworks. The review panel that investigated the Mount Polley breach set out the case for them from first principles of soil mechanics: take away the surface water, keep the tailings unsaturated with drainage, and "achieve dilatant conditions throughout the tailings deposit by compaction".<label for="mn-raising-bat" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-bat" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, §9.3.1–9.3.2, pp. 121–123, which also gives cost as the main reason filtered tailings are not used more widely.</span> Each of those is a way of keeping the grains pressing on one another: no pond to soak them, no water in the gaps to take the load, and grains packed dense enough to swell, not collapse, when they are sheared. Even then the compaction is not optional; a loose, dry stack that later gets wet can flow too. The catch is cost: filtering is more expensive than piping a slurry, and most filtered operations so far have been small.</p>
+
+      <h3 id="s-raising-coquitlam">A water dam built like a tailings dam</h3>
+      <p>All of this might suggest the trouble is mine waste. Coquitlam Dam, in British Columbia, shows that it is not. It holds water, for BC Hydro's power plants and for about a third of Metro Vancouver's drinking water, and it was built in 1913<label for="mn-raising-coquitlam" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-coquitlam" class="margin-toggle"><span class="marginnote" data-kind="source">Drinking water: <a data-cite="bchydro-wup2026"></a>. The date and the way it was built: <a data-cite="bchydro-coquitlam2008"></a>; <a data-cite="waterpower2001-coquitlam"></a>.</span> by <span class="gl" data-term="hydraulic-fill">hydraulic fill</span>: soil washed into place with water and left to settle, which leaves it loose and saturated, much like the beach under an upstream raise. Here it is as a case file:</p>
+
+      <figure class="case-plate wide" id="case-coquitlam"
+              data-case="Coquitlam Dam" data-year="1913" data-where="Coquitlam River, British Columbia"
+              data-type="Hydraulic-fill earth dam, 30 m" data-mechanism="Loose hydraulic fill that could liquefy in a large earthquake; a new compacted earth-core rockfill dam built against its downstream toe (2007–2008)" data-bc="true">
+        <div class="sheet-top"><span class="figno"><b data-num></b> · Case file: Coquitlam Dam · 1913, backed up by a new dam in 2007</span><span class="scale-note">Schematic · heights to scale; slopes not published, drawn for illustration</span></div>
+        <div class="case-body">
+          <svg class="dwg" viewBox="0 0 640 200" role="img" aria-label="Section, schematic: on the left the reservoir against the 1913 dam, about 30 metres high, made of loose hydraulic fill that is saturated below a phreatic line. Against its downstream toe on the right stands the new dam of 2007, also about 30 metres high, with a compacted earth core, filters on both sides and rockfill shells, its upstream slope resting on the old dam's toe. A vertical scale bar shows 10 metres.">
+            <polygon points="0,108 190,108 60,160 0,160" class="water"/>
+            <path d="M0,108 H190" class="water-line"/>
+            <polygon points="60,160 210,100 226,100 376,160" fill="url(#p-tsand)" class="edge"/>
+            <polygon points="60,160 190,108 214,108 248,118 290,132 330,146 360,154 376,160" fill="url(#p-sat)"/>
+            <path d="M190,108 C214,108 248,118 290,132 C320,142 345,150 360,154" class="phreatic"/>
+            <path d="M200,160 L212,104 M236,160 L224,104" style="stroke:var(--ink-2);stroke-width:0.9;stroke-dasharray:4 3;fill:none"/>
+            <polygon points="345,147.6 440,100 456,100 576,160 376,160" fill="url(#p-rock)" class="edge"/>
+            <polygon points="434,103 440,100 428,160 420,160" fill="url(#p-filter)" class="edge-l"/>
+            <polygon points="456,100 462,103 476,160 468,160" fill="url(#p-filter)" class="edge-l"/>
+            <polygon points="440,100 456,100 468,160 428,160" fill="url(#p-clay)" class="edge-l"/>
+            <path d="M345,147.6 L440,100 L456,100 L576,160" class="edge" style="fill:none"/>
+            <rect x="0" y="160" width="640" height="14" fill="url(#p-alluv)" class="edge"/>
+            <path d="M610,100 V160 M605,100 H615 M605,120 H615 M605,140 H615 M605,160 H615" class="dim"/>
+            <text x="636" y="92" class="lbl-s halo" text-anchor="end">10 m steps</text>
+            <path d="M226,92 H456" class="dim" style="stroke-dasharray:2 3"/>
+            <text x="341" y="86" class="lbl-s halo ch08-wide-only" text-anchor="middle">both crests about 30 m above the valley floor</text>
+            <text x="12" y="128" class="lbl-s lbl-w halo on-water">Coquitlam Lake</text>
+            <text x="150" y="40" class="lbl halo" text-anchor="middle">1913 dam</text>
+            <text x="150" y="56" class="lbl-s halo ch08-wide-only" text-anchor="middle">hydraulic fill, loose, wet below</text>
+            <path d="M150,61 L178,118" class="lead"/>
+            <text x="520" y="40" class="lbl halo" text-anchor="middle">new dam, 2007</text>
+            <text x="520" y="56" class="lbl-s halo ch08-wide-only" text-anchor="middle">compacted earth core, rockfill shells</text>
+            <path d="M520,61 L500,124" class="lead"/>
+            <text x="218" y="154" class="lbl-s halo ch08-on-tsand ch08-wide-only" text-anchor="middle">finer core</text>
+            <text x="300" y="190" class="lbl-s halo ch08-wide-only" text-anchor="middle">valley floor; the new dam stands mostly on dense glacial soil</text>
+          </svg>
+          <dl class="case-facts">
+            <dt>Dam</dt><dd>Coquitlam Dam, on the Coquitlam River, British Columbia; owned by BC Hydro.</dd>
+            <dt>Built</dt><dd>1913, replacing a dam 4.5 m high. The new dam was finished in 2007, and BC Hydro declared the whole seismic upgrade complete in October 2008, at a cost of C$65 million.</dd>
+            <dt>Height</dt><dd>About 30 m, the old dam and the new alike; the new dam is 300 m long.</dd>
+            <dt>Type</dt><dd>Hydraulic fill. The new dam: compacted earth core and rockfill, founded mostly on dense glacial soil.</dd>
+            <dt>What happened</dt><dd>Investigations found a loose zone in the fill that could liquefy in a moderate or large earthquake. The reservoir was held below a safe level until the new dam was built against the old one's downstream toe.</dd>
+            <dt>Toll</dt><dd>None. Nothing failed; the work was done before an earthquake could test the fill.</dd>
+            <dt>Sources</dt><dd><a data-cite="bchydro-coquitlam2008"></a>; <a data-cite="rew2008-coquitlam"></a>; <a data-cite="waterpower2001-coquitlam"></a>; <a data-cite="coquitlam-asce2008"></a>; drinking water: <a data-cite="bchydro-wup2026"></a>.</dd>
+          </dl>
+        </div>
+        <figcaption>
+          <p class="cap"><b>A water dam of loose, saturated fill carries the same risk as an upstream tailings dam, and was made safe the same way: with a dense, drained dam that does not depend on it.</b> Coquitlam Dam was built in 1913 by hydraulic fill, washed into place, so its sandy shells and finer core settled loose and stayed wet. Investigations found that a zone of it could liquefy in a large earthquake. Rather than dig out or repair the old fill, BC Hydro built a new compacted earth-core rockfill dam against its downstream toe, founded mostly on dense glacial soil. The new dam was finished in 2007, and BC Hydro declared the whole seismic upgrade complete in 2008. In the drawing the old fill is hatched as saturated below its phreatic surface (<span class="k-water">blue</span> dashed), and the new dam's core sits between two filters inside rockfill shells; only the heights are to scale.</p>
+          <p class="case-explains"><b>What this chapter explains.</b> Whether fill holds in a shake or a push depends on its state: loose and wet, or dense and drained. Clean water or tailings behind it, the fill behaves the same.</p>
+          <ul class="try">
+            <li>Look for the line in the drawing that tells you the old fill is loose. Why is there none?</li>
+          </ul>
+          <details class="try-ans"><summary>Answers</summary><p>Density does not show in a section: a loose fill and a dense one look the same on paper and from the crest. It took investigations of the fill itself to find the loose zone.</p></details>
+        </figcaption>
+      </figure>
+
+      <p>Notice that the old dam is still there, and still holds the lake. The new one stands behind it for the earthquake that might make the old fill flow. Brazil asked the same of its upstream tailings dams in 2019: before taking one out of service, a mine had to reinforce it from downstream or build a new containment structure below it.<label for="mn-raising-reinforce" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-raising-reinforce" class="margin-toggle"><span class="marginnote" data-kind="source">ANM Resolution 4 of 2019, as summarized by <a data-cite="demarest2019"></a>.</span></p>
     </div>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.9): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>A tailings dam grows with the mine, by upstream, centreline or downstream raises. To the same height, upstream needs the least fill (<span data-n="raise.fill-m2@method=up">2,496</span> m³ per metre in <a data-ref="fig-raise"></a>, against <span data-n="raise.fill-m2@method=down">9,792</span> downstream) because it builds each raise on the beach.</li>
+        <li>An upstream raise stands on loose tailings with water in every gap. Pushed, even slowly, the grains try to pack tighter, the water cannot leave in time and takes the load, and the grains stop gripping. No earthquake is needed, and the danger lasts after the raising stops.</li>
+        <li>A slow rate of rise gives the water time to leave the tailings; a long beach and a small pond keep it away from the dykes. How fast the deposit rises is set by the mine's output and the area the deposit covers.</li>
+        <li>Downstream and centreline raises stand on dense, drained fill, so the grains under the dam keep pressing; filtered, compacted tailings take the water out of the deposit itself.</li>
+        <li>What decides the danger is the state of the fill, loose and wet or dense and drained, not what it holds back: Coquitlam is a water dam that needed the same cure.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-raising-double" data-tag="reckon" data-level="2">
+          <p><a data-ref="ex-raising-fill"></a> found that a downstream dam twice as tall takes <span data-n="ch08.double-factor">3.79</span> times the fill. Do the same for the upstream and centreline dams of <a data-ref="fig-raise"></a>, from 34 m to 68 m, treating the raising as smooth.</p>
+          <details class="q-hint"><summary>Hint</summary><p>Upstream: the 960 m³ starter, then one 384 m³ dyke for each 12 m, which is 32 m³ for each metre above 20 m, so the fill is 32<var>h</var> + 320. Centreline: <var>h</var>² + 8<var>h</var> + 20², plus a 144 m³ wedge for each 12 m above 20 m, which comes to <var>h</var>² + 20<var>h</var> + 160.</p></details>
+          <div class="q-answer"><p>Upstream: 32 × 34 + 320 = <span data-n="ch08.a-up-m2@h=34">1,408</span> m³ at 34 m, and 2,496 ÷ 1,408 = <span data-n="ch08.ratio-up">1.77</span>. Centreline: 34² + 20 × 34 + 160 = <span data-n="ch08.a-cl-m2@h=34">1,996</span> m³, and 6,144 ÷ 1,996 = <span data-n="ch08.ratio-cl">3.08</span>. Upstream fill grows roughly in step with height, because each raise is the same small dyke; downstream fill grows nearly with its square, because each raise widens the whole base; centreline is in between, closer to downstream.</p></div>
+        </li>
+        <li class="q" id="q-raising-raise2" data-tag="explore" data-level="2">
+          <p>Set the figure to "Raise 2 · depositing tailings". What share of the centreline dam rests on the beach at that stage, and why can it hold in an earthquake when the upstream dam does not?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-raise","set":{"rs-t":5.5}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Look at where the brick-red lines are in each panel, and at which part of each dam holds up the crest.</p></details>
+          <div class="q-answer"><p>About <span data-n="raise.ontail-pct@method=centre,t=5.5">10</span>% of the centreline dam's <span data-n="raise.fill-m2@method=centre,t=5.5">2,976</span> m³ per metre is on the beach, against <span data-n="raise.ontail-pct@method=up,t=5.5">44</span>% of the upstream dam's <span data-n="raise.fill-m2@method=up,t=5.5">1,728</span>. The centreline wedges are the pond-side edge of each raise; the crest and the whole outer shell, the part that holds the dam up, stand on compacted fill and the starter. If the wedge is sandy, drained and compacted, as it must be, it holds too. The upstream dam's crest has nothing under it but beach.</p></div>
+        </li>
+        <li class="q" id="q-raising-brumadinho" data-tag="case" data-level="2">
+          <p>Why could the dam at Brumadinho fail with no earthquake, more than five years after its last raise?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Ask what the end of raising changed, and what it did not change, about the tailings inside the dam and the water in them.</p></details>
+          <div class="q-answer"><p>Ending the raising stopped adding load, but it did not make the tailings dense or dry. They stayed loose and saturated, the water level near the toe stayed high, and they were brittle, so a very small strain could set off a large loss of strength. Slow creep, and the loss of suction in the drier tailings above the water table after heavy rain, supplied that strain. With the water unable to leave in the time the slope took to move, the tailings were undrained, the water took the load, and the dam liquefied from within (<a data-cite="feijao2019"></a>).</p></div>
+        </li>
+        <li class="q" id="q-raising-sandbox" data-tag="explore" data-level="2">
+          <p>In the grain sandbox, run the experiment with loose, saturated sand, its drain shut and a house on top, then set Drain to Open and shake again. Which way of raising a tailings dam is each run like?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-grains","click":["[data-exp=liq]"]}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Which raise stands on loose, soaked grains that can't drain, and which stands on fill whose water can get out?</p></details>
+          <div class="q-answer"><p>With the drain shut the water takes the load and the house sinks: that is an upstream raise standing on soaked beach. With the drain open the water leaves, the sand settles a little and keeps its grip: that is a raise built on drained fill, as downstream and centreline raises are (and they are dense as well, which helps more). The sandbox is a two-dimensional teaching model, so read its numbers as trends only.</p></div>
+        </li>
+        <li class="q" id="q-raising-mine" data-tag="reckon" data-level="2">
+          <p>An illustrative mine sends out 20,000 tonnes of dry tailings a day, which settle at 1.4 tonnes per cubic metre over 1.5 km². How fast does the deposit rise? Is that within the usual limit for an upstream dam, and what area would keep it to 2½ m a year?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Follow <a data-ref="ex-raising-rate"></a> line by line with the new numbers.</p></details>
+          <div class="q-answer"><p>20,000 ÷ 1.4 = <span data-n="ch08.m3-day@tpd=20000">14,286</span> m³ a day; 14,286 × 365 ÷ 1,000,000 = <span data-n="ch08.mm3-yr@tpd=20000">5.214</span> million m³ a year; 5.214 ÷ 1.5 = <span data-n="ch08.rise-m-yr@tpd=20000,area=1.5">3.48</span> m a year. That is above the 2 to 2½ m a year of <a data-cite="sancold2020"></a>. To hold it to 2½ m a year: 5.214 ÷ 2.5 = <span data-n="ch08.area-km2@tpd=20000">2.09</span> km².</p></div>
+        </li>
+        <li class="q" id="q-raising-coquitlam" data-tag="case" data-level="2">
+          <p>Coquitlam Dam holds drinking water, not mine waste. Why did BC Hydro treat it like an upstream tailings dam?</p>
+          <details class="q-hint"><summary>Hint</summary><p>How was it built, and what state does that leave the fill in?</p></details>
+          <div class="q-answer"><p>Because it was built by hydraulic fill, which leaves soil loose and saturated, the same state as the beach under an upstream raise. Loose, saturated, contractive fill can liquefy when it is shaken or pushed, whatever the water behind it is for. The cure was the same too: a dense, drained, compacted dam against its toe that does not depend on the old fill.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="sancold2020"></cite> <span class="level">gentle</span> A short, plain guide written for mine owners: how tailings are deposited (spigots, paddocks, cyclones), why the rate of rise limits an upstream dam, and what to watch. Free to download.</li>
+        <li><cite data-cite="feijao2019"></cite> <span class="level">serious</span> The expert panel's report on Brumadinho. Its executive summary is the clearest short account there is of how an upstream dam that had stopped growing could still liquefy, and its photographs of the construction history are worth the download.</li>
+        <li><cite data-cite="vick1990"></cite> <span class="level">serious</span> The standard textbook on tailings dams: the raising methods, beaches, seepage and stability, by a member of the Mount Polley review panel.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">A downstream raise can carry a core and drains up with it, like a water dam. Most of the world's large dams are built that way from the start: heaps of earth and rock, zone by zone. What is inside a dam like that, and why does each soil sit where it does?</p></nav>
   </section>
 </section>
