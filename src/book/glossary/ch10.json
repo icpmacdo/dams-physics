@@ -1,0 +1,11 @@
+{
+  "flow-net": ["Flow net", "A drawing of steady seepage made of two families of lines that cross at right angles: flow lines, which the water follows, and equipotentials, lines of equal total head. Drawn so that every cell is roughly square, it gives the flow by counting, q = k·H·N_f/N_d."],
+  "flow-line": ["Flow line", "The path water follows through soil in steady seepage. In a flow net the strip between two neighbouring flow lines, a flow channel, carries the same share of the flow as every other channel."],
+  "equipotential": ["Equipotential", "A line joining points of equal total head. Standpipes with their tips anywhere on one would all show water at the same level. In soil that is the same in every direction, water crosses equipotentials at right angles."],
+  "alluvium": ["Alluvium", "Sand, gravel and silt laid down by a river on its valley floor. It is often far more permeable than the dam built on it, and usually layered."],
+  "relief-well": ["Relief well", "A well sunk through the ground beyond a dam's downstream toe into a pervious layer below, so that water under pressure there can rise and flow out through a filter instead of lifting or bursting the ground above."],
+  "upstream-blanket": ["Upstream blanket", "A layer of compacted clay laid on the reservoir floor upstream of a dam and joined to its watertight part. Water must then enter the ground further away, so its path under the dam is longer and its gradient lower."],
+  "turbidity": ["Turbidity", "Cloudiness of water caused by fine particles carried in it. In seepage from a dam, turbid water means soil is being carried out with the water."],
+  "anisotropy": ["Anisotropy", "Having different properties in different directions. Soil laid down or compacted in layers is anisotropic in permeability: it passes water more easily along its layers than across them."],
+  "cutoff": { "replace": true, "entry": ["Cutoff", "A watertight wall or trench under a dam (compacted clay, a slurry trench, concrete, or a grout curtain in rock) that blocks the path for water through permeable ground beneath it. It works only if it reaches a tight layer; one that stops partway down lets the water pass underneath."] }
+}

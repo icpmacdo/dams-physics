@@ -1,0 +1,32 @@
+/* Chapter 10's static figures (book/SPEC.md F.10): the weir's flow net and the six defences.
+   Label sizes go through --fs so the floor in styles-book.css can lift them on a phone. */
+#fig-seepage-net svg.dwg { display: block; width: 100%; max-width: 760px; height: auto; margin: 0 auto; }
+#fig-seepage-net svg.dwg text { --fs: 13px; }
+#fig-seepage-net svg.dwg .lbl-s { --fs: 12px; }
+#fig-seepage-net svg.dwg .ch10-num { --fs: 11px; fill: var(--ink-3); }
+.dwg .ch10-sand { fill: var(--m-alluv); opacity: 0.32; }
+.dwg .ch10-fl { stroke: var(--water); stroke-width: 1.6; fill: none; stroke-linejoin: round; }
+.dwg .ch10-eq { stroke: var(--ink-2); stroke-width: 1.1; fill: none; stroke-dasharray: 5 3.5; stroke-linejoin: round; }
+
+/* the key above the net: HTML, so it reflows on a phone */
+.ch10-key { font-family: var(--f-label); font-size: 0.82rem; color: var(--ink-2); margin: 0 0 8px; line-height: 1.6; text-align: center; }
+.ch10-sw { display: inline-block; width: 22px; height: 0; margin: 0 6px 0 0; vertical-align: 3px; border-top: 2px solid var(--water); }
+.ch10-sw-eq { border-top: 1.5px dashed var(--ink-2); margin-left: 12px; }
+.ch10-sw-sq { width: 12px; height: 9px; border: 0; background: var(--accent-soft); margin-left: 12px; vertical-align: 0; }
+
+/* the six defences: small multiples at one scale */
+#fig-seepage-defences .ch10-def { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 22px; max-width: 900px; margin: 0 auto; }
+#fig-seepage-defences .ch10-def-p { margin: 0; min-width: 0; }
+#fig-seepage-defences svg.dwg { display: block; width: 100%; height: auto; }
+#fig-seepage-defences svg.dwg text { --fs: 10px; }
+#fig-seepage-defences .ch10-def-t { font-family: var(--f-label); font-size: 0.8rem; line-height: 1.4; color: var(--ink-2); margin: 4px 0 0; }
+#fig-seepage-defences .ch10-def-t b { color: var(--ink); font-weight: 600; }
+.dwg .ch10-wa { stroke: var(--water); stroke-width: 1.4; fill: none; }
+.dwg .ch10-aa { stroke: var(--accent); stroke-width: 1.6; fill: none; }
+.dwg .ch10-ok { stroke: var(--ok); stroke-width: 1.8; fill: none; }
+.dwg .ch10-pz { stroke: var(--ink); stroke-width: 1.4; fill: none; }
+.dwg .ch10-weirbox { fill: var(--m-conc); stroke: var(--ink); stroke-width: 0.8; }
+.dwg .ch10-notch { stroke: var(--ink); stroke-width: 1.1; fill: none; }
+@media screen and (max-width: 759px) {
+  #fig-seepage-defences .ch10-def { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; }
+}

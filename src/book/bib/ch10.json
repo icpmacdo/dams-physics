@@ -1,0 +1,95 @@
+{
+  "usace-em1901": {
+    "group": "standards",
+    "short": "USACE EM 1110-2-1901",
+    "authors": "US Army Corps of Engineers",
+    "year": "1986",
+    "title": "EM 1110-2-1901, Seepage Analysis and Control for Dams",
+    "container": "Washington, DC: Department of the Army, 30 September 1986; Change 1 (a new Appendix D on filters and drains), 30 April 1993",
+    "doi": null,
+    "url": "https://damtoolbox.org/wiki/Seepage_Analysis_and_Control_for_Dams_(EM_1110-2-1901)",
+    "note": "Para. 1-5 and 8-1: every earth and rockfill dam seeps. Para. 4-6: drawing flow nets. Para. 4-7: anisotropic soil. Para. 9-3 and 9-4: drains and cutoffs. Paras. 13-3 and 13-4: weirs and seepage water."
+  },
+  "casagrande1937": {
+    "group": "papers",
+    "short": "Casagrande (1937)",
+    "authors": "Casagrande, A.",
+    "year": "1937",
+    "title": "Seepage through dams",
+    "container": "Journal of the New England Water Works Association 51(2): 131–172",
+    "doi": null,
+    "url": null,
+    "note": "Reprinted as Harvard Graduate School of Engineering Publication 209 (Soil Mechanics Series 5). Rules for sketching flow nets, p. 137; the 0.3 entry correction, p. 150; stratified soils, pp. 151–152."
+  },
+  "dupuit1863": {
+    "group": "books",
+    "short": "Dupuit (1863)",
+    "authors": "Dupuit, J.",
+    "year": "1863",
+    "title": "Études théoriques et pratiques sur le mouvement des eaux dans les canaux découverts et à travers les terrains perméables, 2nd ed.",
+    "container": "Paris: Dunod",
+    "doi": null,
+    "url": null
+  },
+  "houben2025": {
+    "group": "papers",
+    "short": "Houben et al. (2025)",
+    "authors": "Houben, G., Batelaan, O., Birk, S., Kacimov, A.",
+    "year": "2025",
+    "title": "The force of Forchheimer: the contributions of Philipp Forchheimer to groundwater hydrology",
+    "container": "Hydrological Sciences Journal 70(3): 436–455",
+    "doi": "10.1080/02626667.2024.2438337",
+    "url": null
+  },
+  "hebert1934": {
+    "group": "reports",
+    "short": "Hebert (1934)",
+    "authors": "Hebert, D.J.",
+    "year": "1934",
+    "title": "Hydrostatic uplift pressures under dams on pervious earth foundations",
+    "container": "U.S. Bureau of Reclamation, Technical Memorandum No. 384 (Hydraulic Laboratory Report HYD-2.8), Denver, 25 May 1934; prepared under the direction of E. W. Lane",
+    "doi": null,
+    "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/HYD/HYD-2-8_TM-384.pdf"
+  },
+  "lane1935": {
+    "group": "papers",
+    "short": "Lane (1935)",
+    "authors": "Lane, E.W.",
+    "year": "1935",
+    "title": "Security from under-seepage: masonry dams on earth foundations",
+    "container": "Transactions of the American Society of Civil Engineers 100",
+    "doi": null,
+    "url": null
+  },
+  "usbr-wmm2001": {
+    "group": "standards",
+    "short": "USBR Water Measurement Manual",
+    "authors": "U.S. Bureau of Reclamation",
+    "year": "2001",
+    "title": "Water Measurement Manual, 3rd ed. (1997), revised reprint",
+    "container": "Denver",
+    "doi": null,
+    "url": "https://www.usbr.gov/tsc/techreferences/mands/wmm/",
+    "note": "Chapter 7, section 11: Cone's equation for the 90° V-notch weir, Q = 2.49 h^2.48 (feet and cubic feet a second), equation 7-6."
+  },
+  "usbr1987": {
+    "group": "standards",
+    "short": "USBR (1987)",
+    "authors": "U.S. Bureau of Reclamation",
+    "year": "1987",
+    "title": "Design of Small Dams, 3rd ed.",
+    "container": "Denver",
+    "doi": null,
+    "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-pdfs/SmallDams.pdf"
+  },
+  "polley2015": {
+    "group": "reports",
+    "short": "Mount Polley Review Panel (2015)",
+    "authors": "Independent Expert Engineering Investigation and Review Panel",
+    "year": "2015",
+    "title": "Report on Mount Polley Tailings Storage Facility Breach",
+    "container": "Province of British Columbia, January 2015",
+    "doi": null,
+    "url": "https://www.mountpolleyreviewpanel.ca/sites/default/files/report/ReportonMountPolleyTailingsStorageFacilityBreach.pdf"
+  }
+}

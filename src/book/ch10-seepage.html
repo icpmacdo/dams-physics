@@ -1,19 +1,32 @@
 <section class="chapter" id="ch-seepage">
   <header class="opener" data-gen="opener">
     <!-- The build writes the kicker, title, question and meta line here from src/book.json. -->
-    <div class="opener-written" data-stub>
-      <!-- Writer (book/SPEC.md F.1, H.11): optional epigraph, then
-           <p class="so-far"><b>So far.</b> …</p> and <div class="can"> with three outcomes. -->
+    <p class="so-far"><b>So far.</b> <a data-ref="ch-zones"></a> built our dam, a <span data-n="ch10.crest-m">24</span> m embankment with slopes of 2:1 (two across for every one up, as in <a data-ref="ex-beach-slope"></a>), and in its zoned form a clay core between free-draining shells. Every zone went where it did on a guess about where the water would go. This chapter follows the water itself: where it gets in, which way it goes, and where it comes out.</p>
+    <div class="can">
+      <p class="can-k">After this chapter you can</p>
+      <ul>
+        <li>trace the five ways water gets past a dam, and read a flow net to work out how much flows and how steeply the head falls where it leaves;</li>
+        <li>estimate a dam's leak by hand with Darcy's law, and check the estimate against the seepage lab's solution;</li>
+        <li>explain why a drain makes a dam leak more and yet makes it safer, and choose a defence from a picture of the seepage.</li>
+      </ul>
     </div>
   </header>
-    <div class="col" data-stub>
-      <!-- Cold open (H.11): the USACE sentence (verify or paraphrase), then pr-seepage-core. -->
-    </div>
+
     <div class="col">
-      <p>Every dam leaks. The design questions are where the water goes, how much pressure it carries, and whether it takes soil with it. You met the rule in <a data-ref="ch-head"></a>: water flows from high <span class="gl" data-term="hydraulic-head">head</span> to low, as fast as the soil lets it. That's Darcy's law:</p>
-      <div class="formula"><b>q</b> = k · i · A&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;<b>i</b> = Δh / L<small>q flow rate · k permeability (hydraulic conductivity, m/s) · i hydraulic gradient: head lost per metre travelled · A area</small></div>
-      <p>From gravel to compacted clay, <em>k</em> falls by a factor of ten million: gravel around 10⁻² m/s, clean sand 10⁻⁴, silt 10⁻⁷, compacted clay 10⁻⁹. Across all natural soils the range is wider still, more than ten powers of ten. Zoning depends on that spread. A clay core much narrower than the dam can carry almost the entire head, while the free-draining shells beside it carry almost none.</p>
-      <p>Water has five main ways past a dam, numbered in the drawing below.</p>
+      <p class="cold"><span class="newthought">Walk along the downstream toe</span> of an earth dam and sooner or later you come to a small concrete box set into the ground. Across one end stands a steel plate with a V cut into its top edge, and through the V slides a thin, clear sheet of water. It drops a few centimetres into a channel and runs off toward the river. On a regular round someone comes by, reads how deep the water stands behind the plate, and writes it down. That depth says how many litres a second are coming out.</p>
+      <p>The water in the box is the dam's leak, its <span class="gl" data-term="seepage">seepage</span>. It went into the ground on the floor of the reservoir, or soaked into the dam's upstream face, and crept through to this side. Nobody is alarmed by it. The US Army Corps of Engineers' manual on seepage states it as a fact before it says anything else: "All earth and rock-fill dams are subject to seepage through the embankment, foundation, and abutments."<label for="mn-seepage-em" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-seepage-em" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usace-em1901"></a>, para. 1-5, and again in para. 8-1; para. 13-3 describes the V-notch weirs.</span> Every dam leaks. The useful question is what makes a leak safe, and here is a first test of your feel for leaks:</p>
+
+      <div class="predict" data-answer="c" id="pr-seepage-core">
+        <p class="predict-q">Our dam stands on <span data-n="ch10.found-m">15</span> m of sand and gravel, with nothing under it to stop water passing beneath, and it is built of one kind of earth fill. Build it again with a narrow core of clay, a hundred times tighter than that fill, between shells of free-draining sand and gravel. The ground underneath stays as it was. What happens to the leak?</p>
+        <div class="predict-opts"><button type="button" data-v="a">It falls a lot: the clay is far tighter</button><button type="button" data-v="b">It stays about the same</button><button type="button" data-v="c">It rises</button></div>
+        <div class="predict-reveal" hidden><p>It rises, from <span data-n="lab.q-lday">2,366</span> to <span data-n="lab.q-lday@dam=cored">5,434</span> litres a day under each metre of dam, more than twice as much. The water was never going through the dam; almost all of it goes under. The free-draining upstream shell lets it reach the gravel close to the core, so it only has to get under the core's <span data-n="ch10.core-base-m">21.4</span> m base instead of the whole <span data-n="ch10.base-m">102</span> m. <a data-ref="ex-seepage-core"></a> works it through.</p></div>
+      </div>
+
+      <p>To decide, follow the water: where it enters, which way it goes and how far, and where it comes out. That takes a map of the ways past a dam, a way of drawing the water's paths, and in the end a solver.</p>
+
+      <h3 id="s-seepage-paths">Five ways past a dam</h3>
+      <p>You met the rule in <a data-ref="ch-head"></a>: water flows from high <span class="gl" data-term="hydraulic-head">head</span> to low, as fast as the soil lets it, and Darcy's law, <a data-ref="eq-head-darcy"></a>, says how fast. The race in <a data-ref="fig-race"></a> showed how wide the range of <span class="gl" data-term="permeability">permeability</span> is: gravel, at <span data-n="race.k@mat=gravel">10⁻²</span> m/s, passes water ten million times as easily as compacted clay, at <span data-n="race.k@mat=clay">10⁻⁹</span> m/s. Zoning depends on that spread. A clay core much narrower than the dam can take almost the whole drop in head while the free-draining shells beside it take almost none.</p>
+      <p>A dam is more than one pipe, though. Water has five main ways past it, and the drawing numbers them:</p>
     </div>
 
     <figure class="sheet wide" id="fig-paths">
@@ -26,15 +39,124 @@
         <div><div class="svgwrap"><svg class="dwg" id="svg-paths" viewBox="0 0 720 340" role="img" aria-label="Section through an embankment dam on alluvium over fractured rock, with animated seepage along four of the five paths: through the embankment, under it through the alluvium, deep through rock joints beneath the grout curtain, and along the outside of the outlet conduit. The fifth, around the ends of the dam through the abutments, is in the plan view beside it."></svg></div></div>
         <div><div class="svgwrap"><svg class="dwg" id="svg-plan" viewBox="0 0 300 340" role="img" aria-label="Plan view of the dam across a valley. Seepage flows around both ends of the dam through the abutment hillsides."></svg></div></div>
       </div>
-      <figcaption><strong>1 Through the embankment:</strong> slowed by the core, collected by the chimney drain. <strong>2 Under it:</strong> through the river sand and gravel (alluvium) in the valley floor, rising at the toe, where it can boil sand. <strong>3 Through rock:</strong> along open cracks (joints) below the grout curtain, a screen of cement grout injected into the rock. <strong>4 Along the conduit:</strong> the poorly compacted contact around a pipe or culvert is a classic concentrated leak. <strong>5 Around the abutments:</strong> through the valley sides, best seen in plan.</figcaption>
+      <figcaption>
+        <p class="cap"><b>Water gets past a dam five ways, and only the first goes through the embankment.</b> The section cuts across the valley; the plan beside it looks down on the dam from above. Dotted blue lines with moving dots are seepage paths, numbered in blue circles. <strong>1 Through the embankment:</strong> slowed by the clay core, caught by the chimney filter and led along the base to the toe drain. <strong>2 Under it:</strong> through the <span class="gl" data-term="alluvium">alluvium</span>, the sand and gravel a river leaves on its valley floor, rising at the toe, where it can boil sand. <strong>3 Through rock:</strong> along open cracks (joints) below the grout curtain, a screen of cement grout injected into the rock. <strong>4 Along the conduit:</strong> soil packed around a pipe or culvert is hard to compact well, and a gap along it is a classic concentrated leak. <strong>5 Around the abutments:</strong> through the valley sides the dam is built against, best seen in plan. <span class="cap-n">The number to remember: four of the five paths never enter the embankment.</span></p>
+        <ul class="try">
+          <li>Follow path 2 from the reservoir floor to the sand boil. Which parts of the dam does it pass through?</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>None. It stays in the alluvium the whole way, dipping under the short cutoff below the core, and comes up beyond the toe.</p></details>
+      </figcaption>
     </figure>
 
-    <div class="col" data-stub>
-      <!-- New (H.11): how to read a flow net (eq-seepage-net, fig-seepage-net), ex-seepage-net. -->
-    </div>
     <div class="col">
+      <p>Notice that the core and its <span class="gl" data-term="cutoff">cutoff</span>, which take most of the drawing's care, stand in the way of path 1 and of path 2 only as far down as the cutoff reaches. Paths 2, 3 and 5 run through ground that was there before the dam. Its designers chose neither its permeability nor its layering; they could only find them out, and the water uses whatever they missed.</p>
+
+      <h3 id="s-seepage-net">Drawing the water: the flow net</h3>
+      <p>To say how much water takes path 2, and how hard it pushes where it comes out, you need the head everywhere in the ground. <a data-ref="fig-darcy"></a> found it for a pipe, where the water has one way to go and the head falls along a straight line. Under a dam the water spreads out and bends. The rule in every small piece of ground is still the same, though: in steady flow nothing piles up, so each piece passes on exactly the water it receives, and it passes it toward lower head by Darcy's law.<label for="sn-seepage-laplace" class="sn-ref"></label><input type="checkbox" id="sn-seepage-laplace" class="margin-toggle"><span class="sidenote" data-kind="curious">In symbols the two facts are one equation, ∇·(<var>k</var>∇<var>h</var>) = 0. Read it from the inside out: ∇<var>h</var> is the slope of the head, <var>k</var>∇<var>h</var> the flow it drives by Darcy's law, and ∇· (the divergence) asks how much more flows out of a tiny box than flows in. Zero means nothing piles up and nothing runs dry. In uniform soil <var>k</var> comes outside and it becomes Laplace's equation, the same one that governs the steady flow of heat through a metal plate.</span> Those two facts fix the head everywhere once you know it along the edges: the reservoir floor, the ground beyond the toe, the underside of the structure.</p>
+      <p>For most of the twentieth century engineers drew the answer by hand, as a <span class="gl" data-term="flow-net">flow net</span>: two families of lines. <span class="gl" data-term="flow-line">Flow lines</span> are the paths the water follows. <span class="gl" data-term="equipotential">Equipotentials</span> join points of equal total head: push one of the straws of <a data-ref="fig-head-straws"></a> into the ground anywhere along one, and the water in it rises to the same level. In soil that passes water equally well in every direction, the water crosses every equipotential at right angles, because straight across them is the way the head falls fastest.<label for="sn-seepage-forch" class="sn-ref"></label><input type="checkbox" id="sn-seepage-forch" class="margin-toggle"><span class="sidenote" data-kind="history">Philipp Forchheimer, an Austrian engineer, recognized that steady groundwater flow obeys Laplace's equation and drew some of the first flow nets (<a data-cite="houben2025"></a>). Arthur Casagrande, at Harvard, made the net a working tool for dam designers in a paper of 1937, with rules for beginners that still hold: start with four or five flow channels, and adjust the whole net before any of its details (<a data-cite="casagrande1937"></a>).</span></p>
+      <p>What makes a net useful is a choice of spacing. Space the flow lines so that each neighbouring pair carries the same share of the flow; the strip between them is a flow channel. Space the equipotentials so that the head falls by the same amount, Δ<var>h</var>, between each pair; that is a head drop. Now look at one cell of the net, <var>b</var> wide across the flow and <var>l</var> long along it. By Darcy's law the flow through it, per metre of dam, is <span class="m"><var>k</var> × (Δ<var>h</var>/<var>l</var>) × <var>b</var></span>. Draw the net so that every cell is a square, <var>b</var> = <var>l</var>, and the flow through each cell is <var>k</var>·Δ<var>h</var>, whatever its size. With <var>N</var><sub>d</sub> drops sharing the total head <var>H</var>, Δ<var>h</var> = <var>H</var>/<var>N</var><sub>d</sub>, and <var>N</var><sub>f</sub> channels each carrying <var>k</var>·Δ<var>h</var> give the whole flow:</p>
+      <div class="eq" id="eq-seepage-net"><span class="eq-body"><var>q</var> = <var>k</var> · <var>H</var> · <var>N</var><sub>f</sub> / <var>N</var><sub>d</sub></span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>q</var> flow per metre length of dam (m³/s per m) · <var>k</var> permeability (m/s) · <var>H</var> head lost between where the water enters and where it leaves (m) · <var>N</var><sub>f</sub> number of flow channels · <var>N</var><sub>d</sub> number of head drops</p>
+      <p>The ratio <var>N</var><sub>f</sub>/<var>N</var><sub>d</sub> depends only on the shape of the ground and the structure. The rules for sketching a net are short: lines cross at right angles, every cell looks square, an edge that passes no water (a concrete base, a rock surface) is itself a flow line, and ground under still water is an equipotential. Getting every cell square at once takes practice and an eraser. Here is a finished net under a small concrete weir (a low dam across a river, not the measuring weir of the toe), an illustrative example sunk into a bed of sand:</p>
+    </div>
+
+    <figure class="fig wide" id="fig-seepage-net">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · A flow net under a weir on sand</span><span class="scale-note">Illustrative · drawn to scale</span></div>
+      <p class="ch10-key"><span class="ch10-sw"></span>flow line <span class="ch10-sw ch10-sw-eq"></span>equipotential <span class="ch10-sw ch10-sw-sq"></span>the smallest square, at the exit</p>
+      <svg class="dwg" viewBox="0 0 720 404" role="img" aria-label="Section through a concrete weir 13 metres wide, sunk 2 metres into a bed of sand 10 metres deep that rests on rock. Water stands 10 metres above the sand upstream and level with the sand downstream. Under the weir a flow net of three flow lines and eleven equipotential lines divides the sand into four flow channels and twelve head drops; the drops are numbered 1 to 12 along the bottom channel. The squares are smallest beside the weir's downstream face, where the smallest, shaded, is 1.4 metres deep.">
+        <polygon points="24,54 256,54 256,214 24,214" class="water"/>
+        <path d="M24,54 H256" class="water-line"/>
+        <path d="M464,214 H696" class="water-line" style="stroke-dasharray:5 3"/>
+        <rect x="24" y="214" width="672" height="160" class="ch10-sand"/>
+        <rect x="24" y="374" width="672" height="14" fill="url(#p-bedrock)" class="edge"/>
+        <polygon points="464,214 464,236.3 472,237.2 482.4,240.5 484.5,241.4 485.3,239.6 487.7,231.6 489.2,222.8 489.7,214" style="fill:var(--accent-soft)"/>
+        <path d="M593.3,214 L592.2,228.4 L588.9,242.8 L583.5,256.4 L576.3,269.2 L566.4,282 L555.2,293.1 L542.4,303.1 L528,311.9 L512.8,319.2 L496.8,325.1 L479.4,330 L460.8,333.8 L440,336.7 L416.8,338.7 L389.6,340 L360,340.4 L330.4,340 L303.2,338.7 L280,336.7 L259.2,333.8 L240.6,330 L223.2,325.1 L207.2,319.2 L192,311.9 L177.6,303.1 L164.8,293.1 L153.6,282 L143.7,269.2 L136.5,256.4 L131.1,242.8 L127.8,228.4 L126.7,214" class="ch10-fl"/>
+        <path d="M526.2,214 L525.4,225.2 L523.3,235.6 L519.6,246 L514.2,256.4 L507.4,266 L500,273.9 L491.2,281.2 L481.6,287.4 L471.2,292.5 L460,296.7 L448,300 L434.4,302.8 L419.2,304.9 L401.6,306.4 L381.6,307.4 L360,307.7 L338.4,307.4 L318.4,306.4 L300.8,304.9 L285.6,302.8 L272,300 L260,296.7 L248.8,292.5 L238.4,287.4 L228.8,281.2 L220,273.9 L212.6,266 L205.8,256.4 L200.4,246 L196.7,235.6 L194.6,225.2 L193.8,214" class="ch10-fl"/>
+        <path d="M489.7,214 L489.2,222.8 L487.7,231.6 L485.3,239.6 L482.4,246 L478.9,251.6 L474.4,256.6 L469.6,260.5 L463.2,264.3 L456,267.2 L447.2,269.8 L436.8,271.9 L425.6,273.5 L396.8,275.6 L360,276.4 L323.2,275.6 L294.4,273.5 L283.2,271.9 L272.8,269.8 L264,267.2 L256.8,264.3 L250.4,260.5 L245.6,256.6 L241.1,251.6 L237.6,246 L234.7,239.6 L232.3,231.6 L230.8,222.8 L230.3,214" class="ch10-fl"/>
+        <path d="M590.9,374 L590.3,362.8 L588.8,352.4 L585.9,341.2 L582.2,330.8 L577.3,320.4 L571.1,310 L564.3,300.4 L556.1,290.8 L546.5,281.2 L535.3,271.6 L523.3,262.8 L510.8,254.8 L496.2,246.8 L482.4,240.5 L472,237.2 L464,236.3" class="ch10-eq"/>
+        <path d="M516.4,374 L515.7,359.6 L513.4,345.2 L509.7,330.8 L504.4,316.4 L498.8,304.4 L491.7,291.6 L482.9,278 L465.6,253.5 L463.1,249.2 L462.2,246" class="ch10-eq"/>
+        <path d="M468.4,374 L467.4,353.2 L464.4,332.4 L459.5,310.8 L447.1,266.8 L445.1,255.6 L444.5,246" class="ch10-eq"/>
+        <path d="M429.4,374 L429.1,357.2 L428,339.6 L420.4,273.2 L419.3,258.8 L418.9,246" class="ch10-eq"/>
+        <path d="M394.1,374 L393.6,342.8 L390.7,275.6 L390.1,246" class="ch10-eq"/>
+        <path d="M360,374 L360,246" class="ch10-eq"/>
+        <path d="M325.9,374 L326.4,342.8 L329.3,275.6 L329.9,246" class="ch10-eq"/>
+        <path d="M290.6,374 L290.9,357.2 L292,339.6 L299.6,273.2 L300.7,258.8 L301.1,246" class="ch10-eq"/>
+        <path d="M251.6,374 L252.6,353.2 L255.6,332.4 L260.5,310.8 L272.9,266.8 L274.9,255.6 L275.5,246" class="ch10-eq"/>
+        <path d="M203.6,374 L204.3,359.6 L206.6,345.2 L210.3,330.8 L215.6,316.4 L221.2,304.4 L228.3,291.6 L237.1,278 L254.4,253.5 L256.9,249.2 L257.8,246" class="ch10-eq"/>
+        <path d="M129.1,374 L129.7,362.8 L131.2,352.4 L134.1,341.2 L137.8,330.8 L142.7,320.4 L148.9,310 L155.7,300.4 L163.9,290.8 L173.5,281.2 L184.7,271.6 L196.7,262.8 L209.2,254.8 L223.8,246.8 L237.6,240.5 L248,237.2 L256,236.3" class="ch10-eq"/>
+        <text x="92.8" y="297.2" class="lbl-s ch10-num" text-anchor="middle">1</text>
+        <text x="176.8" y="343.6" class="lbl-s ch10-num" text-anchor="middle">2</text>
+        <text x="231.2" y="354.8" class="lbl-s ch10-num" text-anchor="middle">3</text>
+        <text x="272.8" y="358.8" class="lbl-s ch10-num" text-anchor="middle">4</text>
+        <text x="308.8" y="360.4" class="lbl-s ch10-num" text-anchor="middle">5</text>
+        <text x="343.2" y="361.2" class="lbl-s ch10-num" text-anchor="middle">6</text>
+        <text x="376.8" y="361.2" class="lbl-s ch10-num" text-anchor="middle">7</text>
+        <text x="411.2" y="360.4" class="lbl-s ch10-num" text-anchor="middle">8</text>
+        <text x="447.2" y="358.8" class="lbl-s ch10-num" text-anchor="middle">9</text>
+        <text x="488.8" y="354.8" class="lbl-s ch10-num" text-anchor="middle">10</text>
+        <text x="543.2" y="343.6" class="lbl-s ch10-num" text-anchor="middle">11</text>
+        <text x="627.2" y="297.2" class="lbl-s ch10-num" text-anchor="middle">12</text>
+        <path d="M24,214 H256 M464,214 H696" class="edge" style="fill:none"/>
+        <polygon points="256,44.4 288,44.4 464,214 464,246 256,246" fill="url(#p-conc)" class="edge"/>
+        <path d="M56,54 V214 M52,54 h8 M52,214 h8" class="dim"/>
+        <text x="63" y="124.4" class="lbl halo on-water"><tspan font-style="italic">H</tspan> = <tspan data-n="ch10.net-h">10</tspan> m</text>
+        <text x="168" y="48" class="lbl-s lbl-w halo" text-anchor="middle">upstream water</text>
+        <text x="689.6" y="198" class="lbl-s lbl-w halo" text-anchor="end">downstream water, level with the sand</text>
+        <text x="324.8" y="162.8" class="lbl halo on-conc" text-anchor="middle">weir</text>
+        <path d="M459,214 V236.4 M455,214 h8 M455,236.4 h8" class="dim"/>
+        <text x="452" y="229.2" class="lbl-s halo on-conc" text-anchor="end"><tspan data-n="ch10.net-exit-m">1.4</tspan> m</text>
+        <path d="M476.8,230 L529.6,265.2" class="lead"/>
+        <text x="532.8" y="269.2" class="lbl-s lbl-acc halo">smallest square</text>
+        <path d="M143.7,269.2 L104,242" class="lead"/>
+        <text x="100" y="240" class="lbl-s lbl-w halo" text-anchor="end">flow line</text>
+        <text x="580.8" y="314.8" class="lbl-s halo">sand, <tspan font-style="italic">k</tspan> = <tspan data-n="ch10.net-k">10⁻⁴</tspan> m/s</text>
+        <text x="33.6" y="385" class="lbl-s halo on-rock">rock: no water passes</text>
+      </svg>
+      <figcaption>
+        <p class="cap"><b>Under a weir on sand, four flow channels and twelve head drops divide the ground into curved squares, smallest where the water leaves beside the weir.</b> The weir is <span data-n="ch10.net-b-m">13</span> m wide and sunk <span data-n="ch10.net-e-m">2</span> m into sand <span data-n="ch10.net-t-m">10</span> m deep, on rock that passes no water. Upstream the water stands <span data-n="ch10.net-h">10</span> m above the sand; downstream it is level with the sand. The solid lines are flow lines, the paths the water takes; the dashed lines are equipotentials, each a line of equal total head. The weir's underside and the rock are flow lines too, and the sand surfaces on either side are the first and last equipotentials. The twelve drops are numbered along the bottom channel, from upstream. The shaded cell is the smallest, where the water turns upward and leaves beside the weir's downstream face. This net was computed rather than sketched, so it shows what a careful hand sketch aims for. <span class="cap-n">The number to remember: <var>N</var><sub>f</sub>/<var>N</var><sub>d</sub> = <span data-n="ch10.net-nf">4</span>/<span data-n="ch10.net-nd">12</span>, a third.</span></p>
+        <ul class="try">
+          <li>Count the drops a drop of water crosses in the channel nearest the weir, then in the bottom channel. Why must they be the same?</li>
+          <li>Lay a ruler across a few cells: the distance across each one, between its flow lines, should be about the distance along it, between its equipotentials.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>Twelve in each. Every flow line starts on the upstream sand, at the full head, and ends on the downstream sand, at none, so it crosses every equipotential once, however short or long its path.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that the squares are big where the water has room, out under the reservoir and deep under the weir, and small where it is squeezed, around the weir's buried corners. A small square means the same drop in head over a short distance: a steep gradient, and fast water. Crowding in a flow net is a picture of the gradient. Notice too where the smallest square is: at the exit, where the water turns upward beside the weir and leaves the sand. That is where the water pushes hardest on the grains it is leaving.</p>
+
+      <section class="we" id="ex-seepage-net">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Reading the weir's net</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The net of <a data-ref="fig-seepage-net"></a> (illustrative): <var>N</var><sub>f</sub> = <span data-n="ch10.net-nf">4</span> channels, <var>N</var><sub>d</sub> = <span data-n="ch10.net-nd">12</span> drops, head <var>H</var> = <span data-n="ch10.net-h">10</span> m, sand with <var>k</var> = <span data-n="ch10.net-k">10⁻⁴</span> m/s. The smallest square, at the exit, is <span data-n="ch10.net-exit-m">1.4</span> m deep along the weir's downstream face.</dd>
+          <dt>Find</dt><dd>The flow under each metre of weir, and the gradient where the water leaves.</dd>
+          <dt>The idea</dt><dd>Every square passes <var>k</var>·Δ<var>h</var>, so the flow is a count (<a data-ref="eq-seepage-net"></a>). In the last square the water loses one drop of head over the square's length.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Δ<var>h</var> = <span data-n="ch10.net-h">10</span> ÷ <span data-n="ch10.net-nd">12</span> = <span data-n="ch10.net-dh">0.833</span> m</span><span class="why">the head lost in each drop</span></li>
+          <li><span class="we-eq">Each channel: <span class="m"><span data-n="ch10.net-k">10⁻⁴</span> × <span data-n="ch10.net-dh">0.833</span> = <span data-n="ch10.net-dq">8.3 × 10⁻⁵</span> m³/s</span></span><span class="why">a square passes permeability times its drop in head</span></li>
+          <li><span class="we-eq"><var>q</var> = <span data-n="ch10.net-nf">4</span> × <span data-n="ch10.net-dq">8.33 × 10⁻⁵</span> = <span data-n="ch10.net-q">3.3 × 10⁻⁴</span> m³/s</span><span class="why">four channels, each carrying the same</span></li>
+          <li><span class="we-eq">In a day: <span class="m"><span data-n="ch10.net-q">0.000333</span> × 86,400 = <span data-n="ch10.net-q-day">28.8</span> m³</span></span><span class="why">86,400 seconds in a day</span></li>
+          <li><span class="we-eq"><var>i</var> at the exit = <span data-n="ch10.net-dh">0.833</span> ÷ <span data-n="ch10.net-exit-m">1.4</span> = <span data-n="ch10.net-i">0.595</span></span><span class="why">the last drop, spent over the depth of the last square</span></li>
+        </ol>
+        <p class="we-ans">About <span data-n="ch10.net-q-day">29</span> m³ of water a day passes under each metre of the weir, and it leaves the sand beside the weir at a gradient of <span data-n="ch10.net-i">0.60</span>.</p>
+        <p class="we-check"><b>Check.</b> Make the sand ten times as permeable. The squares are the same squares, because nothing in the drawing knows about <var>k</var>, so the flow rises tenfold, to <span data-n="ch10.net-q10">3.3 × 10⁻³</span> m³/s, and the exit gradient stays <span data-n="ch10.net-i">0.60</span>. A gradient is a drop in head over a distance, and both come from the drawing alone.</p>
+        <p class="we-means"><b>What it means.</b> The exit gradient of <span data-n="ch10.net-i">0.60</span> is below the 1 at which upward-flowing water floats sand (<a data-ref="ch-grip"></a>), but not by much, and it sits exactly where the net is most crowded. The weir's weak spot is a square metre or two of sand beside its downstream face.</p>
+      </section>
+
+      <p>The Check holds a lesson for every seepage calculation. The permeability of a natural sand is rarely known to better than a factor of a few, so the flow from a net is only as good as that guess; the pattern of heads, and with it every gradient and every water pressure, comes from the geometry, which the engineer can draw. That is why engineers sketch nets carefully where they want pressures and roughly where they want quantities.<label for="mn-seepage-crude" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-seepage-crude" class="margin-toggle"><span class="marginnote" data-kind="source">"For calculation of seepage quantity only a crude flow net is required. Accurate flow nets are required to determine pressure distribution": <a data-cite="usace-em1901"></a>, para. 4-6.</span> Real ground adds a complication the drawing leaves out: soil laid down in layers passes water more easily along its layers than across them, a property called <span class="gl" data-term="anisotropy">anisotropy</span>.<label for="sn-seepage-aniso" class="sn-ref"></label><input type="checkbox" id="sn-seepage-aniso" class="margin-toggle"><span class="sidenote" data-kind="curious">Casagrande warned that where layering is visible the permeability along the layers "may easily be ten times greater" than across them, and much more in distinctly layered soils; even a rolled earth dam, compacted layer by layer, keeps some of it (<a data-cite="casagrande1937"></a>, pp. 151–152). Engineers draw the net on a section stretched by the square root of the ratio, then squash it back (<a data-cite="usace-em1901"></a>, para. 4-7).</span> A net drawn for uniform soil is the start of the analysis, not the end.</p>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> The water upstream of the weir rises from 10 m to 15 m above the sand. Which lines of the net move?</summary>
+        <p>None of them. The net is fixed by the shape of the weir and the sand. Every drop in head, the flow and the exit gradient grow by half again, in proportion to <var>H</var>.</p>
+      </details>
+
       <h3 id="s-seepage-lab">Seepage lab</h3>
-      <p>Everything in the next drawing is calculated. The page divides a 24 m embankment and the ground beneath it into 1 m cells, applies Darcy's law between every pair of neighbours, and solves for the head in all of them at once (the steady seepage equation, ∇·(k ∇h) = 0). Along the way it finds the <span class="gl" data-term="phreatic-surface">phreatic surface</span>, the water table inside the dam, using the same saturated–unsaturated approach as commercial seepage software. Lines of equal head are drawn every 10% of the reservoir head. Flow lines are drawn in two sets: four start on the dam's upstream face and five on the reservoir floor. Within each set, each neighbouring pair carries the same flow, as in a hand-drawn flow net. Between the sets it differs: on the starting settings a gap between two foundation lines carries about eight times the flow of a gap between two dam lines, so compare line spacing only within a set.</p>
+      <p>A net through a whole earth dam is harder to sketch than one under a weir, because the top of the wet part of the dam is unknown until the net is finished. So the page computes it instead. Everything in the next drawing is calculated. The page divides our <span data-n="ch10.crest-m">24</span> m embankment and the <span data-n="ch10.found-m">15</span> m of ground beneath it into 1 m cells, applies Darcy's law between every pair of neighbours, and solves for the head in all of them at once (the steady seepage equation, ∇·(<var>k</var> ∇<var>h</var>) = 0). Along the way it finds the <span class="gl" data-term="phreatic-surface">phreatic surface</span>, the water table inside the dam, using the same saturated–unsaturated approach as commercial seepage software. Lines of equal head are drawn every 10% of the reservoir head. Flow lines are drawn in two sets: four start on the dam's upstream face and five on the reservoir floor. Within each set, each neighbouring pair carries the same flow, as in a hand-drawn flow net. Between the sets it differs: on the starting settings a gap between two foundation lines carries about <span data-n="lab.tube-ratio">8</span> times the flow of a gap between two dam lines, so compare line spacing only within a set. The lab's lines are therefore no square net, and <a data-ref="eq-seepage-net"></a> can't count them: read the heads from its equipotentials and the flow from its readout.</p>
+      <p>It opens on our dam built of one fill, <span data-n="ch10.k-fill">10⁻⁷</span> m/s, standing on sand and gravel a hundred times more permeable, <span data-n="ch10.k-found">10⁻⁵</span> m/s, with no drain and no cutoff, and the reservoir <span data-n="lab.res-m">20.4</span> m deep:</p>
     </div>
 
     <figure class="sheet full" id="fig-lab">
@@ -61,30 +183,303 @@
         <div class="ro"><span>Safety vs piping</span><b id="lab-fs">–</b><small id="lab-fs2">i<sub>c</sub> ≈ 1.0</small></div>
         <div class="ro"><span>Phreatic surface</span><b id="lab-ph">–</b><small id="lab-ph2"></small></div>
       </div>
-      <figcaption>Things to try. <strong>Homogeneous dam, no drain:</strong> the phreatic surface breaks out on the downstream slope (a <span class="gl" data-term="seepage-face">seepage face</span>, the thick red line), softening the soil until pieces of the slope slump away. On the starting sand &amp; gravel foundation it is only about <span data-n="lab.face-m">2</span> m high, because most of the water goes under the dam; switch the foundation to <strong>Clay</strong> to see a face about <span data-n="lab.face-m@found=tight">8</span> m high. <strong>Add the chimney and blanket drain:</strong> the phreatic surface dives into it and the downstream half stays dry. <strong>Sand &amp; gravel foundation:</strong> most water goes under the dam and comes up at the toe; watch the exit gradient, then add a cutoff. Particle speeds are compressed so slow paths stay visible. Exit gradients right at the toe depend on grid size, so read them as indicative. The safety against piping compares the exit gradient with the 1.0 that floats sand out of level ground; where the water leaves the downstream slope it drags grains out of the face rather than lifting them, so there it is a measure of how hard the water drags.</figcaption>
+      <figcaption>
+        <p class="cap"><b>The solver finds the head in every cell of our dam and the ground beneath it; on the starting settings almost all the water goes under the dam.</b> The shading is total head, darkest at the reservoir and palest where the water leaves. The thin lines labelled in per cent are equipotentials, every 10% of the reservoir head; the fine blue lines with moving dots are flow lines, their dots' speeds compressed so that slow paths stay visible. The dashed blue line is the phreatic surface. Where it reaches the downstream slope, water seeps out over a <span class="gl" data-term="seepage-face">seepage face</span>, the thick brick-red stroke, softening the soil until pieces of the slope can slump away. The ringed dot marks the steepest exit not covered by a drain. Seepage is in litres a day for each metre length of dam. Safety against piping compares that steepest exit gradient with the 1.0 that floats sand out of level ground; where the water leaves the downstream slope it drags grains out of the face rather than lifting them, so there it is a measure of how hard the water drags. Exit gradients right at the toe depend on the 1 m grid, so read them as indicative. <span class="cap-n">The number to remember: <span data-n="lab.q-lday">2,366</span> L/day per metre, nearly all of it out through the ground beyond the toe.</span></p>
+        <ul class="try">
+          <li>With the homogeneous dam and no drain, the seepage face on the starting sand &amp; gravel foundation is only about <span data-n="lab.face-m">2</span> m high, because most of the water goes under the dam; switch the foundation to Clay to see a face about <span data-n="lab.face-m@found=tight">8</span> m high.</li>
+          <li>Add the chimney and blanket drain: the phreatic surface dives into it and the downstream half stays dry. Read the seepage.</li>
+          <li>Pick Clay core + shells, then add the Full cutoff. Read the seepage each time.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>With the chimney drain <span data-n="lab.q-lday@drain=chimney">4,052</span> L/day per metre. With the core <span data-n="lab.q-lday@dam=cored">5,434</span>; with the core and a full cutoff, <span data-n="lab.q-lday@dam=cored,cut=full">2.2</span>.</p></details>
+      </figcaption>
     </figure>
 
-    <div class="col" data-stub>
-      <!-- New (H.11): the lab's three surprises; ex-seepage-hand, ex-seepage-core, ex-seepage-drains,
-           ex-seepage-dupuit; the Polley clue (G.4). -->
-    </div>
     <div class="col">
+      <p>Notice that the equipotentials under the dam stand almost upright and nearly evenly spaced, like the head along the pipe of <a data-ref="fig-darcy"></a>. The gravel passes water <span data-n="ch10.k-fill-ratio">100</span> times as easily as the fill, so to the water the dam is nearly a lid and the gravel a pipe <span data-n="ch10.found-m">15</span> m deep and as long as the dam's base. Notice too how little goes in through the dam's own face: <span data-n="lab.damface-lday">221</span> of the <span data-n="lab.q-lday">2,366</span> litres a day. That picture can be checked by hand.</p>
+
+      <section class="we" id="ex-seepage-hand">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Our dam's leak, by hand</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The lab on its starting settings: reservoir <span data-n="lab.res-m">20.4</span> m deep, tailwater at the ground; sand and gravel <span data-n="ch10.found-m">15</span> m deep with <var>k</var> = <span data-n="ch10.k-found">10⁻⁵</span> m/s; the dam's base, toe to toe, <span data-n="ch10.base-m">102</span> m.</dd>
+          <dt>Find</dt><dd>The leak under each metre of dam, in litres a day, and how it compares with the lab's.</dd>
+          <dt>The idea</dt><dd>Treat the gravel as the pipe of <a data-ref="fig-darcy"></a>: the whole head lost along the base, through an area 15 m deep for each metre of dam (<a data-ref="eq-head-darcy"></a>).</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><var>i</var> = <span data-n="lab.res-m">20.4</span> ÷ <span data-n="ch10.base-m">102</span> = <span data-n="ch10.hand-i">0.200</span></span><span class="why">head lost per metre of path</span></li>
+          <li><span class="we-eq"><var>q</var> = <span data-n="ch10.k-found">0.00001</span> × <span data-n="ch10.hand-i">0.200</span> × <span data-n="ch10.found-m">15</span> = <span data-n="ch10.hand-qms">0.00003</span> m³/s</span><span class="why">Darcy's law through 15 m² for each metre of dam</span></li>
+          <li><span class="we-eq"><span data-n="ch10.hand-qms">0.00003</span> × 86,400 × 1,000 = <span data-n="ch10.hand-lday">2,592</span> L/day</span><span class="why">seconds in a day, litres in a cubic metre</span></li>
+          <li><span class="we-eq"><span data-n="ch10.hand-lday">2,592</span> ÷ <span data-n="lab.q-lday">2,366</span> = <span data-n="ch10.hand-ratio">1.096</span></span><span class="why">the hand number against the lab's</span></li>
+          <li><span class="we-eq">A kilometre of dam: <span class="m"><span data-n="lab.q-lday">2,366</span> × 1,000 ÷ 86,400 = <span data-n="ch10.per-km-ls">27.4</span> L/s</span></span><span class="why">a thousand metres of dam, litres a day turned into litres a second</span></li>
+        </ol>
+        <p class="we-ans">About <span data-n="ch10.hand-lday" data-n-sig="2">2,600</span> litres a day under each metre of dam by hand, <span data-n="ch10.hand-err-pct">10</span>% more than the lab's <span data-n="lab.q-lday">2,366</span>. A kilometre of this dam would leak about <span data-n="ch10.per-km-ls">27</span> litres a second.</p>
+        <p class="we-check"><b>Check.</b> Should the hand number be high or low? Darcy's pipe sends the water straight along <span data-n="ch10.base-m">102</span> m. The real water has to dive into the gravel at the upstream toe and climb out again beyond the downstream one, and the lab's flow lines bow downward to do it. A longer path passes less, so the straight pipe should be a little high, and it is. The pipe also ignores the water that goes through the fill, but that is small: <span data-n="ch10.under-pct">99</span>% of the lab's leak crosses the dam's centre line under the dam.</p>
+        <p class="we-means"><b>What it means.</b> Ten per cent is better than the permeability deserves. A natural gravel's <var>k</var> is rarely known within a factor of a few, and the Bureau of Reclamation, which teaches this very calculation, says its result should be read only as the order of magnitude of the seepage (<a data-cite="usbr1987"></a>, sec. 6.9(b)).</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"homogeneous","lab-drain":"none","lab-cut":"none","lab-found":"pervious","lab-res":85}}'>Set the figure</button></p>
+      </section>
+
+      <h3 id="s-seepage-surprises">What the lab knows that intuition doesn't</h3>
+      <p>A hand estimate is only as good as the picture of the flow behind it, and the lab earns its place where that picture is wrong. The first case is the question this chapter opened with. Give our dam a clay core a hundred times tighter than its fill, <span data-n="ch10.k-core">10⁻⁹</span> m/s, between shells of sand and gravel, <span data-n="ch10.k-shell">10⁻⁴</span> m/s, ten times more permeable than the gravel beneath them:</p>
+
+      <section class="we" id="ex-seepage-core">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">The core that leaks more</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>Both dams on the sand and gravel, no drain, no cutoff, reservoir <span data-n="lab.res-m">20.4</span> m. The dam of one fill leaks <span data-n="lab.q-lday">2,366</span> L/day per metre; the cored dam, <span data-n="lab.q-lday@dam=cored">5,434</span>. The core is <span data-n="ch10.core-base-m">21.4</span> m wide at its base.</dd>
+          <dt>Find</dt><dd>Why the cored dam leaks more, and what a full cutoff under its core does.</dd>
+          <dt>The idea</dt><dd>Almost all the water goes under both dams. What changes is how much of the base the water must get under, which the head the solver finds at the top of the gravel shows.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq"><span data-n="lab.q-lday@dam=cored">5,434</span> ÷ <span data-n="lab.q-lday">2,366</span> = <span data-n="ch10.core-ratio">2.30</span></span><span class="why">the core more than doubles the leak</span></li>
+          <li><span class="we-eq">In through the upstream shell: <span data-n="lab.damface-lday@dam=cored">5,343</span>; through the reservoir floor: <span class="m"><span data-n="lab.floor-lday@dam=cored">91</span> L/day</span></span><span class="why">the shell is the easy way in, so the water reaches the gravel beside the core</span></li>
+          <li><span class="we-eq">Head at the top of the gravel, 12 m upstream of the centre line: <span class="m"><span data-n="ch10.head-m@dam=cored">19.1</span> m (<span data-n="ch10.head-pct@dam=cored">94</span>%)</span>; with no core, <span class="m"><span data-n="ch10.head-m">12.6</span> m (<span data-n="ch10.head-pct">62</span>%)</span></span><span class="why">the shell spends almost none of the head, so the water arrives at the core with nearly all of it</span></li>
+          <li><span class="we-eq">Length to get under: <span data-n="ch10.base-m">102</span> ÷ <span data-n="ch10.core-base-m">21.4</span> = <span data-n="ch10.path-ratio">4.77</span></span><span class="why">the whole base under a dam of fill, which is a lid to the gravel; only the core's base under the cored dam</span></li>
+          <li><span class="we-eq">Full cutoff under the core: <span class="m"><span data-n="lab.q-lday@dam=cored">5,434</span> ÷ <span data-n="lab.q-lday@dam=cored,cut=full">2.177</span> = <span data-n="ch10.cut-ratio">2,496</span></span></span><span class="why">a wall from the core's base to the rock: the leak falls to <span data-n="lab.q-lday@dam=cored,cut=full">2.2</span> L/day</span></li>
+        </ol>
+        <p class="we-ans">The core more than doubles the leak, because the shells deliver the water to the gravel right beside it and the water only has to pass under the core's <span data-n="ch10.core-base-m">21.4</span> m base. Taken down to rock with a cutoff, the same core cuts the leak about <span data-n="ch10.cut-ratio" data-n-sig="2">2,500</span> times.</p>
+        <p class="we-check"><b>Check.</b> If the length under the dam were the whole story, a length <span data-n="ch10.path-ratio">4.8</span> times shorter would pass <span data-n="ch10.path-ratio">4.8</span> times the water; the lab gives <span data-n="ch10.core-ratio">2.3</span>. The rest of the trip does not shrink with the core: the water still has to climb out of the gravel and cross some <span data-n="ch10.core-toe-m" data-n-sig="1">40</span> m of it to the toe, and <span data-n="ch10.head-m@dam=cored,x=11.5">6.0</span> m of head is still left at the top of the gravel a metre downstream of the core. So the factor should fall short of the ratio of lengths, and it does.</p>
+        <p class="we-means"><b>What it means.</b> A barrier works only if the water can't go round it. A core that stops on top of a pervious foundation is a wall with a gap under it, and its shells hurry the water to the gap. The same core joined to rock by a cutoff makes the dam almost dry.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"cored","lab-drain":"none","lab-cut":"none","lab-found":"pervious","lab-res":85}}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> A full cutoff cuts the cored dam's leak about <span data-n="ch10.cut-ratio" data-n-sig="2">2,500</span> times. Would it do as much for the dam of one fill?</summary>
+        <p>No: <span data-n="lab.q-lday">2,366</span> falls only to <span data-n="lab.q-lday@cut=full">166</span>, about <span data-n="ch10.cut-ratio@dam=homogeneous">14</span> times less. With the gravel cut off, the water goes through the fill instead, and the fill passes water a hundred times more easily than the core.</p>
+      </details>
+
+      <p>The second surprise runs the other way. A drain inside a dam is a strip of clean sand and gravel, graded so that the soil around it cannot follow the water in (<a data-ref="ch-erosion"></a> explains how), and open to the air at its outlet, so the water in it is at zero pressure. Every bit of water in the dam or the ground that can reach it heads for it. The Corps of Engineers' manual notes the consequence for a horizontal drain under the downstream half of a dam: it lowers the pressure under the dam and increases the quantity of seepage.<label for="mn-seepage-drain" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-seepage-drain" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usace-em1901"></a>, para. 9-3 and its Figure 9-1.</span> The lab shows by how much:</p>
+
+      <section class="we" id="ex-seepage-drains">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">A drain that leaks more and is safer</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The dam of one fill on the sand and gravel, reservoir <span data-n="lab.res-m">20.4</span> m: <span data-n="lab.q-lday">2,366</span> L/day per metre and a safety against piping of <span data-n="lab.fs">1.27</span>. The chimney drain stands <span data-n="ch10.chim-x-m">4</span> m downstream of the centre line, and its blanket runs from there along the base to the toe. The toe drain fills the dam's toe.</dd>
+          <dt>Find</dt><dd>The leak and the safety against piping with each drain, and why the chimney raises the leak.</dd>
+          <dt>The idea</dt><dd>A drain holds everything it touches at zero pressure. It ends the water's trip early, and it gives the water a way out that holds the soil back.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Chimney and blanket: <span class="m"><span data-n="lab.q-lday@drain=chimney">4,052</span> ÷ <span data-n="lab.q-lday">2,366</span> = <span data-n="ch10.drain-ratio">1.71</span></span></span><span class="why"><span data-n="ch10.drain-pct">71</span>% more water</span></li>
+          <li><span class="we-eq">Path under the dam: <span data-n="ch10.chim-path-m">55</span> m instead of <span data-n="ch10.base-m">102</span>; <span class="m"><span data-n="ch10.base-m">102</span> ÷ <span data-n="ch10.chim-path-m">55</span> = <span data-n="ch10.chim-path-ratio">1.85</span></span></span><span class="why">the gravel's water now leaves through the blanket, which starts <span data-n="ch10.chim-x-m">4</span> m past the centre line, <span data-n="ch10.chim-path-m">55</span> m from the upstream toe</span></li>
+          <li><span class="we-eq">Steepest exit not covered by the drain: <span class="m"><var>i</var> = <span data-n="lab.i-exit@drain=chimney">0.0029</span></span>; safety <span data-n="lab.fs@drain=chimney">343</span></span><span class="why">the water leaves through the drain, not through bare ground or the face</span></li>
+          <li><span class="we-eq">Toe drain: <span data-n="lab.q-lday@drain=toe">2,647</span> L/day, <span data-n="ch10.drain-pct@drain=toe">12</span>% more; safety <span data-n="lab.fs@drain=toe">12.8</span></span><span class="why">a shorter cut at the end of the trip</span></li>
+        </ol>
+        <p class="we-ans">The chimney drain makes our dam leak <span data-n="ch10.drain-pct">71</span>% more and raises its safety against piping from <span data-n="lab.fs">1.27</span> to over 300. The toe drain costs <span data-n="ch10.drain-pct@drain=toe">12</span>% more water and raises the safety to <span data-n="lab.fs@drain=toe">12.8</span>.</p>
+        <p class="we-check"><b>Check.</b> Darcy's law predicts a path <span data-n="ch10.chim-path-ratio">1.85</span> times shorter should pass <span data-n="ch10.chim-path-ratio">1.85</span> times the water; the lab gives <span data-n="ch10.drain-ratio">1.71</span>, a little less, because the water still has to dive into the gravel and rise into the blanket. In the gravel immediately under the blanket's start the solver finds a head of <span data-n="ch10.head-m@drain=chimney,x=4.5">0.54</span> m: the drain has taken almost all of the <span data-n="lab.res-m">20.4</span> m by the time the water reaches it.</p>
+        <p class="we-means"><b>What it means.</b> The extra water costs nothing but water. In return the drain takes the water pressure out of the downstream half of the dam, so the grains there press on one another with nearly their full weight and grip accordingly, which is what <a data-ref="ch-trapped"></a> meant by drains putting strength back. And it gives the water an exit that holds the soil back.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"homogeneous","lab-drain":"chimney","lab-cut":"none","lab-found":"pervious","lab-res":85}}'>Set the figure</button></p>
+      </section>
+
+      <details class="check">
+        <summary><span class="check-k">Check yourself</span> Where would you put a piezometer to show that the chimney drain works, and what should it read?</summary>
+        <p>In the fill a few metres downstream of the chimney, near the base. With the drain working, the water in it should stand barely above its tip, because the fill there is drained to about zero pressure; a reading well above that means the drain is clogged or cut off.</p>
+      </details>
+
+      <h3 id="s-seepage-clay">A dam on clay</h3>
+      <p>Now take the gravel away. Switch the foundation to Clay, <span data-n="ch10.k-tight">5 × 10⁻⁸</span> m/s, half as permeable as the fill. The leak collapses to <span data-n="lab.q-lday@found=tight">44.4</span> L/day per metre, and something else appears. On gravel the phreatic surface reached the downstream slope only <span data-n="lab.face-m">2</span> m up; on clay it meets the slope <span data-n="lab.face-m@found=tight">8</span> m up, and <span data-n="lab.face-pct@found=tight">65</span>% of the water leaves through the slope's face. With no easy way underneath, the water comes through the dam, and that needs a different hand estimate: one for water moving through the fill with a free surface on top.</p>
+      <p>The estimate engineers use is due to the French engineer Jules Dupuit, in 1863.<label for="mn-seepage-dupuit" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-seepage-dupuit" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="dupuit1863"></a>. The entry correction: <a data-cite="casagrande1937"></a>, p. 150.</span> Pretend the water moves level. Cut the dam into upright slices. In a slice where the saturated fill is <var>h</var> deep, the water flows through <var>h</var> square metres for each metre of dam, and the gradient is the slope of the water table there, Δ<var>h</var> over Δ<var>x</var>. By Darcy's law <span class="m"><var>q</var> = <var>k</var> × (Δ<var>h</var>/Δ<var>x</var>) × <var>h</var></span>, and the same <var>q</var> passes every slice, so where the wet part is thin the water table must be steep. Rearranged, <span class="m"><var>q</var> · Δ<var>x</var> = <var>k</var> · <var>h</var> · Δ<var>h</var></span>. Add up the slices from the downstream end to the reservoir. On the left the Δ<var>x</var> add up to the length <var>L</var>. On the right the products <var>h</var> · Δ<var>h</var>, as <var>h</var> rises from nothing to <var>H</var>, add up to the area of a triangle with height <var>H</var> and base <var>H</var>, ½<var>H</var>², the same sum that gave the push of water in <a data-ref="eq-depth-push"></a>:</p>
+      <div class="eq" id="eq-seepage-dupuit"><span class="eq-body"><var>q</var> = <var>k</var> · <var>H</var>² / (2<var>L</var>)</span><span class="eq-no" data-num></span></div>
+      <p class="eq-where"><var>q</var> flow through the dam per metre length (m³/s per m) · <var>k</var> permeability of the fill (m/s) · <var>H</var> depth of the reservoir (m) · <var>L</var> length the water travels, from where it enters to the downstream toe (m)</p>
+      <p>Where does the water enter? The upstream wedge of the dam stands in the reservoir and its water is at nearly the reservoir's head, so measuring from the upstream toe would make the trip too long. Arthur Casagrande showed in 1937 that a simple rule does well: start the trip upstream of where the water surface meets the face, by 0.3 times the horizontal run of the wetted face.</p>
+
+      <section class="we" id="ex-seepage-dupuit">
+        <header class="we-head">
+          <p class="we-k" data-num></p>
+          <p class="we-t">Our dam on clay, by hand</p>
+        </header>
+        <dl class="we-gf">
+          <dt>Given</dt><dd>The dam of one fill, <var>k</var> = <span data-n="ch10.k-fill">10⁻⁷</span> m/s, slopes 2:1, toes <span data-n="ch10.base-m">102</span> m apart, on <span data-n="ch10.found-m">15</span> m of clay with <var>k</var> = <span data-n="ch10.k-tight">5 × 10⁻⁸</span> m/s; reservoir <var>H</var> = <span data-n="lab.res-m">20.4</span> m, meeting the upstream face <span data-n="ch10.dup-xw-m">10.2</span> m upstream of the centre line. A flow of 10⁻⁷ m³/s is <span data-n="ch10.k-fill-lday">8.64</span> litres a day.</dd>
+          <dt>Find</dt><dd>The leak by hand, through the fill and under it, and where the water breaks out on the downstream slope.</dd>
+          <dt>The idea</dt><dd>Two flows side by side: through the fill by <a data-ref="eq-seepage-dupuit"></a>, and under it through the clay by Darcy's pipe, as in <a data-ref="ex-seepage-hand"></a>.</dd>
+        </dl>
+        <ol class="we-steps">
+          <li><span class="we-eq">Run of the wetted upstream face: <span class="m">2 × <span data-n="lab.res-m">20.4</span> = <span data-n="ch10.dup-run-m">40.8</span> m</span></span><span class="why">two across for every one up</span></li>
+          <li><span class="we-eq">Entry correction: <span class="m">0.3 × <span data-n="ch10.dup-run-m">40.8</span> = <span data-n="ch10.dup-corr-m">12.24</span> m</span></span><span class="why">Casagrande's rule</span></li>
+          <li><span class="we-eq"><var>L</var> = <span data-n="ch10.dup-corr-m">12.24</span> + <span data-n="ch10.dup-xw-m">10.2</span> + <span data-n="ch10.half-base-m">51</span> = <span data-n="ch10.dup-d-m">73.44</span> m</span><span class="why">from the entry point to the centre line, then half the base to the downstream toe</span></li>
+          <li><span class="we-eq"><var>H</var>² ÷ 2<var>L</var>: <span class="m"><span data-n="ch10.dup-h2">416.16</span> ÷ <span data-n="ch10.dup-2d-m">146.88</span> = <span data-n="ch10.dup-hd">2.833</span> m</span></span><span class="why"><span class="m"><span data-n="lab.res-m">20.4</span>² = <span data-n="ch10.dup-h2">416.16</span></span>, and <span class="m">2 × <span data-n="ch10.dup-d-m">73.44</span> = <span data-n="ch10.dup-2d-m">146.88</span></span></span></li>
+          <li><span class="we-eq">Through the fill: <span class="m"><span data-n="ch10.dup-hd">2.833</span> × <span data-n="ch10.k-fill-lday">8.64</span> = <span data-n="ch10.dup-lday">24.48</span> L/day</span></span><span class="why"><a data-ref="eq-seepage-dupuit"></a>, with <var>k</var> = 10⁻⁷ m/s turned into litres a day</span></li>
+          <li><span class="we-eq">Under it: <span class="m"><span data-n="ch10.k-tight-lday">4.32</span> × <span data-n="ch10.hand-i">0.200</span> × <span data-n="ch10.found-m">15</span> = <span data-n="ch10.tight-under-lday">12.96</span> L/day</span></span><span class="why">Darcy's pipe through the clay, its <var>k</var> in litres a day</span></li>
+          <li><span class="we-eq">Total: <span data-n="ch10.dup-lday">24.48</span> + <span data-n="ch10.tight-under-lday">12.96</span> = <span data-n="ch10.tight-sum-lday">37.44</span> L/day</span><span class="why">the lab: <span data-n="lab.q-lday@found=tight">44.4</span></span></li>
+          <li><span class="we-eq">Break-out: <var>a</var> = <span class="m">√(<var>L</var>² + <var>H</var>²) − √(<var>L</var>² − 4<var>H</var>²)</span> = <span data-n="ch10.casa-a-m">15.16</span> m up the slope</span><span class="why">Casagrande's construction for a slope this gentle; 4<var>H</var>² because the slope runs 2 across for 1 up</span></li>
+          <li><span class="we-eq">Its height: <span class="m"><span data-n="ch10.casa-a-m">15.16</span> × 0.447 = <span data-n="ch10.casa-face-m">6.78</span> m</span></span><span class="why">0.447 is the sine of the 2:1 slope's angle, 1 ÷ √5</span></li>
+        </ol>
+        <p class="we-ans">By hand, about <span data-n="ch10.tight-sum-lday">37</span> L/day per metre, <span data-n="ch10.tight-err-pct">16</span>% below the lab's <span data-n="lab.q-lday@found=tight">44.4</span>, with the water breaking out about <span data-n="ch10.casa-face-m">6.8</span> m up the downstream slope against the lab's <span data-n="lab.face-m@found=tight">8</span> m.</p>
+        <p class="we-check"><b>Check.</b> The lab can also say where its water crosses the dam's centre line: <span data-n="ch10.thru-lday@found=tight">31.8</span> L/day inside the fill, <span data-n="ch10.under-lday@found=tight">12.5</span> in the clay beneath. Darcy's pipe gets the clay's share almost exactly; Dupuit's slices come out low, because the hand sum keeps the fill's water and the clay's in separate pipes and the solver lets them trade. The Bureau of Reclamation's rule of thumb for a dam of one fill puts the break-out at roughly a third of the reservoir's depth (<a data-cite="usbr1987"></a>, sec. 6.3(c)): <span class="m"><span data-n="lab.res-m">20.4</span> ÷ 3 = <span data-n="ch10.third-m">6.8</span> m</span>. The lab resolves its face only to its 1 m cells.</p>
+        <p class="we-means"><b>What it means.</b> A clay foundation half as permeable as the fill is far from watertight: more than a quarter of the water still goes under it. Under the cored dam of <a data-ref="ex-zones-core"></a> it is most of the water: a cutoff beneath its core takes its leak on clay from <span data-n="lab.q-lday@dam=cored,found=tight">37.2</span> to <span data-n="lab.q-lday@dam=cored,found=tight,cut=full">2.1</span> litres a day. Every hand method here gets the flow within a factor of two and the break-out within a couple of metres, enough to tell a sound design from a poor one. What the break-out does to the slope it softens is <a data-ref="ch-slope"></a>'s question.</p>
+        <p class="we-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"homogeneous","lab-drain":"none","lab-cut":"none","lab-found":"tight","lab-res":85}}'>Set the figure</button></p>
+      </section>
+
       <h3 id="s-seepage-defences">Five ways to manage seepage, and one to watch it</h3>
-      <div class="defences">
-        <div><b>Cut it off</b><span>Core, cutoff trench, slurry wall, grout curtain, face slab, geomembrane.</span></div>
-        <div><b>Lengthen the path</b><span>An upstream impervious blanket makes the water travel further, lowering the gradient.</span></div>
-        <div><b>Drain it</b><span>Chimney, blanket and toe drains, relief wells, gallery drains: control where the phreatic surface sits and bleed off pressure.</span></div>
-        <div><b>Filter every exit</b><span>Wherever water leaves soil, it passes a filter so it leaves without the soil.</span></div>
-        <div><b>Weigh it down</b><span>A berm at the toe adds weight against uplift and heave.</span></div>
-        <div><b>Watch it</b><span>Piezometers measure pore pressure; weirs measure flow; cloudy water means soil is moving.</span></div>
+      <p>The chapter's question now has an answer. How much a dam leaks matters to whoever pays for the water, and to the neighbours of a tailings pond; on its own it seldom threatens the dam. A leak is safe when it leaves where the designer meant it to, through a drain and not out of a slope; when it leaves gently, at a gradient well below the one that floats grains, through a filter that holds them back; and when it leaves the downstream part of the dam at low water pressure, so that the grains there press on one another with their full weight. Engineers have six kinds of defence for it, drawn here at one scale on our dam:</p>
+    </div>
+
+    <figure class="fig wide" id="fig-seepage-defences">
+      <div class="sheet-top"><span class="figno"><b data-num></b> · Six defences against seepage, on our dam</span><span class="scale-note">Sections to one scale · schematic</span></div>
+      <div class="ch10-def">
+        <div class="ch10-def-p">
+          <svg class="dwg" viewBox="0 18 240 80" role="img" aria-label="Our dam with a clay core and rockfill shells, and a clay-filled cutoff trench under the core reaching down through the sand and gravel to rock. An arrow of water in the gravel stops at the cutoff.">
+            <polygon points="0,29.4 103.7,29.4 38.4,62 0,62" class="water"/>
+            <path d="M0,29.4 L103.7,29.4" class="water-line"/>
+            <rect x="0" y="62" width="240" height="24" fill="url(#p-alluv)" class="edge"/>
+            <rect x="0" y="86" width="240" height="9.6" fill="url(#p-bedrock)" class="edge"/>
+            <polygon points="38.4,62 115.2,23.6 124.8,23.6 201.6,62" fill="url(#p-rock)" class="edge"/>
+            <polygon points="102.9,62 137.1,62 122.4,25.2 117.6,25.2" fill="url(#p-clay)" class="edge-l"/>
+            <polygon points="110.4,62 129.6,62 126.4,86 113.6,86" fill="url(#p-clay)" class="edge-l"/>
+            <path d="M14.4,71.6 L56,73.2 L106,73.2" class="ch10-wa" marker-end="url(#arr-w)"/>
+            <text x="142" y="80" class="lbl-s halo">cutoff to rock</text>
+          </svg>
+          <p class="ch10-def-t"><b>A · Cut it off.</b> A core, a cutoff trench or slurry wall to rock, a grout curtain, a concrete face or a membrane: a barrier the water cannot cross or go round.</p>
+        </div>
+        <div class="ch10-def-p">
+          <svg class="dwg" viewBox="0 18 240 80" role="img" aria-label="Our dam of one fill with a clay blanket laid on the reservoir floor upstream of its toe. A water arrow enters the ground beyond the blanket's far end and travels under the blanket and the dam to the toe.">
+            <polygon points="0,29.4 103.7,29.4 38.4,62 0,62" class="water"/>
+            <path d="M0,29.4 L103.7,29.4" class="water-line"/>
+            <rect x="0" y="62" width="240" height="24" fill="url(#p-alluv)" class="edge"/>
+            <rect x="0" y="86" width="240" height="9.6" fill="url(#p-bedrock)" class="edge"/>
+            <polygon points="38.4,62 115.2,23.6 124.8,23.6 201.6,62" fill="url(#p-fill)" class="edge"/>
+            <polygon points="4.8,62 38.4,62 41.6,59.4 4.8,59.4" fill="url(#p-clay)" class="edge-l"/>
+            <path d="M2,63 L8,76.4 L88,79.6 L184,76.4 L212.8,64.4" class="ch10-wa" marker-end="url(#arr-w)"/>
+            <text x="6.4" y="54" class="lbl-s halo on-water">blanket</text>
+          </svg>
+          <p class="ch10-def-t"><b>B · Lengthen the path.</b> An <span class="gl" data-term="upstream-blanket">upstream blanket</span> of clay on the reservoir floor, joined to the dam's watertight part, makes the water enter further away.</p>
+        </div>
+        <div class="ch10-def-p">
+          <svg class="dwg" viewBox="0 18 240 80" role="img" aria-label="Our dam of one fill with a chimney drain standing just downstream of the crest and a blanket drain along the base to the toe. The dashed phreatic surface dives from the reservoir into the chimney, and an arrow of water runs along the blanket to the toe.">
+            <polygon points="0,29.4 103.7,29.4 38.4,62 0,62" class="water"/>
+            <path d="M0,29.4 L103.7,29.4" class="water-line"/>
+            <rect x="0" y="62" width="240" height="24" fill="url(#p-alluv)" class="edge"/>
+            <rect x="0" y="86" width="240" height="9.6" fill="url(#p-bedrock)" class="edge"/>
+            <polygon points="38.4,62 115.2,23.6 124.8,23.6 201.6,62" fill="url(#p-fill)" class="edge"/>
+            <polygon points="126.4,62 129.6,62 129.6,30 126.4,30" fill="url(#p-drain)" class="edge-l"/>
+            <polygon points="126.4,62 201.6,62 195.2,58.8 126.4,58.8" fill="url(#p-drain)" class="edge-l"/>
+            <path d="M103.7,29.4 L113.6,32.2 L121.6,37.2 L125.1,44.4 L126.4,54" class="phreatic"/>
+            <path d="M150,60.4 L184,60.4" class="ch10-wa" marker-end="url(#arr-w)"/>
+          </svg>
+          <p class="ch10-def-t"><b>C · Drain it.</b> Chimney, blanket and toe drains inside the dam; <span class="gl" data-term="relief-well">relief wells</span> in the ground beyond the toe; drains in a concrete dam's galleries. They decide where the phreatic surface sits.</p>
+        </div>
+        <div class="ch10-def-p">
+          <svg class="dwg" viewBox="0 18 240 80" role="img" aria-label="Our dam of one fill with a layer of filter sand laid over the ground at and beyond the downstream toe. Arrows of water rise from the gravel through the filter.">
+            <polygon points="0,29.4 103.7,29.4 38.4,62 0,62" class="water"/>
+            <path d="M0,29.4 L103.7,29.4" class="water-line"/>
+            <rect x="0" y="62" width="240" height="24" fill="url(#p-alluv)" class="edge"/>
+            <rect x="0" y="86" width="240" height="9.6" fill="url(#p-bedrock)" class="edge"/>
+            <polygon points="38.4,62 115.2,23.6 124.8,23.6 201.6,62" fill="url(#p-fill)" class="edge"/>
+            <polygon points="190.4,56.4 201.6,62 238.4,62 238.4,58.8 201.6,58.8 195.2,56.4" fill="url(#p-filter)" class="edge-l"/>
+            <path d="M209.6,74.8 L209.6,56" class="ch10-wa" marker-end="url(#arr-w)"/>
+            <path d="M220.8,74.8 L220.8,56" class="ch10-wa" marker-end="url(#arr-w)"/>
+            <path d="M232,74.8 L232,56" class="ch10-wa" marker-end="url(#arr-w)"/>
+          </svg>
+          <p class="ch10-def-t"><b>D · Filter every exit.</b> Wherever water leaves soil, it passes through a filter, so it leaves without the soil.</p>
+        </div>
+        <div class="ch10-def-p">
+          <svg class="dwg" viewBox="0 18 240 80" role="img" aria-label="Our dam of one fill with a low bank of earth, a berm, on the ground beyond the downstream toe. Red arrows show the water in the gravel pushing up under the berm; a green arrow shows the berm's weight pressing down.">
+            <defs><marker id="seepage-arr-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ok)"/></marker></defs>
+            <polygon points="0,29.4 103.7,29.4 38.4,62 0,62" class="water"/>
+            <path d="M0,29.4 L103.7,29.4" class="water-line"/>
+            <rect x="0" y="62" width="240" height="24" fill="url(#p-alluv)" class="edge"/>
+            <rect x="0" y="86" width="240" height="9.6" fill="url(#p-bedrock)" class="edge"/>
+            <polygon points="38.4,62 115.2,23.6 124.8,23.6 201.6,62" fill="url(#p-fill)" class="edge"/>
+            <polygon points="187.2,54.8 235.2,54.8 238.4,62 201.6,62" fill="url(#p-fill)" class="edge-l"/>
+            <path d="M209.6,81.2 L209.6,65.2" class="ch10-aa" marker-end="url(#arr-acc)"/>
+            <path d="M225.6,81.2 L225.6,65.2" class="ch10-aa" marker-end="url(#arr-acc)"/>
+            <path d="M217.6,40 L217.6,52.4" class="ch10-ok" marker-end="url(#seepage-arr-ok)"/>
+          </svg>
+          <p class="ch10-def-t"><b>E · Weigh it down.</b> A berm, a low bank of earth beyond the toe, adds weight where the water in the ground pushes up.</p>
+        </div>
+        <div class="ch10-def-p">
+          <svg class="dwg" viewBox="0 18 240 80" role="img" aria-label="Our dam of one fill with two standpipe piezometers, one in the upstream half reading a high water level and one in the downstream half reading a low one, and a small V-notch weir box at the downstream toe.">
+            <polygon points="0,29.4 103.7,29.4 38.4,62 0,62" class="water"/>
+            <path d="M0,29.4 L103.7,29.4" class="water-line"/>
+            <rect x="0" y="62" width="240" height="24" fill="url(#p-alluv)" class="edge"/>
+            <rect x="0" y="86" width="240" height="9.6" fill="url(#p-bedrock)" class="edge"/>
+            <polygon points="38.4,62 115.2,23.6 124.8,23.6 201.6,62" fill="url(#p-fill)" class="edge"/>
+            <path d="M97.6,27.6 L97.6,60.4" class="ch10-pz"/>
+            <path d="M95,41.2 L100.2,41.2" class="water-line"/>
+            <path d="M142.4,27.6 L142.4,60.4" class="ch10-pz"/>
+            <path d="M139.8,55.6 L145,55.6" class="water-line"/>
+            <polygon points="209.6,55.6 232,55.6 232,62 209.6,62" class="ch10-weirbox"/>
+            <path d="M214.4,55.6 L220.8,61 L227.2,55.6" class="ch10-notch"/>
+            <polygon points="217.9,58.6 220.8,61 223.7,58.6" class="water"/>
+            <text x="220.8" y="50.5" class="lbl-s halo" text-anchor="middle">weir</text>
+          </svg>
+          <p class="ch10-def-t"><b>F · Watch it.</b> Piezometers read the head inside the dam; a weir measures the leak; cloudy water means soil is moving.</p>
+        </div>
       </div>
+      <figcaption>
+        <p class="cap"><b>Six defences on our dam, all at one scale: the first stops the water, four control how it arrives and leaves, and the last measures it.</b> Each panel is our <span data-n="ch10.crest-m">24</span> m dam on <span data-n="ch10.found-m">15</span> m of sand and gravel over rock, with the reservoir on the left; hatches are the materials of <a data-ref="fig-plate-0"></a>. Blue arrows are water; in E the brick-red arrows are the water pushing up from the ground and the green one the berm's weight pressing down. The dashed line in C is the phreatic surface; the short blue ticks in F are the water levels in the two standpipes. <span class="cap-n">The number to remember: our cored dam leaks <span data-n="lab.q-lday@dam=cored">5,434</span> L/day per metre on gravel, and <span data-n="lab.q-lday@dam=cored,cut=full">2.2</span> with a cutoff to rock.</span></p>
+        <ul class="try">
+          <li>In which panels does water still pass under the dam? Pick one and try its nearest equivalent in the lab.</li>
+        </ul>
+        <details class="try-ans"><summary>Answers</summary><p>In all but A. B makes the water's road longer, C, D and E change how it arrives and leaves, F measures it. In the lab, the chimney drain is C: the leak rises to <span data-n="lab.q-lday@drain=chimney">4,052</span> and the safety against piping to over 300.</p></details>
+      </figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Notice that only the first panel stops the water. The other five accept that it will arrive and manage the arrival. Lengthening the path is the oldest of them. Before flow nets were in everyday use, weirs on sandy riverbeds were sized by a rule of thumb: make the water's path along the underside of the structure long enough for the soil.<label for="sn-seepage-creep" class="sn-ref"></label><input type="checkbox" id="sn-seepage-creep" class="margin-toggle"><span class="sidenote" data-kind="history">The rule of thumb was W. G. Bligh's "line of creep": the head a structure could hold grew with the length of its contact with the soil. E. W. Lane, at the Bureau of Reclamation, proposed counting the level parts of that path at a third of the steep ones. A Bureau study of 1934, which checked the rules against pressures measured under real dams, recommended his weighting over Bligh's (<a data-cite="hebert1934"></a>), and Lane published it in 1935 (<a data-cite="lane1935"></a>).</span> The lab's half-depth cutoff is a lesson in that rule's limits: it adds <span data-n="ch10.half-add-m">15</span> m to a <span data-n="ch10.base-m">102</span> m path, and the leak barely moves.</p>
+      <p>Watching is the defence that says whether the others work. <span class="gl" data-term="piezometer">Piezometers</span> are the straws of <a data-ref="fig-head-straws"></a> made permanent: a tube, or a pressure sensor, sealed at a point inside the dam or its foundation, reporting the head there. Read against the reservoir level for years, their trend shows whether the drains are clear and whether the pressure in the downstream slope is where the design put it. The leak itself is measured at weirs like the one this chapter began with.<label for="sn-seepage-weir" class="sn-ref"></label><input type="checkbox" id="sn-seepage-weir" class="margin-toggle"><span class="sidenote" data-kind="units">A 90° V-notch converts depth into flow. The Bureau of Reclamation's form of Cone's formula, <var>Q</var> = 2.49 <var>h</var><sup>2.48</sup> with <var>Q</var> in cubic feet a second and <var>h</var> in feet, becomes <var>Q</var> = <span data-n="ch10.cone-c">1.342</span> <var>h</var><sup>2.48</sup> in cubic metres a second and metres (<a data-cite="usbr-wmm2001"></a>, eq. 7-6). Because the flow grows faster than the depth's square, a weir reads small flows finely.</span> Engineers judge the leak against the reservoir. A leak that rises and falls with the reservoir is the ground obeying Darcy's law. A leak that grows while the reservoir does not, or water that comes out cloudy, is a warning: <span class="gl" data-term="turbidity">turbidity</span> means soil is moving, and even clear seepage is sampled, because it can carry fine soil the eye can't see.<label for="mn-seepage-watch" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-seepage-watch" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="usace-em1901"></a>, paras. 13-3 and 13-4.</span></p>
+      <p>The Prologue's dam had such a system: a pond below it caught what came through, and the first sign of trouble that night was the water in that pond rising. So it is fair to ask whether the leak brought it down, and the review panel asked. Piping and cracking, water opening a path through a dam and carrying soil out along it, is one of the commonest ways earth dams fail, and the panel found details that worried it. But apart from one brief spike in the flow, in April 2013, the records showed no abnormal seepage, and the panel found no evidence that piping or cracking caused the breach. Mount Polley's seepage was not what failed it.<label for="mn-seepage-polley" class="mn-ref" aria-label="Source"></label><input type="checkbox" id="mn-seepage-polley" class="margin-toggle"><span class="marginnote" data-kind="source"><a data-cite="polley2015"></a>, section 4.3.3, pp. 11–12; the pond that night, p. 10.</span> What did fail it is the business of the last chapter.</p>
     </div>
+
   <section class="ch-end col" aria-label="End of chapter">
-    <div class="ch-end-written" data-stub>
-      <!-- Writer (book/SPEC.md F.14, H.11): What to remember, 4–6 questions with hints and
-           answers (li.q > div.q-answer), Further reading, and the pull sentence p.next-pull
-           inside nav.next-card below. -->
+    <div class="remember">
+      <p class="remember-k">What to remember</p>
+      <ul>
+        <li>Every dam leaks. A leak is safe when the water leaves where the designer chose, gently and through a filter, and leaves the downstream slope at low water pressure, so its grains keep pressing on one another.</li>
+        <li>A flow net of squares turns Darcy's law into counting, <var>q</var> = <var>k</var>·<var>H</var>·<var>N</var><sub>f</sub>/<var>N</var><sub>d</sub>. Crowded squares mean a steep gradient; the smallest sit at exits and corners, where the water pushes hardest on the grains it leaves.</li>
+        <li>Head over path, times <var>k</var>, times depth, estimates the leak under our dam to within <span data-n="ch10.hand-err-pct">10</span>%, and Dupuit's slices estimate the leak through it. A hand estimate is an order-of-magnitude tool, because <var>k</var> is rarely known better than that.</li>
+        <li>A barrier works only if it reaches something tight. A core that stops on gravel can leak more than no core at all; joined to rock by a cutoff, it cuts the leak about <span data-n="ch10.cut-ratio" data-n-sig="2">2,500</span> times.</li>
+        <li>A drain makes a dam leak more and stand safer: it takes the water pressure out of the downstream half, so the grains there grip with their full weight, and it lets the water out through a filter.</li>
+      </ul>
     </div>
-    <nav class="next-card" data-gen="next"></nav>
+
+    <div class="questions">
+      <p class="q-k">Questions</p>
+      <ol class="q-list">
+        <li class="q" id="q-seepage-sheetpile" data-tag="reckon" data-level="1">
+          <p>A flow net sketched under a steel sheet-pile wall has 4 flow channels and 8 head drops. The water stands 6 m higher on one side of the wall than the other, and the sand passes <span data-n="ch10.q1-k">2 × 10⁻⁵</span> m/s. How much water passes under each metre of wall in a day? How much head is lost in each drop?</p>
+          <details class="q-hint"><summary>Hint</summary><p>Use <a data-ref="eq-seepage-net"></a>; there are 86,400 seconds in a day.</p></details>
+          <div class="q-answer"><p><var>q</var> = <span data-n="ch10.q1-k">2 × 10⁻⁵</span> × 6 × 4 ÷ 8 = <span data-n="ch10.q1-q">6 × 10⁻⁵</span> m³/s, which is <span class="m"><span data-n="ch10.q1-q">0.00006</span> × 86,400 = <span data-n="ch10.q1-day">5.184</span> m³</span> a day, about five cubic metres. Each drop loses <span class="m">6 ÷ 8 = <span data-n="ch10.q1-dh">0.75</span> m</span> of head.</p></div>
+        </li>
+        <li class="q" id="q-seepage-weir" data-tag="reckon" data-level="2">
+          <p>Suppose our dam on gravel, as the lab opens, were <span data-n="ch10.weir-dam-m">400</span> m long, and all its leak were collected at one 90° V-notch weir. How many litres a second would reach the weir, and how deep would the water stand over the notch? For the weir use <var>Q</var> = <span data-n="ch10.cone-c">1.342</span> <var>h</var><sup>2.48</sup>, with <var>Q</var> in m³/s and <var>h</var> in metres.</p>
+          <details class="q-hint"><summary>Hint</summary><p>Multiply the lab's litres a day per metre by <span data-n="ch10.weir-dam-m">400</span> and divide by 86,400. Then <var>h</var> = (<var>Q</var> ÷ <span data-n="ch10.cone-c">1.342</span>)<sup>1/2.48</sup>, with <var>Q</var> in cubic metres a second.</p></details>
+          <div class="q-answer"><p><span class="m"><span data-n="lab.q-lday">2,366</span> × 400 ÷ 86,400 = <span data-n="ch10.weir-ls">10.95</span> L/s</span>, or <span data-n="ch10.weir-m3s">0.01095</span> m³/s. Then <span class="m"><var>h</var> = (<span data-n="ch10.weir-m3s">0.01095</span> ÷ <span data-n="ch10.cone-c">1.342</span>)<sup>1/2.48</sup></span> = <span data-n="ch10.weir-h-cm">14.4</span> cm. Over a year that dam would leak about <span data-n="ch10.weir-yr-m3" data-n-sig="2">350,000</span> m³, and a regular reading of a <span data-n="ch10.weir-h-cm" data-n-sig="2">14</span> cm head is how anyone would know.</p></div>
+        </li>
+        <li class="q" id="q-seepage-half" data-tag="check" data-level="2">
+          <p>Set the lab to the dam of one fill on gravel and add the half-depth cutoff. The leak falls from <span data-n="lab.q-lday">2,366</span> to <span data-n="lab.q-lday@cut=partial">2,160</span> L/day per metre, and the safety against piping rises only from <span data-n="lab.fs">1.27</span> to <span data-n="lab.fs@cut=partial">1.47</span>. Why does a wall halfway down the gravel do so little?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"homogeneous","lab-drain":"none","lab-cut":"partial","lab-found":"pervious","lab-res":85}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>How much longer does the water's path get, if it goes down one side of the wall and up the other?</p></details>
+          <div class="q-answer"><p>The water goes under it. The cutoff reaches <span data-n="ch10.half-depth-m">7.5</span> m down, so the path grows from <span data-n="ch10.base-m">102</span> m to about <span class="m"><span data-n="ch10.base-m">102</span> + 2 × <span data-n="ch10.half-depth-m">7.5</span> = <span data-n="ch10.half-path-m">117</span> m</span>, and Darcy's law predicts about <span data-n="ch10.half-pred-pct">13</span>% less water; the lab gives <span data-n="ch10.half-cut-pct">9</span>%. The water still reaches the toe with most of its head, so the exit gradient there falls only a little. The Corps of Engineers' manual puts it bluntly: theory and model tests show a cutoff must reach at least 95% of the way through a uniform pervious foundation before seepage falls appreciably (<a data-cite="usace-em1901"></a>, para. 9-4).</p></div>
+        </li>
+        <li class="q" id="q-seepage-reservoir" data-tag="explore" data-level="1">
+          <p>In the lab, lower the reservoir to 60% and read the seepage, then raise it to 95%. Does the leak grow in proportion to the depth of water? What happens to the safety against piping?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"homogeneous","lab-drain":"none","lab-cut":"none","lab-found":"pervious","lab-res":60}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>Darcy's law makes the flow proportional to the head. Compare the two ratios: depth at 95% over depth at 60%, and leak over leak.</p></details>
+          <div class="q-answer"><p>Very nearly. The depth goes from <span data-n="lab.res-m@res=0.6">14.4</span> m to <span data-n="lab.res-m@res=0.95">22.8</span> m, a ratio of <span data-n="ch10.res-ratio-h">1.58</span>, and the leak from <span data-n="lab.q-lday@res=0.6">1,652</span> to <span data-n="lab.q-lday@res=0.95">2,657</span> L/day per metre, a ratio of <span data-n="ch10.res-ratio-q">1.61</span>: a little more, because a fuller reservoir also wets more of the fill. The safety against piping falls from <span data-n="lab.fs@res=0.6">2.26</span> to <span data-n="lab.fs@res=0.95">1.07</span>, since the exit gradient grows with the head too. That is why engineers read piezometers and weirs against the reservoir level.</p></div>
+        </li>
+        <li class="q" id="q-seepage-choice" data-tag="design" data-level="3">
+          <p>Our dam of one fill stands on the clay foundation. A toe drain and a chimney drain both remove its seepage face. The toe drain leaks <span data-n="lab.q-lday@found=tight,drain=toe">49.9</span> L/day per metre with a safety against piping of <span data-n="lab.fs@found=tight,drain=toe">6.7</span>; the chimney leaks <span data-n="lab.q-lday@found=tight,drain=chimney">110</span>, more than twice as much, with a safety against piping of <span data-n="lab.fs@found=tight,drain=chimney">183</span>. Which would you build, and why?</p>
+          <p class="q-set"><button type="button" class="set-fig" data-set='{"fig":"fig-lab","set":{"lab-dam":"homogeneous","lab-drain":"toe","lab-cut":"none","lab-found":"tight","lab-res":85}}'>Set the figure</button></p>
+          <details class="q-hint"><summary>Hint</summary><p>The lab's fill is the same in every direction. Is a real fill, compacted in layers, likely to be?</p></details>
+          <div class="q-answer"><p>The chimney, and the extra <span data-n="ch10.choice-diff-lday">60</span> litres a day per metre are the price. A fill compacted layer by layer passes water more easily along its layers than across them, and a loose or badly bonded layer can carry water over a toe drain and out of the downstream slope. A chimney cuts across every layer, so whatever comes through the upstream half is caught. The Bureau of Reclamation calls an inclined filter drain with a horizontal blanket almost standard for this reason, citing loose lifts, poor bond between lifts and inadvertently pervious layers (<a data-cite="usbr1987"></a>, sec. 6.3(c)). The lab's uniform fill cannot show this, which is a reason to read the lab as a guide and not a guarantee.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reading">
+      <p class="reading-k">Further reading</p>
+      <ul>
+        <li><cite data-cite="casagrande1937"></cite> <span class="level">primary source</span> The paper that taught dam designers to sketch flow nets, with Casagrande's advice for beginners, the seepage line through an earth dam, the 0.3 entry correction used in <a data-ref="ex-seepage-dupuit"></a>, and an early warning about layered fills.</li>
+        <li><cite data-cite="usace-em1901"></cite> <span class="level">serious</span> The Corps of Engineers' manual. Its fourth chapter teaches flow nets, with drawing guidelines and the counting formula used here; the eighth and ninth cover seepage control in embankments and foundations, and the thirteenth the weirs and piezometers that watch it.</li>
+        <li><cite data-cite="usbr1987"></cite> <span class="level">serious</span> The chapter on earthfill dams works the hand estimate of <a data-ref="ex-seepage-hand"></a> for a real foundation and lays out the treatments for sand and gravel foundations: cutoffs, blankets, toe drains and relief wells. Free from the Bureau of Reclamation.</li>
+      </ul>
+    </div>
+
+    <nav class="next-card" data-gen="next"><p class="next-pull">Switch the foundation to Clay and the water breaks out of our dam's downstream face <span data-n="lab.face-m@found=tight">8</span> m up. The dam still stands. But where water leaves the ground it pushes on the grains it passes, and where it left our dam of one fill on gravel it pushed with a gradient of <span data-n="lab.i-exit">0.79</span>. What if it pushes hard enough to carry them away?</p></nav>
   </section>
 </section>
